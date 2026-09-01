@@ -1,0 +1,46 @@
+{
+ "viradas": [
+  "bauer2024_M12_fig8_test2",
+  "bauer2024_M12_fig8_test3",
+  "bauer2024_M8_fig6_rep1",
+  "bauer2024_M8_fig6_rep5",
+  "eccles2010_fig8a_no_axial_baseline1",
+  "eccles2010_fig8b_axial_0p7kN_intermittent"
+ ],
+ "m0_pior": 0.04704272728537415,
+ "m1_viol": [
+  [
+   "chu2026ti_D0p3mm_F0_49kN_test1",
+   0.00030334860284603193,
+   0.0012809248029266446
+  ],
+  [
+   "sun2025efa110030_fig11a_loosening_reassy04",
+   0.00015235344127276576,
+   0.0010668014710681004
+  ],
+  [
+   "sun2025efa110030_fig11a_loosening_reassy06",
+   0.00017997368706268793,
+   0.001257907131087893
+  ]
+ ],
+ "m3_viol": [
+  "bauer2024_M8_fig6_rep1",
+  "bauer2024_M8_fig6_rep5",
+  "eccles2010_fig8a_no_axial_baseline1",
+  "eccles2010_fig8b_axial_0p7kN_intermittent"
+ ],
+ "gates": {
+  "M0": false,
+  "M1": false,
+  "M2": false,
+  "M3": false,
+  "M4": true,
+  "M5": true,
+  "M6": true
+ },
+ "antes": 147,
+ "depois": 153,
+ "comparaveis": 202
+}

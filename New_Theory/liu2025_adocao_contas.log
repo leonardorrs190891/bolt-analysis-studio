@@ -1,0 +1,29 @@
+==============================================================================
+CONTAS PRE-CONGELAMENTO — adocao per-rig LIU_2025 (fadiga+rampa)
+==============================================================================
+
+1) fat_Kt = c_sigma(Table2) / proxy_flexao = 1.081e+12 / 1.838e+12 = 0.588
+   (sigma_a passa a SER a tensao de raiz do artigo; per-rig via Table 2)
+
+2) ancora de fat_C1 (2 passes, contexto canonico, Goodman VIVO)
+   chute: C1_regr(Pa) = 8.171e+31 ; denom0 = 0.5223 ; C1_0 = 6.2e+32
+   passe 1 (91s): N_pred/N_meas = {'0p25': 'nao-frat', '0p3': 1.445, '0p4': 'nao-frat', '0p5': 'nao-frat', '0p6': 1.677, '0p8': 1.508} | geomean 1.540
+   C1 corrigido -> 4.02544e+32
+   passe 2 (63s): N_pred/N_meas = {'0p25': 1.259, '0p3': 0.93, '0p4': 1.285, '0p5': 1.302, '0p6': 1.361, '0p8': 0.734} | geomean 1.119
+   >>> fat_C1 FIXADO = 4.02544e+32  (unico escalar fitado; congelado no prereg)
+
+3/4) relogio final + rampa-inicio (0.75*N_pred) vs trim_n_max
+     delta     N_meas     N_pred    razao       rampa@       trim rampa vs janela
+   amp0p25     330000     415393    1.259       311545     240000 fora da metrica
+    amp0p3     250000     232428    0.930       174321     180000 DENTRO da metrica (5679 ciclos)
+    amp0p4      77000      98942    1.285        74206      60000 fora da metrica
+    amp0p5      38000      49491    1.302        37118      30000 fora da metrica
+    amp0p6      24200      32946    1.361        24710      18000 fora da metrica
+    amp0p8      14400      10575    0.734         7931      11500 DENTRO da metrica (3569 ciclos)
+
+5) CURVA DE PROJETO (liu2025_M16_amp0p4) — metrica pos-trim vs store
+   store (sem fadiga): MAE 0.0462  res.max 0.0623
+   com adocao        : MAE 0.0462  res.max 0.0623   (delta +0.0000 / +0.0000)
+   tripe pos-trim: PASSA
+
+-> New_Theory/liu2025_adocao_contas.json

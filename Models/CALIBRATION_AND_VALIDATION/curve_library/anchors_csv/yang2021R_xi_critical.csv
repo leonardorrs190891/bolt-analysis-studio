@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/79_Yang_2021_composite_excitation_Rfactor.md:29-43
+R_axial,xi_critical_mm_per_kN
+0.5,0.110
+0.1,0.090
+0.0,0.075
+-0.5,0.052
+-1.0,0.038

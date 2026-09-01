@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/67_68_69_70_MoS2_complex_random_neutron.md:37-44
+coating,ratio_200k,loosen_over_tighten_torque
+MoS2,0.800,0.42
+PTFE,0.670,0.38
+zinc_plated,0.560,0.45
+bare_steel,0.480,0.48

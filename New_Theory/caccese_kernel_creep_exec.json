@@ -1,0 +1,880 @@
+{
+ "lim": 0.025,
+ "base": {
+  "caccese2009_compblock_34kPa": [
+   0.007282348052881042,
+   0.03721107398980128,
+   0.009992298481988083,
+   0.13521100811750475
+  ],
+  "caccese2009_compblock_71kPa": [
+   0.008408468099763295,
+   0.027971949490151804,
+   0.009350559251100374,
+   0.13490379482039905
+  ],
+  "caccese2009_protruding_45kN": [
+   0.017942245275958186,
+   0.05667490148713272,
+   0.02005068009476457,
+   0.38526776392349393
+  ],
+  "caccese2009_retighten_12p7mm_no_retighten": [
+   0.015280350947387814,
+   0.056856382062489,
+   0.017238645114909558,
+   0.4413212519146861
+  ],
+  "caccese2009_retighten_19p1mm_no_retighten": [
+   0.02446967957747136,
+   0.08897587525308592,
+   0.026326686070292777,
+   0.38526355576940574
+  ],
+  "caccese2009_tapered_45kN_rep1": [
+   0.05225612796042382,
+   0.06491890373340581,
+   0.021810363190449805,
+   0.38526776392349393
+  ],
+  "caccese2009_tapered_45kN_rep2": [
+   0.027441713886044248,
+   0.08047490148713277,
+   0.03539666112286748,
+   0.38526776392349393
+  ]
+ },
+ "grade": [
+  {
+   "alpha": 0.15,
+   "tc_mult": 1.0,
+   "dfin": 0.04599255438380041,
+   "n_sig": 3,
+   "piores": {
+    "caccese2009_compblock_34kPa": [
+     0.0115,
+     0.0035,
+     0.0014
+    ],
+    "caccese2009_compblock_71kPa": [
+     0.0113,
+     0.0094,
+     0.0008
+    ],
+    "caccese2009_protruding_45kN": [
+     0.0332,
+     0.0303,
+     -0.0028
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.0591,
+     0.0559,
+     0.0073
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.0435,
+     0.0025,
+     -0.0087
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     0.0433,
+     0.0657,
+     0.0035
+    ],
+    "caccese2009_tapered_45kN_rep2": [
+     0.0284,
+     0.0263,
+     -0.0034
+    ]
+   },
+   "saiu": [
+    "caccese2009_protruding_45kN",
+    "caccese2009_retighten_12p7mm_no_retighten"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.011434831032814249,
+    "caccese2009_compblock_71kPa": 0.01019512883407355,
+    "caccese2009_protruding_45kN": 0.017219550018010996,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.02453988565265914,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.01766128118190283,
+    "caccese2009_tapered_45kN_rep1": 0.02533961016169785,
+    "caccese2009_tapered_45kN_rep2": 0.03200044203691925
+   }
+  },
+  {
+   "alpha": 0.2,
+   "tc_mult": 1.0,
+   "dfin": 0.021973326158335426,
+   "n_sig": 7,
+   "piores": {
+    "caccese2009_protruding_45kN": [
+     0.0129,
+     -0.0209,
+     -0.0135
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.0294,
+     0.0016,
+     -0.005
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.0186,
+     -0.0222,
+     -0.0131
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     0.0231,
+     0.0235,
+     -0.0055
+    ]
+   },
+   "saiu": [],
+   "fecha": [
+    "caccese2009_retighten_19p1mm_no_retighten"
+   ],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.008290391259774602,
+    "caccese2009_compblock_71kPa": 0.006877036368016124,
+    "caccese2009_protruding_45kN": 0.006550909855628945,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.012190404798050983,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.013267251038050876,
+    "caccese2009_tapered_45kN_rep1": 0.016283706472583138,
+    "caccese2009_tapered_45kN_rep2": 0.027806049854145656
+   }
+  },
+  {
+   "alpha": 0.3,
+   "tc_mult": 1.0,
+   "dfin": 0.003885261871647091,
+   "n_sig": 7,
+   "piores": {},
+   "saiu": [],
+   "fecha": [
+    "caccese2009_retighten_19p1mm_no_retighten",
+    "caccese2009_tapered_45kN_rep1"
+   ],
+   "ok": true,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.006466103410707758,
+    "caccese2009_compblock_71kPa": 0.005725960521601235,
+    "caccese2009_protruding_45kN": 0.019826591702727967,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.015900328856594776,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.02420152688774332,
+    "caccese2009_tapered_45kN_rep1": 0.020265228245630425,
+    "caccese2009_tapered_45kN_rep2": 0.03295106888994957
+   }
+  },
+  {
+   "alpha": 0.4,
+   "tc_mult": 1.0,
+   "dfin": 0.0005933394776896435,
+   "n_sig": 1,
+   "piores": {
+    "caccese2009_protruding_45kN": [
+     0.0125,
+     0.0355,
+     0.0169
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.0247,
+     0.0412,
+     0.0163
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.0112,
+     0.0352,
+     0.0118
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     -0.0148,
+     -0.002,
+     0.013
+    ],
+    "caccese2009_tapered_45kN_rep2": [
+     0.0048,
+     0.0352,
+     0.0089
+    ]
+   },
+   "saiu": [
+    "caccese2009_protruding_45kN",
+    "caccese2009_retighten_12p7mm_no_retighten"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.009289486705199265,
+    "caccese2009_compblock_71kPa": 0.009519616168686656,
+    "caccese2009_protruding_45kN": 0.03696300493723177,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.03358113379413481,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.03816535497337308,
+    "caccese2009_tapered_45kN_rep1": 0.034815472819459764,
+    "caccese2009_tapered_45kN_rep2": 0.04428752175142772
+   }
+  },
+  {
+   "alpha": 0.6,
+   "tc_mult": 1.0,
+   "dfin": 0.0021111121549483385,
+   "n_sig": 0,
+   "piores": {
+    "caccese2009_compblock_34kPa": [
+     0.0067,
+     0.014,
+     0.0052
+    ],
+    "caccese2009_compblock_71kPa": [
+     0.0049,
+     0.0149,
+     0.0068
+    ],
+    "caccese2009_protruding_45kN": [
+     0.0426,
+     0.0991,
+     0.0406
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.0763,
+     0.1053,
+     0.0418
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.0536,
+     0.0882,
+     0.0317
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     -0.0039,
+     0.042,
+     0.0353
+    ],
+    "caccese2009_tapered_45kN_rep2": [
+     0.0263,
+     0.0937,
+     0.0275
+    ]
+   },
+   "saiu": [
+    "caccese2009_protruding_45kN",
+    "caccese2009_retighten_12p7mm_no_retighten"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.01521855820584583,
+    "caccese2009_compblock_71kPa": 0.01612768746460006,
+    "caccese2009_protruding_45kN": 0.06069235733051062,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.05905604205190783,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.058022969344481645,
+    "caccese2009_tapered_45kN_rep1": 0.057073010227773634,
+    "caccese2009_tapered_45kN_rep2": 0.06291111362769217
+   }
+  },
+  {
+   "alpha": 1.0,
+   "tc_mult": 1.0,
+   "dfin": 0.0023365536704428097,
+   "n_sig": 0,
+   "piores": {
+    "caccese2009_compblock_34kPa": [
+     0.0213,
+     0.0236,
+     0.0115
+    ],
+    "caccese2009_compblock_71kPa": [
+     0.0194,
+     0.0358,
+     0.0133
+    ],
+    "caccese2009_protruding_45kN": [
+     0.0866,
+     0.1592,
+     0.0633
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.1473,
+     0.1761,
+     0.0658
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.1137,
+     0.1221,
+     0.0491
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     0.0263,
+     0.1098,
+     0.0569
+    ],
+    "caccese2009_tapered_45kN_rep2": [
+     0.0701,
+     0.1517,
+     0.0449
+    ]
+   },
+   "saiu": [
+    "caccese2009_protruding_45kN",
+    "caccese2009_retighten_12p7mm_no_retighten"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.02144270219680846,
+    "caccese2009_compblock_71kPa": 0.022669289549162124,
+    "caccese2009_protruding_45kN": 0.08330572045651057,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.08306925223175103,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.07545816528381655,
+    "caccese2009_tapered_45kN_rep1": 0.07867691342377636,
+    "caccese2009_tapered_45kN_rep2": 0.0803114368662171
+   }
+  },
+  {
+   "alpha": 0.15,
+   "tc_mult": 10.0,
+   "dfin": 0.038355882695608495,
+   "n_sig": 5,
+   "piores": {
+    "caccese2009_protruding_45kN": [
+     0.0258,
+     0.0144,
+     -0.0069
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.0484,
+     0.0374,
+     0.003
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.0344,
+     -0.0093,
+     -0.0113
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     0.036,
+     0.0507,
+     -0.0001
+    ],
+    "caccese2009_tapered_45kN_rep2": [
+     0.021,
+     0.0145,
+     -0.0057
+    ]
+   },
+   "saiu": [
+    "caccese2009_retighten_12p7mm_no_retighten"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.010132071150763557,
+    "caccese2009_compblock_71kPa": 0.008855384602051089,
+    "caccese2009_protruding_45kN": 0.013164663178829021,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.020238082679474027,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.014999234459177117,
+    "caccese2009_tapered_45kN_rep1": 0.021749318303946375,
+    "caccese2009_tapered_45kN_rep2": 0.02973604232374836
+   }
+  },
+  {
+   "alpha": 0.2,
+   "tc_mult": 10.0,
+   "dfin": 0.016635413839604634,
+   "n_sig": 7,
+   "piores": {
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.0157,
+     -0.0125,
+     -0.0092
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     0.0139,
+     0.009,
+     -0.0079
+    ]
+   },
+   "saiu": [],
+   "fecha": [
+    "caccese2009_retighten_19p1mm_no_retighten"
+   ],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.006841878298009645,
+    "caccese2009_compblock_71kPa": 0.0054441220057458075,
+    "caccese2009_protruding_45kN": 0.005950278609555887,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.008018559147740165,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.013574959568357579,
+    "caccese2009_tapered_45kN_rep1": 0.013960068784030838,
+    "caccese2009_tapered_45kN_rep2": 0.026945320200741234
+   }
+  },
+  {
+   "alpha": 0.3,
+   "tc_mult": 10.0,
+   "dfin": 0.0019330835089983202,
+   "n_sig": 2,
+   "piores": {
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.0106,
+     0.0049,
+     0.0057
+    ]
+   },
+   "saiu": [
+    "caccese2009_protruding_45kN"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.0067917985613861805,
+    "caccese2009_compblock_71kPa": 0.006660764812798652,
+    "caccese2009_protruding_45kN": 0.02705584948718486,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.022965943983904304,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.029159617014301527,
+    "caccese2009_tapered_45kN_rep1": 0.02563237776645588,
+    "caccese2009_tapered_45kN_rep2": 0.03623793895579756
+   }
+  },
+  {
+   "alpha": 0.4,
+   "tc_mult": 10.0,
+   "dfin": 0.0012481410655354507,
+   "n_sig": 0,
+   "piores": {
+    "caccese2009_protruding_45kN": [
+     0.025,
+     0.0569,
+     0.0245
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.0458,
+     0.0611,
+     0.024
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.0287,
+     0.052,
+     0.0172
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     -0.0151,
+     0.0058,
+     0.0197
+    ],
+    "caccese2009_tapered_45kN_rep2": [
+     0.0113,
+     0.052,
+     0.0134
+    ]
+   },
+   "saiu": [
+    "caccese2009_protruding_45kN",
+    "caccese2009_retighten_12p7mm_no_retighten"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.010666573221317395,
+    "caccese2009_compblock_71kPa": 0.011251682569514447,
+    "caccese2009_protruding_45kN": 0.04455633582388198,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.041263031471319045,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.0435028482688193,
+    "caccese2009_tapered_45kN_rep1": 0.04146108757489188,
+    "caccese2009_tapered_45kN_rep2": 0.04881926337187321
+   }
+  },
+  {
+   "alpha": 0.6,
+   "tc_mult": 10.0,
+   "dfin": 0.0022210270186978948,
+   "n_sig": 0,
+   "piores": {
+    "caccese2009_compblock_34kPa": [
+     0.0131,
+     0.0165,
+     0.0065
+    ],
+    "caccese2009_compblock_71kPa": [
+     0.0112,
+     0.022,
+     0.0082
+    ],
+    "caccese2009_protruding_45kN": [
+     0.0611,
+     0.1154,
+     0.0464
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.1044,
+     0.1244,
+     0.0471
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.0771,
+     0.0966,
+     0.0348
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     0.0046,
+     0.0614,
+     0.0404
+    ],
+    "caccese2009_tapered_45kN_rep2": [
+     0.0442,
+     0.1073,
+     0.0306
+    ]
+   },
+   "saiu": [
+    "caccese2009_protruding_45kN",
+    "caccese2009_retighten_12p7mm_no_retighten"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.016538645001268767,
+    "caccese2009_compblock_71kPa": 0.017528562046976462,
+    "caccese2009_protruding_45kN": 0.06645472075042737,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.06436949235732675,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.06113598048651863,
+    "caccese2009_tapered_45kN_rep1": 0.06221944973198338,
+    "caccese2009_tapered_45kN_rep2": 0.06600056477999815
+   }
+  },
+  {
+   "alpha": 1.0,
+   "tc_mult": 10.0,
+   "dfin": 0.0023514637179185734,
+   "n_sig": 0,
+   "piores": {
+    "caccese2009_compblock_34kPa": [
+     0.0294,
+     0.0302,
+     0.012
+    ],
+    "caccese2009_compblock_71kPa": [
+     0.0275,
+     0.0399,
+     0.0137
+    ],
+    "caccese2009_protruding_45kN": [
+     0.1084,
+     0.172,
+     0.0646
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.1733,
+     0.2022,
+     0.0653
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.1356,
+     0.1288,
+     0.0473
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     0.0419,
+     0.1215,
+     0.0578
+    ],
+    "caccese2009_tapered_45kN_rep2": [
+     0.0927,
+     0.1633,
+     0.044
+    ]
+   },
+   "saiu": [
+    "caccese2009_protruding_45kN",
+    "caccese2009_retighten_12p7mm_no_retighten"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.02200810387285194,
+    "caccese2009_compblock_71kPa": 0.023007119380524955,
+    "caccese2009_protruding_45kN": 0.08470037715445229,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.08250984579329791,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.07362478602143224,
+    "caccese2009_tapered_45kN_rep1": 0.07966008660638763,
+    "caccese2009_tapered_45kN_rep2": 0.07938099092846222
+   }
+  },
+  {
+   "alpha": 0.15,
+   "tc_mult": 100.0,
+   "dfin": 0.03343566488163553,
+   "n_sig": 7,
+   "piores": {
+    "caccese2009_protruding_45kN": [
+     0.0206,
+     0.003,
+     -0.0097
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.0406,
+     0.0247,
+     -0.0001
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.0278,
+     -0.0175,
+     -0.0129
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     0.0307,
+     0.0398,
+     -0.0025
+    ],
+    "caccese2009_tapered_45kN_rep2": [
+     0.0157,
+     0.0059,
+     -0.0071
+    ]
+   },
+   "saiu": [
+    "caccese2009_retighten_12p7mm_no_retighten"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.00920213479995783,
+    "caccese2009_compblock_71kPa": 0.007899715628917118,
+    "caccese2009_protruding_45kN": 0.010328525120635057,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.017154060856791328,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.013429146680838434,
+    "caccese2009_tapered_45kN_rep1": 0.019305362545097925,
+    "caccese2009_tapered_45kN_rep2": 0.028342180360367345
+   }
+  },
+  {
+   "alpha": 0.2,
+   "tc_mult": 100.0,
+   "dfin": 0.013727053701224751,
+   "n_sig": 7,
+   "piores": {},
+   "saiu": [],
+   "fecha": [
+    "caccese2009_retighten_19p1mm_no_retighten"
+   ],
+   "ok": true,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.006054589744384308,
+    "caccese2009_compblock_71kPa": 0.004726978330967811,
+    "caccese2009_protruding_45kN": 0.00826271359912119,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.0071324262518913314,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.014786089341464128,
+    "caccese2009_tapered_45kN_rep1": 0.013654257775067128,
+    "caccese2009_tapered_45kN_rep2": 0.026997010619552522
+   }
+  },
+  {
+   "alpha": 0.3,
+   "tc_mult": 100.0,
+   "dfin": 0.0011508399062875126,
+   "n_sig": 2,
+   "piores": {
+    "caccese2009_protruding_45kN": [
+     0.0089,
+     0.0169,
+     0.0108
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.0186,
+     0.0164,
+     0.0095
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.0061,
+     0.0141,
+     0.0055
+    ],
+    "caccese2009_tapered_45kN_rep2": [
+     0.001,
+     0.0141,
+     0.0029
+    ]
+   },
+   "saiu": [
+    "caccese2009_protruding_45kN",
+    "caccese2009_retighten_12p7mm_no_retighten"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.007290730094296806,
+    "caccese2009_compblock_71kPa": 0.007418446576999826,
+    "caccese2009_protruding_45kN": 0.03081042167585898,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.026764996911126205,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.03186679301616301,
+    "caccese2009_tapered_45kN_rep1": 0.028745110692015192,
+    "caccese2009_tapered_45kN_rep2": 0.0382851020999912
+   }
+  },
+  {
+   "alpha": 0.4,
+   "tc_mult": 100.0,
+   "dfin": 0.0014484393930334673,
+   "n_sig": 0,
+   "piores": {
+    "caccese2009_protruding_45kN": [
+     0.0307,
+     0.065,
+     0.0275
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.0552,
+     0.0684,
+     0.0271
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.0357,
+     0.0582,
+     0.0193
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     -0.0141,
+     0.0121,
+     0.0224
+    ],
+    "caccese2009_tapered_45kN_rep2": [
+     0.0154,
+     0.0596,
+     0.0153
+    ]
+   },
+   "saiu": [
+    "caccese2009_protruding_45kN",
+    "caccese2009_retighten_12p7mm_no_retighten"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.011338180135640818,
+    "caccese2009_compblock_71kPa": 0.012020076945953393,
+    "caccese2009_protruding_45kN": 0.0475841748017065,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.04432962397559539,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.045642537678559324,
+    "caccese2009_tapered_45kN_rep1": 0.04419073719147109,
+    "caccese2009_tapered_45kN_rep2": 0.05074441259651033
+   }
+  },
+  {
+   "alpha": 0.6,
+   "tc_mult": 100.0,
+   "dfin": 0.00224184585755511,
+   "n_sig": 0,
+   "piores": {
+    "caccese2009_compblock_34kPa": [
+     0.015,
+     0.0171,
+     0.0069
+    ],
+    "caccese2009_compblock_71kPa": [
+     0.013,
+     0.0237,
+     0.0086
+    ],
+    "caccese2009_protruding_45kN": [
+     0.066,
+     0.1197,
+     0.0478
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.1116,
+     0.1302,
+     0.0484
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.0832,
+     0.0984,
+     0.0355
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     0.0075,
+     0.0674,
+     0.0417
+    ],
+    "caccese2009_tapered_45kN_rep2": [
+     0.0494,
+     0.1123,
+     0.0314
+    ]
+   },
+   "saiu": [
+    "caccese2009_protruding_45kN",
+    "caccese2009_retighten_12p7mm_no_retighten"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.016913049695384902,
+    "caccese2009_compblock_71kPa": 0.01790378376413488,
+    "caccese2009_protruding_45kN": 0.06786846053098003,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.06563751410461835,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.061860973900412106,
+    "caccese2009_tapered_45kN_rep1": 0.06350011631421928,
+    "caccese2009_tapered_45kN_rep2": 0.0667723876102155
+   }
+  },
+  {
+   "alpha": 1.0,
+   "tc_mult": 100.0,
+   "dfin": 0.0023520972527715763,
+   "n_sig": 0,
+   "piores": {
+    "caccese2009_compblock_34kPa": [
+     0.0302,
+     0.0307,
+     0.0121
+    ],
+    "caccese2009_compblock_71kPa": [
+     0.0283,
+     0.0405,
+     0.0137
+    ],
+    "caccese2009_protruding_45kN": [
+     0.1107,
+     0.1735,
+     0.0648
+    ],
+    "caccese2009_retighten_12p7mm_no_retighten": [
+     0.1759,
+     0.2046,
+     0.0652
+    ],
+    "caccese2009_retighten_19p1mm_no_retighten": [
+     0.1378,
+     0.1295,
+     0.0471
+    ],
+    "caccese2009_tapered_45kN_rep1": [
+     0.0438,
+     0.1225,
+     0.058
+    ],
+    "caccese2009_tapered_45kN_rep2": [
+     0.095,
+     0.1643,
+     0.0439
+    ]
+   },
+   "saiu": [
+    "caccese2009_protruding_45kN",
+    "caccese2009_retighten_12p7mm_no_retighten"
+   ],
+   "fecha": [],
+   "ok": false,
+   "sig": {
+    "caccese2009_compblock_34kPa": 0.02209141714441659,
+    "caccese2009_compblock_71kPa": 0.023061564104953202,
+    "caccese2009_protruding_45kN": 0.08484828003032903,
+    "caccese2009_retighten_12p7mm_no_retighten": 0.08246489470588596,
+    "caccese2009_retighten_19p1mm_no_retighten": 0.07345482656621419,
+    "caccese2009_tapered_45kN_rep1": 0.07977303585527153,
+    "caccese2009_tapered_45kN_rep2": 0.07931381818410146
+   }
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/32_Sase_Koga_1996_anti_loosening_nuts_7types.md:93-104
+cycle,grade_4p8,grade_10p9
+0,1.000,1.000
+500,0.420,0.580
+1000,0.200,0.400
+2000,0.060,0.220
+3000,0.010,0.100

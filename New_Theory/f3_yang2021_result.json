@@ -1,0 +1,48 @@
+{
+ "secao": "F3-YANG_2021",
+ "emb_um": {
+  "amp0p5": 3.85,
+  "amp0p6": 3.85,
+  "amp0p7": 3.85
+ },
+ "trims": {
+  "fig2": 5850,
+  "amp1p0": 3150,
+  "amp0p8": 5450,
+  "amp0p6": 11800,
+  "amp0p7": 14000,
+  "amp0p5": 27000
+ },
+ "tentativa": 1,
+ "tripe_final": {
+  "yang2021_amp0p5mm_ax8kN": {
+   "mae": 0.05491375648529515,
+   "maxerr": 0.09449259399369636
+  },
+  "yang2021_amp0p6mm_ax8kN_r1": {
+   "mae": 0.026640466052355906,
+   "maxerr": 0.04152086378696296
+  },
+  "yang2021_amp0p7mm_ax11p2kN": {
+   "mae": 0.017321136358627743,
+   "maxerr": 0.0621026754751689
+  },
+  "yang2021_amp1p0mm_ax2kN": {
+   "mae": 0.05803163268139498,
+   "maxerr": 0.09185680752501357
+  },
+  "yang2021_amp0p8mm_ax6kN": {
+   "mae": 0.09384642727442004,
+   "maxerr": 0.1421893436084981
+  },
+  "yang2021_fig2_typical": {
+   "mae": 0.09921948726655956,
+   "maxerr": 0.1624559830523239
+  }
+ },
+ "fila": {
+  "yang2021_amp0p8mm_ax6kN": "canal estrutural confundido (item 2)",
+  "yang2021_fig2_typical": "canal estrutural confundido (item 2)"
+ },
+ "verdict": "PASS"
+}

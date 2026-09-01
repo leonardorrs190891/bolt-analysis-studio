@@ -1,0 +1,5 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/96_Schaumann_2009_2015_large_bolt_VDI.md:31-44
+sigma_a_MPa,Nf_cycles,N_VDI_cycles,N_exp_cycles,VDI_over_exp
+100,800000,900000,600000,1.50
+120,200000,250000,150000,1.67
+150,40000,50000,35000,1.43

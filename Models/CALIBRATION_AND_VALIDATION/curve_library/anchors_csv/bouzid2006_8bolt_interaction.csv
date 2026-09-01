@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/85_86_Bouzid_1995_2006_gasket_creep.md:116-128
+stage,bolt1,bolt5,bolt8
+after_bolt1,1.000,,
+after_bolt5,0.950,1.000,
+after_bolt8,0.905,0.960,1.000
+after_2nd_pass,0.940,0.955,0.948
+after_3rd_pass,0.965,0.970,0.965

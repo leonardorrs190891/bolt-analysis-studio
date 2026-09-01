@@ -1,0 +1,13 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/12_Eraliev_2021_thermal_cycling.md:48-69
+thermal_cycle,F_peak_heating_N,F_after_cooling_N,ratio_cooled,loss_per_cycle_N
+0,,5000,1.000,
+1,8000,4500,0.900,500
+2,7200,4400,0.880,100
+3,7000,4350,0.870,50
+4,,4320,0.864,30
+5,,4300,0.860,20
+6,,4285,0.857,15
+7,,4275,0.855,10
+8,,4270,0.854,5
+9,,4265,0.853,5
+10,,4260,0.852,5

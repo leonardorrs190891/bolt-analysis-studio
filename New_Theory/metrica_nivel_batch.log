@@ -1,0 +1,233 @@
+[parallel] 202 casos em 6 workers
+  [1/202] liu2017_axial_F0_16p5kN                    mae=0.0089
+  [2/202] sun2025efa109235_axial_F7.5kN_crimp        mae=0.0219
+  [3/202] liu2017_axial_F0_19p5kN                    mae=0.0126
+  [4/202] liu2017_axial_F0_18kN                      mae=0.0205
+  [5/202] liu2017_axial_F0_15kN                      mae=0.0032
+  [6/202] liu2017_axial_AF_12p5kN                    mae=0.018
+  [7/202] liu2017_axial_AF_11p25kN                   mae=0.0316
+  [8/202] liu2017_axial_F0_21kN                      mae=0.008
+  [9/202] liu2017_axial_AF_8p75kN                    mae=0.0313
+  [10/202] liu2017_axial_AF_7p5kN                     mae=0.0363
+  [11/202] liu2016wear_fig9a_m30nm                    mae=0.0471
+  [12/202] liu2016wear_fig9a_m35nm                    mae=0.047
+  [13/202] liu2016wear_fig9a_m50nm                    mae=0.0426
+  [14/202] liu2016wear_fig9a_m40nm                    mae=0.0537
+  [15/202] liu2016wear_fig9a_m45nm                    mae=0.0504
+  [16/202] liu2016wear_fig11a_af7p5kn                 mae=0.0154
+  [17/202] liu2016wear_fig11a_af12p5kn                mae=0.0367
+  [18/202] liu2016wear_fig11a_af10kn                  mae=0.0315
+  [19/202] liu2016wear_fig11a_af8p75kn                mae=0.0262
+  [20/202] liu2016wear_fig11a_af11p25kn               mae=0.0326
+  [21/202] zhang18_fig13_26kN_preload_vs_cycles       mae=0.0174
+  [22/202] liu2016wear_fig13a_dry                     mae=0.039
+  [23/202] liu2016wear_fig13a_mos2                    mae=0.0134
+  [24/202] liu2016wear_fig7_run1_1e6cyc               mae=0.0453
+  [25/202] sun2025efa109235_axial_F7.5kN_standard     mae=0.0253
+  [26/202] liu2016wear_fig7_run2_5e6cyc               mae=0.0603
+  [27/202] qin2024acm_25C_i0p6pct                     mae=0.0047
+  [28/202] qin2024acm_25C_i0pct                       mae=0.002
+  [29/202] qin2024acm_25C_i1p2pct                     mae=0.0099
+  [30/202] zhang18_fig13_14kN_preload_vs_cycles       mae=0.0249
+  [31/202] zhang18_fig16_with_locker_preload_vs_cycle mae=0.0081
+  [32/202] zhang18_fig16_without_locker_preload_vs_cy mae=0.0229
+  [33/202] zhang19_fig4_2e5cyc_Test10to12_preload_vs_ mae=0.0203
+  [34/202] liu2025_M16_amp0p3                         mae=0.0645
+  [35/202] liu2025_M16_amp0p25                        mae=0.0757
+  [36/202] li2022ti_axial_10Hz_full                   mae=0.0317
+  [37/202] zhang18_fig13_20kN_preload_vs_cycles       mae=0.0212
+  [38/202] li2022ti_axialmin_10Hz                     mae=0.0526
+  [39/202] li2022ti_axialmin_15Hz                     mae=0.0298
+  [40/202] zhang18_fig2_test4_20kN_5e5cyc_preload_vs_ mae=0.024
+  [41/202] zhang2006_fig16_runout_40kN_amp0p125       mae=0.0124
+  [42/202] sun2025efa109235_axial_F17.5kN_crimp       mae=0.0316
+  [43/202] li2022ti_axialmin_20Hz                     mae=0.0201
+  [44/202] yang2021_amp0p5mm_ax8kN                    mae=0.0549
+  [45/202] liu2025_M16_amp0p5                         mae=0.0291
+  [46/202] zhang19_fig4_1e5cyc_Test7to9_preload_vs_cy mae=0.0239
+  [47/202] sun2025efa109235_axial_F17.5kN_standard    mae=0.033
+  [48/202] liu2025_M16_amp0p4                         mae=0.0462
+  [49/202] zhang18_fig2_test3_20kN_1e5cyc_preload_vs_ mae=0.0192
+  [50/202] zhang2006_fig3_illus_M12x125_20kN_amp0p35  mae=0.211
+  [51/202] liu2020_fig5b_zinc_P0-12kN_AF0.2mm         mae=0.0103
+  [52/202] liu2020_fig5b_zinc_P0-18kN_AF0.2mm         mae=0.009
+  [53/202] liu2025_M16_amp0p6                         mae=0.0228
+  [54/202] liu2020_fig5b_zinc_P0-24kN_AF0.2mm         mae=0.0066
+  [55/202] liu2020_fig15_DLC_P0-18kN_AF0.2mm          mae=0.0059
+  [56/202] liu2020_fig15_DLC_P0-19.28kN_AF0.2mm       mae=0.0055
+  [57/202] liu2020_fig9_zinc_AF0.1mm_P0-18kN          mae=0.0157
+  [58/202] liu2020_fig9_zinc_AF0.2mm_P0-18kN          mae=0.005
+  [59/202] liu2020_fig9_zinc_AF0.3mm_P0-18kN          mae=0.0193
+  [60/202] liu2020_fig9_zinc_AF0.4mm_P0-18kN          mae=0.0729
+  [61/202] sun2025efa109235_transverse_nogrease_crimp mae=0.0107
+  [62/202] yang2021_amp0p7mm_ax11p2kN                 mae=0.0173
+  [63/202] sun2025efa110030_fig11a_loosening_reassy02 mae=0.0181
+  [64/202] yang2021_amp0p6mm_ax8kN_r1                 mae=0.0266
+  [65/202] zhang19_fig4_1e4cyc_Test4to6_preload_vs_cy mae=0.018
+  [66/202] sun2025efa110030_fig11a_loosening_reassy04 mae=0.018
+  [67/202] liu2025_M16_amp0p8                         mae=0.0487
+  [68/202] sun2025efa110030_fig11a_loosening_reassy06 mae=0.0195
+  [69/202] sun2025efa110030_fig11a_loosening_reassy08 mae=0.0184
+  [70/202] sun2025efa109235_transverse_nogrease_stand mae=0.0051
+  [71/202] zhang18_fig2_test2_20kN_1e4cyc_preload_vs_ mae=0.0127
+  [72/202] liu2025_M16_fig2_single                    mae=0.0389
+  [73/202] sun2025efa110030_fig11a_loosening_reassy10 mae=0.0176
+  [74/202] yang2021_fig2_typical                      mae=0.0992
+  [75/202] yang2019_M10_amp0p4_5Hz                    mae=0.0995
+  [76/202] yang2021_amp0p8mm_ax6kN                    mae=0.0938
+  [77/202] liu2022_fig5_dry_F19p78kN                  mae=0.0126
+  [78/202] yang2019_M10_amp0p6_5Hz                    mae=0.0857
+  [79/202] yang2019_M10_amp0p6_10Hz                   mae=0.0552
+  [80/202] liu2022_fig5_dry_F21p50kN                  mae=0.0173
+  [81/202] liu2022_fig5_oil_F28p18kN                  mae=0.0164
+  [82/202] liu2022_fig6a_dry_release_t0               mae=0.0103
+  [83/202] liu2022_fig5_oil_F26p00kN                  mae=0.0094
+  [84/202] liu2022_fig6b_oil_release_t0               mae=0.0096
+  [85/202] liu2022_fig6a_dry_release_t1               mae=0.015
+  [86/202] liu2022_fig6b_oil_release_t1               mae=0.0129
+  [87/202] liu2022_fig6a_dry_release_t2               mae=0.0317
+  [88/202] liu2022_fig7a_oil_direct_t0                mae=0.0149
+  [89/202] liu2022_fig6b_oil_release_t2               mae=0.0074
+  [90/202] liu2022_fig6a_dry_release_t3               mae=0.029
+  [91/202] liu2022_fig7a_oil_direct_t1                mae=0.013
+  [92/202] liu2022_fig6b_oil_release_t3               mae=0.0053
+  [93/202] liu2022_fig8_multi_t0                      mae=0.0155
+  [94/202] liu2022_fig7a_oil_direct_t2                mae=0.0069
+  [95/202] liu2022_fig8_multi_t1                      mae=0.0533
+  [96/202] chu2026ti_D0p4mm_F0_61kN_test7             mae=0.1504
+  [97/202] chu2026ti_D0p4mm_F0_73kN_test8             mae=0.164
+  [98/202] yang2021_amp1p0mm_ax2kN                    mae=0.058
+  [99/202] liu2022_fig7a_oil_direct_t3                mae=0.0101
+  [100/202] yang2019_M10_varamp_small_to_large         mae=0.0636
+  [101/202] karlsen2022_M30_vibralock_run9p0           mae=0.0125
+  [102/202] karlsen2022_M30_vibralock_torqued_run16p0  mae=0.0474
+  [103/202] karlsen2022_M42_vibralock_torqued_run29p0  mae=0.007
+  [104/202] karlsen2022_M42_vibralock_run23p0          mae=0.0073
+  [105/202] liu2022_fig8_multi_t2                      mae=0.0582
+  [106/202] chu2026ti_D0p7mm_F0_49kN_test4             mae=0.1043
+  [107/202] chu2026ti_D0p5mm_F0_49kN_test3             mae=0.1381
+  [108/202] chu2026ti_D0p3mm_F0_49kN_test1             mae=0.0663
+  [109/202] 10_Yang_2023_phenomenological_model__0_18_ mae=0.0081
+  [110/202] yang2019_M10_varamp_large_to_small         mae=0.0519
+  [111/202] 10_Yang_2023_phenomenological_model__0_25_ mae=0.1674
+  [112/202] eccles2010_fig6_annotated_4kN_axial        mae=0.1457
+  [113/202] liu2022_fig8_multi_t3                      mae=0.0404
+  [114/202] 10_Yang_2023_phenomenological_model__0_15_ mae=0.0069
+  [115/202] caccese2009_retighten_12p7mm_no_retighten  mae=0.0153
+  [116/202] caccese2009_retighten_19p1mm_no_retighten  mae=0.0245
+  [117/202] caccese2009_compblock_34kPa                mae=0.0073
+  [118/202] caccese2009_compblock_71kPa                mae=0.0084
+  [119/202] caccese2009_protruding_45kN                mae=0.0179
+  [120/202] caccese2009_tapered_45kN_rep1              mae=0.0523
+  [121/202] caccese2009_tapered_45kN_rep2              mae=0.0274
+  [122/202] sun2025efa109235_transverse_grease_crimp   mae=0.0221
+  [123/202] eccles2010_fig7c_axial_2p7kN_constant      mae=0.025
+  [124/202] eccles2010_fig7d_axial_3p1kN_constant      mae=0.0668
+  [125/202] eccles2010_fig7a_no_axial                  mae=0.027
+  [126/202] eccles2010_fig7b_axial_1p1kN_constant      mae=0.0256
+  [127/202] eccles2010_fig8d_axial_3p5kN_intermittent  mae=0.1335
+  [128/202] eccles2010_fig8c_no_axial_baseline2        mae=0.0431
+  [129/202] eccles2010_fig8a_no_axial_baseline1        mae=0.0436
+  [130/202] bauer2024_M12_fig8_test2                   mae=0.029
+  [131/202] bauer2024_M12_fig8_test3                   mae=0.0241
+  [132/202] chu2026ti_D0p4mm_F0_49kN_test2             mae=0.1543
+  [133/202] eccles2010_fig3_typical_no_axial           mae=0.0229
+  [134/202] yang2023ame_axial                          mae=0.3875
+  [135/202] eccles2010_fig8b_axial_0p7kN_intermittent  mae=0.0438
+  [136/202] zhang19_fig4_1e3cyc_Test1to3_preload_vs_cy mae=0.0027
+  [137/202] zhang18_fig2_test1_20kN_1e3cyc_preload_vs_ mae=0.016
+  [138/202] chu2026ti_D0p5mm_F0_49kN_Ra1p6um_test9     mae=0.0449
+  [139/202] 10_Yang_2023_phenomenological_model__0_35_ mae=0.1788
+  [140/202] sun2025efa109235_transverse_grease_standar mae=0.0999
+  [141/202] bauer2024_M12_fig8_test1                   mae=0.0745
+  [142/202] li2022marstruc_creep_10kN_Ra0p078_min      mae=0.0014
+  [143/202] li2022marstruc_creep_10kN_Ra0p122_min      mae=0.0011
+  [144/202] li2022marstruc_creep_10kN_Ra0p306_min      mae=0.003
+  [145/202] li2022marstruc_creep_5kN_Ra0p8_min         mae=0.0079
+  [146/202] li2022marstruc_creep_10kN_Ra0p8_min        mae=0.0063
+  [147/202] UFU_5A_preload_decay                       mae=0.0523
+  [148/202] li2022marstruc_creep_15kN_Ra0p8_min        mae=0.0037
+  [149/202] 10_Yang_2023_phenomenological_model__0_30_ mae=0.1292
+  [150/202] karlsen2022_M42_HV_run21p0                 mae=0.0374
+  [151/202] UFU_13A_def_preload_decay                  mae=0.0516
+  [152/202] chu2026ti_D1p0mm_F0_49kN_test6_repeat      mae=0.0266
+  [153/202] rousseau2025_hdpe_t10                      mae=0.0579
+  [154/202] rousseau2025_hdpe_t12                      mae=0.0642
+  [155/202] rousseau2025_hdpe_t14                      mae=0.0441
+  [156/202] karlsen2022_M42_HV_run20p0                 mae=0.0155
+  [157/202] karlsen2022_M30_HV_run6p2                  mae=0.0314
+  [158/202] karlsen2022_M30_HV_run1p2                  mae=0.0603
+  [159/202] chu2026ti_D1p0mm_F0_49kN_test5             mae=0.0402
+  [160/202] karlsen2022_M30_HVtorqued_run14p2          mae=0.0898
+  [161/202] bauer2024_M8_fig6_rep6                     mae=0.0757
+  [162/202] bauer2024_M8_fig6_rep5                     mae=0.0494
+  [163/202] UFU_13A_first_preload_decay                mae=0.0962
+  [164/202] bauer2024_M8_fig6_rep4                     mae=0.0783
+  [165/202] bauer2024_M8_fig6_rep3                     mae=0.0336
+  [166/202] karlsen2022_M30_HV_run2p2                  mae=0.0488
+  [167/202] demir2024_amp0p3_F17p6_lk13p8              mae=0.0422
+  [168/202] demir2024_amp0p3_F17p6_lk19p8              mae=0.0353
+  [169/202] demir2024_amp0p4_F17p6_lk13p8              mae=0.0313
+  [170/202] 10_Yang_2023_phenomenological_model__0_45_ mae=0.1043
+  [171/202] demir2024_amp0p4_F17p6_lk19p8              mae=0.0276
+  [172/202] karlsen2022_M30_HV_run7p1                  mae=0.041
+  [173/202] bauer2024_M8_fig6_rep2                     mae=0.042
+  [174/202] demir2024_amp0p3_F14p3_lk19p8              mae=0.0438
+  [175/202] rousseau2025_steel_t14                     mae=0.02
+  [176/202] rousseau2025_steel_t10                     mae=0.0866
+  [177/202] rousseau2025_steel_t12                     mae=0.0462
+  [178/202] demir2024_amp0p4_F14p3_lk19p8              mae=0.0159
+  [179/202] jcsr2023_plain_indoor                      mae=0.0009
+  [180/202] bauer2024_M8_fig6_rep1                     mae=0.0431
+  [181/202] jcsr2023_plain_outdoor                     mae=0.0621
+  [182/202] demir2024_amp0p3_F14p3_lk13p8              mae=0.0411
+  [183/202] liu2022_fig8_multi_t4                      mae=0.0371
+  [184/202] demir2024_amp0p4_F14p3_lk13p8              mae=0.0151
+  [185/202] 10_Yang_2023_phenomenological_model__0_55_ mae=0.1188
+  [186/202] lu2024_M8_fig18_amp0p25                    mae=0.1438
+  [187/202] lu2024_M8_fig18_amp1p5                     mae=0.1074
+  [188/202] lu2024_M8_fig18_amp0p5                     mae=0.0613
+  [189/202] lu2024_M8_fig18_amp1p0                     mae=0.1016
+  [190/202] lu2024_M8_fig20_T4Nm                       mae=0.1073
+  [191/202] lu2024_M8_fig20_T10Nm                      mae=0.123
+  [192/202] lu2024_M8_fig20_T22Nm                      mae=0.0517
+  [193/202] lu2024_M8_fig20_T16Nm                      mae=0.0352
+  [194/202] lu2024_M8_fig20_T28Nm                      mae=0.0411
+  [195/202] jcsr2023_galv_seawater                     mae=0.039
+  [196/202] jcsr2023_plain_seawater                    mae=0.0289
+  [197/202] jcsr2023_stainless_seawater                mae=0.0619
+  [198/202] 10_Yang_2023_phenomenological_model__0_50_ mae=0.1559
+  [199/202] 10_Yang_2023_phenomenological_model__0_65_ mae=0.0824
+  [200/202] lu2024_M8_fig18_amp2p0                     mae=0.1146
+  [201/202] grzejda2026mat_bolt1_base                  mae=0.0342
+  [202/202] grzejda2026mat_bolt6_central               mae=0.0359
+[BAUER_2024] n=9 mediana=0.0431
+[CACCESE_2009] n=7 mediana=0.0179
+[CHU_2026] n=9 mediana=0.1043
+[ECCLES_2010] n=10 mediana=0.0433
+[GRZEJDA_2026] n=2 mediana=0.0351
+[ICMEZ_2025] n=8 mediana=0.0333
+[JCSR_2023] n=5 mediana=0.0390
+[KARLSEN_2022] n=11 mediana=0.0374
+[LIU_2016] n=14 mediana=0.0408
+[LIU_2017_AXIAL] n=9 mediana=0.0180
+[LIU_2020_WEAR] n=9 mediana=0.0090
+[LIU_2022_RETIGHT] n=21 mediana=0.0149
+[LIU_2025] n=7 mediana=0.0462
+[LI_2022_MARSTRUC] n=6 mediana=0.0034
+[LI_2022_TRIBOINT] n=4 mediana=0.0307
+[LU_2024] n=10 mediana=0.1045
+[QIN_2024] n=3 mediana=0.0047
+[ROUSSEAU_2025] n=6 mediana=0.0520
+[SUN_2025_CRIMP] n=8 mediana=0.0237
+[SUN_2025_REASSY] n=5 mediana=0.0181
+[UFU_LAB] n=3 mediana=0.0523
+[YANG_2019] n=5 mediana=0.0636
+[YANG_2021] n=6 mediana=0.0565
+[YANG_2023_AME] n=1 mediana=0.3875
+[YANG_2023_IJPEM] n=9 mediana=0.1188
+[ZHANG_2006] n=2 mediana=0.1117
+[ZHANG_2018] n=9 mediana=0.0192
+[ZHANG_2019] n=4 mediana=0.0192
+[store] 202 resultados gravados (single-writer no pai)
+[parallel] total 1490s

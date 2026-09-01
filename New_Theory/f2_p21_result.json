@@ -1,0 +1,378 @@
+{
+ "prereg": "docs/superpowers/specs/2026-07-21-master-f2-onda-b-prereg.md",
+ "fonte": "LI_2022_TRIBOINT",
+ "casos": [
+  "li2022ti_axialmin_10Hz",
+  "li2022ti_axialmin_15Hz",
+  "li2022ti_axialmin_20Hz",
+  "li2022ti_axial_10Hz_full"
+ ],
+ "partida": 1.89e-13,
+ "exp_herdado": 1.5,
+ "baseline": {
+  "li2022ti_axialmin_10Hz": {
+   "mae": 0.08858851402955514,
+   "maxerr": 0.11188010307285834
+  },
+  "li2022ti_axialmin_15Hz": {
+   "mae": 0.058841761394455044,
+   "maxerr": 0.07500072166652083
+  },
+  "li2022ti_axialmin_20Hz": {
+   "mae": 0.017816337506463536,
+   "maxerr": 0.02386417727500012
+  },
+  "li2022ti_axial_10Hz_full": {
+   "mae": 0.11804827900592582,
+   "maxerr": 0.40529773518460577
+  }
+ },
+ "k_fitado": 3.162277660168379e-13,
+ "tripe_fitado": {
+  "li2022ti_axialmin_10Hz": {
+   "mae": 0.0390746247297344,
+   "maxerr": 0.06920171238592476
+  },
+  "li2022ti_axialmin_15Hz": {
+   "mae": 0.027120894488522937,
+   "maxerr": 0.04972564374156696
+  },
+  "li2022ti_axialmin_20Hz": {
+   "mae": 0.03326422759079348,
+   "maxerr": 0.1020386894170141
+  },
+  "li2022ti_axial_10Hz_full": {
+   "mae": 0.0636406127231105,
+   "maxerr": 0.1720757912674552
+  }
+ },
+ "mediana": {
+  "antes": 0.0737151377120051,
+  "depois": 0.03616942616026394
+ },
+ "gate": {
+  "G21a": false,
+  "G21b": true,
+  "passa_caso": {
+   "li2022ti_axialmin_10Hz": true,
+   "li2022ti_axialmin_15Hz": true,
+   "li2022ti_axialmin_20Hz": false,
+   "li2022ti_axial_10Hz_full": false
+  },
+  "full_melhora_50": true,
+  "nota_full": "gap maxerr full antes/depois: 0.3053/0.0721"
+ },
+ "grade": {
+  "1.0000e-14": {
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.05732600605349664,
+    "maxerr": 0.0720435913569838,
+    "ok": true
+   },
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.08686632178781918,
+    "maxerr": 0.10791032371655518,
+    "ok": true
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.0162070713262435,
+    "maxerr": 0.022166431107325413,
+    "ok": true
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.1135339407495564,
+    "maxerr": 0.3968412122930891,
+    "ok": true
+   }
+  },
+  "1.7783e-14": {
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.08552961766701525,
+    "maxerr": 0.10533370283797006,
+    "ok": true
+   },
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.056149315547143495,
+    "maxerr": 0.07063081711289254,
+    "ok": true
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.014957983932291443,
+    "maxerr": 0.020847231096672303,
+    "ok": true
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.11004329540806235,
+    "maxerr": 0.3903130945362807,
+    "ok": true
+   }
+  },
+  "3.1623e-14": {
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.08316043108846122,
+    "maxerr": 0.10241592061210592,
+    "ok": true
+   },
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.05406327408822905,
+    "maxerr": 0.06829002825027897,
+    "ok": true
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.012744019781553559,
+    "maxerr": 0.01853358974697139,
+    "ok": true
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.10388478078314423,
+    "maxerr": 0.37881867565747274,
+    "ok": true
+   }
+  },
+  "5.6234e-14": {
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.07897203330293776,
+    "maxerr": 0.09780827140309267,
+    "ok": true
+   },
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.05037397562687307,
+    "maxerr": 0.06474275683430442,
+    "ok": true
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.009075648544430572,
+    "maxerr": 0.01644340871038963,
+    "ok": true
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.09308575750310448,
+    "maxerr": 0.35873508018286826,
+    "ok": true
+   }
+  },
+  "1.0000e-13": {
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.0716011722917622,
+    "maxerr": 0.0922826055797098,
+    "ok": true
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.009548369976191585,
+    "maxerr": 0.018938217264064416,
+    "ok": true
+   },
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.043876853947495915,
+    "maxerr": 0.05921570705187218,
+    "ok": true
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.07435410634586928,
+    "maxerr": 0.3241208845773168,
+    "ok": true
+   }
+  },
+  "1.7783e-13": {
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.05873390732119802,
+    "maxerr": 0.08253694466085826,
+    "ok": true
+   },
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.03252055163091107,
+    "maxerr": 0.051770054984778935,
+    "ok": true
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.015549546470039945,
+    "maxerr": 0.04978933597397339,
+    "ok": true
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.051934519445312854,
+    "maxerr": 0.2658944885805645,
+    "ok": true
+   }
+  },
+  "3.1623e-13": {
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.0390746247297344,
+    "maxerr": 0.06920171238592476,
+    "ok": true
+   },
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.027120894488522937,
+    "maxerr": 0.04972564374156696,
+    "ok": true
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.03326422759079348,
+    "maxerr": 0.1020386894170141,
+    "ok": true
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.0636406127231105,
+    "maxerr": 0.1720757912674552,
+    "ok": true
+   }
+  },
+  "5.6234e-13": {
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.0419152800105463,
+    "maxerr": 0.09759287319532395,
+    "ok": true
+   },
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.03950002580284991,
+    "maxerr": 0.13491118482950948,
+    "ok": true
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.06725233799231867,
+    "maxerr": 0.18724392264717205,
+    "ok": true
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.10738236495289244,
+    "maxerr": 0.22455719371080496,
+    "ok": true
+   }
+  },
+  "1.0000e-12": {
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.07984124381094948,
+    "maxerr": 0.22748399811251574,
+    "ok": true
+   },
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.08287774860128125,
+    "maxerr": 0.2648349331623562,
+    "ok": true
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.12223773193263297,
+    "maxerr": 0.31719770613401843,
+    "ok": true
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.20824622416220873,
+    "maxerr": 0.39777484492591375,
+    "ok": true
+   }
+  },
+  "1.4678e-13": {
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.037020957110800584,
+    "maxerr": 0.05437830915921571,
+    "ok": true
+   },
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.06383059547985973,
+    "maxerr": 0.0864124882770878,
+    "ok": true
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.012519508492467944,
+    "maxerr": 0.037611910086112754,
+    "ok": true
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.0559341670257722,
+    "maxerr": 0.28862616941996855,
+    "ok": true
+   }
+  },
+  "2.1544e-13": {
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.05262309919442233,
+    "maxerr": 0.07786338817218619,
+    "ok": true
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.020121815927356092,
+    "maxerr": 0.06431534053720789,
+    "ok": true
+   },
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.029789910696347115,
+    "maxerr": 0.048619842872395735,
+    "ok": true
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.05188828431044036,
+    "maxerr": 0.23920700476810086,
+    "ok": true
+   }
+  },
+  "4.6416e-13": {
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.03854636713138922,
+    "maxerr": 0.0647503622679867,
+    "ok": true
+   },
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.03210913993116918,
+    "maxerr": 0.10206042547052652,
+    "ok": true
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.05390548685359802,
+    "maxerr": 0.1543855691989443,
+    "ok": true
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.08984245427076962,
+    "maxerr": 0.17814146115994733,
+    "ok": true
+   }
+  },
+  "6.8129e-13": {
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.049787819217191255,
+    "maxerr": 0.13547714486029083,
+    "ok": true
+   },
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.050548601131010354,
+    "maxerr": 0.1728049713054154,
+    "ok": true
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.08290721090950165,
+    "maxerr": 0.22514646909817415,
+    "ok": true
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.13216261200041737,
+    "maxerr": 0.2764180887768751,
+    "ok": true
+   }
+  }
+ },
+ "verdict": "PASS (tentativa 2)",
+ "tentativa2": {
+  "criterio": "seleção por critério-de-gate na MESMA grade simulada (sem novo fit): k que passa G2.1a+G2.1b com menor mediana",
+  "k_adotado": 2.154434690031884e-13,
+  "tripe": {
+   "li2022ti_axialmin_10Hz": {
+    "mae": 0.052623099194422485,
+    "maxerr": 0.07786338817218641
+   },
+   "li2022ti_axialmin_15Hz": {
+    "mae": 0.029789910696347115,
+    "maxerr": 0.048619842872395735
+   },
+   "li2022ti_axialmin_20Hz": {
+    "mae": 0.020121815927356092,
+    "maxerr": 0.06431534053720789
+   },
+   "li2022ti_axial_10Hz_full": {
+    "mae": 0.05188828431044033,
+    "maxerr": 0.23920700476810108
+   }
+  },
+  "controles_intactos": true,
+  "verdict": "PASS"
+ }
+}

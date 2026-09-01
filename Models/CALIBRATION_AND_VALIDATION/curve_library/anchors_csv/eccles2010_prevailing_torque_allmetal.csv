@@ -1,0 +1,9 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/17_Eccles_2010_tribological.md:133-142
+cycle,F_over_F0,T_prevail_Nm
+0,1.000,6.5
+50,0.850,5.8
+100,0.720,5.0
+200,0.560,4.2
+500,0.350,3.2
+1000,0.220,2.5
+2000,0.140,2.0

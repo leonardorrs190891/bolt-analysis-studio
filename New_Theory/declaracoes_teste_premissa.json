@@ -1,0 +1,170 @@
+{
+ "10_Yang_2023_phenomenological_model__0_15_mm_below_threshold__7": {
+  "n": 4,
+  "classe": "n<6",
+  "premissa": "n<6:OK (mae/mx passam)",
+  "mult": [
+   0.1850603762586961,
+   0.24064204699281388,
+   0.41368918161010715
+  ],
+  "passo": 0.015000000000000013,
+  "salto": 0.04500000000000004
+ },
+ "10_Yang_2023_phenomenological_model__0_18_mm_below_threshold__1": {
+  "n": 5,
+  "classe": "n<6",
+  "premissa": "n<6:OK (mae/mx passam)",
+  "mult": [
+   0.15217882451125364,
+   0.15559313955030296,
+   0.347751937052504
+  ],
+  "passo": 0.017500000000000016,
+  "salto": 0.025000000000000022
+ },
+ "10_Yang_2023_phenomenological_model__0_30_mm__8": {
+  "n": 6,
+  "classe": "resolucao",
+  "premissa": "** NENHUM criterio se sustenta -> resolucao:FALHA (mx/passo 1.22)",
+  "mult": [
+   2.4004159659848114,
+   2.1999999999999997,
+   5.2494618069168935
+  ],
+  "passo": 0.18000000000000005,
+  "salto": 0.2
+ },
+ "10_Yang_2023_phenomenological_model__0_35_mm__3": {
+  "n": 7,
+  "classe": "resolucao",
+  "premissa": "** NENHUM criterio se sustenta -> resolucao:FALHA (mx/passo 4.00)",
+  "mult": [
+   3.575446726068745,
+   5.6000000000000005,
+   8.473166531108454
+  ],
+  "passo": 0.13999999999999996,
+  "salto": 0.23
+ },
+ "10_Yang_2023_phenomenological_model__0_45_mm__4": {
+  "n": 6,
+  "classe": "colapso+resolucao",
+  "premissa": "colapso:OK (res.max a 1 idx do penhasco) ; resolucao:FALHA (mx/passo 2.25)",
+  "mult": [
+   2.0848031506955755,
+   3.5999999999999996,
+   5.374240907285245
+  ],
+  "passo": 0.16000000000000003,
+  "salto": 0.26
+ },
+ "10_Yang_2023_phenomenological_model__0_50_mm__9": {
+  "n": 5,
+  "classe": "n<6+resolucao",
+  "premissa": "** NENHUM criterio se sustenta -> n<6:FALHA (viola MAE+mx) ; resolucao:FALHA (mx/passo 1.82)",
+  "mult": [
+   4.771674850721133,
+   4.097839704951316,
+   5.615805990727091
+  ],
+  "passo": 0.225,
+  "salto": 0.25
+ },
+ "10_Yang_2023_phenomenological_model__0_55_mm__5": {
+  "n": 5,
+  "classe": "n<6+colapso+resolucao",
+  "premissa": "n<6:FALHA (viola MAE+mx) ; colapso:OK (res.max a 0 idx do penhasco) ; resolucao:FALHA (mx/passo 1.71)",
+  "mult": [
+   2.3830970122370156,
+   3.4264381418852934,
+   5.147407094389134
+  ],
+  "passo": 0.20000000000000004,
+  "salto": 0.26
+ },
+ "10_Yang_2023_phenomenological_model__0_65_mm__6": {
+  "n": 5,
+  "classe": "n<6+resolucao",
+  "premissa": "n<6:FALHA (viola MAE+mx) ; resolucao:OK (mx/passo 0.76)",
+  "mult": [
+   1.6436298904930227,
+   1.5999999999999999,
+   4.068917582505106
+  ],
+  "passo": 0.21000000000000002,
+  "salto": 0.21999999999999997
+ },
+ "lu2024_M8_fig14_amp0p25_long": {
+  "n": 289,
+  "classe": "escopo/procedencia",
+  "premissa": "sem premissa numerica",
+  "mult": [
+   2.0337906929054976,
+   2.313626193477336,
+   0.35624958913294913
+  ],
+  "passo": 0.0,
+  "salto": 0.03286
+ },
+ "lu2024_M8_fig20_T4Nm": {
+  "n": 12,
+  "classe": "escopo/procedencia",
+  "premissa": "sem premissa numerica",
+  "mult": [
+   6.848666666666666,
+   7.601,
+   1.9173388323605394
+  ],
+  "passo": 0.04749999999999999,
+  "salto": 0.2399
+ },
+ "yang2019_M10_amp0p6_5Hz": {
+  "n": 13,
+  "classe": "colapso",
+  "premissa": "colapso:OK (res.max a 1 idx do penhasco)",
+  "mult": [
+   1.7144999781978592,
+   5.170306990332891,
+   6.1362808530122575
+  ],
+  "passo": 0.025000000000000022,
+  "salto": 0.375
+ },
+ "yang2023ame_axial": {
+  "n": 15,
+  "classe": "escopo/procedencia",
+  "premissa": "sem premissa numerica",
+  "mult": [
+   7.749961412330689,
+   4.6539036721065585,
+   4.55418934144385
+  ],
+  "passo": 0.009399999999999964,
+  "salto": 0.011099999999999999
+ },
+ "zhang19_fig4_1e3cyc_Test1to3_preload_vs_cycles": {
+  "n": 5,
+  "classe": "n<6",
+  "premissa": "n<6:OK (mae/mx passam)",
+  "mult": [
+   0.053532147169698785,
+   0.045425630704892805,
+   0.06347062224674561
+  ],
+  "passo": 0.0020499999999999963,
+  "salto": 0.059699999999999975
+ },
+ "zhang2006_fig3_illus_M12x125_20kN_amp0p35": {
+  "n": 32,
+  "classe": "escopo/procedencia",
+  "premissa": "sem premissa numerica",
+  "mult": [
+   4.219618950727259,
+   6.608382662950408,
+   8.860855155946393
+  ],
+  "passo": 0.01617927846447592,
+  "salto": 0.12008843332328412
+ }
+}

@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/55_56_57_58_GPR_Iwan_reliability_arclock.md:174-183
+cycle,k_eff_kN_mm,c_eq_kNs_mm,F_kN,ratio
+100,16.0,0.42,14.5,0.967
+1000,14.8,0.38,13.5,0.900
+2000,13.5,0.34,12.8,0.853
+5000,11.5,0.28,11.5,0.767
+10000,9.5,0.22,9.5,0.633

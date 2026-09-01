@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt" data-lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revisão da literaturaLiterature review — BAS V2</title>
+<style>
+:root{
+  --bg:#eef0f3; --panel:#ffffff; --ink:#161a20; --muted:#5b6675; --line:#d3d8e0;
+  --accent:#2563eb; --accent2:#e11d48; --ghost:#9aa4b2; --ok:#0f9d58; --warn:#c2410c;
+  --code-bg:#f3f5f8; --side:#f7f8fa; --side-w:300px;
+}
+:root[data-theme="dark"]{
+  --bg:#12151b; --panel:#1a1f27; --ink:#e7ebf0; --muted:#93a0b0; --line:#2b323d;
+  --accent:#5b9bff; --accent2:#ff6b8b; --ghost:#4a5563; --ok:#39d98a; --warn:#ffa657;
+  --code-bg:#20262f; --side:#151a21;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,.mono{font-family:'Cascadia Code','Consolas',ui-monospace,monospace}
+
+/* ---- sidebar (sumario tipo help classico) ---- */
+.side{position:fixed;top:0;left:0;bottom:0;width:var(--side-w);overflow-y:auto;
+  background:var(--side);border-right:1px solid var(--line);z-index:20}
+.side-head{position:sticky;top:0;background:var(--side);padding:14px 16px 12px;
+  border-bottom:1px solid var(--line);z-index:2}
+.side-head .home{font-weight:700;font-size:.92rem;display:block;color:var(--ink)}
+.side-head .home small{display:block;color:var(--muted);font-weight:400;font-size:.72rem;margin-top:2px}
+.side-head .toggles{margin:10px 0 8px}
+.toggles button{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:5px 10px;font-size:.78rem;cursor:pointer;margin-right:6px}
+.toggles button:hover{border-color:var(--accent)}
+.filter{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:7px;
+  background:var(--bg);color:var(--ink);font-family:inherit;font-size:.83rem}
+.tiers{display:flex;flex-wrap:wrap;gap:3px 12px;margin-top:9px;font-size:.72rem}
+.tiers label{display:flex;align-items:center;gap:4px;color:var(--muted);cursor:pointer}
+.tiers input{accent-color:var(--accent);margin:0;cursor:pointer}
+.toc{padding:6px 0 60px}
+.toc .grp{padding:12px 16px 3px;font-size:.68rem;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--muted);font-weight:700}
+.toc a.tocitem{display:flex;justify-content:space-between;gap:8px;align-items:baseline;
+  padding:4px 14px 4px 18px;font-family:'Cascadia Code',monospace;font-size:.8rem;
+  color:var(--ink);border-left:3px solid transparent}
+.toc a.tocitem:hover{background:var(--bg);text-decoration:none}
+.toc a.tocitem.current{border-left-color:var(--accent);color:var(--accent);
+  background:var(--bg);font-weight:600}
+.toc a.tocitem .dot{font-size:.6rem;opacity:.6}
+.toc a.tocitem .dot.physical{color:var(--accent)}
+.toc a.tocitem .dot.form{color:var(--warn)}
+.toc a.tocitem .dot.mode{color:var(--ok)}
+.toc a.tocitem .dot.numerical{color:var(--muted)}
+
+/* ---- content ---- */
+.main{margin-left:var(--side-w);padding:26px 34px 90px;max-width:940px}
+.crumbs{font-size:.82rem;color:var(--muted);margin-bottom:2px}
+h1.name{font-family:'Cascadia Code','Consolas',monospace;font-size:1.95rem;margin:.2rem 0 .2rem}
+.sub{color:var(--muted);font-size:.95rem;margin-bottom:.6rem}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:.4rem 0 1rem}
+.badge{font-size:.74rem;padding:3px 9px;border-radius:20px;border:1px solid var(--line);
+  background:var(--panel);color:var(--muted)}
+.badge.cat-physical{border-color:var(--accent);color:var(--accent)}
+.badge.cat-form{border-color:var(--warn);color:var(--warn)}
+.badge.cat-mode{border-color:var(--ok);color:var(--ok)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;margin:14px 0}
+.panel p{margin:.4rem 0}
+.plotwrap{position:relative}
+canvas{width:100%;height:auto;display:block}
+.ctl{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.ctl input[type=range]{flex:1;min-width:220px;accent-color:var(--accent)}
+.ctl select{background:var(--code-bg);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:6px 10px;font-family:inherit}
+.readout{font-family:'Cascadia Code',monospace;font-size:.95rem}
+.readout .v{color:var(--accent);font-weight:600}
+.readout .f{color:var(--accent2);font-weight:600}
+.readout .w{color:var(--warn);font-weight:600}
+.legend .kdash{display:inline-block;width:22px;height:0;border-top:2px dashed var(--muted);vertical-align:middle;margin-right:5px}
+.prov{font-size:.82rem;margin-top:8px;color:var(--muted)}
+.prov.out{color:var(--warn);font-weight:600}
+.effect{font-family:'Cascadia Code',monospace;font-size:.82rem;margin-top:8px;color:var(--accent)}
+.effect.weak{color:var(--muted)}
+h2.sec{font-size:1.05rem;margin:0 0 .5rem;letter-spacing:.02em}
+.eq{background:var(--code-bg);border:1px solid var(--line);border-radius:8px;
+  padding:12px 14px;font-family:'Cascadia Code',monospace;font-size:.92rem;overflow-x:auto;
+  white-space:pre;line-height:1.5;margin:.5rem 0}
+ul.refs{margin:.3rem 0 0;padding-left:1.1rem}
+ul.refs li{margin:.25rem 0;font-size:.9rem}
+ul.refs li.refhead{list-style:none;margin:14px 0 4px -1.1rem;color:var(--muted);
+  font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+ul.refs .src{color:var(--muted);font-size:.82rem}
+.related a{display:inline-block;margin-right:10px;font-family:'Cascadia Code',monospace;font-size:.85rem}
+nav.pn{display:flex;justify-content:space-between;margin-top:24px;font-size:.9rem}
+.note{background:var(--code-bg);border-left:3px solid var(--warn);padding:8px 12px;
+  border-radius:0 6px 6px 0;font-size:.88rem;color:var(--muted);margin:.6rem 0}
+.intro{color:var(--muted);max-width:74ch}
+.legend{display:flex;gap:16px;font-size:.8rem;color:var(--muted);margin-top:6px;flex-wrap:wrap}
+.legend .k{display:inline-block;width:22px;height:0;border-top-width:3px;border-top-style:solid;vertical-align:middle;margin-right:5px}
+[data-lang="pt"] [data-l="en"]{display:none}
+[data-lang="en"] [data-l="pt"]{display:none}
+
+/* ---- responsivo: sidebar recolhivel ---- */
+.menu-btn{display:none;position:fixed;top:10px;left:10px;z-index:40;
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;
+  padding:6px 11px;font-size:1rem;cursor:pointer;color:var(--ink)}
+@media(max-width:900px){
+  .side{transform:translateX(-100%);transition:transform .2s;box-shadow:0 0 30px rgba(0,0,0,.3)}
+  body.nav-open .side{transform:none}
+  .main{margin-left:0;padding:56px 16px 80px}
+  .menu-btn{display:inline-block}
+}
+
+/* ---- animações & interatividade ---- */
+@keyframes ve-pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.ve-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  box-shadow:0 0 8px var(--accent);transition:width .08s linear}
+h1.name{animation:ve-pop .5s cubic-bezier(.2,.7,.2,1) both}
+.reveal{opacity:0;transform:translateY(16px)}
+.reveal.in{opacity:1;transform:none;
+  transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.panel,.badge,.trail,.gal-card,.related a,.toc a.tocitem,.toggles button,
+.menu-btn,nav.pn a{transition:transform .18s ease,box-shadow .18s ease,
+  border-color .18s ease,background .18s ease,color .15s ease}
+.trail:hover,.gal-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.16)}
+.toc a.tocitem:hover{transform:translateX(3px)}
+.related a:hover,nav.pn a:hover{transform:translateY(-1px)}
+.toggles button:active,.menu-btn:active{transform:scale(.94)}
+.plotwrap canvas,.cw canvas{cursor:crosshair}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}
+  h1.name{animation:none}
+  .ve-progress{display:none}
+  .trail:hover,.gal-card:hover,.toc a.tocitem:hover,.related a:hover,nav.pn a:hover{transform:none}
+}
+
+.cw{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0}
+.cw canvas{width:100%;height:auto;display:block}
+.cw-ctrl{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px;align-items:center}
+.cw-ctrl input[type=range]{flex:1;min-width:200px;accent-color:var(--accent)}
+.cw-ctrl select{background:var(--code-bg);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:5px 9px;font-family:inherit}
+.cw-leg{display:flex;align-items:center;gap:5px;font-size:.8rem;color:var(--muted);cursor:pointer}
+.cw-leg .k{display:inline-block;width:16px;height:10px;border:1px solid;border-radius:2px}
+.legend .kd{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:middle;margin-right:5px}
+.cw-note{font-size:.85rem;color:var(--muted);margin-top:10px;line-height:1.5}
+.bars{margin-top:4px}
+.bar-row{display:flex;align-items:center;gap:10px;margin:6px 0}
+.bar-lab{flex:0 0 40%;font-size:.85rem}
+.bar-track{flex:1;height:14px;background:var(--code-bg);border-radius:7px;overflow:hidden}
+.bar-fill{display:block;height:100%;border-radius:7px}
+.bar-val{flex:0 0 auto;font-family:'Cascadia Code',monospace;font-size:.82rem;color:var(--muted)}
+.bar-total{margin-top:8px;font-family:'Cascadia Code',monospace;font-size:.85rem;color:var(--ink)}
+svg.schema{width:100%;height:auto;max-width:640px;display:block;margin:6px auto}
+svg.schema text{fill:var(--ink);font-family:'Segoe UI',sans-serif}
+svg.schema .lab{fill:var(--muted);font-size:12px}
+svg.schema .box{fill:var(--code-bg);stroke:var(--line)}
+svg.schema .hot{cursor:default}
+svg.schema .hot:hover .box{stroke:var(--accent);stroke-width:2}
+svg.schema .node{fill:var(--accent)}
+svg.schema .edge{stroke:var(--accent);fill:none;stroke-width:2;marker-end:url(#arrow)}
+svg.schema .edge-lab{fill:var(--muted);font-size:11px}
+svg.schema .cpl{fill:var(--accent);fill-opacity:.18;stroke:var(--accent);stroke-width:1.6}
+svg.schema .cplt{fill:var(--accent);font-weight:700}
+svg.schema .zero{fill:var(--ghost)}
+svg.schema .diag{fill:var(--code-bg);stroke:var(--line)}
+svg.schema .fill{fill:var(--accent);fill-opacity:.08;stroke:var(--accent);stroke-opacity:.4}
+svg.schema .dash{stroke:var(--muted);stroke-dasharray:4 4;fill:none}
+svg.schema .brk{stroke:var(--muted);stroke-width:2;fill:none}
+.gal-summary{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:8px 0}
+.gal-stat{font-size:.9rem;color:var(--muted)}
+.gal-stat b{color:var(--ink);font-size:1.05rem}
+.gal-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.gal-flt{cursor:pointer;font-size:.82rem;padding:4px 11px;border:1px solid var(--line);border-radius:14px;color:var(--muted)}
+.gal-flt[data-on]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.gal-only{font-size:.82rem;color:var(--muted);margin-left:auto;display:flex;align-items:center;gap:5px}
+.gal-src{margin:18px 0}
+.gal-srch{font-size:1.05rem;margin:0 0 2px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.gal-srcn{font-size:.8rem;color:var(--muted);font-weight:400}
+.gal-blurb{font-size:.82rem;color:var(--muted);margin:2px 0 8px}
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.gal-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:0}
+.gal-cap{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:.8rem}
+.gal-nm{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gal-badge{flex:0 0 auto;font-family:'Cascadia Code',monospace;font-size:.72rem;padding:1px 6px;border-radius:8px;border:1px solid currentColor;background:transparent}
+.gal-badge.ok{color:var(--ok)}
+.gal-badge.mid{color:var(--accent2)}
+.gal-badge.hi{color:var(--warn)}
+.gal-cv{width:100%;height:auto;display:block;margin:4px 0}
+.gal-cond{font-size:.72rem;color:var(--muted);font-family:'Cascadia Code',monospace}
+.gal-cav{font-size:.72rem;color:var(--warn);margin-top:3px;line-height:1.35}
+.gloss-tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+.gloss-tbl th,.gloss-tbl td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.gloss-tbl th{color:var(--muted);font-weight:600;font-size:.82rem;text-transform:uppercase;letter-spacing:.03em}
+.gloss-tbl td.sym{font-family:'Cascadia Code',monospace;color:var(--accent);white-space:nowrap}
+.gloss-tbl td.unit{font-family:'Cascadia Code',monospace;color:var(--muted);white-space:nowrap}
+.gloss-wrap{overflow-x:auto}
+.an-ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.an-scn{cursor:pointer;font-size:.82rem;padding:4px 11px;border:1px solid var(--line);border-radius:14px;color:var(--muted)}
+.an-scn[data-on]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.an-readout{margin-top:10px;font-family:'Cascadia Code',monospace;font-size:.85rem;color:var(--ink);min-height:1.3em;line-height:1.4}
+.an-readout .an-hint{color:var(--muted);font-family:'Segoe UI',sans-serif}
+#plot_an{cursor:crosshair}
+.study-sub{font-size:1rem;color:var(--muted);font-weight:400}
+.study-figs{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0}
+.study-fig{margin:0;flex:1 1 340px;max-width:100%}
+.study-fig img{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+.study-fig figcaption{font-size:.78rem;color:var(--muted);margin-top:4px;text-align:center}
+.study-figcap{font-size:.82rem;color:var(--muted);margin:6px 0}
+.study-nofig{font-size:.9rem;color:var(--muted)}
+.study-cav{font-size:.85rem;color:var(--warn);margin-top:8px;line-height:1.4}
+.study-meta td:first-child{color:var(--muted);white-space:nowrap;width:32%}
+.gal-report{display:inline-block;margin-top:6px;font-size:.74rem;color:var(--accent);text-decoration:none}
+.gal-report:hover{text-decoration:underline}
+.study-note h3,.study-note h4{color:var(--ink);margin:12px 0 4px;font-size:.9rem}
+.study-note table.wide{width:100%;border-collapse:collapse;font-size:.8rem;margin:6px 0}
+.study-note table.wide th,.study-note table.wide td{border-bottom:1px solid var(--line);padding:4px 8px;text-align:left;vertical-align:top}
+.study-note table.wide th{color:var(--muted);font-weight:600;font-size:.72rem}
+.study-note ul{margin:6px 0;padding-left:20px}
+.study-note li{margin:3px 0;font-size:.9rem}
+.study-note p{font-size:.9rem}
+.study-note code{font-family:'Cascadia Code',monospace;font-size:.85em;background:var(--code-bg);padding:1px 4px;border-radius:4px}
+.foundations-hero{background:linear-gradient(0deg,var(--panel),var(--panel));border:1px solid var(--accent);
+  border-radius:12px;padding:14px 16px;margin:14px 0}
+.trails{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}
+.trail{flex:1 1 200px;display:block;text-decoration:none;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--ink)}
+.trail:hover{border-color:var(--accent)}
+.trail b{display:block;color:var(--accent);margin-bottom:4px}
+.trail .desc{display:block;color:var(--muted);font-size:.85rem;line-height:1.4}
+.repro{font-family:'Cascadia Code',monospace;font-size:.82rem;background:var(--code-bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:6px 0;white-space:pre-wrap;overflow-x:auto}
+.gal-csv{display:inline-block;margin:4px 8px 0 0;font-size:.74rem;color:var(--accent);text-decoration:none}
+.gal-csv:hover{text-decoration:underline}
+
+/* ===== chrome do tutorial (sobrepõe o explorador) ===== */
+:root{
+  --bg:#15161b; --panel:#1e1f27; --ink:#cdd6f4; --muted:#a6adc8; --line:#313244;
+  --accent:#4aa3e0; --accent2:#f0868b; --ghost:#454a5a; --code-bg:#232530;
+  --ok:#a6e3a1; --warn:#e5c07b; --side:#1a1b22; --side-w:274px;
+  --bg2:#1a1b22; --line2:#3a3d4d;
+  --disp:'Bahnschrift','DIN Alternate','Segoe UI',system-ui,sans-serif;
+  --mono:'Consolas','Cascadia Code',monospace;
+}
+body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,sans-serif}
+.wrap{display:grid;grid-template-columns:var(--side-w) minmax(0,1fr);max-width:1500px;margin:0 auto}
+nav.toc{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:22px 15px 46px;border-right:1px solid var(--line);background:var(--side)}
+nav.toc .brand{font-family:var(--disp);font-weight:700;letter-spacing:.4px;font-size:15px;color:#fff;line-height:1.2}
+nav.toc .brand span{display:block;font-size:10.5px;font-weight:600;color:var(--accent);letter-spacing:1.4px;margin-top:3px}
+nav.toc .lang{display:flex;gap:6px;margin:14px 4px 4px}
+nav.toc .lang button{flex:1;background:var(--panel);border:1px solid var(--line);color:var(--muted);border-radius:7px;padding:5px;font-size:12px;cursor:pointer;font-family:var(--mono);transition:all .15s}
+nav.toc .lang button.on{background:var(--accent);color:#08121c;border-color:var(--accent);font-weight:700}
+nav.toc .sep{margin:16px 6px 6px;font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+nav.toc a{display:block;color:var(--muted);padding:5px 9px;border-radius:6px;font-size:13px;border-left:2px solid transparent;transition:transform .15s ease,background .15s,color .15s;text-decoration:none}
+nav.toc a:hover{background:var(--panel);color:var(--ink);transform:translateX(2px)}
+nav.toc a.active{background:var(--panel);color:#fff;border-left-color:var(--accent)}
+nav.toc a.cur{color:#fff;font-weight:600}
+main{margin:0;padding:0 clamp(18px,3.5vw,54px) 90px;min-width:0;max-width:1120px}
+header.hero{margin:0 calc(-1*clamp(18px,3.5vw,54px)) 26px;padding:56px clamp(18px,3.5vw,54px) 34px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;
+  background:radial-gradient(1100px 320px at 18% -20%, #24344d66, transparent),radial-gradient(820px 300px at 92% -10%, #2c2140aa, transparent), var(--bg2)}
+header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;opacity:.09}
+header.hero>*{position:relative}
+header.hero .kicker{font-family:var(--mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--accent)}
+header.hero h1{font-family:var(--disp);font-weight:700;letter-spacing:.4px;font-size:clamp(28px,4.4vw,46px);margin:8px 0 10px;color:#fff;line-height:1.03}
+header.hero .lead{max-width:74ch;color:var(--muted);font-size:15.5px;margin:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:18px 0}
+h2.sec{font-family:var(--disp);font-weight:700;font-size:19px;color:#fff;scroll-margin-top:16px}
+.eq{background:linear-gradient(180deg,#262832,var(--code-bg));border:1px solid var(--line);
+  border-left:3px solid var(--accent);border-radius:10px;padding:12px 20px;margin:16px 0;
+  color:#eaf0fc;box-shadow:0 3px 14px rgba(0,0,0,.28)}
+.eq-line{display:flex;align-items:baseline;gap:6px 18px;flex-wrap:wrap;margin:9px 0;line-height:1.55}
+.eq-line math{font-size:1.32rem;color:#eef3ff}
+.eq-raw{font-family:var(--mono);white-space:pre;overflow-x:auto;font-size:1.02rem;color:#eaf0fc}
+.eq .eq-cmt{color:var(--muted);font-family:'Segoe UI',system-ui,sans-serif;font-style:italic;font-size:.82em}
+math{font-family:'Cambria Math','STIX Two Math','Latin Modern Math','Times New Roman',serif}
+code{background:var(--code-bg);border:1px solid var(--line);color:#dfe6f5}
+/* animações */
+@keyframes ve-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.gprog{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;background:linear-gradient(90deg,var(--accent),#cba6f7);box-shadow:0 0 10px var(--accent);transition:width .08s linear}
+.reveal{opacity:0;transform:translateY(18px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+header.hero .kicker{animation:ve-rise .7s cubic-bezier(.2,.7,.2,1) both}
+header.hero h1{animation:ve-rise .7s .08s cubic-bezier(.2,.7,.2,1) both}
+header.hero .lead{animation:ve-rise .7s .16s cubic-bezier(.2,.7,.2,1) both}
+.cw canvas,.plotwrap canvas,#plot_an{cursor:crosshair}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}nav.toc{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}}
+@media(prefers-reduced-motion:reduce){.reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}header.hero .kicker,header.hero h1,header.hero .lead{animation:none}.gprog{display:none}nav.toc a:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc"><div class="brand">Bolt Analysis Studio<span>V2 · FUNDAMENTOS</span></div><div class="lang"><button data-l="pt" onclick="setLang('pt')">PT</button><button data-l="en" onclick="setLang('en')">EN</button></div><div class="sep"><span data-l="pt">Navegação</span><span data-l="en">Navigation</span></div><a href="index.html">← <span data-l="pt">Explorador</span><span data-l="en">Explorer</span></a><div class="sep"><span data-l="pt">Nesta página</span><span data-l="en">On this page</span></div><a href="#s0"><span data-l="pt">O fenômeno do auto-afrouxamento</span><span data-l="en">The self-loosening phenomenon</span></a><a href="#s1"><span data-l="pt">Fases da curva: 2 estágios vs 3 estágios</span><span data-l="en">Curve phases: 2-stage vs 3-stage</span></a><a href="#s2"><span data-l="pt">Variáveis que controlam o afrouxamento</span><span data-l="en">Variables controlling loosening</span></a><a href="#s3"><span data-l="pt">Achados-chave por fonte</span><span data-l="en">Key findings by source</span></a><a href="#s4"><span data-l="pt">Lacunas em aberto e falsificações</span><span data-l="en">Open gaps and falsifications</span></a><a href="#s5"><span data-l="pt">Como o modelo V2 se posiciona</span><span data-l="en">How the V2 model stands</span></a><div class="sep"><span data-l="pt">Fundamentos</span><span data-l="en">Foundations</span></div><a href="concept_manual.html"><span data-l="pt">Manual do BAS V2 (3 volumes)</span><span data-l="en">BAS V2 Manual (3 volumes)</span></a><a href="concept_usage.html"><span data-l="pt">Guia de uso do programa</span><span data-l="en">How to use the program</span></a><a href="concept_not-a-fit.html"><span data-l="pt">1 · Não é um fit</span><span data-l="en">1 · Not a fit</span></a><a href="concept_msd-model.html"><span data-l="pt">2 · Modelo MSD</span><span data-l="en">2 · MSD model</span></a><a href="concept_mechanisms.html"><span data-l="pt">3 · Estado + mecanismos</span><span data-l="en">3 · State + mechanisms</span></a><a href="concept_coupling.html"><span data-l="pt">4 · Acoplamento</span><span data-l="en">4 · Coupling</span></a><a href="concept_energy.html"><span data-l="pt">5 · Energia</span><span data-l="en">5 · Energy</span></a><a href="concept_methodology.html"><span data-l="pt">6 · Metodologia</span><span data-l="en">6 · Methodology</span></a><a href="concept_coverage.html"><span data-l="pt">Cobertura & limitações</span><span data-l="en">Coverage & limits</span></a><a href="concept_gallery.html"><span data-l="pt">7 · Galeria de validação</span><span data-l="en">7 · Validation gallery</span></a><a href="concept_review.html" class="cur"><span data-l="pt">8 · Revisão da literatura</span><span data-l="en">8 · Literature review</span></a><a href="concept_equations.html"><span data-l="pt">9 · Equacionamento</span><span data-l="en">9 · Equations</span></a><a href="concept_references.html"><span data-l="pt">10 · Referências</span><span data-l="en">10 · References</span></a><a href="concept_anatomy.html"><span data-l="pt">11 · Anatomia da curva</span><span data-l="en">11 · Anatomy of the curve</span></a><a href="concept_glossary.html"><span data-l="pt">12 · Glossário</span><span data-l="en">12 · Glossary</span></a></nav>
+<main>
+<header class="hero"><div class="kicker"><span data-l="pt">Fundamentos</span><span data-l="en">Foundations</span></div><h1><span data-l="pt">Revisão da literatura</span><span data-l="en">Literature review</span></h1><div class="lead"><span data-l="pt">Síntese do tema a partir do corpus de artigos da biblioteca de
+validação (ver <a href="concept_references.html">Referências</a>): fenomenologia, fases, variáveis
+de controle, achados por fonte, lacunas em aberto e como o modelo V2 se posiciona.</span>
+<span data-l="en">Synthesis of the topic from the validation-library corpus (see
+<a href="concept_references.html">References</a>): phenomenology, phases, controlling variables,
+findings by source, open gaps, and how the V2 model stands.</span></div></header>
+
+<div class="panel">
+<h2 class="sec" id="s0"><span data-l="pt">O fenômeno do auto-afrouxamento</span><span data-l="en">The self-loosening phenomenon</span></h2>
+<p><span data-l="pt">O auto-afrouxamento é a perda progressiva da pré-carga de aperto (F0) de uma junta aparafusada sob carregamento cíclico. Ele cobre desde perdas micrométricas sem qualquer giro da porca até o back-off macroscópico em que a porca desrosqueia e a junta abre.</span><span data-l="en">Self-loosening is the progressive loss of a bolted joint's clamp preload (F0) under cyclic loading. It spans everything from micrometric losses with no nut rotation at all to the macroscopic back-off in which the nut unscrews and the joint opens.</span></p>
+<p><span data-l="pt">O driver dominante é a vibração <b>TRANSVERSAL</b> de Junker (1969): o deslocamento cíclico perpendicular ao eixo do parafuso afrouxa muito mais rápido que a excitação axial. Quase toda a base usa o ensaio de Junker controlado por deslocamento (DIN 65151) -- Bauer (2024), Liu (2025) e Karlsen (2022). A excitação axial é mais branda: Liu (2017) (axial ~30 Hz, M12), H. Li (2022) e a excitação modal de Sandia (2021), cujo modo-1 de flexão resolve-se em cisalhamento na junta.</span><span data-l="en">The dominant driver is Junker's <b>TRANSVERSE</b> vibration (1969): cyclic displacement perpendicular to the bolt axis loosens far faster than axial excitation. Almost the whole corpus uses the displacement-controlled Junker test (DIN 65151) -- Bauer (2024), Liu (2025) and Karlsen (2022). Axial excitation is milder: Liu (2017) (axial ~30 Hz, M12), H. Li (2022) and the modal excitation of Sandia (2021), whose mode-1 bending resolves into shear at the joint.</span></p>
+<p><span data-l="pt">Duas famílias coexistem. (a) <b>RELAXAÇÃO</b> de pré-carga <i>sem</i> giro da porca: embedding (achatamento plástico das asperezas, primeiros ciclos) e creep (viscoelástico, log-tempo). Y. Li (2022) isola o creep de contato a temperatura ambiente sem vibração; Yang (2023) mediu perda em junta de CFRP "sem rotação"; Karlsen (2022) atribui a queda inicial a "redução imediata das asperezas, não a creep". (b) Afrouxamento <b>ROTACIONAL</b>: a porca de fato recua, convertendo a torção armazenada em giro pela hélice da rosca -- o mecanismo two-factor (razão de rigidez anisotrópica &middot; projeção pela hélice), o destrutivo.</span><span data-l="en">Two families coexist. (a) preload <b>RELAXATION</b> with <i>no</i> nut rotation: embedding (plastic flattening of asperities, first cycles) and creep (viscoelastic, log-time). Y. Li (2022) isolates contact creep at ambient temperature with no vibration; Yang (2023) measured CFRP-joint loss "without rotation"; Karlsen (2022) attributes the early drop to "immediate reduction of asperities, not creep". (b) <b>ROTATIONAL</b> loosening: the nut actually backs off, converting stored torsion into rotation through the thread helix -- the two-factor mechanism (anisotropic stiffness ratio &middot; helix projection), and the destructive one.</span></p>
+<p><span data-l="pt">O cisalhamento transversal é tão daninho porque, quando o deslocamento leva a face do bearing ao slip completo (gross slip), a margem de atrito que trava o giro desaparece. Abaixo de um deslocamento crítico s_crit (fator de Pai-Hess 0.46; s_crit = 99 &micro;m em Bauer 2024) a junta só assenta; acima dele, a hélice destrava a porca ciclo a ciclo -- e o processo vira runaway, pois s_crit encolhe junto com F0.</span><span data-l="en">Transverse slip is so damaging because, once the displacement drives the bearing face into complete (gross) slip, the friction margin that locks rotation vanishes. Below a critical slip s_crit (Pai-Hess factor 0.46; s_crit = 99 &micro;m in Bauer 2024) the joint only settles; above it, the helix unlocks the nut cycle by cycle -- and the process becomes runaway, since s_crit shrinks together with F0.</span></p>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s1"><span data-l="pt">Fases da curva: 2 estágios vs 3 estágios</span><span data-l="en">Curve phases: 2-stage vs 3-stage</span></h2>
+<p><span data-l="pt">O padrão mais comum é de <b>DUAS RETAS</b>: uma queda rápida inicial (embedding/assentamento, primeiros ~5-10 ciclos) seguida de um declínio gradual quase-linear (desgaste + afrouxamento rotacional). Demir (2024) descreve a "queda rápida inicial" explicitamente; Rousseau (2025) e Liu (2017) mostram o mesmo formato de dois estágios. É o comportamento que o motor V2 reproduz nativamente.</span><span data-l="en">The commonest pattern is <b>TWO STRAIGHT LINES</b>: a fast initial drop (embedding/settling, first ~5-10 cycles) followed by a gradual, near-linear decline (wear + rotational loosening). Demir (2024) describes the "rapid initial drop" explicitly; Rousseau (2025) and Liu (2017) show the same two-stage shape. This is what the V2 engine reproduces natively.</span></p>
+<p><span data-l="pt">Um subconjunto exibe <b>TRÊS ESTÁGIOS</b>: incubação lenta &rarr; afrouxamento intermediário &rarr; colapso re-acelerado. Bauer (2024), Fig. 8 (M12x1.5, 50 kN), mostra o terceiro estágio explícito quando a força de aperto cai abaixo de um valor crítico; o estágio III de Yang (2021) é fratura por fadiga (excitação composta, fase 90&deg;). Liu (2025) exibe a assinatura fast-slow-fast: queda inicial de embedding, meio lento e colapso re-acelerado ao final.</span><span data-l="en">A subset shows <b>THREE STAGES</b>: slow incubation &rarr; intermediate loosening &rarr; re-accelerating collapse. Bauer (2024), Fig. 8 (M12x1.5, 50 kN), shows the explicit third stage once the clamp force falls below a critical value; Yang (2021)'s stage III is fatigue fracture (composite excitation, 90&deg; phase). Liu (2025) shows the fast-slow-fast signature: an initial embedding drop, a slow middle, and a re-accelerating collapse at the end.</span></p>
+<p><span data-l="pt">Fisicamente: o Estágio I é embedding/incubação (só assentamento, quase sem perda de aperto); o II é erosão estável (desgaste de Archard + afrouxamento graduado); o III é o colapso por dano de superfície (erosão das asperezas &rarr; queda do atrito &rarr; runaway) ou fratura por fadiga da raiz da rosca.</span><span data-l="en">Physically: Stage I is embedding/incubation (settling only, almost no clamp loss); II is steady erosion (Archard wear + graded loosening); III is surface-damage collapse (asperity erosion &rarr; friction drop &rarr; runaway) or thread-root fatigue fracture.</span></p>
+<p><span data-l="pt">As curvas de três estágios são as <b>únicas</b> que restringem o limiar de incubação (<code>slip_onset_W</code>) e o colapso por dano de superfície (<code>D</code>) do modelo -- curvas de duas retas não excitam esses recursos. O s_crit = 99 &micro;m de Bauer (2024) é uma âncora direta desse limiar.</span><span data-l="en">Three-stage curves are the <b>only</b> ones that constrain the model's incubation threshold (<code>slip_onset_W</code>) and its surface-damage collapse (<code>D</code>) -- two-line curves never excite those features. Bauer (2024)'s s_crit = 99 &micro;m is a direct anchor for that threshold.</span></p>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s2"><span data-l="pt">Variáveis que controlam o afrouxamento</span><span data-l="en">Variables controlling loosening</span></h2>
+<p><span data-l="pt">O que a base experimental mostra sobre cada variável de controle:</span><span data-l="en">What the experimental corpus shows about each controlling variable:</span></p>
+<ul class="refs">
+<li><span data-l="pt"><b>Amplitude transversal.</b> Maior amplitude &rarr; afrouxamento mais rápido, mas há um limiar s_crit abaixo do qual o processo estagna: Bauer (2024) quantifica s_crit = 99 &micro;m; Liu (2025) varre 0.25-0.8 mm; no caso de 0.25 mm de Yang (2024) a junta perde só ~22% e satura.</span><span data-l="en"><b>Transverse amplitude.</b> Larger amplitude &rarr; faster loosening, but there is a threshold s_crit below which the process stalls: Bauer (2024) quantifies s_crit = 99 &micro;m; Liu (2025) sweeps 0.25-0.8 mm; in Yang (2024)'s 0.25 mm case the joint loses only ~22% and saturates.</span></li>
+<li><span data-l="pt"><b>Pré-carga F0.</b> Aperto maior resiste mais ao afrouxamento (Liu 2017, varredura 10/15/18 kN), mas os ciclos-até-a-falha vs pré-carga costumam ser planos (Lu 2024) -- mais aperto atrasa, não impede.</span><span data-l="en"><b>Preload F0.</b> Higher clamp resists loosening (Liu 2017, 10/15/18 kN sweep), yet cycles-to-failure vs preload are often flat (Lu 2024) -- more clamp delays, it does not prevent.</span></li>
+<li><span data-l="pt"><b>Frequência.</b> Em modo deslocamento é majoritariamente um confundidor (o decaimento de pré-carga é pouco sensível à frequência; Yang 2024 testou 0.1/1/5 Hz); mas em fretting, frequência menor piora por mais dwell/oxidação (H. Li 2022).</span><span data-l="en"><b>Frequency.</b> In displacement mode it is mostly a confounder (preload decay is largely insensitive to frequency; Yang 2024 tested 0.1/1/5 Hz); but in fretting, lower frequency is worse via more dwell/oxidation (H. Li 2022).</span></li>
+<li><span data-l="pt"><b>Rigidez/material do membro e comprimento de aperto.</b> Juntas mais rígidas afrouxam mais rápido; Rousseau (2025) contrasta aço (E~200 GPa) vs HDPE (E~1 GPa) e varre espessura t = 10/12/14 mm e grip 25/29/33 mm.</span><span data-l="en"><b>Member stiffness/material and grip length.</b> Stiffer joints loosen faster; Rousseau (2025) contrasts steel (E~200 GPa) vs HDPE (E~1 GPa) and sweeps thickness t = 10/12/14 mm and grip 25/29/33 mm.</span></li>
+<li><span data-l="pt"><b>Dispositivos de travamento.</b> Karlsen (2022) mostra o parafuso HV padrão afrouxando em 200-400 ciclos contra ~3000 do Vibralock; Eccles (2010) caracteriza porcas de torque prevalecente e um limiar quantitativo de destacamento.</span><span data-l="en"><b>Locking devices.</b> Karlsen (2022) shows the standard HV bolt loosening in 200-400 cycles against ~3000 for Vibralock; Eccles (2010) characterises prevailing-torque nuts and a quantitative detachment threshold.</span></li>
+<li><span data-l="pt"><b>Lubrificação.</b> Seco vs MoS2 vs óleo muda o atrito e a retenção: Alsardia (2024) mede as-is 22.8&rarr;15.7 kN, MoS2 -44.7%, enquanto o oleado <i>sobe</i> ~20% e estabiliza; Liu (2017) varre revestimentos PTFE/MoS2/TiN.</span><span data-l="en"><b>Lubrication.</b> Dry vs MoS2 vs oiled changes both friction and retention: Alsardia (2024) measures as-is 22.8&rarr;15.7 kN, MoS2 -44.7%, while the oiled case <i>rises</i> ~20% and stabilises; Liu (2017) sweeps PTFE/MoS2/TiN coatings.</span></li>
+<li><span data-l="pt"><b>Temperatura / creep.</b> Lakes (2007) mede a perda de carga em juntas de alumínio a 220/240/260 &deg;C (constantes de creep por temperatura); Y. Li (2022) isola o creep de contato a temperatura ambiente (Norton/Burgers), sem vibração.</span><span data-l="en"><b>Temperature / creep.</b> Lakes (2007) measures load loss in aluminium joints at 220/240/260 &deg;C (temperature-dependent creep constants); Y. Li (2022) isolates ambient-temperature contact creep (Norton/Burgers) with no vibration.</span></li>
+<li><span data-l="pt"><b>Tamanho.</b> A base cobre de M6 (Yang 2023) a M42 (Karlsen 2022), com pré-cargas de 3.5 kN (Rousseau 2025) a 706 kN (Karlsen M42); o ponto nativo de calibração é M16 (Liu 2025).</span><span data-l="en"><b>Size.</b> The corpus spans M6 (Yang 2023) to M42 (Karlsen 2022), with preloads from 3.5 kN (Rousseau 2025) to 706 kN (Karlsen M42); the native calibration point is M16 (Liu 2025).</span></li>
+</ul>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s3"><span data-l="pt">Achados-chave por fonte</span><span data-l="en">Key findings by source</span></h2>
+<ul class="refs">
+<li><b>Liu (2017) / Liu (2016)</b> &mdash; <span data-l="pt">trilha AXIAL. Sob excitação axial cíclica (M12, ~30 Hz), a força de aperto cai em dois estágios (assentamento plástico rápido + cauda lenta de fretting de flanco de rosca) e o afrouxamento CRESCE com a amplitude axial A_F (gradiente medido &asymp; &minus;2.2e-5/N); preload maior afrouxa menos. A varredura de amplitude de Liu (2016) no mesmo rig (torque &times; A_F, MoS2 vs seco) confirma a tendência e alimenta a unificação &rho; = A_F/F_0.</span><span data-l="en">AXIAL track. Under cyclic axial excitation (M12, ~30 Hz), clamp force drops in two stages (fast plastic settling + slow thread-flank fretting tail) and loosening GROWS with axial amplitude A_F (measured gradient &asymp; &minus;2.2e-5/N); higher preload loosens less. Liu (2016)'s amplitude sweep on the same rig (torque &times; A_F, MoS2 vs dry) confirms the trend and feeds the &rho; = A_F/F_0 unification.</span></li>
+<li><b>Bauer (2024)</b> &mdash; <span data-l="pt">colapso explícito de terceiro estágio. Fig. 8 (M12&times;1.5, base 80 &micro;m + picos 150 &micro;m, espectro) mostra o joelho lento&rarr;acelerado&rarr;íngreme; quantifica um slip crítico s_crit &asymp; 99 &micro;m (faixa 76&ndash;108 &micro;m). O colapso é F_V-crítico: espera a pré-carga cair o suficiente para a amplitude crítica descer abaixo da base do espectro. Fig. 6 (M8, 6 curvas) dá o regime quase-linear de contraponto.</span><span data-l="en">explicit third-stage collapse. Fig. 8 (M12&times;1.5, 80 &micro;m base + 150 &micro;m peaks, spectrum) shows the slow&rarr;accelerating&rarr;steep knee; quantifies a critical slip s_crit &asymp; 99 &micro;m (76&ndash;108 &micro;m band). Collapse is F_V-critical: it waits for preload to fall until the critical amplitude drops below the spectrum base. Fig. 6 (M8, 6 curves) gives the near-linear counterpoint regime.</span></li>
+<li><b>Lu (2024)</b> &mdash; <span data-l="pt">ratchet cinemático. A razão T_loose/T_resist fica ~fixa (&asymp; 1.57) através da amplitude enquanto o dado colapsa, e a vida N_falha é ~plana acima de um onset de torque (snap): torque alto arresta (T28Nm ~0.23 a 71% da prova), torque baixo colapsa (T4Nm ~0.04 a 10%). Evidência de que a rotação é &prop; ao caminho de slip (Junker clássico), não um runaway de torque.</span><span data-l="en">kinematic ratchet. The T_loose/T_resist ratio stays ~fixed (&asymp; 1.57) across amplitude while the data collapses, and life N_fail is ~flat above a torque onset (snap): high torque arrests (T28Nm ~0.23 at 71% proof), low torque collapses (T4Nm ~0.04 at 10%). Evidence the rotation is &prop; slip path (classic Junker), not a torque runaway.</span></li>
+<li><b>Rousseau (2025)</b> &mdash; <span data-l="pt">rigidez/material do membro controla a ordem do afrouxamento. Única varredura de espessura da biblioteca (t = 10/12/14 mm) com &theta;(N) medido; aço colapsa enquanto o par HDPE NÃO colapsa (assentamento plástico do polímero desacopla da rotação). A ordem é governada pela complacência do membro, não pela amplitude.</span><span data-l="en">member stiffness/material controls the loosening order. The library's only thickness sweep (t = 10/12/14 mm) with measured &theta;(N); steel collapses while the HDPE pair does NOT collapse (the polymer's plastic settling decouples from rotation). Order is governed by member compliance, not amplitude.</span></li>
+<li><b>Karlsen (2022)</b> &mdash; <span data-l="pt">tamanho extremo. M30 (F_0 = 353 kN, 70% do escoamento, &plusmn;1.0 mm) e M42 (706 kN, &plusmn;1.5 mm) a 1 Hz; parafuso padrão HV afrouxa em 200&ndash;400 ciclos enquanto o dispositivo Vibralock (cunha) sobrevive ~3000. Grande dispersão por espécime (c_bend per-especime); a fonte fica no piso de repetibilidade.</span><span data-l="en">extreme size. M30 (F_0 = 353 kN, 70% yield, &plusmn;1.0 mm) and M42 (706 kN, &plusmn;1.5 mm) at 1 Hz; the standard HV bolt loosens in 200&ndash;400 cycles while the Vibralock (wedge) device survives ~3000. Large per-specimen scatter (per-specimen c_bend); this source sits at the repeatability floor.</span></li>
+<li><b>Yang (2019 / 2021 / 2023)</b> &mdash; <span data-l="pt">amplitude variável em blocos (2019, M10); excitação composta transversal+axial a 90&deg; de fase (2021), acoplando F_amp&harr;&delta;_amp com falha competitiva afrouxamento/fadiga; e um modelo fenomenológico de curva-mestra M6/M8 (2023) com ratchet + onset de slip.</span><span data-l="en">block variable-amplitude loading (2019, M10); composite transverse+axial excitation at 90&deg; phase (2021), coupling F_amp&harr;&delta;_amp with competitive loosening/fatigue failure; and a phenomenological master-curve model M6/M8 (2023) with ratchet + slip onset.</span></li>
+<li><b>Y. Li (2022)</b> &mdash; <span data-l="pt">creep estático de contato a temperatura ambiente, SEM vibração (M16 304SS, eixo em minutos) — isola o creep puro (wear/loosening estruturalmente inertes). Estabelece que C_creep é POR PAR tribológico: a âncora estática discorda do valor dinâmico por ~11.7&times; com ICs disjuntos.</span><span data-l="en">static contact creep at ambient temperature, WITHOUT vibration (M16 304SS, minutes axis) — isolates pure creep (wear/loosening structurally inert). Establishes that C_creep is PER tribological pair: the static anchor disagrees with the dynamic value by ~11.7&times; with disjoint CIs.</span></li>
+<li><b>H. Li (2022)</b> &mdash; <span data-l="pt">axial &times; frequência (10/15/20 Hz, mesmo grupo do Liu 2017). O assentamento escala com o dwell do fretting (embedding &prop; 1/freq, r = &minus;0.99), e a cauda de titânio termina num cliff de fadiga — a fonte da forma freq-dependente e do fim por fratura.</span><span data-l="en">axial &times; frequency (10/15/20 Hz, same group as Liu 2017). Settling scales with fretting dwell (embedding &prop; 1/freq, r = &minus;0.99), and the titanium tail ends in a fatigue cliff — the source of the freq-dependent form and the fracture endpoint.</span></li>
+<li><b>Z. Liu (2022)</b> &mdash; <span data-l="pt">reaperto sucessivo sob carga transversal: após o 3&ordm; reaperto o afrouxamento acelera e no 4&ordm; a força colapsa. Motiva a renovação de embedding (o reaperto reabre o reservatório de assentamento) + galling (o dano acumulado degrada o atrito de rosca) — cadeia t_0&rarr;retighten()&rarr;t_N.</span><span data-l="en">successive retightening under transverse load: after the 3rd retighten loosening accelerates and at the 4th the force collapses. Motivates embedding renewal (retightening reopens the settling reservoir) + galling (accumulated damage degrades thread friction) — chain t_0&rarr;retighten()&rarr;t_N.</span></li>
+<li><b>Baydoun / Fouvry (2019, 2007)</b> &mdash; <span data-l="pt">fretting flat-on-flat com pressão quase-constante controlada + formulação de energia friccional ponderada e "capacidade de energia de wear" por par. Dá a FORMA do expoente de pressão do gate de conformação (n_p &asymp; 0.5&ndash;0.6), mas aço e coatings ficam sub-GPa — a forma transfere, a magnitude (~1.2 GPa) não.</span><span data-l="en">flat-on-flat fretting with controlled quasi-constant pressure + a weighted friction-energy formulation and a per-pair "wear energy capacity". It gives the FORM of the conformation gate's pressure exponent (n_p &asymp; 0.5&ndash;0.6), but steel and coatings stay sub-GPa — the form transfers, the magnitude (~1.2 GPa) does not.</span></li>
+<li><b>Alsardia (2024) / Sun (2025)</b> &mdash; <span data-l="pt">reaperto &times; lubrificação. Alsardia (M8&times;40 10.9, 20 reapertos): as-is 22.8&rarr;15.7 kN, MoS2 &minus;44.7%, mas OLEADO SOBE ~20% e estabiliza. Sun (porca auto-frenante crimpada): óxido de prata SOBE o atrito e mantém o preload. Âncoram a renovação de embedding e o atrito/galling por lubrificante.</span><span data-l="en">retighten &times; lubrication. Alsardia (M8&times;40 10.9, 20 retightenings): as-is 22.8&rarr;15.7 kN, MoS2 &minus;44.7%, but OILED RISES ~20% and stabilizes. Sun (crimping self-locking nut): silver oxide RAISES friction and holds preload. They anchor embedding renewal and per-lube friction/galling.</span></li>
+<li><b>Grzejda (2026)</b> &mdash; <span data-l="pt">controle NULO. Conexão multi-parafuso assimétrica sob carga cíclica (Instron, 22 kN de preload, amplitude 10/20 kN): NENHUMA perda de preload (&plusmn;2%). Não é curva de decaimento — é o controle negativo: o modelo deve prever ~zero perda nessas condições.</span><span data-l="en">NULL control. Asymmetric multi-bolt connection under cyclic load (Instron, 22 kN preload, 10/20 kN amplitude): NO preload loss (&plusmn;2%). Not a decay curve — it is the negative control: the model must predict ~zero loss under these conditions.</span></li>
+</ul>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s4"><span data-l="pt">Lacunas em aberto e falsificações</span><span data-l="en">Open gaps and falsifications</span></h2>
+<p><span data-l="pt"><b>Duas falsificações históricas desta página já FECHARAM — e o ciclo completo é a melhor ilustração da doutrina.</b> (1) <b>Amplitude axial.</b> A confrontação zero-refit de 03/07/2026 (&sect;4.6) falsificou o conjunto AS-IS: nenhum mecanismo era dirigido pela amplitude de carga axial (wear = slip transversal; creep = só F_0; embedding = amplitude-cego), e o modelo dava &part;(fim)/&part;A_F &equiv; 0 — as cinco predições do sweep eram a MESMA curva — contra &minus;2,2e-5/N no dado (Liu 2017). A forma foi então suprida: a unificação &rho; tornou o assentamento dependente da amplitude, e <b>hoje o modelo dá &minus;1,72e-5/N contra &minus;2,22e-5/N medido — 78% da sensibilidade, com as duas fontes axiais 100% dentro da meta</b> (&sect;4.43, re-baseline de 27/07). Resta ~22% da inclinação: resíduo quantitativo, não ausência de resposta. (2) <b>Escala com a espessura do membro.</b> Na única varredura de espessura da biblioteca (Rousseau 2025, t = 10/12/14 mm) o modelo era cego à espessura; a forma foi construída — o <b>cisalhamento do membro em série</b> com a rigidez transversal absorve o curso imposto, e o espécime mais espesso vai a <b>stick permanente</b>, que é exatamente por que ele não colapsa (previsto 0,882 contra 0,875 medido). Os MAE caíram para 0,058/0,064/0,044, e agora <b>diminuem</b> com a espessura.</span><span data-l="en"><b>Two historical falsifications on this page have CLOSED — and the full cycle is the best illustration of the doctrine.</b> (1) <b>Axial amplitude.</b> The zero-refit confrontation of 2026-07-03 (&sect;4.6) falsified the AS-IS set: no mechanism was driven by axial load amplitude (wear = transverse slip; creep = F_0 only; embedding = amplitude-blind), and the model gave &part;(final)/&part;A_F &equiv; 0 — the five sweep predictions were the SAME curve — against &minus;2.2e-5/N in the data (Liu 2017). The form was then supplied: the &rho;-unification made settling amplitude-dependent, and <b>today the model gives &minus;1.72e-5/N against &minus;2.22e-5/N measured — 78% of the sensitivity, with both axial sources fully inside the goal</b> (&sect;4.43, re-baselined 2026-07-27). About 22% of the slope remains: a quantitative residual, not an absent response. (2) <b>Member-thickness scaling.</b> In the library's only thickness sweep (Rousseau 2025, t = 10/12/14 mm) the model was thickness-blind; the form was built — <b>member shear in series</b> with the transverse stiffness absorbs the imposed stroke, and the thickest specimen goes into <b>permanent stick</b>, which is precisely why it does not collapse (0.882 predicted vs 0.875 measured). MAEs fell to 0.058/0.064/0.044 and now <b>decrease</b> with thickness.</span></p>
+<p><span data-l="pt"><b>O que continua aberto, medido em 27/07 sobre as 40 curvas fora da meta.</b> A maior lacuna é um <b>kernel de colapso desacelerante</b>: o dado desacelera até um platô enquanto o kernel de catraca atual bifurca entre travar e disparar. O diagnóstico, porém, mostrou que <b>não é uma forma só</b>: correlacionando os perfis de resíduo com o nível removido, quatro rigs independentes (Chu2026, Yang2019, Karlsen, Zhang2006 — <b>13 curvas</b>) compartilham o MESMO erro de forma com r = 0,90 a 1,00, enquanto Lu2024 (10 curvas) tem um erro em <b>tigela</b> anticorrelacionado (r = &minus;0,27) e Eccles fig8a/8c tem erro de <b>nível</b>, não de forma (perfil plano, |0,022|). Ou seja: são três problemas, e um prereg único teria misturado formas anticorrelacionadas. Também abertos: <b>bifurcação de limiar</b> de amplitude (Yang2023 IJPEM, 7 curvas, tri-falsificada) e <b>condição de contorno axial externa</b> (Eccles 2010, 4 curvas — quando a força axial excede o torque de prevalência a porca gira até se destacar; é contorno, não mecanismo de perda).</span><span data-l="en"><b>What remains open, measured on 2026-07-27 across the 40 curves outside the goal.</b> The largest gap is a <b>decelerating-collapse kernel</b>: the data decelerates to a plateau while the current ratchet kernel bifurcates between arrest and runaway. The diagnosis, however, showed it is <b>not a single form</b>: correlating the residual profiles with the level removed, four independent rigs (Chu2026, Yang2019, Karlsen, Zhang2006 — <b>13 curves</b>) share the SAME shape error at r = 0.90 to 1.00, while Lu2024 (10 curves) has an anticorrelated <b>bowl</b>-shaped error (r = &minus;0.27) and Eccles fig8a/8c has a <b>level</b> error, not a shape one (flat profile, |0.022|). That is three problems, and a single prereg would have mixed anticorrelated shapes. Also open: amplitude <b>threshold bifurcation</b> (Yang2023 IJPEM, 7 curves, triply falsified) and an <b>external axial boundary condition</b> (Eccles 2010, 4 curves — when the axial force exceeds the prevailing torque the nut rotates until it detaches; a boundary condition, not a loss mechanism).</span></p>
+<p><span data-l="pt">Constantes são propriedade por par tribológico/rig, não universais. A âncora estática de creep (Y. Li 2022) discorda do valor dinâmico por ~11.7&times; com ICs disjuntos (&sect;4.7). A escala de energia de conformação W_conf_ref, que resolve o sobretorque (&sect;4.9), permanece SEM âncora independente: a busca dedicada fechou os dois caminhos — nenhuma curva cross-rig a isola, e o número de Fouvry disponível (&alpha; &asymp; 4.23e-5 mm&sup3;/J) é análogo do K_archard, não do W_conf_ref. Baydoun/Fouvry dão a FORMA do expoente de pressão (n_p &asymp; 0.5&ndash;0.6), mas não a magnitude (~1.2 GPa do apoio pequeno do rig UFU) — W_conf_ref fica um degrau abaixo do creep na escala de procedência.</span><span data-l="en">Constants are per tribological-pair/rig properties, not universal. The static creep anchor (Y. Li 2022) disagrees with the dynamic value by ~11.7&times; with disjoint CIs (&sect;4.7). The conformation energy scale W_conf_ref, which resolves overtorque (&sect;4.9), remains WITHOUT an independent anchor: the dedicated hunt closed both paths — no cross-rig curve isolates it, and the available Fouvry number (&alpha; &asymp; 4.23e-5 mm&sup3;/J) is a K_archard analog, not W_conf_ref. Baydoun/Fouvry give the FORM of the pressure exponent (n_p &asymp; 0.5&ndash;0.6), but not the magnitude (~1.2 GPa of the small UFU-rig bearing) — W_conf_ref sits one step below creep on the provenance ladder.</span></p>
+<p><span data-l="pt">O acoplamento F_amp&harr;&delta;_amp segue em aberto (roadmap #4), mas com uma precisão importante: a <b>capacidade já existe no engine, desligada por padrão</b> — em modo deslocamento os dois são tratados como independentes <i>no default</i>, embora fisicamente F_amp &le; &mu;&middot;F_0 em slip pleno. O que falta não é construir, é <b>calibrar per-rig e adotar sob gate</b>; a excitação composta de Yang (2021) é o alvo natural. Em todos estes pontos vale a mesma doutrina: uma falsificação aponta uma FORMA faltante — um mecanismo, um expoente, um acoplamento — não um coeficiente a ajustar. Por isso o refit (B2) NÃO foi rodado onde nenhuma constante congelada carrega a dependência: registrar a falsificação AS-IS é o resultado científico.</span><span data-l="en">The F_amp&harr;&delta;_amp coupling stays open (roadmap #4), with one important precision: the <b>capability already exists in the engine, off by default</b> — in displacement mode the two are treated as independent <i>in the default</i>, though physically F_amp &le; &mu;&middot;F_0 in full slip. What is missing is not building it but <b>calibrating it per rig and adopting it under a gate</b>; Yang (2021)'s composite excitation is the natural target. At all these points the same doctrine holds: a falsification points to a MISSING FORM — a mechanism, an exponent, a coupling — not a coefficient to tune. That is why the refit (B2) was NOT run where no frozen constant carries the dependence: recording the falsification AS-IS is the scientific result.</span></p>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s5"><span data-l="pt">Como o modelo V2 se posiciona</span><span data-l="en">How the V2 model stands</span></h2>
+<p><span data-l="pt">O modelo V2 (<code>DynamicStiffnessAnalyzer</code>) é um sistema massa-mola-amortecedor energético: um vetor de estado lento evolui ciclo a ciclo sob uma matriz [K(s)] reavaliada (softening de Greenwood-Williamson), com seis mecanismos de perda em paralelo e um balanço de energia rigoroso (W_ext + &Delta;U = &Sigma; W_dissipado). As três camadas — analítica (Hooke, Coulomb, hélice, conservação), empírica (Norton, Norton-Bailey, Archard, Cattaneo-Mindlin, Su-N) e constantes físicas com procedência declarada — significam que, desde o Estágio B, não há nenhum multiplicador adimensional livre: cada constante é medida, de handbook, lida de uma feature do dado, ou fitada-este-rig, com a procedência declarada.</span><span data-l="en">The V2 model (<code>DynamicStiffnessAnalyzer</code>) is an energetic mass-spring-damper system: a slow state vector evolves cycle by cycle under a re-evaluated [K(s)] matrix (Greenwood-Williamson softening), with six loss mechanisms in parallel and a rigorous energy budget (W_ext + &Delta;U = &Sigma; W_dissipated). The three layers — analytical (Hooke, Coulomb, helix, conservation), empirical (Norton, Norton-Bailey, Archard, Cattaneo-Mindlin, Su-N) and physical constants with declared provenance — mean that, since Stage B, there is no free dimensionless multiplier: each constant is measured, from a handbook, read off a data feature, or fitted-this-rig, with its provenance declared.</span></p>
+<p><span data-l="pt">A doutrina que emerge da confrontação com a biblioteca (&sect;8, reconfirmada 5&times;) é uma só: FORMAS e acoplamentos transferem cross-rig; NÍVEIS e constantes são por rig/par/junta. Com constantes congeladas de um único rig, o modelo vence o baseline no-loss em 34/46 curvas de M8 a M42, com gradientes de sinal certo — a generalização é das formas, não dos números. Cada fenômeno da literatura mapeia num mecanismo/capability: embedding &larr; fontes de relaxação/assentamento (Norton; tabela f_Z da VDI 2230); afrouxamento two-factor &larr; Junker/amplitude; surface_damage &larr; colapso de terceiro estágio (reaperto/TP7; Bauer 2024); conformação &larr; sobretorque/pressão (&sect;4.9, adotada no bloco canônico); taxa graduada e ratchet cinemático &larr; Lu 2024 e Bauer 2024; fretting &larr; Baydoun/Fouvry e H. Li 2022.</span><span data-l="en">The doctrine that emerges from the library confrontation (&sect;8, reconfirmed 5&times;) is a single one: FORMS and couplings transfer cross-rig; LEVELS and constants are per rig/pair/joint. With constants frozen from a single rig, the model beats the no-loss baseline on 34/46 curves from M8 to M42, with right-sign gradients — the generalization is of the forms, not the numbers. Each literature phenomenon maps to a mechanism/capability: embedding &larr; relaxation/settling sources (Norton; VDI 2230 f_Z table); two-factor loosening &larr; Junker/amplitude; surface_damage &larr; third-stage collapse (retighten/TP7; Bauer 2024); conformation &larr; overtorque/pressure (&sect;4.9, adopted into the canonical block); graded rate and kinematic ratchet &larr; Lu 2024 and Bauer 2024; fretting &larr; Baydoun/Fouvry and H. Li 2022.</span></p>
+<p><span data-l="pt">Além dos seis mecanismos nucleares, o engine carrega ~44 capabilities opt-in default-inertes: bit-idênticas quando desligadas, ligadas só com dupla falsificação + gate pré-declarado + um número de procedência declarada. Ligar uma NÃO é fitar um tuner — é suprir uma forma faltante que uma falsificação apontou. Por isso o programa de legitimidade migrou de "fitar menos" para "prover procedência por constante", e o benchmark nulo de Grzejda (2026) fica como guarda: perda ~zero deve ser prevista como ~zero.</span><span data-l="en">Beyond the six core mechanisms, the engine carries ~44 default-inert opt-in capabilities: bit-identical when off, turned on only with double falsification + a pre-declared gate + a number with declared provenance. Turning one on is NOT fitting a tuner — it supplies a missing form a falsification pointed to. That is why the legitimacy program moved from "fit less" to "provide provenance per constant", and Grzejda (2026)'s null benchmark stands as a guard: ~zero loss must be predicted as ~zero.</span></p>
+<p><span data-l="pt">Para o detalhamento, veja os demais Fundamentos: as <a href="concept_equations.html">equações</a> de cada mecanismo e o <a href="concept_coupling.html">acoplamento</a> two-factor que torna o sistema mais que a soma das partes; e as páginas por-variável para a procedência de cada constante.</span><span data-l="en">For the detail, see the other Foundations pages: the <a href="concept_equations.html">equations</a> of each mechanism and the two-factor <a href="concept_coupling.html">coupling</a> that makes the system more than the sum of its parts; and the per-variable pages for the provenance of each constant.</span></p>
+</div>
+
+<nav class="pn"><a href="concept_gallery.html">&larr; 7 · Galeria de validação</a><a href="index.html">&#8962; <span data-l="pt">índice</span><span data-l="en">index</span></a><a href="concept_equations.html">9 · Equacionamento &rarr;</a></nav>
+
+</main>
+</div>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.setLang=function(l){document.documentElement.dataset.lang=l;
+    document.querySelectorAll('nav.toc .lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')===l);});
+    if(window._cwRefresh)window._cwRefresh(); if(window.veRedraw)window.veRedraw();};
+  setLang(document.documentElement.dataset.lang||'pt');
+  if(!reduce){
+    var bar=document.createElement('div');bar.className='gprog';document.body.appendChild(bar);
+    function pg(){var hh=document.documentElement.scrollHeight-innerHeight;bar.style.width=(hh>0?scrollY/hh*100:0)+'%';}
+    addEventListener('scroll',pg,{passive:true});addEventListener('resize',pg);pg();
+    var vh=innerHeight||800;
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.panel,.widget').forEach(function(el){if(el.getBoundingClientRect().top>vh*0.9){el.classList.add('reveal');io.observe(el);}});
+  }
+  var links={};document.querySelectorAll('nav.toc a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var aio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var a=links[e.target.id];
+    if(a){for(var k in links)links[k].classList.remove('active');a.classList.add('active');}}});},{rootMargin:'-30% 0px -62% 0px'});
+  Object.keys(links).forEach(function(id){var el=document.getElementById(id);if(el)aio.observe(el);});
+})();
+</script>
+</body>
+</html>

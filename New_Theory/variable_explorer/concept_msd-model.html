@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt" data-lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O modelo massa-mola-amortecedorThe mass-spring-damper model — BAS V2</title>
+<style>
+:root{
+  --bg:#eef0f3; --panel:#ffffff; --ink:#161a20; --muted:#5b6675; --line:#d3d8e0;
+  --accent:#2563eb; --accent2:#e11d48; --ghost:#9aa4b2; --ok:#0f9d58; --warn:#c2410c;
+  --code-bg:#f3f5f8; --side:#f7f8fa; --side-w:300px;
+}
+:root[data-theme="dark"]{
+  --bg:#12151b; --panel:#1a1f27; --ink:#e7ebf0; --muted:#93a0b0; --line:#2b323d;
+  --accent:#5b9bff; --accent2:#ff6b8b; --ghost:#4a5563; --ok:#39d98a; --warn:#ffa657;
+  --code-bg:#20262f; --side:#151a21;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,.mono{font-family:'Cascadia Code','Consolas',ui-monospace,monospace}
+
+/* ---- sidebar (sumario tipo help classico) ---- */
+.side{position:fixed;top:0;left:0;bottom:0;width:var(--side-w);overflow-y:auto;
+  background:var(--side);border-right:1px solid var(--line);z-index:20}
+.side-head{position:sticky;top:0;background:var(--side);padding:14px 16px 12px;
+  border-bottom:1px solid var(--line);z-index:2}
+.side-head .home{font-weight:700;font-size:.92rem;display:block;color:var(--ink)}
+.side-head .home small{display:block;color:var(--muted);font-weight:400;font-size:.72rem;margin-top:2px}
+.side-head .toggles{margin:10px 0 8px}
+.toggles button{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:5px 10px;font-size:.78rem;cursor:pointer;margin-right:6px}
+.toggles button:hover{border-color:var(--accent)}
+.filter{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:7px;
+  background:var(--bg);color:var(--ink);font-family:inherit;font-size:.83rem}
+.tiers{display:flex;flex-wrap:wrap;gap:3px 12px;margin-top:9px;font-size:.72rem}
+.tiers label{display:flex;align-items:center;gap:4px;color:var(--muted);cursor:pointer}
+.tiers input{accent-color:var(--accent);margin:0;cursor:pointer}
+.toc{padding:6px 0 60px}
+.toc .grp{padding:12px 16px 3px;font-size:.68rem;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--muted);font-weight:700}
+.toc a.tocitem{display:flex;justify-content:space-between;gap:8px;align-items:baseline;
+  padding:4px 14px 4px 18px;font-family:'Cascadia Code',monospace;font-size:.8rem;
+  color:var(--ink);border-left:3px solid transparent}
+.toc a.tocitem:hover{background:var(--bg);text-decoration:none}
+.toc a.tocitem.current{border-left-color:var(--accent);color:var(--accent);
+  background:var(--bg);font-weight:600}
+.toc a.tocitem .dot{font-size:.6rem;opacity:.6}
+.toc a.tocitem .dot.physical{color:var(--accent)}
+.toc a.tocitem .dot.form{color:var(--warn)}
+.toc a.tocitem .dot.mode{color:var(--ok)}
+.toc a.tocitem .dot.numerical{color:var(--muted)}
+
+/* ---- content ---- */
+.main{margin-left:var(--side-w);padding:26px 34px 90px;max-width:940px}
+.crumbs{font-size:.82rem;color:var(--muted);margin-bottom:2px}
+h1.name{font-family:'Cascadia Code','Consolas',monospace;font-size:1.95rem;margin:.2rem 0 .2rem}
+.sub{color:var(--muted);font-size:.95rem;margin-bottom:.6rem}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:.4rem 0 1rem}
+.badge{font-size:.74rem;padding:3px 9px;border-radius:20px;border:1px solid var(--line);
+  background:var(--panel);color:var(--muted)}
+.badge.cat-physical{border-color:var(--accent);color:var(--accent)}
+.badge.cat-form{border-color:var(--warn);color:var(--warn)}
+.badge.cat-mode{border-color:var(--ok);color:var(--ok)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;margin:14px 0}
+.panel p{margin:.4rem 0}
+.plotwrap{position:relative}
+canvas{width:100%;height:auto;display:block}
+.ctl{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.ctl input[type=range]{flex:1;min-width:220px;accent-color:var(--accent)}
+.ctl select{background:var(--code-bg);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:6px 10px;font-family:inherit}
+.readout{font-family:'Cascadia Code',monospace;font-size:.95rem}
+.readout .v{color:var(--accent);font-weight:600}
+.readout .f{color:var(--accent2);font-weight:600}
+.readout .w{color:var(--warn);font-weight:600}
+.legend .kdash{display:inline-block;width:22px;height:0;border-top:2px dashed var(--muted);vertical-align:middle;margin-right:5px}
+.prov{font-size:.82rem;margin-top:8px;color:var(--muted)}
+.prov.out{color:var(--warn);font-weight:600}
+.effect{font-family:'Cascadia Code',monospace;font-size:.82rem;margin-top:8px;color:var(--accent)}
+.effect.weak{color:var(--muted)}
+h2.sec{font-size:1.05rem;margin:0 0 .5rem;letter-spacing:.02em}
+.eq{background:var(--code-bg);border:1px solid var(--line);border-radius:8px;
+  padding:12px 14px;font-family:'Cascadia Code',monospace;font-size:.92rem;overflow-x:auto;
+  white-space:pre;line-height:1.5;margin:.5rem 0}
+ul.refs{margin:.3rem 0 0;padding-left:1.1rem}
+ul.refs li{margin:.25rem 0;font-size:.9rem}
+ul.refs li.refhead{list-style:none;margin:14px 0 4px -1.1rem;color:var(--muted);
+  font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+ul.refs .src{color:var(--muted);font-size:.82rem}
+.related a{display:inline-block;margin-right:10px;font-family:'Cascadia Code',monospace;font-size:.85rem}
+nav.pn{display:flex;justify-content:space-between;margin-top:24px;font-size:.9rem}
+.note{background:var(--code-bg);border-left:3px solid var(--warn);padding:8px 12px;
+  border-radius:0 6px 6px 0;font-size:.88rem;color:var(--muted);margin:.6rem 0}
+.intro{color:var(--muted);max-width:74ch}
+.legend{display:flex;gap:16px;font-size:.8rem;color:var(--muted);margin-top:6px;flex-wrap:wrap}
+.legend .k{display:inline-block;width:22px;height:0;border-top-width:3px;border-top-style:solid;vertical-align:middle;margin-right:5px}
+[data-lang="pt"] [data-l="en"]{display:none}
+[data-lang="en"] [data-l="pt"]{display:none}
+
+/* ---- responsivo: sidebar recolhivel ---- */
+.menu-btn{display:none;position:fixed;top:10px;left:10px;z-index:40;
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;
+  padding:6px 11px;font-size:1rem;cursor:pointer;color:var(--ink)}
+@media(max-width:900px){
+  .side{transform:translateX(-100%);transition:transform .2s;box-shadow:0 0 30px rgba(0,0,0,.3)}
+  body.nav-open .side{transform:none}
+  .main{margin-left:0;padding:56px 16px 80px}
+  .menu-btn{display:inline-block}
+}
+
+/* ---- animações & interatividade ---- */
+@keyframes ve-pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.ve-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  box-shadow:0 0 8px var(--accent);transition:width .08s linear}
+h1.name{animation:ve-pop .5s cubic-bezier(.2,.7,.2,1) both}
+.reveal{opacity:0;transform:translateY(16px)}
+.reveal.in{opacity:1;transform:none;
+  transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.panel,.badge,.trail,.gal-card,.related a,.toc a.tocitem,.toggles button,
+.menu-btn,nav.pn a{transition:transform .18s ease,box-shadow .18s ease,
+  border-color .18s ease,background .18s ease,color .15s ease}
+.trail:hover,.gal-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.16)}
+.toc a.tocitem:hover{transform:translateX(3px)}
+.related a:hover,nav.pn a:hover{transform:translateY(-1px)}
+.toggles button:active,.menu-btn:active{transform:scale(.94)}
+.plotwrap canvas,.cw canvas{cursor:crosshair}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}
+  h1.name{animation:none}
+  .ve-progress{display:none}
+  .trail:hover,.gal-card:hover,.toc a.tocitem:hover,.related a:hover,nav.pn a:hover{transform:none}
+}
+
+.cw{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0}
+.cw canvas{width:100%;height:auto;display:block}
+.cw-ctrl{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px;align-items:center}
+.cw-ctrl input[type=range]{flex:1;min-width:200px;accent-color:var(--accent)}
+.cw-ctrl select{background:var(--code-bg);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:5px 9px;font-family:inherit}
+.cw-leg{display:flex;align-items:center;gap:5px;font-size:.8rem;color:var(--muted);cursor:pointer}
+.cw-leg .k{display:inline-block;width:16px;height:10px;border:1px solid;border-radius:2px}
+.legend .kd{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:middle;margin-right:5px}
+.cw-note{font-size:.85rem;color:var(--muted);margin-top:10px;line-height:1.5}
+.bars{margin-top:4px}
+.bar-row{display:flex;align-items:center;gap:10px;margin:6px 0}
+.bar-lab{flex:0 0 40%;font-size:.85rem}
+.bar-track{flex:1;height:14px;background:var(--code-bg);border-radius:7px;overflow:hidden}
+.bar-fill{display:block;height:100%;border-radius:7px}
+.bar-val{flex:0 0 auto;font-family:'Cascadia Code',monospace;font-size:.82rem;color:var(--muted)}
+.bar-total{margin-top:8px;font-family:'Cascadia Code',monospace;font-size:.85rem;color:var(--ink)}
+svg.schema{width:100%;height:auto;max-width:640px;display:block;margin:6px auto}
+svg.schema text{fill:var(--ink);font-family:'Segoe UI',sans-serif}
+svg.schema .lab{fill:var(--muted);font-size:12px}
+svg.schema .box{fill:var(--code-bg);stroke:var(--line)}
+svg.schema .hot{cursor:default}
+svg.schema .hot:hover .box{stroke:var(--accent);stroke-width:2}
+svg.schema .node{fill:var(--accent)}
+svg.schema .edge{stroke:var(--accent);fill:none;stroke-width:2;marker-end:url(#arrow)}
+svg.schema .edge-lab{fill:var(--muted);font-size:11px}
+svg.schema .cpl{fill:var(--accent);fill-opacity:.18;stroke:var(--accent);stroke-width:1.6}
+svg.schema .cplt{fill:var(--accent);font-weight:700}
+svg.schema .zero{fill:var(--ghost)}
+svg.schema .diag{fill:var(--code-bg);stroke:var(--line)}
+svg.schema .fill{fill:var(--accent);fill-opacity:.08;stroke:var(--accent);stroke-opacity:.4}
+svg.schema .dash{stroke:var(--muted);stroke-dasharray:4 4;fill:none}
+svg.schema .brk{stroke:var(--muted);stroke-width:2;fill:none}
+.gal-summary{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:8px 0}
+.gal-stat{font-size:.9rem;color:var(--muted)}
+.gal-stat b{color:var(--ink);font-size:1.05rem}
+.gal-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.gal-flt{cursor:pointer;font-size:.82rem;padding:4px 11px;border:1px solid var(--line);border-radius:14px;color:var(--muted)}
+.gal-flt[data-on]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.gal-only{font-size:.82rem;color:var(--muted);margin-left:auto;display:flex;align-items:center;gap:5px}
+.gal-src{margin:18px 0}
+.gal-srch{font-size:1.05rem;margin:0 0 2px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.gal-srcn{font-size:.8rem;color:var(--muted);font-weight:400}
+.gal-blurb{font-size:.82rem;color:var(--muted);margin:2px 0 8px}
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.gal-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:0}
+.gal-cap{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:.8rem}
+.gal-nm{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gal-badge{flex:0 0 auto;font-family:'Cascadia Code',monospace;font-size:.72rem;padding:1px 6px;border-radius:8px;border:1px solid currentColor;background:transparent}
+.gal-badge.ok{color:var(--ok)}
+.gal-badge.mid{color:var(--accent2)}
+.gal-badge.hi{color:var(--warn)}
+.gal-cv{width:100%;height:auto;display:block;margin:4px 0}
+.gal-cond{font-size:.72rem;color:var(--muted);font-family:'Cascadia Code',monospace}
+.gal-cav{font-size:.72rem;color:var(--warn);margin-top:3px;line-height:1.35}
+.gloss-tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+.gloss-tbl th,.gloss-tbl td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.gloss-tbl th{color:var(--muted);font-weight:600;font-size:.82rem;text-transform:uppercase;letter-spacing:.03em}
+.gloss-tbl td.sym{font-family:'Cascadia Code',monospace;color:var(--accent);white-space:nowrap}
+.gloss-tbl td.unit{font-family:'Cascadia Code',monospace;color:var(--muted);white-space:nowrap}
+.gloss-wrap{overflow-x:auto}
+.an-ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.an-scn{cursor:pointer;font-size:.82rem;padding:4px 11px;border:1px solid var(--line);border-radius:14px;color:var(--muted)}
+.an-scn[data-on]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.an-readout{margin-top:10px;font-family:'Cascadia Code',monospace;font-size:.85rem;color:var(--ink);min-height:1.3em;line-height:1.4}
+.an-readout .an-hint{color:var(--muted);font-family:'Segoe UI',sans-serif}
+#plot_an{cursor:crosshair}
+.study-sub{font-size:1rem;color:var(--muted);font-weight:400}
+.study-figs{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0}
+.study-fig{margin:0;flex:1 1 340px;max-width:100%}
+.study-fig img{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+.study-fig figcaption{font-size:.78rem;color:var(--muted);margin-top:4px;text-align:center}
+.study-figcap{font-size:.82rem;color:var(--muted);margin:6px 0}
+.study-nofig{font-size:.9rem;color:var(--muted)}
+.study-cav{font-size:.85rem;color:var(--warn);margin-top:8px;line-height:1.4}
+.study-meta td:first-child{color:var(--muted);white-space:nowrap;width:32%}
+.gal-report{display:inline-block;margin-top:6px;font-size:.74rem;color:var(--accent);text-decoration:none}
+.gal-report:hover{text-decoration:underline}
+.study-note h3,.study-note h4{color:var(--ink);margin:12px 0 4px;font-size:.9rem}
+.study-note table.wide{width:100%;border-collapse:collapse;font-size:.8rem;margin:6px 0}
+.study-note table.wide th,.study-note table.wide td{border-bottom:1px solid var(--line);padding:4px 8px;text-align:left;vertical-align:top}
+.study-note table.wide th{color:var(--muted);font-weight:600;font-size:.72rem}
+.study-note ul{margin:6px 0;padding-left:20px}
+.study-note li{margin:3px 0;font-size:.9rem}
+.study-note p{font-size:.9rem}
+.study-note code{font-family:'Cascadia Code',monospace;font-size:.85em;background:var(--code-bg);padding:1px 4px;border-radius:4px}
+.foundations-hero{background:linear-gradient(0deg,var(--panel),var(--panel));border:1px solid var(--accent);
+  border-radius:12px;padding:14px 16px;margin:14px 0}
+.trails{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}
+.trail{flex:1 1 200px;display:block;text-decoration:none;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--ink)}
+.trail:hover{border-color:var(--accent)}
+.trail b{display:block;color:var(--accent);margin-bottom:4px}
+.trail .desc{display:block;color:var(--muted);font-size:.85rem;line-height:1.4}
+.repro{font-family:'Cascadia Code',monospace;font-size:.82rem;background:var(--code-bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:6px 0;white-space:pre-wrap;overflow-x:auto}
+.gal-csv{display:inline-block;margin:4px 8px 0 0;font-size:.74rem;color:var(--accent);text-decoration:none}
+.gal-csv:hover{text-decoration:underline}
+
+/* ===== chrome do tutorial (sobrepõe o explorador) ===== */
+:root{
+  --bg:#15161b; --panel:#1e1f27; --ink:#cdd6f4; --muted:#a6adc8; --line:#313244;
+  --accent:#4aa3e0; --accent2:#f0868b; --ghost:#454a5a; --code-bg:#232530;
+  --ok:#a6e3a1; --warn:#e5c07b; --side:#1a1b22; --side-w:274px;
+  --bg2:#1a1b22; --line2:#3a3d4d;
+  --disp:'Bahnschrift','DIN Alternate','Segoe UI',system-ui,sans-serif;
+  --mono:'Consolas','Cascadia Code',monospace;
+}
+body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,sans-serif}
+.wrap{display:grid;grid-template-columns:var(--side-w) minmax(0,1fr);max-width:1500px;margin:0 auto}
+nav.toc{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:22px 15px 46px;border-right:1px solid var(--line);background:var(--side)}
+nav.toc .brand{font-family:var(--disp);font-weight:700;letter-spacing:.4px;font-size:15px;color:#fff;line-height:1.2}
+nav.toc .brand span{display:block;font-size:10.5px;font-weight:600;color:var(--accent);letter-spacing:1.4px;margin-top:3px}
+nav.toc .lang{display:flex;gap:6px;margin:14px 4px 4px}
+nav.toc .lang button{flex:1;background:var(--panel);border:1px solid var(--line);color:var(--muted);border-radius:7px;padding:5px;font-size:12px;cursor:pointer;font-family:var(--mono);transition:all .15s}
+nav.toc .lang button.on{background:var(--accent);color:#08121c;border-color:var(--accent);font-weight:700}
+nav.toc .sep{margin:16px 6px 6px;font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+nav.toc a{display:block;color:var(--muted);padding:5px 9px;border-radius:6px;font-size:13px;border-left:2px solid transparent;transition:transform .15s ease,background .15s,color .15s;text-decoration:none}
+nav.toc a:hover{background:var(--panel);color:var(--ink);transform:translateX(2px)}
+nav.toc a.active{background:var(--panel);color:#fff;border-left-color:var(--accent)}
+nav.toc a.cur{color:#fff;font-weight:600}
+main{margin:0;padding:0 clamp(18px,3.5vw,54px) 90px;min-width:0;max-width:1120px}
+header.hero{margin:0 calc(-1*clamp(18px,3.5vw,54px)) 26px;padding:56px clamp(18px,3.5vw,54px) 34px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;
+  background:radial-gradient(1100px 320px at 18% -20%, #24344d66, transparent),radial-gradient(820px 300px at 92% -10%, #2c2140aa, transparent), var(--bg2)}
+header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;opacity:.09}
+header.hero>*{position:relative}
+header.hero .kicker{font-family:var(--mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--accent)}
+header.hero h1{font-family:var(--disp);font-weight:700;letter-spacing:.4px;font-size:clamp(28px,4.4vw,46px);margin:8px 0 10px;color:#fff;line-height:1.03}
+header.hero .lead{max-width:74ch;color:var(--muted);font-size:15.5px;margin:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:18px 0}
+h2.sec{font-family:var(--disp);font-weight:700;font-size:19px;color:#fff;scroll-margin-top:16px}
+.eq{background:linear-gradient(180deg,#262832,var(--code-bg));border:1px solid var(--line);
+  border-left:3px solid var(--accent);border-radius:10px;padding:12px 20px;margin:16px 0;
+  color:#eaf0fc;box-shadow:0 3px 14px rgba(0,0,0,.28)}
+.eq-line{display:flex;align-items:baseline;gap:6px 18px;flex-wrap:wrap;margin:9px 0;line-height:1.55}
+.eq-line math{font-size:1.32rem;color:#eef3ff}
+.eq-raw{font-family:var(--mono);white-space:pre;overflow-x:auto;font-size:1.02rem;color:#eaf0fc}
+.eq .eq-cmt{color:var(--muted);font-family:'Segoe UI',system-ui,sans-serif;font-style:italic;font-size:.82em}
+math{font-family:'Cambria Math','STIX Two Math','Latin Modern Math','Times New Roman',serif}
+code{background:var(--code-bg);border:1px solid var(--line);color:#dfe6f5}
+/* animações */
+@keyframes ve-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.gprog{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;background:linear-gradient(90deg,var(--accent),#cba6f7);box-shadow:0 0 10px var(--accent);transition:width .08s linear}
+.reveal{opacity:0;transform:translateY(18px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+header.hero .kicker{animation:ve-rise .7s cubic-bezier(.2,.7,.2,1) both}
+header.hero h1{animation:ve-rise .7s .08s cubic-bezier(.2,.7,.2,1) both}
+header.hero .lead{animation:ve-rise .7s .16s cubic-bezier(.2,.7,.2,1) both}
+.cw canvas,.plotwrap canvas,#plot_an{cursor:crosshair}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}nav.toc{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}}
+@media(prefers-reduced-motion:reduce){.reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}header.hero .kicker,header.hero h1,header.hero .lead{animation:none}.gprog{display:none}nav.toc a:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc"><div class="brand">Bolt Analysis Studio<span>V2 · FUNDAMENTOS</span></div><div class="lang"><button data-l="pt" onclick="setLang('pt')">PT</button><button data-l="en" onclick="setLang('en')">EN</button></div><div class="sep"><span data-l="pt">Navegação</span><span data-l="en">Navigation</span></div><a href="index.html">← <span data-l="pt">Explorador</span><span data-l="en">Explorer</span></a><div class="sep"><span data-l="pt">Nesta página</span><span data-l="en">On this page</span></div><a href="#s0"><span data-l="pt">Equação de movimento</span><span data-l="en">Equation of motion</span></a><a href="#s1"><span data-l="pt">A cadeia física da junta</span><span data-l="en">The joint's physical chain</span></a><a href="#s2"><span data-l="pt">Rigidez dinâmica [K(s)] e a redução quase-estática</span>
+<span data-l="en">Dynamic stiffness [K(s)] and the quasi-static reduction</span></a><div class="sep"><span data-l="pt">Fundamentos</span><span data-l="en">Foundations</span></div><a href="concept_manual.html"><span data-l="pt">Manual do BAS V2 (3 volumes)</span><span data-l="en">BAS V2 Manual (3 volumes)</span></a><a href="concept_usage.html"><span data-l="pt">Guia de uso do programa</span><span data-l="en">How to use the program</span></a><a href="concept_not-a-fit.html"><span data-l="pt">1 · Não é um fit</span><span data-l="en">1 · Not a fit</span></a><a href="concept_msd-model.html" class="cur"><span data-l="pt">2 · Modelo MSD</span><span data-l="en">2 · MSD model</span></a><a href="concept_mechanisms.html"><span data-l="pt">3 · Estado + mecanismos</span><span data-l="en">3 · State + mechanisms</span></a><a href="concept_coupling.html"><span data-l="pt">4 · Acoplamento</span><span data-l="en">4 · Coupling</span></a><a href="concept_energy.html"><span data-l="pt">5 · Energia</span><span data-l="en">5 · Energy</span></a><a href="concept_methodology.html"><span data-l="pt">6 · Metodologia</span><span data-l="en">6 · Methodology</span></a><a href="concept_coverage.html"><span data-l="pt">Cobertura & limitações</span><span data-l="en">Coverage & limits</span></a><a href="concept_gallery.html"><span data-l="pt">7 · Galeria de validação</span><span data-l="en">7 · Validation gallery</span></a><a href="concept_review.html"><span data-l="pt">8 · Revisão da literatura</span><span data-l="en">8 · Literature review</span></a><a href="concept_equations.html"><span data-l="pt">9 · Equacionamento</span><span data-l="en">9 · Equations</span></a><a href="concept_references.html"><span data-l="pt">10 · Referências</span><span data-l="en">10 · References</span></a><a href="concept_anatomy.html"><span data-l="pt">11 · Anatomia da curva</span><span data-l="en">11 · Anatomy of the curve</span></a><a href="concept_glossary.html"><span data-l="pt">12 · Glossário</span><span data-l="en">12 · Glossary</span></a></nav>
+<main>
+<header class="hero"><div class="kicker"><span data-l="pt">Fundamentos</span><span data-l="en">Foundations</span></div><h1><span data-l="pt">O modelo massa-mola-amortecedor</span><span data-l="en">The mass-spring-damper model</span></h1></header>
+
+
+<div class="panel">
+<h2 class="sec" id="s0"><span data-l="pt">Equação de movimento</span><span data-l="en">Equation of motion</span></h2>
+<p><span data-l="pt">A junta é um sistema de <b>massa-mola-amortecedor</b> de 3 graus de liberdade
+(x, y, &theta;). A cada ciclo o modelo resolve:</span>
+<span data-l="en">The joint is a 3-DOF <b>mass-spring-damper</b> system (x, y, &theta;). Each cycle the
+model solves:</span></p>
+<div class="eq"><div class="eq-line"><math display="block"><mo>[</mo><mrow><mi>M</mi></mrow><mo>]</mo><mo>·</mo><mi>x</mi><mo>″</mo><mo>+</mo><mo>[</mo><mrow><mi>C</mi><mo>(</mo><mrow><mi>s</mi></mrow><mo>)</mo></mrow><mo>]</mo><mo>·</mo><mi>x</mi><mo>′</mo><mo>+</mo><mo>[</mo><mrow><mi>K</mi><mo>(</mo><mrow><mi>s</mi></mrow><mo>)</mo></mrow><mo>]</mo><mo>·</mo><mi>x</mi><mo>=</mo><mi>F</mi><mo>(</mo><mrow><mi>t</mi></mrow><mo>)</mo></math></div></div>
+<p class="intro"><span data-l="pt">x&Prime; = aceleração, x&prime; = velocidade, x = deslocamento.
+[M] massa efetiva; [C] amortecimento de Rayleigh (&alpha;[M]+&beta;[K]); [K(s)] rigidez;
+F(t) a carga cíclica (transversal e/ou axial). Os graus x, y são translações; &theta; é a rotação
+da porca (o que afrouxa).</span>
+<span data-l="en">x&Prime; = acceleration, x&prime; = velocity, x = displacement. [M] effective mass;
+[C] Rayleigh damping (&alpha;[M]+&beta;[K]); [K(s)] stiffness; F(t) the cyclic load (transverse
+and/or axial). The x, y DOFs are translations; &theta; is the nut rotation (what loosens).</span></p>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s1"><span data-l="pt">A cadeia física da junta</span><span data-l="en">The joint's physical chain</span></h2>
+<svg class="schema" viewBox="0 0 660 210" role="img" aria-label="MSD chain">
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L6,3 L0,6 Z" fill="var(--accent)"/></marker></defs>
+  <!-- ground -->
+  <line x1="26" y1="20" x2="26" y2="150" stroke="var(--muted)" stroke-width="2"/>
+  <line x1="14" y1="30" x2="26" y2="18" stroke="var(--muted)"/><line x1="14" y1="55" x2="26" y2="43" stroke="var(--muted)"/>
+  <line x1="14" y1="80" x2="26" y2="68" stroke="var(--muted)"/><line x1="14" y1="105" x2="26" y2="93" stroke="var(--muted)"/>
+  <line x1="14" y1="130" x2="26" y2="118" stroke="var(--muted)"/>
+  <!-- spring k_b (zigzag) -->
+  <polyline points="26,60 60,60 72,44 96,76 120,44 144,76 168,44 186,60 210,60"
+    fill="none" stroke="var(--ink)" stroke-width="2"/>
+  <text class="lab" x="105" y="34" text-anchor="middle">k_b = E&middot;A_s / L</text>
+  <!-- mass block -->
+  <rect class="box" x="210" y="36" width="86" height="48" rx="5"/>
+  <text x="253" y="65" text-anchor="middle" font-size="13">massa m</text>
+  <!-- damper -->
+  <line x1="60" y1="115" x2="120" y2="115" stroke="var(--ink)" stroke-width="2"/>
+  <rect class="box" x="120" y="104" width="34" height="22"/>
+  <line x1="137" y1="115" x2="210" y2="115" stroke="var(--ink)" stroke-width="2"/>
+  <line x1="210" y1="84" x2="210" y2="126" stroke="var(--ink)" stroke-width="2"/>
+  <line x1="26" y1="84" x2="26" y2="126" stroke="var(--muted)"/>
+  <text class="lab" x="120" y="146" text-anchor="middle">[C] amortecimento / damping</text>
+  <!-- force -->
+  <line class="edge" x1="360" y1="60" x2="300" y2="60"/>
+  <text x="368" y="64" font-size="13">F(t)</text>
+  <!-- chain mapping -->
+  <text class="lab" x="26" y="176" >GROUND</text>
+  <text class="lab" x="120" y="176" text-anchor="middle">parafuso k_b / bolt</text>
+  <text class="lab" x="253" y="176" text-anchor="middle">rosca+helice / thread+helix</text>
+  <text class="lab" x="430" y="176" text-anchor="middle">apoio &mu;/wear &middot; membro</text>
+  <text class="lab" x="330" y="198" text-anchor="middle">a tribologia (atrito, wear) vive nos CONTATOS &mdash; tribology lives in the CONTACTS</text>
+</svg>
+<p><span data-l="pt">A cadeia: <code>GROUND &mdash; parafuso (mola k_b) &mdash; rosca (helice
+&lambda;, atrito de filete) &mdash; apoio (&mu;, wear) &mdash; membro(s)</code>. O parafuso é a mola
+principal (<code>k_b = E&middot;A_s/L_eff</code>); a hélice (<code>&beta; = arctan(p/&pi;d&#8322;)</code>)
+é o ÚNICO acoplamento entre o eixo axial e a rotação.</span>
+<span data-l="en">The chain: <code>GROUND &mdash; bolt (spring k_b) &mdash; thread (helix &lambda;,
+flank friction) &mdash; bearing (&mu;, wear) &mdash; member(s)</code>. The bolt is the main spring
+(<code>k_b = E&middot;A_s/L_eff</code>); the helix (<code>&beta; = arctan(p/&pi;d&#8322;)</code>) is
+the ONLY coupling between the axial axis and rotation.</span></p>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s2"><span data-l="pt">Rigidez dinâmica [K(s)] e a redução quase-estática</span>
+<span data-l="en">Dynamic stiffness [K(s)] and the quasi-static reduction</span></h2>
+<p><span data-l="pt">A rigidez <b>não é constante</b>: <code>[K(s)]</code> é reavaliada a cada ciclo
+(softening de Greenwood-Williamson &mdash; a rigidez de contato cai conforme a pré-carga F0 cai).
+O <code>(s)</code> é o <b>vetor de estado lento</b> (próxima página). Dentro de um ciclo o problema
+é dinâmico rápido; entre ciclos, o modelo é <b>quase-estático</b>: resolve o slip e a perda de
+pré-carga por ciclo e integra o estado lento por milhares de ciclos.</span>
+<span data-l="en">Stiffness is <b>not constant</b>: <code>[K(s)]</code> is re-evaluated each cycle
+(Greenwood-Williamson softening &mdash; contact stiffness falls as preload F0 falls). The
+<code>(s)</code> is the <b>slow-state vector</b> (next page). Within a cycle the problem is fast and
+dynamic; between cycles the model is <b>quasi-static</b>: it resolves the per-cycle slip and preload
+loss and integrates the slow state over thousands of cycles.</span></p>
+<p class="intro"><span data-l="pt">É por isso que variáveis puramente inerciais (<code>m_x</code>,
+<code>rayleigh_*</code>) quase não movem a curva de afrouxamento: a evolução lenta é ditada pelos
+mecanismos de perda, não pelo transiente inercial de um ciclo.</span>
+<span data-l="en">That is why purely inertial variables (<code>m_x</code>, <code>rayleigh_*</code>)
+barely move the loosening curve: the slow evolution is set by the loss mechanisms, not by a single
+cycle's inertial transient.</span></p>
+</div>
+
+<nav class="pn"><a href="concept_not-a-fit.html">&larr; 1 · Não é um fit</a><a href="index.html">&#8962; <span data-l="pt">índice</span><span data-l="en">index</span></a><a href="concept_mechanisms.html">3 · Estado + mecanismos &rarr;</a></nav>
+
+</main>
+</div>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.setLang=function(l){document.documentElement.dataset.lang=l;
+    document.querySelectorAll('nav.toc .lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')===l);});
+    if(window._cwRefresh)window._cwRefresh(); if(window.veRedraw)window.veRedraw();};
+  setLang(document.documentElement.dataset.lang||'pt');
+  if(!reduce){
+    var bar=document.createElement('div');bar.className='gprog';document.body.appendChild(bar);
+    function pg(){var hh=document.documentElement.scrollHeight-innerHeight;bar.style.width=(hh>0?scrollY/hh*100:0)+'%';}
+    addEventListener('scroll',pg,{passive:true});addEventListener('resize',pg);pg();
+    var vh=innerHeight||800;
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.panel,.widget').forEach(function(el){if(el.getBoundingClientRect().top>vh*0.9){el.classList.add('reveal');io.observe(el);}});
+  }
+  var links={};document.querySelectorAll('nav.toc a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var aio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var a=links[e.target.id];
+    if(a){for(var k in links)links[k].classList.remove('active');a.classList.add('active');}}});},{rootMargin:'-30% 0px -62% 0px'});
+  Object.keys(links).forEach(function(id){var el=document.getElementById(id);if(el)aio.observe(el);});
+})();
+</script>
+</body>
+</html>

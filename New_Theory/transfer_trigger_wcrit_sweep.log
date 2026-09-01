@@ -1,0 +1,13 @@
+46 casos. Pre-reg: median<=0.19, p90<=0.645, collapse-on>=75%, plateau-off>=75%
+baselines: dano-OFF med 0.2281 / p90 0.6397 ; blanket-ON med 0.1825 / p90 0.6696
+  W_crit  median     p90  coll-on  plat-off  PASS?
+   1e+04  0.2161  0.6517     23%      43%     no
+   3e+04  0.2260  0.6462     23%      71%     no
+   1e+05  0.2274  0.6399      6%     100%     no
+   3e+05  0.2281  0.6397      3%     100%     no
+   1e+06  0.2281  0.6397      0%     100%     no
+   3e+06  0.2281  0.6397      0%     100%     no
+   1e+07  0.2281  0.6397      0%     100%     no
+
+BEST W_crit=1e+05: median=0.2274 p90=0.6399 collapse-on=6% (31) plateau-off=100% (7)
+VEREDICTO (pre-reg): NAO ATINGE os thresholds (achado AS IS)

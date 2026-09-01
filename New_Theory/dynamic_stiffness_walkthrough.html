@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dynamic Stiffness Analyzer — walkthrough teórico + simulação</title>
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
+<style>
+  :root {
+    --bg: #1e1e1e; --panel: #252526; --panel2: #2d2d30;
+    --border: #3e3e42; --accent: #007acc;
+    --text: #d4d4d4; --hint: #888; --label: #9e9e9e;
+    --ok: #6cd486; --warn: #d4b13a; --bad: #c44;
+    --joint: #5cb27c; --bolt: #4a90e2; --thread: #c576c5;
+    --F0: #ffb74d; --diss: #e08c5a;
+  }
+  body {
+    margin: 0; padding: 16px;
+    background: var(--bg); color: var(--text);
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    font-size: 13px; line-height: 1.5;
+    max-width: 1400px; margin-left: auto; margin-right: auto;
+  }
+  h1 { font-size: 22px; margin: 0 0 4px; color: #fff; }
+  h2 { font-size: 16px; margin: 24px 0 8px; color: #fff;
+       padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 13px; margin: 12px 0 6px; color: var(--label);
+       text-transform: uppercase; letter-spacing: 0.5px; }
+  .subtitle { color: var(--hint); margin: 0 0 16px; font-size: 12px; }
+  p { margin: 6px 0 10px; }
+  .grid { display: grid; gap: 12px; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .panel {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 4px; padding: 12px;
+  }
+  .row {
+    display: grid; grid-template-columns: 1.2fr 2fr 70px;
+    gap: 6px; align-items: center; margin: 4px 0;
+  }
+  .row label { color: var(--hint); font-size: 11px; }
+  .row input[type=range] { width: 100%; accent-color: var(--accent); }
+  .row .val { color: #fff; font-family: 'JetBrains Mono', monospace;
+              font-size: 11px; text-align: right; }
+  .row select { background: var(--bg); border: 1px solid var(--border);
+                color: #fff; padding: 2px 6px; font-size: 11px; }
+  .equation {
+    font-family: 'JetBrains Mono', Consolas, monospace; font-size: 13px;
+    color: #cfcfcf;
+    background: var(--panel2);
+    padding: 10px 14px; border-left: 3px solid var(--accent);
+    margin: 8px 0;
+    overflow-x: auto; white-space: pre;
+  }
+  .equation.highlight { border-left-color: var(--thread); color: #f0d4f5; }
+  .matrix-display {
+    font-family: 'JetBrains Mono', Consolas, monospace; font-size: 11px;
+    background: #181818;
+    padding: 8px 12px; border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow-x: auto; white-space: pre;
+    color: #d4d4d4;
+  }
+  .matrix-display .lbl { color: var(--hint); }
+  .derived {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px;
+    color: var(--hint); font-size: 11px;
+  }
+  .derived span.v {
+    color: #fff; font-family: 'JetBrains Mono', monospace;
+  }
+  .plot-area .title {
+    color: var(--label); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 0 0 6px;
+  }
+  .plot-area > div:not(.title) { height: 280px; }
+  .energy-bar {
+    display: flex; height: 32px; border: 1px solid var(--border);
+    border-radius: 2px; overflow: hidden;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    align-items: center;
+  }
+  .energy-bar > div {
+    text-align: center; padding: 0 4px;
+    overflow: hidden; white-space: nowrap;
+  }
+  .energy-bar .seg-visc { background: #4a4a8a; }
+  .energy-bar .seg-emb  { background: #6c5d2a; }
+  .energy-bar .seg-creep{ background: #6c4a2a; }
+  .energy-bar .seg-fric { background: #4a6c8a; }
+  .energy-bar .seg-loose{ background: #6c2a2a; }
+  .energy-bar .seg-empty{ background: transparent; }
+  .checks {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px;
+    margin: 8px 0;
+  }
+  .checks label { color: var(--text); font-size: 12px; }
+  .checks input { accent-color: var(--accent); margin-right: 6px; }
+  .btn {
+    background: var(--accent); color: #fff; border: 0;
+    padding: 6px 14px; font-size: 12px; cursor: pointer;
+    border-radius: 2px;
+  }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .status-ok   { color: var(--ok); }
+  .status-warn { color: var(--warn); }
+  .status-bad  { color: var(--bad); }
+  code { font-family: 'JetBrains Mono', monospace;
+         background: var(--panel2); padding: 1px 4px; border-radius: 2px;
+         font-size: 12px; }
+  .kbd { color: var(--bolt); font-weight: 600; }
+  .kjt { color: var(--joint); font-weight: 600; }
+  .kth { color: var(--thread); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<h1>Dynamic Stiffness Analyzer — walkthrough</h1>
+<p class="subtitle">Derivação matemática completa do modelo + simulação JavaScript ao vivo. Cada equação tem efeito imediato nos plots; cada slider muda o estado.</p>
+
+<!-- ============================================================ -->
+<!-- PARAMETERS -->
+<!-- ============================================================ -->
+
+<h2>1. Setup — geometria e material</h2>
+
+<div class="grid grid-2">
+  <div class="panel">
+    <h3>Geometria do parafuso</h3>
+    <div class="row">
+      <label>Tamanho</label>
+      <select id="bolt-preset">
+        <option value="M8">M8 × 1.25</option>
+        <option value="M12">M12 × 1.75</option>
+        <option value="M20" selected>M20 × 2.5</option>
+        <option value="UNC34">3/4"-10 UNC</option>
+      </select>
+      <span></span>
+    </div>
+    <div class="equation">k_b = E · A_s / L_eff
+β   = atan(p / (π · d₂))
+helix lead = p / (2π)        ← Fator 2 geométrico</div>
+    <div class="derived" id="geom-derived"></div>
+  </div>
+
+  <div class="panel">
+    <h3>Material e contato</h3>
+    <div class="row">
+      <label>μ (filete & bearing)</label>
+      <input type="range" id="mu" min="0.05" max="0.30" step="0.01" value="0.15">
+      <span class="val" id="mu-v">0.15</span>
+    </div>
+    <div class="row">
+      <label>α (Greenwood-Williamson)</label>
+      <input type="range" id="alpha" min="0.0" max="1.0" step="0.05" value="0.5">
+      <span class="val" id="alpha-v">0.50</span>
+    </div>
+    <div class="row">
+      <label>k_j_init [GN/m]</label>
+      <input type="range" id="kj_init" min="1" max="10" step="0.5" value="4">
+      <span class="val" id="kj_init-v">4.0</span>
+    </div>
+    <div class="equation">k_j_ax(F₀) = k_j_init · (F₀/F_init)^α         ← Greenwood-Williamson
+Φ_eff(F₀) = k_b / (k_b + k_j_ax(F₀))         ← Fator 1 axial</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ANISOTROPY (FATOR 1) -->
+<!-- ============================================================ -->
+
+<h2>2. Fator 1 — rigidez anisotrópica do joint</h2>
+
+<p>A junta tem rigidez direcional: muito alta axialmente (compressão de membros sólidos), muito baixa transversalmente (limitada pela aderência por atrito). Em forma de tensor 3×3:</p>
+
+<div class="equation">[K_joint(s)] =
+    ┌                                              ┐
+    │  k_j_ax(F₀)         0              0          │  ← <span style="color: var(--bolt);">axial: Greenwood-Williamson</span>
+    │       0       k_j_tr(stick/slip)   0          │  ← <span style="color: var(--joint);">transversal: stick → alto, slip → 0</span>
+    │       0              0          k_j_θ(F₀)     │  ← rotacional (Iwan-like)
+    └                                              ┘</div>
+
+<p>Quando carga transversal F_y excede o threshold de atrito (Pai-Hess: <code>F_slip = 0.46·μ·F₀</code>), a entrada k_j_tr "colapsa" e a força equivalente migra pra {F} via reação de atrito.</p>
+
+<!-- ============================================================ -->
+<!-- FATOR 2 -->
+<!-- ============================================================ -->
+
+<h2>3. Fator 2 — acoplamento da hélice (off-diagonal de [K])</h2>
+
+<p>A hélice da rosca cria uma <strong>conexão geométrica</strong> entre o DOF axial x e o DOF rotacional θ:</p>
+
+<div class="equation">K_xθ = K_θx = <span class="kbd">k_b</span> · (p / 2π)         ← off-diagonal (Fator 2)
+       = k_b · lead_per_radian</div>
+
+<p>Componentes da projeção da carga externa sobre a direção do filete:</p>
+
+<div class="equation">c_ax(carga axial)     = sin β  ≈ 0.04         (componente pequena)
+c_tr(carga transv.)   = cos β  ≈ 1.0          (componente quase total)
+Razão                  = cot β ≈ 23 (M20)     (vantagem ~23× transversal)</div>
+
+<!-- ============================================================ -->
+<!-- STATE -->
+<!-- ============================================================ -->
+
+<h2>4. Vetor de estado lento s</h2>
+
+<p>A memória cumulativa da junta entre ciclos. Cada componente tem timescale distinto:</p>
+
+<div class="equation">s = (F₀, δ_emb, δ_creep, δ_wear, θ_loose)
+
+  F₀(N)        — pré-carga residual           [N]
+  δ_emb(N)     — embedding plástico            [m]  (saturating, ~50 ciclos)
+  δ_creep(N)   — creep viscoso log(t)          [m]
+  δ_wear(N)    — desgaste cumulativo           [m]
+  θ_loose(N)   — rotação cumulativa da porca   [rad]</div>
+
+<!-- ============================================================ -->
+<!-- MATRIX LIVE -->
+<!-- ============================================================ -->
+
+<h2>5. Matrizes [M], [K(s)], [C(s)] no estado atual</h2>
+
+<p>Reavaliadas em tempo real conforme você mexe os sliders. DOFs ordenados (x, y, θ):</p>
+
+<div class="grid grid-3">
+  <div class="panel">
+    <h3>[M] (constante)</h3>
+    <div class="matrix-display" id="M-display"></div>
+  </div>
+  <div class="panel">
+    <h3>[K(s)] regime stuck</h3>
+    <div class="matrix-display" id="K-stuck-display"></div>
+  </div>
+  <div class="panel">
+    <h3>[K(s)] regime slip (y, θ)</h3>
+    <div class="matrix-display" id="K-slip-display"></div>
+  </div>
+</div>
+
+<p>Repare que ao trocar pra slip, as entradas <code>K_yy</code> e <code>K_θθ</code> + a off-diagonal <code>K_xθ</code> caem a zero — essas forças passam pra {F} via atrito Coulomb não-linear.</p>
+
+<!-- ============================================================ -->
+<!-- ENERGY -->
+<!-- ============================================================ -->
+
+<h2>6. Energia elástica armazenada U(F₀)</h2>
+
+<p>Com k_j variando com F₀ via Greenwood-Williamson, U(F₀) não é puramente quadrática:</p>
+
+<div class="equation highlight">U_int(F₀) = F₀² / (2·k_b)           ← tração no estojo (quadrática)
+          + F₀^(2−α) · F_init^α / (2·k_j,0)    ← compressão no joint (sub-quadrática)
+
+∂U/∂F₀     = F₀/k_b + (2−α)/2 · F_init^α · F₀^(1−α) / k_j,0
+           = "energia liberada por queda unitária de preload"
+
+Concavidade ↑ conforme F₀ ↓  →  RUNAWAY MATEMÁTICO</div>
+
+<div class="grid grid-2">
+  <div class="panel plot-area">
+    <div class="title">U_internal(F₀) — concavidade visível</div>
+    <div id="plot-Uint"></div>
+  </div>
+  <div class="panel plot-area">
+    <div class="title">∂U/∂F₀ — energia liberada por kN de preload</div>
+    <div id="plot-dUdF0"></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- LOSS MECHANISMS -->
+<!-- ============================================================ -->
+
+<h2>7. Mecanismos de perda (4 paralelos, pluggáveis)</h2>
+
+<div class="checks">
+  <label><input type="checkbox" id="mech-emb" checked> Embedding (plastic asperities)</label>
+  <label><input type="checkbox" id="mech-creep" checked> Creep (viscoelastic, log time)</label>
+  <label><input type="checkbox" id="mech-wear" checked> Wear (Archard, transverse-driven)</label>
+  <label><input type="checkbox" id="mech-loose" checked> Rotational loosening (two-factor)</label>
+</div>
+
+<div class="grid grid-2">
+  <div class="panel">
+    <h3>Embedding</h3>
+    <div class="equation">δ_emb(N) = δ_∞ · (1 − e^(−N/N_emb))
+dδ_emb = (δ_alvo − δ_emb)·(1 − e^(−1/N_emb))
+dF₀     = −k_b · dδ_emb                  ← perda de preload
+dE_emb  = F₀ · dδ_emb                    ← dissipação plástica</div>
+  </div>
+  <div class="panel">
+    <h3>Creep</h3>
+    <div class="equation">δ_creep(t)   = C_creep · F₀ · log(t/t₀ + 1)
+dδ_creep/dN  = C_creep · F₀ · [log(t_n+1) − log(t_(n-1)+1)]
+dF₀          = −k_b · dδ_creep
+dE_creep     = F₀ · dδ_creep             ← viscoso, decaimento log</div>
+  </div>
+  <div class="panel">
+    <h3>Wear (Archard)</h3>
+    <div class="equation">Se F_tr > F_slip = 0.46·μ·F₀:
+  slip_amp = (F_tr − F_slip) / k_j_tr
+  d_wear   = K_arch · F₀ · slip_amp / (H · A_contact)
+  dF₀      = −k_b · d_wear
+  dE_wear  = 4 · μ · F₀ · slip_amp       ← hysteresis loop area
+                                          (= W_ext do ciclo!)</div>
+  </div>
+  <div class="panel">
+    <h3>Rotational Loosening (Fator 2 ativo)</h3>
+    <div class="equation">L_ax    = Φ_ax_active · sin β · F_ax  ← Fator 2 axial
+L_tr    = Φ_tr_active · cos β · F_tr  ← Fator 2 transversal
+L_total = √(L_ax² + L_tr²)
+T_loose = L_total · d₂/2
+
+T_resist = μ_thread·F₀·d₂/(2cos α_t) + μ_bearing·F₀·r_eff
+
+slip_frac = max(0, (T_loose − T_resist) / T_loose)
+Δθ        = slip_frac · (T_loose − T_resist) / k_torsional
+dF₀       = −k_b · (p/2π) · Δθ        ← via hélice (Fator 2)
+dE_loose  = T_resist · Δθ              ← atrito no filete</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ENERGY BALANCE -->
+<!-- ============================================================ -->
+
+<h2>8. Balanço energético</h2>
+
+<div class="equation highlight">    W_ext (input)   +   U_released   =   W_diss_total
+    (hysteresis           (energia liberada     (Σ todas as
+    transverso +          do reservatório:      dissipações:
+    thread slip)          F₀ caindo via         visc + emb +
+                          ∂U/∂F₀ · ΔF₀)         creep + frict + loose)
+
+Conservation residual = W_ext + U_released − W_diss_total ≈ 0
+                       (se as taxas dos mecanismos são consistentes com ΔU)</div>
+
+<!-- ============================================================ -->
+<!-- SIMULATION -->
+<!-- ============================================================ -->
+
+<h2>9. Simulação ao vivo</h2>
+
+<div class="grid grid-2">
+  <div class="panel">
+    <h3>Loading</h3>
+    <div class="row">
+      <label>F₀ inicial [kN]</label>
+      <input type="range" id="F0" min="10" max="100" step="2" value="50">
+      <span class="val" id="F0-v">50</span>
+    </div>
+    <div class="row">
+      <label>F_amp por ciclo [kN]</label>
+      <input type="range" id="Famp" min="2" max="60" step="1" value="20">
+      <span class="val" id="Famp-v">20</span>
+    </div>
+    <div class="row">
+      <label>θ load angle [°]</label>
+      <input type="range" id="theta" min="0" max="90" step="1" value="45">
+      <span class="val" id="theta-v">45</span>
+    </div>
+    <div class="row">
+      <label>freq [Hz]</label>
+      <input type="range" id="freq" min="0.5" max="50" step="0.5" value="12.5">
+      <span class="val" id="freq-v">12.5</span>
+    </div>
+    <div class="row">
+      <label>N ciclos total</label>
+      <input type="range" id="N" min="100" max="10000" step="100" value="2000">
+      <span class="val" id="N-v">2000</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Resultado final</h3>
+    <div class="derived" id="sim-derived"></div>
+    <h3 style="margin-top: 12px;">Balanço energético cumulativo</h3>
+    <div class="energy-bar" id="energy-bar"></div>
+    <p style="font-size: 11px; color: var(--hint); margin-top: 8px;">
+      Cor: <span style="color:#a8a8e8;">▮viscoso</span>
+           <span style="color:#d4b14a;">▮embedding</span>
+           <span style="color:#d4944a;">▮creep</span>
+           <span style="color:#7aa8d4;">▮atrito transverso</span>
+           <span style="color:#d44a4a;">▮atrito filete</span>
+    </p>
+  </div>
+</div>
+
+<div class="grid grid-2">
+  <div class="panel plot-area">
+    <div class="title">F₀(N) — decay da pré-carga</div>
+    <div id="plot-F0"></div>
+  </div>
+  <div class="panel plot-area">
+    <div class="title">Φ_eff(N) — razão de rigidez subindo (junta amolece)</div>
+    <div id="plot-Phi"></div>
+  </div>
+</div>
+
+<div class="grid grid-2">
+  <div class="panel plot-area">
+    <div class="title">Energia armazenada U_internal(N)</div>
+    <div id="plot-Uint-time"></div>
+  </div>
+  <div class="panel plot-area">
+    <div class="title">Dissipação por mecanismo (cumulativa)</div>
+    <div id="plot-W-diss"></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- IMPLEMENTATION POINTER -->
+<!-- ============================================================ -->
+
+<h2>10. Implementação Python equivalente</h2>
+
+<p><strong>Disclaimer:</strong> esta simulação JavaScript é <strong>ILUSTRATIVA</strong> — uma porta do módulo Python <code>src/bolt_analysis_studio/numerical/dynamic_stiffness_analyzer.py</code> cuja <em>estrutura</em> (constitutivas, mecanismos, contabilidade de energia) segue o engine, mas cujas <strong>constantes podem divergir do engine canônico</strong> (pós-Estágio-B) e que <strong>não modela surface_damage</strong>. Para números canônicos, use o engine/servidor (<code>bolt_analysis_studio.calibration.server</code> → <code>/simulate</code>), não este explorador.</p>
+
+<p>Para integração futura no BAS V2: as matrizes 3×3 expostas via <code>analyzer.K()</code>, <code>analyzer.M()</code>, <code>analyzer.C()</code> são compatíveis com o paradigma <code>[M]q̈ + [C]q̇ + [K]q = {F}</code> usado no <code>coupled_loosening_analyzer.py</code>. O hook futuro é simples: trocar o dispatch atual <code>_classify_phase_*</code> pela máquina de estado lento desta classe.</p>
+
+<script>
+// ============================================================
+// CONSTANTS
+// ============================================================
+const E_STEEL = 200e9;
+const SLIP_ONSET = 0.46;
+const THREAD_FLANK = Math.PI / 6; // 30°
+
+const BOLTS = {
+  M8:   {d2: 7.19e-3,  p: 1.25e-3, As: 36.6e-6,  L: 0.030, r_b: 6e-3,  A_c: 5e-5},
+  M12:  {d2: 10.86e-3, p: 1.75e-3, As: 84.3e-6,  L: 0.040, r_b: 9e-3,  A_c: 8e-5},
+  M20:  {d2: 18.38e-3, p: 2.50e-3, As: 245e-6,   L: 0.060, r_b: 12e-3, A_c: 1.2e-4},
+  UNC34:{d2: 17.40e-3, p: 2.54e-3, As: 215e-6,   L: 0.050, r_b: 11e-3, A_c: 1.1e-4},
+};
+
+// ============================================================
+// STATE & CONSTITUTIVE
+// ============================================================
+function getGeom() {
+  const b = BOLTS[document.getElementById('bolt-preset').value];
+  return {
+    E: E_STEEL, A_s: b.As, L_eff: b.L, d_2: b.d2, pitch: b.p,
+    r_bearing: b.r_b, A_contact: b.A_c,
+    get k_b() { return this.E * this.A_s / this.L_eff; },
+    get beta() { return Math.atan(this.pitch / (Math.PI * this.d_2)); },
+    get lead() { return this.pitch / (2 * Math.PI); },
+  };
+}
+
+function getMat() {
+  return {
+    mu_thread: +document.getElementById('mu').value,
+    mu_bearing: +document.getElementById('mu').value,
+    K_archard: 1e-4,
+    hardness: 2e9,
+    k_j_init: +document.getElementById('kj_init').value * 1e9,
+    alpha_GW: +document.getElementById('alpha').value,
+    emb_depth: 3e-5,          // engine default 30e-6 (sincronizado 2026-07-09; era 3e-6)
+    N_emb: 50,
+    C_creep: 5e-11,           // engine default 5e-11 (sincronizado 2026-07-09; era 2e-12)
+    t_0: 1.0,
+    rayleigh_alpha: 0.01, rayleigh_beta: 1e-5,
+    m_x: 0.5, m_y: 0.5, I_theta: 1e-5,
+  };
+}
+
+function k_j_ax(state, mat) {
+  if (state.F_0 <= 0 || state.F_0_init <= 0) return 0;
+  const ratio = state.F_0 / state.F_0_init;
+  return mat.k_j_init * Math.pow(ratio, mat.alpha_GW);
+}
+function Phi_eff(state, geom, mat) {
+  const kj = k_j_ax(state, mat);
+  if (state.F_0 <= 0) return 1.0;
+  return geom.k_b / (geom.k_b + kj);
+}
+function F_sep(state, geom, mat) {
+  const Phi = Phi_eff(state, geom, mat);
+  return state.F_0 / Math.max(1 - Phi, 1e-9);
+}
+function F_slip_tr(state, mat) {
+  return SLIP_ONSET * mat.mu_bearing * Math.max(state.F_0, 0);
+}
+function T_resist(state, geom, mat) {
+  const F0 = Math.max(state.F_0, 0);
+  return mat.mu_thread * F0 * geom.d_2 / (2 * Math.cos(THREAD_FLANK))
+       + mat.mu_bearing * F0 * geom.r_bearing;
+}
+function U_internal(state, geom, mat) {
+  if (state.F_0 <= 0) return 0;
+  const kj = k_j_ax(state, mat);
+  const Ub = state.F_0 ** 2 / (2 * geom.k_b);
+  const Uj = kj > 0 ? state.F_0 ** 2 / (2 * kj) : 0;
+  return Ub + Uj;
+}
+
+// ============================================================
+// MATRICES
+// ============================================================
+function M_matrix(mat) {
+  return [[mat.m_x, 0, 0], [0, mat.m_y, 0], [0, 0, mat.I_theta]];
+}
+function K_matrix(state, geom, mat, slipY, slipTheta) {
+  const K = [[0,0,0],[0,0,0],[0,0,0]];
+  const kj_ax_v = k_j_ax(state, mat);
+  K[0][0] = geom.k_b + kj_ax_v;
+  if (!slipY) K[1][1] = mat.k_j_init * 0.3;
+  if (!slipTheta) {
+    K[2][2] = geom.k_b * geom.lead * geom.lead;
+    K[0][2] = geom.k_b * geom.lead;
+    K[2][0] = K[0][2];
+  }
+  return K;
+}
+function C_matrix(state, geom, mat) {
+  const M = M_matrix(mat), K = K_matrix(state, geom, mat, false, false);
+  const C = [[0,0,0],[0,0,0],[0,0,0]];
+  for (let i = 0; i < 3; i++)
+    for (let j = 0; j < 3; j++)
+      C[i][j] = mat.rayleigh_alpha * M[i][j] + mat.rayleigh_beta * K[i][j];
+  return C;
+}
+function formatMatrix(K, divisor=1e6, units="(MN/m)") {
+  let s = `      x          y          θ\n`;
+  ['x','y','θ'].forEach((lbl, i) => {
+    s += lbl + ' │';
+    for (let j = 0; j < 3; j++) {
+      const v = K[i][j] / divisor;
+      s += (v.toExponential(2)).padStart(11);
+    }
+    s += '\n';
+  });
+  s += `\n${units}`;
+  return s;
+}
+
+// ============================================================
+// LOSS MECHANISMS (as functions)
+// ============================================================
+function lossEmbedding(state, geom, mat, F_amp, theta_load, freq, n) {
+  const target = mat.emb_depth;
+  const dd = Math.max(target - state.delta_emb, 0) * (1 - Math.exp(-1 / mat.N_emb));
+  return {dF_0: -geom.k_b * dd, dE: Math.max(state.F_0,0) * dd,
+          ds: {delta_emb: dd}};
+}
+function lossCreep(state, geom, mat, F_amp, theta_load, freq, n) {
+  if (freq <= 0 || n < 1) return {dF_0: 0, dE: 0, ds: {}};
+  const t_cur = n / freq, t_prev = (n - 1) / freq;
+  const dd = mat.C_creep * Math.max(state.F_0,0) *
+             (Math.log(t_cur + mat.t_0) - Math.log(t_prev + mat.t_0));
+  return {dF_0: -geom.k_b * dd, dE: Math.max(state.F_0,0) * dd,
+          ds: {delta_creep: dd}};
+}
+function lossWear(state, geom, mat, F_amp, theta_load, freq, n) {
+  const F_tr = F_amp * Math.sin(theta_load);
+  const F0 = Math.max(state.F_0, 0);
+  const Fs = F_slip_tr(state, mat);
+  if (F_tr <= Fs || F0 <= 0) return {dF_0: 0, dE: 0, ds: {}};
+  const kj_tr = Math.max(mat.k_j_init * 0.3, 1);
+  const slip_amp = (F_tr - Fs) / kj_tr;
+  const d_wear = mat.K_archard * F0 * slip_amp /
+                 Math.max(mat.hardness * geom.A_contact, 1);
+  return {
+    dF_0: -geom.k_b * d_wear,
+    // friction hysteresis loop area = 4·μ·F·slip per cycle
+    dE: 4 * mat.mu_bearing * F0 * slip_amp,
+    ds: {delta_wear: d_wear}
+  };
+}
+function lossLoose(state, geom, mat, F_amp, theta_load, freq, n) {
+  if (state.F_0 <= 0) return {dF_0: 0, dE: 0, ds: {}, slip_frac: 0};
+  const Phi = Phi_eff(state, geom, mat);
+  const F_ax = F_amp * Math.cos(theta_load);
+  const F_tr = F_amp * Math.sin(theta_load);
+  const Fsep = F_sep(state, geom, mat);
+  const Phi_ax_a = F_ax < Fsep ? Phi : 1.0;
+  const Fs = F_slip_tr(state, mat);
+  const Phi_tr_a = F_tr < Fs ? 0.01 : 0.95;
+  const L_ax = Phi_ax_a * Math.sin(geom.beta) * F_ax;
+  const L_tr = Phi_tr_a * Math.cos(geom.beta) * F_tr;
+  const L = Math.hypot(L_ax, L_tr);
+  const T_loose = L * geom.d_2 / 2;
+  const Tr = T_resist(state, geom, mat);
+  if (T_loose <= Tr) return {dF_0: 0, dE: 0, ds: {}, slip_frac: 0};
+  const slip_frac = (T_loose - Tr) / T_loose;
+  const k_torsional = mat.k_j_init * geom.d_2 / 2;
+  const dtheta = slip_frac * (T_loose - Tr) / Math.max(k_torsional, 1);
+  return {
+    dF_0: -geom.k_b * geom.lead * dtheta,
+    dE: Tr * dtheta,
+    ds: {theta_loose: dtheta},
+    slip_frac
+  };
+}
+
+// ============================================================
+// SIMULATION
+// ============================================================
+function simulate(geom, mat, F0_init, F_amp, theta_load, freq, N_total, activeMechs) {
+  const state = {F_0: F0_init, delta_emb: 0, delta_creep: 0,
+                 delta_wear: 0, theta_loose: 0, F_0_init: F0_init};
+  const U_init = U_internal(state, geom, mat);
+
+  const hist = {N: [0], F_0: [F0_init], Phi: [Phi_eff(state, geom, mat)],
+                U_int: [U_init],
+                W_ext: [0], U_released: [0],
+                W_visc: [0], W_emb: [0], W_creep: [0],
+                W_fric_y: [0], W_loose: [0],
+                slip_frac: [0]};
+
+  // Cumulative budgets
+  let W_ext = 0, W_visc = 0, W_emb = 0, W_creep = 0,
+      W_fric_y = 0, W_loose = 0;
+
+  for (let n = 1; n <= N_total; n++) {
+    // W_ext per cycle = transverse friction hysteresis (zero if no slip)
+    const F_tr = F_amp * Math.sin(theta_load);
+    const Fs = F_slip_tr(state, mat);
+    let W_ext_c = 0;
+    if (F_tr > Fs && state.F_0 > 0) {
+      const kj_tr = Math.max(mat.k_j_init * 0.3, 1);
+      const slip_amp = (F_tr - Fs) / kj_tr;
+      W_ext_c = 4 * mat.mu_bearing * state.F_0 * slip_amp;
+    }
+    W_ext += W_ext_c;
+
+    // Viscous damping (Rayleigh approx) per cycle
+    if (freq > 0) {
+      const omega = 2 * Math.PI * freq;
+      const F_ax = F_amp * Math.cos(theta_load);
+      const kj = k_j_ax(state, mat);
+      const k_eff = geom.k_b + (kj > 0 ? kj : 0);
+      const X = F_ax / Math.max(k_eff, 1);
+      const c_xx = mat.rayleigh_alpha * mat.m_x + mat.rayleigh_beta * k_eff;
+      W_visc += Math.PI * omega * c_xx * X * X;
+    }
+
+    // Run active mechanisms
+    let dF_0 = 0;
+    let slip_frac_cycle = 0;
+    if (activeMechs.emb) {
+      const r = lossEmbedding(state, geom, mat, F_amp, theta_load, freq, n);
+      dF_0 += r.dF_0; W_emb += r.dE;
+      state.delta_emb += r.ds.delta_emb || 0;
+    }
+    if (activeMechs.creep) {
+      const r = lossCreep(state, geom, mat, F_amp, theta_load, freq, n);
+      dF_0 += r.dF_0; W_creep += r.dE;
+      state.delta_creep += r.ds.delta_creep || 0;
+    }
+    if (activeMechs.wear) {
+      const r = lossWear(state, geom, mat, F_amp, theta_load, freq, n);
+      dF_0 += r.dF_0; W_fric_y += r.dE;
+      state.delta_wear += r.ds.delta_wear || 0;
+    }
+    if (activeMechs.loose) {
+      const r = lossLoose(state, geom, mat, F_amp, theta_load, freq, n);
+      dF_0 += r.dF_0; W_loose += r.dE;
+      state.theta_loose += r.ds.theta_loose || 0;
+      slip_frac_cycle = r.slip_frac || 0;
+    }
+
+    state.F_0 = Math.max(0, state.F_0 + dF_0);
+
+    // Record sparse history (every ~100th point for big N)
+    const stride = Math.max(1, Math.floor(N_total / 200));
+    if (n % stride === 0 || n === N_total) {
+      hist.N.push(n);
+      hist.F_0.push(state.F_0);
+      hist.Phi.push(Phi_eff(state, geom, mat));
+      hist.U_int.push(U_internal(state, geom, mat));
+      hist.W_ext.push(W_ext);
+      hist.U_released.push(U_init - U_internal(state, geom, mat));
+      hist.W_visc.push(W_visc);
+      hist.W_emb.push(W_emb);
+      hist.W_creep.push(W_creep);
+      hist.W_fric_y.push(W_fric_y);
+      hist.W_loose.push(W_loose);
+      hist.slip_frac.push(slip_frac_cycle);
+    }
+  }
+
+  const W_diss_total = W_visc + W_emb + W_creep + W_fric_y + W_loose;
+  const U_released = U_init - U_internal(state, geom, mat);
+
+  return {
+    state, U_init, U_final: U_internal(state, geom, mat),
+    W_ext, W_visc, W_emb, W_creep, W_fric_y, W_loose,
+    W_diss_total, U_released,
+    conservation_residual: W_ext + U_released - W_diss_total,
+    hist,
+  };
+}
+
+// ============================================================
+// PLOTS
+// ============================================================
+const plotLayout = (title_x, title_y) => ({
+  paper_bgcolor: '#252526', plot_bgcolor: '#1e1e1e',
+  font: {color: '#d4d4d4', size: 10},
+  margin: {l: 60, r: 10, t: 8, b: 36},
+  xaxis: {title: title_x, gridcolor: '#3e3e42'},
+  yaxis: {title: title_y, gridcolor: '#3e3e42'},
+  showlegend: false,
+});
+
+function plotUintCurve(geom, mat, F0_init, isInit) {
+  const F_arr = [];
+  for (let i = 0; i <= 50; i++) F_arr.push(F0_init * i / 50);
+  const U_arr = F_arr.map(F => {
+    const tmp = {F_0: F, F_0_init: F0_init};
+    return U_internal(tmp, geom, mat);
+  });
+  // Linear reference
+  const Uref = F_arr.map(F => 0.5 * F**2 / geom.k_b);
+  const data = [
+    {x: F_arr.map(f => f/1e3), y: U_arr, mode: 'lines',
+     line: {color: '#c576c5', width: 2}, name: 'U_internal'},
+    {x: F_arr.map(f => f/1e3), y: Uref, mode: 'lines',
+     line: {color: '#5cb27c', width: 1, dash: 'dot'},
+     name: 'U_bolt apenas'},
+  ];
+  const layout = plotLayout('F₀ [kN]', 'U [J]');
+  layout.showlegend = true;
+  layout.legend = {orientation: 'h', y: 1.1, x: 0, font: {size: 9}};
+  isInit ? Plotly.newPlot('plot-Uint', data, layout, {displayModeBar: false})
+         : Plotly.react('plot-Uint', data, layout, {displayModeBar: false});
+}
+
+function plotdUdF0(geom, mat, F0_init, isInit) {
+  const F_arr = [];
+  for (let i = 1; i <= 50; i++) F_arr.push(F0_init * i / 50);
+  const dU_arr = F_arr.map(F => {
+    // Numerical derivative
+    const eps = F * 0.001;
+    const tmp1 = {F_0: F + eps, F_0_init: F0_init};
+    const tmp2 = {F_0: F - eps, F_0_init: F0_init};
+    return (U_internal(tmp1, geom, mat) - U_internal(tmp2, geom, mat)) / (2 * eps);
+  });
+  const data = [
+    {x: F_arr.map(f => f/1e3), y: dU_arr.map(d => d / 1e-3),
+     mode: 'lines', line: {color: '#ffb74d', width: 2}},
+  ];
+  isInit ? Plotly.newPlot('plot-dUdF0', data, plotLayout('F₀ [kN]', '∂U/∂F₀ [J/kN]'),
+                          {displayModeBar: false})
+         : Plotly.react('plot-dUdF0', data, plotLayout('F₀ [kN]', '∂U/∂F₀ [J/kN]'),
+                        {displayModeBar: false});
+}
+
+function plotF0(hist, isInit) {
+  const data = [
+    {x: hist.N, y: hist.F_0.map(f => f/1e3), mode: 'lines',
+     line: {color: '#ffb74d', width: 2}, fill: 'tozeroy',
+     fillcolor: 'rgba(255,183,77,0.15)'},
+  ];
+  isInit ? Plotly.newPlot('plot-F0', data, plotLayout('N ciclos', 'F₀ [kN]'),
+                          {displayModeBar: false})
+         : Plotly.react('plot-F0', data, plotLayout('N ciclos', 'F₀ [kN]'),
+                        {displayModeBar: false});
+}
+
+function plotPhi(hist, isInit) {
+  const data = [
+    {x: hist.N, y: hist.Phi, mode: 'lines',
+     line: {color: '#c576c5', width: 2}},
+  ];
+  isInit ? Plotly.newPlot('plot-Phi', data, plotLayout('N ciclos', 'Φ_eff'),
+                          {displayModeBar: false})
+         : Plotly.react('plot-Phi', data, plotLayout('N ciclos', 'Φ_eff'),
+                        {displayModeBar: false});
+}
+
+function plotUintTime(hist, isInit) {
+  const data = [
+    {x: hist.N, y: hist.U_int, mode: 'lines',
+     line: {color: '#5cb27c', width: 2}, fill: 'tozeroy',
+     fillcolor: 'rgba(92,178,124,0.2)'},
+  ];
+  isInit ? Plotly.newPlot('plot-Uint-time', data,
+                          plotLayout('N ciclos', 'U_internal [J]'),
+                          {displayModeBar: false})
+         : Plotly.react('plot-Uint-time', data,
+                        plotLayout('N ciclos', 'U_internal [J]'),
+                        {displayModeBar: false});
+}
+
+function plotWdiss(hist, isInit) {
+  const data = [
+    {x: hist.N, y: hist.W_emb, name: 'embedding', stackgroup: 'one',
+     line: {color: '#d4b14a', width: 1}, fillcolor: 'rgba(212,177,74,0.6)'},
+    {x: hist.N, y: hist.W_creep, name: 'creep', stackgroup: 'one',
+     line: {color: '#d4944a', width: 1}, fillcolor: 'rgba(212,148,74,0.6)'},
+    {x: hist.N, y: hist.W_fric_y, name: 'fric. transv.', stackgroup: 'one',
+     line: {color: '#7aa8d4', width: 1}, fillcolor: 'rgba(122,168,212,0.6)'},
+    {x: hist.N, y: hist.W_loose, name: 'fric. filete', stackgroup: 'one',
+     line: {color: '#d44a4a', width: 1}, fillcolor: 'rgba(212,74,74,0.6)'},
+  ];
+  const layout = plotLayout('N ciclos', 'Σ W_diss [J]');
+  layout.showlegend = true;
+  layout.legend = {orientation: 'h', y: 1.15, x: 0, font: {size: 9}};
+  isInit ? Plotly.newPlot('plot-W-diss', data, layout, {displayModeBar: false})
+         : Plotly.react('plot-W-diss', data, layout, {displayModeBar: false});
+}
+
+function renderEnergyBar(result) {
+  const total = Math.max(result.W_diss_total, 1e-9);
+  const seg = (label, val, cls) => {
+    const pct = (val / total * 100).toFixed(1);
+    if (val <= 0 || pct < 0.5) return '';
+    return `<div class="seg-${cls}" style="flex: ${val};">${label} ${pct}%</div>`;
+  };
+  const bar = document.getElementById('energy-bar');
+  bar.innerHTML =
+    seg('visc', result.W_visc, 'visc') +
+    seg('emb', result.W_emb, 'emb') +
+    seg('creep', result.W_creep, 'creep') +
+    seg('fric_y', result.W_fric_y, 'fric') +
+    seg('loose', result.W_loose, 'loose');
+}
+
+// ============================================================
+// UI WIRING
+// ============================================================
+function refresh(isInit) {
+  const geom = getGeom();
+  const mat = getMat();
+  const F0_init = +document.getElementById('F0').value * 1e3;
+  const F_amp = +document.getElementById('Famp').value * 1e3;
+  const theta_load = +document.getElementById('theta').value * Math.PI / 180;
+  const freq = +document.getElementById('freq').value;
+  const N_total = +document.getElementById('N').value;
+  const activeMechs = {
+    emb: document.getElementById('mech-emb').checked,
+    creep: document.getElementById('mech-creep').checked,
+    wear: document.getElementById('mech-wear').checked,
+    loose: document.getElementById('mech-loose').checked,
+  };
+
+  // Geom derived display
+  document.getElementById('geom-derived').innerHTML = `
+    <span>k_b:</span><span class="v">${(geom.k_b/1e6).toFixed(0)} MN/m</span>
+    <span>β:</span><span class="v">${(geom.beta*180/Math.PI).toFixed(2)}°</span>
+    <span>cot β:</span><span class="v">${(1/Math.tan(geom.beta)).toFixed(1)}</span>
+    <span>lead/rad:</span><span class="v">${(geom.lead*1e6).toFixed(2)} μm/rad</span>
+  `;
+
+  // Matrix displays — use a dummy state with F0_init
+  const stateNow = {F_0: F0_init, F_0_init: F0_init,
+                    delta_emb: 0, delta_creep: 0, delta_wear: 0, theta_loose: 0};
+  document.getElementById('M-display').textContent =
+    formatMatrix(M_matrix(mat), 1, '(SI: kg/kg·m²)');
+  document.getElementById('K-stuck-display').textContent =
+    formatMatrix(K_matrix(stateNow, geom, mat, false, false), 1e6, '(MN/m)');
+  document.getElementById('K-slip-display').textContent =
+    formatMatrix(K_matrix(stateNow, geom, mat, true, true), 1e6, '(MN/m)');
+
+  // U_internal curves
+  plotUintCurve(geom, mat, F0_init, isInit);
+  plotdUdF0(geom, mat, F0_init, isInit);
+
+  // Run simulation
+  const result = simulate(geom, mat, F0_init, F_amp, theta_load, freq, N_total, activeMechs);
+
+  // Sim plots
+  plotF0(result.hist, isInit);
+  plotPhi(result.hist, isInit);
+  plotUintTime(result.hist, isInit);
+  plotWdiss(result.hist, isInit);
+
+  // Sim derived
+  const ratio = result.state.F_0 / F0_init;
+  const statusCls = ratio < 0.2 ? 'status-bad' :
+                   (ratio < 0.8 ? 'status-warn' : 'status-ok');
+  const statusTxt = ratio < 0.2 ? 'FAILED' :
+                   (ratio < 0.8 ? 'LOOSENING' : 'STABLE');
+  document.getElementById('sim-derived').innerHTML = `
+    <span>F₀ final:</span><span class="v">${(result.state.F_0/1e3).toFixed(2)} kN</span>
+    <span>Retenção:</span><span class="v ${statusCls}">${(ratio*100).toFixed(1)}%</span>
+    <span>Status:</span><span class="v ${statusCls}">${statusTxt}</span>
+    <span>Φ_eff final:</span><span class="v">${Phi_eff(result.state, geom, mat).toFixed(3)}</span>
+    <span>U liberada:</span><span class="v">${result.U_released.toFixed(3)} J</span>
+    <span>W_ext (input):</span><span class="v">${result.W_ext.toFixed(3)} J</span>
+    <span>W_diss total:</span><span class="v">${result.W_diss_total.toFixed(3)} J</span>
+    <span>Cons. residual:</span><span class="v">${result.conservation_residual.toExponential(2)} J</span>
+    <span>θ_loose:</span><span class="v">${(result.state.theta_loose*180/Math.PI).toFixed(4)}°</span>
+    <span>δ_emb:</span><span class="v">${(result.state.delta_emb*1e6).toFixed(3)} μm</span>
+  `;
+
+  // Energy bar
+  renderEnergyBar(result);
+}
+
+// Bind listeners
+['bolt-preset','mu','alpha','kj_init','F0','Famp','theta','freq','N',
+ 'mech-emb','mech-creep','mech-wear','mech-loose'].forEach(id => {
+  const el = document.getElementById(id);
+  const evt = el.type === 'checkbox' || el.tagName === 'SELECT' ? 'change' : 'input';
+  el.addEventListener(evt, () => {
+    if (el.type === 'range') {
+      const vEl = document.getElementById(id + '-v');
+      if (vEl) vEl.textContent = el.value;
+    }
+    refresh(false);
+  });
+});
+
+refresh(true);
+</script>
+</body>
+</html>

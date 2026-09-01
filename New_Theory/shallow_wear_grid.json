@@ -1,0 +1,231 @@
+{
+ "chosen": {
+  "BAUER_2024": {
+   "c_bend": 0.5,
+   "k_wear_tr": 0.05,
+   "floor": 0.25,
+   "median": 0.1497629843674412
+  },
+  "ICMEZ_2025": {
+   "c_bend": 0.6,
+   "k_wear_tr": 0.15,
+   "floor": 0.25,
+   "median": 0.04225396647937689
+  },
+  "LIU_2025": {
+   "c_bend": 2.0,
+   "k_wear_tr": 0.05,
+   "floor": 0.25,
+   "median": 0.5639941346174075
+  }
+ },
+ "rows": [
+  {
+   "csv": "bauer2024_M8_fig6_rep1.csv",
+   "source": "BAUER_2024",
+   "mae": 0.07527642516717477,
+   "mode": "shape-mixed",
+   "mae_prev_best": 0.057862555844840076,
+   "mode_prev": "shape-mixed",
+   "e_final": 0.16199743523931984
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep2.csv",
+   "source": "BAUER_2024",
+   "mae": 0.10212086657398421,
+   "mode": "level-bias",
+   "mae_prev_best": 0.07848013606482368,
+   "mode_prev": "level-bias",
+   "e_final": 0.09899446380425656
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep3.csv",
+   "source": "BAUER_2024",
+   "mae": 0.1319673826617724,
+   "mode": "level-bias",
+   "mae_prev_best": 0.09768365142691236,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.143281772966164
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep4.csv",
+   "source": "BAUER_2024",
+   "mae": 0.08343037576173944,
+   "mode": "tail-slope",
+   "mae_prev_best": 0.07965176409047152,
+   "mode_prev": "level-bias",
+   "e_final": 0.1210333850173612
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep5.csv",
+   "source": "BAUER_2024",
+   "mae": 0.1497629843674412,
+   "mode": "tail-slope",
+   "mae_prev_best": 0.13666784027198084,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.10753738870179111
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep6.csv",
+   "source": "BAUER_2024",
+   "mae": 0.17867849480506137,
+   "mode": "level-bias",
+   "mae_prev_best": 0.11501782043535685,
+   "mode_prev": "shape-mixed",
+   "e_final": 0.04950446690164176
+  },
+  {
+   "csv": "bauer2024_M12_fig8_test1.csv",
+   "source": "BAUER_2024",
+   "mae": 0.3604604208088275,
+   "mode": "level-bias",
+   "mae_prev_best": 0.12525975654756363,
+   "mode_prev": "collapse-missed",
+   "e_final": -0.015337462789714595
+  },
+  {
+   "csv": "bauer2024_M12_fig8_test2.csv",
+   "source": "BAUER_2024",
+   "mae": 0.4321766910731359,
+   "mode": "level-bias",
+   "mae_prev_best": 0.18360298780250264,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.06619337261890887
+  },
+  {
+   "csv": "bauer2024_M12_fig8_test3.csv",
+   "source": "BAUER_2024",
+   "mae": 0.42126346452277347,
+   "mode": "level-bias",
+   "mae_prev_best": 0.1830249320563525,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.02118647826215142
+  },
+  {
+   "csv": "demir2024_amp0p3_F14p3_lk13p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.01028844747040915,
+   "mode": "noise-floor",
+   "mae_prev_best": 0.04034336545261821,
+   "mode_prev": "tail-slope",
+   "e_final": 0.029344889020883808
+  },
+  {
+   "csv": "demir2024_amp0p3_F14p3_lk19p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.0880974787848482,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.0737919035282808,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.35179387159476544
+  },
+  {
+   "csv": "demir2024_amp0p3_F17p6_lk13p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.01093709026789847,
+   "mode": "noise-floor",
+   "mae_prev_best": 0.10224479351291717,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.01965164512451062
+  },
+  {
+   "csv": "demir2024_amp0p3_F17p6_lk19p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.04705807972181367,
+   "mode": "level-bias",
+   "mae_prev_best": 0.03301975533204607,
+   "mode_prev": "tail-slope",
+   "e_final": 0.20695635336387197
+  },
+  {
+   "csv": "demir2024_amp0p4_F14p3_lk13p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.01810292592925914,
+   "mode": "noise-floor",
+   "mae_prev_best": 0.0545292724590611,
+   "mode_prev": "tail-slope",
+   "e_final": 0.01587832522840149
+  },
+  {
+   "csv": "demir2024_amp0p4_F14p3_lk19p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.1357549143466568,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.11746007544547996,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.3834723404613843
+  },
+  {
+   "csv": "demir2024_amp0p4_F17p6_lk13p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.03744985323694011,
+   "mode": "level-bias",
+   "mae_prev_best": 0.0826604048412306,
+   "mode_prev": "shape-mixed",
+   "e_final": 0.03669597359920057
+  },
+  {
+   "csv": "demir2024_amp0p4_F17p6_lk19p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.15487599082194847,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.12182381095257933,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.457556353363872
+  },
+  {
+   "csv": "liu2025_M16_amp0p25.csv",
+   "source": "LIU_2025",
+   "mae": 0.7130687807614875,
+   "mode": "over-collapse",
+   "mae_prev_best": 0.13619505086046976,
+   "mode_prev": "level-bias",
+   "e_final": -0.6523321639710706
+  },
+  {
+   "csv": "liu2025_M16_amp0p3.csv",
+   "source": "LIU_2025",
+   "mae": 0.6860249628084253,
+   "mode": "over-collapse",
+   "mae_prev_best": 0.12093666186055602,
+   "mode_prev": "level-bias",
+   "e_final": -0.6569682600718111
+  },
+  {
+   "csv": "liu2025_M16_amp0p4.csv",
+   "source": "LIU_2025",
+   "mae": 0.5790175778709546,
+   "mode": "level-bias",
+   "mae_prev_best": 0.14829740407809464,
+   "mode_prev": "collapse-missed",
+   "e_final": -0.23313688580138459
+  },
+  {
+   "csv": "liu2025_M16_amp0p5.csv",
+   "source": "LIU_2025",
+   "mae": 0.5489706913638603,
+   "mode": "level-bias",
+   "mae_prev_best": 0.13124255790022485,
+   "mode_prev": "collapse-missed",
+   "e_final": -0.19496647534002015
+  },
+  {
+   "csv": "liu2025_M16_amp0p6.csv",
+   "source": "LIU_2025",
+   "mae": 0.5085959774556212,
+   "mode": "level-bias",
+   "mae_prev_best": 0.12019139305626088,
+   "mode_prev": "collapse-missed",
+   "e_final": -0.17597975791534304
+  },
+  {
+   "csv": "liu2025_M16_amp0p8.csv",
+   "source": "LIU_2025",
+   "mae": 0.4238751778227022,
+   "mode": "level-bias",
+   "mae_prev_best": 0.11827935758269885,
+   "mode_prev": "collapse-missed",
+   "e_final": -0.16091183326701636
+  }
+ ]
+}

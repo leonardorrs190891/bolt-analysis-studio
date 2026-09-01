@@ -1,0 +1,8 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/13_Yang_2021_combined_loading.md:139-165
+delta_mm,F_axial_kN,xi_mm_per_kN,mode,life_cycles
+0.6,0,inf,loosening,500
+0.6,4,0.150,loosening_dominant,400
+0.6,8,0.075,transition,600
+0.6,10,0.060,fatigue_dominant,2000
+0.3,4,0.075,transition,1500
+0.3,8,0.038,fatigue,5000

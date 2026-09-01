@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt" data-lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cobertura e limitaçõesCoverage and limits — BAS V2</title>
+<style>
+:root{
+  --bg:#eef0f3; --panel:#ffffff; --ink:#161a20; --muted:#5b6675; --line:#d3d8e0;
+  --accent:#2563eb; --accent2:#e11d48; --ghost:#9aa4b2; --ok:#0f9d58; --warn:#c2410c;
+  --code-bg:#f3f5f8; --side:#f7f8fa; --side-w:300px;
+}
+:root[data-theme="dark"]{
+  --bg:#12151b; --panel:#1a1f27; --ink:#e7ebf0; --muted:#93a0b0; --line:#2b323d;
+  --accent:#5b9bff; --accent2:#ff6b8b; --ghost:#4a5563; --ok:#39d98a; --warn:#ffa657;
+  --code-bg:#20262f; --side:#151a21;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,.mono{font-family:'Cascadia Code','Consolas',ui-monospace,monospace}
+
+/* ---- sidebar (sumario tipo help classico) ---- */
+.side{position:fixed;top:0;left:0;bottom:0;width:var(--side-w);overflow-y:auto;
+  background:var(--side);border-right:1px solid var(--line);z-index:20}
+.side-head{position:sticky;top:0;background:var(--side);padding:14px 16px 12px;
+  border-bottom:1px solid var(--line);z-index:2}
+.side-head .home{font-weight:700;font-size:.92rem;display:block;color:var(--ink)}
+.side-head .home small{display:block;color:var(--muted);font-weight:400;font-size:.72rem;margin-top:2px}
+.side-head .toggles{margin:10px 0 8px}
+.toggles button{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:5px 10px;font-size:.78rem;cursor:pointer;margin-right:6px}
+.toggles button:hover{border-color:var(--accent)}
+.filter{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:7px;
+  background:var(--bg);color:var(--ink);font-family:inherit;font-size:.83rem}
+.tiers{display:flex;flex-wrap:wrap;gap:3px 12px;margin-top:9px;font-size:.72rem}
+.tiers label{display:flex;align-items:center;gap:4px;color:var(--muted);cursor:pointer}
+.tiers input{accent-color:var(--accent);margin:0;cursor:pointer}
+.toc{padding:6px 0 60px}
+.toc .grp{padding:12px 16px 3px;font-size:.68rem;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--muted);font-weight:700}
+.toc a.tocitem{display:flex;justify-content:space-between;gap:8px;align-items:baseline;
+  padding:4px 14px 4px 18px;font-family:'Cascadia Code',monospace;font-size:.8rem;
+  color:var(--ink);border-left:3px solid transparent}
+.toc a.tocitem:hover{background:var(--bg);text-decoration:none}
+.toc a.tocitem.current{border-left-color:var(--accent);color:var(--accent);
+  background:var(--bg);font-weight:600}
+.toc a.tocitem .dot{font-size:.6rem;opacity:.6}
+.toc a.tocitem .dot.physical{color:var(--accent)}
+.toc a.tocitem .dot.form{color:var(--warn)}
+.toc a.tocitem .dot.mode{color:var(--ok)}
+.toc a.tocitem .dot.numerical{color:var(--muted)}
+
+/* ---- content ---- */
+.main{margin-left:var(--side-w);padding:26px 34px 90px;max-width:940px}
+.crumbs{font-size:.82rem;color:var(--muted);margin-bottom:2px}
+h1.name{font-family:'Cascadia Code','Consolas',monospace;font-size:1.95rem;margin:.2rem 0 .2rem}
+.sub{color:var(--muted);font-size:.95rem;margin-bottom:.6rem}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:.4rem 0 1rem}
+.badge{font-size:.74rem;padding:3px 9px;border-radius:20px;border:1px solid var(--line);
+  background:var(--panel);color:var(--muted)}
+.badge.cat-physical{border-color:var(--accent);color:var(--accent)}
+.badge.cat-form{border-color:var(--warn);color:var(--warn)}
+.badge.cat-mode{border-color:var(--ok);color:var(--ok)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;margin:14px 0}
+.panel p{margin:.4rem 0}
+.plotwrap{position:relative}
+canvas{width:100%;height:auto;display:block}
+.ctl{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.ctl input[type=range]{flex:1;min-width:220px;accent-color:var(--accent)}
+.ctl select{background:var(--code-bg);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:6px 10px;font-family:inherit}
+.readout{font-family:'Cascadia Code',monospace;font-size:.95rem}
+.readout .v{color:var(--accent);font-weight:600}
+.readout .f{color:var(--accent2);font-weight:600}
+.readout .w{color:var(--warn);font-weight:600}
+.legend .kdash{display:inline-block;width:22px;height:0;border-top:2px dashed var(--muted);vertical-align:middle;margin-right:5px}
+.prov{font-size:.82rem;margin-top:8px;color:var(--muted)}
+.prov.out{color:var(--warn);font-weight:600}
+.effect{font-family:'Cascadia Code',monospace;font-size:.82rem;margin-top:8px;color:var(--accent)}
+.effect.weak{color:var(--muted)}
+h2.sec{font-size:1.05rem;margin:0 0 .5rem;letter-spacing:.02em}
+.eq{background:var(--code-bg);border:1px solid var(--line);border-radius:8px;
+  padding:12px 14px;font-family:'Cascadia Code',monospace;font-size:.92rem;overflow-x:auto;
+  white-space:pre;line-height:1.5;margin:.5rem 0}
+ul.refs{margin:.3rem 0 0;padding-left:1.1rem}
+ul.refs li{margin:.25rem 0;font-size:.9rem}
+ul.refs li.refhead{list-style:none;margin:14px 0 4px -1.1rem;color:var(--muted);
+  font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+ul.refs .src{color:var(--muted);font-size:.82rem}
+.related a{display:inline-block;margin-right:10px;font-family:'Cascadia Code',monospace;font-size:.85rem}
+nav.pn{display:flex;justify-content:space-between;margin-top:24px;font-size:.9rem}
+.note{background:var(--code-bg);border-left:3px solid var(--warn);padding:8px 12px;
+  border-radius:0 6px 6px 0;font-size:.88rem;color:var(--muted);margin:.6rem 0}
+.intro{color:var(--muted);max-width:74ch}
+.legend{display:flex;gap:16px;font-size:.8rem;color:var(--muted);margin-top:6px;flex-wrap:wrap}
+.legend .k{display:inline-block;width:22px;height:0;border-top-width:3px;border-top-style:solid;vertical-align:middle;margin-right:5px}
+[data-lang="pt"] [data-l="en"]{display:none}
+[data-lang="en"] [data-l="pt"]{display:none}
+
+/* ---- responsivo: sidebar recolhivel ---- */
+.menu-btn{display:none;position:fixed;top:10px;left:10px;z-index:40;
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;
+  padding:6px 11px;font-size:1rem;cursor:pointer;color:var(--ink)}
+@media(max-width:900px){
+  .side{transform:translateX(-100%);transition:transform .2s;box-shadow:0 0 30px rgba(0,0,0,.3)}
+  body.nav-open .side{transform:none}
+  .main{margin-left:0;padding:56px 16px 80px}
+  .menu-btn{display:inline-block}
+}
+
+/* ---- animações & interatividade ---- */
+@keyframes ve-pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.ve-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  box-shadow:0 0 8px var(--accent);transition:width .08s linear}
+h1.name{animation:ve-pop .5s cubic-bezier(.2,.7,.2,1) both}
+.reveal{opacity:0;transform:translateY(16px)}
+.reveal.in{opacity:1;transform:none;
+  transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.panel,.badge,.trail,.gal-card,.related a,.toc a.tocitem,.toggles button,
+.menu-btn,nav.pn a{transition:transform .18s ease,box-shadow .18s ease,
+  border-color .18s ease,background .18s ease,color .15s ease}
+.trail:hover,.gal-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.16)}
+.toc a.tocitem:hover{transform:translateX(3px)}
+.related a:hover,nav.pn a:hover{transform:translateY(-1px)}
+.toggles button:active,.menu-btn:active{transform:scale(.94)}
+.plotwrap canvas,.cw canvas{cursor:crosshair}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}
+  h1.name{animation:none}
+  .ve-progress{display:none}
+  .trail:hover,.gal-card:hover,.toc a.tocitem:hover,.related a:hover,nav.pn a:hover{transform:none}
+}
+
+.cw{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0}
+.cw canvas{width:100%;height:auto;display:block}
+.cw-ctrl{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px;align-items:center}
+.cw-ctrl input[type=range]{flex:1;min-width:200px;accent-color:var(--accent)}
+.cw-ctrl select{background:var(--code-bg);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:5px 9px;font-family:inherit}
+.cw-leg{display:flex;align-items:center;gap:5px;font-size:.8rem;color:var(--muted);cursor:pointer}
+.cw-leg .k{display:inline-block;width:16px;height:10px;border:1px solid;border-radius:2px}
+.legend .kd{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:middle;margin-right:5px}
+.cw-note{font-size:.85rem;color:var(--muted);margin-top:10px;line-height:1.5}
+.bars{margin-top:4px}
+.bar-row{display:flex;align-items:center;gap:10px;margin:6px 0}
+.bar-lab{flex:0 0 40%;font-size:.85rem}
+.bar-track{flex:1;height:14px;background:var(--code-bg);border-radius:7px;overflow:hidden}
+.bar-fill{display:block;height:100%;border-radius:7px}
+.bar-val{flex:0 0 auto;font-family:'Cascadia Code',monospace;font-size:.82rem;color:var(--muted)}
+.bar-total{margin-top:8px;font-family:'Cascadia Code',monospace;font-size:.85rem;color:var(--ink)}
+svg.schema{width:100%;height:auto;max-width:640px;display:block;margin:6px auto}
+svg.schema text{fill:var(--ink);font-family:'Segoe UI',sans-serif}
+svg.schema .lab{fill:var(--muted);font-size:12px}
+svg.schema .box{fill:var(--code-bg);stroke:var(--line)}
+svg.schema .hot{cursor:default}
+svg.schema .hot:hover .box{stroke:var(--accent);stroke-width:2}
+svg.schema .node{fill:var(--accent)}
+svg.schema .edge{stroke:var(--accent);fill:none;stroke-width:2;marker-end:url(#arrow)}
+svg.schema .edge-lab{fill:var(--muted);font-size:11px}
+svg.schema .cpl{fill:var(--accent);fill-opacity:.18;stroke:var(--accent);stroke-width:1.6}
+svg.schema .cplt{fill:var(--accent);font-weight:700}
+svg.schema .zero{fill:var(--ghost)}
+svg.schema .diag{fill:var(--code-bg);stroke:var(--line)}
+svg.schema .fill{fill:var(--accent);fill-opacity:.08;stroke:var(--accent);stroke-opacity:.4}
+svg.schema .dash{stroke:var(--muted);stroke-dasharray:4 4;fill:none}
+svg.schema .brk{stroke:var(--muted);stroke-width:2;fill:none}
+.gal-summary{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:8px 0}
+.gal-stat{font-size:.9rem;color:var(--muted)}
+.gal-stat b{color:var(--ink);font-size:1.05rem}
+.gal-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.gal-flt{cursor:pointer;font-size:.82rem;padding:4px 11px;border:1px solid var(--line);border-radius:14px;color:var(--muted)}
+.gal-flt[data-on]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.gal-only{font-size:.82rem;color:var(--muted);margin-left:auto;display:flex;align-items:center;gap:5px}
+.gal-src{margin:18px 0}
+.gal-srch{font-size:1.05rem;margin:0 0 2px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.gal-srcn{font-size:.8rem;color:var(--muted);font-weight:400}
+.gal-blurb{font-size:.82rem;color:var(--muted);margin:2px 0 8px}
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.gal-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:0}
+.gal-cap{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:.8rem}
+.gal-nm{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gal-badge{flex:0 0 auto;font-family:'Cascadia Code',monospace;font-size:.72rem;padding:1px 6px;border-radius:8px;border:1px solid currentColor;background:transparent}
+.gal-badge.ok{color:var(--ok)}
+.gal-badge.mid{color:var(--accent2)}
+.gal-badge.hi{color:var(--warn)}
+.gal-cv{width:100%;height:auto;display:block;margin:4px 0}
+.gal-cond{font-size:.72rem;color:var(--muted);font-family:'Cascadia Code',monospace}
+.gal-cav{font-size:.72rem;color:var(--warn);margin-top:3px;line-height:1.35}
+.gloss-tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+.gloss-tbl th,.gloss-tbl td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.gloss-tbl th{color:var(--muted);font-weight:600;font-size:.82rem;text-transform:uppercase;letter-spacing:.03em}
+.gloss-tbl td.sym{font-family:'Cascadia Code',monospace;color:var(--accent);white-space:nowrap}
+.gloss-tbl td.unit{font-family:'Cascadia Code',monospace;color:var(--muted);white-space:nowrap}
+.gloss-wrap{overflow-x:auto}
+.an-ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.an-scn{cursor:pointer;font-size:.82rem;padding:4px 11px;border:1px solid var(--line);border-radius:14px;color:var(--muted)}
+.an-scn[data-on]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.an-readout{margin-top:10px;font-family:'Cascadia Code',monospace;font-size:.85rem;color:var(--ink);min-height:1.3em;line-height:1.4}
+.an-readout .an-hint{color:var(--muted);font-family:'Segoe UI',sans-serif}
+#plot_an{cursor:crosshair}
+.study-sub{font-size:1rem;color:var(--muted);font-weight:400}
+.study-figs{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0}
+.study-fig{margin:0;flex:1 1 340px;max-width:100%}
+.study-fig img{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+.study-fig figcaption{font-size:.78rem;color:var(--muted);margin-top:4px;text-align:center}
+.study-figcap{font-size:.82rem;color:var(--muted);margin:6px 0}
+.study-nofig{font-size:.9rem;color:var(--muted)}
+.study-cav{font-size:.85rem;color:var(--warn);margin-top:8px;line-height:1.4}
+.study-meta td:first-child{color:var(--muted);white-space:nowrap;width:32%}
+.gal-report{display:inline-block;margin-top:6px;font-size:.74rem;color:var(--accent);text-decoration:none}
+.gal-report:hover{text-decoration:underline}
+.study-note h3,.study-note h4{color:var(--ink);margin:12px 0 4px;font-size:.9rem}
+.study-note table.wide{width:100%;border-collapse:collapse;font-size:.8rem;margin:6px 0}
+.study-note table.wide th,.study-note table.wide td{border-bottom:1px solid var(--line);padding:4px 8px;text-align:left;vertical-align:top}
+.study-note table.wide th{color:var(--muted);font-weight:600;font-size:.72rem}
+.study-note ul{margin:6px 0;padding-left:20px}
+.study-note li{margin:3px 0;font-size:.9rem}
+.study-note p{font-size:.9rem}
+.study-note code{font-family:'Cascadia Code',monospace;font-size:.85em;background:var(--code-bg);padding:1px 4px;border-radius:4px}
+.foundations-hero{background:linear-gradient(0deg,var(--panel),var(--panel));border:1px solid var(--accent);
+  border-radius:12px;padding:14px 16px;margin:14px 0}
+.trails{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}
+.trail{flex:1 1 200px;display:block;text-decoration:none;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--ink)}
+.trail:hover{border-color:var(--accent)}
+.trail b{display:block;color:var(--accent);margin-bottom:4px}
+.trail .desc{display:block;color:var(--muted);font-size:.85rem;line-height:1.4}
+.repro{font-family:'Cascadia Code',monospace;font-size:.82rem;background:var(--code-bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:6px 0;white-space:pre-wrap;overflow-x:auto}
+.gal-csv{display:inline-block;margin:4px 8px 0 0;font-size:.74rem;color:var(--accent);text-decoration:none}
+.gal-csv:hover{text-decoration:underline}
+
+/* ===== chrome do tutorial (sobrepõe o explorador) ===== */
+:root{
+  --bg:#15161b; --panel:#1e1f27; --ink:#cdd6f4; --muted:#a6adc8; --line:#313244;
+  --accent:#4aa3e0; --accent2:#f0868b; --ghost:#454a5a; --code-bg:#232530;
+  --ok:#a6e3a1; --warn:#e5c07b; --side:#1a1b22; --side-w:274px;
+  --bg2:#1a1b22; --line2:#3a3d4d;
+  --disp:'Bahnschrift','DIN Alternate','Segoe UI',system-ui,sans-serif;
+  --mono:'Consolas','Cascadia Code',monospace;
+}
+body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,sans-serif}
+.wrap{display:grid;grid-template-columns:var(--side-w) minmax(0,1fr);max-width:1500px;margin:0 auto}
+nav.toc{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:22px 15px 46px;border-right:1px solid var(--line);background:var(--side)}
+nav.toc .brand{font-family:var(--disp);font-weight:700;letter-spacing:.4px;font-size:15px;color:#fff;line-height:1.2}
+nav.toc .brand span{display:block;font-size:10.5px;font-weight:600;color:var(--accent);letter-spacing:1.4px;margin-top:3px}
+nav.toc .lang{display:flex;gap:6px;margin:14px 4px 4px}
+nav.toc .lang button{flex:1;background:var(--panel);border:1px solid var(--line);color:var(--muted);border-radius:7px;padding:5px;font-size:12px;cursor:pointer;font-family:var(--mono);transition:all .15s}
+nav.toc .lang button.on{background:var(--accent);color:#08121c;border-color:var(--accent);font-weight:700}
+nav.toc .sep{margin:16px 6px 6px;font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+nav.toc a{display:block;color:var(--muted);padding:5px 9px;border-radius:6px;font-size:13px;border-left:2px solid transparent;transition:transform .15s ease,background .15s,color .15s;text-decoration:none}
+nav.toc a:hover{background:var(--panel);color:var(--ink);transform:translateX(2px)}
+nav.toc a.active{background:var(--panel);color:#fff;border-left-color:var(--accent)}
+nav.toc a.cur{color:#fff;font-weight:600}
+main{margin:0;padding:0 clamp(18px,3.5vw,54px) 90px;min-width:0;max-width:1120px}
+header.hero{margin:0 calc(-1*clamp(18px,3.5vw,54px)) 26px;padding:56px clamp(18px,3.5vw,54px) 34px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;
+  background:radial-gradient(1100px 320px at 18% -20%, #24344d66, transparent),radial-gradient(820px 300px at 92% -10%, #2c2140aa, transparent), var(--bg2)}
+header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;opacity:.09}
+header.hero>*{position:relative}
+header.hero .kicker{font-family:var(--mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--accent)}
+header.hero h1{font-family:var(--disp);font-weight:700;letter-spacing:.4px;font-size:clamp(28px,4.4vw,46px);margin:8px 0 10px;color:#fff;line-height:1.03}
+header.hero .lead{max-width:74ch;color:var(--muted);font-size:15.5px;margin:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:18px 0}
+h2.sec{font-family:var(--disp);font-weight:700;font-size:19px;color:#fff;scroll-margin-top:16px}
+.eq{background:linear-gradient(180deg,#262832,var(--code-bg));border:1px solid var(--line);
+  border-left:3px solid var(--accent);border-radius:10px;padding:12px 20px;margin:16px 0;
+  color:#eaf0fc;box-shadow:0 3px 14px rgba(0,0,0,.28)}
+.eq-line{display:flex;align-items:baseline;gap:6px 18px;flex-wrap:wrap;margin:9px 0;line-height:1.55}
+.eq-line math{font-size:1.32rem;color:#eef3ff}
+.eq-raw{font-family:var(--mono);white-space:pre;overflow-x:auto;font-size:1.02rem;color:#eaf0fc}
+.eq .eq-cmt{color:var(--muted);font-family:'Segoe UI',system-ui,sans-serif;font-style:italic;font-size:.82em}
+math{font-family:'Cambria Math','STIX Two Math','Latin Modern Math','Times New Roman',serif}
+code{background:var(--code-bg);border:1px solid var(--line);color:#dfe6f5}
+/* animações */
+@keyframes ve-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.gprog{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;background:linear-gradient(90deg,var(--accent),#cba6f7);box-shadow:0 0 10px var(--accent);transition:width .08s linear}
+.reveal{opacity:0;transform:translateY(18px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+header.hero .kicker{animation:ve-rise .7s cubic-bezier(.2,.7,.2,1) both}
+header.hero h1{animation:ve-rise .7s .08s cubic-bezier(.2,.7,.2,1) both}
+header.hero .lead{animation:ve-rise .7s .16s cubic-bezier(.2,.7,.2,1) both}
+.cw canvas,.plotwrap canvas,#plot_an{cursor:crosshair}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}nav.toc{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}}
+@media(prefers-reduced-motion:reduce){.reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}header.hero .kicker,header.hero h1,header.hero .lead{animation:none}.gprog{display:none}nav.toc a:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc"><div class="brand">Bolt Analysis Studio<span>V2 · FUNDAMENTOS</span></div><div class="lang"><button data-l="pt" onclick="setLang('pt')">PT</button><button data-l="en" onclick="setLang('en')">EN</button></div><div class="sep"><span data-l="pt">Navegação</span><span data-l="en">Navigation</span></div><a href="index.html">← <span data-l="pt">Explorador</span><span data-l="en">Explorer</span></a><div class="sep"><span data-l="pt">Nesta página</span><span data-l="en">On this page</span></div><a href="#s0"><span data-l="pt">Formas que faltam (falsificações)</span>
+<span data-l="en">Missing forms (falsifications)</span></a><a href="#s1"><span data-l="pt">Constantes por par/rig (não universais)</span>
+<span data-l="en">Per-pair/rig constants (not universal)</span></a><a href="#s2"><span data-l="pt">Numérico e energia</span><span data-l="en">Numerics and energy</span></a><a href="#s3"><span data-l="pt">Como isso aparece no guia</span><span data-l="en">How this shows up in the guide</span></a><div class="sep"><span data-l="pt">Fundamentos</span><span data-l="en">Foundations</span></div><a href="concept_manual.html"><span data-l="pt">Manual do BAS V2 (3 volumes)</span><span data-l="en">BAS V2 Manual (3 volumes)</span></a><a href="concept_usage.html"><span data-l="pt">Guia de uso do programa</span><span data-l="en">How to use the program</span></a><a href="concept_not-a-fit.html"><span data-l="pt">1 · Não é um fit</span><span data-l="en">1 · Not a fit</span></a><a href="concept_msd-model.html"><span data-l="pt">2 · Modelo MSD</span><span data-l="en">2 · MSD model</span></a><a href="concept_mechanisms.html"><span data-l="pt">3 · Estado + mecanismos</span><span data-l="en">3 · State + mechanisms</span></a><a href="concept_coupling.html"><span data-l="pt">4 · Acoplamento</span><span data-l="en">4 · Coupling</span></a><a href="concept_energy.html"><span data-l="pt">5 · Energia</span><span data-l="en">5 · Energy</span></a><a href="concept_methodology.html"><span data-l="pt">6 · Metodologia</span><span data-l="en">6 · Methodology</span></a><a href="concept_coverage.html" class="cur"><span data-l="pt">Cobertura & limitações</span><span data-l="en">Coverage & limits</span></a><a href="concept_gallery.html"><span data-l="pt">7 · Galeria de validação</span><span data-l="en">7 · Validation gallery</span></a><a href="concept_review.html"><span data-l="pt">8 · Revisão da literatura</span><span data-l="en">8 · Literature review</span></a><a href="concept_equations.html"><span data-l="pt">9 · Equacionamento</span><span data-l="en">9 · Equations</span></a><a href="concept_references.html"><span data-l="pt">10 · Referências</span><span data-l="en">10 · References</span></a><a href="concept_anatomy.html"><span data-l="pt">11 · Anatomia da curva</span><span data-l="en">11 · Anatomy of the curve</span></a><a href="concept_glossary.html"><span data-l="pt">12 · Glossário</span><span data-l="en">12 · Glossary</span></a></nav>
+<main>
+<header class="hero"><div class="kicker"><span data-l="pt">Fundamentos</span><span data-l="en">Foundations</span></div><h1><span data-l="pt">Cobertura e limitações</span><span data-l="en">Coverage and limits</span></h1><div class="lead"><span data-l="pt">Um modelo honesto declara onde falha. Esta página lista as
+lacunas conhecidas &mdash; falsificações registradas e o que ainda falta &mdash; ao lado da página
+<a href="concept_not-a-fit.html">Não é um fit</a>.</span><span data-l="en">An honest model states where
+it fails. This page lists the known gaps &mdash; recorded falsifications and what is still missing
+&mdash; alongside the <a href="concept_not-a-fit.html">Not a fit</a> page.</span></div></header>
+
+
+<div class="panel">
+<h2 class="sec" id="s0"><span data-l="pt">Formas que faltam (falsificações)</span>
+<span data-l="en">Missing forms (falsifications)</span></h2>
+<p><span data-l="pt">Quando uma predição zero-refit falha um gate contra o dado, isso aponta uma FORMA
+faltante &mdash; não um coeficiente a ajustar. As abertas:</span>
+<span data-l="en">When a zero-refit prediction fails a gate against data, it points to a missing FORM
+&mdash; not a coefficient to tune. The open ones:</span></p>
+<ul class="refs">
+<li><span data-l="pt"><b>Aceleração tardia &mdash; classe ENCERRADA em 2026-08-02 com três
+falsificações</b> (21 curvas em 7 fontes). O dado desaba no fim <b>2&times; a 225&times; mais
+rápido</b> que o modelo (razão entre as inclinações terminais), e três instrumentos independentes
+apontam o mesmo estágio. Nenhum mecanismo do engine atual alcança isso, e agora sabemos por quê:
+<b>(1)</b> toda a família de gates (incubação, conformação, regime de slip, auto-travamento,
+gatilho de criticalidade) tem contradomínio (0,1] &mdash; só sabe <b>atrasar</b>, nunca acelerar,
+o que é falsificação <b>por construção</b>, não por tentativa; <b>(2)</b> um amplificador guiado
+pelo dano acumulado tem o sinal certo mas é <b>gradual demais</b> (piora o MAE em +53&nbsp;% a
++397&nbsp;%, porque para consertar o fim destrói o começo); <b>(3)</b> um amplificador com
+interruptor tem sinal e perfil certos mas <b>não é constante por rig</b> (na mesma fonte, com o
+mesmo valor, umas curvas melhoram e outras pioram). O quarto candidato &mdash; um relógio por
+curva &mdash; está <b>bloqueado por dado</b>: essas curvas param por critério de protocolo, não
+por falha, então não existe "fração de vida". As duas capacidades novas ficam no engine,
+<b>desligadas por padrão</b>, à espera de dado que as sustente.</span>
+<span data-l="en"><b>Late acceleration &mdash; class CLOSED on 2026-08-02 with three
+falsifications</b> (21 curves across 7 sources). The data collapses at the end <b>2&times; to
+225&times; faster</b> than the model, and three independent instruments point at the same stage.
+No mechanism in the current engine reaches it, and we now know why: <b>(1)</b> the whole gate
+family has range (0,1] &mdash; it can only <b>delay</b>, never accelerate, which is falsification
+<b>by construction</b>; <b>(2)</b> a damage-driven amplifier has the right sign but is <b>too
+gradual</b> (+53&nbsp;% to +397&nbsp;% MAE: fixing the end destroys the start); <b>(3)</b> a
+switch-gated amplifier has the right sign and profile but <b>is not a per-rig constant</b> (same
+source, same value: some curves improve, others worsen). The fourth candidate &mdash; a per-curve
+clock &mdash; is <b>data-blocked</b>: these tests stop by protocol criterion, not by failure, so
+there is no "fraction of life". Both new capabilities stay in the engine, <b>off by default</b>.</span></li>
+<li><span data-l="pt"><b>O que uma forma teria de ter</b> (especificação medida, não desejo):
+amplificar (fator&nbsp;&gt;&nbsp;1, não gatear) &middot; perfil tardio (interruptor, não
+acumulador) &middot; e um relógio que <b>não</b> seja o dano (gradual demais) nem a própria
+pré-carga (realimenta o que amplifica: acima de um limiar a junta morre em 30 ciclos, bifurcação
+medida).</span>
+<span data-l="en"><b>What a working form would need</b> (measured spec, not a wish): amplify
+(factor&nbsp;&gt;&nbsp;1, not gate) &middot; late profile (switch, not accumulator) &middot; and a
+clock that is <b>neither</b> damage (too gradual) nor preload itself (it feeds back into what it
+amplifies: past a threshold the joint dies in 30 cycles &mdash; measured bifurcation).</span></li>
+<li><span data-l="pt"><b>Kernel de colapso desacelerante</b> (aproximação suave ao piso de arresto).
+<b>A maior lacuna isolada: 26 curvas em 7 fontes</b> (Lu2024 10, Chu2026 7, Yang2019 4, Eccles
+fig8a/8c 2, Karlsen 1, Sun 1, Zhang2006 1). O dado desacelera até um platô; o kernel de catraca
+atual <b>bifurca</b> entre travar e disparar, sem meio-termo.</span>
+<span data-l="en"><b>Decelerating-collapse kernel</b> (smooth approach to the arrest floor). <b>The
+single largest gap: 26 curves across 7 sources</b> (Lu2024 10, Chu2026 7, Yang2019 4, Eccles
+fig8a/8c 2, Karlsen 1, Sun 1, Zhang2006 1). The data decelerates to a plateau; the current ratchet
+kernel <b>bifurcates</b> between arrest and runaway, with nothing in between.</span></li>
+<li><span data-l="pt"><b>Bifurcação de limiar de amplitude</b> (Yang2023 IJPEM, 7 curvas). Perto do
+limiar o dado afrouxa-ou-não (bifurcação), não segue lei de potência. <b>Tri-falsificado:</b> nem
+catraca, nem take-up relido, nem expoente de amplitude reproduzem a resposta graduada
+N_L &prop; &delta;<sup>&minus;3.5</sup> que o próprio artigo mede.</span>
+<span data-l="en"><b>Amplitude-threshold bifurcation</b> (Yang2023 IJPEM, 7 curves). Near threshold the
+data either loosens or does not (a bifurcation), rather than following a power law.
+<b>Triply falsified:</b> neither ratchet, re-read take-up, nor amplitude exponent reproduces the
+graded N_L &prop; &delta;<sup>&minus;3.5</sup> response the paper itself measures.</span></li>
+<li><span data-l="pt"><b>Condição de contorno axial externa</b> (Eccles 2010, 4 curvas). Quando a força
+axial aplicada <b>excede</b> o torque de prevalência, a porca gira até zero e se destaca &mdash; o
+engine não tem esse conceito (é contorno, não mecanismo de perda). Aplicar a receita existente
+<b>piorou</b> o resíduo máximo de 0.47 para 1.03.</span>
+<span data-l="en"><b>External axial boundary condition</b> (Eccles 2010, 4 curves). When the applied axial
+force <b>exceeds</b> the prevailing torque, the nut rotates to zero and detaches &mdash; the engine has
+no such concept (it is a boundary condition, not a loss mechanism). Applying the existing recipe made
+the peak residual <b>worse</b>, from 0.47 to 1.03.</span></li>
+<li><span data-l="pt"><b>Menores, com prova:</b> cliff/rebound de corrosão (JCSR, 2 &mdash; o dado
+<i>recupera</i> pré-carga e nenhum mecanismo do engine recupera), incubação do assentamento (UFU, 2
+&mdash; o dado fica plano até N&asymp;38 e o modelo assenta desde o ciclo 1), canal estrutural
+&xi;-dependente (Yang2021, 2 &mdash; o dado confunde F_ax e &delta;).</span>
+<span data-l="en"><b>Smaller, with evidence:</b> corrosion cliff/rebound (JCSR, 2 &mdash; the data
+<i>recovers</i> preload and no engine mechanism recovers it), seating incubation (UFU, 2 &mdash; the data
+stays flat to N&asymp;38 while the model seats from cycle 1), &xi;-dependent structural channel
+(Yang2021, 2 &mdash; the data confounds F_ax and &delta;).</span></li>
+</ul>
+<p class="note"><span data-l="pt"><b>Três falsificações desta lista foram FECHADAS &mdash; e vale
+registrar como, porque duas ficaram escritas aqui depois de resolvidas.</b> (1) <i>Amplitude axial</i>
+(&prop; A_F): o Gate B1 mediu &part;(fim)/&part;A_F &equiv; 0 em 03/07/2026 contra um baseline genérico;
+a &rho;-unificação foi adotada cinco dias depois e hoje o modelo entrega
+&minus;1.72&times;10<sup>&minus;5</sup>/N contra &minus;2.22&times;10<sup>&minus;5</sup> no dado &mdash;
+<b>78% da sensibilidade, não zero</b>, com as duas fontes axiais fechando 100% da meta. (2)
+<i>Espessura do membro</i>: a forma foi construída &mdash; o cisalhamento do membro em série põe o
+espécime mais espesso em <b>stick permanente</b>, que é exatamente por que ele não colapsa. (3)
+<i>Acoplamento F_amp&harr;&delta;</i>: a capacidade existe no engine, <b>desligada por padrão</b>, à
+espera de calibração. Nos três casos a afirmação envelheceu porque ninguém a re-mediu depois da
+mudança que a resolveu &mdash; a regra que adotamos é que <b>toda falsificação carrega a versão do
+modelo contra a qual foi medida</b>.</span>
+<span data-l="en"><b>Three falsifications on this list have been CLOSED &mdash; and how is worth
+recording, because two stayed written here after being resolved.</b> (1) <i>Axial amplitude</i>
+(&prop; A_F): Gate B1 measured &part;(final)/&part;A_F &equiv; 0 on 2026-07-03 against a generic
+baseline; the &rho;-unification was adopted five days later, and today the model delivers
+&minus;1.72&times;10<sup>&minus;5</sup>/N against &minus;2.22&times;10<sup>&minus;5</sup> in the data
+&mdash; <b>78% of the sensitivity, not zero</b>, with both axial sources fully inside the goal. (2)
+<i>Member thickness</i>: the form was built &mdash; member shear in series puts the thickest specimen in
+<b>permanent stick</b>, which is precisely why it does not collapse. (3) <i>F_amp&harr;&delta;
+coupling</i>: the capability exists in the engine, <b>off by default</b>, awaiting calibration. In all
+three the claim aged because nobody re-measured it after the change that resolved it &mdash; the rule
+we adopted is that <b>every falsification carries the model version it was measured against</b>.</span></p>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s1"><span data-l="pt">Constantes por par/rig (não universais)</span>
+<span data-l="en">Per-pair/rig constants (not universal)</span></h2>
+<p><span data-l="pt">A doutrina &mdash; <b>formas transferem cross-rig; níveis/constantes são por
+rig</b> &mdash; tem um custo honesto: constantes como <code>W_conf_ref</code>, <code>C_creep</code> e
+<code>K_archard</code> têm MAGNITUDE por par tribológico/rig, não um valor universal. A âncora de creep
+304SS (9.9&times;10<sup>&minus;13</sup>) e o fit UFU (1.2&times;10<sup>&minus;11</sup>) têm intervalos de
+confiança DISJUNTOS; o <code>W_conf_ref</code> não foi ancorável em nenhum dado da biblioteca. Fora do
+par calibrado, a magnitude é aproximada.</span>
+<span data-l="en">The doctrine &mdash; <b>forms transfer cross-rig; levels/constants are per-rig</b> &mdash;
+has an honest cost: constants like <code>W_conf_ref</code>, <code>C_creep</code> and
+<code>K_archard</code> have per-tribo-pair/rig MAGNITUDE, not a universal value. The 304SS creep anchor
+(9.9&times;10<sup>&minus;13</sup>) and the UFU fit (1.2&times;10<sup>&minus;11</sup>) have DISJOINT
+confidence intervals; <code>W_conf_ref</code> could not be anchored on any library dataset. Off the
+calibrated pair, the magnitude is approximate.</span></p>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s2"><span data-l="pt">Numérico e energia</span><span data-l="en">Numerics and energy</span></h2>
+<ul class="refs">
+<li><span data-l="pt"><b>Conservação no colapso por dano.</b> A energética da remoção abrasiva é
+fenomenológica; o residual de conservação degrada quando o dano leva F0&rarr;0.</span>
+<span data-l="en"><b>Conservation in damage-collapse.</b> The abrasive-removal energetics are
+phenomenological; the conservation residual degrades when damage drives F0&rarr;0.</span></li>
+<li><span data-l="pt"><b>Bookkeeping viscoso no modo axial-força.</b> O termo viscoso de Rayleigh acumula
+sem contraparte em W_ext (residual &minus;242 a &minus;12 J); NÃO afeta F0 nem os MAEs, mas o budget de
+energia axial fica aberto.</span>
+<span data-l="en"><b>Viscous bookkeeping in axial force mode.</b> The Rayleigh viscous term accumulates
+with no W_ext counterpart (residual &minus;242 to &minus;12 J); it does NOT affect F0 or the MAEs, but the
+axial energy budget stays open.</span></li>
+</ul>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s3"><span data-l="pt">Como isso aparece no guia</span><span data-l="en">How this shows up in the guide</span></h2>
+<ul class="refs">
+<li><span data-l="pt">Sliders <b>"mortos"</b> honestos (marcados <code>negligible</code>) &mdash; o campo existe mas quase não move a curva-padrão.</span><span data-l="en">Honest <b>"dead" sliders</b> (marked <code>negligible</code>) &mdash; the field exists but barely moves the standard curve.</span></li>
+<li><span data-l="pt">O <b>MAE é mostrado sem esconder</b> (overlay e galeria); os casos com MAE &gt; 0.10 são marcados; cada caso tem seus <b>caveats</b>.</span><span data-l="en">The <b>MAE is shown, not hidden</b> (overlay and gallery); cases with MAE &gt; 0.10 are flagged; each case carries its <b>caveats</b>.</span></li>
+<li><span data-l="pt">A <a href="concept_gallery.html">galeria</a> confronta o modelo com 207 curvas &mdash; incluindo onde ele erra. Ver também a <a href="concept_methodology.html">Metodologia</a> (falsificação, procedência).</span><span data-l="en">The <a href="concept_gallery.html">gallery</a> confronts the model with 207 curves &mdash; including where it misses. See also the <a href="concept_methodology.html">Methodology</a> (falsification, provenance).</span></li>
+</ul>
+</div>
+
+<nav class="pn"><a href="concept_methodology.html">&larr; 6 · Metodologia</a><a href="index.html">&#8962; <span data-l="pt">índice</span><span data-l="en">index</span></a><a href="concept_gallery.html">7 · Galeria de validação &rarr;</a></nav>
+
+</main>
+</div>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.setLang=function(l){document.documentElement.dataset.lang=l;
+    document.querySelectorAll('nav.toc .lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')===l);});
+    if(window._cwRefresh)window._cwRefresh(); if(window.veRedraw)window.veRedraw();};
+  setLang(document.documentElement.dataset.lang||'pt');
+  if(!reduce){
+    var bar=document.createElement('div');bar.className='gprog';document.body.appendChild(bar);
+    function pg(){var hh=document.documentElement.scrollHeight-innerHeight;bar.style.width=(hh>0?scrollY/hh*100:0)+'%';}
+    addEventListener('scroll',pg,{passive:true});addEventListener('resize',pg);pg();
+    var vh=innerHeight||800;
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.panel,.widget').forEach(function(el){if(el.getBoundingClientRect().top>vh*0.9){el.classList.add('reveal');io.observe(el);}});
+  }
+  var links={};document.querySelectorAll('nav.toc a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var aio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var a=links[e.target.id];
+    if(a){for(var k in links)links[k].classList.remove('active');a.classList.add('active');}}});},{rootMargin:'-30% 0px -62% 0px'});
+  Object.keys(links).forEach(function(id){var el=document.getElementById(id);if(el)aio.observe(el);});
+})();
+</script>
+</body>
+</html>

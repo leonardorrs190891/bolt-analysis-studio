@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/90_91_CFRP_loosening_Wei_Yang.md:92-106
+mechanism,steel_washer_pct,alu_washer_pct,cfrp_washer_pct
+washer_into_CFRP_embedding,68,71,45
+transverse_slip_stageI,18,15,28
+nut_rotation_stageII,2,2,5
+viscoelastic_matrix_creep,12,12,22

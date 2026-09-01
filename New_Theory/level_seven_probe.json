@@ -1,0 +1,271 @@
+{
+ "fingerprint": "4f5bedfbace4",
+ "curvas": [
+  {
+   "case_id": "bauer2024_M12_fig8_test3",
+   "fonte": "BAUER_2024",
+   "floor_cfg": 0.08,
+   "floor_lido": 0.2389,
+   "plateau": false,
+   "emb_cfg_um": 11.0,
+   "emb_lido_um": 1.641,
+   "emb_prov": "data_implied_early_drop",
+   "tem_pack": true,
+   "mae_store": 0.0241,
+   "maxerr_store": 0.1198,
+   "res_medio": 0.0228,
+   "direcao_necessaria": "piso MENOR",
+   "direcao_lida": "piso MAIOR",
+   "direcao_bate": false,
+   "mae_ctrl": 0.0241,
+   "maxerr_ctrl": 0.1198,
+   "controle_ok": true,
+   "piso": {
+    "mae": 0.0621,
+    "maxerr": 0.3984,
+    "veredicto": "PIORA"
+   },
+   "emb": {
+    "mae": 0.0263,
+    "maxerr": 0.1313,
+    "veredicto": "PIORA"
+   },
+   "piso+emb": {
+    "mae": 0.0638,
+    "maxerr": 0.4039,
+    "veredicto": "PIORA"
+   },
+   "s": 0.6,
+   "melhor_alavanca": "emb",
+   "veredicto": "PIORA"
+  },
+  {
+   "case_id": "chu2026ti_D0p3mm_F0_49kN_test1",
+   "fonte": "CHU_2026",
+   "floor_cfg": 0.08,
+   "floor_lido": 0.9876,
+   "plateau": true,
+   "emb_cfg_um": 11.0,
+   "emb_lido_um": 1.603,
+   "emb_prov": "data_implied_early_drop",
+   "tem_pack": true,
+   "mae_store": 0.0663,
+   "maxerr_store": 0.1147,
+   "res_medio": -0.0663,
+   "direcao_necessaria": "piso MAIOR",
+   "direcao_lida": "piso MAIOR",
+   "direcao_bate": true,
+   "mae_ctrl": 0.0663,
+   "maxerr_ctrl": 0.1147,
+   "controle_ok": true,
+   "piso": {
+    "mae": 0.0035,
+    "maxerr": 0.0082,
+    "veredicto": "FECHA"
+   },
+   "emb": {
+    "mae": 0.0665,
+    "maxerr": 0.1152,
+    "veredicto": "PIORA"
+   },
+   "piso+emb": {
+    "mae": 0.0036,
+    "maxerr": 0.0082,
+    "veredicto": "FECHA"
+   },
+   "s": 1.2,
+   "melhor_alavanca": "piso",
+   "veredicto": "FECHA"
+  },
+  {
+   "case_id": "eccles2010_fig8a_no_axial_baseline1",
+   "fonte": "ECCLES_2010",
+   "floor_cfg": 0.059,
+   "floor_lido": 0.0122,
+   "plateau": true,
+   "emb_cfg_um": 11.0,
+   "emb_lido_um": 4.182,
+   "emb_prov": "data_implied_early_drop",
+   "tem_pack": true,
+   "mae_store": 0.0436,
+   "maxerr_store": 0.1223,
+   "res_medio": -0.0426,
+   "direcao_necessaria": "piso MAIOR",
+   "direcao_lida": "piso MENOR",
+   "direcao_bate": false,
+   "mae_ctrl": 0.0436,
+   "maxerr_ctrl": 0.1223,
+   "controle_ok": true,
+   "piso": {
+    "mae": 0.0801,
+    "maxerr": 0.2133,
+    "veredicto": "PIORA"
+   },
+   "emb": {
+    "mae": 0.1484,
+    "maxerr": 0.2577,
+    "veredicto": "PIORA"
+   },
+   "piso+emb": {
+    "mae": 0.1212,
+    "maxerr": 0.2253,
+    "veredicto": "PIORA"
+   },
+   "s": 0.4,
+   "melhor_alavanca": "piso",
+   "veredicto": "PIORA"
+  },
+  {
+   "case_id": "liu2016wear_fig7_run2_5e6cyc",
+   "fonte": "LIU_2016",
+   "floor_cfg": null,
+   "floor_lido": 0.6478,
+   "plateau": true,
+   "emb_cfg_um": 11.0,
+   "emb_lido_um": 3.612,
+   "emb_prov": "data_implied_early_drop",
+   "tem_pack": false,
+   "mae_store": 0.0603,
+   "maxerr_store": 0.1035,
+   "res_medio": 0.0603,
+   "direcao_necessaria": "piso MENOR",
+   "direcao_lida": "sem piso no cfg (default 0 = sem arresto)",
+   "direcao_bate": null,
+   "mae_ctrl": 0.0603,
+   "maxerr_ctrl": 0.1035,
+   "controle_ok": true,
+   "piso": {
+    "mae": 0.0603,
+    "maxerr": 0.1035,
+    "veredicto": "INERTE"
+   },
+   "emb": {
+    "mae": 0.0713,
+    "maxerr": 0.1146,
+    "veredicto": "PIORA"
+   },
+   "piso+emb": {
+    "mae": 0.0713,
+    "maxerr": 0.1146,
+    "veredicto": "PIORA"
+   },
+   "s": 2959.9,
+   "melhor_alavanca": "piso",
+   "veredicto": "INERTE"
+  },
+  {
+   "case_id": "liu2020_fig9_zinc_AF0.4mm_P0-18kN",
+   "fonte": "LIU_2020_WEAR",
+   "floor_cfg": null,
+   "floor_lido": 0.8351,
+   "plateau": true,
+   "emb_cfg_um": 11.0,
+   "emb_lido_um": 0.509,
+   "emb_prov": "data_implied_early_drop",
+   "tem_pack": false,
+   "mae_store": 0.0729,
+   "maxerr_store": 0.1339,
+   "res_medio": 0.0729,
+   "direcao_necessaria": "piso MENOR",
+   "direcao_lida": "sem piso no cfg (default 0 = sem arresto)",
+   "direcao_bate": null,
+   "mae_ctrl": 0.0729,
+   "maxerr_ctrl": 0.1339,
+   "controle_ok": true,
+   "piso": {
+    "mae": 0.0729,
+    "maxerr": 0.1339,
+    "veredicto": "INERTE"
+   },
+   "emb": {
+    "mae": 0.0846,
+    "maxerr": 0.153,
+    "veredicto": "PIORA"
+   },
+   "piso+emb": {
+    "mae": 0.0846,
+    "maxerr": 0.153,
+    "veredicto": "PIORA"
+   },
+   "s": 7.4,
+   "melhor_alavanca": "piso",
+   "veredicto": "INERTE"
+  },
+  {
+   "case_id": "lu2024_M8_fig20_T22Nm",
+   "fonte": "LU_2024",
+   "floor_cfg": 0.21,
+   "floor_lido": 0.0626,
+   "plateau": false,
+   "emb_cfg_um": 11.0,
+   "emb_lido_um": 6.194,
+   "emb_prov": "data_implied_early_drop",
+   "tem_pack": true,
+   "mae_store": 0.0517,
+   "maxerr_store": 0.1248,
+   "res_medio": 0.0517,
+   "direcao_necessaria": "piso MENOR",
+   "direcao_lida": "piso MENOR",
+   "direcao_bate": true,
+   "mae_ctrl": 0.0517,
+   "maxerr_ctrl": 0.1248,
+   "controle_ok": true,
+   "piso": {
+    "mae": 0.0554,
+    "maxerr": 0.1166,
+    "veredicto": "MELHORA, NAO FECHA"
+   },
+   "emb": {
+    "mae": 0.078,
+    "maxerr": 0.1708,
+    "veredicto": "PIORA"
+   },
+   "piso+emb": {
+    "mae": 0.1408,
+    "maxerr": 0.2316,
+    "veredicto": "PIORA"
+   },
+   "s": 0.4,
+   "melhor_alavanca": "piso",
+   "veredicto": "MELHORA, NAO FECHA"
+  },
+  {
+   "case_id": "rousseau2025_hdpe_t12",
+   "fonte": "ROUSSEAU_2025",
+   "floor_cfg": 0.2,
+   "floor_lido": 0.3395,
+   "plateau": false,
+   "emb_cfg_um": 11.0,
+   "emb_lido_um": 0.43,
+   "emb_prov": "data_implied_early_drop",
+   "tem_pack": true,
+   "mae_store": 0.0642,
+   "maxerr_store": 0.1375,
+   "res_medio": 0.0572,
+   "direcao_necessaria": "piso MENOR",
+   "direcao_lida": "piso MAIOR",
+   "direcao_bate": false,
+   "mae_ctrl": 0.0642,
+   "maxerr_ctrl": 0.1375,
+   "controle_ok": true,
+   "piso": {
+    "mae": 0.1232,
+    "maxerr": 0.2123,
+    "veredicto": "PIORA"
+   },
+   "emb": {
+    "mae": 0.0769,
+    "maxerr": 0.1583,
+    "veredicto": "PIORA"
+   },
+   "piso+emb": {
+    "mae": 0.1354,
+    "maxerr": 0.2296,
+    "veredicto": "PIORA"
+   },
+   "s": 0.5,
+   "melhor_alavanca": "emb",
+   "veredicto": "PIORA"
+  }
+ ]
+}

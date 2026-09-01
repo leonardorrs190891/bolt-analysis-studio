@@ -1,0 +1,5 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/35_36_37_38_wear_material_rotational_direction.md:34-41
+cycle,measured_um,FEA_um
+200,3.5,3.2
+500,5.8,5.5
+1000,8.2,7.9

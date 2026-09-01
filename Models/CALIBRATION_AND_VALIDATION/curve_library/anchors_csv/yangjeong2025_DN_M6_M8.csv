@@ -1,0 +1,17 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/26_Yang_Jeong_2025_variable_amplitude_multibolt.md:61-97
+bolt,delta_mm,NL_cycles,flag
+M6,0.30,100000,gt
+M6,0.35,28500,
+M6,0.40,8200,
+M6,0.45,3100,
+M6,0.50,1500,
+M6,0.55,720,
+M6,0.60,380,
+M6,0.65,210,
+M8,0.35,100000,gt
+M8,0.40,42000,
+M8,0.45,12500,
+M8,0.50,4800,
+M8,0.55,2200,
+M8,0.60,1050,
+M8,0.65,520,

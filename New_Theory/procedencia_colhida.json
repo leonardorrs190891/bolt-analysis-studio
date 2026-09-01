@@ -1,0 +1,104 @@
+{
+ "CHU_2026": {
+  "emb_um": "handbook: VDI 2230 f_Z pela classe de rugosidade (Rz<10 ⇒ 9,5 µm). [New_Theory/chu_graded_scrit_resultado.md]"
+ },
+ "CHU_2026_test1": {
+  "mu_bearing": "input-de-paper: µ medido e prescrito pela fonte. [New_Theory/chu_graded_scrit_resultado.md]"
+ },
+ "ICMEZ_2025": {
+  "free_spin_kin": "LIDO da caracterização de dreno dos AUTORES (Fig. 3) — a fração não-drenante sai do traço publicado, uma por condição de grip/carga. [New_Theory/metodo_leitura_de_constantes.md §2]",
+  "k_loose_graded": "REGREDIDO na mesma leitura da Fig. 3. [New_Theory/metodo_leitura_de_constantes.md §2]",
+  "loose_amp_exp": "canal DESLIGADO deliberadamente (valor 0 exato): expoente de amplitude do afrouxamento. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "loose_rate_mode": "FORMA adotada por pré-registro: `graded_scrit` — é uma escolha de mecanismo, não um valor ajustado. [New_Theory/metodo_leitura_de_constantes.md §2]",
+  "s_crit_loose": "canal DESLIGADO deliberadamente (valor 0 exato): limiar de slip do ramo graded. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "C_creep": "canal DESLIGADO deliberadamente (valor 0 exato): canal de fluência. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "emb_um": "LIDO do intercepto: settling lido da caracterização de dreno dos AUTORES (Fig. 3). [New_Theory/metodo_leitura_de_constantes.md §2]"
+ },
+ "LIU_2020_WEAR": {
+  "mu": "input-de-paper por revestimento: DLC 0,126 medido na fonte; zinco e af0.4 ficam no 0,15 do bloco `shared` (não é leitura da fonte — é o default herdado, e está dito). [New_Theory/MODEL_LEGITIMACY.md §4.7]",
+  "mu_thread": "idem `mu` — a fonte reporta UM coeficiente por revestimento. [New_Theory/MODEL_LEGITIMACY.md §4.7]"
+ },
+ "LIU_2025": {
+  "fat_C1": "input-de-paper POR CURVA: `fat_C1` fixado nas contas a partir da vida N_f PUBLICADA de cada curva (rota E2). A claim é 'prevê a curva DADA a vida' — prever a vida segue falsificado (relógio ±36 %). [New_Theory/metodo_leitura_de_constantes.md §2]"
+ },
+ "LU_2024": {
+  "C_creep": "canal DESLIGADO deliberadamente (valor 0 exato): canal de fluência. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "k_loose_graded": "DERIVADO da mesma regressão. [New_Theory/metodo_leitura_de_constantes.md §2]",
+  "loose_F_exp": "REGREDIDO do dado (mesma forma do P-13), dentro da região que fecha. [New_Theory/metodo_leitura_de_constantes.md §2]",
+  "loose_amp_exp": "canal DESLIGADO deliberadamente (valor 0 exato): expoente de amplitude do afrouxamento. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "loose_rate_mode": "FORMA adotada por pré-registro: `graded_scrit` — é uma escolha de mecanismo, não um valor ajustado. [New_Theory/metodo_leitura_de_constantes.md §2]",
+  "onset_burst_frac": "idem — mesmo pacote de burst. [specs/2026-08-21-lu2024-fig14-burst-prereg.md]",
+  "onset_burst_rate": "idem — mesmo pacote de burst. [specs/2026-08-21-lu2024-fig14-burst-prereg.md]",
+  "s_crit_loose": "canal DESLIGADO deliberadamente (valor 0 exato): limiar de slip do ramo graded. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "slip_onset_W": "fitado-declarado no pacote de BURST da fig14, com região interior comprovada. [specs/2026-08-21-lu2024-fig14-burst-prereg.md]",
+  "slip_onset_sharpness": "idem — mesmo pacote de burst. [specs/2026-08-21-lu2024-fig14-burst-prereg.md]",
+  "arrest_approach_exp": "REGREDIDO do dado: aexp=1,864 com r²=0,685, dentro da região que fecha — o floor lido foi FALSIFICADO antes, e a regressão entrou no lugar dele. [specs/2026-08-20-lu2024-amp1p5-aexp-regredido-prereg.md]"
+ },
+ "ROUSSEAU_2025": {
+  "C_creep": "canal DESLIGADO deliberadamente (valor 0 exato): canal de fluência. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "arrest_approach_exp": "mesma forma, por protocolo. [New_Theory/arrest_exp_resultado.md]",
+  "emb_depth": "canal DESLIGADO deliberadamente (valor 0 exato): canal de assentamento. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "free_spin_kin": "LIDO por regressão ao traço de ROTAÇÃO publicado: dF/dθ = 919,7 N/deg (r²=0,9997) contra 3278 do k_b·lead ⇒ fsk = 1 − 920/3278 = 0,7195. A fração não-drenante é medida, não ajustada. [New_Theory/rousseau_t10_ratchet_lido_resultado.md]",
+  "k_loose_graded": "REGREDIDO da taxa observada: LSQ Hill×arrest, r²=0,891 — o Hill sozinho dá r²=0,092, o que prova que a DESCIDA do sino é a forma. [New_Theory/rousseau_t10_ratchet_lido_resultado.md]",
+  "loose_amp_exp": "canal DESLIGADO deliberadamente (valor 0 exato): expoente de amplitude do afrouxamento. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "loose_rate_mode": "FORMA adotada por pré-registro: `graded_scrit` — é uma escolha de mecanismo, não um valor ajustado. [New_Theory/metodo_leitura_de_constantes.md §2]",
+  "s_crit_loose": "canal DESLIGADO deliberadamente (valor 0 exato): limiar de slip do ramo graded. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "slip_onset_W": "fitado-declarado; par degenerado com `slip_onset_sharpness` DECLARADO ⇒ conta como ~1 parâmetro efetivo. [New_Theory/metodo_leitura_de_constantes.md §2]",
+  "slip_onset_sharpness": "idem — ver a degenerescência declarada com `slip_onset_W`. [New_Theory/metodo_leitura_de_constantes.md §2]"
+ },
+ "ROUSSEAU_HDPE": {
+  "free_spin_kin": "LIDO por regressão ao traço de ROTAÇÃO publicado: dF/dθ = 919,7 N/deg (r²=0,9997) contra 3278 do k_b·lead ⇒ fsk = 1 − 920/3278 = 0,7195. A fração não-drenante é medida, não ajustada. [New_Theory/rousseau_t10_ratchet_lido_resultado.md]",
+  "k_loose_graded": "REGREDIDO da taxa observada: LSQ Hill×arrest, r²=0,891 — o Hill sozinho dá r²=0,092, o que prova que a DESCIDA do sino é a forma. [New_Theory/rousseau_t10_ratchet_lido_resultado.md]",
+  "loose_amp_exp": "canal DESLIGADO deliberadamente (valor 0 exato): expoente de amplitude do afrouxamento. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "loose_rate_mode": "FORMA adotada por pré-registro: `graded_scrit` — é uma escolha de mecanismo, não um valor ajustado. [New_Theory/metodo_leitura_de_constantes.md §2]",
+  "s_crit_loose": "canal DESLIGADO deliberadamente (valor 0 exato): limiar de slip do ramo graded. Não é constante ajustada — é a decisão de que este canal não age nesta curva."
+ },
+ "SUN_2025_CRIMP": {
+  "arrest_approach_exp": "mesma forma do ECCLES, por protocolo. [New_Theory/arrest_exp_resultado.md]",
+  "k_loose_graded": "kernel cinemático `graded_scrit`: 2 fitados TROCAM 2 fitados (não somam), com o floor ganhando procedência de LEITURA no mesmo passo. [New_Theory/sun_standard_kernel_cinematico_resultado.md]",
+  "k_wear_spec": "fitado-this-rig por par tribológico (§4.7: `k_wear_spec` é por par, não universal). [New_Theory/MODEL_LEGITIMACY.md §4.7]",
+  "loose_rate_mode": "FORMA adotada por pré-registro: `graded_scrit` — é uma escolha de mecanismo, não um valor ajustado. [New_Theory/metodo_leitura_de_constantes.md §2]",
+  "s_crit_loose": "canal DESLIGADO deliberadamente (valor 0 exato): limiar de slip do ramo graded. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "C_creep": "ESTENDIDO do token `standard` da PRÓPRIA fonte — zero número novo: o valor 9e-11 já existia na fonte e foi propagado ao par, não ajustado. [specs/2026-08-19-sun-standard-ccreep-token-prereg.md]",
+  "emb_um": "LIDO por leitor canônico (`emb_from_curve`) no trecho de assentamento. [New_Theory/metodo_leitura_de_constantes.md §2]"
+ },
+ "SUN_2025_REASSY": {
+  "mu_bearing": "input-de-paper: mesmo valor do `mu_thread` — a Fig. 10 reporta UM coeficiente por remontagem, não separa rosca de apoio. [specs/2026-07-11-mem-iter4-preregistrations.md §PR-28 (2026-07-15)]",
+  "mu_thread": "input-de-paper: Fig. 10 do Sun (locknut) digitalizada — coeficiente de atrito retro-derivado do torque de prevalência, por número de remontagens (N=2:0,158 · 4:0,186 · 6:0,198 · 8:0,245 · 10:0,279). [specs/2026-07-11-mem-iter4-preregistrations.md §PR-28 (2026-07-15)]"
+ },
+ "YANG_2019": {
+  "C_creep": "canal DESLIGADO deliberadamente (valor 0 exato): canal de fluência. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "emb_depth": "canal DESLIGADO deliberadamente (valor 0 exato): canal de assentamento. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "gth_A0": "LIDO do próprio dado: pacote `gth` extraído da curva de stick, com a causa-raiz do gate de grupo corrigida no mesmo passo. [New_Theory/itens_D_e_E_respondidos_com_numero.md]",
+  "gth_accel_p": "idem `gth_A0` — mesmo pacote, mesma leitura. [New_Theory/itens_D_e_E_respondidos_com_numero.md]",
+  "gth_k": "idem `gth_A0` — mesmo pacote, mesma leitura. [New_Theory/itens_D_e_E_respondidos_com_numero.md]",
+  "slip_onset_W": "canal DESLIGADO deliberadamente (valor 0 exato): incubação por trabalho de slip. Não é constante ajustada — é a decisão de que este canal não age nesta curva."
+ },
+ "YANG_2023_IJPEM_m6": {
+  "k_loose_graded": "DERIVADO da mesma regressão: k = K·F₀/(k_b·lead·ref/(d₂/2)), com K do LSQ ao F publicado (r² 0,9968–0,9999). [specs/2026-08-20-yang2023-p13-taxa-fracionaria-prereg.md §3]",
+  "loose_F_exp": "REGREDIDO: LSQ da solução fechada r=(1+(fe−1)KN)^(−1/(fe−1)) ao F(N) PUBLICADO — r² 0,9968–0,9999. Zero fit à métrica: as três pernas são predição. [specs/2026-08-20-yang2023-p13-taxa-fracionaria-prereg.md §3]",
+  "loose_amp_exp": "canal DESLIGADO deliberadamente (valor 0 exato): expoente de amplitude do afrouxamento. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "loose_rate_mode": "FORMA adotada por pré-registro: `graded_scrit` — é uma escolha de mecanismo, não um valor ajustado. [New_Theory/metodo_leitura_de_constantes.md §2]",
+  "s_crit_loose": "canal DESLIGADO deliberadamente (valor 0 exato): limiar de slip do ramo graded. Não é constante ajustada — é a decisão de que este canal não age nesta curva."
+ },
+ "YANG_2023_IJPEM_m8": {
+  "k_loose_graded": "DERIVADO da mesma regressão: k = K·F₀/(k_b·lead·ref/(d₂/2)), com K do LSQ ao F publicado (r² 0,9968–0,9999). [specs/2026-08-20-yang2023-p13-taxa-fracionaria-prereg.md §3]",
+  "loose_F_exp": "REGREDIDO: LSQ da solução fechada r=(1+(fe−1)KN)^(−1/(fe−1)) ao F(N) PUBLICADO — r² 0,9968–0,9999. Zero fit à métrica: as três pernas são predição. [specs/2026-08-20-yang2023-p13-taxa-fracionaria-prereg.md §3]",
+  "loose_amp_exp": "canal DESLIGADO deliberadamente (valor 0 exato): expoente de amplitude do afrouxamento. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "loose_rate_mode": "FORMA adotada por pré-registro: `graded_scrit` — é uma escolha de mecanismo, não um valor ajustado. [New_Theory/metodo_leitura_de_constantes.md §2]",
+  "s_crit_loose": "canal DESLIGADO deliberadamente (valor 0 exato): limiar de slip do ramo graded. Não é constante ajustada — é a decisão de que este canal não age nesta curva."
+ },
+ "ZHANG_2006": {
+  "K_archard": "canal DESLIGADO deliberadamente (valor 0 exato): canal de desgaste (via legada K/H). Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "k_loose_graded": "fitado-declarado na mesma grade do runaway. [specs/2026-08-20-zhang-fig3-runaway-prereg.md]",
+  "k_wear_spec": "canal DESLIGADO deliberadamente (valor 0 exato): canal de desgaste (via específica). Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "loose_F_exp": "fitado-declarado; ver a degenerescência declarada com `loose_runaway_gain`. [specs/2026-08-20-zhang-fig3-runaway-prereg.md]",
+  "loose_amp_exp": "canal DESLIGADO deliberadamente (valor 0 exato): expoente de amplitude do afrouxamento. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "loose_arrest_floor": "canal DESLIGADO deliberadamente (valor 0 exato): piso de auto-travamento. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "loose_rate_mode": "FORMA adotada por pré-registro: `graded_scrit` — é uma escolha de mecanismo, não um valor ajustado. [New_Theory/metodo_leitura_de_constantes.md §2]",
+  "loose_runaway_frac": "LIDO direto: o paper define o fim do Estágio II em P=25 %. [specs/2026-08-20-zhang-fig3-runaway-prereg.md]",
+  "loose_runaway_gain": "fitado-declarado sob região interior comprovada; par degenerado com `loose_F_exp` DECLARADO ⇒ conta como ~1 parâmetro efetivo. [specs/2026-08-20-zhang-fig3-runaway-prereg.md]",
+  "s_crit_loose": "canal DESLIGADO deliberadamente (valor 0 exato): limiar de slip do ramo graded. Não é constante ajustada — é a decisão de que este canal não age nesta curva.",
+  "slip_onset_W": "fitado-declarado na mesma grade do runaway; degenerescência com o par (frac, gain) declarada. [specs/2026-08-20-zhang-fig3-runaway-prereg.md]"
+ }
+}

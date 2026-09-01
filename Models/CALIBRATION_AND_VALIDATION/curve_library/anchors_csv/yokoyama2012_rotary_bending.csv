@@ -1,0 +1,9 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/81_82_bending_loosening.md:75-92
+revolutions,theta_deg,ratio_est
+0,0.0,1.000
+100,0.15,0.990
+500,0.80,0.966
+1000,1.80,0.935
+2000,4.00,0.883
+5000,11.5,0.752
+10000,25.0,0.580

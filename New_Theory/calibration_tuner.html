@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Calibration Tuner — Dynamic Stiffness Analyzer</title>
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
+<style>
+  :root {
+    --bg: #1e1e1e; --panel: #252526; --panel2: #2d2d30;
+    --border: #3e3e42; --accent: #007acc;
+    --text: #d4d4d4; --hint: #888; --label: #9e9e9e;
+    --ok: #6cd486; --warn: #d4b13a; --bad: #c44;
+    --phys: #5cb27c; --ax: #4a90e2; --tr: #e08c5a;
+    --F0: #ffb74d; --ref: #c576c5; --dmg: #e05a8c;
+  }
+  body {
+    margin: 0; padding: 16px;
+    background: var(--bg); color: var(--text);
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    font-size: 12px; line-height: 1.4;
+    max-width: 1500px; margin-left: auto; margin-right: auto;
+  }
+  h1 { font-size: 18px; margin: 0 0 2px; color: #fff; }
+  h2 { font-size: 14px; margin: 16px 0 6px; color: #fff;
+       padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 11px; margin: 8px 0 4px; color: var(--label);
+       text-transform: uppercase; letter-spacing: 0.5px; }
+  .subtitle { color: var(--hint); margin: 0 0 12px; font-size: 11px; }
+  .panel {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 4px; padding: 10px;
+  }
+  .panel.phys { border-left: 3px solid var(--phys); }
+  .panel.ax { border-left: 3px solid var(--ax); }
+  .panel.tr { border-left: 3px solid var(--tr); }
+  .panel.both { border-left: 3px solid var(--ref); }
+  .panel.dmg { border-left: 3px solid var(--dmg); }
+  .grid { display: grid; gap: 8px; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .grid-loadparams { grid-template-columns: repeat(5, 1fr); }
+  .row {
+    display: grid; grid-template-columns: 1.4fr 2fr 60px;
+    gap: 4px; align-items: center; margin: 3px 0;
+  }
+  .row.locked { grid-template-columns: 1.4fr 2fr 60px 18px; }
+  .row label { color: var(--hint); font-size: 10px; }
+  .row input[type=range] { width: 100%; accent-color: var(--accent); }
+  .row .val {
+    color: #fff; font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; text-align: right;
+  }
+  .row select, .row input[type=file], .row input[type=number] {
+    background: var(--bg); border: 1px solid var(--border);
+    color: #fff; padding: 2px 4px; font-size: 10px;
+  }
+  .row input[type=checkbox] { accent-color: var(--warn); }
+  .btn {
+    background: var(--accent); color: #fff; border: 0;
+    padding: 5px 10px; font-size: 11px; cursor: pointer;
+    border-radius: 2px; margin-right: 6px;
+  }
+  .btn:hover { background: #1e90d8; }
+  .btn.secondary { background: #3c3c3c; }
+  .btn.danger { background: #c44; }
+  .btn:disabled { background: #333; color: #777; cursor: not-allowed; opacity: 0.5; }
+  .btn:disabled:hover { background: #333; }
+  .derived {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3px 8px;
+    color: var(--hint); font-size: 11px;
+  }
+  .derived span.v { color: #fff; font-family: 'JetBrains Mono', monospace; }
+  .derived .ok { color: var(--ok); } .derived .warn { color: var(--warn); }
+  .derived .bad { color: var(--bad); }
+  .plot-area { padding: 6px; }
+  .plot-area .title {
+    color: var(--label); font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 0 0 4px;
+  }
+  .plot-area > div:not(.title):not(.btns) { height: 300px; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px 8px; font-size: 11px; }
+  .stats div { display: flex; justify-content: space-between; }
+  .stats .lbl { color: var(--hint); }
+  .stats .v { color: #fff; font-family: 'JetBrains Mono', monospace; }
+  .json-out {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    background: #181818; padding: 8px 12px; border: 1px solid var(--border);
+    border-radius: 2px; overflow-x: auto; white-space: pre;
+    max-height: 280px; overflow-y: auto; color: #d4d4d4;
+  }
+  .seg-badge {
+    display: inline-block; color: #fff; padding: 4px 9px; margin: 2px;
+    border-radius: 3px; font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .banner { padding: 8px 12px; font-size: 13px; border-radius: 3px; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<div id="offline-banner" class="banner" style="display:none; background:#7a1e1e; color:#fff;">
+  ⚠ Servidor de calibração offline. Rode
+  <code>python3 -m bolt_analysis_studio.calibration.server</code> e recarregue a página.
+</div>
+<div id="error-banner" class="banner" style="display:none; background:#7a5a1e; color:#fff;"></div>
+
+<h1>Calibration Tuner</h1>
+<p class="subtitle">
+  Cliente fino do <b>DynamicStiffnessAnalyzer</b> (fonte única, via servidor local). Ajuste por estágio: erro por segmento + decomposição por mecanismo + surface_damage ao vivo.
+  <span style="color:var(--phys);">▮ físicas</span> ·
+  <span style="color:var(--ax);">▮ axial</span> ·
+  <span style="color:var(--tr);">▮ transversal</span> ·
+  <span style="color:var(--ref);">▮ agnóstico</span> ·
+  <span style="color:var(--dmg);">▮ dano</span>
+</p>
+
+<!-- ESTAGIO B — AVISO DE TUNERS LEGADOS -->
+<div class="banner" style="background:#2d2a1e; border:1px solid var(--warn); color:#e8dca6;">
+  <b>⚠ Estágio B (2026-07-09):</b> os sliders <code>k_*_scale</code> / <code>Phi_*_correction</code> /
+  <code>k_damage_scale</code> são <b>LEGADOS</b> — o engine <b>não tem mais camada de tuners</b>. Eles são
+  <b>traduzidos no servidor</b> para constantes físicas por um shim
+  (<code>calibration.tuner_shim.translate_legacy_tuners</code>). O caminho <b>canônico</b> agora são as
+  <span style="color:var(--phys);">CONSTANTES FÍSICAS</span> (<code>emb_depth</code>, <code>C_creep</code>,
+  <code>k_wear_spec</code>, <code>tr_loose_gain</code>, <code>c_D</code>), que fluem direto pelo
+  <code>/simulate</code>. A calibração canônica é o <b>SharedCalibrator</b> (bloco <code>shared</code> —
+  ver <code>GET /shared</code>), não o auto-fit por estágio.
+</div>
+
+<!-- PROFILE SELECTOR -->
+<div class="panel both" style="background: linear-gradient(90deg, #2a3142 0%, #1e1e1e 100%); border-color: var(--ref); margin-bottom: 16px;">
+  <h3 style="color: var(--ref); margin-top: 0;">Calibration Profile</h3>
+  <div class="row" style="grid-template-columns: 180px 1fr 200px;">
+    <label>Perfil pré-calibrado</label>
+    <select id="profile-select" style="font-size: 13px;">
+      <option value="">— perfil —</option>
+    </select>
+    <span class="val" id="profile-info" style="font-size: 11px; color: var(--hint);">
+      via servidor /profiles
+    </span>
+  </div>
+</div>
+
+<!-- LOADING PARAMETERS -->
+<h2>Loading & geometria</h2>
+<div class="grid grid-loadparams">
+  <div class="panel both">
+    <h3>Bolt</h3>
+    <div class="row">
+      <label>Tamanho</label>
+      <select id="bolt-preset">
+        <option value="M8">M8 × 1.25</option>
+        <option value="M12">M12 × 1.75</option>
+        <option value="M16" selected>M16 × 2.0</option>
+        <option value="M20">M20 × 2.5</option>
+        <option value="UNC34">3/4"-10 UNC</option>
+      </select>
+      <span></span>
+    </div>
+  </div>
+  <div class="panel both">
+    <h3>F₀ [kN]</h3>
+    <div class="row"><label>inicial</label>
+      <input type="range" id="F0" min="10" max="100" step="2" value="50">
+      <span class="val" id="F0-v">50</span></div>
+  </div>
+  <div class="panel both">
+    <h3>F_amp [kN]</h3>
+    <div class="row"><label>por ciclo</label>
+      <input type="range" id="Famp" min="2" max="80" step="1" value="20">
+      <span class="val" id="Famp-v">20</span></div>
+  </div>
+  <div class="panel both">
+    <h3>θ load [°]</h3>
+    <div class="row"><label>0=ax 90=tr</label>
+      <input type="range" id="theta" min="0" max="90" step="1" value="90">
+      <span class="val" id="theta-v">90</span></div>
+  </div>
+  <div class="panel both">
+    <h3>δ amp [mm]</h3>
+    <div class="row"><label>displacement</label>
+      <input type="range" id="delta_amp" min="0" max="2" step="0.05" value="0.5">
+      <span class="val" id="delta_amp-v">0.50</span></div>
+  </div>
+</div>
+<div class="grid grid-loadparams" style="margin-top:8px;">
+  <div class="panel both">
+    <h3>N ciclos</h3>
+    <div class="row"><label>simulação</label>
+      <input type="range" id="N" min="100" max="10000" step="100" value="2500">
+      <span class="val" id="N-v">2500</span></div>
+    <div class="row"><label>freq [Hz]</label>
+      <input type="range" id="freq" min="0.5" max="50" step="0.5" value="0.5">
+      <span class="val" id="freq-v">0.5</span></div>
+  </div>
+  <div class="panel both" style="grid-column: span 2;">
+    <h3>Janelas de estágio (ajustáveis)</h3>
+    <div class="row" style="grid-template-columns: 1.4fr 1fr 1.4fr 1fr;">
+      <label>N_I (I→II)</label>
+      <input type="number" id="N_I" value="100" min="1" step="10">
+      <label>N_II (II→III)</label>
+      <input type="number" id="N_II" value="1000" min="2" step="50">
+    </div>
+  </div>
+  <div class="panel dmg" style="grid-column: span 2;">
+    <h3 style="color:var(--dmg);">Surface damage (reaperto)</h3>
+    <div class="row"><label>D_init</label>
+      <input type="range" id="D_init" min="0" max="0.9" step="0.05" value="0">
+      <span class="val" id="D_init-v">0.00</span></div>
+    <div class="row"><label>c_D (taxa)</label>
+      <input type="range" id="c_D" min="0" max="5" step="0.1" value="0">
+      <span class="val" id="c_D-v">0.0</span></div>
+    <div class="row"><label>k_dmg_mu</label>
+      <input type="range" id="k_dmg_mu" min="0" max="2" step="0.1" value="0">
+      <span class="val" id="k_dmg_mu-v">0.0</span></div>
+    <div class="row"><label>k_dmg_wear</label>
+      <input type="range" id="k_dmg_wear" min="0" max="8" step="0.2" value="0">
+      <span class="val" id="k_dmg_wear-v">0.0</span></div>
+  </div>
+</div>
+
+<!-- CONSTANTS GRID -->
+<div class="grid grid-3" style="margin-top: 12px;">
+
+  <!-- COLUMN 1: PHYSICAL CONSTANTS -->
+  <div>
+    <h2 style="color: var(--phys);">Constantes físicas</h2>
+    <div class="panel phys">
+      <h3>Rigidez do joint</h3>
+      <div class="row"><label>k_j_init [GN/m]</label>
+        <input type="range" id="kj_init" min="1" max="10" step="0.1" value="4">
+        <span class="val" id="kj_init-v">4.0</span></div>
+      <div class="row"><label>α_GW</label>
+        <input type="range" id="alpha" min="0.0" max="1.0" step="0.05" value="0.5">
+        <span class="val" id="alpha-v">0.50</span></div>
+    </div>
+    <div class="panel phys">
+      <h3>Atrito</h3>
+      <div class="row"><label>μ_thread</label>
+        <input type="range" id="mu_thread" min="0.05" max="0.30" step="0.01" value="0.15">
+        <span class="val" id="mu_thread-v">0.15</span></div>
+      <div class="row"><label>μ_bearing</label>
+        <input type="range" id="mu_bearing" min="0.05" max="0.30" step="0.01" value="0.15">
+        <span class="val" id="mu_bearing-v">0.15</span></div>
+    </div>
+    <div class="panel phys">
+      <h3>Wear / Embedding / Creep</h3>
+      <div class="row"><label>K_archard ×1e−4</label>
+        <input type="range" id="K_arch" min="0.1" max="20" step="0.1" value="1.0">
+        <span class="val" id="K_arch-v">1.0</span></div>
+      <div class="row"><label>emb_depth [μm]</label>
+        <input type="range" id="emb_depth" min="0.5" max="30" step="0.5" value="12.0">
+        <span class="val" id="emb_depth-v">12.0</span></div>
+      <div class="row"><label>N_emb [ciclos]</label>
+        <input type="range" id="N_emb" min="10" max="200" step="5" value="50">
+        <span class="val" id="N_emb-v">50</span></div>
+      <div class="row"><label>C_creep ×1e−12</label>
+        <input type="range" id="C_creep" min="0.0" max="200" step="1.0" value="50">
+        <span class="val" id="C_creep-v">50</span></div>
+    </div>
+    <div class="panel phys">
+      <h3>Canônicas Estágio B (pós-tuners)</h3>
+      <div class="row"><label title="0 = usa K/H legado (K_archard); >0 sobrepõe">k_wear_spec ×1e−14</label>
+        <input type="range" id="k_wear_spec" min="0" max="20" step="0.5" value="0">
+        <span class="val" id="k_wear_spec-v">0.0</span></div>
+      <div class="row"><label title="ganho de afrouxamento transversal (default 2.0)">tr_loose_gain</label>
+        <input type="range" id="tr_loose_gain" min="0.5" max="5" step="0.1" value="2.0">
+        <span class="val" id="tr_loose_gain-v">2.0</span></div>
+    </div>
+  </div>
+
+  <!-- COLUMN 2: AXIAL + AGNOSTIC TUNERS -->
+  <div>
+    <h2 style="color: var(--ax);">Tuners axiais</h2>
+    <div class="panel ax">
+      <div class="row"><label>Phi_ax_correction</label>
+        <input type="range" id="Phi_ax_corr" min="0.5" max="2.0" step="0.05" value="1.0">
+        <span class="val" id="Phi_ax_corr-v">1.00</span></div>
+      <div class="row"><label>k_wear_scale_ax</label>
+        <input type="range" id="k_wear_ax" min="0.1" max="10" step="0.1" value="1.0">
+        <span class="val" id="k_wear_ax-v">1.0</span></div>
+      <div class="row"><label>k_loose_scale_ax</label>
+        <input type="range" id="k_loose_ax" min="0.1" max="10" step="0.1" value="1.0">
+        <span class="val" id="k_loose_ax-v">1.0</span></div>
+    </div>
+
+    <h2 style="color: var(--ref); margin-top: 16px;">Tuners agnósticos (estágios I, III)</h2>
+    <div class="panel both">
+      <div class="row locked"><label>k_emb_scale (I)</label>
+        <input type="range" id="k_emb" min="0.001" max="5.0" step="0.01" value="1.3">
+        <span class="val" id="k_emb-v">1.30</span>
+        <input type="checkbox" class="tuner-lock" data-tuner="k_emb" title="travar no auto-fit"></div>
+      <div class="row locked"><label>k_creep_scale (III)</label>
+        <input type="range" id="k_creep" min="0.001" max="5.0" step="0.001" value="1.0">
+        <span class="val" id="k_creep-v">1.000</span>
+        <input type="checkbox" class="tuner-lock" data-tuner="k_creep" title="travar no auto-fit"></div>
+    </div>
+  </div>
+
+  <!-- COLUMN 3: TRANSVERSE TUNERS (stage II) + STAGES -->
+  <div>
+    <h2 style="color: var(--tr);">Tuners transversais (estágio II)</h2>
+    <div class="panel tr">
+      <div class="row locked"><label>Phi_tr_correction</label>
+        <input type="range" id="Phi_tr_corr" min="0.05" max="5.0" step="0.05" value="1.0">
+        <span class="val" id="Phi_tr_corr-v">1.00</span>
+        <input type="checkbox" class="tuner-lock" data-tuner="Phi_tr_corr"></div>
+      <div class="row locked"><label>k_wear_scale_tr</label>
+        <input type="range" id="k_wear_tr" min="0.001" max="5" step="0.01" value="1.0">
+        <span class="val" id="k_wear_tr-v">1.00</span>
+        <input type="checkbox" class="tuner-lock" data-tuner="k_wear_tr"></div>
+      <div class="row locked"><label>k_loose_scale_tr</label>
+        <input type="range" id="k_loose_tr" min="0.001" max="5" step="0.01" value="1.0">
+        <span class="val" id="k_loose_tr-v">1.00</span>
+        <input type="checkbox" class="tuner-lock" data-tuner="k_loose_tr"></div>
+      <div class="row locked"><label>k_damage_scale</label>
+        <input type="range" id="k_damage" min="0.001" max="5" step="0.01" value="1.0">
+        <span class="val" id="k_damage-v">1.00</span>
+        <input type="checkbox" class="tuner-lock" data-tuner="k_damage"></div>
+    </div>
+
+    <h2 style="margin-top: 16px;">Estágios — MAE por segmento</h2>
+    <div class="panel">
+      <div id="seg-badges" style="margin-bottom:8px;">—</div>
+      <div>
+        <button class="btn" id="autofit-I" disabled title="aposentado no Estágio B">⚙ Auto-fit I</button>
+        <button class="btn" id="autofit-II" disabled title="aposentado no Estágio B">⚙ Auto-fit II</button>
+        <button class="btn" id="autofit-III" disabled title="aposentado no Estágio B">⚙ Auto-fit III</button>
+      </div>
+      <p style="font-size:10px; color:var(--warn); margin:6px 0 0;">
+        Auto-fit <b>aposentado no Estágio B</b> — o <code>/calibrate</code> (StagedCalibrator) foi
+        removido do servidor. Use o <b>SharedCalibrator</b> (constantes físicas, offline).
+      </p>
+    </div>
+
+    <h2 style="margin-top: 16px;">Resultado + métricas</h2>
+    <div class="panel">
+      <div class="derived" id="sim-derived"></div>
+      <div class="stats" id="metrics" style="margin-top:8px;"></div>
+      <p style="font-size: 11px; color: var(--hint); margin: 8px 0 0;">
+        Referência: <span id="ref-status">nenhuma carregada</span>.
+        <input type="file" id="ref-file" accept=".csv,.txt" style="margin-left: 6px;">
+        <button class="btn secondary" id="clear-ref">limpar</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- PLOTS -->
+<h2 style="margin-top: 20px;">Decay de F₀(N) — simulação + referência</h2>
+<div class="panel plot-area"><div id="plot-F0" style="height:340px"></div></div>
+
+<div class="grid grid-2" style="margin-top: 12px;">
+  <div class="panel plot-area">
+    <div class="title">Decomposição: |dF₀| por mecanismo (share)</div>
+    <div id="plot-decomp"></div>
+  </div>
+  <div class="panel plot-area">
+    <div class="title">surface_damage D(N)</div>
+    <div id="plot-damage"></div>
+  </div>
+</div>
+
+<!-- EXPORT -->
+<h2 style="margin-top: 20px;">Salvar perfil</h2>
+<div class="grid grid-2">
+  <div class="panel">
+    <div style="margin-bottom: 6px;">
+      <label style="color: var(--hint); font-size: 11px;">Nome do perfil:</label>
+      <input type="text" id="profile-name" value="custom"
+             style="background: var(--bg); border: 1px solid var(--border);
+                    color: #fff; padding: 3px 6px; font-size: 11px; width: 180px;">
+      <button class="btn" id="save-btn">💾 Salvar no servidor</button>
+      <button class="btn secondary" id="copy-btn">📋 Copiar JSON</button>
+    </div>
+    <p style="font-size: 10px; color: var(--hint);">
+      Persiste em <code>New_Theory/joint_calibrations.json</code> via servidor.
+    </p>
+  </div>
+  <div class="panel"><div class="json-out" id="json-out"></div></div>
+</div>
+
+<script>
+// ============================================================
+// CONSTANTS
+// ============================================================
+const E_STEEL = 200e9;
+const W_REF = 1e4;   // escala de energia de referencia do dano (fixa)
+const BOLTS = {
+  M8:   {d2: 7.19e-3,  p: 1.25e-3, As: 36.6e-6,  L: 0.030, r_b: 6e-3,  A_c: 5e-5},
+  M12:  {d2: 10.86e-3, p: 1.75e-3, As: 84.3e-6,  L: 0.040, r_b: 9e-3,  A_c: 8e-5},
+  M16:  {d2: 14.70e-3, p: 2.00e-3, As: 157e-6,   L: 0.050, r_b: 12e-3, A_c: 1.0e-4},
+  M20:  {d2: 18.38e-3, p: 2.50e-3, As: 245e-6,   L: 0.060, r_b: 12e-3, A_c: 1.2e-4},
+  UNC34:{d2: 17.40e-3, p: 2.54e-3, As: 215e-6,   L: 0.050, r_b: 11e-3, A_c: 1.1e-4},
+};
+// mapeia slider-id -> nome do tuner no engine
+const TUNER_MAP = {
+  k_emb: 'k_emb_scale', k_creep: 'k_creep_scale',
+  k_wear_tr: 'k_wear_scale_tr', k_loose_tr: 'k_loose_scale_tr',
+  Phi_tr_corr: 'Phi_tr_correction', k_damage: 'k_damage_scale',
+  k_wear_ax: 'k_wear_scale_ax', k_loose_ax: 'k_loose_scale_ax',
+  Phi_ax_corr: 'Phi_ax_correction',
+};
+const STAGE_TUNERS = {   // tuner-name -> slider-id (estagiaveis)
+  I: ['k_emb'], II: ['k_wear_tr', 'k_loose_tr', 'Phi_tr_corr', 'k_damage'], III: ['k_creep'],
+};
+let referenceCurve = null;   // {N: [], ratio: []}
+let _renderTimer = null, _firstPlot = true;
+const $ = id => document.getElementById(id);
+const num = id => +$(id).value;
+
+// ============================================================
+// PAYLOAD (a partir dos sliders)
+// ============================================================
+function buildPayload() {
+  const b = BOLTS[$('bolt-preset').value];
+  const mat = {
+    k_j_init: num('kj_init') * 1e9, alpha_GW: num('alpha'),
+    mu_thread: num('mu_thread'), mu_bearing: num('mu_bearing'),
+    K_archard: num('K_arch') * 1e-4,
+    emb_depth: num('emb_depth') * 1e-6, N_emb: num('N_emb'),
+    C_creep: num('C_creep') * 1e-12,
+    // constantes canonicas Estagio B (fluem direto; 0 em k_wear_spec = K/H legado)
+    k_wear_spec: num('k_wear_spec') * 1e-14, tr_loose_gain: num('tr_loose_gain'),
+    c_D: num('c_D'), W_ref: W_REF, k_dmg_mu: num('k_dmg_mu'),
+    k_dmg_wear: num('k_dmg_wear'),
+  };
+  for (const [sid, tname] of Object.entries(TUNER_MAP)) mat[tname] = num(sid);
+  return {
+    geom: {A_s: b.As, L_eff: b.L, d_2: b.d2, pitch: b.p,
+           r_bearing: b.r_b, A_contact: b.A_c},
+    mat,
+    loading: {
+      F0_init: num('F0') * 1e3, F_amp: num('Famp') * 1e3,
+      theta: num('theta') * Math.PI / 180, freq: num('freq'),
+      N: num('N'), delta_amp: num('delta_amp') * 1e-3, D_init: num('D_init'),
+    },
+    segments: {N_I: num('N_I'), N_II: num('N_II')},
+    reference: referenceCurve
+      ? referenceCurve.N.map((n, i) => [n, referenceCurve.ratio[i]]) : [],
+  };
+}
+
+// ============================================================
+// SERVER-BACKED RENDER (debounced)
+// ============================================================
+function showOffline(on) { $('offline-banner').style.display = on ? 'block' : 'none'; }
+function showError(msg) {
+  const el = $('error-banner');
+  el.textContent = 'Erro: ' + msg; el.style.display = 'block';
+  setTimeout(() => { el.style.display = 'none'; }, 4000);
+}
+
+async function render() {
+  let resp;
+  try {
+    resp = await fetch('/simulate', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(buildPayload()),
+    });
+  } catch (e) { return showOffline(true); }
+  showOffline(false);
+  if (!resp.ok) { const j = await resp.json().catch(() => ({})); return showError(j.error || resp.statusText); }
+  const out = await resp.json();
+  plotF0({N: out.curve.N, ratio: out.curve.ratio}, referenceCurve, _firstPlot);
+  plotDecomp(out.decomposition, out.curve.N, _firstPlot);
+  plotDamage(out.damage_trace, _firstPlot);
+  renderSegmentBadges(out.segments);
+  renderDerived(out);
+  renderMetrics(out);
+  $('json-out').textContent = buildProfileJSON();
+  _firstPlot = false;
+}
+function scheduleRender() { clearTimeout(_renderTimer); _renderTimer = setTimeout(render, 60); }
+
+// ============================================================
+// PLOTS
+// ============================================================
+const plotLayout = (tx, ty, opts={}) => ({
+  paper_bgcolor: '#252526', plot_bgcolor: '#1e1e1e',
+  font: {color: '#d4d4d4', size: 10},
+  margin: {l: 60, r: 10, t: 8, b: 36, ...(opts.margin || {})},
+  xaxis: {title: tx, gridcolor: '#3e3e42', ...(opts.xaxis || {})},
+  yaxis: {title: ty, gridcolor: '#3e3e42', ...(opts.yaxis || {})},
+  showlegend: opts.showlegend || false, legend: opts.legend,
+  shapes: opts.shapes,
+});
+function stageShapes() {
+  const nI = num('N_I'), nII = num('N_II');
+  const line = x => ({type:'line', x0:x, x1:x, yref:'paper', y0:0, y1:1,
+                      line:{color:'#666', width:1, dash:'dot'}});
+  return [line(nI), line(nII)];
+}
+function plotF0(hist, ref, isInit) {
+  const data = [{x: hist.N, y: hist.ratio, mode: 'lines', name: 'BAS modelo',
+    line: {color: '#ffb74d', width: 2.5}, fill: 'tozeroy', fillcolor: 'rgba(255,183,77,0.12)'}];
+  if (ref && ref.N.length > 0) data.push({x: ref.N, y: ref.ratio, mode: 'markers',
+    name: 'referência', marker: {color: '#c576c5', size: 5, symbol: 'circle-open'}});
+  const layout = plotLayout('N ciclos', 'F₀/F₀_init',
+    {showlegend: true, legend: {orientation: 'h', y: 1.1, x: 0, font: {size: 10}}, shapes: stageShapes()});
+  layout.yaxis.range = [0, 1.05];
+  isInit ? Plotly.newPlot('plot-F0', data, layout, {displayModeBar: false})
+         : Plotly.react('plot-F0', data, layout, {displayModeBar: false});
+}
+function plotDecomp(decomp, N, isInit) {
+  const colors = {embedding:'#d4b14a', creep:'#d4944a', wear:'#7aa8d4', rotational_loosening:'#d44a4a'};
+  const data = Object.keys(decomp).map(m => ({
+    x: N.slice(1), y: decomp[m], name: m, stackgroup: 'one',
+    line: {width: 1, color: colors[m] || '#999'}}));
+  const layout = plotLayout('N ciclos', '|dF₀| por mec. [N]',
+    {showlegend: true, legend: {orientation: 'h', y: 1.2, font: {size: 9}}, shapes: stageShapes()});
+  isInit ? Plotly.newPlot('plot-decomp', data, layout, {displayModeBar: false})
+         : Plotly.react('plot-decomp', data, layout, {displayModeBar: false});
+}
+function plotDamage(tr, isInit) {
+  const data = [{x: tr.N, y: tr.D, mode: 'lines', name: 'D',
+    line: {color: '#e05a8c', width: 2}, fill: 'tozeroy', fillcolor: 'rgba(224,90,140,0.15)'}];
+  const layout = plotLayout('N ciclos', 'surface_damage D', {shapes: stageShapes()});
+  layout.yaxis.range = [0, 1.0];
+  isInit ? Plotly.newPlot('plot-damage', data, layout, {displayModeBar: false})
+         : Plotly.react('plot-damage', data, layout, {displayModeBar: false});
+}
+
+// ============================================================
+// BADGES / DERIVED / METRICS
+// ============================================================
+function renderSegmentBadges(segments) {
+  const order = ['I', 'II', 'III'];
+  $('seg-badges').innerHTML = order.map(k => {
+    const s = segments[k]; if (!s) return '';
+    const mae = s.mae == null ? '—' : s.mae.toFixed(3);
+    const col = s.mae == null ? '#555' : (s.mae <= 0.045 ? '#2e7d32' : (s.mae <= 0.08 ? '#b58900' : '#c62828'));
+    const dom = s.dominant || '—';
+    return `<span class="seg-badge" style="background:${col};">Estágio ${k} · MAE ${mae} · ${dom}</span>`;
+  }).join('') || '—';
+}
+function renderDerived(out) {
+  const r = out.curve.ratio[out.curve.ratio.length - 1];
+  const cls = r < 0.2 ? 'bad' : (r < 0.8 ? 'warn' : 'ok');
+  const txt = r < 0.2 ? 'FAILED' : (r < 0.8 ? 'LOOSENING' : 'STABLE');
+  const Dfin = out.damage_trace.D[out.damage_trace.D.length - 1];
+  const resid = out.energy.conservation_residual;
+  $('sim-derived').innerHTML = `
+    <span>Retenção F₀:</span><span class="v ${cls}">${(r*100).toFixed(1)}%</span>
+    <span>Status:</span><span class="v ${cls}">${txt}</span>
+    <span>D final:</span><span class="v">${Dfin.toFixed(3)}</span>
+    <span>Separou em:</span><span class="v">${out.separated_at ?? '—'}</span>
+    <span>Resid. energia:</span><span class="v">${resid.toFixed(2)} J</span>`;
+}
+function renderMetrics(out) {
+  const el = $('metrics');
+  if (!referenceCurve) { el.innerHTML = `<div style="grid-column:1/-1;color:var(--hint);">Carregue referência CSV pra métricas.</div>`; return; }
+  // MAE global a partir da curva retornada
+  const sim = out.curve;
+  const interp = n => {
+    let i = 0; while (i < sim.N.length-1 && sim.N[i+1] < n) i++;
+    if (i >= sim.N.length-1) return sim.ratio[sim.ratio.length-1];
+    const t = (n-sim.N[i])/(sim.N[i+1]-sim.N[i]);
+    return sim.ratio[i] + t*(sim.ratio[i+1]-sim.ratio[i]);
+  };
+  const errs = referenceCurve.N.map((n,i) => interp(n) - referenceCurve.ratio[i]);
+  const MAE = errs.reduce((a,e)=>a+Math.abs(e),0)/errs.length;
+  const cls = MAE < 0.045 ? 'ok' : (MAE < 0.08 ? 'warn' : 'bad');
+  el.innerHTML = `
+    <div><span class="lbl">MAE global:</span><span class="v ${cls}">${MAE.toFixed(4)}</span></div>
+    <div><span class="lbl">N pontos:</span><span class="v">${referenceCurve.N.length}</span></div>
+    <div><span class="lbl">verdict:</span><span class="v ${cls}">${MAE<0.045?'BOM':'AJUSTAR'}</span></div>`;
+}
+
+// ============================================================
+// PROFILES (do servidor)
+// ============================================================
+let PROFILES = {};
+async function loadProfiles() {
+  try {
+    const r = await fetch('/profiles');
+    PROFILES = (await r.json()).profiles || {};
+    const sel = $('profile-select');
+    sel.innerHTML = '<option value="">— perfil —</option>' +
+      Object.keys(PROFILES).map(k => `<option value="${k}">${k}</option>`).join('');
+  } catch (e) { showOffline(true); }
+}
+function applyProfile(name) {
+  const p = PROFILES[name]; if (!p) return;
+  const t = p.tuners || {};
+  for (const [sid, tname] of Object.entries(TUNER_MAP)) {
+    if (tname in t) setSlider(sid, t[tname]);
+  }
+  if (p.loading && p.loading.D_init != null) setSlider('D_init', p.loading.D_init);
+  // liga o dano se o perfil usa
+  if (p.damage_active) { if (num('c_D')===0) setSlider('c_D', 2.0);
+                         if (num('k_dmg_wear')===0) setSlider('k_dmg_wear', 4.0);
+                         if (num('k_dmg_mu')===0) setSlider('k_dmg_mu', 1.0); }
+  scheduleRender();
+}
+function setSlider(id, v) {
+  const el = $(id); if (!el) return;
+  el.value = v;
+  const span = $(id + '-v');
+  if (span) { const step = el.step || '1'; const dec = (step.split('.')[1]||'').length;
+              span.textContent = (+v).toFixed(Math.min(Math.max(dec,0),3)); }
+}
+
+// ============================================================
+// AUTO-FIT POR ESTAGIO (/calibrate)
+// ============================================================
+async function autoFit(stage) {
+  // ESTAGIO B (2026-07-09): /calibrate (StagedCalibrator) foi APOSENTADO no
+  // servidor — a camada de tuners foi removida do engine. A feature esta
+  // neutralizada (botoes disabled); este guarda cobre reativacao via devtools.
+  // O corpo antigo (POST /calibrate) foi removido: era caminho morto.
+  return showError('Auto-fit aposentado no Estágio B — use o SharedCalibrator '
+    + '(constantes físicas, offline). Os sliders k_*_scale são legados.');
+}
+
+// ============================================================
+// EXPORT
+// ============================================================
+function buildProfileJSON() {
+  const tuners = {};
+  for (const [sid, tname] of Object.entries(TUNER_MAP)) tuners[tname] = num(sid);
+  return JSON.stringify({
+    profile_name: $('profile-name').value,
+    calibrated_at: 'tuner',
+    loading: {F0_N: num('F0')*1e3, F_amp_N: num('Famp')*1e3,
+              theta_rad: num('theta')*Math.PI/180, freq_Hz: num('freq'),
+              n_cycles: num('N'), D_init: num('D_init')},
+    damage_active: num('c_D') > 0 || num('k_dmg_wear') > 0,
+    tuners,
+  }, null, 2);
+}
+
+// ============================================================
+// EVENT WIRING
+// ============================================================
+const SLIDER_IDS = ['bolt-preset','F0','Famp','theta','delta_amp','N','freq',
+  'N_I','N_II','D_init','c_D','k_dmg_mu','k_dmg_wear',
+  'kj_init','alpha','mu_thread','mu_bearing','K_arch','emb_depth','N_emb','C_creep',
+  'k_wear_spec','tr_loose_gain',
+  'Phi_ax_corr','k_wear_ax','k_loose_ax','Phi_tr_corr','k_wear_tr','k_loose_tr',
+  'k_emb','k_creep','k_damage'];
+SLIDER_IDS.forEach(id => {
+  const el = $(id); if (!el) return;
+  const evt = (el.tagName === 'SELECT') ? 'change' : 'input';
+  el.addEventListener(evt, () => {
+    if (el.type === 'range') { const v = $(id+'-v'); if (v) v.textContent = el.value; }
+    // mexer num tuner manualmente volta o profile pra "—"
+    if (id in TUNER_MAP) $('profile-select').value = '';
+    scheduleRender();
+  });
+});
+$('profile-select').addEventListener('change', e => applyProfile(e.target.value));
+['autofit-I','autofit-II','autofit-III'].forEach(b =>
+  $(b).addEventListener('click', () => autoFit(b.split('-')[1])));
+
+// referencia CSV
+$('ref-file').addEventListener('change', (e) => {
+  const file = e.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const lines = ev.target.result.split(/\r?\n/).filter(l => l.trim());
+    const N_arr = [], ratio_arr = [];
+    for (const line of lines) {
+      const parts = line.split(/[,;\t]+/).map(s => s.trim());
+      if (parts.length < 2) continue;
+      const n = parseFloat(parts[0]), r = parseFloat(parts[1]);
+      if (isNaN(n) || isNaN(r)) continue;
+      N_arr.push(n); ratio_arr.push(r);
+    }
+    if (N_arr.length < 2) { $('ref-status').textContent = 'erro de parse'; return; }
+    const max_r = Math.max(...ratio_arr);
+    if (max_r > 1.5) for (let i=0;i<ratio_arr.length;i++) ratio_arr[i] /= max_r;
+    referenceCurve = {N: N_arr, ratio: ratio_arr};
+    $('ref-status').textContent = `${file.name} (${N_arr.length} pts, N=${N_arr[0]}–${N_arr[N_arr.length-1]})`;
+    scheduleRender();
+  };
+  reader.readAsText(file);
+});
+$('clear-ref').addEventListener('click', () => {
+  referenceCurve = null; $('ref-file').value = '';
+  $('ref-status').textContent = 'nenhuma carregada'; scheduleRender();
+});
+
+// salvar / copiar
+$('save-btn').addEventListener('click', async () => {
+  const profile = JSON.parse(buildProfileJSON());
+  try {
+    const r = await fetch('/profiles/save', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({name: $('profile-name').value, profile})});
+    const btn = $('save-btn'), orig = btn.textContent;
+    btn.textContent = r.ok ? '✓ salvo' : '✗ erro';
+    setTimeout(() => { btn.textContent = orig; }, 1500);
+    if (r.ok) loadProfiles();
+  } catch (e) { showOffline(true); }
+});
+$('copy-btn').addEventListener('click', () => {
+  navigator.clipboard.writeText($('json-out').textContent).then(() => {
+    const btn = $('copy-btn'), orig = btn.textContent;
+    btn.textContent = '✓ copiado'; setTimeout(() => { btn.textContent = orig; }, 1500);
+  });
+});
+
+// ============================================================
+// INIT
+// ============================================================
+loadProfiles().then(() => render());
+</script>
+</body>
+</html>

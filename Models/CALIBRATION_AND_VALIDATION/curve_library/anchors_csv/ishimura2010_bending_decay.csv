@@ -1,0 +1,9 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/81_82_bending_loosening.md:26-46
+cycle,low_M_0p5Mslip,medium_M_0p8Mslip,high_M_1p2Mslip
+0,1.000,1.000,1.000
+10,0.992,0.975,0.940
+50,0.985,0.945,0.870
+100,0.980,0.920,0.800
+200,0.975,0.895,0.720
+500,0.970,0.860,0.610
+1000,0.965,0.830,0.510

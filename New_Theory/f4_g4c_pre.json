@@ -1,0 +1,58 @@
+{
+ "liu2017_axial_F0_15kN": {
+  "mae": 0.0032392889949910825,
+  "maxerr": 0.007027787168799593,
+  "final_pred": 0.7702019733735013,
+  "ok": true,
+  "err": null
+ },
+ "liu2017_axial_F0_21kN": {
+  "mae": 0.00800680319074921,
+  "maxerr": 0.016855406855239785,
+  "final_pred": 0.9061445931447603,
+  "ok": true,
+  "err": null
+ },
+ "li2022ti_axialmin_10Hz": {
+  "mae": 0.052623099194422485,
+  "maxerr": 0.07786338817218641,
+  "final_pred": 0.5350463231533521,
+  "ok": true,
+  "err": null
+ },
+ "li2022ti_axial_10Hz_full": {
+  "mae": 0.03170245114672654,
+  "maxerr": 0.05169240930246155,
+  "final_pred": 0.4811864221500129,
+  "ok": true,
+  "err": null
+ },
+ "liu2016wear_fig9a_m30nm": {
+  "mae": 0.04713334194688365,
+  "maxerr": 0.09011126601285568,
+  "final_pred": 0.7431112660128557,
+  "ok": true,
+  "err": null
+ },
+ "liu2025_M16_amp0p3": {
+  "mae": 0.0644519904416371,
+  "maxerr": 0.08647687031264684,
+  "final_pred": 0.8444706968178375,
+  "ok": true,
+  "err": null
+ },
+ "liu2025_M16_amp0p6": {
+  "mae": 0.022805443104556997,
+  "maxerr": 0.06500695220764408,
+  "final_pred": 0.5181476271200668,
+  "ok": true,
+  "err": null
+ },
+ "sun2025efa109235_transverse_nogrease_standard": {
+  "mae": 0.005103935653752122,
+  "maxerr": 0.010261251131157612,
+  "final_pred": 0.7771805179702032,
+  "ok": true,
+  "err": null
+ }
+}

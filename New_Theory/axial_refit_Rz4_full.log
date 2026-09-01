@@ -1,0 +1,20 @@
+Constantes congeladas (Estagio A): {'N_emb': 50.0, 'K_archard': 0.0001, 'C_creep': 1.8667263000051723e-11, 'tr_loose_gain': 2.0, 'W_conf_ref': 7671.206304040271, 'conform_pressure_exp': 2.0, 'p_ref_conform': 500000000.0}; k_thread_fret=0.0
+Liu2017 P0=15          MAE=0.0236 (exp-baseline 0.1722, banda 0.0271-0.2452) fim dado=0.772 pred=0.778 resid=-1.44e+02
+Liu2017 P0=16.5        MAE=0.0181 (exp-baseline 0.1405, banda —) fim dado=0.812 pred=0.789 resid=-1.43e+02
+Liu2017 P0=18          MAE=0.0461 (exp-baseline 0.0839, banda —) fim dado=0.885 pred=0.798 resid=-1.43e+02
+Liu2017 P0=19.5        MAE=0.0553 (exp-baseline 0.0668, banda —) fim dado=0.905 pred=0.805 resid=-1.42e+02
+Liu2017 P0=21          MAE=0.0645 (exp-baseline 0.0545, banda 0.0448-0.2537) fim dado=0.923 pred=0.812 resid=-1.41e+02
+Liu2017 AF=7.5         MAE=0.0963 (exp-baseline 0.0300, banda —) fim dado=0.952 pred=0.798 resid=-8.02e+01
+Liu2017 AF=8.75        MAE=0.0735 (exp-baseline 0.0515, banda —) fim dado=0.925 pred=0.798 resid=-1.09e+02
+Liu2017 AF=11.25       MAE=0.0309 (exp-baseline 0.0907, banda —) fim dado=0.872 pred=0.798 resid=-1.80e+02
+Liu2017 AF=12.5        MAE=0.0226 (exp-baseline 0.1241, banda 0.0243-0.2109) fim dado=0.840 pred=0.798 resid=-2.23e+02
+Li2022ti 10Hz          MAE=0.0847 (exp-baseline 0.0896, banda 0.0588-0.1018) fim dado=0.821 pred=0.928 resid=-1.19e+01
+Li2022ti 15Hz          MAE=0.0550 (exp-baseline 0.0724, banda —) fim dado=0.858 pred=0.929 resid=-1.77e+01
+Li2022ti 20Hz          MAE=0.0140 (exp-baseline 0.0454, banda —) fim dado=0.911 pred=0.929 resid=-2.36e+01
+Li2022ti 10Hz full     MAE=0.0631 (exp-baseline 0.0743, banda —) fim dado=0.835 pred=0.924 resid=-1.96e+01
+
+Mediana MAE=0.0550; vence baseline exp em 10/13
+GATE B1: FALHOU — falsificacao estrutural, ver MODEL_LEGITIMACY §4.6 (B2 futil)
+grad d(fim)/dP0: dado 2.633e-05 /N, modelo 5.624e-06 /N
+grad d(fim)/dAF: dado -2.216e-05 /N, modelo 0.000e+00 /N
+Artefatos: axial_results.json, axial_track.png, axial_report.md

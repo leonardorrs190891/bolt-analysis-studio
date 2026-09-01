@@ -1,0 +1,9 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/35_36_37_38_wear_material_rotational_direction.md:71-84
+device,ratio_12600osc
+no_device,0.280
+plain_washer,0.310
+spring_washer_DIN127,0.320
+nylock_DIN985,0.480
+aerotight,0.520
+cleveloc,0.550
+chemical_lock_loctite242,0.880

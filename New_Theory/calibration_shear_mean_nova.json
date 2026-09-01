@@ -1,0 +1,42 @@
+{
+  "profile_name": "M16_shear_mean_nova",
+  "description": "Junker M16 +-0.5mm 0.5Hz, arruela nova, media de TP3+TP8+TP11",
+  "calibrated_at": "2026-05-17",
+  "geometry": {
+    "d": 0.016,
+    "p": 0.002,
+    "d_2": 0.014701,
+    "A_s": 0.000157,
+    "L_eff": 0.05,
+    "r_bearing": 0.012
+  },
+  "loading": {
+    "F0_N": 50000,
+    "F_amp_N": 20000,
+    "theta_rad": 1.5707963267948966,
+    "freq_Hz": 0.5,
+    "n_cycles": 2500
+  },
+  "material": {
+    "mu_thread": 0.15,
+    "mu_bearing": 0.15,
+    "k_j_init": 4000000000.0,
+    "alpha_GW": 0.5
+  },
+  "tuners": {
+    "k_emb_scale": 3.5687813574185085,
+    "k_creep_scale": 0.00635018299078553,
+    "k_wear_scale_ax": 1.0,
+    "k_loose_scale_ax": 1.0,
+    "Phi_ax_correction": 1.0,
+    "k_wear_scale_tr": 4.999999999999999,
+    "k_loose_scale_tr": 1.0905768787552612,
+    "Phi_tr_correction": 4.999999999999999
+  },
+  "fit_quality": {
+    "MAE": 0.023081662378512106,
+    "RMSE": 0.030921051119157716,
+    "verdict": "PASS",
+    "MAE_default": 0.4715461538461539
+  }
+}

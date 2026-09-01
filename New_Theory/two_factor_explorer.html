@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Two-Factor Loosening Explorer — Mohr-Like Visualization</title>
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
+<style>
+  :root {
+    --bg: #1e1e1e; --panel: #252526; --panel2: #2d2d30;
+    --border: #3e3e42; --accent: #007acc;
+    --text: #d4d4d4; --hint: #888; --label: #9e9e9e;
+    --ok: #6cd486; --warn: #d4b13a; --bad: #c44;
+    --ax: #4a90e2; --tr: #e08c5a; --combined: #c576c5;
+  }
+  body {
+    margin: 0; padding: 16px;
+    background: var(--bg); color: var(--text);
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    font-size: 13px;
+  }
+  h1 { font-size: 18px; margin: 0 0 4px; color: #fff; }
+  .subtitle { color: var(--hint); font-size: 12px; margin: 0 0 16px; }
+  .grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 12px;
+  }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px;
+  }
+  .panel h3 {
+    margin: 0 0 8px;
+    font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.5px; color: var(--label);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 50px;
+    gap: 6px;
+    align-items: center;
+    margin: 4px 0;
+  }
+  .row label { color: var(--hint); font-size: 11px; }
+  .row input[type=range] {
+    width: 100%; accent-color: var(--accent);
+  }
+  .row input[type=number], .row select {
+    background: var(--bg); border: 1px solid var(--border);
+    color: #fff; padding: 2px 6px; border-radius: 2px;
+    font-family: 'JetBrains Mono', Consolas, monospace; font-size: 11px;
+    width: 100%; box-sizing: border-box;
+  }
+  .row .val {
+    color: #fff; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-align: right;
+  }
+  .plots-2d {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  .plot-area {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px;
+  }
+  .plot-area .title {
+    color: var(--label); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 0 0 6px;
+  }
+  .plot-3d { grid-column: 1 / -1; }
+  .plot-3d > div { min-height: 460px; }
+  .derived {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px;
+    color: var(--hint); font-size: 11px;
+  }
+  .derived span.v {
+    color: #fff;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+  }
+  .legend-swatch {
+    display: inline-block; width: 12px; height: 3px;
+    margin-right: 4px; vertical-align: middle;
+  }
+  .mohr-svg {
+    width: 100%; height: 220px;
+    background: #181818; border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+  .formula {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 11px; color: #b0b0b0;
+    background: var(--panel2);
+    padding: 6px 8px; border-left: 3px solid var(--accent);
+    margin: 6px 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>Two-Factor Loosening Explorer</h1>
+<p class="subtitle">Rigidez anisotrópica do joint (Fator 1) + acoplamento carga ↔ hélice (Fator 2). Desliza θ pra ver como a junta responde em diferentes direções do círculo de Mohr.</p>
+
+<div class="grid">
+
+  <!-- =================== LEFT: PARAMETERS =================== -->
+  <div>
+    <div class="panel">
+      <h3>Parafuso</h3>
+      <div class="row">
+        <label>Tamanho</label>
+        <select id="bolt-preset">
+          <option value="M8">M8 × 1.25</option>
+          <option value="M12">M12 × 1.75</option>
+          <option value="M20" selected>M20 × 2.5</option>
+          <option value="UNC34">3/4"-10 UNC</option>
+        </select>
+        <span></span>
+      </div>
+      <div class="derived" id="bolt-derived"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Loading</h3>
+      <div class="row">
+        <label>F_0 (preload) [kN]</label>
+        <input type="range" id="F0" min="5" max="100" step="1" value="50">
+        <span class="val" id="F0-v">50</span>
+      </div>
+      <div class="row">
+        <label>F_max range [kN]</label>
+        <input type="range" id="Fmax" min="20" max="200" step="10" value="100">
+        <span class="val" id="Fmax-v">100</span>
+      </div>
+      <div class="row">
+        <label>θ load angle [°]</label>
+        <input type="range" id="theta" min="0" max="90" step="1" value="0">
+        <span class="val" id="theta-v">0</span>
+      </div>
+      <div class="row">
+        <label>μ friction</label>
+        <input type="range" id="mu" min="0.05" max="0.30" step="0.01" value="0.15">
+        <span class="val" id="mu-v">0.15</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Joint stiffness anisotropy</h3>
+      <div class="row">
+        <label>Φ_axial (stuck)</label>
+        <input type="range" id="Phi_ax" min="0.05" max="0.50" step="0.01" value="0.15">
+        <span class="val" id="Phi_ax-v">0.15</span>
+      </div>
+      <div class="row">
+        <label>Φ_trans (slipping)</label>
+        <input type="range" id="Phi_tr" min="0.5" max="1.0" step="0.05" value="0.95">
+        <span class="val" id="Phi_tr-v">0.95</span>
+      </div>
+      <div class="derived" id="joint-derived"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Mohr Circle of Joint Stiffness</h3>
+      <svg class="mohr-svg" id="mohr" viewBox="0 0 400 220"></svg>
+      <div class="formula">k_eff(θ) = k_j_ax·cos²θ + k_j_tr·sin²θ</div>
+      <div class="derived" id="mohr-derived"></div>
+    </div>
+  </div>
+
+  <!-- =================== RIGHT: PLOTS =================== -->
+  <div>
+    <div class="plots-2d">
+      <div class="plot-area">
+        <div class="title">Plot 1 — Espaçamento entre flanges vs Carga (componente axial)</div>
+        <div id="plot1" style="height: 280px;"></div>
+      </div>
+      <div class="plot-area">
+        <div class="title">Plot 2 — Deformação no parafuso vs Carga (componente axial)</div>
+        <div id="plot2" style="height: 280px;"></div>
+      </div>
+      <div class="plot-area plot-3d">
+        <div class="title">3D — Loosening parameter L(F_axial, F_transverse) [síntese dos dois fatores]</div>
+        <div id="plot3d"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// Bolt presets (d2 [mm], pitch [mm], A_s [mm²], L_eff [mm])
+// ============================================================
+const BOLTS = {
+  "M8":   {d2: 7.19,  p: 1.25, As: 36.6,  L: 30},
+  "M12":  {d2: 10.86, p: 1.75, As: 84.3,  L: 40},
+  "M20":  {d2: 18.38, p: 2.50, As: 245.0, L: 58},
+  "UNC34":{d2: 17.40, p: 2.54, As: 215.0, L: 50},
+};
+const E_MOD = 200e9;            // Pa
+const SLIP_ONSET = 0.46;        // Pai-Hess prefactor
+
+// ============================================================
+// State
+// ============================================================
+function getState() {
+  const bolt = BOLTS[document.getElementById('bolt-preset').value];
+  const A_s = bolt.As * 1e-6;     // m²
+  const L = bolt.L * 1e-3;        // m
+  const d2 = bolt.d2 * 1e-3;      // m
+  const p  = bolt.p  * 1e-3;      // m
+  const beta = Math.atan(p / (Math.PI * d2));      // rad
+  const k_b = E_MOD * A_s / L;                     // N/m
+  const Phi_ax = +document.getElementById('Phi_ax').value;
+  const Phi_tr = +document.getElementById('Phi_tr').value;
+  const k_j_ax = k_b * (1 - Phi_ax) / Phi_ax;
+  const k_j_tr = k_b * (1 - Phi_tr) / Phi_tr;
+  return {
+    bolt, A_s, L, d2, p, beta, k_b, k_j_ax, k_j_tr,
+    Phi_ax, Phi_tr,
+    F0:    +document.getElementById('F0').value * 1e3,
+    Fmax:  +document.getElementById('Fmax').value * 1e3,
+    theta: +document.getElementById('theta').value * Math.PI / 180,
+    mu:    +document.getElementById('mu').value,
+  };
+}
+
+// ============================================================
+// Physics — Bilinear gap and strain models
+// ============================================================
+function gap(F_ax, s) {
+  // F_ax in N, returns gap in m
+  const F_sep = s.F0 / (1 - s.Phi_ax);
+  if (F_ax < F_sep) {
+    return (1 - s.Phi_ax) * F_ax / s.k_j_ax;
+  } else {
+    return s.F0 / s.k_j_ax + (F_ax - F_sep) / s.k_b;
+  }
+}
+function strain(F_ax, s) {
+  const F_sep = s.F0 / (1 - s.Phi_ax);
+  const F_bolt = (F_ax < F_sep) ? (s.F0 + s.Phi_ax * F_ax) : F_ax;
+  return F_bolt / (E_MOD * s.A_s);
+}
+function L_loose_ax(F_ax, s) {
+  const F_sep = s.F0 / (1 - s.Phi_ax);
+  const Phi_eff = (F_ax < F_sep) ? s.Phi_ax : 1.0;
+  return Phi_eff * Math.sin(s.beta) * F_ax;
+}
+function L_loose_tr(F_tr, s) {
+  const F_slip = SLIP_ONSET * s.mu * s.F0;
+  const Phi_eff = (F_tr < F_slip) ? 0.01 : s.Phi_tr;
+  return Phi_eff * Math.cos(s.beta) * F_tr;
+}
+function L_loose(F_ax, F_tr, s) {
+  return Math.hypot(L_loose_ax(F_ax, s), L_loose_tr(F_tr, s));
+}
+
+// ============================================================
+// Plot 1 — gap vs F_ext at given θ (axial component drives gap)
+// ============================================================
+function updatePlot1(s, isInit) {
+  const N = 200;
+  const F_total = [];
+  const F_ax_arr = [];
+  for (let i = 0; i < N; i++) {
+    const F = s.Fmax * i / (N - 1);
+    F_total.push(F / 1e3);
+    F_ax_arr.push(F * Math.cos(s.theta));
+  }
+  // Current θ curve
+  const gap_curve = F_ax_arr.map(Fa => gap(Fa, s) * 1e3); // mm
+
+  // Reference: pure axial
+  const gap_ref_ax = F_total.map(F => gap(F * 1e3, s) * 1e3);
+
+  // Reference: pure transverse (always zero on axial gap)
+  const gap_ref_tr = F_total.map(F => 0);
+
+  const data = [
+    {
+      x: F_total, y: gap_curve,
+      mode: 'lines', name: `θ = ${(s.theta*180/Math.PI).toFixed(0)}°`,
+      line: {color: '#c576c5', width: 3},
+    },
+    {
+      x: F_total, y: gap_ref_ax,
+      mode: 'lines', name: 'axial puro (ref)',
+      line: {color: '#4a90e2', width: 1, dash: 'dot'},
+    },
+    {
+      x: F_total, y: gap_ref_tr,
+      mode: 'lines', name: 'transversal puro (ref)',
+      line: {color: '#e08c5a', width: 1, dash: 'dot'},
+    },
+  ];
+  const layout = {
+    paper_bgcolor: '#252526', plot_bgcolor: '#1e1e1e',
+    font: {color: '#d4d4d4', size: 10},
+    margin: {l: 50, r: 10, t: 8, b: 36},
+    xaxis: {title: 'Carga aplicada [kN]', gridcolor: '#3e3e42', zerolinecolor: '#555'},
+    yaxis: {title: 'gap entre flanges [mm]', gridcolor: '#3e3e42', zerolinecolor: '#555'},
+    legend: {orientation: 'h', y: 1.12, x: 0, font: {size: 9}, bgcolor: 'rgba(0,0,0,0)'},
+    showlegend: true,
+  };
+  if (isInit) Plotly.newPlot('plot1', data, layout, {displayModeBar: false});
+  else Plotly.react('plot1', data, layout, {displayModeBar: false});
+}
+
+// ============================================================
+// Plot 2 — strain vs F_ext at given θ
+// ============================================================
+function updatePlot2(s, isInit) {
+  const N = 200;
+  const F_total = [];
+  for (let i = 0; i < N; i++) F_total.push(s.Fmax * i / (N - 1) / 1e3);
+  const eps_curve = F_total.map(F => strain(F*1e3*Math.cos(s.theta), s) * 1e6);
+  const eps_ref_ax = F_total.map(F => strain(F*1e3, s) * 1e6);
+  const eps_ref_tr = F_total.map(F => strain(0, s) * 1e6);
+
+  const data = [
+    {x: F_total, y: eps_curve, mode: 'lines',
+     name: `θ = ${(s.theta*180/Math.PI).toFixed(0)}°`,
+     line: {color: '#c576c5', width: 3}},
+    {x: F_total, y: eps_ref_ax, mode: 'lines',
+     name: 'axial puro (ref)',
+     line: {color: '#4a90e2', width: 1, dash: 'dot'}},
+    {x: F_total, y: eps_ref_tr, mode: 'lines',
+     name: 'transversal puro (ref)',
+     line: {color: '#e08c5a', width: 1, dash: 'dot'}},
+  ];
+  const layout = {
+    paper_bgcolor: '#252526', plot_bgcolor: '#1e1e1e',
+    font: {color: '#d4d4d4', size: 10},
+    margin: {l: 50, r: 10, t: 8, b: 36},
+    xaxis: {title: 'Carga aplicada [kN]', gridcolor: '#3e3e42', zerolinecolor: '#555'},
+    yaxis: {title: 'deformação no parafuso [μstrain]', gridcolor: '#3e3e42', zerolinecolor: '#555'},
+    legend: {orientation: 'h', y: 1.12, x: 0, font: {size: 9}, bgcolor: 'rgba(0,0,0,0)'},
+    showlegend: true,
+  };
+  if (isInit) Plotly.newPlot('plot2', data, layout, {displayModeBar: false});
+  else Plotly.react('plot2', data, layout, {displayModeBar: false});
+}
+
+// ============================================================
+// Plot 3D — L_loose(F_axial, F_transverse) surface
+// ============================================================
+function updatePlot3D(s, isInit) {
+  const N = 40;
+  const F_ax_grid = [];
+  const F_tr_grid = [];
+  for (let i = 0; i < N; i++) {
+    F_ax_grid.push(s.Fmax * i / (N - 1));
+    F_tr_grid.push(s.Fmax * i / (N - 1));
+  }
+  const Z = [];
+  for (let j = 0; j < N; j++) {
+    const row = [];
+    for (let i = 0; i < N; i++) {
+      row.push(L_loose(F_ax_grid[i], F_tr_grid[j], s));
+    }
+    Z.push(row);
+  }
+
+  // Trajectory: locus of (F_ax, F_tr) for the current θ as F grows
+  const F_curve = [];
+  for (let i = 0; i < 50; i++) F_curve.push(s.Fmax * i / 49);
+  const traj_x = F_curve.map(F => F * Math.cos(s.theta));
+  const traj_y = F_curve.map(F => F * Math.sin(s.theta));
+  const traj_z = F_curve.map(F => L_loose(F * Math.cos(s.theta), F * Math.sin(s.theta), s));
+
+  const data = [
+    {
+      type: 'surface',
+      x: F_ax_grid.map(f => f/1e3), y: F_tr_grid.map(f => f/1e3), z: Z,
+      colorscale: [
+        [0,    '#1e3a5f'],
+        [0.25, '#2d8f3f'],
+        [0.5,  '#d4b13a'],
+        [0.75, '#e08c5a'],
+        [1.0,  '#c44'],
+      ],
+      showscale: true,
+      colorbar: {title: 'L [N]', tickfont: {color: '#d4d4d4'}, len: 0.7},
+      opacity: 0.92,
+    },
+    {
+      type: 'scatter3d', mode: 'lines+markers',
+      x: traj_x.map(f => f/1e3), y: traj_y.map(f => f/1e3), z: traj_z,
+      line: {color: '#fff', width: 6},
+      marker: {size: 3, color: '#fff'},
+      name: `trajetória θ=${(s.theta*180/Math.PI).toFixed(0)}°`,
+      showlegend: false,
+    },
+  ];
+  const layout = {
+    paper_bgcolor: '#252526', plot_bgcolor: '#1e1e1e',
+    font: {color: '#d4d4d4', size: 10},
+    margin: {l: 0, r: 0, t: 0, b: 0},
+    scene: {
+      xaxis: {title: 'F_axial [kN]', gridcolor: '#3e3e42',
+              backgroundcolor: '#1e1e1e', color: '#d4d4d4'},
+      yaxis: {title: 'F_transversal [kN]', gridcolor: '#3e3e42',
+              backgroundcolor: '#1e1e1e', color: '#d4d4d4'},
+      zaxis: {title: 'L_loose [N]', gridcolor: '#3e3e42',
+              backgroundcolor: '#1e1e1e', color: '#d4d4d4'},
+      camera: {eye: {x: 1.5, y: -1.5, z: 1.1}},
+      bgcolor: '#1e1e1e',
+    },
+  };
+  if (isInit) Plotly.newPlot('plot3d', data, layout, {displayModeBar: true});
+  else Plotly.react('plot3d', data, layout, {displayModeBar: true});
+}
+
+// ============================================================
+// Mohr circle SVG render
+// ============================================================
+function renderMohr(s) {
+  const svg = document.getElementById('mohr');
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+  const W = 400, H = 220;
+  const cx = 200, cy = 110;
+  const k_avg = (s.k_j_ax + s.k_j_tr) / 2;
+  const radius = Math.abs(s.k_j_ax - s.k_j_tr) / 2;
+  // log-scale because k_ax >> k_tr
+  const scale = 70 / Math.log10(Math.max(s.k_j_ax, s.k_j_tr) / 1e6 + 10);
+  const lg = v => Math.log10(v / 1e6 + 10) * scale;
+  const xax = cx + lg(s.k_j_ax);
+  const xtr = cx + lg(s.k_j_tr) - lg(s.k_j_ax) * 0;  // placement helper
+  const xc = (lg(s.k_j_ax) + lg(s.k_j_tr)) / 2;
+  const r = Math.abs(lg(s.k_j_ax) - lg(s.k_j_tr)) / 2;
+
+  const NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  // axes
+  svg.appendChild(el('line', {x1: 20, y1: cy, x2: W-10, y2: cy, stroke: '#555'}));
+  svg.appendChild(el('line', {x1: cx, y1: 10, x2: cx, y2: H-10, stroke: '#3e3e42'}));
+  const xt = el('text', {x: W-30, y: cy+14, fill: '#888', 'font-size': 10});
+  xt.textContent = 'k_eff (log scale)';
+  svg.appendChild(xt);
+
+  // circle (in log-pixel coords)
+  svg.appendChild(el('circle', {
+    cx: cx + xc, cy: cy, r: r,
+    fill: 'none', stroke: '#666', 'stroke-width': 1, 'stroke-dasharray': '3,2',
+  }));
+
+  // principal points
+  const px_ax = cx + lg(s.k_j_ax);
+  const px_tr = cx + lg(s.k_j_tr);
+  svg.appendChild(el('circle', {cx: px_ax, cy: cy, r: 5, fill: '#4a90e2'}));
+  svg.appendChild(el('circle', {cx: px_tr, cy: cy, r: 5, fill: '#e08c5a'}));
+  let t;
+  t = el('text', {x: px_ax, y: cy-10, fill: '#4a90e2', 'font-size': 10, 'text-anchor': 'middle'});
+  t.textContent = 'k_ax';
+  svg.appendChild(t);
+  t = el('text', {x: px_tr, y: cy-10, fill: '#e08c5a', 'font-size': 10, 'text-anchor': 'middle'});
+  t.textContent = 'k_tr';
+  svg.appendChild(t);
+
+  // current θ point
+  // angle in Mohr circle is 2θ (standard Mohr convention)
+  const ang2 = 2 * s.theta;
+  const px = cx + xc + r * Math.cos(Math.PI - ang2);
+  const py = cy - r * Math.sin(Math.PI - ang2);
+  svg.appendChild(el('line', {
+    x1: cx + xc, y1: cy, x2: px, y2: py,
+    stroke: '#c576c5', 'stroke-width': 2
+  }));
+  svg.appendChild(el('circle', {cx: px, cy: py, r: 6, fill: '#c576c5', stroke: '#fff', 'stroke-width': 1}));
+  t = el('text', {x: px+8, y: py+4, fill: '#c576c5', 'font-size': 11});
+  t.textContent = `θ=${(s.theta*180/Math.PI).toFixed(0)}°`;
+  svg.appendChild(t);
+
+  // current k_eff projected onto x-axis
+  const k_eff = s.k_j_ax * Math.cos(s.theta)**2 + s.k_j_tr * Math.sin(s.theta)**2;
+  const px_eff = cx + lg(k_eff);
+  svg.appendChild(el('line', {
+    x1: px, y1: py, x2: px_eff, y2: cy,
+    stroke: '#c576c5', 'stroke-width': 1, 'stroke-dasharray': '2,2'
+  }));
+  svg.appendChild(el('circle', {cx: px_eff, cy: cy, r: 4, fill: '#c576c5'}));
+}
+
+// ============================================================
+// Derived metrics readout
+// ============================================================
+function updateDerived(s) {
+  const bolt_div = document.getElementById('bolt-derived');
+  const F_sep_kN = s.F0 / (1 - s.Phi_ax) / 1e3;
+  const F_slip_kN = SLIP_ONSET * s.mu * s.F0 / 1e3;
+  const k_eff = s.k_j_ax * Math.cos(s.theta)**2 + s.k_j_tr * Math.sin(s.theta)**2;
+  const Phi_eff = s.k_b / (s.k_b + k_eff);
+  const cot_beta = 1 / Math.tan(s.beta);
+  const L_at_Fmax = L_loose(
+    s.Fmax * Math.cos(s.theta),
+    s.Fmax * Math.sin(s.theta), s
+  );
+  bolt_div.innerHTML = `
+    <span>β:</span><span class="v">${(s.beta*180/Math.PI).toFixed(2)}°</span>
+    <span>cot β:</span><span class="v">${cot_beta.toFixed(1)}</span>
+    <span>k_b:</span><span class="v">${(s.k_b/1e6).toFixed(0)} N/μm</span>
+    <span>A_s:</span><span class="v">${(s.A_s*1e6).toFixed(0)} mm²</span>
+  `;
+  document.getElementById('joint-derived').innerHTML = `
+    <span>k_j_ax:</span><span class="v">${(s.k_j_ax/1e6).toFixed(0)} N/μm</span>
+    <span>k_j_tr:</span><span class="v">${(s.k_j_tr/1e6).toFixed(0)} N/μm</span>
+    <span>F_sep (axial):</span><span class="v">${F_sep_kN.toFixed(1)} kN</span>
+    <span>F_slip (trans):</span><span class="v">${F_slip_kN.toFixed(1)} kN</span>
+  `;
+  document.getElementById('mohr-derived').innerHTML = `
+    <span>k_eff(θ):</span><span class="v">${(k_eff/1e6).toFixed(0)} N/μm</span>
+    <span>Φ_eff(θ):</span><span class="v">${Phi_eff.toFixed(3)}</span>
+    <span>L @ F_max:</span><span class="v">${L_at_Fmax.toFixed(0)} N</span>
+    <span>L_ax/L_tr @ F_max:</span><span class="v">${(L_loose_ax(s.Fmax*Math.cos(s.theta), s) / Math.max(1,L_loose_tr(s.Fmax*Math.sin(s.theta), s))).toFixed(3)}</span>
+  `;
+}
+
+// ============================================================
+// Wire-up
+// ============================================================
+function refresh(isInit) {
+  const s = getState();
+  updateDerived(s);
+  renderMohr(s);
+  updatePlot1(s, isInit);
+  updatePlot2(s, isInit);
+  updatePlot3D(s, isInit);
+}
+
+['F0', 'Fmax', 'theta', 'mu', 'Phi_ax', 'Phi_tr'].forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener('input', () => {
+    document.getElementById(id + '-v').textContent = el.value;
+    refresh(false);
+  });
+});
+document.getElementById('bolt-preset').addEventListener('change', () => refresh(false));
+
+refresh(true);
+</script>
+</body>
+</html>

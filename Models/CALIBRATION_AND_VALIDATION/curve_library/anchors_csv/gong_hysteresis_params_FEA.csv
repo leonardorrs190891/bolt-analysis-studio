@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/20_Gong_Liu_2018_2019_FEA_factors.md:306-312
+parameter,thread_interface,bearing_interface
+K_T_tangent_stiffness_N_mm,120000,200000
+F_s_breakaway_force,mu_th*F0/cos(alpha),mu_b*F0
+n_shape,0.50,0.55
+R_residual_ratio,0.010,0.008

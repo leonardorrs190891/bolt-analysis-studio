@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/31_den_Otter_Maljaars_2020_stainless_steel_aluminum.md:121-131
+time_h,ratio_M16,ratio_M24
+0,1.000,1.000
+100,0.950,0.955
+1000,0.910,0.918
+2500,0.895,0.905

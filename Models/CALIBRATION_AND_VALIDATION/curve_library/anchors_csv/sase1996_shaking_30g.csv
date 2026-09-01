@@ -1,0 +1,8 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/32_Sase_Koga_1996_anti_loosening_nuts_7types.md:107-117
+time_min,standard,nylon,double_nut,serrated_flange
+0,1.000,1.000,1.000,1.000
+1,0.950,0.965,0.990,0.975
+5,0.850,0.890,0.975,0.935
+10,0.750,0.810,0.960,0.900
+30,0.550,0.650,0.935,0.830
+60,0.380,0.500,0.915,0.770

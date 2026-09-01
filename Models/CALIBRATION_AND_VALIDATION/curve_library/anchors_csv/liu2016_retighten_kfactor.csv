@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/51_52_53_54_axial_fatiguewear_noload_energy.md:74-85
+retighten_cycle,T_Nm,F0_kN,K_factor
+1,30.0,14.2,0.211
+2,30.0,14.0,0.214
+3,30.0,13.8,0.217
+5,30.0,13.5,0.222
+10,30.0,13.3,0.226

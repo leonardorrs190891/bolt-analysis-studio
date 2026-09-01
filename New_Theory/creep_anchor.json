@@ -1,0 +1,48 @@
+{
+  "campaign": "C anchor (spec 2026-07-03 §1.7)",
+  "provenance": {
+    "geometry": "paper (li2022_marstruc: M16x80 304SS E=193GPa, L=20mm)",
+    "x_axis": "minutos (1 pseudo-ciclo = 1 min, freq=1/60 Hz)",
+    "cross_material": "304SS != par UFU: ancora re-centra o prior"
+  },
+  "conservation_residual_static": 0.000319153324652923,
+  "anchor": {
+    "C_creep_anchor": 9.917042354340428e-13,
+    "ci_factor": 1.358826180264221,
+    "emb_depth_um_by_Ra": {
+      "0.078": 0.08741179140447315,
+      "0.122": 0.06929116633315528,
+      "0.306": 0.010000000038905643,
+      "0.8": 0.010000000323627512
+    },
+    "mae_by_curve": {
+      "li2022marstruc_creep_10kN_Ra0p078_min": 0.001360026586017656,
+      "li2022marstruc_creep_10kN_Ra0p122_min": 0.001082457357815526,
+      "li2022marstruc_creep_10kN_Ra0p306_min": 0.0030240505243403363,
+      "li2022marstruc_creep_10kN_Ra0p8_min": 0.0062999533768648515,
+      "li2022marstruc_creep_5kN_Ra0p8_min": 0.007899809273667022,
+      "li2022marstruc_creep_15kN_Ra0p8_min": 0.0037189626547747935
+    },
+    "n_params": 5,
+    "n_points": 65
+  },
+  "stage_a_rerun": {
+    "prior": 9.917042354340428e-13,
+    "bounds": [
+      4.4075743797068573e-13,
+      2.231334529726596e-12
+    ],
+    "free_constants": [],
+    "C_creep_fitted": 9.917042354340428e-13,
+    "mae_global": 0.08174200740512268,
+    "mae_by_condition": {
+      "nova": 0.06052092858749984,
+      "reusada": 0.07292223583168066,
+      "sobretorque": 0.13283205573315943,
+      "reaperto": 0.06069280946815076
+    },
+    "F0_estimates": {
+      "sobretorque": 119999.9999647506
+    }
+  }
+}

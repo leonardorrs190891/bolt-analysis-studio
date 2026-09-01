@@ -1,0 +1,8 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/11_Hattori_2010_critical_slippage.md:130-143
+bolt,F0_kN,F0_over_Fs,Scr_mm,Scr_over_d
+M6,2.5,0.57,0.10,0.017
+M6,3.5,0.79,0.14,0.023
+M10,7.0,0.55,0.22,0.022
+M10,10.0,0.79,0.30,0.030
+M16,20.0,0.58,0.33,0.021
+M16,30.0,0.87,0.48,0.030

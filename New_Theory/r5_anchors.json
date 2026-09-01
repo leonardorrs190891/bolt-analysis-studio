@@ -1,0 +1,28 @@
+{
+  "wear_spec": {
+    "thread|35CrMo-SCM435": {"value": 8.34e-15, "band": [4e-15, 2e-14], "unit": "1/Pa",
+      "source": "Zhang 2019 EFA 10.1016/j.engfailanal.2019.05.001", "provenance": "derived-validated"},
+    "faying|Q355B-Q235B": {"value": 6.7e-12, "band": [6.49e-12, 7.00e-12], "unit": "1/Pa",
+      "source": "Li 2025 EngStruct 10.1016/j.engstruct.2025.121158", "provenance": "composite-validated"},
+    "fretting|52100-52100": {"value": 1e-4, "band": [3.2e-5, 2.4e-4], "unit": "norm-own",
+      "source": "Warmuth 2015 10.1098/rspa.2014.0291", "provenance": "measured"}
+  },
+  "mu_thread": {
+    "zinc": {"value": 0.150, "source": "Liu 2020 Wear Table 2", "provenance": "measured"},
+    "DLC": {"value": 0.126, "source": "Liu 2020 Wear Table 2", "provenance": "measured"}
+  },
+  "creep_class": {
+    "faying-coating-inorganic-zinc": {"model": "alpha+beta*log10(t_h)",
+      "rows": {"96um": [1.0e-4, 3.0e-5], "128um": [-1.0e-6, 2.0e-4], "168um": [2.0e-4, 4.0e-5], "226um": [3.0e-4, 4.5e-5]},
+      "source": "Nah 2014 10.12989/scs.2014.16.6.703", "provenance": "measured"}
+  },
+  "removal_energy_bound": {"lo": 1.8e3, "hi": 1.05e4, "unit": "J/mm^3",
+    "source": "Shipway 2021 10.1016/j.wear.2021.203826 (derivado; taxa-dependente)", "provenance": "derived"},
+  "kj_laws": {
+    "pedersen2008": {"eq": "k_m = E*d*(0.59*(beta^2-alpha^2)*d/L + 0.20*(beta+alpha))",
+      "source": "10.1007/s00419-007-0142-0", "rank": "closest-to-truth (+24%, Rousseau 2024)"},
+    "wileman1991": {"eq": "k_m/(E*d) = A*exp(B*d/L)",
+      "AB": {"steel": [0.78715, 0.62873], "aluminum": [0.79670, 0.63816], "copper": [0.79568, 0.63553], "gray_cast_iron": [0.77871, 0.61616], "general": [0.78952, 0.62914]},
+      "source": "10.1115/1.2912799", "rank": "+45-59% (superestima)"}
+  }
+}

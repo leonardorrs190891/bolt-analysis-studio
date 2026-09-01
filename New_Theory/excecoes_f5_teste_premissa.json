@@ -1,0 +1,149 @@
+{
+ "bauer2024_M12_fig8_test1": {
+  "familia": "bauer2024_M12_fig8",
+  "barras": {
+   "MAE": 0.08208792064670002,
+   "mx": 0.3495997498436522,
+   "sig": 0.11095469373284966
+  },
+  "partes": [
+   "MAE coberta (0.0745<=0.0821)",
+   "** mx DESCOBERTA (0.3965>0.3496)",
+   "sig coberta (0.0928<=0.1110)"
+  ],
+  "todas_cobertas": false
+ },
+ "bauer2024_M12_fig8_test2": {
+  "familia": "bauer2024_M12_fig8",
+  "barras": {
+   "MAE": 0.08208792064670002,
+   "mx": 0.3495997498436522,
+   "sig": 0.11095469373284966
+  },
+  "partes": [
+   "mx coberta (0.1795<=0.3496)"
+  ],
+  "todas_cobertas": true
+ },
+ "bauer2024_M12_fig8_test3": {
+  "familia": "bauer2024_M12_fig8",
+  "barras": {
+   "MAE": 0.08208792064670002,
+   "mx": 0.3495997498436522,
+   "sig": 0.11095469373284966
+  },
+  "partes": [
+   "mx coberta (0.1198<=0.3496)"
+  ],
+  "todas_cobertas": true
+ },
+ "bauer2024_M8_fig6_rep1": {
+  "familia": "bauer2024_M8_fig6",
+  "barras": {
+   "MAE": 0.10519514134700358,
+   "mx": 0.2605189447262567,
+   "sig": 0.09208810549889801
+  },
+  "partes": [
+   "mx coberta (0.1259<=0.2605)"
+  ],
+  "todas_cobertas": true
+ },
+ "bauer2024_M8_fig6_rep4": {
+  "familia": "bauer2024_M8_fig6",
+  "barras": {
+   "MAE": 0.10519514134700358,
+   "mx": 0.2605189447262567,
+   "sig": 0.09208810549889801
+  },
+  "partes": [
+   "MAE coberta (0.0783<=0.1052)",
+   "mx coberta (0.1709<=0.2605)",
+   "** sig DESCOBERTA (0.0932>0.0921)"
+  ],
+  "todas_cobertas": false
+ },
+ "bauer2024_M8_fig6_rep5": {
+  "familia": "bauer2024_M8_fig6",
+  "barras": {
+   "MAE": 0.10519514134700358,
+   "mx": 0.2605189447262567,
+   "sig": 0.09208810549889801
+  },
+  "partes": [
+   "mx coberta (0.1116<=0.2605)"
+  ],
+  "todas_cobertas": true
+ },
+ "bauer2024_M8_fig6_rep6": {
+  "familia": "bauer2024_M8_fig6",
+  "barras": {
+   "MAE": 0.10519514134700358,
+   "mx": 0.2605189447262567,
+   "sig": 0.09208810549889801
+  },
+  "partes": [
+   "MAE coberta (0.0757<=0.1052)",
+   "mx coberta (0.1300<=0.2605)"
+  ],
+  "todas_cobertas": true
+ },
+ "eccles2010_fig7d_axial_3p1kN_constant": {
+  "familia": "eccles2010_fig7",
+  "barras": {
+   "MAE": 0.025582283427495286,
+   "mx": 0.08133898305084741,
+   "sig": 0.020243505557037456
+  },
+  "partes": [
+   "** MAE DESCOBERTA (0.0668>0.0256)"
+  ],
+  "todas_cobertas": false
+ },
+ "eccles2010_fig8b_axial_0p7kN_intermittent": {
+  "familia": "eccles2010_fig8",
+  "barras": {
+   "MAE": 0.05381675487089983,
+   "mx": 0.14572710058718896,
+   "sig": 0.05173583452753006
+  },
+  "partes": [
+   "mx coberta (0.1296<=0.1457)"
+  ],
+  "todas_cobertas": true
+ },
+ "eccles2010_fig8d_axial_3p5kN_intermittent": {
+  "familia": "eccles2010_fig8",
+  "barras": {
+   "MAE": 0.05381675487089983,
+   "mx": 0.14572710058718896,
+   "sig": 0.05173583452753006
+  },
+  "partes": [
+   "** MAE DESCOBERTA (0.1335>0.0538)",
+   "** mx DESCOBERTA (0.2523>0.1457)",
+   "** sig DESCOBERTA (0.0939>0.0517)"
+  ],
+  "todas_cobertas": false
+ },
+ "jcsr2023_plain_outdoor": {
+  "familia": "jcsr2023_plain",
+  "barras": {
+   "MAE": 0.3725706715550747,
+   "mx": 0.5647966101694915,
+   "sig": 0.22031640221848817
+  },
+  "partes": [
+   "MAE coberta (0.0621<=0.3726)",
+   "mx coberta (0.1313<=0.5648)",
+   "sig coberta (0.0597<=0.2203)"
+  ],
+  "todas_cobertas": true
+ },
+ "_descobertas": [
+  "bauer2024_M12_fig8_test1",
+  "bauer2024_M8_fig6_rep4",
+  "eccles2010_fig7d_axial_3p1kN_constant",
+  "eccles2010_fig8d_axial_3p5kN_intermittent"
+ ]
+}

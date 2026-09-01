@@ -1,0 +1,202 @@
+[
+ {
+  "fonte": "BAUER_2024",
+  "cids": [
+   "bauer2024_M8_fig6_rep1",
+   "bauer2024_M8_fig6_rep2",
+   "bauer2024_M8_fig6_rep3",
+   "bauer2024_M8_fig6_rep4",
+   "bauer2024_M8_fig6_rep5",
+   "bauer2024_M8_fig6_rep6"
+  ],
+  "banda": 0.4587038929452604,
+  "disp_modelo": 0.7019073162478771,
+  "mod_centro": 0.058569563405704295,
+  "pior_repl": 0.125916131742353
+ },
+ {
+  "fonte": "BAUER_2024",
+  "cids": [
+   "bauer2024_M12_fig8_test1",
+   "bauer2024_M12_fig8_test2",
+   "bauer2024_M12_fig8_test3"
+  ],
+  "banda": 0.3888260134446933,
+  "disp_modelo": 0.3885210120204947,
+  "mod_centro": 0.03265204506283603,
+  "pior_repl": 0.06461056113064323
+ },
+ {
+  "fonte": "CACCESE_2009",
+  "cids": [
+   "caccese2009_tapered_45kN_rep1",
+   "caccese2009_tapered_45kN_rep2"
+  ],
+  "banda": 0.06959322033898308,
+  "disp_modelo": 0.0,
+  "mod_centro": 0.014595647303750958,
+  "pior_repl": 0.044547756324603505
+ },
+ {
+  "fonte": "CHU_2026",
+  "cids": [
+   "chu2026ti_D1p0mm_F0_49kN_test5",
+   "chu2026ti_D1p0mm_F0_49kN_test6_repeat"
+  ],
+  "banda": 0.07789508547513402,
+  "disp_modelo": 0.0008836469101528577,
+  "mod_centro": 0.022451944604043095,
+  "pior_repl": 0.042108507586218535
+ },
+ {
+  "fonte": "ECCLES_2010",
+  "cids": [
+   "eccles2010_fig3_typical_no_axial",
+   "eccles2010_fig7a_no_axial",
+   "eccles2010_fig8a_no_axial_baseline1",
+   "eccles2010_fig8c_no_axial_baseline2"
+  ],
+  "banda": 0.1866189774879024,
+  "disp_modelo": 0.16221647183522736,
+  "mod_centro": 0.05732596616946073,
+  "pior_repl": 0.07837247065071828
+ },
+ {
+  "fonte": "LIU_2016",
+  "cids": [
+   "liu2016wear_fig7_run1_1e6cyc",
+   "liu2016wear_fig7_run2_5e6cyc"
+  ],
+  "banda": 0.013610169491525492,
+  "disp_modelo": 0.0048982980000340515,
+  "mod_centro": 0.06515812720874437,
+  "pior_repl": 0.06564949035572754
+ },
+ {
+  "fonte": "LIU_2017_AXIAL",
+  "cids": [
+   "liu2017_axial_F0_15kN",
+   "liu2017_axial_F0_16p5kN",
+   "liu2017_axial_F0_18kN",
+   "liu2017_axial_F0_19p5kN",
+   "liu2017_axial_F0_21kN"
+  ],
+  "banda": 0.15100000000000002,
+  "disp_modelo": 0.135942619771259,
+  "mod_centro": 0.018050641487543317,
+  "pior_repl": 0.04160746423921102
+ },
+ {
+  "fonte": "LIU_2020_WEAR",
+  "cids": [
+   "liu2020_fig5b_zinc_P0-18kN_AF0.2mm",
+   "liu2020_fig15_DLC_P0-18kN_AF0.2mm",
+   "liu2020_fig9_zinc_AF0.2mm_P0-18kN"
+  ],
+  "banda": 0.01209096045197744,
+  "disp_modelo": 0.05379035172070734,
+  "mod_centro": 0.03133494263097658,
+  "pior_repl": 0.052090351720693095
+ },
+ {
+  "fonte": "LIU_2022_RETIGHT",
+  "cids": [
+   "liu2022_fig5_oil_F26p00kN",
+   "liu2022_fig6a_dry_release_t0",
+   "liu2022_fig6a_dry_release_t1",
+   "liu2022_fig6a_dry_release_t2",
+   "liu2022_fig6a_dry_release_t3",
+   "liu2022_fig6b_oil_release_t0",
+   "liu2022_fig6b_oil_release_t1",
+   "liu2022_fig6b_oil_release_t2",
+   "liu2022_fig6b_oil_release_t3",
+   "liu2022_fig7a_oil_direct_t0",
+   "liu2022_fig7a_oil_direct_t1",
+   "liu2022_fig7a_oil_direct_t2",
+   "liu2022_fig7a_oil_direct_t3",
+   "liu2022_fig8_multi_t0",
+   "liu2022_fig8_multi_t1",
+   "liu2022_fig8_multi_t2",
+   "liu2022_fig8_multi_t3",
+   "liu2022_fig8_multi_t4"
+  ],
+  "banda": 0.1402070406584467,
+  "disp_modelo": 0.09105752722567917,
+  "mod_centro": 0.003323203934417429,
+  "pior_repl": 0.07865755407061781
+ },
+ {
+  "fonte": "LIU_2025",
+  "cids": [
+   "liu2025_M16_amp0p8",
+   "liu2025_M16_fig2_single"
+  ],
+  "banda": 0.04275039880358922,
+  "disp_modelo": 0.027176418958943516,
+  "mod_centro": 0.07183115013523023,
+  "pior_repl": 0.08629522666221379
+ },
+ {
+  "fonte": "LI_2022_TRIBOINT",
+  "cids": [
+   "li2022ti_axialmin_10Hz",
+   "li2022ti_axial_10Hz_full"
+  ],
+  "banda": 0.06095485362095532,
+  "disp_modelo": 0.022111460166604924,
+  "mod_centro": 0.057364993157341115,
+  "pior_repl": 0.07097161794686968
+ },
+ {
+  "fonte": "LU_2024",
+  "cids": [
+   "lu2024_M8_fig18_amp1p0",
+   "lu2024_M8_fig20_T22Nm"
+  ],
+  "banda": 0.016203389830508508,
+  "disp_modelo": 0.01827875184741068,
+  "mod_centro": 0.07529004857814436,
+  "pior_repl": 0.07799844363974184
+ },
+ {
+  "fonte": "YANG_2021",
+  "cids": [
+   "yang2021_amp0p6mm_ax8kN_r1",
+   "yang2021_amp0p6mm_ax8kN_r2",
+   "yang2021_amp0p6mm_ax8kN_r3"
+  ],
+  "banda": 0.06599305336280392,
+  "disp_modelo": 0.09279509037848999,
+  "mod_centro": 0.032707771168126176,
+  "pior_repl": 0.07710492927083246
+ },
+ {
+  "fonte": "ZHANG_2018",
+  "cids": [
+   "zhang18_fig16_with_locker_preload_vs_cycles",
+   "zhang18_fig16_without_locker_preload_vs_cycles",
+   "zhang18_fig2_test3_20kN_1e5cyc_preload_vs_cycles",
+   "zhang18_fig2_test2_20kN_1e4cyc_preload_vs_cycles",
+   "zhang18_fig2_test1_20kN_1e3cyc_preload_vs_cycles",
+   "zhang18_fig2_test4_20kN_5e5cyc_preload_vs_cycles",
+   "zhang18_fig13_20kN_preload_vs_cycles"
+  ],
+  "banda": 0.021161640563163275,
+  "disp_modelo": 0.011770323859439102,
+  "mod_centro": 0.031674745838982,
+  "pior_repl": 0.043461885678485745
+ },
+ {
+  "fonte": "ZHANG_2019",
+  "cids": [
+   "zhang19_fig4_1e5cyc_Test7to9_preload_vs_cycles",
+   "zhang19_fig4_2e5cyc_Test10to12_preload_vs_cycles",
+   "zhang19_fig4_1e4cyc_Test4to6_preload_vs_cycles",
+   "zhang19_fig4_1e3cyc_Test1to3_preload_vs_cycles"
+  ],
+  "banda": 0.03593629951220856,
+  "disp_modelo": 0.021056323749550576,
+  "mod_centro": 0.019516475754078444,
+  "pior_repl": 0.04113353979879353
+ }
+]

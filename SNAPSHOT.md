@@ -1,0 +1,5 @@
+# Public snapshot
+
+This repository is published as a single release, taken on 2026-09-01 from source commit `7ac7adb62c7ba975e5eda8c0a4d249bdb7778453` (dated 2026-09-01). It carries the current version of the code, the digitised validation corpus, the adopted configurations, the canonical result store and the stamped analysis artefacts (`New_Theory/ablation/`, `New_Theory/holdout/`). Pre-registration documents live under `docs/superpowers/specs/`; analysis records under `New_Theory/`.
+
+Withheld from this public tree: the working notes written for the coding assistant and its configuration, one third-party document, one unrelated document, and scratch models left at the repository root. **The manuscript is not published here**: only the software, the corpus, the configurations and the results are, so the article, its supplementary material and the generator that writes them are withheld. Nothing the software needs to run, or to recompute a number, is among the exclusions; the list with a reason per entry is in `New_Theory/publish_snapshot.py`.

@@ -1,0 +1,18 @@
+# Bolt Analysis Studio v4.0 - Requirements
+# LTAD/UFU - Petrobras R&D
+
+# Core scientific computing
+numpy>=1.21.0
+scipy>=1.7.0
+
+# Visualization
+matplotlib>=3.5.0
+
+# GUI Framework
+PyQt6>=6.4.0
+
+# Optional: Report generation (Phase 8)
+# reportlab>=4.0.0
+# python-docx>=0.8.11
+# openpyxl>=3.1.0
+# jinja2>=3.1.0

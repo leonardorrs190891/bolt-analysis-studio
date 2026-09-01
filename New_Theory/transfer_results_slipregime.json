@@ -1,0 +1,1758 @@
+{
+  "campaign": "A zero-refit transversal (spec 2026-07-03 §1)",
+  "frozen_constants": {
+    "N_emb": 50.0,
+    "K_archard": 0.0001,
+    "C_creep": 1.8667263000051723e-11,
+    "tr_loose_gain": 2.0,
+    "W_conf_ref": 7671.206304040271,
+    "conform_pressure_exp": 2.0,
+    "p_ref_conform": 500000000.0
+  },
+  "choices": {
+    "F_amp_ratio": 0.4,
+    "floor_trim": 0.1,
+    "rz_default": "Rz10-40",
+    "damage": "OFF — juntas novas; no Estagio A o dano so ativa em juntas pre-danificadas; colapsos devem sub-predizer (achado, nao bug)",
+    "trigger_W_crit": null,
+    "ktr_mode": "axial_frac (0.3*k_axial ~1.2e9, delta_t~0 => tudo gross)",
+    "loosening": "off (criterio de forca atual)",
+    "alignment": "normalizacao no 1o ponto do dado"
+  },
+  "exclusions": [
+    {
+      "csv": "liu2025_M16_fig2_single.csv",
+      "reason": "ensaio ate fratura — fora do escopo de afrouxamento puro"
+    },
+    {
+      "csv": "rousseau2025_hdpe_t10.csv",
+      "reason": "par polimerico (HDPE) — fora do dominio declarado do modelo"
+    },
+    {
+      "csv": "rousseau2025_hdpe_t12.csv",
+      "reason": "par polimerico (HDPE) — fora do dominio declarado do modelo"
+    },
+    {
+      "csv": "rousseau2025_hdpe_t14.csv",
+      "reason": "par polimerico (HDPE) — fora do dominio declarado do modelo"
+    },
+    {
+      "csv": "yang2019_M10_varamp_small_to_large.csv",
+      "reason": "protocolo de amplitude variavel — fora do harness de delta constante"
+    },
+    {
+      "csv": "yang2019_M10_varamp_large_to_small.csv",
+      "reason": "protocolo de amplitude variavel — fora do harness de delta constante"
+    },
+    {
+      "csv": "karlsen2022_M30_vibralock_run9p0.csv",
+      "reason": "dispositivo de travamento — out-of-model declarado"
+    },
+    {
+      "csv": "karlsen2022_M30_vibralock_torqued_run16p0.csv",
+      "reason": "dispositivo de travamento — out-of-model declarado"
+    },
+    {
+      "csv": "karlsen2022_M42_vibralock_run23p0.csv",
+      "reason": "dispositivo de travamento — out-of-model declarado"
+    },
+    {
+      "csv": "karlsen2022_M42_vibralock_torqued_run29p0.csv",
+      "reason": "dispositivo de travamento — out-of-model declarado"
+    }
+  ],
+  "aggregates": {
+    "BAUER_2024": {
+      "n": 9,
+      "median_MAE": 0.12525975654756363,
+      "p90_MAE": 0.19425873187181797,
+      "beats_exp": 2,
+      "beats_noloss": 9
+    },
+    "ICMEZ_2025": {
+      "n": 8,
+      "median_MAE": 0.0853789418130394,
+      "p90_MAE": 0.1488143120413214,
+      "beats_exp": 0,
+      "beats_noloss": 8
+    },
+    "KARLSEN_2022": {
+      "n": 7,
+      "median_MAE": 0.25165347122818543,
+      "p90_MAE": 0.2706650295098595,
+      "beats_exp": 0,
+      "beats_noloss": 7
+    },
+    "LIU_2025": {
+      "n": 6,
+      "median_MAE": 0.12608960988039042,
+      "p90_MAE": 0.1422462274692822,
+      "beats_exp": 0,
+      "beats_noloss": 4
+    },
+    "LU_2024": {
+      "n": 10,
+      "median_MAE": 0.42990711505961077,
+      "p90_MAE": 0.5060531466366979,
+      "beats_exp": 3,
+      "beats_noloss": 10
+    },
+    "ROUSSEAU_2025": {
+      "n": 3,
+      "median_MAE": 0.5150813178122567,
+      "p90_MAE": 0.5737966468891991,
+      "beats_exp": 0,
+      "beats_noloss": 0
+    },
+    "YANG_2019": {
+      "n": 3,
+      "median_MAE": 0.14914156104836926,
+      "p90_MAE": 0.17007466688148024,
+      "beats_exp": 0,
+      "beats_noloss": 1
+    },
+    "GLOBAL": {
+      "n": 46,
+      "median_MAE": 0.16076181017598767,
+      "p90_MAE": 0.4652209644828449,
+      "beats_exp": 5,
+      "beats_noloss": 39
+    }
+  },
+  "results": [
+    {
+      "name": "Liu2025 M16 0.25mm",
+      "csv": "liu2025_M16_amp0p25.csv",
+      "source": "LIU_2025",
+      "F0_N": 60000,
+      "delta_amp_mm": 0.25,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 40.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 24000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 327000,
+      "n_trimmed": 0,
+      "MAE": 0.13619505086046976,
+      "MAE_noloss": 0.10883333333333334,
+      "MAE_exp": 0.04680242450189747,
+      "final_data": 0.675,
+      "final_pred": 0.7350323768410363,
+      "final_D": 0.0,
+      "band": [
+        0.11048915081026732,
+        0.17816425707357758
+      ]
+    },
+    {
+      "name": "Liu2025 M16 0.30mm",
+      "csv": "liu2025_M16_amp0p3.csv",
+      "source": "LIU_2025",
+      "F0_N": 60000,
+      "delta_amp_mm": 0.3,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 40.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 24000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 252000,
+      "n_trimmed": 0,
+      "MAE": 0.12093666186055602,
+      "MAE_noloss": 0.11613333333333334,
+      "MAE_exp": 0.03801694196627459,
+      "final_data": 0.683,
+      "final_pred": 0.7378438025416775,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Liu2025 M16 0.40mm",
+      "csv": "liu2025_M16_amp0p4.csv",
+      "source": "LIU_2025",
+      "F0_N": 60000,
+      "delta_amp_mm": 0.4,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 40.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 24000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 76500,
+      "n_trimmed": 0,
+      "MAE": 0.14829740407809464,
+      "MAE_noloss": 0.1935625,
+      "MAE_exp": 0.10975053207495833,
+      "final_data": 0.33,
+      "final_pred": 0.7508454548636874,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Liu2025 M16 0.50mm",
+      "csv": "liu2025_M16_amp0p5.csv",
+      "source": "LIU_2025",
+      "F0_N": 60000,
+      "delta_amp_mm": 0.5,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 40.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 24000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 38000,
+      "n_trimmed": 0,
+      "MAE": 0.13124255790022485,
+      "MAE_noloss": 0.19592857142857142,
+      "MAE_exp": 0.10369418331862199,
+      "final_data": 0.33,
+      "final_pred": 0.7585818876110383,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Liu2025 M16 0.60mm",
+      "csv": "liu2025_M16_amp0p6.csv",
+      "source": "LIU_2025",
+      "F0_N": 60000,
+      "delta_amp_mm": 0.6,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 40.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 24000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 24200,
+      "n_trimmed": 0,
+      "MAE": 0.12019139305626088,
+      "MAE_noloss": 0.22323076923076923,
+      "MAE_exp": 0.0993033962617492,
+      "final_data": 0.33,
+      "final_pred": 0.7636123715976667,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Liu2025 M16 0.80mm",
+      "csv": "liu2025_M16_amp0p8.csv",
+      "source": "LIU_2025",
+      "F0_N": 60000,
+      "delta_amp_mm": 0.8,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 40.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 24000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 14400,
+      "n_trimmed": 0,
+      "MAE": 0.11827935758269885,
+      "MAE_noloss": 0.29525,
+      "MAE_exp": 0.07314334726270731,
+      "final_data": 0.33,
+      "final_pred": 0.7694394748722397,
+      "final_D": 0.0,
+      "band": [
+        0.11211255617992899,
+        0.5508533497798151
+      ]
+    },
+    {
+      "name": "Bauer2024 M8 70um rep1",
+      "csv": "bauer2024_M8_fig6_rep1.csv",
+      "source": "BAUER_2024",
+      "F0_N": 20000,
+      "delta_amp_mm": 0.07,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 8.0,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 8000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 140,
+      "n_trimmed": 1,
+      "MAE": 0.057862555844840076,
+      "MAE_noloss": 0.41975009262065943,
+      "MAE_exp": 0.11400068929522825,
+      "final_data": 0.10629483681923815,
+      "final_pred": 0.2298871591454407,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Bauer2024 M8 70um rep2",
+      "csv": "bauer2024_M8_fig6_rep2.csv",
+      "source": "BAUER_2024",
+      "F0_N": 20000,
+      "delta_amp_mm": 0.07,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 8.0,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 8000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 168,
+      "n_trimmed": 2,
+      "MAE": 0.07848013606482368,
+      "MAE_noloss": 0.41112814500856704,
+      "MAE_exp": 0.07676367287859183,
+      "final_data": 0.14941916231482466,
+      "final_pred": 0.0986627443732787,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Bauer2024 M8 70um rep3",
+      "csv": "bauer2024_M8_fig6_rep3.csv",
+      "source": "BAUER_2024",
+      "F0_N": 20000,
+      "delta_amp_mm": 0.07,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 8.0,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 8000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 192,
+      "n_trimmed": 1,
+      "MAE": 0.10452569888014894,
+      "MAE_noloss": 0.39094631059830653,
+      "MAE_exp": 0.11655286898239549,
+      "final_data": 0.09788778263701499,
+      "final_pred": 0.07793253834648617,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Bauer2024 M8 70um rep4",
+      "csv": "bauer2024_M8_fig6_rep4.csv",
+      "source": "BAUER_2024",
+      "F0_N": 20000,
+      "delta_amp_mm": 0.07,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 8.0,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 8000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 226,
+      "n_trimmed": 3,
+      "MAE": 0.07965176409047152,
+      "MAE_noloss": 0.45792132108025835,
+      "MAE_exp": 0.0437481701890021,
+      "final_data": 0.11409329503813014,
+      "final_pred": 0.07183713428309886,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Bauer2024 M8 70um rep5",
+      "csv": "bauer2024_M8_fig6_rep5.csv",
+      "source": "BAUER_2024",
+      "F0_N": 20000,
+      "delta_amp_mm": 0.07,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 8.0,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 8000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 248,
+      "n_trimmed": 1,
+      "MAE": 0.1567313438182511,
+      "MAE_noloss": 0.42440389366832376,
+      "MAE_exp": 0.09419502198860141,
+      "final_data": 0.12523442383829964,
+      "final_pred": 0.06943394115309393,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Bauer2024 M8 70um rep6",
+      "csv": "bauer2024_M8_fig6_rep6.csv",
+      "source": "BAUER_2024",
+      "F0_N": 20000,
+      "delta_amp_mm": 0.07,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 8.0,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 8000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 300,
+      "n_trimmed": 0,
+      "MAE": 0.23688170814907916,
+      "MAE_noloss": 0.39468862280219563,
+      "MAE_exp": 0.05689002045571621,
+      "final_data": 0.18014626801462683,
+      "final_pred": 0.0661550535528538,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Bauer2024 M12 spectrum t1",
+      "csv": "bauer2024_M12_fig8_test1.csv",
+      "source": "BAUER_2024",
+      "F0_N": 50000,
+      "delta_amp_mm": 0.08,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 12.0,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 20000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 873,
+      "n_trimmed": 0,
+      "MAE": 0.12525975654756363,
+      "MAE_noloss": 0.20660384615384617,
+      "MAE_exp": 0.12376483428023635,
+      "final_data": 0.3079,
+      "final_pred": 0.7030020625860576,
+      "final_D": 0.0,
+      "band": [
+        0.11429349325454777,
+        0.5077011804233867
+      ]
+    },
+    {
+      "name": "Bauer2024 M12 spectrum t2",
+      "csv": "bauer2024_M12_fig8_test2.csv",
+      "source": "BAUER_2024",
+      "F0_N": 50000,
+      "delta_amp_mm": 0.08,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 12.0,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 20000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 1351,
+      "n_trimmed": 0,
+      "MAE": 0.18360298780250264,
+      "MAE_noloss": 0.22357649970198354,
+      "MAE_exp": 0.09712799199040854,
+      "final_data": 0.17508657567732736,
+      "final_pred": 0.5844459323239672,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Bauer2024 M12 spectrum t3",
+      "csv": "bauer2024_M12_fig8_test3.csv",
+      "source": "BAUER_2024",
+      "F0_N": 50000,
+      "delta_amp_mm": 0.08,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 12.0,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 20000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 1161,
+      "n_trimmed": 0,
+      "MAE": 0.1830249320563525,
+      "MAE_noloss": 0.22464166666666666,
+      "MAE_exp": 0.14654917650534557,
+      "final_data": 0.2359,
+      "final_pred": 0.6217851150029157,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Lu2024 M8 0.25mm",
+      "csv": "lu2024_M8_fig18_amp0p25.csv",
+      "source": "LU_2024",
+      "F0_N": 12000,
+      "delta_amp_mm": 0.25,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 20.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.18,
+          "prov": "paper"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 4800.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 100,
+      "n_trimmed": 0,
+      "MAE": 0.08779024035268641,
+      "MAE_noloss": 0.1940777777777778,
+      "MAE_exp": 0.16010029401282497,
+      "final_data": 0.7708,
+      "final_pred": 0.6894405956508048,
+      "final_D": 0.0,
+      "band": [
+        0.08779024035268641,
+        0.10001947359384096
+      ]
+    },
+    {
+      "name": "Lu2024 M8 0.5mm",
+      "csv": "lu2024_M8_fig18_amp0p5.csv",
+      "source": "LU_2024",
+      "F0_N": 12000,
+      "delta_amp_mm": 0.5,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 20.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.18,
+          "prov": "paper"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 4800.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 100,
+      "n_trimmed": 0,
+      "MAE": 0.4203884129323281,
+      "MAE_noloss": 0.598529411764706,
+      "MAE_exp": 0.20695636876118736,
+      "final_data": 0.125,
+      "final_pred": 0.6894405956508048,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Lu2024 M8 1mm",
+      "csv": "lu2024_M8_fig18_amp1p0.csv",
+      "source": "LU_2024",
+      "F0_N": 12000,
+      "delta_amp_mm": 1.0,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 20.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.18,
+          "prov": "paper"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 4800.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 57,
+      "n_trimmed": 5,
+      "MAE": 0.4759901903977738,
+      "MAE_noloss": 0.6205153846153847,
+      "MAE_exp": 0.13626706088802917,
+      "final_data": 0.1,
+      "final_pred": 0.7173064946109308,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Lu2024 M8 1.5mm",
+      "csv": "lu2024_M8_fig18_amp1p5.csv",
+      "source": "LU_2024",
+      "F0_N": 12000,
+      "delta_amp_mm": 1.5,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 20.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.18,
+          "prov": "paper"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 4800.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 45,
+      "n_trimmed": 5,
+      "MAE": 0.5142363296115039,
+      "MAE_noloss": 0.63168,
+      "MAE_exp": 0.2766539948056924,
+      "final_data": 0.125,
+      "final_pred": 0.6947519834215965,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Lu2024 M8 2mm",
+      "csv": "lu2024_M8_fig18_amp2p0.csv",
+      "source": "LU_2024",
+      "F0_N": 11600,
+      "delta_amp_mm": 2.0,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 20.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.18,
+          "prov": "paper"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 4640.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 16,
+      "n_trimmed": 6,
+      "MAE": 0.5051439040839416,
+      "MAE_noloss": 0.5628000000000001,
+      "MAE_exp": 0.19642649660785752,
+      "final_data": 0.1552,
+      "final_pred": 0.8566440629802673,
+      "final_D": 0.0,
+      "band": [
+        0.48476974545705487,
+        0.5223950482069447
+      ]
+    },
+    {
+      "name": "Lu2024 M8 T=4Nm",
+      "csv": "lu2024_M8_fig20_T4Nm.csv",
+      "source": "LU_2024",
+      "F0_N": 2105,
+      "delta_amp_mm": 0.5,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 20.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.18,
+          "prov": "paper"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 842.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 70,
+      "n_trimmed": 3,
+      "MAE": 0.16479227653372427,
+      "MAE_noloss": 0.5742333333333334,
+      "MAE_exp": 0.18016874747651887,
+      "final_data": 0.1425,
+      "final_pred": 0.0,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Lu2024 M8 T=10Nm",
+      "csv": "lu2024_M8_fig20_T10Nm.csv",
+      "source": "LU_2024",
+      "F0_N": 5963,
+      "delta_amp_mm": 0.5,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 20.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.18,
+          "prov": "paper"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 2385.2000000000003,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 100,
+      "n_trimmed": 0,
+      "MAE": 0.22369675209111978,
+      "MAE_noloss": 0.5470666666666666,
+      "MAE_exp": 0.32630939584582674,
+      "final_data": 0.3102,
+      "final_pred": 0.11124006947247345,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Lu2024 M8 T=16Nm",
+      "csv": "lu2024_M8_fig20_T16Nm.csv",
+      "source": "LU_2024",
+      "F0_N": 8402,
+      "delta_amp_mm": 0.5,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 20.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.18,
+          "prov": "paper"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 3360.8,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 100,
+      "n_trimmed": 0,
+      "MAE": 0.3803472734095428,
+      "MAE_noloss": 0.6156294117647059,
+      "MAE_exp": 0.24880200748159098,
+      "final_data": 0.1904,
+      "final_pred": 0.5229835627284843,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Lu2024 M8 T=22Nm",
+      "csv": "lu2024_M8_fig20_T22Nm.csv",
+      "source": "LU_2024",
+      "F0_N": 11567,
+      "delta_amp_mm": 0.5,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 20.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.18,
+          "prov": "paper"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 4626.8,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 55,
+      "n_trimmed": 5,
+      "MAE": 0.43942581718689344,
+      "MAE_noloss": 0.5593,
+      "MAE_exp": 0.11925574548456047,
+      "final_data": 0.1124,
+      "final_pred": 0.7511712448374958,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Lu2024 M8 T=28Nm",
+      "csv": "lu2024_M8_fig20_T28Nm.csv",
+      "source": "LU_2024",
+      "F0_N": 15027,
+      "delta_amp_mm": 0.5,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 20.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.18,
+          "prov": "paper"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 6010.8,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 100,
+      "n_trimmed": 0,
+      "MAE": 0.45445173856791604,
+      "MAE_noloss": 0.5937842105263159,
+      "MAE_exp": 0.2679143896379217,
+      "final_data": 0.2296,
+      "final_pred": 0.746977343475322,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Rousseau2025 steel t10",
+      "csv": "rousseau2025_steel_t10.csv",
+      "source": "ROUSSEAU_2025",
+      "F0_N": 10250,
+      "delta_amp_mm": 0.5,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 25.0,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 4100.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 170,
+      "n_trimmed": 1,
+      "MAE": 0.42452602507378784,
+      "MAE_noloss": 0.3982642857142857,
+      "MAE_exp": 0.19712527604266925,
+      "final_data": 0.1366,
+      "final_pred": 0.0,
+      "final_D": 0.0,
+      "band": [
+        0.3068616810475322,
+        0.4612004676791429
+      ]
+    },
+    {
+      "name": "Rousseau2025 steel t12",
+      "csv": "rousseau2025_steel_t12.csv",
+      "source": "ROUSSEAU_2025",
+      "F0_N": 10250,
+      "delta_amp_mm": 0.5,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 29.0,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 4100.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 180,
+      "n_trimmed": 0,
+      "MAE": 0.5884754791584347,
+      "MAE_noloss": 0.1515846153846154,
+      "MAE_exp": 0.054214123991988855,
+      "final_data": 0.6244,
+      "final_pred": 0.01912270912066293,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Rousseau2025 steel t14",
+      "csv": "rousseau2025_steel_t14.csv",
+      "source": "ROUSSEAU_2025",
+      "F0_N": 10350,
+      "delta_amp_mm": 0.5,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 33.0,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 4140.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 180,
+      "n_trimmed": 0,
+      "MAE": 0.5150813178122567,
+      "MAE_noloss": 0.05169,
+      "MAE_exp": 0.004088002844118255,
+      "final_data": 0.9034,
+      "final_pred": 0.07334622404637454,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Icmez2025 M8 0.3mm/14.3kN/lk13.8",
+      "csv": "demir2024_amp0p3_F14p3_lk13p8.csv",
+      "source": "ICMEZ_2025",
+      "F0_N": 14300.0,
+      "delta_amp_mm": 0.3,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 13.8,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 5720.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 175,
+      "n_trimmed": 0,
+      "MAE": 0.04034336545261821,
+      "MAE_noloss": 0.35454375,
+      "MAE_exp": 0.006326892894211615,
+      "final_data": 0.228,
+      "final_pred": 0.14046317802459846,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Icmez2025 M8 0.3mm/14.3kN/lk19.8",
+      "csv": "demir2024_amp0p3_F14p3_lk19p8.csv",
+      "source": "ICMEZ_2025",
+      "F0_N": 14300.0,
+      "delta_amp_mm": 0.3,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 19.8,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 5720.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 189,
+      "n_trimmed": 0,
+      "MAE": 0.0880974787848482,
+      "MAE_noloss": 0.24934117647058826,
+      "MAE_exp": 0.028288702671890462,
+      "final_data": 0.3541,
+      "final_pred": 0.7058938715947655,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Icmez2025 M8 0.3mm/17.6kN/lk13.8",
+      "csv": "demir2024_amp0p3_F17p6_lk13p8.csv",
+      "source": "ICMEZ_2025",
+      "F0_N": 17600.0,
+      "delta_amp_mm": 0.3,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 13.8,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 7040.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 200,
+      "n_trimmed": 0,
+      "MAE": 0.12010961063010187,
+      "MAE_noloss": 0.3374411764705882,
+      "MAE_exp": 0.010695857013738408,
+      "final_data": 0.2598,
+      "final_pred": 0.5572274401283821,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Icmez2025 M8 0.3mm/17.6kN/lk19.8",
+      "csv": "demir2024_amp0p3_F17p6_lk19p8.csv",
+      "source": "ICMEZ_2025",
+      "F0_N": 17600.0,
+      "delta_amp_mm": 0.3,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 19.8,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 7040.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 200,
+      "n_trimmed": 0,
+      "MAE": 0.04705807972181367,
+      "MAE_noloss": 0.18565882352941177,
+      "MAE_exp": 0.018538867484353818,
+      "final_data": 0.5492,
+      "final_pred": 0.756156353363872,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Icmez2025 M8 0.4mm/14.3kN/lk13.8",
+      "csv": "demir2024_amp0p4_F14p3_lk13p8.csv",
+      "source": "ICMEZ_2025",
+      "F0_N": 14300.0,
+      "delta_amp_mm": 0.4,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 13.8,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 5720.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 146,
+      "n_trimmed": 0,
+      "MAE": 0.0545292724590611,
+      "MAE_noloss": 0.3633266666666667,
+      "MAE_exp": 0.02171020610922843,
+      "final_data": 0.2524,
+      "final_pred": 0.09497686958394701,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Icmez2025 M8 0.4mm/14.3kN/lk19.8",
+      "csv": "demir2024_amp0p4_F14p3_lk19p8.csv",
+      "source": "ICMEZ_2025",
+      "F0_N": 14300.0,
+      "delta_amp_mm": 0.4,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 19.8,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 5720.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 176,
+      "n_trimmed": 0,
+      "MAE": 0.14621644970676695,
+      "MAE_noloss": 0.3099372437243724,
+      "MAE_exp": 0.01040532927894116,
+      "final_data": 0.2697269726972697,
+      "final_pred": 0.7081464910055986,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Icmez2025 M8 0.4mm/17.6kN/lk13.8",
+      "csv": "demir2024_amp0p4_F17p6_lk13p8.csv",
+      "source": "ICMEZ_2025",
+      "F0_N": 17600.0,
+      "delta_amp_mm": 0.4,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 13.8,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 7040.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 200,
+      "n_trimmed": 0,
+      "MAE": 0.0826604048412306,
+      "MAE_noloss": 0.3880152721154468,
+      "MAE_exp": 0.04281673486701358,
+      "final_data": 0.223022302230223,
+      "final_pred": 0.10905902811505847,
+      "final_D": 0.0,
+      "band": [
+        0.06454989020104658,
+        0.1710654015854929
+      ]
+    },
+    {
+      "name": "Icmez2025 M8 0.4mm/17.6kN/lk19.8",
+      "csv": "demir2024_amp0p4_F17p6_lk19p8.csv",
+      "source": "ICMEZ_2025",
+      "F0_N": 17600.0,
+      "delta_amp_mm": 0.4,
+      "freq_Hz": 12.5,
+      "inputs": {
+        "grip_mm": {
+          "value": 19.8,
+          "prov": "paper"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 7040.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 200,
+      "n_trimmed": 0,
+      "MAE": 0.15487599082194847,
+      "MAE_noloss": 0.29621764705882353,
+      "MAE_exp": 0.01644947441596638,
+      "final_data": 0.2986,
+      "final_pred": 0.756156353363872,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Yang2019 M10 0.4mm 5Hz",
+      "csv": "yang2019_M10_amp0p4_5Hz.csv",
+      "source": "YANG_2019",
+      "F0_N": 26400,
+      "delta_amp_mm": 0.4,
+      "freq_Hz": 5.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 25.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 10560.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 10000,
+      "n_trimmed": 0,
+      "MAE": 0.175307943339758,
+      "MAE_noloss": 0.05366666666666669,
+      "MAE_exp": 0.06863276261869446,
+      "final_data": 0.7273,
+      "final_pred": 0.7520355818794509,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Yang2019 M10 0.6mm 10Hz",
+      "csv": "yang2019_M10_amp0p6_10Hz.csv",
+      "source": "YANG_2019",
+      "F0_N": 25500,
+      "delta_amp_mm": 0.6,
+      "freq_Hz": 10.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 25.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 10200.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 5300,
+      "n_trimmed": 0,
+      "MAE": 0.11554783359655793,
+      "MAE_noloss": 0.10119000000000003,
+      "MAE_exp": 0.031741021114427004,
+      "final_data": 0.749,
+      "final_pred": 0.7550319707148649,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Yang2019 M10 0.6mm 5Hz",
+      "csv": "yang2019_M10_amp0p6_5Hz.csv",
+      "source": "YANG_2019",
+      "F0_N": 24000,
+      "delta_amp_mm": 0.6,
+      "freq_Hz": 5.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 25.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 9600.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 5500,
+      "n_trimmed": 1,
+      "MAE": 0.14914156104836926,
+      "MAE_noloss": 0.1935923076923077,
+      "MAE_exp": 0.14191797441974224,
+      "final_data": 0.2083,
+      "final_pred": 0.7374178669864639,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Karlsen2022 M30 HV r1.2",
+      "csv": "karlsen2022_M30_HV_run1p2.csv",
+      "source": "KARLSEN_2022",
+      "F0_N": 315000,
+      "delta_amp_mm": 1.0,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 75.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 126000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 340,
+      "n_trimmed": 0,
+      "MAE": 0.24317846236586393,
+      "MAE_noloss": 0.34603750000000005,
+      "MAE_exp": 0.1487998457680006,
+      "final_data": 0.1524,
+      "final_pred": 0.8171968309243157,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Karlsen2022 M30 HV r2.2",
+      "csv": "karlsen2022_M30_HV_run2p2.csv",
+      "source": "KARLSEN_2022",
+      "F0_N": 312000,
+      "delta_amp_mm": 1.0,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 75.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 124800.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 230,
+      "n_trimmed": 0,
+      "MAE": 0.27208597079494445,
+      "MAE_noloss": 0.38644285714285714,
+      "MAE_exp": 0.16361730639405336,
+      "final_data": 0.1218,
+      "final_pred": 0.8261406727799872,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Karlsen2022 M30 HV r6.2",
+      "csv": "karlsen2022_M30_HV_run6p2.csv",
+      "source": "KARLSEN_2022",
+      "F0_N": 340000,
+      "delta_amp_mm": 1.0,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 75.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 136000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 350,
+      "n_trimmed": 0,
+      "MAE": 0.25732566848172234,
+      "MAE_noloss": 0.37646250000000003,
+      "MAE_exp": 0.14330740362957112,
+      "final_data": 0.1206,
+      "final_pred": 0.8201274816888888,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Karlsen2022 M30 HV r7.1",
+      "csv": "karlsen2022_M30_HV_run7p1.csv",
+      "source": "KARLSEN_2022",
+      "F0_N": 312000,
+      "delta_amp_mm": 1.0,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 75.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 124800.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 195,
+      "n_trimmed": 0,
+      "MAE": 0.2697177353198028,
+      "MAE_noloss": 0.38644285714285714,
+      "MAE_exp": 0.16664195661804526,
+      "final_data": 0.1378,
+      "final_pred": 0.8304901069221929,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Karlsen2022 M30 HV-torqued r14.2",
+      "csv": "karlsen2022_M30_HVtorqued_run14p2.csv",
+      "source": "KARLSEN_2022",
+      "F0_N": 370000,
+      "delta_amp_mm": 1.0,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 75.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 148000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 270,
+      "n_trimmed": 1,
+      "MAE": 0.22883107265125804,
+      "MAE_noloss": 0.3494428571428571,
+      "MAE_exp": 0.10784699650083764,
+      "final_data": 0.2432,
+      "final_pred": 0.8299423207265543,
+      "final_D": 0.0,
+      "band": null
+    },
+    {
+      "name": "Karlsen2022 M42 HV r20.0",
+      "csv": "karlsen2022_M42_HV_run20p0.csv",
+      "source": "KARLSEN_2022",
+      "F0_N": 660000,
+      "delta_amp_mm": 1.5,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 105.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 264000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 340,
+      "n_trimmed": 1,
+      "MAE": 0.25165347122818543,
+      "MAE_noloss": 0.4026,
+      "MAE_exp": 0.11539619164700998,
+      "final_data": 0.1515,
+      "final_pred": 0.7817555626273459,
+      "final_D": 0.0,
+      "band": [
+        0.223779213489587,
+        0.27094678293134783
+      ]
+    },
+    {
+      "name": "Karlsen2022 M42 HV r21.0",
+      "csv": "karlsen2022_M42_HV_run21p0.csv",
+      "source": "KARLSEN_2022",
+      "F0_N": 685000,
+      "delta_amp_mm": 1.5,
+      "freq_Hz": 1.0,
+      "inputs": {
+        "grip_mm": {
+          "value": 105.0,
+          "prov": "assumed"
+        },
+        "mu": {
+          "value": 0.15,
+          "prov": "assumed"
+        },
+        "rz": {
+          "value": "Rz10-40",
+          "prov": "assumed"
+        },
+        "F_amp_N": {
+          "value": 274000.0,
+          "prov": "assumed"
+        }
+      },
+      "n_cycles": 420,
+      "n_trimmed": 1,
+      "MAE": 0.20919921745728087,
+      "MAE_noloss": 0.3528,
+      "MAE_exp": 0.13601167791113475,
+      "final_data": 0.146,
+      "final_pred": 0.7763692572727053,
+      "final_D": 0.0,
+      "band": null
+    }
+  ]
+}

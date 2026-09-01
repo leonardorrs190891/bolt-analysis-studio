@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Loosening Energy Explorer — Energia Junta vs Estojo ao longo dos ciclos</title>
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
+<style>
+  :root {
+    --bg: #1e1e1e; --panel: #252526; --panel2: #2d2d30;
+    --border: #3e3e42; --accent: #007acc;
+    --text: #d4d4d4; --hint: #888; --label: #9e9e9e;
+    --ok: #6cd486; --warn: #d4b13a; --bad: #c44;
+    --joint: #5cb27c; --bolt: #4a90e2; --combined: #c576c5;
+  }
+  body {
+    margin: 0; padding: 16px;
+    background: var(--bg); color: var(--text);
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    font-size: 13px;
+  }
+  h1 { font-size: 18px; margin: 0 0 4px; color: #fff; }
+  .subtitle { color: var(--hint); font-size: 12px; margin: 0 0 16px; }
+  .grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 12px;
+  }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+  .panel h3 {
+    margin: 0 0 8px;
+    font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.5px; color: var(--label);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 60px;
+    gap: 6px;
+    align-items: center;
+    margin: 4px 0;
+  }
+  .row label { color: var(--hint); font-size: 11px; }
+  .row input[type=range] {
+    width: 100%; accent-color: var(--accent);
+  }
+  .row select, .row input[type=number] {
+    background: var(--bg); border: 1px solid var(--border);
+    color: #fff; padding: 2px 6px; border-radius: 2px;
+    font-family: 'JetBrains Mono', Consolas, monospace; font-size: 11px;
+    width: 100%; box-sizing: border-box;
+  }
+  .row .val {
+    color: #fff; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-align: right;
+  }
+  .plot-area {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 12px;
+  }
+  .plot-area .title {
+    color: var(--label); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 0 0 6px;
+  }
+  .plots-2d {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    margin-bottom: 12px;
+  }
+  .plots-2d .plot-area { margin: 0; }
+  .plots-2d > .plot-area > div { height: 320px; }
+  .plot-area.mini > div { height: 160px; }
+  .plot-3d > div { min-height: 480px; }
+  .derived {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px;
+    color: var(--hint); font-size: 11px;
+  }
+  .derived span.v {
+    color: #fff;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+  }
+  .formula {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 11px; color: #b0b0b0;
+    background: var(--panel2);
+    padding: 6px 8px; border-left: 3px solid var(--accent);
+    margin: 6px 0;
+  }
+  .status-bad   { color: var(--bad); }
+  .status-warn  { color: var(--warn); }
+  .status-ok    { color: var(--ok); }
+</style>
+</head>
+<body>
+
+<h1>Loosening Energy Explorer</h1>
+<p class="subtitle">Distribuição de energia entre junta e estojo ao longo dos ciclos. Conforme F₀ cai por loosening, k_j cai junto, mais energia vai pro estojo no próximo ciclo — feedback positivo até a falha.</p>
+
+<div class="grid">
+
+  <!-- =================== LEFT: PARAMETERS =================== -->
+  <div>
+    <div class="panel">
+      <h3>Parafuso</h3>
+      <div class="row">
+        <label>Tamanho</label>
+        <select id="bolt-preset">
+          <option value="M8">M8 × 1.25</option>
+          <option value="M12">M12 × 1.75</option>
+          <option value="M20" selected>M20 × 2.5</option>
+          <option value="UNC34">3/4"-10 UNC</option>
+        </select>
+        <span></span>
+      </div>
+      <div class="derived" id="bolt-derived"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Loading</h3>
+      <div class="row">
+        <label>F₀ inicial [kN]</label>
+        <input type="range" id="F0" min="5" max="100" step="1" value="50">
+        <span class="val" id="F0-v">50</span>
+      </div>
+      <div class="row">
+        <label>F_max range [kN]</label>
+        <input type="range" id="Fmax" min="20" max="200" step="10" value="100">
+        <span class="val" id="Fmax-v">100</span>
+      </div>
+      <div class="row">
+        <label>F_amp (ciclo) [kN]</label>
+        <input type="range" id="Famp" min="5" max="100" step="1" value="20">
+        <span class="val" id="Famp-v">20</span>
+      </div>
+      <div class="row">
+        <label>θ load angle [°]</label>
+        <input type="range" id="theta" min="0" max="90" step="1" value="45">
+        <span class="val" id="theta-v">45</span>
+      </div>
+      <div class="row">
+        <label>μ friction</label>
+        <input type="range" id="mu" min="0.05" max="0.30" step="0.01" value="0.15">
+        <span class="val" id="mu-v">0.15</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Joint anisotropy (inicial)</h3>
+      <div class="row">
+        <label>Φ_axial</label>
+        <input type="range" id="Phi_ax" min="0.05" max="0.50" step="0.01" value="0.15">
+        <span class="val" id="Phi_ax-v">0.15</span>
+      </div>
+      <div class="row">
+        <label>Φ_trans (slip)</label>
+        <input type="range" id="Phi_tr" min="0.5" max="1.0" step="0.05" value="0.95">
+        <span class="val" id="Phi_tr-v">0.95</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Loosening simulation</h3>
+      <div class="row">
+        <label>N ciclos (total)</label>
+        <input type="range" id="N" min="100" max="5000" step="100" value="2000">
+        <span class="val" id="N-v">2000</span>
+      </div>
+      <div class="row">
+        <label>k_loose [N·m/N²]</label>
+        <input type="range" id="kloose" min="0" max="500" step="10" value="100">
+        <span class="val" id="kloose-v">100</span>
+      </div>
+      <div class="row">
+        <label>k_j softening rate</label>
+        <input type="range" id="softening" min="0.5" max="2.0" step="0.1" value="1.0">
+        <span class="val" id="softening-v">1.0</span>
+      </div>
+      <div class="derived" id="sim-derived"></div>
+    </div>
+
+    <div class="plot-area mini">
+      <div class="title">F₀(N) — preload decay</div>
+      <div id="plotF0"></div>
+    </div>
+  </div>
+
+  <!-- =================== RIGHT: PLOTS =================== -->
+  <div>
+    <div class="plots-2d">
+      <div class="plot-area">
+        <div class="title">U_junta(F_ext) — energia elástica na junta</div>
+        <div id="plotUj"></div>
+      </div>
+      <div class="plot-area">
+        <div class="title">U_estojo(F_ext) — energia elástica no estojo</div>
+        <div id="plotUb"></div>
+      </div>
+    </div>
+    <div class="plot-area plot-3d">
+      <div class="title">3D — U_estojo(F_ext, N) — vale do estojo se enchendo</div>
+      <div id="plot3d"></div>
+    </div>
+    <div class="plot-area">
+      <div class="title">Energia interna total e cumulativa externa vs ciclos</div>
+      <div id="plotEnergy" style="height: 220px;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Formulação</h3>
+  <div class="formula">U_estojo(F_ext, N) = (F₀(N) + Φ(N)·F_ax)² / (2·k_b)      [F_ax &lt; F_sep(N)]</div>
+  <div class="formula">U_estojo(F_ext, N) = F_ax² / (2·k_b)                          [F_ax ≥ F_sep(N)]</div>
+  <div class="formula">U_junta(F_ext, N)  = (F₀(N) − (1−Φ(N))·F_ax)² / (2·k_j(N))  [F_ax &lt; F_sep(N)]</div>
+  <div class="formula">U_junta(F_ext, N)  = 0                                        [F_ax ≥ F_sep(N)]</div>
+  <div class="formula">F₀(N+1) = F₀(N) − k_loose · L_loose(F_amp, θ, F₀(N), Φ(N), β)</div>
+  <div class="formula">k_j(N+1) = k_j(N) · (F₀(N+1)/F₀(N))^softening    [k_j cai junto com F₀]</div>
+</div>
+
+<script>
+// ============================================================
+// Bolt presets
+// ============================================================
+const BOLTS = {
+  "M8":   {d2: 7.19,  p: 1.25, As: 36.6,  L: 30},
+  "M12":  {d2: 10.86, p: 1.75, As: 84.3,  L: 40},
+  "M20":  {d2: 18.38, p: 2.50, As: 245.0, L: 58},
+  "UNC34":{d2: 17.40, p: 2.54, As: 215.0, L: 50},
+};
+const E_MOD = 200e9;
+const SLIP_ONSET = 0.46;
+
+// ============================================================
+// State
+// ============================================================
+function getState() {
+  const bolt = BOLTS[document.getElementById('bolt-preset').value];
+  const A_s = bolt.As * 1e-6, L = bolt.L * 1e-3;
+  const d2 = bolt.d2 * 1e-3, p = bolt.p * 1e-3;
+  const beta = Math.atan(p / (Math.PI * d2));
+  const k_b = E_MOD * A_s / L;
+  return {
+    bolt, A_s, L, d2, p, beta, k_b,
+    F0_init: +document.getElementById('F0').value * 1e3,
+    Fmax:    +document.getElementById('Fmax').value * 1e3,
+    Famp:    +document.getElementById('Famp').value * 1e3,
+    theta:   +document.getElementById('theta').value * Math.PI/180,
+    mu:      +document.getElementById('mu').value,
+    Phi_ax_0:+document.getElementById('Phi_ax').value,
+    Phi_tr:  +document.getElementById('Phi_tr').value,
+    N:       +document.getElementById('N').value,
+    kloose:  +document.getElementById('kloose').value * 1e-9,
+    softening:+document.getElementById('softening').value,
+  };
+}
+
+// ============================================================
+// Loosening rate (uses two-factor theory)
+// ============================================================
+function L_loose(F_ax, F_tr, F0, Phi_ax_eff, Phi_tr, beta, mu) {
+  const F_sep = F0 / (1 - Phi_ax_eff);
+  const F_slip = SLIP_ONSET * mu * F0;
+  const Phi_ax_active = (F_ax < F_sep) ? Phi_ax_eff : 1.0;
+  const Phi_tr_active = (F_tr < F_slip) ? 0.01 : Phi_tr;
+  const L_ax = Phi_ax_active * Math.sin(beta) * F_ax;
+  const L_tr = Phi_tr_active * Math.cos(beta) * F_tr;
+  return Math.hypot(L_ax, L_tr);
+}
+
+// ============================================================
+// Run simulation: returns history arrays for N+1 cycles
+// ============================================================
+function simulate(s) {
+  const F0_hist = [s.F0_init];
+  const Phi_hist = [s.Phi_ax_0];
+  const kj_hist = [s.k_b * (1 - s.Phi_ax_0) / s.Phi_ax_0];
+  const W_ext_cum = [0];
+
+  const F_ax = s.Famp * Math.cos(s.theta);
+  const F_tr = s.Famp * Math.sin(s.theta);
+
+  for (let n = 1; n <= s.N; n++) {
+    const F0_prev = F0_hist[n-1];
+    if (F0_prev <= 0) {
+      F0_hist.push(0);
+      Phi_hist.push(Phi_hist[n-1]);
+      kj_hist.push(kj_hist[n-1]);
+      W_ext_cum.push(W_ext_cum[n-1]);
+      continue;
+    }
+    const Phi_prev = Phi_hist[n-1];
+    const kj_prev  = kj_hist[n-1];
+
+    const L = L_loose(F_ax, F_tr, F0_prev, Phi_prev, s.Phi_tr, s.beta, s.mu);
+    const dF0 = s.kloose * L;
+    const F0_new = Math.max(0, F0_prev - dF0);
+
+    // joint softens as preload drops
+    const ratio = (F0_prev > 0) ? F0_new / F0_prev : 0;
+    const kj_new = kj_prev * Math.pow(ratio, s.softening);
+    const Phi_new = s.k_b / (s.k_b + Math.max(kj_new, 1));
+
+    // External energy per cycle (axial component only)
+    const W_cycle = (F_ax * F_ax) / (s.k_b + kj_new);
+
+    F0_hist.push(F0_new);
+    Phi_hist.push(Phi_new);
+    kj_hist.push(kj_new);
+    W_ext_cum.push(W_ext_cum[n-1] + W_cycle);
+  }
+  return {F0_hist, Phi_hist, kj_hist, W_ext_cum};
+}
+
+// ============================================================
+// Energy at given state
+// ============================================================
+function U_bolt(F_ax, F0, Phi, k_b) {
+  const F_sep = F0 / (1 - Phi);
+  const F_bolt = (F_ax < F_sep) ? (F0 + Phi * F_ax) : F_ax;
+  return F_bolt * F_bolt / (2 * k_b);
+}
+function U_joint(F_ax, F0, Phi, k_j) {
+  const F_sep = F0 / (1 - Phi);
+  if (F_ax >= F_sep) return 0;
+  const F_jt = F0 - (1 - Phi) * F_ax;
+  return F_jt * F_jt / (2 * k_j);
+}
+
+// ============================================================
+// Sample cycle indices for showing evolution curves
+// ============================================================
+function sampleCycles(N) {
+  const samples = [0, Math.floor(N*0.1), Math.floor(N*0.3),
+                   Math.floor(N*0.6), N];
+  return [...new Set(samples)].sort((a,b)=>a-b);
+}
+
+// ============================================================
+// Plot U_joint(F_ext) family
+// ============================================================
+function plotUjoint(s, sim, isInit) {
+  const NS = 200;
+  const F_ext = [];
+  for (let i = 0; i < NS; i++) F_ext.push(s.Fmax * i / (NS-1));
+
+  const cycles = sampleCycles(s.N);
+  const palette = ['#5cb27c', '#7cc28c', '#a8d4a8', '#c4b070', '#d4793a'];
+
+  const data = cycles.map((n, idx) => {
+    const F0 = sim.F0_hist[n];
+    const Phi = sim.Phi_hist[n];
+    const kj  = sim.kj_hist[n];
+    const y = F_ext.map(F => U_joint(F * Math.cos(s.theta), F0, Phi, kj));
+    return {
+      x: F_ext.map(f => f/1e3),
+      y: y,
+      mode: 'lines',
+      name: `N=${n} (F₀=${(F0/1e3).toFixed(1)} kN)`,
+      line: {color: palette[idx % palette.length], width: 2 + (idx===0 ? 1 : 0)},
+    };
+  });
+
+  const layout = {
+    paper_bgcolor: '#252526', plot_bgcolor: '#1e1e1e',
+    font: {color: '#d4d4d4', size: 10},
+    margin: {l: 60, r: 10, t: 8, b: 36},
+    xaxis: {title: 'Carga aplicada [kN]', gridcolor: '#3e3e42', zerolinecolor: '#555'},
+    yaxis: {title: 'U_junta [J]', gridcolor: '#3e3e42', zerolinecolor: '#555'},
+    legend: {orientation: 'v', y: 1.0, x: 1.0, xanchor: 'right',
+             font: {size: 9}, bgcolor: 'rgba(0,0,0,0.6)'},
+  };
+  isInit ? Plotly.newPlot('plotUj', data, layout, {displayModeBar: false})
+         : Plotly.react('plotUj', data, layout, {displayModeBar: false});
+}
+
+// ============================================================
+// Plot U_bolt(F_ext) family
+// ============================================================
+function plotUbolt(s, sim, isInit) {
+  const NS = 200;
+  const F_ext = [];
+  for (let i = 0; i < NS; i++) F_ext.push(s.Fmax * i / (NS-1));
+
+  const cycles = sampleCycles(s.N);
+  const palette = ['#4a90e2', '#6ca6e6', '#90c0f0', '#c4b070', '#c44'];
+
+  const data = cycles.map((n, idx) => {
+    const F0 = sim.F0_hist[n];
+    const Phi = sim.Phi_hist[n];
+    const y = F_ext.map(F => U_bolt(F * Math.cos(s.theta), F0, Phi, s.k_b));
+    return {
+      x: F_ext.map(f => f/1e3),
+      y: y,
+      mode: 'lines',
+      name: `N=${n} (F₀=${(F0/1e3).toFixed(1)} kN)`,
+      line: {color: palette[idx % palette.length], width: 2 + (idx===0 ? 1 : 0)},
+    };
+  });
+
+  const layout = {
+    paper_bgcolor: '#252526', plot_bgcolor: '#1e1e1e',
+    font: {color: '#d4d4d4', size: 10},
+    margin: {l: 60, r: 10, t: 8, b: 36},
+    xaxis: {title: 'Carga aplicada [kN]', gridcolor: '#3e3e42', zerolinecolor: '#555'},
+    yaxis: {title: 'U_estojo [J]', gridcolor: '#3e3e42', zerolinecolor: '#555'},
+    legend: {orientation: 'v', y: 1.0, x: 0.02,
+             font: {size: 9}, bgcolor: 'rgba(0,0,0,0.6)'},
+  };
+  isInit ? Plotly.newPlot('plotUb', data, layout, {displayModeBar: false})
+         : Plotly.react('plotUb', data, layout, {displayModeBar: false});
+}
+
+// ============================================================
+// 3D surface: U_bolt(F_ext, N)
+// ============================================================
+function plot3D(s, sim, isInit) {
+  const NS_F = 30, NS_N = 30;
+  const F_grid = [], N_grid = [];
+  for (let i = 0; i < NS_F; i++) F_grid.push(s.Fmax * i / (NS_F-1));
+  for (let j = 0; j < NS_N; j++) N_grid.push(Math.floor(s.N * j / (NS_N-1)));
+  const Z = [];
+  for (let j = 0; j < NS_N; j++) {
+    const n = N_grid[j];
+    const F0 = sim.F0_hist[n], Phi = sim.Phi_hist[n];
+    const row = [];
+    for (let i = 0; i < NS_F; i++) {
+      row.push(U_bolt(F_grid[i] * Math.cos(s.theta), F0, Phi, s.k_b));
+    }
+    Z.push(row);
+  }
+  const data = [{
+    type: 'surface',
+    x: F_grid.map(f => f/1e3),
+    y: N_grid,
+    z: Z,
+    colorscale: [
+      [0,    '#1e3a5f'],
+      [0.25, '#2d8f3f'],
+      [0.5,  '#d4b13a'],
+      [0.75, '#e08c5a'],
+      [1.0,  '#c44'],
+    ],
+    showscale: true,
+    colorbar: {title: 'U_estojo [J]', tickfont: {color: '#d4d4d4'}, len: 0.7},
+    opacity: 0.92,
+  }];
+  const layout = {
+    paper_bgcolor: '#252526', plot_bgcolor: '#1e1e1e',
+    font: {color: '#d4d4d4', size: 10},
+    margin: {l: 0, r: 0, t: 0, b: 0},
+    scene: {
+      xaxis: {title: 'F_ext [kN]', gridcolor: '#3e3e42',
+              backgroundcolor: '#1e1e1e', color: '#d4d4d4'},
+      yaxis: {title: 'Ciclos N', gridcolor: '#3e3e42',
+              backgroundcolor: '#1e1e1e', color: '#d4d4d4'},
+      zaxis: {title: 'U_estojo [J]', gridcolor: '#3e3e42',
+              backgroundcolor: '#1e1e1e', color: '#d4d4d4'},
+      camera: {eye: {x: 1.7, y: -1.7, z: 0.9}},
+      bgcolor: '#1e1e1e',
+    },
+  };
+  isInit ? Plotly.newPlot('plot3d', data, layout, {displayModeBar: true})
+         : Plotly.react('plot3d', data, layout, {displayModeBar: true});
+}
+
+// ============================================================
+// Mini-plot F0(N)
+// ============================================================
+function plotF0(s, sim, isInit) {
+  const N_arr = sim.F0_hist.map((_, i) => i);
+  const F0_arr = sim.F0_hist.map(f => f/1e3);
+  const ratio_arr = sim.F0_hist.map(f => f / s.F0_init);
+  const data = [
+    {x: N_arr, y: F0_arr, mode: 'lines', name: 'F₀ [kN]',
+     line: {color: '#5cb27c', width: 2}, yaxis: 'y'},
+    {x: N_arr, y: sim.Phi_hist, mode: 'lines', name: 'Φ_eff',
+     line: {color: '#c576c5', width: 2}, yaxis: 'y2'},
+  ];
+  const layout = {
+    paper_bgcolor: '#252526', plot_bgcolor: '#1e1e1e',
+    font: {color: '#d4d4d4', size: 10},
+    margin: {l: 50, r: 50, t: 8, b: 30},
+    xaxis: {title: 'N', gridcolor: '#3e3e42'},
+    yaxis: {title: 'F₀ [kN]', color: '#5cb27c', gridcolor: '#3e3e42', side: 'left'},
+    yaxis2: {title: 'Φ_eff', overlaying: 'y', side: 'right',
+             color: '#c576c5', gridcolor: 'transparent', range: [0, 1]},
+    legend: {orientation: 'h', y: 1.15, x: 0,
+             font: {size: 9}, bgcolor: 'rgba(0,0,0,0)'},
+  };
+  isInit ? Plotly.newPlot('plotF0', data, layout, {displayModeBar: false})
+         : Plotly.react('plotF0', data, layout, {displayModeBar: false});
+}
+
+// ============================================================
+// Plot energy balance over cycles
+// ============================================================
+function plotEnergy(s, sim, isInit) {
+  const N_arr = sim.F0_hist.map((_, i) => i);
+
+  // Internal energy at F_ext=0 each cycle
+  const U_int = sim.F0_hist.map((F0, i) => {
+    const Phi = sim.Phi_hist[i], kj = sim.kj_hist[i];
+    return F0*F0/(2*s.k_b) + F0*F0/(2*kj);
+  });
+  // External energy cumulative
+  const W_ext = sim.W_ext_cum;
+
+  const data = [
+    {x: N_arr, y: U_int, mode: 'lines',
+     name: 'U_interna(N) [pré-tensão restante]',
+     line: {color: '#5cb27c', width: 2}, fill: 'tozeroy', fillcolor: 'rgba(92,178,124,0.2)'},
+    {x: N_arr, y: W_ext, mode: 'lines',
+     name: 'W_ext cumulativa [energia injetada]',
+     line: {color: '#e08c5a', width: 2}},
+  ];
+  const layout = {
+    paper_bgcolor: '#252526', plot_bgcolor: '#1e1e1e',
+    font: {color: '#d4d4d4', size: 10},
+    margin: {l: 60, r: 10, t: 8, b: 36},
+    xaxis: {title: 'Ciclos N', gridcolor: '#3e3e42'},
+    yaxis: {title: 'Energia [J]', gridcolor: '#3e3e42'},
+    legend: {orientation: 'h', y: 1.15, x: 0,
+             font: {size: 9}, bgcolor: 'rgba(0,0,0,0)'},
+  };
+  isInit ? Plotly.newPlot('plotEnergy', data, layout, {displayModeBar: false})
+         : Plotly.react('plotEnergy', data, layout, {displayModeBar: false});
+}
+
+// ============================================================
+// Derived metrics readout
+// ============================================================
+function updateDerived(s, sim) {
+  const cot_beta = 1 / Math.tan(s.beta);
+  document.getElementById('bolt-derived').innerHTML = `
+    <span>β:</span><span class="v">${(s.beta*180/Math.PI).toFixed(2)}°</span>
+    <span>cot β:</span><span class="v">${cot_beta.toFixed(1)}</span>
+    <span>k_b:</span><span class="v">${(s.k_b/1e6).toFixed(0)} N/μm</span>
+    <span>A_s:</span><span class="v">${(s.A_s*1e6).toFixed(0)} mm²</span>
+  `;
+  const F0_final = sim.F0_hist[s.N];
+  const ratio = F0_final / s.F0_init;
+  const Phi_final = sim.Phi_hist[s.N];
+  const failed = ratio < 0.2;
+  const statusClass = failed ? 'status-bad' :
+                     (ratio < 0.8 ? 'status-warn' : 'status-ok');
+  const statusText = failed ? 'FAILED' :
+                    (ratio < 0.8 ? 'LOOSENING' : 'STABLE');
+  document.getElementById('sim-derived').innerHTML = `
+    <span>F₀(N):</span><span class="v">${(F0_final/1e3).toFixed(1)} kN</span>
+    <span>Retenção:</span><span class="v ${statusClass}">${(ratio*100).toFixed(1)}%</span>
+    <span>Φ_eff final:</span><span class="v">${Phi_final.toFixed(3)}</span>
+    <span>Status:</span><span class="v ${statusClass}">${statusText}</span>
+  `;
+}
+
+// ============================================================
+// Wire-up
+// ============================================================
+function refresh(isInit) {
+  const s = getState();
+  const sim = simulate(s);
+  updateDerived(s, sim);
+  plotUjoint(s, sim, isInit);
+  plotUbolt(s, sim, isInit);
+  plot3D(s, sim, isInit);
+  plotF0(s, sim, isInit);
+  plotEnergy(s, sim, isInit);
+}
+
+['F0','Fmax','Famp','theta','mu','Phi_ax','Phi_tr','N','kloose','softening'].forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener('input', () => {
+    document.getElementById(id + '-v').textContent = el.value;
+    refresh(false);
+  });
+});
+document.getElementById('bolt-preset').addEventListener('change', () => refresh(false));
+
+refresh(true);
+</script>
+</body>
+</html>

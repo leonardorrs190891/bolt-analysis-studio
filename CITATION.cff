@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Bolt Analysis Studio: a free software tool with a lumped-parameter, energy-based model of preload loss in bolted joints"
+version: 2.0.0
+date-released: 2026-09-01
+license: MIT
+repository-code: "https://github.com/leonardorrs190891/bolt-analysis-studio"
+url: "https://github.com/leonardorrs190891/bolt-analysis-studio"
+# doi: 10.5281/zenodo.XXXXXXX   (mint from the first GitHub release via Zenodo)
+authors:
+  - family-names: "Ribeiro da Silva"
+    given-names: "Leonardo Rosa"
+    email: "leorrs@ufu.br"
+    affiliation: "Faculdade de Engenharia Mecânica, Universidade Federal de Uberlândia"
+keywords:
+  - bolted joint
+  - self-loosening
+  - preload
+  - Junker test
+  - embedding
+  - fretting wear
+  - model validation
+abstract: >
+  Lumped-parameter model of bolted-joint self-loosening in which a slow state
+  (preload, embedding, creep, wear, nut rotation, surface damage) is integrated
+  cycle by cycle with four loss mechanisms in parallel. The repository contains
+  the engine, the GUI, the 205-curve validation corpus digitised from 28 published
+  studies, the adopted per-rig configurations with provenance, the canonical
+  validation store, and the generators that recompute every number of the
+  companion paper and its software annex.

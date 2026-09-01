@@ -1,0 +1,50 @@
+[b1v3] s_ref=1.779e-05 m (k_b=5.620e+08)
+[busca] 270 sims @cap 10000
+  [60/270]
+  [120/270]
+  [180/270]
+  [240/270]
+  [270/270]
+[busca] melhor k=1.00e-14|fr=0.9: slope@cap=-1.784e-05 dist=0.00e+00 mae_f0=0.0077
+[full] 27 sims full-res (1e6)
+  [1/27] al_F0_18kN fim=0.843
+  [2/27] _AF_8p75kN fim=0.865
+  [3/27] _F0_19p5kN fim=0.879
+  [4/27] al_F0_15kN fim=0.77
+  [5/27] _AF_12p5kN fim=0.797
+  [6/27] _F0_16p5kN fim=0.811
+  [7/27] AF_11p25kN fim=0.816
+  [8/27] l_AF_7p5kN fim=0.883
+  [9/27] AF_11p25kN fim=0.813
+  [10/27] al_F0_21kN fim=0.906
+  [11/27] _AF_8p75kN fim=0.865
+  [12/27] l_AF_7p5kN fim=0.883
+  [13/27] _F0_16p5kN fim=0.81
+  [14/27] al_F0_18kN fim=0.842
+  [15/27] al_F0_15kN fim=0.769
+  [16/27] _AF_12p5kN fim=0.792
+  [17/27] _F0_19p5kN fim=0.879
+  [18/27] _AF_12p5kN fim=0.796
+  [19/27] l_AF_7p5kN fim=0.883
+  [20/27] al_F0_15kN fim=0.769
+  [21/27] _AF_8p75kN fim=0.865
+  [22/27] al_F0_21kN fim=0.905
+  [23/27] AF_11p25kN fim=0.815
+  [24/27] _F0_16p5kN fim=0.81
+  [25/27] al_F0_18kN fim=0.842
+  [26/27] _F0_19p5kN fim=0.878
+  [27/27] al_F0_21kN fim=0.905
+[full] FULL|k=1.00e-14|fr=0.9: slope=-1.770e-05 banda=True mae_f0_max=0.0205
+[full] FULL|k=3.16e-14|fr=0.9: slope=-1.872e-05 banda=True mae_f0_max=0.0206
+[full] FULL|k=1.00e-14|fr=0.75: slope=-1.803e-05 banda=True mae_f0_max=0.0206
+Traceback (most recent call last):
+  File [35m"C:\basl1v2\New_Theory\f4_b1v3_gate.py"[0m, line [35m197[0m, in [35m<module>[0m
+    raise SystemExit([31mmain[0m[1;31m()[0m)
+                     [31m~~~~[0m[1;31m^^[0m
+  File [35m"C:\basl1v2\New_Theory\f4_b1v3_gate.py"[0m, line [35m192[0m, in [35mmain[0m
+    [31mprint[0m[1;31m(f"[gate] {verdict} \u2192 {p}", flush=True)[0m
+    [31m~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"C:\Users\leo_r\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py"[0m, line [35m19[0m, in [35mencode[0m
+    return [31mcodecs.charmap_encode[0m[1;31m(input,self.errors,encoding_table)[0m[0]
+           [31m~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1;35mUnicodeEncodeError[0m: [35m'charmap' codec can't encode character '\u2192' in position 16: character maps to <undefined>[0m

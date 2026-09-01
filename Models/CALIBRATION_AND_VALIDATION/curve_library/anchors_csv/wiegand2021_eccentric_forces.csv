@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/71_Wiegand_2021_VDI_validation_index.md:71-81
+bolt_position,measured_kN,VDI_kN,FEM_kN
+1_tension_side,58.5,62.0,59.0
+2_tension_side,57.0,62.0,57.5
+3_compression,51.0,50.0,51.2
+4_compression,50.5,50.0,50.8

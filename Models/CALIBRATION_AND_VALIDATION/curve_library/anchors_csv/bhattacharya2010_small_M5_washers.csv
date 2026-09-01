@@ -1,0 +1,9 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/89_Bhattacharya_2010_small_bolts_M4_M5.md:48-66
+cycle,no_washer,plain_washer,spring_washer
+0,1.000,1.000,1.000
+50,0.720,0.700,0.870
+100,0.500,0.490,0.750
+200,0.280,0.275,0.570
+500,0.035,0.032,0.280
+1000,0.005,0.005,0.090
+2000,0.005,0.005,0.015

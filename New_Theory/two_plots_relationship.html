@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Relação entre os dois gráficos do New_Theory</title>
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
+<style>
+  :root {
+    --bg: #1e1e1e; --panel: #252526; --panel2: #2d2d30;
+    --border: #3e3e42; --accent: #007acc;
+    --text: #d4d4d4; --hint: #888; --label: #9e9e9e;
+    --gap: #4a90e2; --strain: #e08c5a; --link: #c576c5;
+  }
+  body {
+    margin: 0; padding: 16px;
+    background: var(--bg); color: var(--text);
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    font-size: 13px;
+    max-width: 1400px; margin: 0 auto;
+  }
+  h1 { font-size: 18px; margin: 0 0 4px; color: #fff; }
+  .subtitle { color: var(--hint); font-size: 12px; margin: 0 0 16px; }
+  .grid-2 {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    margin-bottom: 12px;
+  }
+  .grid-3 {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+    margin-bottom: 12px;
+  }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px;
+  }
+  .panel h3 {
+    margin: 0 0 8px;
+    font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.5px; color: var(--label);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+  .plot-area { padding: 8px; }
+  .plot-area .title {
+    color: var(--label); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 0 0 6px;
+  }
+  .plot-area > div:not(.title) { height: 320px; }
+  .formula {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 13px; color: #b0b0b0;
+    background: var(--panel2);
+    padding: 8px 12px; border-left: 3px solid var(--accent);
+    margin: 8px 0;
+  }
+  .formula .hl-gap { color: var(--gap); font-weight: 600; }
+  .formula .hl-strain { color: var(--strain); font-weight: 600; }
+  .formula .hl-link { color: var(--link); font-weight: 600; }
+  .row {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr 70px;
+    gap: 8px; align-items: center; margin: 6px 0;
+  }
+  .row label { color: var(--hint); font-size: 11px; }
+  .row input[type=range] { width: 100%; accent-color: var(--accent); }
+  .row .val {
+    color: #fff; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-align: right;
+  }
+  .derived {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px;
+    color: var(--hint); font-size: 12px;
+  }
+  .derived span.v {
+    color: #fff;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+  }
+  .legend-cur { color: var(--link); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<h1>Os dois gráficos do New_Theory são a mesma curva</h1>
+<p class="subtitle">Plot 1 (gap × F) e Plot 2 (strain × F) medem o mesmo evento físico — a elongação do parafuso — em sistemas de unidades diferentes. A relação entre eles é exatamente linear: <strong>gap = L_eff × (ε − ε_pre)</strong>.</p>
+
+<div class="panel">
+  <h3>Slider sincronizado</h3>
+  <div class="row">
+    <label>F_ext explorado [kN]</label>
+    <input type="range" id="Fcursor" min="0" max="100" step="0.5" value="60">
+    <span class="val" id="Fcursor-v">60</span>
+  </div>
+  <div class="row">
+    <label>F₀ preload [kN]</label>
+    <input type="range" id="F0" min="10" max="80" step="1" value="40">
+    <span class="val" id="F0-v">40</span>
+  </div>
+  <div class="row">
+    <label>Φ_axial</label>
+    <input type="range" id="Phi" min="0.05" max="0.40" step="0.01" value="0.20">
+    <span class="val" id="Phi-v">0.20</span>
+  </div>
+  <div class="formula">
+    Bolt: A_s = 233 mm² · L_eff = 58 mm · E = 200 GPa
+    &nbsp;→ k_b = E·A_s/L_eff = 803 kN/mm
+  </div>
+  <div class="derived" id="cur-derived"></div>
+</div>
+
+<!-- Two original plots side by side -->
+<div class="grid-2">
+  <div class="panel">
+    <div class="plot-area">
+      <div class="title">Plot 1 — gap [mm] vs F_ext [kN]</div>
+      <div id="plot1"></div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="plot-area">
+      <div class="title">Plot 2 — ε [μstrain] vs F_ext [kN]</div>
+      <div id="plot2"></div>
+    </div>
+  </div>
+</div>
+
+<!-- The parametric relationship -->
+<div class="grid-2">
+  <div class="panel">
+    <div class="plot-area">
+      <div class="title">Plot 3 (paramétrico) — gap [mm] vs ε [μstrain]</div>
+      <div id="plot3"></div>
+      <p style="color: var(--hint); font-size: 11px; margin: 8px 0 0;">
+        Se Plot 1 e Plot 2 fossem curvas independentes, este gráfico paramétrico seria uma forma complicada. Mas — como a teoria prevê — eles colapsam numa <strong>reta perfeita</strong>. O slope é L_eff, o intercept é em ε = ε_pre.
+      </p>
+    </div>
+  </div>
+  <div class="panel">
+    <h3>Derivação</h3>
+    <div class="formula">
+      F_bolt(F_ext) = F₀ + Φ·F_ext &nbsp; (pré-separação)
+    </div>
+    <div class="formula">
+      <span class="hl-strain">ε(F_ext)</span> = F_bolt / (E·A_s) = (F₀ + Φ·F_ext) / (E·A_s)
+    </div>
+    <div class="formula">
+      ε_pre = F₀ / (E·A_s)
+      &nbsp;→&nbsp; <span class="hl-strain">ε</span> − ε_pre = Φ·F_ext / (E·A_s)
+    </div>
+    <div class="formula">
+      <span class="hl-gap">gap(F_ext)</span> = (1−Φ)·F_ext / k_j &nbsp; (joint compression release, pré-sep)
+    </div>
+    <div class="formula">
+      Mas a compatibilidade dá: Δ_bolt = gap. Bolt extension = ΔF_bolt / k_b = Φ·F_ext / k_b
+    </div>
+    <div class="formula">
+      Logo &nbsp; <span class="hl-gap">gap</span> = Φ·F_ext / k_b = (Φ·F_ext / (E·A_s)) · L_eff = L_eff · (<span class="hl-strain">ε</span> − ε_pre)
+    </div>
+    <div class="formula" style="border-left-color: var(--link);">
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-link">gap = L_eff · (ε − ε_pre)</span>
+    </div>
+    <p style="color: var(--hint); font-size: 11px;">
+      Linear, com slope = L_eff (constante geométrica) e offset = ε_pre (controlado por F₀). Tanto pré- quanto pós-separação esta relação se mantém — a única coisa que muda no kink é o slope (porque após a separação ΔF_bolt = F_ext, não Φ·F_ext).
+    </p>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Interpretação física</h3>
+  <p>
+    Os dois métodos experimentais — <strong>medir a abertura entre flanges</strong> (dilatômetro, MTS, extensômetros externos) e <strong>medir a deformação no parafuso</strong> (strain gauge no shank, ultrassom de elongação) — produzem dados que parecem diferentes mas codificam <strong>a mesma informação</strong>. Você pode converter um no outro conhecendo apenas L_eff e ε_pre.
+  </p>
+  <p>
+    A independência aparente dos dois plots no New_Theory é uma ilusão — quem medisse só um já saberia tudo sobre o outro. A redundância das duas medidas serve pra <strong>validação cruzada</strong> (se a relação linear gap = L_eff·(ε − ε_pre) falhar, há erro em uma das medições, ou o modelo bilinear não vale aí — ex: bolt em escoamento, gasket não-linear).
+  </p>
+  <p style="color: var(--hint);">
+    No contexto da teoria two-factor: as duas medições refletem só o <strong>Fator 1</strong> (rigidez anisotrópica do joint partilhando carga). Nenhum dos dois "vê" o <strong>Fator 2</strong> (acoplamento helicoidal → loosening rotacional) — pra isso precisaria de uma terceira medida: ângulo de rotação cumulativo da porca, ou perda de pré-carga ciclo-a-ciclo.
+  </p>
+</div>
+
+<script>
+// ============================================================
+// Parameters (M22-ish from the calibrated New_Theory fit)
+// ============================================================
+const A_s = 233e-6;     // m²
+const L_eff = 58e-3;    // m
+const E_MOD = 200e9;    // Pa
+const k_b = E_MOD * A_s / L_eff;
+
+function getState() {
+  const F0 = +document.getElementById('F0').value * 1e3;
+  const Phi = +document.getElementById('Phi').value;
+  const k_j = k_b * (1 - Phi) / Phi;
+  return {
+    F0, Phi, k_j,
+    Fcursor: +document.getElementById('Fcursor').value * 1e3,
+  };
+}
+
+function gap(F_ext, s) {
+  const F_sep = s.F0 / (1 - s.Phi);
+  if (F_ext < F_sep) return (1 - s.Phi) * F_ext / s.k_j;
+  return s.F0 / s.k_j + (F_ext - F_sep) / k_b;
+}
+function strain(F_ext, s) {
+  const F_sep = s.F0 / (1 - s.Phi);
+  const F_bolt = (F_ext < F_sep) ? (s.F0 + s.Phi * F_ext) : F_ext;
+  return F_bolt / (E_MOD * A_s);
+}
+
+// ============================================================
+// Plot 1 — gap vs F_ext + cursor marker
+// ============================================================
+function plot1(s, isInit) {
+  const N = 200;
+  const F_arr = [];
+  for (let i = 0; i < N; i++) F_arr.push(100e3 * i / (N-1));
+  const gap_arr = F_arr.map(F => gap(F, s) * 1e3);
+  const data = [
+    {x: F_arr.map(f=>f/1e3), y: gap_arr, mode: 'lines',
+     name: 'gap', line: {color: '#4a90e2', width: 2}},
+    {x: [s.Fcursor/1e3], y: [gap(s.Fcursor, s)*1e3],
+     mode: 'markers',
+     marker: {color: '#c576c5', size: 12, line: {color: '#fff', width: 2}},
+     name: 'cursor', showlegend: false},
+  ];
+  const layout = {
+    paper_bgcolor: '#252526', plot_bgcolor: '#1e1e1e',
+    font: {color: '#d4d4d4', size: 11},
+    margin: {l: 60, r: 10, t: 8, b: 40},
+    xaxis: {title: 'F_ext [kN]', gridcolor: '#3e3e42', range: [0, 100]},
+    yaxis: {title: 'gap [mm]', gridcolor: '#3e3e42'},
+    showlegend: false,
+    shapes: [
+      {type: 'line', x0: s.Fcursor/1e3, x1: s.Fcursor/1e3,
+       y0: 0, y1: 0.08,
+       line: {color: '#c576c5', width: 1, dash: 'dash'}}
+    ]
+  };
+  isInit ? Plotly.newPlot('plot1', data, layout, {displayModeBar: false})
+         : Plotly.react('plot1', data, layout, {displayModeBar: false});
+}
+
+// ============================================================
+// Plot 2 — strain vs F_ext + cursor marker
+// ============================================================
+function plot2(s, isInit) {
+  const N = 200;
+  const F_arr = [];
+  for (let i = 0; i < N; i++) F_arr.push(100e3 * i / (N-1));
+  const eps_arr = F_arr.map(F => strain(F, s) * 1e6);
+  const data = [
+    {x: F_arr.map(f=>f/1e3), y: eps_arr, mode: 'lines',
+     name: 'strain', line: {color: '#e08c5a', width: 2}},
+    {x: [s.Fcursor/1e3], y: [strain(s.Fcursor, s)*1e6],
+     mode: 'markers',
+     marker: {color: '#c576c5', size: 12, line: {color: '#fff', width: 2}},
+     name: 'cursor', showlegend: false},
+  ];
+  const layout = {
+    paper_bgcolor: '#252526', plot_bgcolor: '#1e1e1e',
+    font: {color: '#d4d4d4', size: 11},
+    margin: {l: 60, r: 10, t: 8, b: 40},
+    xaxis: {title: 'F_ext [kN]', gridcolor: '#3e3e42', range: [0, 100]},
+    yaxis: {title: 'ε [μstrain]', gridcolor: '#3e3e42'},
+    showlegend: false,
+    shapes: [
+      {type: 'line', x0: s.Fcursor/1e3, x1: s.Fcursor/1e3,
+       y0: 0, y1: 2500,
+       line: {color: '#c576c5', width: 1, dash: 'dash'}}
+    ]
+  };
+  isInit ? Plotly.newPlot('plot2', data, layout, {displayModeBar: false})
+         : Plotly.react('plot2', data, layout, {displayModeBar: false});
+}
+
+// ============================================================
+// Plot 3 — gap vs strain (parametric, should be a straight line)
+// ============================================================
+function plot3(s, isInit) {
+  const N = 200;
+  const F_arr = [];
+  for (let i = 0; i < N; i++) F_arr.push(100e3 * i / (N-1));
+  const eps_arr = F_arr.map(F => strain(F, s) * 1e6);
+  const gap_arr = F_arr.map(F => gap(F, s) * 1e3);
+
+  // Theoretical line: gap = L_eff*(eps - eps_pre)
+  const eps_pre = s.F0 / (E_MOD * A_s);
+  const eps_min = eps_pre * 1e6;
+  const eps_max = Math.max(...eps_arr);
+  const eps_line = [eps_min, eps_max];
+  const gap_line = eps_line.map(e => (e/1e6 - eps_pre) * L_eff * 1e3);
+
+  const data = [
+    {x: eps_arr, y: gap_arr, mode: 'lines',
+     name: 'paramétrico (F_ext varia)',
+     line: {color: '#c576c5', width: 3}},
+    {x: eps_line, y: gap_line, mode: 'lines',
+     name: 'previsão gap = L·(ε−ε_pre)',
+     line: {color: '#6cd486', width: 1, dash: 'dot'}},
+    {x: [strain(s.Fcursor, s)*1e6], y: [gap(s.Fcursor, s)*1e3],
+     mode: 'markers',
+     marker: {color: '#c576c5', size: 14, line: {color: '#fff', width: 2}},
+     name: 'cursor', showlegend: false},
+  ];
+  const layout = {
+    paper_bgcolor: '#252526', plot_bgcolor: '#1e1e1e',
+    font: {color: '#d4d4d4', size: 11},
+    margin: {l: 60, r: 10, t: 8, b: 40},
+    xaxis: {title: 'ε [μstrain]', gridcolor: '#3e3e42'},
+    yaxis: {title: 'gap [mm]', gridcolor: '#3e3e42'},
+    showlegend: true,
+    legend: {orientation: 'h', y: 1.12, x: 0,
+             font: {size: 10}, bgcolor: 'rgba(0,0,0,0)'},
+  };
+  isInit ? Plotly.newPlot('plot3', data, layout, {displayModeBar: false})
+         : Plotly.react('plot3', data, layout, {displayModeBar: false});
+}
+
+// ============================================================
+// Derived readout
+// ============================================================
+function updateDerived(s) {
+  const eps_pre = s.F0 / (E_MOD * A_s);
+  const eps_cur = strain(s.Fcursor, s);
+  const gap_cur = gap(s.Fcursor, s);
+  const gap_predicted = L_eff * (eps_cur - eps_pre);
+  const F_sep = s.F0 / (1 - s.Phi);
+  document.getElementById('cur-derived').innerHTML = `
+    <span>F_sep:</span><span class="v">${(F_sep/1e3).toFixed(1)} kN</span>
+    <span>ε_pre:</span><span class="v">${(eps_pre*1e6).toFixed(0)} μstrain</span>
+    <span class="legend-cur">No cursor (F = ${(s.Fcursor/1e3).toFixed(1)} kN):</span><span></span>
+    <span class="legend-cur">  gap medido:</span><span class="v">${(gap_cur*1e3).toFixed(4)} mm</span>
+    <span class="legend-cur">  ε medido:</span><span class="v">${(eps_cur*1e6).toFixed(0)} μstrain</span>
+    <span class="legend-cur">  gap previsto via ε:</span><span class="v">${(gap_predicted*1e3).toFixed(4)} mm</span>
+    <span>L_eff·(ε−ε_pre):</span><span class="v">${(L_eff*(eps_cur-eps_pre)*1e3).toFixed(4)} mm ✓</span>
+  `;
+}
+
+// ============================================================
+// Wire-up
+// ============================================================
+function refresh(isInit) {
+  const s = getState();
+  updateDerived(s);
+  plot1(s, isInit);
+  plot2(s, isInit);
+  plot3(s, isInit);
+}
+['Fcursor', 'F0', 'Phi'].forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener('input', () => {
+    document.getElementById(id + '-v').textContent = el.value;
+    refresh(false);
+  });
+});
+refresh(true);
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+{
+ "chu2026ti_D0p5mm_F0_49kN_test3": {
+  "grupo": "ESPELHADO (10)",
+  "n90_mod": 55.868436885408926,
+  "n90_dado": 253.48818604651154,
+  "razao": 0.22039858250103161,
+  "ec_em_10pct": 0.760249774999913,
+  "leitura": "relogio cedo, mas ec=76%"
+ },
+ "liu2025_M16_amp0p25": {
+  "grupo": "ESPELHADO (10)",
+  "n90_mod": 630.8670208240317,
+  "n90_dado": null,
+  "razao": null,
+  "ec_em_10pct": 1.0,
+  "leitura": "sem cruzamento de 90 %"
+ },
+ "liu2025_M16_amp0p3": {
+  "grupo": "ESPELHADO (10)",
+  "n90_mod": 630.8670208240317,
+  "n90_dado": 180000.0,
+  "razao": 0.0035048167823557314,
+  "ec_em_10pct": 1.0,
+  "leitura": "MESMA assinatura (relogio E1)"
+ },
+ "liu2025_M16_amp0p8": {
+  "grupo": "ESPELHADO (10)",
+  "n90_mod": 630.829091989636,
+  "n90_dado": 181.8181818181818,
+  "razao": 3.469560005942998,
+  "ec_em_10pct": 0.9999995738641592,
+  "leitura": "relogio OK -> outro defeito"
+ },
+ "lu2024_M8_fig14_amp0p5_long": {
+  "grupo": "ESPELHADO (10)",
+  "n90_mod": 0.36964590183615126,
+  "n90_dado": 26.975062942093274,
+  "razao": 0.013703245202046844,
+  "ec_em_10pct": 0.9906920418879199,
+  "leitura": "MESMA assinatura (relogio E1)"
+ },
+ "lu2024_M8_fig14_amp1p0_long": {
+  "grupo": "ESPELHADO (10)",
+  "n90_mod": 0.2625680999125298,
+  "n90_dado": 55.883759902498475,
+  "razao": 0.0046984687567665035,
+  "ec_em_10pct": 0.972461047165993,
+  "leitura": "MESMA assinatura (relogio E1)"
+ },
+ "sun2025efa109235_transverse_grease_crimp": {
+  "grupo": "ESPELHADO (10)",
+  "n90_mod": 26.353574530839648,
+  "n90_dado": 31.288111888111896,
+  "razao": 0.842287148073414,
+  "ec_em_10pct": 0.9789319959507319,
+  "leitura": "relogio OK -> outro defeito"
+ },
+ "sun2025efa109235_transverse_grease_standard": {
+  "grupo": "ESPELHADO (10)",
+  "n90_mod": 23.295911065752748,
+  "n90_dado": 20.148746518105842,
+  "razao": 1.1561965427883485,
+  "ec_em_10pct": 0.9748555816824042,
+  "leitura": "relogio OK -> outro defeito"
+ },
+ "yang2019_M10_amp0p4_5Hz": {
+  "grupo": "ESPELHADO (10)",
+  "n90_mod": 767.2753964750826,
+  "n90_dado": 9015.243902439024,
+  "razao": 0.08510866758330304,
+  "ec_em_10pct": 1.0,
+  "leitura": "MESMA assinatura (relogio E1)"
+ },
+ "yang2019_M10_amp0p6_10Hz": {
+  "grupo": "ESPELHADO (10)",
+  "n90_mod": 175.22391373260362,
+  "n90_dado": 4262.619808306708,
+  "razao": 0.04110709413753931,
+  "ec_em_10pct": 0.9999999989263559,
+  "leitura": "MESMA assinatura (relogio E1)"
+ },
+ "yang2021_amp0p5mm_ax8kN": {
+  "grupo": "CONTROLE \u2014 classe (3)",
+  "n90_mod": null,
+  "n90_dado": 26131.188118811882,
+  "razao": null,
+  "ec_em_10pct": 1.0,
+  "leitura": "sem cruzamento de 90 %"
+ },
+ "yang2019_M10_varamp_small_to_large": {
+  "grupo": "CONTROLE \u2014 classe (3)",
+  "n90_mod": 175.19131717516154,
+  "n90_dado": 2374.09090909091,
+  "razao": 0.07379301125509387,
+  "ec_em_10pct": 0.9999999993227862,
+  "leitura": "MESMA assinatura (relogio E1)"
+ },
+ "jcsr2023_galv_seawater": {
+  "grupo": "CONTROLE \u2014 classe (3)",
+  "n90_mod": 7.186709248862331,
+  "n90_dado": 8.35164835164835,
+  "razao": 0.8605138705874634,
+  "ec_em_10pct": 1.0,
+  "leitura": "relogio OK -> outro defeito"
+ },
+ "_n_mesma_assinatura": 5
+}

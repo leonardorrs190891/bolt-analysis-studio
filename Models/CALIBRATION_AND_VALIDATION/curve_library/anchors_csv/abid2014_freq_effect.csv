@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/88_Abid_Nash_2014_dynamic_gasket_flange.md:44-56
+freq_Hz,ratio_300cyc,dF_osc_over_F0
+1,0.972,0.035
+2,0.966,0.048
+5,0.957,0.062
+10,0.950,0.075

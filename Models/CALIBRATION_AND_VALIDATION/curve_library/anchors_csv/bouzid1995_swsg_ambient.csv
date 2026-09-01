@@ -1,0 +1,12 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/85_86_Bouzid_1995_2006_gasket_creep.md:29-46
+time_h,ratio
+0,1.000
+0.25,0.940
+0.5,0.920
+1,0.905
+2,0.892
+4,0.880
+8,0.868
+24,0.850
+48,0.840
+168,0.828

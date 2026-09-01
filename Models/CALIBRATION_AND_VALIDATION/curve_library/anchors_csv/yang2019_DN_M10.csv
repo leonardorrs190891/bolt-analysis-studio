@@ -1,0 +1,10 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/09_Yang_2019_M10_variable_amplitude.md:119-132
+delta_mm,NL_cycles,flag
+0.30,50000,gt_did_not_reach
+0.40,18000,approx
+0.50,4500,approx
+0.60,1200,approx
+0.70,500,approx
+0.80,250,approx
+0.90,140,approx
+1.00,80,approx

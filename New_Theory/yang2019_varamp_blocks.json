@@ -1,0 +1,33 @@
+{
+  "small_to_large": [
+    [
+      3730,
+      0.6
+    ],
+    [
+      85,
+      0.8
+    ]
+  ],
+  "large_to_small": [
+    [
+      1546,
+      0.8
+    ],
+    [
+      1464,
+      0.6
+    ]
+  ],
+  "fonte": "Yang 2019, Shock & Vibration 2019:2036509 - secao 5.2 (protocolo: amplitudes 0.6/0.8 mm, troca de bloco quando o preload residual atinge 80% do inicial; fim do ensaio a 70%), Tabelas 6/7 + Eqs. (7)/(8) (contagens exatas n=3730/85 e 1546/1464), Figs. 10/11 verificadas visualmente (render PyMuPDF 4x): switch visivel em ~1550 ciclos no large_to_small e colapso pos-3730 no small_to_large.",
+  "caveats": [
+    "As duracoes dos blocos NAO foram pre-fixadas: a amplitude trocava QUANDO o preload residual cruzava 80% do inicial (evento), e o ensaio terminava a 70% - os n de cada bloco sao RESULTADO do ensaio, nao input do protocolo.",
+    "small_to_large: apos a troca para 0.8 mm o parafuso FRATUROU rapidamente (Fig 12); os 70% foram atingidos ANTES da fratura (85 ciclos a 0.8 mm), mas a queda final ate ~0 kN na Fig 10 (~3815-3830 ciclos) e fratura por fadiga, out-of-model - trim alem de 70%.",
+    "Preload inicial: Tabelas 6 e 7 reportam ambas 26.95 kN; os CSVs digitalizados normalizam por 27.2 kN (Fig 10) e 27.3 kN (Fig 11), lidos do centro da banda inicial da figura (~1% de inconsistencia).",
+    "Erro de legenda no paper: a Tabela 6 esta legendada 'from big to small' mas contem os dados do small-to-big (colunas 0.6mm->80% e 0.8mm->70%; confirmado pela secao 6.1 e Eq. (7)).",
+    "Frequencia: 5 Hz (mesma dos ensaios de grades de amplitude constante; a secao 5.2 nao re-declara a frequencia - a nota de aparato lista 5 Hz para ambos).",
+    "Amplitudes em mm (deslocamento transversal imposto); o delta_spectrum do engine usa METROS (0.6 mm = 6.0e-4 m) - conversao fica com o chamador.",
+    "Vidas de referencia a 70% usadas nas somas de Miner (Tabela 5): N_0.6=5143, N_0.8=2252; L1=0.763, L2=0.971 (ambos em [0.7, 1]).",
+    "Totais ate 70%: small_to_large 3730+85=3815 ciclos; large_to_small 1546+1464=3010 ciclos (a nota de aparato cita ~3830 e 3000)."
+  ]
+}

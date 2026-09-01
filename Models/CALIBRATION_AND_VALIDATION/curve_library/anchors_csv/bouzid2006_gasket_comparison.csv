@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/85_86_Bouzid_1995_2006_gasket_creep.md:143-153
+gasket,thickness_mm,ratio_24h,ratio_168h
+aramid_sheet,3.0,0.680,0.640
+SBR_rubber,3.0,0.720,0.675
+flexible_graphite,1.5,0.810,0.788
+spiral_wound_SWSG,4.5,0.855,0.842

@@ -1,0 +1,8 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/93_Hu_Zhang_2020_CFRP_thermal_preload.md:60-74
+cycle,thermal_only,thermal_plus_50pct_axial,mechanical_only
+0,1.000,1.000,1.000
+1,0.930,0.895,0.985
+3,0.875,0.820,0.972
+5,0.845,0.780,0.965
+10,0.820,0.742,0.955
+20,0.806,0.714,0.945

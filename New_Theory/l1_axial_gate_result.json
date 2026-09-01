@@ -1,0 +1,1626 @@
+{
+  "prereg": {
+    "gate": "B1-rerun",
+    "H0": "com flank_wear_on, d(fim)/dA_F no rig Liu2017 tem sinal negativo e ordem 1e-5/N",
+    "PASS": "slope in [-4.4e-5, -1.1e-5] por curva-completa fit (alvo -2.2e-5/N, tol 2x)",
+    "FAIL2": "2 preregs consecutivos falhando => falsificacao documentada, sem forcar adocao",
+    "no_regression": "casos transversais: mediana e count>0.10 identicos ao baseline (flag off la)"
+  },
+  "pass_band_per_N": [
+    -4.4e-05,
+    -1.1e-05
+  ],
+  "seed": {
+    "anchor_1_per_Pa": 8.34e-15,
+    "convention_factor_2x": 2.0,
+    "seed_used_1_per_Pa": 1.668e-14,
+    "anchor_source": "kb.wear_spec_anchor('thread','35CrMo-SCM435') = Zhang 2019 EFA doi 10.1016/j.engfailanal.2019.05.001"
+  },
+  "provenance_notes": {
+    "liu17_rz": "handbook (Bolt Science ~1um/interface, retificado; verificado 2026-07-07, MODEL_LEGITIMACY 4.6)",
+    "liu17_grip": "assumed (2.5d; banda 24-36mm)",
+    "liu16_rz": "assumed (Ra/Rz nao reportado; par de material distinto do Liu2017, nao herda Rz<4 verificado)",
+    "liu16_grip": "assumed (emprestado do Liu2017, mesma familia de rig; nao declarado no texto disponivel)",
+    "liu16_r_bearing": "paper (De=15.75mm, Tabela 1, r=De/2)",
+    "li22_rz": "assumed (banda classe adjacente)",
+    "li22_grip": "assumed (2.5d; banda 20-30mm)",
+    "excluded_curve": "liu2016wear_fig7_run2_5e6cyc.csv: cauda nao-monotonica (recovery ~N=2.2-4e6), flagrada 'out-of-model' no proprio apparatus_notes/liu2016wear.md e validation_cases.py -- mesmo tratamento dos rabos de fadiga (Yang2021 etc.)."
+  },
+  "fit_method": "busca em grade determinista 2 estagios (grosseiro+refino) sobre log10(k_wear_flank) [e flank_amp_exp quando livre]; custo fixo e conhecido a priori (ver docstring do modulo para a justificativa vs scipy.least_squares).",
+  "fit_cycle_cap_rigA": 10000,
+  "attempts": [
+    {
+      "attempt": 1,
+      "free_exp": true,
+      "seed": {
+        "anchor": 8.34e-15,
+        "convention_factor": 2.0,
+        "seed_used": 1.668e-14
+      },
+      "rigA": {
+        "name": "Liu2017+Liu2016 (M12x1.75 axial force-mode, 30Hz)",
+        "n_curves": 22,
+        "fit_cycle_cap": 10000,
+        "fit_runtime_s": 971.1040887832642,
+        "report_runtime_s": 3609.2246520519257,
+        "fitted": {
+          "k_wear_flank": 2.9563592168692893e-18,
+          "flank_amp_exp": 0.65625
+        },
+        "fit_mae_at_cap": 0.09384906896000031,
+        "seed_mae_at_cap": 0.09834795449186774,
+        "saturated_lo": true,
+        "saturated_hi": false,
+        "curves": [
+          {
+            "name": "Liu2017 P0=15",
+            "F0_N": 15000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.772,
+            "final_pred": 0.7596613603378075,
+            "conservation_residual": 0.015194780527963303,
+            "af_group": null,
+            "MAE_pre": 0.16233215825285888,
+            "MAE_post": 0.023632642478490777
+          },
+          {
+            "name": "Liu2017 P0=16.5",
+            "F0_N": 16500.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.812,
+            "final_pred": 0.7701902837107493,
+            "conservation_residual": 0.018117431027349085,
+            "af_group": null,
+            "MAE_pre": 0.1502779886451083,
+            "MAE_post": 0.020025796941970573
+          },
+          {
+            "name": "Liu2017 P0=18 (=AF10)",
+            "F0_N": 18000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.885,
+            "final_pred": 0.7789643865213735,
+            "conservation_residual": 0.021294075369951315,
+            "af_group": "liu2017",
+            "MAE_pre": 0.19983096552541157,
+            "MAE_post": 0.048522156075342375
+          },
+          {
+            "name": "Liu2017 P0=19.5",
+            "F0_N": 19500.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.905,
+            "final_pred": 0.7863886273611859,
+            "conservation_residual": 0.024724727438297123,
+            "af_group": null,
+            "MAE_pre": 0.21570872173439412,
+            "MAE_post": 0.05778973369937021
+          },
+          {
+            "name": "Liu2017 P0=21",
+            "F0_N": 21000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.923,
+            "final_pred": 0.7927522623668433,
+            "conservation_residual": 0.02840940143505577,
+            "af_group": null,
+            "MAE_pre": 0.21685013159729127,
+            "MAE_post": 0.06681098512636346
+          },
+          {
+            "name": "Liu2017 AF=7.5",
+            "F0_N": 18000.0,
+            "F_amp_N": 7500.0,
+            "n_cycles": 1000000,
+            "final_data": 0.952,
+            "final_pred": 0.7821503500670871,
+            "conservation_residual": 0.019657978482428007,
+            "af_group": "liu2017",
+            "MAE_pre": 0.2021929670759678,
+            "MAE_post": 0.09791547371691382
+          },
+          {
+            "name": "Liu2017 AF=8.75",
+            "F0_N": 18000.0,
+            "F_amp_N": 8750.0,
+            "n_cycles": 1000000,
+            "final_data": 0.925,
+            "final_pred": 0.7805164810110733,
+            "conservation_residual": 0.020497796387644485,
+            "af_group": "liu2017",
+            "MAE_pre": 0.19857631357010644,
+            "MAE_post": 0.07549489979107316
+          },
+          {
+            "name": "Liu2017 AF=11.25",
+            "F0_N": 18000.0,
+            "F_amp_N": 11250.0,
+            "n_cycles": 1000000,
+            "final_data": 0.872,
+            "final_pred": 0.777480661349456,
+            "conservation_residual": 0.02205390259041451,
+            "af_group": "liu2017",
+            "MAE_pre": 0.14533637135990785,
+            "MAE_post": 0.03318708745863512
+          },
+          {
+            "name": "Liu2017 AF=12.5",
+            "F0_N": 18000.0,
+            "F_amp_N": 12500.0,
+            "n_cycles": 1000000,
+            "final_data": 0.84,
+            "final_pred": 0.7760553388315364,
+            "conservation_residual": 0.022782553656725213,
+            "af_group": "liu2017",
+            "MAE_pre": 0.16260051094971686,
+            "MAE_post": 0.02509956837981563
+          },
+          {
+            "name": "Liu2016 M0=30 (F0=14kN)",
+            "F0_N": 14000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.653,
+            "final_pred": 0.5386614074915181,
+            "conservation_residual": 0.01705245069024386,
+            "af_group": null,
+            "MAE_pre": 0.23547640044018586,
+            "MAE_post": 0.1260707144927001
+          },
+          {
+            "name": "Liu2016 M0=35 (F0=16kN)",
+            "F0_N": 16000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.733,
+            "final_pred": 0.5807636712349914,
+            "conservation_residual": 0.02137404835957568,
+            "af_group": null,
+            "MAE_pre": 0.25794105721842875,
+            "MAE_post": 0.14012524408839389
+          },
+          {
+            "name": "Liu2016 M0=40 (F0=18kN)",
+            "F0_N": 18000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.775,
+            "final_pred": 0.6135098763687286,
+            "conservation_residual": 0.026144165567529853,
+            "af_group": null,
+            "MAE_pre": 0.2676572584108392,
+            "MAE_post": 0.14321200651335889
+          },
+          {
+            "name": "Liu2016 M0=45 (F0=20kN)",
+            "F0_N": 20000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.812,
+            "final_pred": 0.6397068404757716,
+            "conservation_residual": 0.031363869820779655,
+            "af_group": null,
+            "MAE_pre": 0.2667256054119738,
+            "MAE_post": 0.13795064722254824
+          },
+          {
+            "name": "Liu2016 M0=50 (F0=22kN)",
+            "F0_N": 22000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.857,
+            "final_pred": 0.6611407201996826,
+            "conservation_residual": 0.03703379663056694,
+            "af_group": null,
+            "MAE_pre": 0.2888861471837708,
+            "MAE_post": 0.15618086374685228
+          },
+          {
+            "name": "Liu2016 AF=7.5",
+            "F0_N": 14000.0,
+            "F_amp_N": 7500.0,
+            "n_cycles": 1000000,
+            "final_data": 0.758,
+            "final_pred": 0.5408645882975972,
+            "conservation_residual": 0.016569120267377002,
+            "af_group": "liu2016",
+            "MAE_pre": 0.2929110906805524,
+            "MAE_post": 0.1976015240607435
+          },
+          {
+            "name": "Liu2016 AF=8.75",
+            "F0_N": 14000.0,
+            "F_amp_N": 8750.0,
+            "n_cycles": 1000000,
+            "final_data": 0.71,
+            "final_pred": 0.5397347231929366,
+            "conservation_residual": 0.01681721537897829,
+            "af_group": "liu2016",
+            "MAE_pre": 0.2621048748716376,
+            "MAE_post": 0.15879097582157398
+          },
+          {
+            "name": "Liu2016 AF=10",
+            "F0_N": 14000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.663,
+            "final_pred": 0.5386614074915181,
+            "conservation_residual": 0.01705245069024386,
+            "af_group": "liu2016",
+            "MAE_pre": 0.2417456312094166,
+            "MAE_post": 0.13233994526193088
+          },
+          {
+            "name": "Liu2016 AF=11.25",
+            "F0_N": 14000.0,
+            "F_amp_N": 11250.0,
+            "n_cycles": 1000000,
+            "final_data": 0.63,
+            "final_pred": 0.5376353710902199,
+            "conservation_residual": 0.01727692211716203,
+            "af_group": "liu2016",
+            "MAE_pre": 0.215013813334018,
+            "MAE_post": 0.09948205080252877
+          },
+          {
+            "name": "Liu2016 AF=12.5",
+            "F0_N": 14000.0,
+            "F_amp_N": 12500.0,
+            "n_cycles": 1000000,
+            "final_data": 0.593,
+            "final_pred": 0.5366497217630792,
+            "conservation_residual": 0.01749218619806925,
+            "af_group": "liu2016",
+            "MAE_pre": 0.17358994681608186,
+            "MAE_post": 0.053206054728489875
+          },
+          {
+            "name": "Liu2016 dry",
+            "F0_N": 14000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.66,
+            "final_pred": 0.5386614074915181,
+            "conservation_residual": 0.01705245069024386,
+            "af_group": null,
+            "MAE_pre": 0.23978409274787815,
+            "MAE_post": 0.13037840680039242
+          },
+          {
+            "name": "Liu2016 MoS2",
+            "F0_N": 20000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.915,
+            "final_pred": 0.6397068404757716,
+            "conservation_residual": 0.031363871739813476,
+            "af_group": null,
+            "MAE_pre": 0.3610056092217776,
+            "MAE_post": 0.22787372414562515
+          },
+          {
+            "name": "Liu2016 long1e6",
+            "F0_N": 14000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.658,
+            "final_pred": 0.5386614074915181,
+            "conservation_residual": 0.01705245069024386,
+            "af_group": null,
+            "MAE_pre": 0.2422456312094166,
+            "MAE_post": 0.13283994526193088
+          }
+        ],
+        "diag_af_group_vs_non_af_group": {
+          "n_af_group": 10,
+          "n_non_af_group": 12,
+          "mae_post_median_af_group": 0.0867051867539935,
+          "mae_post_median_non_af_group": 0.13160917603116165,
+          "note": "curvas non-af-group tem F_amp=10kN (=slip_ref) -> por construcao da reparametrizacao (k_wear_flank_from_ref), a resposta delas a k_ref e' INDEPENDENTE de flank_amp_exp; se dominarem a media igualmente ponderada das 22 curvas, o fit fica com pouco poder p/ identificar o expoente (mesma logica de identificabilidade do Rig B, so' que parcial aqui)."
+        },
+        "liu2017_af_sweep_slope": {
+          "n_points": 5,
+          "F_amp_N": [
+            7500.0,
+            8750.0,
+            10000.0,
+            11250.0,
+            12500.0
+          ],
+          "final_data": [
+            0.952,
+            0.925,
+            0.885,
+            0.872,
+            0.84
+          ],
+          "final_pred": [
+            0.7821503500670871,
+            0.7805164810110733,
+            0.7789643865213735,
+            0.777480661349456,
+            0.7760553388315364
+          ],
+          "data_per_N": -2.2160000000000116e-05,
+          "model_per_N": -1.2180673706175074e-06,
+          "data_per_kN": -0.022160000000000117,
+          "model_per_kN": -0.0012180673706175074
+        },
+        "liu2016_af_sweep_slope": {
+          "n_points": 5,
+          "F_amp_N": [
+            7500.0,
+            8750.0,
+            10000.0,
+            11250.0,
+            12500.0
+          ],
+          "final_data": [
+            0.758,
+            0.71,
+            0.663,
+            0.63,
+            0.593
+          ],
+          "final_pred": [
+            0.5408645882975972,
+            0.5397347231929366,
+            0.5386614074915181,
+            0.5376353710902199,
+            0.5366497217630792
+          ],
+          "data_per_N": -3.2800000000000065e-05,
+          "model_per_N": -8.423268137402129e-07,
+          "data_per_kN": -0.032800000000000065,
+          "model_per_kN": -0.0008423268137402129
+        }
+      },
+      "rigB": {
+        "name": "H.Li2022 (M10x1.5 axial x freq, force-mode)",
+        "n_curves": 4,
+        "fit_cycle_cap": null,
+        "fit_runtime_s": 1327.0197281837463,
+        "fitted": {
+          "k_wear_flank": 3.9184427433033734e-17,
+          "flank_amp_exp": 0.65625
+        },
+        "fit_mae": 0.033384355460815564,
+        "seed_mae": 0.2683180323590656,
+        "saturated_lo": false,
+        "saturated_hi": false,
+        "curves": [
+          {
+            "name": "Li2022 10Hz",
+            "F0_N": 12500.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 200000,
+            "final_data": 0.8208,
+            "final_pred": 0.8562519575823141,
+            "conservation_residual": 0.02090065625270654,
+            "af_group": null,
+            "MAE_pre": 0.22595978834313651,
+            "MAE_post": 0.05690939560375593
+          },
+          {
+            "name": "Li2022 15Hz",
+            "F0_N": 12500.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 200000,
+            "final_data": 0.8583,
+            "final_pred": 0.8564670596727402,
+            "conservation_residual": 0.020940664941008436,
+            "af_group": null,
+            "MAE_pre": 0.22236741300333815,
+            "MAE_post": 0.03131610518449436
+          },
+          {
+            "name": "Li2022 20Hz",
+            "F0_N": 12500.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 200000,
+            "final_data": 0.9108,
+            "final_pred": 0.8566650850421266,
+            "conservation_residual": 0.020968242151866434,
+            "af_group": null,
+            "MAE_pre": 0.2720916673615796,
+            "MAE_post": 0.016915669821351717
+          },
+          {
+            "name": "Li2022 10Hz full",
+            "F0_N": 12500.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 330000,
+            "final_data": 0.8348,
+            "final_pred": 0.8064154592718562,
+            "conservation_residual": 0.02674423300777562,
+            "af_group": null,
+            "MAE_pre": 0.3528532607282079,
+            "MAE_post": 0.028396251233660266
+          }
+        ],
+        "note": "sem varredura de amplitude (A_F=10kN fixo em toda a familia) -- exp NAO identificavel neste rig sozinho, herdado do Rig A; so k_wear_flank e' fitado aqui (constante de magnitude POR RIG)."
+      },
+      "gate": {
+        "slope_liu2017_per_N": -1.2180673706175074e-06,
+        "PASS_band_per_N": [
+          -4.4e-05,
+          -1.1e-05
+        ],
+        "verdict": "FAIL"
+      },
+      "no_regression": {
+        "identical": true,
+        "n_cycles": 600,
+        "final_ratio_baseline": 0.45144932360622797,
+        "final_ratio_with_flank_on": 0.45144932360622797,
+        "setup": "M16 shear canonico (calibrate_shared geometry: M16x2.0, grip 50mm), bloco shared (constantes fisicas), F0=50kN F_amp=20kN delta_amp=0.5mm theta=pi/2 freq=0.5Hz",
+        "note": "disp-mode transversal: canal L1 gateado OFF por construcao (_axial_forca / delta_amp-is-None guard); confirma bit-identidade mesmo com k_wear_flank/flank_amp_exp FITADOS engajados (flank_wear_on=1)."
+      },
+      "grid": {
+        "rigA": {
+          "log_k_bounds": [
+            -16.0,
+            -11.0
+          ],
+          "exp_bounds": [
+            0.5,
+            3.0
+          ],
+          "exp_fixed": null,
+          "fit_cycle_cap": 10000,
+          "n_coarse": 5,
+          "n_refine": 5,
+          "n_points": 50,
+          "points": [
+            {
+              "stage": "coarse",
+              "log_k_ref": -16.0,
+              "exp": 0.5,
+              "mae": 0.09384907291292471
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -16.0,
+              "exp": 1.125,
+              "mae": 0.09384911782267165
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -16.0,
+              "exp": 1.75,
+              "mae": 0.09384932259849356
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -16.0,
+              "exp": 2.375,
+              "mae": 0.09384968606329981
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -16.0,
+              "exp": 3.0,
+              "mae": 0.09385021035307771
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -14.75,
+              "exp": 0.5,
+              "mae": 0.09429122312673006
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -14.75,
+              "exp": 1.125,
+              "mae": 0.09429200559243035
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -14.75,
+              "exp": 1.75,
+              "mae": 0.0942956140200157
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -14.75,
+              "exp": 2.375,
+              "mae": 0.09430202586029468
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -14.75,
+              "exp": 3.0,
+              "mae": 0.09431127606436389
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -13.5,
+              "exp": 0.5,
+              "mae": 0.10253346885383156
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -13.5,
+              "exp": 1.125,
+              "mae": 0.10255474947101839
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -13.5,
+              "exp": 1.75,
+              "mae": 0.1026230250804789
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -13.5,
+              "exp": 2.375,
+              "mae": 0.10273772117943394
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -13.5,
+              "exp": 3.0,
+              "mae": 0.10289893292901399
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -12.25,
+              "exp": 0.5,
+              "mae": 0.20877633601741932
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -12.25,
+              "exp": 1.125,
+              "mae": 0.2085880581377338
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -12.25,
+              "exp": 1.75,
+              "mae": 0.20853941683631766
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -12.25,
+              "exp": 2.375,
+              "mae": 0.20862650059298965
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -12.25,
+              "exp": 3.0,
+              "mae": 0.2088423666347533
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -11.0,
+              "exp": 0.5,
+              "mae": 0.47045424563185173
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -11.0,
+              "exp": 1.125,
+              "mae": 0.4698083716614743
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -11.0,
+              "exp": 1.75,
+              "mae": 0.4692636797145571
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -11.0,
+              "exp": 2.375,
+              "mae": 0.468760964802882
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -11.0,
+              "exp": 3.0,
+              "mae": 0.468300539295489
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -16.0,
+              "exp": 0.5,
+              "mae": 0.09384907291292471
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -16.0,
+              "exp": 0.65625,
+              "mae": 0.09384906896000031
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -16.0,
+              "exp": 0.8125,
+              "mae": 0.09384907517779215
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -16.0,
+              "exp": 0.96875,
+              "mae": 0.09384909148709966
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -16.0,
+              "exp": 1.125,
+              "mae": 0.09384911782267165
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.6875,
+              "exp": 0.5,
+              "mae": 0.09387628797413297
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.6875,
+              "exp": 0.65625,
+              "mae": 0.09387627983859011
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.6875,
+              "exp": 0.8125,
+              "mae": 0.0938762925813835
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.6875,
+              "exp": 0.96875,
+              "mae": 0.09387632603986328
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.6875,
+              "exp": 1.125,
+              "mae": 0.09387638007998465
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.375,
+              "exp": 0.5,
+              "mae": 0.09393314766317493
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.375,
+              "exp": 0.65625,
+              "mae": 0.09393313088029447
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.375,
+              "exp": 0.8125,
+              "mae": 0.09393315694005834
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.375,
+              "exp": 0.96875,
+              "mae": 0.09393322550841653
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.375,
+              "exp": 1.125,
+              "mae": 0.09393333630989878
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.0625,
+              "exp": 0.5,
+              "mae": 0.09405050136235174
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.0625,
+              "exp": 0.65625,
+              "mae": 0.0940504665767684
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.0625,
+              "exp": 0.8125,
+              "mae": 0.09405051963675476
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.0625,
+              "exp": 0.96875,
+              "mae": 0.09405065985615155
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.0625,
+              "exp": 1.125,
+              "mae": 0.09405088666840404
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.75,
+              "exp": 0.5,
+              "mae": 0.09429122312673006
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.75,
+              "exp": 0.65625,
+              "mae": 0.09429115034130685
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.75,
+              "exp": 0.8125,
+              "mae": 0.0942912573898454
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.75,
+              "exp": 0.96875,
+              "mae": 0.0942915428625747
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.75,
+              "exp": 1.125,
+              "mae": 0.09429200559243035
+            }
+          ]
+        },
+        "rigB": {
+          "log_k_bounds": [
+            -16.0,
+            -11.0
+          ],
+          "exp_bounds": null,
+          "exp_fixed": 0.65625,
+          "fit_cycle_cap": null,
+          "n_coarse": 9,
+          "n_refine": 9,
+          "n_points": 18,
+          "points": [
+            {
+              "stage": "coarse",
+              "log_k_ref": -16.0,
+              "exp": 0.65625,
+              "mae": 0.055031035700805725
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -15.375,
+              "exp": 0.65625,
+              "mae": 0.045793053453185975
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -14.75,
+              "exp": 0.65625,
+              "mae": 0.0346556793271961
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -14.125,
+              "exp": 0.65625,
+              "mae": 0.13014929832535996
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -13.5,
+              "exp": 0.65625,
+              "mae": 0.4057166004477696
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -12.875,
+              "exp": 0.65625,
+              "mae": 0.6473519264496861
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -12.25,
+              "exp": 0.65625,
+              "mae": 0.742042953052851
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -11.625,
+              "exp": 0.65625,
+              "mae": 0.7730167681087932
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -11.0,
+              "exp": 0.65625,
+              "mae": 0.7744250793650793
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.375,
+              "exp": 0.65625,
+              "mae": 0.045793053453185975
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.21875,
+              "exp": 0.65625,
+              "mae": 0.041718435781195114
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.0625,
+              "exp": 0.65625,
+              "mae": 0.036378599340624714
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.90625,
+              "exp": 0.65625,
+              "mae": 0.033384355460815564
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.75,
+              "exp": 0.65625,
+              "mae": 0.0346556793271961
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.59375,
+              "exp": 0.65625,
+              "mae": 0.04186524535788716
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.4375,
+              "exp": 0.65625,
+              "mae": 0.05952769741588851
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.28125,
+              "exp": 0.65625,
+              "mae": 0.08812134585402144
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.125,
+              "exp": 0.65625,
+              "mae": 0.13014929832535996
+            }
+          ]
+        }
+      }
+    },
+    {
+      "attempt": 2,
+      "free_exp": false,
+      "seed": {
+        "anchor": 8.34e-15,
+        "convention_factor": 2.0,
+        "seed_used": 1.668e-14
+      },
+      "rigA": {
+        "name": "Liu2017+Liu2016 (M12x1.75 axial force-mode, 30Hz)",
+        "n_curves": 22,
+        "fit_cycle_cap": 10000,
+        "fit_runtime_s": 342.6875443458557,
+        "report_runtime_s": 3612.585765361786,
+        "fitted": {
+          "k_wear_flank": 1.676305461424021e-14,
+          "flank_amp_exp": 1.5
+        },
+        "fit_mae_at_cap": 0.09384922165509421,
+        "seed_mae_at_cap": 0.09834795449186774,
+        "saturated_lo": true,
+        "saturated_hi": false,
+        "curves": [
+          {
+            "name": "Liu2017 P0=15",
+            "F0_N": 15000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.772,
+            "final_pred": 0.7596613603378075,
+            "conservation_residual": 0.015194780527963303,
+            "af_group": null,
+            "MAE_pre": 0.16233215825285888,
+            "MAE_post": 0.023632642478490777
+          },
+          {
+            "name": "Liu2017 P0=16.5",
+            "F0_N": 16500.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.812,
+            "final_pred": 0.7701902837107493,
+            "conservation_residual": 0.018117431027349085,
+            "af_group": null,
+            "MAE_pre": 0.1502779886451083,
+            "MAE_post": 0.020025796941970573
+          },
+          {
+            "name": "Liu2017 P0=18 (=AF10)",
+            "F0_N": 18000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.885,
+            "final_pred": 0.7789643865213735,
+            "conservation_residual": 0.021294075369951315,
+            "af_group": "liu2017",
+            "MAE_pre": 0.19983096552541157,
+            "MAE_post": 0.048522156075342375
+          },
+          {
+            "name": "Liu2017 P0=19.5",
+            "F0_N": 19500.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.905,
+            "final_pred": 0.7863886273611859,
+            "conservation_residual": 0.024724727438297123,
+            "af_group": null,
+            "MAE_pre": 0.21570872173439412,
+            "MAE_post": 0.05778973369937021
+          },
+          {
+            "name": "Liu2017 P0=21",
+            "F0_N": 21000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.923,
+            "final_pred": 0.7927522623668433,
+            "conservation_residual": 0.02840940143505577,
+            "af_group": null,
+            "MAE_pre": 0.21685013159729127,
+            "MAE_post": 0.06681098512636346
+          },
+          {
+            "name": "Liu2017 AF=7.5",
+            "F0_N": 18000.0,
+            "F_amp_N": 7500.0,
+            "n_cycles": 1000000,
+            "final_data": 0.952,
+            "final_pred": 0.785468589510398,
+            "conservation_residual": 0.017947365166037343,
+            "af_group": "liu2017",
+            "MAE_pre": 0.2021929670759678,
+            "MAE_post": 0.09756296549805576
+          },
+          {
+            "name": "Liu2017 AF=8.75",
+            "F0_N": 18000.0,
+            "F_amp_N": 8750.0,
+            "n_cycles": 1000000,
+            "final_data": 0.925,
+            "final_pred": 0.7823261308114686,
+            "conservation_residual": 0.019567529307096265,
+            "af_group": "liu2017",
+            "MAE_pre": 0.19857631357010644,
+            "MAE_post": 0.07528513539055624
+          },
+          {
+            "name": "Liu2017 AF=11.25",
+            "F0_N": 18000.0,
+            "F_amp_N": 11250.0,
+            "n_cycles": 1000000,
+            "final_data": 0.872,
+            "final_pred": 0.7754012642348119,
+            "conservation_residual": 0.023116513053537346,
+            "af_group": "liu2017",
+            "MAE_pre": 0.14533637135990785,
+            "MAE_post": 0.033420083361254335
+          },
+          {
+            "name": "Liu2017 AF=12.5",
+            "F0_N": 18000.0,
+            "F_amp_N": 12500.0,
+            "n_cycles": 1000000,
+            "final_data": 0.84,
+            "final_pred": 0.7716519869834727,
+            "conservation_residual": 0.025025789625942707,
+            "af_group": "liu2017",
+            "MAE_pre": 0.16260051094971686,
+            "MAE_post": 0.025609531977294663
+          },
+          {
+            "name": "Liu2016 M0=30 (F0=14kN)",
+            "F0_N": 14000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.653,
+            "final_pred": 0.5386614074915181,
+            "conservation_residual": 0.01705245069024386,
+            "af_group": null,
+            "MAE_pre": 0.23547640044018586,
+            "MAE_post": 0.1260707144927001
+          },
+          {
+            "name": "Liu2016 M0=35 (F0=16kN)",
+            "F0_N": 16000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.733,
+            "final_pred": 0.5807636712349914,
+            "conservation_residual": 0.02137404835957568,
+            "af_group": null,
+            "MAE_pre": 0.25794105721842875,
+            "MAE_post": 0.14012524408839389
+          },
+          {
+            "name": "Liu2016 M0=40 (F0=18kN)",
+            "F0_N": 18000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.775,
+            "final_pred": 0.6135098763687286,
+            "conservation_residual": 0.026144165567529853,
+            "af_group": null,
+            "MAE_pre": 0.2676572584108392,
+            "MAE_post": 0.14321200651335889
+          },
+          {
+            "name": "Liu2016 M0=45 (F0=20kN)",
+            "F0_N": 20000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.812,
+            "final_pred": 0.6397068404757716,
+            "conservation_residual": 0.031363869820779655,
+            "af_group": null,
+            "MAE_pre": 0.2667256054119738,
+            "MAE_post": 0.13795064722254824
+          },
+          {
+            "name": "Liu2016 M0=50 (F0=22kN)",
+            "F0_N": 22000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.857,
+            "final_pred": 0.6611407201996826,
+            "conservation_residual": 0.03703379663056694,
+            "af_group": null,
+            "MAE_pre": 0.2888861471837708,
+            "MAE_post": 0.15618086374685228
+          },
+          {
+            "name": "Liu2016 AF=7.5",
+            "F0_N": 14000.0,
+            "F_amp_N": 7500.0,
+            "n_cycles": 1000000,
+            "final_data": 0.758,
+            "final_pred": 0.5431592417424457,
+            "conservation_residual": 0.016063796643720707,
+            "af_group": "liu2016",
+            "MAE_pre": 0.2929110906805524,
+            "MAE_post": 0.19733289634480164
+          },
+          {
+            "name": "Liu2016 AF=8.75",
+            "F0_N": 14000.0,
+            "F_amp_N": 8750.0,
+            "n_cycles": 1000000,
+            "final_data": 0.71,
+            "final_pred": 0.5409861454898718,
+            "conservation_residual": 0.01654240197967738,
+            "af_group": "liu2016",
+            "MAE_pre": 0.2621048748716376,
+            "MAE_post": 0.15864431129948625
+          },
+          {
+            "name": "Liu2016 AF=10",
+            "F0_N": 14000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.663,
+            "final_pred": 0.5386614074915181,
+            "conservation_residual": 0.01705245069024386,
+            "af_group": "liu2016",
+            "MAE_pre": 0.2417456312094166,
+            "MAE_post": 0.13233994526193088
+          },
+          {
+            "name": "Liu2016 AF=11.25",
+            "F0_N": 14000.0,
+            "F_amp_N": 11250.0,
+            "n_cycles": 1000000,
+            "final_data": 0.63,
+            "final_pred": 0.5361974113869342,
+            "conservation_residual": 0.017590851362911053,
+            "af_group": "liu2016",
+            "MAE_pre": 0.215013813334018,
+            "MAE_post": 0.0996509770807666
+          },
+          {
+            "name": "Liu2016 AF=12.5",
+            "F0_N": 14000.0,
+            "F_amp_N": 12500.0,
+            "n_cycles": 1000000,
+            "final_data": 0.593,
+            "final_pred": 0.5336046843654884,
+            "conservation_residual": 0.01815492599416757,
+            "af_group": "liu2016",
+            "MAE_pre": 0.17358994681608186,
+            "MAE_post": 0.053564205841682276
+          },
+          {
+            "name": "Liu2016 dry",
+            "F0_N": 14000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.66,
+            "final_pred": 0.5386614074915181,
+            "conservation_residual": 0.01705245069024386,
+            "af_group": null,
+            "MAE_pre": 0.23978409274787815,
+            "MAE_post": 0.13037840680039242
+          },
+          {
+            "name": "Liu2016 MoS2",
+            "F0_N": 20000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.915,
+            "final_pred": 0.6397068404757716,
+            "conservation_residual": 0.031363871739813476,
+            "af_group": null,
+            "MAE_pre": 0.3610056092217776,
+            "MAE_post": 0.22787372414562515
+          },
+          {
+            "name": "Liu2016 long1e6",
+            "F0_N": 14000.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 1000000,
+            "final_data": 0.658,
+            "final_pred": 0.5386614074915181,
+            "conservation_residual": 0.01705245069024386,
+            "af_group": null,
+            "MAE_pre": 0.2422456312094166,
+            "MAE_post": 0.13283994526193088
+          }
+        ],
+        "diag_af_group_vs_non_af_group": {
+          "n_af_group": 10,
+          "n_non_af_group": 12,
+          "mae_post_median_af_group": 0.08642405044430601,
+          "mae_post_median_non_af_group": 0.13160917603116165,
+          "note": "curvas non-af-group tem F_amp=10kN (=slip_ref) -> por construcao da reparametrizacao (k_wear_flank_from_ref), a resposta delas a k_ref e' INDEPENDENTE de flank_amp_exp; se dominarem a media igualmente ponderada das 22 curvas, o fit fica com pouco poder p/ identificar o expoente (mesma logica de identificabilidade do Rig B, so' que parcial aqui)."
+        },
+        "liu2017_af_sweep_slope": {
+          "n_points": 5,
+          "F_amp_N": [
+            7500.0,
+            8750.0,
+            10000.0,
+            11250.0,
+            12500.0
+          ],
+          "final_data": [
+            0.952,
+            0.925,
+            0.885,
+            0.872,
+            0.84
+          ],
+          "final_pred": [
+            0.785468589510398,
+            0.7823261308114686,
+            0.7789643865213735,
+            0.7754012642348119,
+            0.7716519869834727
+          ],
+          "data_per_N": -2.2160000000000116e-05,
+          "model_per_N": -2.7646457304406048e-06,
+          "data_per_kN": -0.022160000000000117,
+          "model_per_kN": -0.0027646457304406047
+        },
+        "liu2016_af_sweep_slope": {
+          "n_points": 5,
+          "F_amp_N": [
+            7500.0,
+            8750.0,
+            10000.0,
+            11250.0,
+            12500.0
+          ],
+          "final_data": [
+            0.758,
+            0.71,
+            0.663,
+            0.63,
+            0.593
+          ],
+          "final_pred": [
+            0.5431592417424457,
+            0.5409861454898718,
+            0.5386614074915181,
+            0.5361974113869342,
+            0.5336046843654884
+          ],
+          "data_per_N": -3.2800000000000065e-05,
+          "model_per_N": -1.911827908548176e-06,
+          "data_per_kN": -0.032800000000000065,
+          "model_per_kN": -0.001911827908548176
+        }
+      },
+      "rigB": {
+        "name": "H.Li2022 (M10x1.5 axial x freq, force-mode)",
+        "n_curves": 4,
+        "fit_cycle_cap": null,
+        "fit_runtime_s": 1326.9784920215607,
+        "fitted": {
+          "k_wear_flank": 1.8901400848767854e-13,
+          "flank_amp_exp": 1.5
+        },
+        "fit_mae": 0.033384355460815564,
+        "seed_mae": 0.2683180323590656,
+        "saturated_lo": false,
+        "saturated_hi": false,
+        "curves": [
+          {
+            "name": "Li2022 10Hz",
+            "F0_N": 12500.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 200000,
+            "final_data": 0.8208,
+            "final_pred": 0.8562519575823141,
+            "conservation_residual": 0.02090065625270654,
+            "af_group": null,
+            "MAE_pre": 0.22595978834313651,
+            "MAE_post": 0.05690939560375593
+          },
+          {
+            "name": "Li2022 15Hz",
+            "F0_N": 12500.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 200000,
+            "final_data": 0.8583,
+            "final_pred": 0.8564670596727402,
+            "conservation_residual": 0.020940664941008436,
+            "af_group": null,
+            "MAE_pre": 0.22236741300333815,
+            "MAE_post": 0.03131610518449436
+          },
+          {
+            "name": "Li2022 20Hz",
+            "F0_N": 12500.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 200000,
+            "final_data": 0.9108,
+            "final_pred": 0.8566650850421266,
+            "conservation_residual": 0.020968242151866434,
+            "af_group": null,
+            "MAE_pre": 0.2720916673615796,
+            "MAE_post": 0.016915669821351717
+          },
+          {
+            "name": "Li2022 10Hz full",
+            "F0_N": 12500.0,
+            "F_amp_N": 10000.0,
+            "n_cycles": 330000,
+            "final_data": 0.8348,
+            "final_pred": 0.8064154592718562,
+            "conservation_residual": 0.02674423300777562,
+            "af_group": null,
+            "MAE_pre": 0.3528532607282079,
+            "MAE_post": 0.028396251233660266
+          }
+        ],
+        "note": "sem varredura de amplitude (A_F=10kN fixo em toda a familia) -- exp NAO identificavel neste rig sozinho, herdado do Rig A; so k_wear_flank e' fitado aqui (constante de magnitude POR RIG)."
+      },
+      "gate": {
+        "slope_liu2017_per_N": -2.7646457304406048e-06,
+        "PASS_band_per_N": [
+          -4.4e-05,
+          -1.1e-05
+        ],
+        "verdict": "FAIL"
+      },
+      "no_regression": {
+        "identical": true,
+        "n_cycles": 600,
+        "final_ratio_baseline": 0.45144932360622797,
+        "final_ratio_with_flank_on": 0.45144932360622797,
+        "setup": "M16 shear canonico (calibrate_shared geometry: M16x2.0, grip 50mm), bloco shared (constantes fisicas), F0=50kN F_amp=20kN delta_amp=0.5mm theta=pi/2 freq=0.5Hz",
+        "note": "disp-mode transversal: canal L1 gateado OFF por construcao (_axial_forca / delta_amp-is-None guard); confirma bit-identidade mesmo com k_wear_flank/flank_amp_exp FITADOS engajados (flank_wear_on=1)."
+      },
+      "grid": {
+        "rigA": {
+          "log_k_bounds": [
+            -16.0,
+            -11.0
+          ],
+          "exp_bounds": null,
+          "exp_fixed": 1.5,
+          "fit_cycle_cap": 10000,
+          "n_coarse": 9,
+          "n_refine": 9,
+          "n_points": 18,
+          "points": [
+            {
+              "stage": "coarse",
+              "log_k_ref": -16.0,
+              "exp": 1.5,
+              "mae": 0.09384922165509421
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -15.375,
+              "exp": 1.5,
+              "mae": 0.09393377335959231
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -14.75,
+              "exp": 1.5,
+              "mae": 0.09429383428913418
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -14.125,
+              "exp": 1.5,
+              "mae": 0.09581202115798035
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -13.5,
+              "exp": 1.5,
+              "mae": 0.1025901277950327
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -12.875,
+              "exp": 1.5,
+              "mae": 0.12941826474086005
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -12.25,
+              "exp": 1.5,
+              "mae": 0.2085422813946236
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -11.625,
+              "exp": 1.5,
+              "mae": 0.33338391950294477
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -11.0,
+              "exp": 1.5,
+              "mae": 0.469476293779774
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -16.0,
+              "exp": 1.5,
+              "mae": 0.09384922165509421
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.921875,
+              "exp": 1.5,
+              "mae": 0.09385434248007705
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.84375,
+              "exp": 1.5,
+              "mae": 0.0938604723127847
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.765625,
+              "exp": 1.5,
+              "mae": 0.09386780991386222
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.6875,
+              "exp": 1.5,
+              "mae": 0.09387659317355616
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.609375,
+              "exp": 1.5,
+              "mae": 0.09388710680489826
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.53125,
+              "exp": 1.5,
+              "mae": 0.09389990989414726
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.453125,
+              "exp": 1.5,
+              "mae": 0.09391532371593492
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.375,
+              "exp": 1.5,
+              "mae": 0.09393377335959231
+            }
+          ]
+        },
+        "rigB": {
+          "log_k_bounds": [
+            -16.0,
+            -11.0
+          ],
+          "exp_bounds": null,
+          "exp_fixed": 1.5,
+          "fit_cycle_cap": null,
+          "n_coarse": 9,
+          "n_refine": 9,
+          "n_points": 18,
+          "points": [
+            {
+              "stage": "coarse",
+              "log_k_ref": -16.0,
+              "exp": 1.5,
+              "mae": 0.055031035700805725
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -15.375,
+              "exp": 1.5,
+              "mae": 0.045793053453185975
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -14.75,
+              "exp": 1.5,
+              "mae": 0.0346556793271961
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -14.125,
+              "exp": 1.5,
+              "mae": 0.13014929832535996
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -13.5,
+              "exp": 1.5,
+              "mae": 0.40571660044776947
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -12.875,
+              "exp": 1.5,
+              "mae": 0.6473519264496861
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -12.25,
+              "exp": 1.5,
+              "mae": 0.742042953052851
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -11.625,
+              "exp": 1.5,
+              "mae": 0.7730167681087932
+            },
+            {
+              "stage": "coarse",
+              "log_k_ref": -11.0,
+              "exp": 1.5,
+              "mae": 0.7744250793650793
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.375,
+              "exp": 1.5,
+              "mae": 0.045793053453185975
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.21875,
+              "exp": 1.5,
+              "mae": 0.041718435781195114
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -15.0625,
+              "exp": 1.5,
+              "mae": 0.036378599340624714
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.90625,
+              "exp": 1.5,
+              "mae": 0.033384355460815564
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.75,
+              "exp": 1.5,
+              "mae": 0.0346556793271961
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.59375,
+              "exp": 1.5,
+              "mae": 0.04186524535788716
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.4375,
+              "exp": 1.5,
+              "mae": 0.05952769741588851
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.28125,
+              "exp": 1.5,
+              "mae": 0.08812134585402147
+            },
+            {
+              "stage": "refine",
+              "log_k_ref": -14.125,
+              "exp": 1.5,
+              "mae": 0.13014929832535996
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "final": {
+    "attempt_used": 2,
+    "free_exp": false,
+    "verdict": "FAIL2 (falsificacao documentada, sem forcar adocao)",
+    "k_wear_flank_rigA": 1.676305461424021e-14,
+    "flank_amp_exp_rigA": 1.5,
+    "k_wear_flank_rigB": 1.8901400848767854e-13,
+    "flank_amp_exp_rigB": 1.5,
+    "slope_liu2017_per_N": -2.7646457304406048e-06,
+    "slope_liu2016_per_N": -1.911827908548176e-06,
+    "seed_vs_fitted_ratio_rigA": 1.0049792934196768,
+    "seed_vs_fitted_ratio_rigB": 11.33177508918936,
+    "no_regression_identical": true,
+    "dof_axial_free": [
+      "k_wear_flank"
+    ]
+  },
+  "runtime_total_s": 11721.9543633461,
+  "verdict": {
+    "verdict": "FAIL (falsificacao documentada)",
+    "prereg_clause": "FAIL2: 2 preregs consecutivos falharam (attempt 1 livre: slope=-1.218e-6/N; attempt 2 exp=1.5 fixo Liu2020: slope=-2.765e-6/N; banda PASS [-4.4e-5,-1.1e-5]/N) => falsificacao documentada, sem forcar adocao.",
+    "knowledge": "forma flanco-elastico x Archard com nivel Zhang e ~8x rasa demais para d(fim)/dA_F do Liu2017; mecanismo real mais ingreme em A_F (cf. Liu2020 exp 1.5-3.2); canal permanece default-inerte como capacidade validada NAO adotada",
+    "detail": "no MAE-otimo o k_ref satura no limite INFERIOR da busca no Rig A (o fit quer o canal o mais fraco possivel); subir k ate a banda do gate custa MAE. O slip elastico de flanco s=A_F/k_b e a fonte da rasura: com exp=1.5 o modelo entrega ~1/8 do slope medido (Liu2017) e ~1/17 (Liu2016). Rig B (Li2022) e a excecao interessante: minimo INTERIOR k=1.89e-13 (11.3x o SEED 1.668e-14 -- nao a ancora; ~22.7x a ancora Zhang 8.34e-15), MAE 0.268(seed)->0.033 — o canal ajuda o NIVEL la, mas nao separa amplitude (A_F fixo).",
+    "dof_canonical_axial": [],
+    "dof_note": "gate FAIL => NENHUM parametro axial entra livre na config canonica (livres_por_rig[axial]=[] no kb.dof_summary); o final.dof_axial_free acima registra o que o FIT do experimento liberou, nao o que foi adotado.",
+    "no_regression_summary": {
+      "identical": true,
+      "setup": "M16 shear canonico (calibrate_shared geometry: M16x2.0, grip 50mm), bloco shared (constantes fisicas), F0=50kN F_amp=20kN delta_amp=0.5mm theta=pi/2 freq=0.5Hz",
+      "statement": "transversal intocado: trajetoria M16 shear canonica bit-identica com flank_wear_on=1 + valores fitados (canal gateado OFF em disp-mode por construcao)."
+    }
+  },
+  "grid_regeneration_audit": {
+    "grids_regenerated_deterministically": true,
+    "date": "2026-07-17",
+    "method": "python New_Theory/l1_axial_gate.py --fit-only --attempt=N --rig=A|B [--exp-inherited=X] --workers=8 --out=<path> (fase de FIT apenas, por rig; grid_search_2d/1d sao deterministas -- np.linspace, sem RNG -- entao re-rodar reproduz a grade exata sem pagar a fase de relatorio full-res ~60min/attempt, que foi PULADA; os numeros commitados de curves/slopes/gate/verdict/no_regression foram REUSADOS verbatim, nao recalculados. --workers paraleliza somente as simulacoes por curva [_stage_costs]; aritmetica identica ao serial, validado ponto-a-ponto no smoke test [64 pontos exatos]. exp do Rig B em attempt 1 herdado do valor do Rig A VERIFICADO contra este JSON antes do run do Rig B -- mesma cadeia de heranca do run completo, checada no meio).",
+    "determinism_check": "fitted k_wear_flank/flank_amp_exp E fit/seed-MAEs de rigA E rigB, nas 2 tentativas (16 comparacoes), bateram EXATAMENTE (==, sem tolerancia) com os valores commitados -- ver task-4-report.md secao 'Fix wave'.",
+    "note": "task-4 code review Finding 1: l1_axial_gate_result.json nao continha as grades de busca embora task-4-report.md dissesse que sim ('grades completas das 2 tentativas'); grid_search_2d/1d sempre computaram+retornaram a grade (chave 'grid') mas run_attempt() a descartava antes de montar o JSON. Corrigido em l1_axial_gate.py (este re-run usou o script corrigido); grades adicionadas aqui sem alterar prereg/verdict/gate/slope/no_regression."
+  }
+}

@@ -1,0 +1,5 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/90_91_CFRP_loosening_Wei_Yang.md:123-132
+washer,ratio_100cyc,ratio_1000cyc
+steel,0.840,0.765
+aluminium,0.825,0.748
+cfrp_composite,0.880,0.815

@@ -1,0 +1,85 @@
+==============================================================================
+GATES C0-C9 -- metrica de BANDA v2 (congelados em af711b8)
+==============================================================================
+casos com metrica de curva: 203 de 203
+
+C9 fingerprint inalterado ............ OK {'4f5bedfbace4'}
+C1 inercia EXATA sem vizinho medido .. OK  (1952 pontos; pior desvio 0.00e+00)
+C5 nao e afrouxamento cego ........... OK  (mediana da melhora 0.00000; criterio < 0.005)
+     media 0.00643  p90 0.02052  max 0.18865
+C7 ganho CONCENTRADO (<50% dos pts) .. FALHA  (36 curvas violam)
+     UFU_13A_first_preload_decay                94% dos pontos mudam
+     UFU_13A_def_preload_decay                  94% dos pontos mudam
+     UFU_5A_preload_decay                       85% dos pontos mudam
+     liu2016wear_fig9a_m35nm                    73% dos pontos mudam
+     liu2016wear_fig9a_m40nm                    73% dos pontos mudam
+     liu2016wear_fig11a_af7p5kn                 73% dos pontos mudam
+
+C8 viradas (falha->passe) ............ 4  OK   [perdas: 0]
+
+C6 -- toda virada exige banda LARGA (>0.05) no ponto critico antigo
+curva                                      antes             depois              largura 
+bauer2024_M8_fig6_rep5                     0.0494/0.1116     0.0416/0.0827        0.0548 ok
+lu2024_M8_fig20_T16Nm                      0.0352/0.1288     0.0276/0.0685        0.4515 ok
+lu2024_M8_fig20_T28Nm                      0.0411/0.2561     0.0200/0.0675        0.4406 ok
+yang2019_M10_varamp_small_to_large         0.0636/0.1939     0.0477/0.0904        0.1347 ok
+  C6 OK
+
+==============================================================================
+C2 (invariancia) + C3 (discriminancia no fig2) -- CASO DE PROJETO, ver §0
+==============================================================================
+  canonica 15pt  sem forma 0.0520/0.1783 F  rampa 0.0285/0.0546 P  CLIFF 0.0520/0.1783 F
+  fina 124pt     sem forma 0.0760/0.1319 F  rampa 0.0138/0.0567 P  CLIFF 0.0760/0.1319 F
+  C2 OK (veredictos iguais=True; res.max rampa 0.0546 vs 0.0567 = 3.7%; previsto 3.7%)
+  C3 OK
+
+==============================================================================
+C4 -- DISCRIMINANCIA CEGA no nucleo amp0p4/0p5/0p6 (conta NAO rodada antes)
+==============================================================================
+curva (SEM trim)         sem forma          rampa              CLIFF             
+amp0p4                   0.0552/0.1547 F    0.0388/0.1476 F    0.0552/0.1547 F   
+amp0p5                   0.0457/0.1706 F    0.0437/0.3300 F    0.0571/0.3300 F   
+amp0p6                   0.0340/0.1116 F    0.0718/0.3300 F    0.0594/0.3300 F   
+  rampa passa em 0 de 3 (criterio >=2) | cliff passa em 0 de 3 (criterio 0)
+  C4 FALHA -> a discriminancia do fig2 era artefato; A LINHA FECHA
+
+==============================================================================
+BLOCO D -- as 16 curvas TRIMADAS pontuadas INTEIRAS sob a banda v4b
+==============================================================================
+curva (SEM trim)                           vertical          banda v4b         tripe
+liu2025_M16_amp0p25                        0.0745/0.1672     0.0541/0.0945     PASSA
+liu2025_M16_amp0p3                         0.0669/0.1615     0.0575/0.1000     PASSA
+liu2025_M16_amp0p4                         0.1014/0.4524     0.0552/0.1547     falha
+liu2025_M16_amp0p5                         0.0830/0.4366     0.0457/0.1706     falha
+liu2025_M16_amp0p6                         0.0543/0.1881     0.0340/0.1116     falha
+liu2025_M16_amp0p8                         0.0573/0.1775     0.0398/0.0853     PASSA
+liu2025_M16_fig2_single                    0.0929/0.4807     0.0520/0.1783     falha
+yang2021_fig2_typical                      0.0989/0.1625     0.0902/0.1625     falha
+yang2021_amp1p0mm_ax2kN                    0.0760/0.3098     0.0716/0.3098     falha
+yang2021_amp0p8mm_ax6kN                    0.0993/0.1642     0.0852/0.1422     falha
+yang2021_amp0p6mm_ax8kN_r1                 0.0731/0.5067     0.0287/0.0789     PASSA
+yang2021_amp0p7mm_ax11p2kN                 0.0510/0.3715     0.0218/0.0869     PASSA
+yang2021_amp0p5mm_ax8kN                    0.0649/0.1850     0.0466/0.0945     PASSA
+li2022ti_axial_10Hz_full                   0.0519/0.2392     0.0519/0.2392     falha
+sun2025efa109235_transverse_nogrease_standard 0.0708/0.2779     0.0388/0.1709     falha
+sun2025efa109235_transverse_nogrease_crimp 0.0526/0.2102     0.0131/0.0555     PASSA
+  => 7 de 16  (nivel: 0/16 · banda v1: 10/16)
+
+C0 nada de canonico tocado ........... FALHA [' M src/bolt_analysis_studio/calibration/knowledge_base.py', ' M src/bolt_analysis_studio/calibration/parameter_registry.py']
+
+==============================================================================
+VEREDICTO
+==============================================================================
+  C0 FALHA
+  C1 OK
+  C2 OK
+  C3 OK
+  C4 FALHA
+  C5 OK
+  C6 OK
+  C7 FALHA
+  C8 OK
+  C9 OK
+
+  META (janelas de hoje): 148 -> 152 de 203
+  -> New_Theory/metrica_banda_v2_result.json

@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/43_44_45_46_jackbolt_washer_doublenut_pitch.md:85-96
+cycle,no_washer,plain_washer,spring_washer
+0,1.000,1.000,1.000
+100,0.880,0.905,0.895
+500,0.650,0.710,0.690
+1000,0.450,0.530,0.500
+2000,0.260,0.360,0.320

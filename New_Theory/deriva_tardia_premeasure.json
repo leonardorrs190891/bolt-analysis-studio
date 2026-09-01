@@ -1,0 +1,171 @@
+{
+ "cut": 200000.0,
+ "n0_grid": [
+  10.0,
+  3162277.6601683795
+ ],
+ "fontes": {
+  "LIU_2016": {
+   "livre": [
+    0.018844264861401554,
+    56.23413251903491,
+    0.00017002916843124265
+   ],
+   "viavel": null
+  },
+  "ZHANG_2018": {
+   "split": {
+    "criterio": "resolucao da cauda: >=4 pontos alem de 200k le; cauda esparsa segura",
+    "reads": [
+     "zhang18_fig2_test4_20kN_5e5cyc_preload_vs_cycles"
+    ],
+    "held": [
+     "zhang18_fig13_14kN_preload_vs_cycles",
+     "zhang18_fig13_20kN_preload_vs_cycles",
+     "zhang18_fig13_26kN_preload_vs_cycles",
+     "zhang18_fig16_with_locker_preload_vs_cycles",
+     "zhang18_fig16_without_locker_preload_vs_cycles",
+     "zhang18_fig2_test1_20kN_1e3cyc_preload_vs_cycles",
+     "zhang18_fig2_test2_20kN_1e4cyc_preload_vs_cycles",
+     "zhang18_fig2_test3_20kN_1e5cyc_preload_vs_cycles"
+    ]
+   },
+   "A": 0.012612749311707002,
+   "N0_ciclos": 562.341325190349,
+   "J_reads": 4.942212404588029e-05,
+   "livre": {
+    "A": 0.012612749311707002,
+    "N0_ciclos": 562.341325190349,
+    "J_reads": 4.942212404588029e-05
+   },
+   "curvas": {
+    "zhang18_fig13_14kN_preload_vs_cycles": {
+     "papel": "HELD",
+     "antes": {
+      "mae": 0.02486613602970292,
+      "mx": 0.05629806304544471,
+      "sd": 0.029659738623613055
+     },
+     "depois_prev": {
+      "mae": 0.02947341254389404,
+      "mx": 0.060108564823776564,
+      "sd": 0.01259396098432223
+     },
+     "lim_sd": 0.025
+    },
+    "zhang18_fig13_20kN_preload_vs_cycles": {
+     "papel": "HELD",
+     "antes": {
+      "mae": 0.02122609034465457,
+      "mx": 0.05066904032132047,
+      "sd": 0.024190427097156273
+     },
+     "depois_prev": {
+      "mae": 0.022501979560418127,
+      "mx": 0.03232304471565678,
+      "sd": 0.008213117714789095
+     },
+     "lim_sd": 0.025
+    },
+    "zhang18_fig13_26kN_preload_vs_cycles": {
+     "papel": "HELD",
+     "antes": {
+      "mae": 0.01742952583181589,
+      "mx": 0.04130334316012563,
+      "sd": 0.018558606160313962
+     },
+     "depois_prev": {
+      "mae": 0.028802771300976047,
+      "mx": 0.044208628209373116,
+      "sd": 0.011617990750651529
+     },
+     "lim_sd": 0.025
+    },
+    "zhang18_fig16_with_locker_preload_vs_cycles": {
+     "papel": "HELD",
+     "antes": {
+      "mae": 0.008099788026266059,
+      "mx": 0.017706666739815913,
+      "sd": 0.009052344648372172
+     },
+     "depois_prev": {
+      "mae": 0.03092315226051518,
+      "mx": 0.06801194554732702,
+      "sd": 0.018483305475597338
+     },
+     "lim_sd": 0.025
+    },
+    "zhang18_fig16_without_locker_preload_vs_cycles": {
+     "papel": "HELD",
+     "antes": {
+      "mae": 0.02292589430784969,
+      "mx": 0.05076904032132057,
+      "sd": 0.02628407456860023
+     },
+     "depois_prev": {
+      "mae": 0.02360711770184845,
+      "mx": 0.044484026100695385,
+      "sd": 0.009801889440407819
+     },
+     "lim_sd": 0.025
+    },
+    "zhang18_fig2_test1_20kN_1e3cyc_preload_vs_cycles": {
+     "papel": "HELD",
+     "antes": {
+      "mae": 0.015976670019350533,
+      "mx": 0.02538084524568396,
+      "sd": 0.007221611707992713
+     },
+     "depois_prev": {
+      "mae": 0.02251388752102548,
+      "mx": 0.03127799318210861,
+      "sd": 0.00914490764223834
+     },
+     "lim_sd": 0.025
+    },
+    "zhang18_fig2_test2_20kN_1e4cyc_preload_vs_cycles": {
+     "papel": "HELD",
+     "antes": {
+      "mae": 0.012661105300493683,
+      "mx": 0.04191826754427119,
+      "sd": 0.012087368421147318
+     },
+     "depois_prev": {
+      "mae": 0.03048220534030157,
+      "mx": 0.0462253336592893,
+      "sd": 0.010520737195144498
+     },
+     "lim_sd": 0.025
+    },
+    "zhang18_fig2_test3_20kN_1e5cyc_preload_vs_cycles": {
+     "papel": "HELD",
+     "antes": {
+      "mae": 0.019243629223758833,
+      "mx": 0.04322735167226588,
+      "sd": 0.02436541643637809
+     },
+     "depois_prev": {
+      "mae": 0.0250486800749804,
+      "mx": 0.047067610600384155,
+      "sd": 0.009137697988415279
+     },
+     "lim_sd": 0.025
+    },
+    "zhang18_fig2_test4_20kN_5e5cyc_preload_vs_cycles": {
+     "papel": "LE",
+     "antes": {
+      "mae": 0.024045009004122722,
+      "mx": 0.059769040321320466,
+      "sd": 0.029366617615626592
+     },
+     "depois_prev": {
+      "mae": 0.02543653945460451,
+      "mx": 0.046588796722401724,
+      "sd": 0.007030087058200652
+     },
+     "lim_sd": 0.025
+    }
+   }
+  }
+ }
+}

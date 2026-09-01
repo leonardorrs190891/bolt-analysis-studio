@@ -1,0 +1,5 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/88_Abid_Nash_2014_dynamic_gasket_flange.md:71-82
+radial_position,sigma_initial_MPa,sigma_500cyc_MPa,change_pct
+inner_radius,52,41,-21
+mean_radius,58,50,-14
+outer_radius,61,57,-7

@@ -1,0 +1,8 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/89_Bhattacharya_2010_small_bolts_M4_M5.md:67-83
+bolt,delta_crit_nowasher_mm,delta_crit_springwasher_mm,ratio
+M4,0.038,0.052,1.37
+M5,0.048,0.065,1.35
+M6,0.058,0.078,1.34
+M8,0.075,0.100,1.33
+M10,0.095,0.125,1.32
+M12,0.112,0.148,1.32

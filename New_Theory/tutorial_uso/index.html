@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tutorial de Uso — Bolt Analysis Studio V2</title>
+<style>
+  :root{
+    --bg:#15161b; --bg2:#1a1b22; --panel:#1e1f27; --panel2:#262832;
+    --border:#313244; --border2:#3a3d4d;
+    --text:#cdd6f4; --sub:#a6adc8; --mut:#7f8497;
+    --blue:#4aa3e0; --blue-d:#2f8fd0; --green:#a6e3a1; --green-d:#40a02b;
+    --yellow:#e5c07b; --red:#e88; --mauve:#cba6f7;
+    --shadow:0 10px 34px rgba(0,0,0,.5);
+    --disp:'Bahnschrift','DIN Alternate','Segoe UI',system-ui,sans-serif;
+    --body:'Segoe UI',system-ui,-apple-system,'Bahnschrift',sans-serif;
+    --mono:'Consolas','JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);
+       font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+  code{font-family:var(--mono);background:var(--panel2);border:1px solid var(--border);
+       border-radius:4px;padding:.08em .4em;font-size:.88em;color:#dfe6f5}
+
+  /* ---- layout ---- */
+  .wrap{display:grid;grid-template-columns:264px minmax(0,1fr);gap:0;max-width:1500px;margin:0 auto}
+  nav.toc{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;
+          padding:26px 18px 40px;border-right:1px solid var(--border);background:var(--bg2)}
+  nav.toc .brand{font-family:var(--disp);font-weight:700;letter-spacing:.5px;
+          font-size:16px;color:#fff;line-height:1.2}
+  nav.toc .brand span{display:block;font-size:11px;font-weight:600;color:var(--blue);
+          letter-spacing:1.5px;margin-top:3px}
+  nav.toc ol{list-style:none;margin:22px 0 0;padding:0;counter-reset:s}
+  nav.toc li{margin:1px 0}
+  nav.toc a{display:flex;gap:9px;align-items:baseline;color:var(--sub);
+          padding:5px 8px;border-radius:6px;font-size:13.5px;border-left:2px solid transparent}
+  nav.toc a::before{counter-increment:s;content:counter(s,decimal-leading-zero);
+          font-family:var(--mono);font-size:11px;color:var(--mut);min-width:20px}
+  nav.toc a:hover{background:var(--panel);color:var(--text);text-decoration:none}
+  nav.toc a.active{background:var(--panel);color:#fff;border-left-color:var(--blue)}
+  nav.toc .sep{margin:16px 8px 7px;font-size:10.5px;letter-spacing:1.5px;
+          text-transform:uppercase;color:var(--mut)}
+
+  main{padding:0 clamp(20px,4vw,64px) 90px;min-width:0}
+
+  /* ---- hero ---- */
+  header.hero{margin:0 calc(-1*clamp(20px,4vw,64px)) 44px;padding:0;position:relative;
+          border-bottom:1px solid var(--border);overflow:hidden}
+  header.hero .art{position:relative}
+  header.hero img{display:block;width:100%;height:auto;opacity:.92}
+  header.hero .veil{position:absolute;inset:0;
+          background:linear-gradient(180deg,rgba(21,22,27,.15) 0%,rgba(21,22,27,.55) 62%,var(--bg) 100%)}
+  header.hero .cap{position:absolute;left:clamp(20px,4vw,64px);right:0;bottom:26px}
+  header.hero .kicker{font-family:var(--mono);font-size:12px;letter-spacing:3px;
+          text-transform:uppercase;color:var(--blue)}
+  header.hero h1{font-family:var(--disp);font-weight:700;letter-spacing:.5px;
+          font-size:clamp(30px,5vw,52px);margin:6px 0 8px;color:#fff;line-height:1.02}
+  header.hero p.lead{max-width:60ch;color:var(--sub);font-size:16px;margin:0}
+
+  /* ---- steps ---- */
+  section.step{scroll-margin-top:22px;padding:34px 0;border-bottom:1px solid var(--border)}
+  section.step:last-of-type{border-bottom:0}
+  .step-h{display:flex;gap:16px;align-items:flex-start;margin-bottom:6px}
+  .step-n{flex:none;font-family:var(--disp);font-weight:700;font-size:15px;
+          width:40px;height:40px;display:grid;place-items:center;border-radius:9px;
+          background:linear-gradient(160deg,#2a3550,#1f2530);border:1px solid var(--border2);
+          color:var(--blue);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+  .step-h h2{font-family:var(--disp);font-weight:700;letter-spacing:.3px;
+          font-size:clamp(21px,2.6vw,28px);margin:4px 0 0;color:#fff}
+  .step-h .sub{color:var(--mut);font-size:13px;margin-top:2px}
+  .step-body{padding-left:56px}
+  @media(max-width:640px){.step-body{padding-left:0}}
+  .step-body p{margin:0 0 14px}
+  .step-body h3{font-family:var(--disp);font-weight:600;font-size:16px;color:#fff;
+          margin:22px 0 8px;letter-spacing:.3px}
+
+  /* ---- figures ---- */
+  figure{margin:18px 0 6px;background:var(--panel);border:1px solid var(--border);
+          border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  figure img{display:block;width:100%;height:auto}
+  figure.frame{padding:10px;background:linear-gradient(180deg,var(--panel2),var(--panel))}
+  figure.frame img{border-radius:7px;border:1px solid var(--border)}
+  figcaption{font-size:12.5px;color:var(--mut);padding:9px 14px;border-top:1px solid var(--border);
+          display:flex;gap:8px;align-items:baseline}
+  figcaption b{color:var(--sub);font-weight:600;font-family:var(--mono);font-size:11px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:860px){.two,.three{grid-template-columns:1fr}}
+
+  /* annotated anatomy figure */
+  .annot{position:relative;line-height:0}
+  .annot img{border-radius:7px}
+  .pin{position:absolute;transform:translate(-50%,-50%);width:26px;height:26px;
+          border-radius:50%;background:var(--blue-d);color:#08111c;font-weight:700;
+          font-family:var(--disp);font-size:13px;display:grid;place-items:center;
+          border:2px solid #cfe6fb;box-shadow:0 2px 8px rgba(0,0,0,.6);line-height:1}
+  .legend{list-style:none;margin:14px 0 0;padding:0;display:grid;
+          grid-template-columns:1fr 1fr;gap:6px 22px}
+  @media(max-width:720px){.legend{grid-template-columns:1fr}}
+  .legend li{display:flex;gap:10px;align-items:baseline;font-size:13.5px;color:var(--sub)}
+  .legend .num{flex:none;width:22px;height:22px;border-radius:50%;background:var(--panel2);
+          border:1px solid var(--border2);color:var(--blue);font-weight:700;font-size:12px;
+          font-family:var(--disp);display:grid;place-items:center}
+  .legend b{color:var(--text);font-weight:600}
+
+  /* callout boxes */
+  .note{border-left:3px solid var(--blue-d);background:#182230;padding:12px 16px;
+          border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}
+  .note.tip{border-left-color:var(--green-d);background:#15231a}
+  .note.warn{border-left-color:var(--yellow);background:#241f14}
+  .note .lbl{font-family:var(--disp);font-weight:700;font-size:11px;letter-spacing:1.5px;
+          text-transform:uppercase;display:block;margin-bottom:3px}
+  .note.tip .lbl{color:var(--green)} .note .lbl{color:var(--blue)} .note.warn .lbl{color:var(--yellow)}
+
+  ul.clean{margin:8px 0 14px;padding-left:2px;list-style:none}
+  ul.clean li{position:relative;padding-left:22px;margin:6px 0;color:var(--sub)}
+  ul.clean li::before{content:'▸';position:absolute;left:2px;color:var(--blue)}
+  ul.clean li b{color:var(--text);font-weight:600}
+  kbd{font-family:var(--mono);font-size:12px;background:var(--panel2);border:1px solid var(--border2);
+          border-bottom-width:2px;border-radius:5px;padding:1px 6px;color:#dfe6f5}
+
+  .pill{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.5px;
+          background:var(--panel2);border:1px solid var(--border);border-radius:20px;
+          padding:2px 10px;color:var(--sub);margin:0 4px 4px 0}
+
+  footer{color:var(--mut);font-size:12.5px;padding:30px 0 0;line-height:1.7}
+  footer code{font-size:11.5px}
+
+  @media(max-width:900px){
+    .wrap{grid-template-columns:1fr}
+    nav.toc{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border)}
+    nav.toc ol{columns:2}
+  }
+
+  /* ---- animações & interatividade ---- */
+  @keyframes ve-pop{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  @keyframes ve-fade{from{opacity:0}to{opacity:1}}
+  @keyframes pin-pulse{0%,100%{box-shadow:0 2px 8px rgba(0,0,0,.6),0 0 0 0 rgba(74,163,224,.55)}
+    50%{box-shadow:0 2px 8px rgba(0,0,0,.6),0 0 0 9px rgba(74,163,224,0)}}
+  .tprog{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;
+    background:linear-gradient(90deg,var(--blue),var(--green));
+    box-shadow:0 0 10px var(--blue);transition:width .08s linear}
+  .reveal{opacity:0;transform:translateY(22px)}
+  .reveal.in{opacity:1;transform:none;
+    transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+  .pin{animation:pin-pulse 2.6s ease-in-out infinite}
+  header.hero .kicker{animation:ve-pop .7s cubic-bezier(.2,.7,.2,1) both}
+  header.hero h1{animation:ve-pop .7s .08s cubic-bezier(.2,.7,.2,1) both}
+  header.hero p.lead{animation:ve-pop .7s .16s cubic-bezier(.2,.7,.2,1) both}
+  figure.frame img{cursor:zoom-in;transition:transform .25s ease}
+  figure.frame:hover img{transform:scale(1.012)}
+  .step-n{transition:transform .2s ease,box-shadow .2s ease}
+  .step:hover .step-n{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.35)}
+  .lb{position:fixed;inset:0;z-index:200;display:none;place-items:center;padding:24px;
+    background:rgba(8,10,14,.92);cursor:zoom-out}
+  .lb.on{display:grid;animation:ve-fade .2s ease}
+  .lb img{max-width:96vw;max-height:92vh;border-radius:8px;box-shadow:0 20px 70px rgba(0,0,0,.7)}
+  .lb .hint{position:fixed;bottom:18px;left:0;right:0;text-align:center;color:var(--mut);
+    font-size:12px;font-family:var(--mono)}
+  @media(prefers-reduced-motion:reduce){
+    .reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}
+    .pin,header.hero .kicker,header.hero h1,header.hero p.lead{animation:none}
+    .tprog{display:none}
+    figure.frame:hover img,.step:hover .step-n{transform:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="toc">
+  <div class="brand">Bolt Analysis Studio<span>V2 · TUTORIAL DE USO</span></div>
+  <div class="sep">Começo</div>
+  <ol>
+    <li><a href="#c1">Abrir o programa</a></li>
+    <li><a href="#c2">Anatomia da interface</a></li>
+    <li><a href="#c3">Nova análise (wizard)</a></li>
+  </ol>
+  <div class="sep">Fluxo de trabalho</div>
+  <ol start="4" style="counter-reset:s 3">
+    <li><a href="#c4">Model — o MSD</a></li>
+    <li><a href="#c5">Contacts</a></li>
+    <li><a href="#c6">Loads</a></li>
+    <li><a href="#c7">Analysis — rodar</a></li>
+    <li><a href="#c8">Results — plots</a></li>
+    <li><a href="#c9">Validation</a></li>
+  </ol>
+  <div class="sep">Extras</div>
+  <ol start="10" style="counter-reset:s 9">
+    <li><a href="#c10">Temas</a></li>
+    <li><a href="#c11">Atalhos & dicas</a></li>
+  </ol>
+</nav>
+
+<main>
+  <header class="hero">
+    <div class="art">
+      <img src="img/01_splash.png" alt="Tela de abertura do Bolt Analysis Studio V2">
+      <div class="veil"></div>
+      <div class="cap">
+        <div class="kicker">Guia passo a passo</div>
+        <h1>Tutorial de Uso</h1>
+        <p class="lead">Da abertura ao relatório: montar o modelo massa-mola-amortecedor de uma
+        junta parafusada, configurar contatos e carga, rodar a análise de afrouxamento
+        e ler os resultados — com prints reais de cada tela.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1 -->
+  <section class="step" id="c1">
+    <div class="step-h">
+      <div class="step-n">1</div>
+      <div><h2>Abrir o programa</h2>
+        <div class="sub">Terminal · <code>python run_app.py</code></div></div>
+    </div>
+    <div class="step-body">
+      <p>Na pasta do projeto, rode o launcher. Por padrão abre o <b>chrome V2</b>
+      (a casca no estilo Abaqus/CAE). A tela de abertura anima enquanto os módulos
+      são inicializados e some sozinha.</p>
+      <ul class="clean">
+        <li><code>python run_app.py</code> — chrome V2 (padrão)</li>
+        <li><code>python run_app.py --v1</code> — janela clássica de 7 abas (fallback)</li>
+        <li><code>python run_app.py --builder</code> — só o MSD Model Builder</li>
+        <li><code>python run_app.py --theme engineering</code> — força uma paleta</li>
+      </ul>
+      <div class="note tip"><span class="lbl">Dica</span>
+        A curva na abertura é a própria física do programa: o decaimento de pré-carga
+        <code>F/F₀</code> ao longo dos ciclos, com o platô (Estágio I) e o joelho de colapso
+        (Estágio II).</div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="step" id="c2">
+    <div class="step-h">
+      <div class="step-n">2</div>
+      <div><h2>Anatomia da interface</h2>
+        <div class="sub">Zonas fixas no estilo Abaqus/CAE</div></div>
+    </div>
+    <div class="step-body">
+      <p>A janela tem zonas fixas. Você caminha da esquerda (o modelo) para a direita
+      (as propriedades), de cima (o passo do fluxo) para baixo (as mensagens).</p>
+      <figure class="frame">
+        <div class="annot">
+          <img src="img/05_shell_model.png" alt="Interface principal do BAS V2 anotada">
+          <div class="pin" style="left:16%;top:4%">1</div>
+          <div class="pin" style="left:7%;top:19%">2</div>
+          <div class="pin" style="left:40%;top:46%">3</div>
+          <div class="pin" style="left:79%;top:15%">4</div>
+          <div class="pin" style="left:95%;top:13%">5</div>
+          <div class="pin" style="left:6%;top:87%">6</div>
+          <div class="pin" style="left:55%;top:98%">7</div>
+        </div>
+        <figcaption><b>FIG 2</b> Módulo Model com uma junta simples carregada — sete zonas.</figcaption>
+      </figure>
+      <ul class="legend">
+        <li><span class="num">1</span><span><b>Passos do fluxo</b> — Model → Contacts → Loads → Analysis → Results → Report, com <code>Run/Stop</code>.</span></li>
+        <li><span class="num">2</span><span><b>Model Tree</b> — a árvore de elementos, contatos, cargas e jobs.</span></li>
+        <li><span class="num">3</span><span><b>Viewport</b> — o esquemático do MSD (pilha do parafuso) com zoom/pan/fit.</span></li>
+        <li><span class="num">4</span><span><b>Properties</b> — inspetor do que está selecionado (rigidez, material, tribologia).</span></li>
+        <li><span class="num">5</span><span><b>Elements</b> — paleta para adicionar peças e presets de junta.</span></li>
+        <li><span class="num">6</span><span><b>Mensagens</b> — avisos de contexto + Job Log (colapsável).</span></li>
+        <li><span class="num">7</span><span><b>Barra de status</b> — projeto, módulo, step e estado do job.</span></li>
+      </ul>
+
+      <h3>Painéis: colapsar, fechar, reabrir</h3>
+      <p>Cada painel lateral tem <b>colapsar</b> (▾, vira uma faixa fina) e <b>fechar</b> (✕).
+      Reabra em <code>Exibir → Painéis</code>. Arraste as bordas para redimensionar — a alça
+      dos divisores é larga e realça em azul ao passar o mouse.</p>
+      <div class="three">
+        <figure class="frame"><img src="img/07_tree.png" alt="Model Tree">
+          <figcaption><b>Model Tree</b></figcaption></figure>
+        <figure class="frame"><img src="img/08_properties.png" alt="Properties">
+          <figcaption><b>Properties</b></figcaption></figure>
+        <figure class="frame"><img src="img/09_messages.png" alt="Área de mensagens">
+          <figcaption><b>Mensagens</b></figcaption></figure>
+      </div>
+      <figure class="frame"><img src="img/06_stepper.png" alt="Barra de passos do fluxo">
+        <figcaption><b>Passos</b> — o botão do passo atual fica preenchido; “Próximo →” avança.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="step" id="c3">
+    <div class="step-h">
+      <div class="step-n">3</div>
+      <div><h2>Nova análise pelo wizard</h2>
+        <div class="sub"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> · 5 páginas guiadas</div></div>
+    </div>
+    <div class="step-body">
+      <p>O jeito mais rápido de começar é o <b>New Analysis Wizard</b>. Você escolhe a
+      topologia da junta e o wizard <b>gera os elementos correspondentes</b> — dá para
+      adicionar/remover tudo depois no Model Builder.</p>
+      <figure class="frame"><img src="img/02_wizard_joint.png" alt="Wizard — página de junta">
+        <figcaption><b>1/5 · Junta</b> Escolha a topologia (simples axial, cisalhante/Junker, flange com gaxeta…).</figcaption></figure>
+      <div class="two">
+        <figure class="frame"><img src="img/03_wizard_bolt.png" alt="Wizard — parafuso">
+          <figcaption><b>2/5 · Parafuso</b> Tamanho, classe, pré-carga.</figcaption></figure>
+        <figure class="frame"><img src="img/04_wizard_loading.png" alt="Wizard — carregamento">
+          <figcaption><b>3/5 · Carga</b> Amplitude, frequência, número de ciclos.</figcaption></figure>
+      </div>
+      <p>As páginas 4 e 5 (curva de referência opcional e revisão) fecham o wizard; ao
+      finalizar, o modelo é adotado e você cai no módulo <b>Model</b>.</p>
+      <div class="note"><span class="lbl">Presets</span>
+        Sem wizard? No painel <b>Elements</b> há atalhos <i>Single Bolt Joint</i>,
+        <i>Basic Flanged Joint</i> e <i>Junker Test Setup</i> — um clique monta a junta inteira.</div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="step" id="c4">
+    <div class="step-h">
+      <div class="step-n">4</div>
+      <div><h2>Model — montar e inspecionar o MSD</h2>
+        <div class="sub">Massa-mola-amortecedor, não um ajuste de curva</div></div>
+    </div>
+    <div class="step-body">
+      <p>O esquemático é a pilha física do parafuso: <code>GROUND → HEAD → SHANK → THREAD
+      → NUT</code> mais as chapas (FLANGE) e os contatos (BEARING, THREAD, FLANGE-FLANGE).
+      Clique num elemento para editar suas propriedades à direita.</p>
+      <figure class="frame"><img src="img/08_properties.png" alt="Inspetor de propriedades">
+        <figcaption><b>Properties</b> Parâmetros MSD (k, c, m), material (E, Sy, Su, ρ) e tribologia (μ).</figcaption></figure>
+      <ul class="clean">
+        <li><b>Element</b> — rigidez <code>k</code>, amortecimento <code>c</code>, massa <code>m</code>, material.</li>
+        <li><b>Loading</b> — carga por-elemento (pré-carga, ΔT).</li>
+        <li><b>Contact</b> — atrito, desgaste e lubrificação da interface.</li>
+      </ul>
+      <div class="note tip"><span class="lbl">Por que importa</span>
+        Cada mola/amortecedor é uma peça real com física própria (Hooke, Coulomb, Norton).
+        O afrouxamento emerge do <b>acoplamento hélice</b> (o único acoplamento axial-torcional),
+        não de uma reta ajustada aos dados.</div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="step" id="c5">
+    <div class="step-h">
+      <div class="step-n">5</div>
+      <div><h2>Contacts — atrito, desgaste, lubrificação</h2>
+        <div class="sub">A tribologia mora nos contatos, não nas peças</div></div>
+    </div>
+    <div class="step-body">
+      <p>No módulo <b>Contacts</b> o esquemático destaca as interfaces. Defina o coeficiente
+      de atrito, o modelo de desgaste (Archard, energia, fretting, fadiga) e o regime de
+      lubrificação de cada contato.</p>
+      <figure class="frame"><img src="img/10_contacts.png" alt="Módulo Contacts">
+        <figcaption><b>FIG 5</b> Módulo Contacts — o inspetor mostra a aba de contato.</figcaption></figure>
+      <div class="note warn"><span class="lbl">Regra</span>
+        Todo nut precisa de um ThreadContact. Peças não carregam tribologia — ela se
+        prende apenas aos contatos e entra só no vetor de forças <code>{F}</code>.</div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="step" id="c6">
+    <div class="step-h">
+      <div class="step-n">6</div>
+      <div><h2>Loads — o carregamento</h2>
+        <div class="sub">Força ou deslocamento imposto (Junker)</div></div>
+    </div>
+    <div class="step-body">
+      <p>No módulo <b>Loads</b> você configura o carregamento global e por-elemento:
+      pré-carga <code>F₀</code>, amplitude transversal (força <b>ou</b> deslocamento),
+      frequência, número de ciclos e ΔT.</p>
+      <figure class="frame"><img src="img/11_loads.png" alt="Módulo Loads">
+        <figcaption><b>FIG 6</b> Módulo Loads — carregamento global no inspetor.</figcaption></figure>
+      <div class="note tip"><span class="lbl">Modo Junker</span>
+        Para ensaios de manivela ±0,5&nbsp;mm, use <b>deslocamento imposto</b>
+        (<code>delta_amplitude</code>): o escorregamento vem do deslocamento — muito mais
+        preciso que derivar da força.</div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="step" id="c7">
+    <div class="step-h">
+      <div class="step-n">7</div>
+      <div><h2>Analysis — definir o step e rodar</h2>
+        <div class="sub">Integrador, modo de controle e atrito automáticos</div></div>
+    </div>
+    <div class="step-body">
+      <p>No módulo <b>Analysis</b> você revê o step (ex.: <i>Static-Preload</i>), confere as
+      escolhas automáticas (integrador HHT-α, controle por deslocamento, atrito Coulomb) e
+      dispara com <code>▶ Run</code> na barra de passos. O progresso aparece no <b>Job Log</b>.</p>
+      <figure class="frame"><img src="img/12_analysis.png" alt="Módulo Analysis">
+        <figcaption><b>FIG 7</b> Módulo Analysis — parâmetros do solver antes de rodar.</figcaption></figure>
+      <div class="note"><span class="lbl">Coerência</span>
+        Todo o Run vem de <b>um único modelo</b> (o motor V2): pré-carga, desgaste, ângulo de
+        afrouxamento e a decomposição por mecanismo saem juntos e consistentes.</div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="step" id="c8">
+    <div class="step-h">
+      <div class="step-n">8</div>
+      <div><h2>Results — ler os plots</h2>
+        <div class="sub">Escolha o gráfico na árvore à esquerda</div></div>
+    </div>
+    <div class="step-body">
+      <p>O módulo <b>Results</b> tem a árvore <b>Select Plot</b> à esquerda (histórico
+      temporal, decaimento de pré-carga, atrito &amp; desgaste, afrouxamento, forças da junta,
+      modal) e o gráfico à direita, com abas Summary / Plot View / Miner’s Rule / Diagnostics.</p>
+      <figure class="frame"><img src="img/13_results.png" alt="Módulo Results">
+        <figcaption><b>FIG 8</b> Results — árvore de plots, estatísticas e ações (Pin, Export, Dashboard).</figcaption></figure>
+      <ul class="clean">
+        <li>Arraste o divisor para <b>alargar a árvore de plots</b> (a alça larga realça em azul).</li>
+        <li><b>Pin Results</b> guarda um snapshot para sobrepor comparações.</li>
+        <li><b>Export Data</b> exporta as séries; <b>Dashboard</b> mostra tudo de uma vez.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="step" id="c9">
+    <div class="step-h">
+      <div class="step-n">9</div>
+      <div><h2>Validation — modelo vs. dado</h2>
+        <div class="sub">Curvas reais da biblioteca + o SEU ensaio</div></div>
+    </div>
+    <div class="step-body">
+      <p>A aba <b>Validation</b> abre o navegador de casos: escolha uma fonte da literatura
+      e veja a curva <b>dado (artigo) × modelo</b>, a decomposição por mecanismo empilhada e as
+      métricas (MAE, RMSE, F/F₀ final).</p>
+      <figure class="frame"><img src="img/14_validation.png" alt="Navegador de validação com uma curva real">
+        <figcaption><b>FIG 9</b> Caso <code>UFU_5A_preload_decay</code> — dado vs. modelo (MAE 0,0523) + decomposição.</figcaption></figure>
+      <div class="note tip"><span class="lbl">Importe o SEU ensaio</span>
+        No painel do topo: <b>1)</b> copie o prompt, <b>2)</b> cole em qualquer IA junto com sua
+        curva experimental e responda às perguntas, <b>3)</b> importe o <code>.bascase.json</code>
+        devolvido — o software valida, faz o ajuste prévio e gera o report completo.</div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="step" id="c10">
+    <div class="step-h">
+      <div class="step-n">10</div>
+      <div><h2>Temas</h2>
+        <div class="sub"><code>Exibir → Tema</code> · troca ao vivo</div></div>
+    </div>
+    <div class="step-body">
+      <p>Cinco paletas (Engineering Dark padrão, além de escura, clara, verde e alto contraste).
+      A troca é ao vivo — painéis, gráficos e o esquemático acompanham.</p>
+      <figure class="frame"><img src="img/15_shell_light.png" alt="Interface no tema claro">
+        <figcaption><b>FIG 10</b> A mesma tela no tema <b>claro</b>.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="step" id="c11">
+    <div class="step-h">
+      <div class="step-n">11</div>
+      <div><h2>Atalhos &amp; dicas</h2>
+        <div class="sub">O caminho feliz</div></div>
+    </div>
+    <div class="step-body">
+      <p>
+        <span class="pill">Ctrl+Shift+N — nova análise</span>
+        <span class="pill">Próximo → avança o passo</span>
+        <span class="pill">Exibir → Painéis</span>
+        <span class="pill">Exibir → Tema</span>
+        <span class="pill">▶ Run / ■ Stop</span>
+      </p>
+      <ul class="clean">
+        <li><b>Fluxo típico:</b> wizard → Model (revisar) → Contacts → Loads → Analysis (Run) → Results → Validation.</li>
+        <li>Perdeu um painel? Está em <b>Exibir → Painéis</b> — nada fecha para sempre.</li>
+        <li>As mensagens “Modelo criado…” aparecem na <b>Área de mensagens</b> embaixo.</li>
+        <li>Para ensaios de laboratório, comece pelo preset <i>Junker Test Setup</i>.</li>
+      </ul>
+      <div class="note"><span class="lbl">Aprofundar</span>
+        O <b>Explorador de Variáveis</b> (<code>New_Theory/variable_explorer/index.html</code>)
+        documenta cada campo do modelo, os fundamentos (é um MSD, não um fit) e a galeria de
+        validação com todos os casos.</div>
+    </div>
+  </section>
+
+  <footer>
+    <p><b>Bolt Analysis Studio V2</b> — Prof. Leonardo Rosa Ribeiro da Silva, PhD ·
+    <a href="mailto:leorrs@ufu.br">leorrs@ufu.br</a></p>
+    <p>Reprodutibilidade — os prints são capturados do app real (plataforma Qt nativa,
+    fonte Bahnschrift):<br>
+    <code>python New_Theory/tutorial_uso/capture_screens.py</code> → <code>img/*.png</code>,
+    e este tutorial é <code>New_Theory/tutorial_uso/index.html</code>.</p>
+  </footer>
+</main>
+</div>
+
+<script>
+  // realça o item do sumário conforme a rolagem
+  const links=[...document.querySelectorAll('nav.toc a')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const obs=new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const a=map.get(e.target.id); if(a)a.classList.add('active');
+    }});
+  },{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('section.step').forEach(s=>obs.observe(s));
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // barra de progresso de rolagem + reveal on scroll
+  if(!reduce){
+    const bar=document.createElement('div');bar.className='tprog';document.body.appendChild(bar);
+    const pg=()=>{const h=document.documentElement.scrollHeight-innerHeight;
+      bar.style.width=(h>0?scrollY/h*100:0)+'%';};
+    addEventListener('scroll',pg,{passive:true});addEventListener('resize',pg);pg();
+    const rio=new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}}),
+      {rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.step-h, figure, .note').forEach(el=>{
+      if(el.getBoundingClientRect().top>innerHeight*0.9){el.classList.add('reveal');rio.observe(el);}});
+  }
+
+  // lightbox: clique para ampliar qualquer print
+  const lb=document.createElement('div');lb.className='lb';
+  lb.innerHTML='<img alt=""><div class="hint">clique ou ESC para fechar</div>';
+  document.body.appendChild(lb);const lbi=lb.querySelector('img');
+  document.querySelectorAll('figure.frame img').forEach(img=>{
+    img.addEventListener('click',()=>{lbi.src=img.getAttribute('src');lb.classList.add('on');});});
+  lb.addEventListener('click',()=>lb.classList.remove('on'));
+  addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on');});
+</script>
+</body>
+</html>

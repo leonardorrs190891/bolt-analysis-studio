@@ -1,0 +1,8 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/43_44_45_46_jackbolt_washer_doublenut_pitch.md:28-40
+cycle,heavy_hex,jack_bolt_nut
+0,1.000,1.000
+50,0.920,0.975
+100,0.860,0.960
+200,0.760,0.940
+500,0.560,0.910
+1000,0.350,0.880

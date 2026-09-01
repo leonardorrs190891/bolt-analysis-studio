@@ -1,0 +1,14 @@
+dry_release: F0_first=20.6kN -> mu=0.236
+oil_release: F0_first=27.0kN -> mu=0.176
+oil_direct: F0_first=27.0kN -> mu=0.176
+
+DRY k_emb_renew*=0.0 decay-MAE/tN=[0.494, 0.566, 0.621, 0.658] med=0.594 (k=0 med=0.594)
+  sim  per-phase loss t0..t3=[0.974, 0.988, 0.988, 0.985]
+  data per-phase loss t0..t3=[0.14, 0.069, 0.075, 0.087]
+  data recovery t0..t3=[1.0, 0.918, 0.832, 0.793]  (sim recovery = flat ~1.0)
+oil_release  decay-MAE/tN=[0.482, 0.578, 0.581, 0.574]
+oil_direct   decay-MAE/tN=[0.516, 0.59, 0.638, 0.648]
+
+GATES: G1(oil decay MAE<0.05)=False  G2(dry accel t1..t3 model~data)=False  G3(dry loosening shape)=False  G5(renewal justified +>0.005)=False
+G4(recovery): frozen k_dmg_mu=0 => sim recovery FLAT ~1.0 each retighten; data dry recovery [1.0, 0.918, 0.832, 0.793] DECLINES => documented finding (missing galling/geometric term, spec 7), NOT a gate.
+Artefato: New_Theory/retightening_results.json

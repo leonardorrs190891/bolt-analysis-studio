@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt" data-lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReferênciasReferences — BAS V2</title>
+<style>
+:root{
+  --bg:#eef0f3; --panel:#ffffff; --ink:#161a20; --muted:#5b6675; --line:#d3d8e0;
+  --accent:#2563eb; --accent2:#e11d48; --ghost:#9aa4b2; --ok:#0f9d58; --warn:#c2410c;
+  --code-bg:#f3f5f8; --side:#f7f8fa; --side-w:300px;
+}
+:root[data-theme="dark"]{
+  --bg:#12151b; --panel:#1a1f27; --ink:#e7ebf0; --muted:#93a0b0; --line:#2b323d;
+  --accent:#5b9bff; --accent2:#ff6b8b; --ghost:#4a5563; --ok:#39d98a; --warn:#ffa657;
+  --code-bg:#20262f; --side:#151a21;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,.mono{font-family:'Cascadia Code','Consolas',ui-monospace,monospace}
+
+/* ---- sidebar (sumario tipo help classico) ---- */
+.side{position:fixed;top:0;left:0;bottom:0;width:var(--side-w);overflow-y:auto;
+  background:var(--side);border-right:1px solid var(--line);z-index:20}
+.side-head{position:sticky;top:0;background:var(--side);padding:14px 16px 12px;
+  border-bottom:1px solid var(--line);z-index:2}
+.side-head .home{font-weight:700;font-size:.92rem;display:block;color:var(--ink)}
+.side-head .home small{display:block;color:var(--muted);font-weight:400;font-size:.72rem;margin-top:2px}
+.side-head .toggles{margin:10px 0 8px}
+.toggles button{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:5px 10px;font-size:.78rem;cursor:pointer;margin-right:6px}
+.toggles button:hover{border-color:var(--accent)}
+.filter{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:7px;
+  background:var(--bg);color:var(--ink);font-family:inherit;font-size:.83rem}
+.tiers{display:flex;flex-wrap:wrap;gap:3px 12px;margin-top:9px;font-size:.72rem}
+.tiers label{display:flex;align-items:center;gap:4px;color:var(--muted);cursor:pointer}
+.tiers input{accent-color:var(--accent);margin:0;cursor:pointer}
+.toc{padding:6px 0 60px}
+.toc .grp{padding:12px 16px 3px;font-size:.68rem;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--muted);font-weight:700}
+.toc a.tocitem{display:flex;justify-content:space-between;gap:8px;align-items:baseline;
+  padding:4px 14px 4px 18px;font-family:'Cascadia Code',monospace;font-size:.8rem;
+  color:var(--ink);border-left:3px solid transparent}
+.toc a.tocitem:hover{background:var(--bg);text-decoration:none}
+.toc a.tocitem.current{border-left-color:var(--accent);color:var(--accent);
+  background:var(--bg);font-weight:600}
+.toc a.tocitem .dot{font-size:.6rem;opacity:.6}
+.toc a.tocitem .dot.physical{color:var(--accent)}
+.toc a.tocitem .dot.form{color:var(--warn)}
+.toc a.tocitem .dot.mode{color:var(--ok)}
+.toc a.tocitem .dot.numerical{color:var(--muted)}
+
+/* ---- content ---- */
+.main{margin-left:var(--side-w);padding:26px 34px 90px;max-width:940px}
+.crumbs{font-size:.82rem;color:var(--muted);margin-bottom:2px}
+h1.name{font-family:'Cascadia Code','Consolas',monospace;font-size:1.95rem;margin:.2rem 0 .2rem}
+.sub{color:var(--muted);font-size:.95rem;margin-bottom:.6rem}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:.4rem 0 1rem}
+.badge{font-size:.74rem;padding:3px 9px;border-radius:20px;border:1px solid var(--line);
+  background:var(--panel);color:var(--muted)}
+.badge.cat-physical{border-color:var(--accent);color:var(--accent)}
+.badge.cat-form{border-color:var(--warn);color:var(--warn)}
+.badge.cat-mode{border-color:var(--ok);color:var(--ok)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;margin:14px 0}
+.panel p{margin:.4rem 0}
+.plotwrap{position:relative}
+canvas{width:100%;height:auto;display:block}
+.ctl{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.ctl input[type=range]{flex:1;min-width:220px;accent-color:var(--accent)}
+.ctl select{background:var(--code-bg);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:6px 10px;font-family:inherit}
+.readout{font-family:'Cascadia Code',monospace;font-size:.95rem}
+.readout .v{color:var(--accent);font-weight:600}
+.readout .f{color:var(--accent2);font-weight:600}
+.readout .w{color:var(--warn);font-weight:600}
+.legend .kdash{display:inline-block;width:22px;height:0;border-top:2px dashed var(--muted);vertical-align:middle;margin-right:5px}
+.prov{font-size:.82rem;margin-top:8px;color:var(--muted)}
+.prov.out{color:var(--warn);font-weight:600}
+.effect{font-family:'Cascadia Code',monospace;font-size:.82rem;margin-top:8px;color:var(--accent)}
+.effect.weak{color:var(--muted)}
+h2.sec{font-size:1.05rem;margin:0 0 .5rem;letter-spacing:.02em}
+.eq{background:var(--code-bg);border:1px solid var(--line);border-radius:8px;
+  padding:12px 14px;font-family:'Cascadia Code',monospace;font-size:.92rem;overflow-x:auto;
+  white-space:pre;line-height:1.5;margin:.5rem 0}
+ul.refs{margin:.3rem 0 0;padding-left:1.1rem}
+ul.refs li{margin:.25rem 0;font-size:.9rem}
+ul.refs li.refhead{list-style:none;margin:14px 0 4px -1.1rem;color:var(--muted);
+  font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+ul.refs .src{color:var(--muted);font-size:.82rem}
+.related a{display:inline-block;margin-right:10px;font-family:'Cascadia Code',monospace;font-size:.85rem}
+nav.pn{display:flex;justify-content:space-between;margin-top:24px;font-size:.9rem}
+.note{background:var(--code-bg);border-left:3px solid var(--warn);padding:8px 12px;
+  border-radius:0 6px 6px 0;font-size:.88rem;color:var(--muted);margin:.6rem 0}
+.intro{color:var(--muted);max-width:74ch}
+.legend{display:flex;gap:16px;font-size:.8rem;color:var(--muted);margin-top:6px;flex-wrap:wrap}
+.legend .k{display:inline-block;width:22px;height:0;border-top-width:3px;border-top-style:solid;vertical-align:middle;margin-right:5px}
+[data-lang="pt"] [data-l="en"]{display:none}
+[data-lang="en"] [data-l="pt"]{display:none}
+
+/* ---- responsivo: sidebar recolhivel ---- */
+.menu-btn{display:none;position:fixed;top:10px;left:10px;z-index:40;
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;
+  padding:6px 11px;font-size:1rem;cursor:pointer;color:var(--ink)}
+@media(max-width:900px){
+  .side{transform:translateX(-100%);transition:transform .2s;box-shadow:0 0 30px rgba(0,0,0,.3)}
+  body.nav-open .side{transform:none}
+  .main{margin-left:0;padding:56px 16px 80px}
+  .menu-btn{display:inline-block}
+}
+
+/* ---- animações & interatividade ---- */
+@keyframes ve-pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.ve-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  box-shadow:0 0 8px var(--accent);transition:width .08s linear}
+h1.name{animation:ve-pop .5s cubic-bezier(.2,.7,.2,1) both}
+.reveal{opacity:0;transform:translateY(16px)}
+.reveal.in{opacity:1;transform:none;
+  transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.panel,.badge,.trail,.gal-card,.related a,.toc a.tocitem,.toggles button,
+.menu-btn,nav.pn a{transition:transform .18s ease,box-shadow .18s ease,
+  border-color .18s ease,background .18s ease,color .15s ease}
+.trail:hover,.gal-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.16)}
+.toc a.tocitem:hover{transform:translateX(3px)}
+.related a:hover,nav.pn a:hover{transform:translateY(-1px)}
+.toggles button:active,.menu-btn:active{transform:scale(.94)}
+.plotwrap canvas,.cw canvas{cursor:crosshair}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}
+  h1.name{animation:none}
+  .ve-progress{display:none}
+  .trail:hover,.gal-card:hover,.toc a.tocitem:hover,.related a:hover,nav.pn a:hover{transform:none}
+}
+
+.cw{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0}
+.cw canvas{width:100%;height:auto;display:block}
+.cw-ctrl{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px;align-items:center}
+.cw-ctrl input[type=range]{flex:1;min-width:200px;accent-color:var(--accent)}
+.cw-ctrl select{background:var(--code-bg);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:5px 9px;font-family:inherit}
+.cw-leg{display:flex;align-items:center;gap:5px;font-size:.8rem;color:var(--muted);cursor:pointer}
+.cw-leg .k{display:inline-block;width:16px;height:10px;border:1px solid;border-radius:2px}
+.legend .kd{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:middle;margin-right:5px}
+.cw-note{font-size:.85rem;color:var(--muted);margin-top:10px;line-height:1.5}
+.bars{margin-top:4px}
+.bar-row{display:flex;align-items:center;gap:10px;margin:6px 0}
+.bar-lab{flex:0 0 40%;font-size:.85rem}
+.bar-track{flex:1;height:14px;background:var(--code-bg);border-radius:7px;overflow:hidden}
+.bar-fill{display:block;height:100%;border-radius:7px}
+.bar-val{flex:0 0 auto;font-family:'Cascadia Code',monospace;font-size:.82rem;color:var(--muted)}
+.bar-total{margin-top:8px;font-family:'Cascadia Code',monospace;font-size:.85rem;color:var(--ink)}
+svg.schema{width:100%;height:auto;max-width:640px;display:block;margin:6px auto}
+svg.schema text{fill:var(--ink);font-family:'Segoe UI',sans-serif}
+svg.schema .lab{fill:var(--muted);font-size:12px}
+svg.schema .box{fill:var(--code-bg);stroke:var(--line)}
+svg.schema .hot{cursor:default}
+svg.schema .hot:hover .box{stroke:var(--accent);stroke-width:2}
+svg.schema .node{fill:var(--accent)}
+svg.schema .edge{stroke:var(--accent);fill:none;stroke-width:2;marker-end:url(#arrow)}
+svg.schema .edge-lab{fill:var(--muted);font-size:11px}
+svg.schema .cpl{fill:var(--accent);fill-opacity:.18;stroke:var(--accent);stroke-width:1.6}
+svg.schema .cplt{fill:var(--accent);font-weight:700}
+svg.schema .zero{fill:var(--ghost)}
+svg.schema .diag{fill:var(--code-bg);stroke:var(--line)}
+svg.schema .fill{fill:var(--accent);fill-opacity:.08;stroke:var(--accent);stroke-opacity:.4}
+svg.schema .dash{stroke:var(--muted);stroke-dasharray:4 4;fill:none}
+svg.schema .brk{stroke:var(--muted);stroke-width:2;fill:none}
+.gal-summary{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:8px 0}
+.gal-stat{font-size:.9rem;color:var(--muted)}
+.gal-stat b{color:var(--ink);font-size:1.05rem}
+.gal-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.gal-flt{cursor:pointer;font-size:.82rem;padding:4px 11px;border:1px solid var(--line);border-radius:14px;color:var(--muted)}
+.gal-flt[data-on]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.gal-only{font-size:.82rem;color:var(--muted);margin-left:auto;display:flex;align-items:center;gap:5px}
+.gal-src{margin:18px 0}
+.gal-srch{font-size:1.05rem;margin:0 0 2px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.gal-srcn{font-size:.8rem;color:var(--muted);font-weight:400}
+.gal-blurb{font-size:.82rem;color:var(--muted);margin:2px 0 8px}
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.gal-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:0}
+.gal-cap{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:.8rem}
+.gal-nm{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gal-badge{flex:0 0 auto;font-family:'Cascadia Code',monospace;font-size:.72rem;padding:1px 6px;border-radius:8px;border:1px solid currentColor;background:transparent}
+.gal-badge.ok{color:var(--ok)}
+.gal-badge.mid{color:var(--accent2)}
+.gal-badge.hi{color:var(--warn)}
+.gal-cv{width:100%;height:auto;display:block;margin:4px 0}
+.gal-cond{font-size:.72rem;color:var(--muted);font-family:'Cascadia Code',monospace}
+.gal-cav{font-size:.72rem;color:var(--warn);margin-top:3px;line-height:1.35}
+.gloss-tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+.gloss-tbl th,.gloss-tbl td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.gloss-tbl th{color:var(--muted);font-weight:600;font-size:.82rem;text-transform:uppercase;letter-spacing:.03em}
+.gloss-tbl td.sym{font-family:'Cascadia Code',monospace;color:var(--accent);white-space:nowrap}
+.gloss-tbl td.unit{font-family:'Cascadia Code',monospace;color:var(--muted);white-space:nowrap}
+.gloss-wrap{overflow-x:auto}
+.an-ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.an-scn{cursor:pointer;font-size:.82rem;padding:4px 11px;border:1px solid var(--line);border-radius:14px;color:var(--muted)}
+.an-scn[data-on]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.an-readout{margin-top:10px;font-family:'Cascadia Code',monospace;font-size:.85rem;color:var(--ink);min-height:1.3em;line-height:1.4}
+.an-readout .an-hint{color:var(--muted);font-family:'Segoe UI',sans-serif}
+#plot_an{cursor:crosshair}
+.study-sub{font-size:1rem;color:var(--muted);font-weight:400}
+.study-figs{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0}
+.study-fig{margin:0;flex:1 1 340px;max-width:100%}
+.study-fig img{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+.study-fig figcaption{font-size:.78rem;color:var(--muted);margin-top:4px;text-align:center}
+.study-figcap{font-size:.82rem;color:var(--muted);margin:6px 0}
+.study-nofig{font-size:.9rem;color:var(--muted)}
+.study-cav{font-size:.85rem;color:var(--warn);margin-top:8px;line-height:1.4}
+.study-meta td:first-child{color:var(--muted);white-space:nowrap;width:32%}
+.gal-report{display:inline-block;margin-top:6px;font-size:.74rem;color:var(--accent);text-decoration:none}
+.gal-report:hover{text-decoration:underline}
+.study-note h3,.study-note h4{color:var(--ink);margin:12px 0 4px;font-size:.9rem}
+.study-note table.wide{width:100%;border-collapse:collapse;font-size:.8rem;margin:6px 0}
+.study-note table.wide th,.study-note table.wide td{border-bottom:1px solid var(--line);padding:4px 8px;text-align:left;vertical-align:top}
+.study-note table.wide th{color:var(--muted);font-weight:600;font-size:.72rem}
+.study-note ul{margin:6px 0;padding-left:20px}
+.study-note li{margin:3px 0;font-size:.9rem}
+.study-note p{font-size:.9rem}
+.study-note code{font-family:'Cascadia Code',monospace;font-size:.85em;background:var(--code-bg);padding:1px 4px;border-radius:4px}
+.foundations-hero{background:linear-gradient(0deg,var(--panel),var(--panel));border:1px solid var(--accent);
+  border-radius:12px;padding:14px 16px;margin:14px 0}
+.trails{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}
+.trail{flex:1 1 200px;display:block;text-decoration:none;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--ink)}
+.trail:hover{border-color:var(--accent)}
+.trail b{display:block;color:var(--accent);margin-bottom:4px}
+.trail .desc{display:block;color:var(--muted);font-size:.85rem;line-height:1.4}
+.repro{font-family:'Cascadia Code',monospace;font-size:.82rem;background:var(--code-bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:6px 0;white-space:pre-wrap;overflow-x:auto}
+.gal-csv{display:inline-block;margin:4px 8px 0 0;font-size:.74rem;color:var(--accent);text-decoration:none}
+.gal-csv:hover{text-decoration:underline}
+
+/* ===== chrome do tutorial (sobrepõe o explorador) ===== */
+:root{
+  --bg:#15161b; --panel:#1e1f27; --ink:#cdd6f4; --muted:#a6adc8; --line:#313244;
+  --accent:#4aa3e0; --accent2:#f0868b; --ghost:#454a5a; --code-bg:#232530;
+  --ok:#a6e3a1; --warn:#e5c07b; --side:#1a1b22; --side-w:274px;
+  --bg2:#1a1b22; --line2:#3a3d4d;
+  --disp:'Bahnschrift','DIN Alternate','Segoe UI',system-ui,sans-serif;
+  --mono:'Consolas','Cascadia Code',monospace;
+}
+body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,sans-serif}
+.wrap{display:grid;grid-template-columns:var(--side-w) minmax(0,1fr);max-width:1500px;margin:0 auto}
+nav.toc{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:22px 15px 46px;border-right:1px solid var(--line);background:var(--side)}
+nav.toc .brand{font-family:var(--disp);font-weight:700;letter-spacing:.4px;font-size:15px;color:#fff;line-height:1.2}
+nav.toc .brand span{display:block;font-size:10.5px;font-weight:600;color:var(--accent);letter-spacing:1.4px;margin-top:3px}
+nav.toc .lang{display:flex;gap:6px;margin:14px 4px 4px}
+nav.toc .lang button{flex:1;background:var(--panel);border:1px solid var(--line);color:var(--muted);border-radius:7px;padding:5px;font-size:12px;cursor:pointer;font-family:var(--mono);transition:all .15s}
+nav.toc .lang button.on{background:var(--accent);color:#08121c;border-color:var(--accent);font-weight:700}
+nav.toc .sep{margin:16px 6px 6px;font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+nav.toc a{display:block;color:var(--muted);padding:5px 9px;border-radius:6px;font-size:13px;border-left:2px solid transparent;transition:transform .15s ease,background .15s,color .15s;text-decoration:none}
+nav.toc a:hover{background:var(--panel);color:var(--ink);transform:translateX(2px)}
+nav.toc a.active{background:var(--panel);color:#fff;border-left-color:var(--accent)}
+nav.toc a.cur{color:#fff;font-weight:600}
+main{margin:0;padding:0 clamp(18px,3.5vw,54px) 90px;min-width:0;max-width:1120px}
+header.hero{margin:0 calc(-1*clamp(18px,3.5vw,54px)) 26px;padding:56px clamp(18px,3.5vw,54px) 34px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;
+  background:radial-gradient(1100px 320px at 18% -20%, #24344d66, transparent),radial-gradient(820px 300px at 92% -10%, #2c2140aa, transparent), var(--bg2)}
+header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;opacity:.09}
+header.hero>*{position:relative}
+header.hero .kicker{font-family:var(--mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--accent)}
+header.hero h1{font-family:var(--disp);font-weight:700;letter-spacing:.4px;font-size:clamp(28px,4.4vw,46px);margin:8px 0 10px;color:#fff;line-height:1.03}
+header.hero .lead{max-width:74ch;color:var(--muted);font-size:15.5px;margin:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:18px 0}
+h2.sec{font-family:var(--disp);font-weight:700;font-size:19px;color:#fff;scroll-margin-top:16px}
+.eq{background:linear-gradient(180deg,#262832,var(--code-bg));border:1px solid var(--line);
+  border-left:3px solid var(--accent);border-radius:10px;padding:12px 20px;margin:16px 0;
+  color:#eaf0fc;box-shadow:0 3px 14px rgba(0,0,0,.28)}
+.eq-line{display:flex;align-items:baseline;gap:6px 18px;flex-wrap:wrap;margin:9px 0;line-height:1.55}
+.eq-line math{font-size:1.32rem;color:#eef3ff}
+.eq-raw{font-family:var(--mono);white-space:pre;overflow-x:auto;font-size:1.02rem;color:#eaf0fc}
+.eq .eq-cmt{color:var(--muted);font-family:'Segoe UI',system-ui,sans-serif;font-style:italic;font-size:.82em}
+math{font-family:'Cambria Math','STIX Two Math','Latin Modern Math','Times New Roman',serif}
+code{background:var(--code-bg);border:1px solid var(--line);color:#dfe6f5}
+/* animações */
+@keyframes ve-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.gprog{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;background:linear-gradient(90deg,var(--accent),#cba6f7);box-shadow:0 0 10px var(--accent);transition:width .08s linear}
+.reveal{opacity:0;transform:translateY(18px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+header.hero .kicker{animation:ve-rise .7s cubic-bezier(.2,.7,.2,1) both}
+header.hero h1{animation:ve-rise .7s .08s cubic-bezier(.2,.7,.2,1) both}
+header.hero .lead{animation:ve-rise .7s .16s cubic-bezier(.2,.7,.2,1) both}
+.cw canvas,.plotwrap canvas,#plot_an{cursor:crosshair}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}nav.toc{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}}
+@media(prefers-reduced-motion:reduce){.reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}header.hero .kicker,header.hero h1,header.hero .lead{animation:none}.gprog{display:none}nav.toc a:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc"><div class="brand">Bolt Analysis Studio<span>V2 · FUNDAMENTOS</span></div><div class="lang"><button data-l="pt" onclick="setLang('pt')">PT</button><button data-l="en" onclick="setLang('en')">EN</button></div><div class="sep"><span data-l="pt">Navegação</span><span data-l="en">Navigation</span></div><a href="index.html">← <span data-l="pt">Explorador</span><span data-l="en">Explorer</span></a><div class="sep"><span data-l="pt">Nesta página</span><span data-l="en">On this page</span></div><a href="#s0"><span data-l="pt">Leis constitutivas (formas empíricas)</span><span data-l="en">Constitutive laws (empirical forms)</span></a><a href="#s1"><span data-l="pt">Atrito, escorregamento e afrouxamento</span><span data-l="en">Friction, slip and loosening</span></a><a href="#s2"><span data-l="pt">Dinâmica estrutural e normas</span><span data-l="en">Structural dynamics and standards</span></a><a href="#s3"><span data-l="pt">Fontes de calibração/validação (biblioteca BAS_V2)</span><span data-l="en">Calibration/validation sources (BAS_V2 library)</span></a><a href="#s4"><span data-l="pt">Biblioteca estendida (rodadas de deep-research)</span><span data-l="en">Extended library (deep-research rounds)</span></a><a href="#s5"><span data-l="pt">Documentos internos</span><span data-l="en">Internal documents</span></a><div class="sep"><span data-l="pt">Fundamentos</span><span data-l="en">Foundations</span></div><a href="concept_manual.html"><span data-l="pt">Manual do BAS V2 (3 volumes)</span><span data-l="en">BAS V2 Manual (3 volumes)</span></a><a href="concept_usage.html"><span data-l="pt">Guia de uso do programa</span><span data-l="en">How to use the program</span></a><a href="concept_not-a-fit.html"><span data-l="pt">1 · Não é um fit</span><span data-l="en">1 · Not a fit</span></a><a href="concept_msd-model.html"><span data-l="pt">2 · Modelo MSD</span><span data-l="en">2 · MSD model</span></a><a href="concept_mechanisms.html"><span data-l="pt">3 · Estado + mecanismos</span><span data-l="en">3 · State + mechanisms</span></a><a href="concept_coupling.html"><span data-l="pt">4 · Acoplamento</span><span data-l="en">4 · Coupling</span></a><a href="concept_energy.html"><span data-l="pt">5 · Energia</span><span data-l="en">5 · Energy</span></a><a href="concept_methodology.html"><span data-l="pt">6 · Metodologia</span><span data-l="en">6 · Methodology</span></a><a href="concept_coverage.html"><span data-l="pt">Cobertura & limitações</span><span data-l="en">Coverage & limits</span></a><a href="concept_gallery.html"><span data-l="pt">7 · Galeria de validação</span><span data-l="en">7 · Validation gallery</span></a><a href="concept_review.html"><span data-l="pt">8 · Revisão da literatura</span><span data-l="en">8 · Literature review</span></a><a href="concept_equations.html"><span data-l="pt">9 · Equacionamento</span><span data-l="en">9 · Equations</span></a><a href="concept_references.html" class="cur"><span data-l="pt">10 · Referências</span><span data-l="en">10 · References</span></a><a href="concept_anatomy.html"><span data-l="pt">11 · Anatomia da curva</span><span data-l="en">11 · Anatomy of the curve</span></a><a href="concept_glossary.html"><span data-l="pt">12 · Glossário</span><span data-l="en">12 · Glossary</span></a></nav>
+<main>
+<header class="hero"><div class="kicker"><span data-l="pt">Fundamentos</span><span data-l="en">Foundations</span></div><h1><span data-l="pt">Referências</span><span data-l="en">References</span></h1><div class="lead"><span data-l="pt">Cada forma do modelo vem de uma lei publicada; cada constante de
+uma fonte com procedência. Bibliografia por papel.</span>
+<span data-l="en">Every model form comes from a published law; every constant from a source with
+provenance. Bibliography by role.</span></div></header>
+
+
+<div class="panel">
+<h2 class="sec" id="s0"><span data-l="pt">Leis constitutivas (formas empíricas)</span><span data-l="en">Constitutive laws (empirical forms)</span></h2>
+<ul class="refs">
+<li><b>Norton</b> &mdash; <span data-l="pt">assentamento/embedding (relaxação exponencial).</span><span data-l="en">embedding (exponential relaxation).</span></li>
+<li><b>Norton &amp; Bailey</b> &mdash; <span data-l="pt">creep logarítmico no tempo.</span><span data-l="en">logarithmic-in-time creep.</span></li>
+<li><b>Archard, J.F. (1953)</b>, <i>J. Appl. Phys.</i> 24(8) &mdash; <span data-l="pt">lei de desgaste (volume &prop; carga &middot; distância / dureza).</span><span data-l="en">wear law (volume &prop; load &middot; distance / hardness).</span></li>
+<li><b>Greenwood, J.A. &amp; Williamson, J.B.P. (1966)</b>, <i>Proc. R. Soc. A</i> 295 &mdash; <span data-l="pt">contato de superfícies rugosas (softening da rigidez com a carga).</span><span data-l="en">rough-surface contact (load-dependent stiffness softening).</span></li>
+<li><b>Cattaneo, C. (1938)</b> / <b>Mindlin, R.D. (1949)</b>, <i>J. Appl. Mech.</i> 16 &mdash; <span data-l="pt">contato tangencial: micro-slip parcial vs gross slip.</span><span data-l="en">tangential contact: partial micro-slip vs gross slip.</span></li>
+<li><b>Basquin (1910)</b> / <b>Wohler</b> + <b>Goodman</b> + <b>Miner (1945)</b>, <i>J. Appl. Mech.</i> 12 &mdash; <span data-l="pt">curva S-N, correção de tensão média, dano acumulado (fadiga).</span><span data-l="en">S-N curve, mean-stress correction, cumulative damage (fatigue).</span></li>
+</ul>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s1"><span data-l="pt">Atrito, escorregamento e afrouxamento</span><span data-l="en">Friction, slip and loosening</span></h2>
+<ul class="refs">
+<li><b>Pai, N.G. &amp; Hess, D.P. (2002)</b>, <i>J. Sound Vib.</i> &mdash; <span data-l="pt">afrouxamento por cargas de cisalhamento dinâmicas; onset de slip (fator 0.46).</span><span data-l="en">loosening under dynamic shear loads; slip onset (factor 0.46).</span></li>
+<li><b>Junker, G.H. (1969)</b>, <i>SAE 690055</i> (base do <b>DIN 65151</b>) &mdash; <span data-l="pt">ensaio de vibração transversal (o ensaio-padrão aqui).</span><span data-l="en">transverse-vibration test (the standard test here).</span></li>
+<li><b>Vingsbo, O. &amp; Soderberg, S. (1988)</b>, <i>Wear</i> 126 &mdash; <span data-l="pt">mapas de fretting (dose de óxido/dwell &prop; 1/freq).</span><span data-l="en">fretting maps (oxide dose/dwell &prop; 1/freq).</span></li>
+<li><b>Zhang et al. (2019)</b> &mdash; <span data-l="pt">desgaste sublinear no running-in (~N^0.53).</span><span data-l="en">sublinear running-in wear (~N^0.53).</span></li>
+</ul>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s2"><span data-l="pt">Dinâmica estrutural e normas</span><span data-l="en">Structural dynamics and standards</span></h2>
+<ul class="refs">
+<li><b>Clough, R.W. &amp; Penzien, J.</b>, <i>Dynamics of Structures</i> &mdash; <span data-l="pt">amortecimento proporcional de Rayleigh [C]=&alpha;[M]+&beta;[K].</span><span data-l="en">Rayleigh proportional damping [C]=&alpha;[M]+&beta;[K].</span></li>
+<li><b>VDI 2230</b> &mdash; <span data-l="pt">cálculo de juntas aparafusadas: tabela f_Z de assentamento por rugosidade, carga de prova.</span><span data-l="en">bolted-joint design: f_Z embedding table by roughness, proof load.</span></li>
+<li><b>ISO 724</b> &mdash; <span data-l="pt">geometria de rosca métrica (área de tensão A_s, d&#8322;).</span><span data-l="en">metric thread geometry (stress area A_s, d&#8322;).</span></li>
+<li><b>Schaumann, P. et al. (2015)</b> &mdash; <span data-l="pt">limite de fadiga de parafusos grandes (banda 46&ndash;63 MPa, âncora <code>fat_sigma_endurance</code>).</span><span data-l="en">large-bolt fatigue limit (band 46&ndash;63 MPa, anchor <code>fat_sigma_endurance</code>).</span></li>
+<li><b>Qiao (2025)</b> + <b>Lu (2024) K-factor</b> &mdash; <span data-l="pt">atrito de aço seco (âncora <code>mu_dry</code> = 0.14&ndash;0.19).</span><span data-l="en">dry-steel friction (anchor <code>mu_dry</code> = 0.14&ndash;0.19).</span></li>
+</ul>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s3"><span data-l="pt">Fontes de calibração/validação (biblioteca BAS_V2)</span><span data-l="en">Calibration/validation sources (BAS_V2 library)</span></h2>
+<p class="intro"><span data-l="pt">Curvas digitalizadas em <code>curve_library/digitized_csv/</code>; aparato e
+matriz de ensaios em <code>curve_library/apparatus_notes/</code>; PDFs em <code>BAS_V2_papers/</code>.</span>
+<span data-l="en">Digitized curves in <code>curve_library/digitized_csv/</code>; apparatus and test matrix in
+<code>curve_library/apparatus_notes/</code>; PDFs in <code>BAS_V2_papers/</code>.</span></p>
+<ul class="refs">
+<li><b>Liu et al. (2025)</b>, <i>Sci. Rep.</i> &mdash; doi:10.1038/s41598-025-02936-6 &mdash; <span data-l="pt">M16 transversal, 3 estágios; take-up fixo &delta;_0.</span><span data-l="en">M16 transverse, 3 stages; fixed take-up &delta;_0.</span></li>
+<li><b>Bauer et al. (2024)</b>, <i>Eng. Fail. Anal.</i> &mdash; doi:10.1016/j.engfailanal.2024.108404 &mdash; <span data-l="pt">joelho de colapso, s_crit&asymp;99&micro;m, espectro.</span><span data-l="en">collapse knee, s_crit&asymp;99&micro;m, spectrum.</span></li>
+<li><b>Liu et al. (2017)</b>, <i>Tribol. Int.</i> &mdash; doi:10.1016/j.triboint.2017.05.037 &mdash; <span data-l="pt">AXIAL 30 Hz; abre o trilho axial e a unificação &rho;.</span><span data-l="en">AXIAL 30 Hz; opens the axial track and the &rho;-unification.</span></li>
+<li><b>Lu et al. (2024)</b>, <i>Sensors</i> &mdash; doi:10.3390/s24113306 &mdash; <span data-l="pt">ratchet cinemático (T_loose/T_resist fixo vs colapso ~amplitude).</span><span data-l="en">kinematic ratchet (fixed T_loose/T_resist vs amplitude-collapse).</span></li>
+<li><b>Rousseau et al. (2025)</b>, <i>Materials</i> &mdash; doi:10.3390/ma18020462 &mdash; <span data-l="pt">rigidez de membro (aço vs HDPE, t=10/12/14); &theta;(N).</span><span data-l="en">member stiffness (steel vs HDPE, t=10/12/14); &theta;(N).</span></li>
+<li><b>Demir (2024)</b>, <i>EJRND</i> &mdash; doi:10.56038/ejrnd.v5i1.693 &mdash; <span data-l="pt">M8 fatorial (DIN 65151); &mu; do paper.</span><span data-l="en">M8 factorial (DIN 65151); paper &mu;.</span></li>
+<li><b>Yang et al. (2021)</b>, <i>Shock &amp; Vib.</i> &mdash; doi:10.1155/2021/1441122 &mdash; <span data-l="pt">carregamento composto (acopla F_amp&harr;&delta;_amp).</span><span data-l="en">composite loading (couples F_amp&harr;&delta;_amp).</span></li>
+<li><b>Yang et al. (2019)</b>, <i>Shock &amp; Vib.</i> &mdash; doi:10.1155/2019/2036509 &mdash; <span data-l="pt">amplitude variável em blocos.</span><span data-l="en">variable-amplitude blocks.</span></li>
+<li><b>Karlsen et al. (2022)</b>, <i>Eng. Fail. Anal.</i> &mdash; doi:10.1016/j.engfailanal.2022.106590 &mdash; <span data-l="pt">M30/M42 (efeito de tamanho); HV vs Vibralock; c_bend per-especime.</span><span data-l="en">M30/M42 (size effect); HV vs Vibralock; per-specimen c_bend.</span></li>
+<li><b>Sandia (2021)</b>, C-beam &mdash; doi:10.1007/978-3-030-47626-7_30 &mdash; <span data-l="pt">modal/flexão, baixa amplitude (modo força).</span><span data-l="en">modal/bending, low amplitude (force mode).</span></li>
+<li><b>Z. Liu et al. (2022)</b>, <i>Structures</i> &mdash; doi:10.1016/j.istruc.2022.08.049 &mdash; <span data-l="pt">reaperto sucessivo (renovação de embedding, galling).</span><span data-l="en">successive retightening (embedding renewal, galling).</span></li>
+<li><b>Y. Li et al. (2022)</b>, <i>Marine Structures</i> &mdash; doi:10.1016/j.marstruc.2022.103263 &mdash; <span data-l="pt">creep estático de contato (M16 304SS; eixo em minutos); âncora C_creep.</span><span data-l="en">static contact creep (M16 304SS; minutes axis); C_creep anchor.</span></li>
+<li><b>H. Li et al. (2022)</b>, <i>Tribol. Int.</i> &mdash; doi:10.1016/j.triboint.2022.107933 &mdash; <span data-l="pt">axial &times; frequência (10/15/20 Hz); dwell do fretting; cliff Ti.</span><span data-l="en">axial &times; frequency (10/15/20 Hz); fretting dwell; Ti cliff.</span></li>
+<li><b>Yang et al. (2023)</b>, <i>IJPEM</i> &mdash; doi:10.1007/s12541-023-00783-x &mdash; <span data-l="pt">modelo fenomenológico M8/M6 (ratchet + slip_onset).</span><span data-l="en">phenomenological model M8/M6 (ratchet + slip_onset).</span></li>
+</ul>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s4"><span data-l="pt">Biblioteca estendida (rodadas de deep-research)</span><span data-l="en">Extended library (deep-research rounds)</span></h2>
+<p class="intro"><span data-l="pt">Fontes adicionais varridas nas rodadas de deep-research (lacunas G1&ndash;G8), além das 14 primárias
+digitalizadas acima. DOIs e rotas de acesso em <code>curve_library/DEEP_RESEARCH_REPORT{,_R2,_R3,_R4}.md</code>.</span>
+<span data-l="en">Additional sources swept in the deep-research rounds (gaps G1&ndash;G8), beyond the 14 primary digitized
+ones above. DOIs and access routes in <code>curve_library/DEEP_RESEARCH_REPORT{,_R2,_R3,_R4}.md</code>.</span></p>
+<ul class="refs">
+<li class="refhead">Fretting &amp; energia (âncoras de pressão/wear) / Fretting &amp; energy (pressure/wear anchors)</li>
+<li><b>Baydoun &amp; Fouvry (2019)</b>, <i>Wear 426&ndash;427:676&ndash;693</i> &mdash; doi:10.1016/j.wear.2018.12.022 &mdash; <span data-l="pt">Fretting flat-on-flat 35NCD16 com pressão quase-constante controlada + varredura de pressão/amplitude/frequência; melhor âncora do expoente de pressão do gate de conformação (regime abrasivo&rarr;adesivo condiciona o expoente).</span><span data-l="en">Flat-on-flat 35NCD16 fretting at controlled near-constant pressure with pressure/amplitude/frequency sweeps; best anchor for the conformance-gate pressure exponent (abrasive&rarr;adhesive regime conditions it).</span></li>
+<li><b>Arnaud, Baydoun &amp; Fouvry (2021)</b>, <i>Tribology International 161:107077</i> &mdash; doi:10.1016/j.triboint.2021.107077 &mdash; <span data-l="pt">Coeficientes de desgaste energético separados por regime (adesivo vs abrasivo) dirigidos por oxigenação do contato; base física candidata p/ gate dependente de pressão. SIMULAÇÃO/modelagem (sem curvas F/F0).</span><span data-l="en">Energy wear coefficients split by regime (adhesive vs abrasive) driven by contact oxygenation; candidate physics for a pressure-dependent gate. Modeling only (no F/F0 curves).</span></li>
+<li><b>Baydoun et al. (2021, companion)</b>, <i>arXiv preprint</i> &mdash; arXiv:2101.12014 &mdash; <span data-l="pt">Companion OA que estende Baydoun2019 e confirma a pressão constante do contato flat-on-flat.</span><span data-l="en">OA companion extending Baydoun2019; confirms the flat-on-flat constant-pressure setup.</span></li>
+<li><b>Fouvry et al. (2007)</b>, <i>Tribology International 40:1428</i> &mdash; doi:10.1016/j.triboint.2007.02.011 &mdash; <span data-l="pt">Capacidade energética de desgaste (chi) por par tribológico; complemento da âncora G2 (âncora K_archard, não W_conf_ref).</span><span data-l="en">Energetic wear capacity (chi) per tribo-pair; G2 anchor complement (anchors K_archard, not W_conf_ref).</span></li>
+<li><b>Fouvry et al. (2011)</b>, <i>Wear 271:1535</i> &mdash; doi:10.1016/j.wear.2011.01.060 &mdash; <span data-l="pt">Fretting com força normal variável em Ti64; história de pressão para a âncora de desgaste energético.</span><span data-l="en">Fretting under variable normal force on Ti64; pressure-history input for the energy-wear anchor.</span></li>
+<li><b>Fouvry et al. (2017)</b>, <i>Tribology International 113:460</i> &mdash; doi:10.1016/j.triboint.2016.12.049 &mdash; <span data-l="pt">Expoente de potência friccional em Ti64 (par G8); refina a forma do expoente de pressão/wear.</span><span data-l="en">Frictional-power exponent on Ti64 (G8 pair); refines the pressure/wear exponent form.</span></li>
+<li><b>Chu, Liu, Qin &amp; Yuan (2026)</b>, <i>Tribology International 223:112193</i> &mdash; doi:10.1016/j.triboint.2026.112193 &mdash; <span data-l="pt">Experimentos + FEM; limiar crítico de deslocamento transversal dependente de F0 e atrito (estilo s_crit do Bauer), acopla com o surface_damage D via evolução de mu/desgaste.</span><span data-l="en">Experiments + FEM; F0/friction-dependent transverse critical-displacement threshold (Bauer-style s_crit); couples to surface_damage D through mu/wear evolution.</span></li>
+
+<li class="refhead">Creep / relaxação &amp; temperatura / Creep / relaxation &amp; temperature</li>
+<li><b>Lakes group, UW-Madison (2007)</b>, <i>J. Eng. Mater. Technol. 129:48&ndash;54</i> &mdash; doi:10.1115/1.2400262 &mdash; <span data-l="pt">Tensão do parafuso in-situ por 1 semana a 220/240/260 &deg;C, aço sobre Al-Si fundido; Tabela 1 = constantes de compliance de creep por temperatura (proveniência estilo C_creep por par) + embedding ~10% + protocolo de reaperto.</span><span data-l="en">In-situ bolt stress over 1 week at 220/240/260 &deg;C, steel on cast Al-Si; Table 1 = creep-compliance constants per temperature (per-pair C_creep provenance) + ~10% embedding + retighten protocol.</span></li>
+<li><b>(autores n/d) (2023)</b>, <i>J. Constr. Steel Res. 211:108211</i> &mdash; doi:10.1016/j.jcsr.2023.108211 &mdash; <span data-l="pt">4 materiais de parafuso (comum/galvanizado/inox/GFRP) &times; 3 ambientes; clamp force vs tempo + termo de settling inicial (creep por par + ambiente).</span><span data-l="en">4 bolt materials (plain/galvanized/stainless/GFRP) &times; 3 environments; clamp force vs time + initial settling term (per-pair creep + environment).</span></li>
+<li><b>(autores n/d) (2020)</b>, <i>Advances in Mechanical Engineering 12(12)</i> &mdash; doi:10.1177/1687814020975919 &mdash; <span data-l="pt">Pré-aperto e mecanismo de relaxação sob carga transversal (Gold OA SAGE); relaxação transversal complementar.</span><span data-l="en">Bolt pre-tightening and relaxation mechanism under transverse load (Gold OA); complementary transverse relaxation.</span></li>
+
+<li class="refhead">Juntas compósitas/CFRP / Composite/CFRP joints</li>
+<li><b>Pelletier, Caccese &amp; Berube (2009)</b>, <i>Composite Structures 89(2):285&ndash;293</i> &mdash; doi:10.1016/j.compstruct.2008.07.031 &mdash; <span data-l="pt">Relaxação de clamp-up &ge;3 meses (regimes primário+secundário) em par compósito-metal, com sequências de reaperto e efeitos térmicos; 3 formas funcionais ajustadas (relatório companion DTIC ADA429921 = programa experimental completo).</span><span data-l="en">Clamp-up stress relaxation &ge;3 months (primary+secondary) in a composite-metal pair, with retighten sequences and thermal effects; 3 fitted forms (companion DTIC report ADA429921 = full experimental program).</span></li>
+<li><b>Yang, An, Chen &amp; Zou (2023)</b>, <i>Advances in Mechanical Engineering 15(1)</i> &mdash; doi:10.1177/16878132221145342 &mdash; <span data-l="pt">Rig biaxial (2 atuadores MTS), CFRP 48 plies&ndash;aço, jet nut MJ6 SEM rotação; curvas em tempo real + varredura de F0 (6/8/10 kN); decomposição de embedment por modo (transversal/axial/biaxial no mesmo rig).</span><span data-l="en">Biaxial rig (2 MTS actuators), CFRP 48-ply&ndash;steel, MJ6 jet nut (no rotation); real-time curves + F0 sweep (6/8/10 kN); embedment decomposition by load mode (transverse/axial/biaxial, one rig).</span></li>
+<li><b>Tong (2024)</b>, <i>Polymer Composites</i> &mdash; doi:10.1002/pc.28378 &mdash; <span data-l="pt">Relaxação de preload em juntas CFRTP-SMC vs temperatura e preload inicial, 240 h.</span><span data-l="en">Preload relaxation in CFRTP-SMC joints vs temperature and initial preload, 240 h.</span></li>
+<li><b>(autores n/d) (2024)</b>, <i>Applied Composite Materials</i> &mdash; doi:10.1007/s10443-024-10214-3 &mdash; <span data-l="pt">Relaxação de preload em juntas CFRP em ambiente térmico-oxigênio, 25&rarr;150 &deg;C (retenção 95,0&rarr;79,8%) + varredura de interferência; modelo + experimento.</span><span data-l="en">CFRP bolted-joint preload relaxation under thermal-oxygen environment, 25&rarr;150 &deg;C (retention 95.0&rarr;79.8%) + interference sweep; model + experiment.</span></li>
+<li><b>(autores n/d) (2018)</b>, <i>venue n/d</i> &mdash; ResearchGate 322431887 &mdash; <span data-l="pt">Resposta tempo-temperatura da relaxação de preload em juntas compósitas parafusadas; curvas F(t) vs temperatura (térmico/compósito).</span><span data-l="en">Time-temperature response of preload relaxation in bolted composite joints; F(t) vs temperature curves (thermal/composite).</span></li>
+
+<li class="refhead">Reaperto &amp; lubrificação / Retightening &amp; lubrication</li>
+<li><b>Alsardia (2024)</b>, <i>Acta Polytechnica Hungarica 21(2):133&ndash;150</i> &mdash; acta.uni-obuda.hu (OA) &mdash; <span data-l="pt">20 reapertos &times; 4 lubrificações (as-is/seco/MoS2/oleado), M8&times;40 10.9, ISO 16047; oleado SOBE ~20% e estabiliza &mdash; âncora direta de k_emb_renew + atrito por lube. Estático (não Junker).</span><span data-l="en">20 retightenings &times; 4 lubrications (as-is/dry/MoS2/oiled), M8&times;40 10.9, ISO 16047; oiled RISES ~20% and stabilizes &mdash; direct anchor for k_emb_renew + per-lube friction. Static (not Junker).</span></li>
+<li><b>Sun et al. (2025)</b>, <i>Engineering Failure Analysis :110030</i> &mdash; doi:10.1016/j.engfailanal.2025.110030 &mdash; <span data-l="pt">Reapertos cíclicos de porca auto-frenante MJ8 prateada; óxido de prata sobe o atrito e mantém preload &mdash; reaperto por-lube além do Z.Liu2022 (parte FEM; preprint SSRN 5347913).</span><span data-l="en">Cyclic retightenings of silvered self-locking MJ8 nut; silver oxide raises friction and holds preload &mdash; per-lube retighten beyond Z.Liu2022 (partly FEM; SSRN preprint 5347913).</span></li>
+<li><b>Sun et al. (2025)</b>, <i>Engineering Failure Analysis 169:109235</i> &mdash; doi:10.1016/j.engfailanal.2024.109235 &mdash; <span data-l="pt">Junker M8/M10/M12 porca crimpada vs padrão (série de tamanho num rig); ramo axial é S-N (fadiga), não decaimento de preload.</span><span data-l="en">Junker M8/M10/M12 crimped nut vs standard (size series, one rig); axial branch is S-N (fatigue), not preload decay.</span></li>
+<li><b>Eccles, Sherrington &amp; Arnell (2010)</b>, <i>Proc. IMechE Part C 224(2):483&ndash;495</i> &mdash; doi:10.1243/09544062JMES1493 &mdash; <span data-l="pt">Junker modificado (macacos hidráulicos): transversal + axial constante/intermitente, porcas nylon-insert novas vs reusadas; limiar quantitativo de destacamento (forma falsificável p/ rotation-onset/colapso).</span><span data-l="en">Modified Junker (hydraulic jacks): transverse + constant/intermittent axial, nylon-insert nuts new vs reused; quantitative detachment threshold (falsifiable form for rotation-onset/collapse).</span></li>
+<li><b>(autores n/d) (2022)</b>, <i>Chinese Journal of Aeronautics 35(2)</i> &mdash; doi:10.1016/j.cja.2020.12.038 &mdash; <span data-l="pt">Review de métodos anti-afrouxamento; compila curvas Junker de múltiplos dispositivos (referência p/ locking_device_type).</span><span data-l="en">Review of anti-loosening methods; compiles Junker curves for multiple devices (reference for locking_device_type).</span></li>
+
+<li class="refhead">Axial &amp; sinal de A_F / Axial &amp; the A_F signal</li>
+<li><b>Liu et al. (2016)</b>, <i>Wear 346&ndash;347:66&ndash;77</i> &mdash; doi:10.1016/j.wear.2015.10.012 &mdash; <span data-l="pt">Mesmo grupo/rig do Liu2017, paper anterior e distinto; decaimento de clamp force axial com varredura de torque &times; amplitude + contraste MoS2 vs seco (estende d(afrouxamento)/d(A_F) num rig já calibrado).</span><span data-l="en">Same group/rig as Liu2017, earlier distinct paper; axial clamp-force decay with torque &times; amplitude sweep + MoS2 vs dry contrast (extends d(loosening)/d(A_F) on an already-calibrated rig).</span></li>
+<li><b>Basava &amp; Hess (1998)</b>, <i>J. Sound and Vibration 210(2):255&ndash;265</i> &mdash; doi:10.1006/jsvi.1997.1330 &mdash; <span data-l="pt">CONTROLE de sinal (SIMULAÇÃO &mdash; reclassificado, não experimental): clamp force axial pode ficar estável, CAIR ou SUBIR &mdash; restrição que o mecanismo proporcional a A_F deve respeitar. Transientes curtos.</span><span data-l="en">Sign CONTROL (SIMULATION &mdash; reclassified, not experimental): axial clamp force can stay, DROP or RISE &mdash; constraint the A_F-proportional mechanism must respect. Short transients.</span></li>
+<li><b>Liu/Zhu group (torsional study)</b>, <i>lead menor</i> &mdash; ResearchGate 329654266 &mdash; <span data-l="pt">Lead menor (não priorizado): afrouxamento sob carga torsional &mdash; modo de carga NÃO modelado pelo V2.</span><span data-l="en">Minor lead (deprioritized): loosening under torsional load &mdash; load mode NOT modeled by V2.</span></li>
+
+<li class="refhead">Tamanho/material &amp; controles / Size/material &amp; controls</li>
+<li><b>Grzejda, Parus &amp; Kwiatkowski (2026)</b>, <i>Materials 19:1414</i> &mdash; doi:10.3390/ma19071414 &mdash; <span data-l="pt">CONTROLE NEGATIVO: 9 variantes cíclicas (Instron 8850, 22 kN, amplitude 10/20 kN) SEM perda de preload (&plusmn;2%); o modelo deve prever ~zero perda.</span><span data-l="en">NEGATIVE control: 9 cyclic variants (Instron 8850, 22 kN, 10/20 kN amplitude) with NO preload loss (&plusmn;2%); model must predict ~zero loss.</span></li>
+<li><b>Yang et al. (2025)</b>, <i>Materials</i> &mdash; doi:10.3390/ma18051069 &mdash; <span data-l="pt">Companion OA do modelo fenomenológico IJPEM (paywall): fornece as condições de ensaio M6/M8 (proveniência das condições, não curvas novas).</span><span data-l="en">OA companion of the IJPEM phenomenological model (paywalled): supplies the M6/M8 test conditions (conditions provenance, not new curves).</span></li>
+<li><b>(autores n/d) (2024)</b>, <i>Structures</i> &mdash; Elsevier PII S2352012424016382 &mdash; <span data-l="pt">Lead menor (não priorizado, confirmar curvas): estudo teórico+experimental do comportamento de dano de juntas parafusadas sob cargas cíclicas.</span><span data-l="en">Minor lead (deprioritized, curves unconfirmed): theoretical+experimental study of bolted-joint damage behavior under cyclic loads.</span></li>
+<li><b>Rafik et al. (2018)</b>, <i>JCM 2018 (AMDEM)</i> &mdash; HAL hal-02119945 &mdash; <span data-l="pt">Lead menor (não priorizado; HAL bloqueado por Anubis): grupo Rafik/AMDEM.</span><span data-l="en">Minor lead (deprioritized; HAL bot-blocked): Rafik/AMDEM group.</span></li>
+</ul>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s5"><span data-l="pt">Documentos internos</span><span data-l="en">Internal documents</span></h2>
+<ul class="refs">
+<li><code>New_Theory/MODEL_MATH_REFERENCE.md</code> &mdash; <span data-l="pt">referência matemática completa.</span><span data-l="en">complete math reference.</span></li>
+<li><code>New_Theory/MODEL_LEGITIMACY.md</code> &mdash; <span data-l="pt">física-vs-overfitting, falsificações (&sect;4.x), procedência.</span><span data-l="en">physics-vs-overfitting, falsifications (&sect;4.x), provenance.</span></li>
+<li><code>Models/CALIBRATION_AND_VALIDATION/curve_library/</code> &mdash; <span data-l="pt">200 curvas extraídas + 108 digitalizadas + apparatus_notes.</span><span data-l="en">200 extracted + 108 digitized curves + apparatus_notes.</span></li>
+</ul>
+</div>
+
+<nav class="pn"><a href="concept_equations.html">&larr; 9 · Equacionamento</a><a href="index.html">&#8962; <span data-l="pt">índice</span><span data-l="en">index</span></a><a href="concept_anatomy.html">11 · Anatomia da curva &rarr;</a></nav>
+
+</main>
+</div>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.setLang=function(l){document.documentElement.dataset.lang=l;
+    document.querySelectorAll('nav.toc .lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')===l);});
+    if(window._cwRefresh)window._cwRefresh(); if(window.veRedraw)window.veRedraw();};
+  setLang(document.documentElement.dataset.lang||'pt');
+  if(!reduce){
+    var bar=document.createElement('div');bar.className='gprog';document.body.appendChild(bar);
+    function pg(){var hh=document.documentElement.scrollHeight-innerHeight;bar.style.width=(hh>0?scrollY/hh*100:0)+'%';}
+    addEventListener('scroll',pg,{passive:true});addEventListener('resize',pg);pg();
+    var vh=innerHeight||800;
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.panel,.widget').forEach(function(el){if(el.getBoundingClientRect().top>vh*0.9){el.classList.add('reveal');io.observe(el);}});
+  }
+  var links={};document.querySelectorAll('nav.toc a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var aio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var a=links[e.target.id];
+    if(a){for(var k in links)links[k].classList.remove('active');a.classList.add('active');}}});},{rootMargin:'-30% 0px -62% 0px'});
+  Object.keys(links).forEach(function(id){var el=document.getElementById(id);if(el)aio.observe(el);});
+})();
+</script>
+</body>
+</html>

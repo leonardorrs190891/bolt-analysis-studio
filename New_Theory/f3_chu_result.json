@@ -1,0 +1,39 @@
+{
+ "secao": "F3.2-CHU",
+ "receita": {
+  "c_bend": 1.881,
+  "mu_thread": 0.05,
+  "C_creep": 0.0,
+  "emb_um": 1.6
+ },
+ "floors": {
+  "test2": 0.11,
+  "test4": 0.29,
+  "test7": 0.18,
+  "test8": 0.16
+ },
+ "tripe": {
+  "chu2026ti_D0p4mm_F0_49kN_test2": {
+   "mae": 0.1703318109568423,
+   "maxerr": 0.5689982198800483
+  },
+  "chu2026ti_D0p7mm_F0_49kN_test4": {
+   "mae": 0.1832656090138244,
+   "maxerr": 0.28364108208829686
+  },
+  "chu2026ti_D0p4mm_F0_61kN_test7": {
+   "mae": 0.14790489441719512,
+   "maxerr": 0.2909746440785555
+  },
+  "chu2026ti_D0p4mm_F0_73kN_test8": {
+   "mae": 0.1547052863412907,
+   "maxerr": 0.3983011674064464
+  }
+ },
+ "gate": {
+  "test4": false,
+  "outros": 0,
+  "controles": true
+ },
+ "verdict": "FAIL"
+}

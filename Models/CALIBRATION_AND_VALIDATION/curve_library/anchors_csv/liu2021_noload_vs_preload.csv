@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/51_52_53_54_axial_fatiguewear_noload_energy.md:243-253
+F0_kN,pct_proof,loss_48h_pct
+60,30,3.5
+90,45,5.8
+120,60,8.8
+150,75,12.5
+180,90,18.2

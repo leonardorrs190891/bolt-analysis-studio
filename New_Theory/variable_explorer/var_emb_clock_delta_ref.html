@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="pt" data-theme="light" data-lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>emb_clock_delta_ref — Explorador de Variáveis BAS V2</title>
+<style>
+:root{
+  --bg:#eef0f3; --panel:#ffffff; --ink:#161a20; --muted:#5b6675; --line:#d3d8e0;
+  --accent:#2563eb; --accent2:#e11d48; --ghost:#9aa4b2; --ok:#0f9d58; --warn:#c2410c;
+  --code-bg:#f3f5f8; --side:#f7f8fa; --side-w:300px;
+}
+:root[data-theme="dark"]{
+  --bg:#12151b; --panel:#1a1f27; --ink:#e7ebf0; --muted:#93a0b0; --line:#2b323d;
+  --accent:#5b9bff; --accent2:#ff6b8b; --ghost:#4a5563; --ok:#39d98a; --warn:#ffa657;
+  --code-bg:#20262f; --side:#151a21;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,.mono{font-family:'Cascadia Code','Consolas',ui-monospace,monospace}
+
+/* ---- sidebar (sumario tipo help classico) ---- */
+.side{position:fixed;top:0;left:0;bottom:0;width:var(--side-w);overflow-y:auto;
+  background:var(--side);border-right:1px solid var(--line);z-index:20}
+.side-head{position:sticky;top:0;background:var(--side);padding:14px 16px 12px;
+  border-bottom:1px solid var(--line);z-index:2}
+.side-head .home{font-weight:700;font-size:.92rem;display:block;color:var(--ink)}
+.side-head .home small{display:block;color:var(--muted);font-weight:400;font-size:.72rem;margin-top:2px}
+.side-head .toggles{margin:10px 0 8px}
+.toggles button{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:5px 10px;font-size:.78rem;cursor:pointer;margin-right:6px}
+.toggles button:hover{border-color:var(--accent)}
+.filter{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:7px;
+  background:var(--bg);color:var(--ink);font-family:inherit;font-size:.83rem}
+.tiers{display:flex;flex-wrap:wrap;gap:3px 12px;margin-top:9px;font-size:.72rem}
+.tiers label{display:flex;align-items:center;gap:4px;color:var(--muted);cursor:pointer}
+.tiers input{accent-color:var(--accent);margin:0;cursor:pointer}
+.toc{padding:6px 0 60px}
+.toc .grp{padding:12px 16px 3px;font-size:.68rem;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--muted);font-weight:700}
+.toc a.tocitem{display:flex;justify-content:space-between;gap:8px;align-items:baseline;
+  padding:4px 14px 4px 18px;font-family:'Cascadia Code',monospace;font-size:.8rem;
+  color:var(--ink);border-left:3px solid transparent}
+.toc a.tocitem:hover{background:var(--bg);text-decoration:none}
+.toc a.tocitem.current{border-left-color:var(--accent);color:var(--accent);
+  background:var(--bg);font-weight:600}
+.toc a.tocitem .dot{font-size:.6rem;opacity:.6}
+.toc a.tocitem .dot.physical{color:var(--accent)}
+.toc a.tocitem .dot.form{color:var(--warn)}
+.toc a.tocitem .dot.mode{color:var(--ok)}
+.toc a.tocitem .dot.numerical{color:var(--muted)}
+
+/* ---- content ---- */
+.main{margin-left:var(--side-w);padding:26px 34px 90px;max-width:940px}
+.crumbs{font-size:.82rem;color:var(--muted);margin-bottom:2px}
+h1.name{font-family:'Cascadia Code','Consolas',monospace;font-size:1.95rem;margin:.2rem 0 .2rem}
+.sub{color:var(--muted);font-size:.95rem;margin-bottom:.6rem}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:.4rem 0 1rem}
+.badge{font-size:.74rem;padding:3px 9px;border-radius:20px;border:1px solid var(--line);
+  background:var(--panel);color:var(--muted)}
+.badge.cat-physical{border-color:var(--accent);color:var(--accent)}
+.badge.cat-form{border-color:var(--warn);color:var(--warn)}
+.badge.cat-mode{border-color:var(--ok);color:var(--ok)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;margin:14px 0}
+.panel p{margin:.4rem 0}
+.plotwrap{position:relative}
+canvas{width:100%;height:auto;display:block}
+.ctl{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.ctl input[type=range]{flex:1;min-width:220px;accent-color:var(--accent)}
+.ctl select{background:var(--code-bg);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:6px 10px;font-family:inherit}
+.readout{font-family:'Cascadia Code',monospace;font-size:.95rem}
+.readout .v{color:var(--accent);font-weight:600}
+.readout .f{color:var(--accent2);font-weight:600}
+.readout .w{color:var(--warn);font-weight:600}
+.legend .kdash{display:inline-block;width:22px;height:0;border-top:2px dashed var(--muted);vertical-align:middle;margin-right:5px}
+.prov{font-size:.82rem;margin-top:8px;color:var(--muted)}
+.prov.out{color:var(--warn);font-weight:600}
+.effect{font-family:'Cascadia Code',monospace;font-size:.82rem;margin-top:8px;color:var(--accent)}
+.effect.weak{color:var(--muted)}
+h2.sec{font-size:1.05rem;margin:0 0 .5rem;letter-spacing:.02em}
+.eq{background:var(--code-bg);border:1px solid var(--line);border-radius:8px;
+  padding:12px 14px;font-family:'Cascadia Code',monospace;font-size:.92rem;overflow-x:auto;
+  white-space:pre;line-height:1.5;margin:.5rem 0}
+ul.refs{margin:.3rem 0 0;padding-left:1.1rem}
+ul.refs li{margin:.25rem 0;font-size:.9rem}
+ul.refs li.refhead{list-style:none;margin:14px 0 4px -1.1rem;color:var(--muted);
+  font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+ul.refs .src{color:var(--muted);font-size:.82rem}
+.related a{display:inline-block;margin-right:10px;font-family:'Cascadia Code',monospace;font-size:.85rem}
+nav.pn{display:flex;justify-content:space-between;margin-top:24px;font-size:.9rem}
+.note{background:var(--code-bg);border-left:3px solid var(--warn);padding:8px 12px;
+  border-radius:0 6px 6px 0;font-size:.88rem;color:var(--muted);margin:.6rem 0}
+.intro{color:var(--muted);max-width:74ch}
+.legend{display:flex;gap:16px;font-size:.8rem;color:var(--muted);margin-top:6px;flex-wrap:wrap}
+.legend .k{display:inline-block;width:22px;height:0;border-top-width:3px;border-top-style:solid;vertical-align:middle;margin-right:5px}
+[data-lang="pt"] [data-l="en"]{display:none}
+[data-lang="en"] [data-l="pt"]{display:none}
+
+/* ---- responsivo: sidebar recolhivel ---- */
+.menu-btn{display:none;position:fixed;top:10px;left:10px;z-index:40;
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;
+  padding:6px 11px;font-size:1rem;cursor:pointer;color:var(--ink)}
+@media(max-width:900px){
+  .side{transform:translateX(-100%);transition:transform .2s;box-shadow:0 0 30px rgba(0,0,0,.3)}
+  body.nav-open .side{transform:none}
+  .main{margin-left:0;padding:56px 16px 80px}
+  .menu-btn{display:inline-block}
+}
+
+/* ---- animações & interatividade ---- */
+@keyframes ve-pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.ve-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  box-shadow:0 0 8px var(--accent);transition:width .08s linear}
+h1.name{animation:ve-pop .5s cubic-bezier(.2,.7,.2,1) both}
+.reveal{opacity:0;transform:translateY(16px)}
+.reveal.in{opacity:1;transform:none;
+  transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.panel,.badge,.trail,.gal-card,.related a,.toc a.tocitem,.toggles button,
+.menu-btn,nav.pn a{transition:transform .18s ease,box-shadow .18s ease,
+  border-color .18s ease,background .18s ease,color .15s ease}
+.trail:hover,.gal-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.16)}
+.toc a.tocitem:hover{transform:translateX(3px)}
+.related a:hover,nav.pn a:hover{transform:translateY(-1px)}
+.toggles button:active,.menu-btn:active{transform:scale(.94)}
+.plotwrap canvas,.cw canvas{cursor:crosshair}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}
+  h1.name{animation:none}
+  .ve-progress{display:none}
+  .trail:hover,.gal-card:hover,.toc a.tocitem:hover,.related a:hover,nav.pn a:hover{transform:none}
+}
+</style>
+</head>
+<body>
+<button class="menu-btn" onclick="veToggleNav()">&#9776;</button>
+<aside class="side">
+  <div class="side-head">
+    <a class="home" href="index.html">BAS V2 &middot; <span data-l="pt">Variáveis</span><span data-l="en">Variables</span>
+      <small><span data-l="pt">explorador do modelo</span><span data-l="en">model explorer</span></small></a>
+    <div class="toggles">
+      <button onclick="veToggleLang()">PT / EN</button>
+      <button onclick="veToggleTheme()">&#9681;</button>
+    </div>
+    <input id="ve-filter" class="filter" oninput="veFilter()"
+      placeholder="filtrar / filter...">
+    <div class="tiers">
+      <label><input type="checkbox" class="tierbox" data-tier="fisica" onchange="veTier()">
+        <span data-l="pt">Físicas</span><span data-l="en">Physical</span></label>
+      <label><input type="checkbox" class="tierbox" data-tier="avancada" onchange="veTier()">
+        <span data-l="pt">Formas/modos</span><span data-l="en">Forms/modes</span></label>
+      <label><input type="checkbox" class="tierbox" data-tier="rara" onchange="veTier()">
+        <span data-l="pt">Numérico/raras</span><span data-l="en">Numerical/rare</span></label>
+    </div>
+  </div>
+  <nav class="toc"><div class="grp"><span data-l="pt">Fundamentos</span><span data-l="en">Foundations</span></div><a class="tocitem base" href="concept_manual.html" data-name="manual" data-tier="base"><span data-l="pt">Manual do BAS V2 (3 volumes)</span><span data-l="en">BAS V2 Manual (3 volumes)</span></a><a class="tocitem base" href="concept_usage.html" data-name="usage" data-tier="base"><span data-l="pt">Guia de uso do programa</span><span data-l="en">How to use the program</span></a><a class="tocitem base" href="concept_not-a-fit.html" data-name="not-a-fit" data-tier="base"><span data-l="pt">1 · Não é um fit</span><span data-l="en">1 · Not a fit</span></a><a class="tocitem base" href="concept_msd-model.html" data-name="msd-model" data-tier="base"><span data-l="pt">2 · Modelo MSD</span><span data-l="en">2 · MSD model</span></a><a class="tocitem base" href="concept_mechanisms.html" data-name="mechanisms" data-tier="base"><span data-l="pt">3 · Estado + mecanismos</span><span data-l="en">3 · State + mechanisms</span></a><a class="tocitem base" href="concept_coupling.html" data-name="coupling" data-tier="base"><span data-l="pt">4 · Acoplamento</span><span data-l="en">4 · Coupling</span></a><a class="tocitem base" href="concept_energy.html" data-name="energy" data-tier="base"><span data-l="pt">5 · Energia</span><span data-l="en">5 · Energy</span></a><a class="tocitem base" href="concept_methodology.html" data-name="methodology" data-tier="base"><span data-l="pt">6 · Metodologia</span><span data-l="en">6 · Methodology</span></a><a class="tocitem base" href="concept_coverage.html" data-name="coverage" data-tier="base"><span data-l="pt">Cobertura &amp; limitações</span><span data-l="en">Coverage &amp; limits</span></a><a class="tocitem base" href="concept_gallery.html" data-name="gallery" data-tier="base"><span data-l="pt">7 · Galeria de validação</span><span data-l="en">7 · Validation gallery</span></a><a class="tocitem base" href="concept_review.html" data-name="review" data-tier="base"><span data-l="pt">8 · Revisão da literatura</span><span data-l="en">8 · Literature review</span></a><a class="tocitem base" href="concept_equations.html" data-name="equations" data-tier="base"><span data-l="pt">9 · Equacionamento</span><span data-l="en">9 · Equations</span></a><a class="tocitem base" href="concept_references.html" data-name="references" data-tier="base"><span data-l="pt">10 · Referências</span><span data-l="en">10 · References</span></a><a class="tocitem base" href="concept_anatomy.html" data-name="anatomy" data-tier="base"><span data-l="pt">11 · Anatomia da curva</span><span data-l="en">11 · Anatomy of the curve</span></a><a class="tocitem base" href="concept_glossary.html" data-name="glossary" data-tier="base"><span data-l="pt">12 · Glossário</span><span data-l="en">12 · Glossary</span></a><div class="grp"><span data-l="pt">Estudos de caso</span><span data-l="en">Case studies</span></div><a class="tocitem base" href="study_bauer_2024.html" data-name="study_bauer_2024" data-tier="base">Bauer 2024</a><a class="tocitem base" href="study_caccese_2009.html" data-name="study_caccese_2009" data-tier="base">Caccese 2009</a><a class="tocitem base" href="study_chu_2026.html" data-name="study_chu_2026" data-tier="base">Chu 2026</a><a class="tocitem base" href="study_eccles_2010.html" data-name="study_eccles_2010" data-tier="base">Eccles 2010</a><a class="tocitem base" href="study_grzejda_2026.html" data-name="study_grzejda_2026" data-tier="base">Grzejda 2026</a><a class="tocitem base" href="study_icmez_2025.html" data-name="study_icmez_2025" data-tier="base">Icmez/Demir 2024</a><a class="tocitem base" href="study_jcsr_2023.html" data-name="study_jcsr_2023" data-tier="base">Jcsr 2023</a><a class="tocitem base" href="study_karlsen_2022.html" data-name="study_karlsen_2022" data-tier="base">Karlsen 2022</a><a class="tocitem base" href="study_li_2022_triboint.html" data-name="study_li_2022_triboint" data-tier="base">Li 2022 (axial x freq)</a><a class="tocitem base" href="study_li_2022_marstruc.html" data-name="study_li_2022_marstruc" data-tier="base">Li 2022 (creep)</a><a class="tocitem base" href="study_liu_2016.html" data-name="study_liu_2016" data-tier="base">Liu 2016</a><a class="tocitem base" href="study_liu_2017_axial.html" data-name="study_liu_2017_axial" data-tier="base">Liu 2017 (axial)</a><a class="tocitem base" href="study_liu_2020_wear.html" data-name="study_liu_2020_wear" data-tier="base">Liu 2020 Wear</a><a class="tocitem base" href="study_liu_2022_retight.html" data-name="study_liu_2022_retight" data-tier="base">Liu 2022 (reaperto)</a><a class="tocitem base" href="study_liu_2025.html" data-name="study_liu_2025" data-tier="base">Liu 2025</a><a class="tocitem base" href="study_lu_2024.html" data-name="study_lu_2024" data-tier="base">Lu 2024</a><a class="tocitem base" href="study_qin_2024.html" data-name="study_qin_2024" data-tier="base">Qin 2024</a><a class="tocitem base" href="study_rousseau_2025.html" data-name="study_rousseau_2025" data-tier="base">Rousseau 2025</a><a class="tocitem base" href="study_sun_2025_crimp.html" data-name="study_sun_2025_crimp" data-tier="base">Sun 2025 Crimp</a><a class="tocitem base" href="study_sun_2025_reassy.html" data-name="study_sun_2025_reassy" data-tier="base">Sun 2025 Reassy</a><a class="tocitem base" href="study_yang_2019.html" data-name="study_yang_2019" data-tier="base">Yang 2019</a><a class="tocitem base" href="study_yang_2021.html" data-name="study_yang_2021" data-tier="base">Yang 2021</a><a class="tocitem base" href="study_yang_2023_ijpem.html" data-name="study_yang_2023_ijpem" data-tier="base">Yang 2023</a><a class="tocitem base" href="study_yang_2023_ame.html" data-name="study_yang_2023_ame" data-tier="base">Yang 2023 Ame</a><a class="tocitem base" href="study_zhang_2006.html" data-name="study_zhang_2006" data-tier="base">Zhang 2006</a><a class="tocitem base" href="study_zhang_2018.html" data-name="study_zhang_2018" data-tier="base">Zhang 2018</a><a class="tocitem base" href="study_zhang_2019.html" data-name="study_zhang_2019" data-tier="base">Zhang 2019</a><div class="grp"><span data-l="pt">Embedding (assentamento)</span><span data-l="en">Embedding</span></div><a class="tocitem" href="var_emb_depth.html" data-name="emb_depth" data-tier="fisica">emb_depth<span class="dot physical">&#9679;</span></a><a class="tocitem" href="var_N_emb.html" data-name="n_emb" data-tier="avancada">N_emb<span class="dot form">&#9679;</span></a><a class="tocitem current" href="var_emb_clock_delta_ref.html" data-name="emb_clock_delta_ref" data-tier="avancada">emb_clock_delta_ref<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_emb_conform_exp.html" data-name="emb_conform_exp" data-tier="avancada">emb_conform_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_emb_pressure_exp.html" data-name="emb_pressure_exp" data-tier="avancada">emb_pressure_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_p_ref_emb.html" data-name="p_ref_emb" data-tier="avancada">p_ref_emb<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_creep_conform_exp.html" data-name="creep_conform_exp" data-tier="avancada">creep_conform_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_emb_amp_exp.html" data-name="emb_amp_exp" data-tier="avancada">emb_amp_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_rho_ref_emb.html" data-name="rho_ref_emb" data-tier="avancada">rho_ref_emb<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_emb_load_frac.html" data-name="emb_load_frac" data-tier="avancada">emb_load_frac<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_s1_amp_gate_dref.html" data-name="s1_amp_gate_dref" data-tier="avancada">s1_amp_gate_dref<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_s1_amp_gate_p.html" data-name="s1_amp_gate_p" data-tier="avancada">s1_amp_gate_p<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_s1_amp_gate_floor.html" data-name="s1_amp_gate_floor" data-tier="avancada">s1_amp_gate_floor<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_s1_freq_exp.html" data-name="s1_freq_exp" data-tier="avancada">s1_freq_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_s1_freq_ref.html" data-name="s1_freq_ref" data-tier="avancada">s1_freq_ref<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_emb_slip_gate.html" data-name="emb_slip_gate" data-tier="avancada">emb_slip_gate<span class="dot form">&#9679;</span></a><div class="grp"><span data-l="pt">Creep</span><span data-l="en">Creep</span></div><a class="tocitem" href="var_C_creep.html" data-name="c_creep" data-tier="fisica">C_creep<span class="dot physical">&#9679;</span></a><a class="tocitem" href="var_t_0.html" data-name="t_0" data-tier="avancada">t_0<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_creep_mode.html" data-name="creep_mode" data-tier="avancada">creep_mode<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_creep_t_c.html" data-name="creep_t_c" data-tier="avancada">creep_t_c<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_creep_alpha_sat.html" data-name="creep_alpha_sat" data-tier="avancada">creep_alpha_sat<span class="dot form">&#9679;</span></a><div class="grp"><span data-l="pt">Desgaste (Archard)</span><span data-l="en">Wear (Archard)</span></div><a class="tocitem" href="var_K_archard.html" data-name="k_archard" data-tier="fisica">K_archard<span class="dot physical">&#9679;</span></a><a class="tocitem" href="var_hardness.html" data-name="hardness" data-tier="fisica">hardness<span class="dot physical">&#9679;</span></a><a class="tocitem" href="var_k_wear_spec.html" data-name="k_wear_spec" data-tier="fisica">k_wear_spec<span class="dot physical">&#9679;</span></a><a class="tocitem" href="var_k_wear_running.html" data-name="k_wear_running" data-tier="avancada">k_wear_running<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_N_wear_run.html" data-name="n_wear_run" data-tier="avancada">N_wear_run<span class="dot form">&#9679;</span></a><div class="grp"><span data-l="pt">Rigidez de contato (GW)</span><span data-l="en">Contact stiffness (GW)</span></div><a class="tocitem" href="var_k_j_init.html" data-name="k_j_init" data-tier="avancada">k_j_init<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_alpha_GW.html" data-name="alpha_gw" data-tier="rara">alpha_GW<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_kj_mode.html" data-name="kj_mode" data-tier="rara">kj_mode<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_phi_load_dep.html" data-name="phi_load_dep" data-tier="rara">phi_load_dep<span class="dot form">&#9679;</span></a><div class="grp"><span data-l="pt">Atrito</span><span data-l="en">Friction</span></div><a class="tocitem" href="var_mu_thread.html" data-name="mu_thread" data-tier="fisica">mu_thread<span class="dot physical">&#9679;</span></a><a class="tocitem" href="var_mu_bearing.html" data-name="mu_bearing" data-tier="fisica">mu_bearing<span class="dot physical">&#9679;</span></a><a class="tocitem" href="var_mu_bearing_schedule.html" data-name="mu_bearing_schedule" data-tier="rara">mu_bearing_schedule<span class="dot mode">&#9679;</span></a><div class="grp"><span data-l="pt">Fretting axial de rosca</span><span data-l="en">Axial thread fretting</span></div><a class="tocitem" href="var_k_thread_fret.html" data-name="k_thread_fret" data-tier="avancada">k_thread_fret<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_fret_freq_exp.html" data-name="fret_freq_exp" data-tier="avancada">fret_freq_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_f_ref_fret.html" data-name="f_ref_fret" data-tier="avancada">f_ref_fret<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_flank_wear_on.html" data-name="flank_wear_on" data-tier="rara">flank_wear_on<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_k_wear_flank.html" data-name="k_wear_flank" data-tier="rara">k_wear_flank<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_flank_amp_exp.html" data-name="flank_amp_exp" data-tier="rara">flank_amp_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_flank_s_crit.html" data-name="flank_s_crit" data-tier="rara">flank_s_crit<span class="dot physical">&#9679;</span></a><a class="tocitem" href="var_flank_transverse_on.html" data-name="flank_transverse_on" data-tier="rara">flank_transverse_on<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_flank_fret_depth.html" data-name="flank_fret_depth" data-tier="rara">flank_fret_depth<span class="dot form">&#9679;</span></a><div class="grp"><span data-l="pt">Afrouxamento rotacional</span><span data-l="en">Rotational loosening</span></div><a class="tocitem" href="var_tr_loose_gain.html" data-name="tr_loose_gain" data-tier="fisica">tr_loose_gain<span class="dot physical">&#9679;</span></a><a class="tocitem" href="var_free_spin.html" data-name="free_spin" data-tier="rara">free_spin<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_free_spin_kin.html" data-name="free_spin_kin" data-tier="avancada">free_spin_kin<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_ax_floor_override.html" data-name="ax_floor_override" data-tier="rara">ax_floor_override<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_arrest_approach_exp.html" data-name="arrest_approach_exp" data-tier="avancada">arrest_approach_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_loose_arrest_residual.html" data-name="loose_arrest_residual" data-tier="avancada">loose_arrest_residual<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_loose_arrest_floor.html" data-name="loose_arrest_floor" data-tier="avancada">loose_arrest_floor<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_loosening_slip_coupling.html" data-name="loosening_slip_coupling" data-tier="avancada">loosening_slip_coupling<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_loose_torsion_mode.html" data-name="loose_torsion_mode" data-tier="avancada">loose_torsion_mode<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_eta_loose.html" data-name="eta_loose" data-tier="avancada">eta_loose<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_gth_k.html" data-name="gth_k" data-tier="rara">gth_k<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_gth_q.html" data-name="gth_q" data-tier="rara">gth_q<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_gth_dref.html" data-name="gth_dref" data-tier="rara">gth_dref<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_gth_A0.html" data-name="gth_a0" data-tier="rara">gth_A0<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_mu_kinetic_frac.html" data-name="mu_kinetic_frac" data-tier="rara">mu_kinetic_frac<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_loose_F_exp.html" data-name="loose_f_exp" data-tier="avancada">loose_F_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_gth_accel_p.html" data-name="gth_accel_p" data-tier="rara">gth_accel_p<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_loose_runaway_frac.html" data-name="loose_runaway_frac" data-tier="avancada">loose_runaway_frac<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_loose_runaway_gain.html" data-name="loose_runaway_gain" data-tier="avancada">loose_runaway_gain<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_loose_runaway_sharpness.html" data-name="loose_runaway_sharpness" data-tier="rara">loose_runaway_sharpness<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_onset_burst_frac.html" data-name="onset_burst_frac" data-tier="avancada">onset_burst_frac<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_onset_burst_rate.html" data-name="onset_burst_rate" data-tier="avancada">onset_burst_rate<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_onset_burst_W.html" data-name="onset_burst_w" data-tier="avancada">onset_burst_W<span class="dot form">&#9679;</span></a><div class="grp"><span data-l="pt">Regime de escorregamento</span><span data-l="en">Slip regime</span></div><a class="tocitem" href="var_k_tr_mode.html" data-name="k_tr_mode" data-tier="avancada">k_tr_mode<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_c_bend.html" data-name="c_bend" data-tier="avancada">c_bend<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_slip_regime_mode.html" data-name="slip_regime_mode" data-tier="avancada">slip_regime_mode<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_slip_regime_sharpness.html" data-name="slip_regime_sharpness" data-tier="avancada">slip_regime_sharpness<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_slip_capacity_coeff.html" data-name="slip_capacity_coeff" data-tier="rara">slip_capacity_coeff<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_partial_slip_exp.html" data-name="partial_slip_exp" data-tier="rara">partial_slip_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_couple_famp_slip.html" data-name="couple_famp_slip" data-tier="avancada">couple_famp_slip<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_k_partial_slip.html" data-name="k_partial_slip" data-tier="rara">k_partial_slip<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_famp_couple_on.html" data-name="famp_couple_on" data-tier="avancada">famp_couple_on<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_mu_eff_lo.html" data-name="mu_eff_lo" data-tier="rara">mu_eff_lo<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_mu_eff_F0_ref.html" data-name="mu_eff_f0_ref" data-tier="rara">mu_eff_F0_ref<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_gross_ceiling_decay.html" data-name="gross_ceiling_decay" data-tier="rara">gross_ceiling_decay<span class="dot form">&#9679;</span></a><div class="grp"><span data-l="pt">Ratcheting / afrouxamento graduado</span><span data-l="en">Ratcheting / graded loosening</span></div><a class="tocitem" href="var_k_ratchet.html" data-name="k_ratchet" data-tier="avancada">k_ratchet<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_loose_amp_exp.html" data-name="loose_amp_exp" data-tier="avancada">loose_amp_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_delta_free.html" data-name="delta_free" data-tier="avancada">delta_free<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_ratchet_torque_coupled.html" data-name="ratchet_torque_coupled" data-tier="avancada">ratchet_torque_coupled<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_loose_kin_ceiling.html" data-name="loose_kin_ceiling" data-tier="avancada">loose_kin_ceiling<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_loose_rate_mode.html" data-name="loose_rate_mode" data-tier="avancada">loose_rate_mode<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_s_crit_loose.html" data-name="s_crit_loose" data-tier="avancada">s_crit_loose<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_k_loose_graded.html" data-name="k_loose_graded" data-tier="avancada">k_loose_graded<span class="dot form">&#9679;</span></a><div class="grp"><span data-l="pt">Dano de superfície</span><span data-l="en">Surface damage</span></div><a class="tocitem" href="var_c_D.html" data-name="c_d" data-tier="fisica">c_D<span class="dot physical">&#9679;</span></a><a class="tocitem" href="var_W_ref.html" data-name="w_ref" data-tier="avancada">W_ref<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_k_late_amp.html" data-name="k_late_amp" data-tier="avancada">k_late_amp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_k_dmg_all.html" data-name="k_dmg_all" data-tier="avancada">k_dmg_all<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_k_dmg_mu.html" data-name="k_dmg_mu" data-tier="avancada">k_dmg_mu<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_k_dmg_wear.html" data-name="k_dmg_wear" data-tier="avancada">k_dmg_wear<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_W_crit.html" data-name="w_crit" data-tier="avancada">W_crit<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_dmg_onset_sharpness.html" data-name="dmg_onset_sharpness" data-tier="avancada">dmg_onset_sharpness<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_dmg_gross_exp.html" data-name="dmg_gross_exp" data-tier="avancada">dmg_gross_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_dmg_dwell_exp.html" data-name="dmg_dwell_exp" data-tier="avancada">dmg_dwell_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_f_ref_dmg.html" data-name="f_ref_dmg" data-tier="avancada">f_ref_dmg<span class="dot form">&#9679;</span></a><div class="grp"><span data-l="pt">Conformação / incubação</span><span data-l="en">Conformation / incubation</span></div><a class="tocitem" href="var_slip_onset_W.html" data-name="slip_onset_w" data-tier="avancada">slip_onset_W<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_slip_onset_sharpness.html" data-name="slip_onset_sharpness" data-tier="avancada">slip_onset_sharpness<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_W_conf_ref.html" data-name="w_conf_ref" data-tier="fisica">W_conf_ref<span class="dot physical">&#9679;</span></a><a class="tocitem" href="var_conform_pressure_exp.html" data-name="conform_pressure_exp" data-tier="avancada">conform_pressure_exp<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_p_ref_conform.html" data-name="p_ref_conform" data-tier="avancada">p_ref_conform<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_conform_driver.html" data-name="conform_driver" data-tier="avancada">conform_driver<span class="dot mode">&#9679;</span></a><div class="grp"><span data-l="pt">Complacência do membro</span><span data-l="en">Member compliance</span></div><a class="tocitem" href="var_k_member_shear.html" data-name="k_member_shear" data-tier="avancada">k_member_shear<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_member_loss_eta.html" data-name="member_loss_eta" data-tier="rara">member_loss_eta<span class="dot form">&#9679;</span></a><div class="grp"><span data-l="pt">Re-aperto</span><span data-l="en">Retightening</span></div><a class="tocitem" href="var_k_emb_renew.html" data-name="k_emb_renew" data-tier="rara">k_emb_renew<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_k_gall.html" data-name="k_gall" data-tier="rara">k_gall<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_retight_loss_base.html" data-name="retight_loss_base" data-tier="rara">retight_loss_base<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_retight_loss_gain.html" data-name="retight_loss_gain" data-tier="rara">retight_loss_gain<span class="dot form">&#9679;</span></a><div class="grp"><span data-l="pt">Fadiga (fratura)</span><span data-l="en">Fatigue (fracture)</span></div><a class="tocitem" href="var_fatigue_enabled.html" data-name="fatigue_enabled" data-tier="avancada">fatigue_enabled<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_fat_stress_mode.html" data-name="fat_stress_mode" data-tier="avancada">fat_stress_mode<span class="dot mode">&#9679;</span></a><a class="tocitem" href="var_fatigue_residual_frac.html" data-name="fatigue_residual_frac" data-tier="avancada">fatigue_residual_frac<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_fat_ramp_D_on.html" data-name="fat_ramp_d_on" data-tier="avancada">fat_ramp_D_on<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_fat_ramp_q.html" data-name="fat_ramp_q" data-tier="avancada">fat_ramp_q<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_fat_Kt.html" data-name="fat_kt" data-tier="avancada">fat_Kt<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_fat_sigma_uts.html" data-name="fat_sigma_uts" data-tier="avancada">fat_sigma_uts<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_fat_sigma_knee.html" data-name="fat_sigma_knee" data-tier="rara">fat_sigma_knee<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_fat_C1.html" data-name="fat_c1" data-tier="avancada">fat_C1<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_fat_m1.html" data-name="fat_m1" data-tier="avancada">fat_m1<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_fat_C2.html" data-name="fat_c2" data-tier="rara">fat_C2<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_fat_m2.html" data-name="fat_m2" data-tier="rara">fat_m2<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_fat_sigma_endurance.html" data-name="fat_sigma_endurance" data-tier="rara">fat_sigma_endurance<span class="dot form">&#9679;</span></a><div class="grp"><span data-l="pt">Gatilho de colapso</span><span data-l="en">Collapse trigger</span></div><a class="tocitem" href="var_crash_trigger_frac.html" data-name="crash_trigger_frac" data-tier="avancada">crash_trigger_frac<span class="dot form">&#9679;</span></a><a class="tocitem" href="var_crash_trigger_sharpness.html" data-name="crash_trigger_sharpness" data-tier="avancada">crash_trigger_sharpness<span class="dot form">&#9679;</span></a><div class="grp"><span data-l="pt">Numérico / inércia</span><span data-l="en">Numerical / inertia</span></div><a class="tocitem" href="var_m_x.html" data-name="m_x" data-tier="rara">m_x<span class="dot numerical">&#9679;</span></a><a class="tocitem" href="var_rayleigh_alpha.html" data-name="rayleigh_alpha" data-tier="rara">rayleigh_alpha<span class="dot numerical">&#9679;</span></a><a class="tocitem" href="var_rayleigh_beta.html" data-name="rayleigh_beta" data-tier="rara">rayleigh_beta<span class="dot numerical">&#9679;</span></a><a class="tocitem" href="var_m_y.html" data-name="m_y" data-tier="rara">m_y<span class="dot numerical">&#9679;</span></a><a class="tocitem" href="var_I_theta.html" data-name="i_theta" data-tier="rara">I_theta<span class="dot numerical">&#9679;</span></a></nav>
+</aside>
+<main class="main">
+<div class="crumbs"><a href="index.html">&#8962; <span data-l="pt">Explorador de Variáveis</span><span data-l="en">Variable Explorer</span></a> / <code>emb_clock_delta_ref</code></div>
+<h1 class="name">emb_clock_delta_ref</h1>
+<div class="sub">
+  <span data-l="pt">Embedding (assentamento)</span><span data-l="en">Embedding</span>
+  &nbsp;&middot;&nbsp; <span class="mono">delta_ref</span>
+  &nbsp;[m]
+</div>
+<div class="badges">
+  <span class="badge cat-form">
+    <span data-l="pt">forma opt-in</span><span data-l="en">opt-in form</span></span>
+  <span class="badge"><span data-l="pt">default: </span><span data-l="en">default: </span>
+    <span class="mono">0.0</span></span>
+  <span class="badge"><span data-l="pt">faixa: </span><span data-l="en">range: </span>
+    <span class="mono">0 … 0.004 m (lin)</span></span>
+</div>
+
+<div class="panel plotwrap">
+  <canvas id="plot"></canvas>
+  <div class="legend">
+    <span><i class="k" style="border-color:var(--accent)"></i>
+      <span data-l="pt">valor atual</span><span data-l="en">current value</span></span>
+    <span><i class="k" style="border-color:var(--muted);border-top-style:dashed"></i>
+      <span data-l="pt">default</span><span data-l="en">default</span></span>
+    <span><i class="k" style="border-color:var(--ghost)"></i>
+      <span data-l="pt">varredura</span><span data-l="en">sweep</span></span>
+  </div>
+  <div class="ctl">
+    <input type="range" id="slider" min="0" max="8" step="1" value="0">
+    <span class="readout">
+      <span data-l="pt">valor</span><span data-l="en">value</span> =
+      <span class="v" id="valout"></span> &nbsp;&rarr;&nbsp; F/F0<sub>final</sub> =
+      <span class="f" id="finalout"></span>
+    </span>
+  </div>
+  <div class="effect" id="effect"></div>
+  
+</div>
+
+
+
+<div class="panel">
+  <h2 class="sec"><span data-l="pt">Física</span><span data-l="en">Physics</span></h2>
+  <div data-l="pt"><p><code>N_emb</code> sozinho supõe que o assentamento leva <b>o mesmo número de ciclos</b> qualquer que seja o deslocamento imposto. Isso não pode estar certo: se o que consome o assentamento é o <b>deslizamento</b>, uma junta que desliza o dobro por ciclo assenta na metade dos ciclos.</p><p>Este campo torna o relógio dependente da amplitude: N_emb_eff = N_emb&middot;(&delta;ref/&delta;). <b>O expoente é 1 e NÃO é ajustável</b> — ele não foi escolhido, ele cai da mecânica: se o assentamento se esgota depois de uma distância de slip acumulada S (asperezas achatadas até a área real de contato saturar), então N_emb = S/(slip por ciclo) e slip por ciclo &prop; &delta;, logo N_emb &prop; 1/&delta;. Não existe campo para mudar esse expoente, e um teste proíbe que apareça: transformá-lo em parâmetro converteria uma <i>consequência</i> em <i>ajuste</i>.</p><p><b>&delta;ref não é um parâmetro livre</b>, é uma escolha de unidade: diz em qual amplitude o <code>N_emb</code> que você digitou vale literalmente. Fixar o par (&delta;ref, N_emb) é o mesmo que fixar N_emb numa amplitude qualquer. O default 0 desliga a forma de modo <b>exato</b> (o ramo nem roda).</p><p><b>Irmã da &rho;-unificação, não substituta:</b> aquela modula o <i>alvo</i> do assentamento pela razão de <b>força</b>; esta modula o <i>relógio</i> pelo <b>deslocamento</b>. Só é identificável em bancada que varre &delta; com força de excitação fixa — a assinatura do ensaio Junker. Em modo força ela não age.</p><p><b>Estado: validada e NÃO adotada.</b> Prediz zero-refit 4 de 4 curvas fora do ajuste (&sigma; &minus;12 a &minus;27%), mas aplicá-la à fonte inteira do CHU 2026 piorava uma curva acima da tolerância dos gates. O defeito que sobra naquela fonte é do <i>alvo</i>, não do relógio.</p></div>
+  <div data-l="en"><p><code>N_emb</code> alone assumes bedding-in takes <b>the same number of cycles</b> whatever the imposed displacement. That cannot be right: if slip is what consumes the settling, a joint sliding twice as far per cycle beds in over half as many cycles.</p><p>This field makes the clock amplitude-dependent: N_emb_eff = N_emb&middot;(&delta;ref/&delta;). <b>The exponent is 1 and is NOT adjustable</b> — it was not chosen, it falls out of the mechanism: if settling exhausts after an accumulated slip distance S (asperities flattened until the real contact area saturates), then N_emb = S/(slip per cycle) and slip per cycle &prop; &delta;, hence N_emb &prop; 1/&delta;. There is no field to change that exponent, and a test forbids one appearing: making it a parameter would turn a <i>consequence</i> into a <i>fit</i>.</p><p><b>&delta;ref is not a free parameter</b>, it is a choice of unit: it says at which amplitude the <code>N_emb</code> you typed holds literally. Fixing the pair (&delta;ref, N_emb) is the same as fixing N_emb at some amplitude. The default 0 switches the form off <b>exactly</b> (the branch never runs).</p><p><b>Sister of the &rho;-unification, not a replacement:</b> that one modulates the settling <i>target</i> by a <b>force</b> ratio; this one modulates the <i>clock</i> by <b>displacement</b>. It is only identifiable on a rig that sweeps &delta; at fixed excitation force — the Junker signature. In force mode it does nothing.</p><p><b>Status: validated and NOT adopted.</b> It predicts 4 of 4 held-out curves zero-refit (&sigma; &minus;12 to &minus;27%), but applying it to the whole CHU 2026 source degraded one curve beyond the gate tolerance. What remains wrong in that source is the <i>target</i>, not the clock.</p></div>
+</div>
+
+<div class="panel">
+  <h2 class="sec"><span data-l="pt">Equação</span><span data-l="en">Equation</span></h2>
+  <div class="eq">N_emb_eff(delta) = N_emb * (delta_ref / |delta_amp|)   [delta_ref = 0 => OFF exato]</div>
+</div>
+
+<div class="panel">
+  <h2 class="sec"><span data-l="pt">Referências</span><span data-l="en">References</span></h2>
+  <ul class="refs"><li><span data-l="pt">&sect;4.1 EmbeddingLoss &minus; relógio do assentamento</span><span data-l="en">&sect;4.1 EmbeddingLoss &minus; settling clock</span> <span class=src>(MODEL_MATH_REFERENCE.md)</span></li><li><span data-l="pt">Derivação, predição zero-refit e razão da não-adoção</span><span data-l="en">Derivation, zero-refit prediction and why it was not adopted</span> <span class=src>(New_Theory/lei_relogio_implementada_e_nao_adotada.md)</span></li></ul>
+  <p class="related"><span data-l="pt">Relacionado: </span><span data-l="en">Related: </span><a href="var_N_emb.html"><code>N_emb</code></a><a href="var_emb_depth.html"><code>emb_depth</code></a></p>
+</div>
+
+<nav class="pn"><a href="var_N_emb.html">&larr; N_emb</a><a href="index.html">&#8962; <span data-l="pt">índice</span><span data-l="en">index</span></a><a href="var_emb_conform_exp.html">emb_conform_exp &rarr;</a></nav>
+</main>
+<script>
+(function(){
+  const root=document.documentElement;
+  root.dataset.theme = localStorage.getItem('ve_theme') || 'light';
+  root.dataset.lang  = localStorage.getItem('ve_lang')  || 'pt';
+  window.veToggleTheme=function(){root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';
+    localStorage.setItem('ve_theme',root.dataset.theme);
+    window.veRedraw&&window.veRedraw(); window._cwRefresh&&window._cwRefresh();};
+  window.veToggleLang=function(){root.dataset.lang=root.dataset.lang==='pt'?'en':'pt';
+    localStorage.setItem('ve_lang',root.dataset.lang);
+    window.veRedraw&&window.veRedraw(); window._cwRefresh&&window._cwRefresh();};
+  window.veToggleNav=function(){document.body.classList.toggle('nav-open');};
+  function veVisibleTiers(){
+    const s=new Set();
+    document.querySelectorAll('.tierbox').forEach(c=>{if(c.checked)s.add(c.dataset.tier);});
+    return s;}
+  function veApply(){
+    const el=document.getElementById('ve-filter');
+    const q=(el?el.value:'').toLowerCase().trim();
+    const tiers=veVisibleTiers();
+    document.querySelectorAll('.toc .tocitem').forEach(a=>{
+      if(a.classList.contains('current')){a.style.display='';return;}  // pagina atual sempre visivel
+      const okText=(!q||a.dataset.name.indexOf(q)>=0||a.textContent.toLowerCase().indexOf(q)>=0);
+      // 'base' (Fundamentos) sempre visivel; busca por texto revela qualquer tier;
+      // sem busca, respeita as caixas de grupo
+      const okTier=(!!q)||a.dataset.tier==='base'||tiers.has(a.dataset.tier);
+      a.style.display=(okText&&okTier)?'':'none';});
+    document.querySelectorAll('.toc .grp').forEach(g=>{let n=g.nextElementSibling,any=false;
+      while(n&&n.classList.contains('tocitem')){if(n.style.display!=='none'){any=true;break;}
+        n=n.nextElementSibling;}
+      g.style.display=any?'':'none';});}
+  window.veFilter=veApply;
+  window.veTier=function(){
+    const on=[]; document.querySelectorAll('.tierbox').forEach(c=>{if(c.checked)on.push(c.dataset.tier);});
+    localStorage.setItem('ve_tiers', on.join('|')); veApply();};
+  // restaura estado das caixas (default: fisica+avancada visiveis, raras ocultas)
+  (function(){
+    const saved=localStorage.getItem('ve_tiers');
+    const on = saved!==null ? new Set(saved.split('|').filter(Boolean))
+                            : new Set(['fisica']);   // default: so as constantes fisicas
+    document.querySelectorAll('.tierbox').forEach(c=>{c.checked=on.has(c.dataset.tier);});
+    veApply();
+  })();
+
+  // ---- animações: barra de progresso de rolagem + reveal on scroll ----
+  (function(){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const bar=document.createElement('div');bar.className='ve-progress';
+    document.body.appendChild(bar);
+    function prog(){const d=document.documentElement,
+      h=d.scrollHeight-d.clientHeight;
+      bar.style.width=(h>0?((d.scrollTop||window.pageYOffset)/h*100):0)+'%';}
+    window.addEventListener('scroll',prog,{passive:true});
+    window.addEventListener('resize',prog);prog();
+    const vh=window.innerHeight||800;
+    const io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},
+      {rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.panel,figure,.cw,.eq,.gal-card,.trail,h2.sec')
+      .forEach(function(el){const r=el.getBoundingClientRect();
+        if(r.top>vh*0.9){el.classList.add('reveal');io.observe(el);}});
+  })();
+})();
+</script>
+<script>const DATA = {"name": "emb_clock_delta_ref", "symbol": "delta_ref", "unit": "m", "group": "embedding", "category": "form", "default": 0.0, "baseline_idx": 0, "curves": [{"value": 0.0, "N": [0, 10, 20, 31, 41, 52, 62, 72, 83, 93, 104, 114, 125, 135, 145, 156, 166, 177, 187, 197, 208, 218, 229, 239, 250, 260, 270, 281, 291, 302, 312, 323, 333, 343, 354, 364, 375, 385, 395, 406, 416, 427, 437, 448, 458, 468, 479, 489, 500, 510, 521, 531, 541, 552, 562, 573, 583, 593, 604, 614, 625, 635, 646, 656, 666, 677, 687, 698, 708, 719, 729, 739, 750, 760, 771, 781, 791, 802, 812, 823, 833, 844, 854, 864, 875, 885, 896, 906, 917, 927, 937, 948, 958, 969, 979, 989, 1000, 1010, 1021, 1031, 1042, 1052, 1062, 1073, 1083, 1094, 1104, 1115, 1125, 1135, 1146, 1156, 1167, 1177, 1187, 1198, 1208, 1219, 1229, 1240, 1250, 1260, 1271, 1281, 1292, 1302, 1313, 1323, 1333, 1344, 1354, 1365, 1375, 1385, 1396, 1406, 1417, 1427, 1438, 1448, 1458, 1469, 1479, 1490, 1500, 1511, 1521, 1531, 1542, 1552, 1563, 1573, 1583, 1594, 1604, 1615, 1625, 1636, 1646, 1656, 1667, 1677, 1688, 1698, 1709, 1719, 1729, 1740, 1750, 1761, 1771, 1781, 1792, 1802, 1813, 1823, 1834, 1844, 1854, 1865, 1875, 1886, 1896, 1907, 1917, 1927, 1938, 1948, 1959, 1969, 1979, 1990, 2000, 2011, 2021, 2032, 2042, 2052, 2063, 2073, 2084, 2094, 2105, 2115, 2125, 2136, 2146, 2157, 2167, 2177, 2188, 2198, 2209, 2219, 2230, 2240, 2250, 2261, 2271, 2282, 2292, 2303, 2313, 2323, 2334, 2344, 2355, 2365, 2375, 2386, 2396, 2407, 2417, 2428, 2438, 2448, 2459, 2469, 2480, 2490, 2500], "ratio": [1.0, 0.8357, 0.7578, 0.693, 0.6461, 0.6042, 0.573, 0.5469, 0.523, 0.5048, 0.4879, 0.4748, 0.4624, 0.4526, 0.444, 0.4357, 0.4289, 0.4222, 0.4167, 0.4116, 0.4064, 0.402, 0.3974, 0.3935, 0.3894, 0.3858, 0.3823, 0.3787, 0.3754, 0.372, 0.3689, 0.3656, 0.3626, 0.3597, 0.3565, 0.3537, 0.3507, 0.3479, 0.3452, 0.3423, 0.3396, 0.3367, 0.3342, 0.3313, 0.3288, 0.3263, 0.3235, 0.3211, 0.3184, 0.3159, 0.3133, 0.3109, 0.3086, 0.306, 0.3036, 0.3011, 0.2988, 0.2966, 0.2941, 0.2918, 0.2894, 0.2872, 0.2848, 0.2826, 0.2805, 0.2781, 0.276, 0.2737, 0.2716, 0.2694, 0.2673, 0.2653, 0.263, 0.261, 0.2588, 0.2569, 0.2549, 0.2527, 0.2508, 0.2487, 0.2468, 0.2447, 0.2428, 0.241, 0.2389, 0.2371, 0.2351, 0.2332, 0.2313, 0.2295, 0.2277, 0.2257, 0.224, 0.2221, 0.2203, 0.2186, 0.2167, 0.2151, 0.2132, 0.2115, 0.2097, 0.2081, 0.2064, 0.2046, 0.203, 0.2012, 0.1997, 0.1979, 0.1963, 0.1948, 0.1931, 0.1915, 0.1898, 0.1883, 0.1868, 0.1852, 0.1837, 0.1821, 0.1806, 0.179, 0.1775, 0.1761, 0.1745, 0.1731, 0.1715, 0.1701, 0.1686, 0.1672, 0.1658, 0.1643, 0.163, 0.1615, 0.1602, 0.1588, 0.1574, 0.1561, 0.1546, 0.1533, 0.1519, 0.1506, 0.1494, 0.148, 0.1467, 0.1453, 0.1441, 0.1428, 0.1415, 0.1403, 0.139, 0.1378, 0.1365, 0.1353, 0.1341, 0.1328, 0.1317, 0.1304, 0.1293, 0.128, 0.1269, 0.1258, 0.1245, 0.1234, 0.1222, 0.1211, 0.1199, 0.1188, 0.1178, 0.1166, 0.1155, 0.1144, 0.1133, 0.1123, 0.1112, 0.1101, 0.109, 0.108, 0.1069, 0.1059, 0.1049, 0.1038, 0.1028, 0.1018, 0.1008, 0.0997, 0.0988, 0.0978, 0.0968, 0.0958, 0.0948, 0.0939, 0.093, 0.092, 0.0911, 0.0901, 0.0892, 0.0882, 0.0873, 0.0864, 0.0855, 0.0846, 0.0836, 0.0828, 0.0818, 0.081, 0.0801, 0.0792, 0.0784, 0.0775, 0.0767, 0.0759, 0.075, 0.0742, 0.0733, 0.0725, 0.0716, 0.0708, 0.07, 0.0692, 0.0684, 0.0676, 0.0668, 0.066, 0.0652, 0.0645, 0.0637, 0.0629, 0.0621, 0.0614, 0.0607, 0.0599, 0.0592, 0.0584, 0.0577, 0.0569, 0.0562, 0.0555, 0.0548, 0.0541, 0.0533, 0.0527, 0.052]}, {"value": 0.0005, "N": [0, 10, 20, 31, 41, 52, 62, 72, 83, 93, 104, 114, 125, 135, 145, 156, 166, 177, 187, 197, 208, 218, 229, 239, 250, 260, 270, 281, 291, 302, 312, 323, 333, 343, 354, 364, 375, 385, 395, 406, 416, 427, 437, 448, 458, 468, 479, 489, 500, 510, 521, 531, 541, 552, 562, 573, 583, 593, 604, 614, 625, 635, 646, 656, 666, 677, 687, 698, 708, 719, 729, 739, 750, 760, 771, 781, 791, 802, 812, 823, 833, 844, 854, 864, 875, 885, 896, 906, 917, 927, 937, 948, 958, 969, 979, 989, 1000, 1010, 1021, 1031, 1042, 1052, 1062, 1073, 1083, 1094, 1104, 1115, 1125, 1135, 1146, 1156, 1167, 1177, 1187, 1198, 1208, 1219, 1229, 1240, 1250, 1260, 1271, 1281, 1292, 1302, 1313, 1323, 1333, 1344, 1354, 1365, 1375, 1385, 1396, 1406, 1417, 1427, 1438, 1448, 1458, 1469, 1479, 1490, 1500, 1511, 1521, 1531, 1542, 1552, 1563, 1573, 1583, 1594, 1604, 1615, 1625, 1636, 1646, 1656, 1667, 1677, 1688, 1698, 1709, 1719, 1729, 1740, 1750, 1761, 1771, 1781, 1792, 1802, 1813, 1823, 1834, 1844, 1854, 1865, 1875, 1886, 1896, 1907, 1917, 1927, 1938, 1948, 1959, 1969, 1979, 1990, 2000, 2011, 2021, 2032, 2042, 2052, 2063, 2073, 2084, 2094, 2105, 2115, 2125, 2136, 2146, 2157, 2167, 2177, 2188, 2198, 2209, 2219, 2230, 2240, 2250, 2261, 2271, 2282, 2292, 2303, 2313, 2323, 2334, 2344, 2355, 2365, 2375, 2386, 2396, 2407, 2417, 2428, 2438, 2448, 2459, 2469, 2480, 2490, 2500], "ratio": [1.0, 0.8357, 0.7578, 0.693, 0.6461, 0.6042, 0.573, 0.5469, 0.523, 0.5048, 0.4879, 0.4748, 0.4624, 0.4526, 0.444, 0.4357, 0.4289, 0.4222, 0.4167, 0.4116, 0.4064, 0.402, 0.3974, 0.3935, 0.3894, 0.3858, 0.3823, 0.3787, 0.3754, 0.372, 0.3689, 0.3656, 0.3626, 0.3597, 0.3565, 0.3537, 0.3507, 0.3479, 0.3452, 0.3423, 0.3396, 0.3367, 0.3342, 0.3313, 0.3288, 0.3263, 0.3235, 0.3211, 0.3184, 0.3159, 0.3133, 0.3109, 0.3086, 0.306, 0.3036, 0.3011, 0.2988, 0.2966, 0.2941, 0.2918, 0.2894, 0.2872, 0.2848, 0.2826, 0.2805, 0.2781, 0.276, 0.2737, 0.2716, 0.2694, 0.2673, 0.2653, 0.263, 0.261, 0.2588, 0.2569, 0.2549, 0.2527, 0.2508, 0.2487, 0.2468, 0.2447, 0.2428, 0.241, 0.2389, 0.2371, 0.2351, 0.2332, 0.2313, 0.2295, 0.2277, 0.2257, 0.224, 0.2221, 0.2203, 0.2186, 0.2167, 0.2151, 0.2132, 0.2115, 0.2097, 0.2081, 0.2064, 0.2046, 0.203, 0.2012, 0.1997, 0.1979, 0.1963, 0.1948, 0.1931, 0.1915, 0.1898, 0.1883, 0.1868, 0.1852, 0.1837, 0.1821, 0.1806, 0.179, 0.1775, 0.1761, 0.1745, 0.1731, 0.1715, 0.1701, 0.1686, 0.1672, 0.1658, 0.1643, 0.163, 0.1615, 0.1602, 0.1588, 0.1574, 0.1561, 0.1546, 0.1533, 0.1519, 0.1506, 0.1494, 0.148, 0.1467, 0.1453, 0.1441, 0.1428, 0.1415, 0.1403, 0.139, 0.1378, 0.1365, 0.1353, 0.1341, 0.1328, 0.1317, 0.1304, 0.1293, 0.128, 0.1269, 0.1258, 0.1245, 0.1234, 0.1222, 0.1211, 0.1199, 0.1188, 0.1178, 0.1166, 0.1155, 0.1144, 0.1133, 0.1123, 0.1112, 0.1101, 0.109, 0.108, 0.1069, 0.1059, 0.1049, 0.1038, 0.1028, 0.1018, 0.1008, 0.0997, 0.0988, 0.0978, 0.0968, 0.0958, 0.0948, 0.0939, 0.093, 0.092, 0.0911, 0.0901, 0.0892, 0.0882, 0.0873, 0.0864, 0.0855, 0.0846, 0.0836, 0.0828, 0.0818, 0.081, 0.0801, 0.0792, 0.0784, 0.0775, 0.0767, 0.0759, 0.075, 0.0742, 0.0733, 0.0725, 0.0716, 0.0708, 0.07, 0.0692, 0.0684, 0.0676, 0.0668, 0.066, 0.0652, 0.0645, 0.0637, 0.0629, 0.0621, 0.0614, 0.0607, 0.0599, 0.0592, 0.0584, 0.0577, 0.0569, 0.0562, 0.0555, 0.0548, 0.0541, 0.0533, 0.0527, 0.052]}, {"value": 0.001, "N": [0, 10, 20, 31, 41, 52, 62, 72, 83, 93, 104, 114, 125, 135, 145, 156, 166, 177, 187, 197, 208, 218, 229, 239, 250, 260, 270, 281, 291, 302, 312, 323, 333, 343, 354, 364, 375, 385, 395, 406, 416, 427, 437, 448, 458, 468, 479, 489, 500, 510, 521, 531, 541, 552, 562, 573, 583, 593, 604, 614, 625, 635, 646, 656, 666, 677, 687, 698, 708, 719, 729, 739, 750, 760, 771, 781, 791, 802, 812, 823, 833, 844, 854, 864, 875, 885, 896, 906, 917, 927, 937, 948, 958, 969, 979, 989, 1000, 1010, 1021, 1031, 1042, 1052, 1062, 1073, 1083, 1094, 1104, 1115, 1125, 1135, 1146, 1156, 1167, 1177, 1187, 1198, 1208, 1219, 1229, 1240, 1250, 1260, 1271, 1281, 1292, 1302, 1313, 1323, 1333, 1344, 1354, 1365, 1375, 1385, 1396, 1406, 1417, 1427, 1438, 1448, 1458, 1469, 1479, 1490, 1500, 1511, 1521, 1531, 1542, 1552, 1563, 1573, 1583, 1594, 1604, 1615, 1625, 1636, 1646, 1656, 1667, 1677, 1688, 1698, 1709, 1719, 1729, 1740, 1750, 1761, 1771, 1781, 1792, 1802, 1813, 1823, 1834, 1844, 1854, 1865, 1875, 1886, 1896, 1907, 1917, 1927, 1938, 1948, 1959, 1969, 1979, 1990, 2000, 2011, 2021, 2032, 2042, 2052, 2063, 2073, 2084, 2094, 2105, 2115, 2125, 2136, 2146, 2157, 2167, 2177, 2188, 2198, 2209, 2219, 2230, 2240, 2250, 2261, 2271, 2282, 2292, 2303, 2313, 2323, 2334, 2344, 2355, 2365, 2375, 2386, 2396, 2407, 2417, 2428, 2438, 2448, 2459, 2469, 2480, 2490, 2500], "ratio": [1.0, 0.8673, 0.8118, 0.7634, 0.7259, 0.6896, 0.6602, 0.6337, 0.6074, 0.5857, 0.5641, 0.5462, 0.5282, 0.5132, 0.4995, 0.4855, 0.4739, 0.462, 0.4521, 0.4428, 0.4334, 0.4254, 0.4171, 0.4102, 0.403, 0.3968, 0.391, 0.385, 0.3798, 0.3744, 0.3697, 0.3648, 0.3605, 0.3564, 0.3521, 0.3483, 0.3443, 0.3408, 0.3374, 0.3338, 0.3306, 0.3272, 0.3242, 0.321, 0.3181, 0.3153, 0.3123, 0.3096, 0.3067, 0.3041, 0.3013, 0.2988, 0.2964, 0.2937, 0.2913, 0.2887, 0.2864, 0.2841, 0.2816, 0.2794, 0.2769, 0.2748, 0.2724, 0.2702, 0.2681, 0.2658, 0.2637, 0.2615, 0.2594, 0.2572, 0.2552, 0.2532, 0.251, 0.2491, 0.247, 0.245, 0.2431, 0.241, 0.2392, 0.2371, 0.2353, 0.2333, 0.2314, 0.2296, 0.2277, 0.2259, 0.224, 0.2222, 0.2203, 0.2186, 0.2168, 0.215, 0.2133, 0.2114, 0.2098, 0.2081, 0.2063, 0.2047, 0.2029, 0.2013, 0.1995, 0.1979, 0.1964, 0.1946, 0.1931, 0.1914, 0.1899, 0.1882, 0.1867, 0.1852, 0.1835, 0.182, 0.1804, 0.179, 0.1775, 0.1759, 0.1745, 0.1729, 0.1715, 0.17, 0.1686, 0.1672, 0.1657, 0.1643, 0.1628, 0.1615, 0.16, 0.1587, 0.1573, 0.1559, 0.1546, 0.1532, 0.1519, 0.1506, 0.1492, 0.1479, 0.1465, 0.1453, 0.1439, 0.1427, 0.1415, 0.1401, 0.1389, 0.1376, 0.1364, 0.1351, 0.1339, 0.1328, 0.1315, 0.1303, 0.1291, 0.1279, 0.1268, 0.1256, 0.1245, 0.1232, 0.1221, 0.1209, 0.1199, 0.1188, 0.1176, 0.1165, 0.1154, 0.1143, 0.1132, 0.1121, 0.1111, 0.11, 0.1089, 0.1078, 0.1068, 0.1058, 0.1047, 0.1037, 0.1027, 0.1017, 0.1006, 0.0997, 0.0987, 0.0976, 0.0967, 0.0957, 0.0947, 0.0937, 0.0928, 0.0919, 0.0909, 0.09, 0.089, 0.0881, 0.0872, 0.0863, 0.0854, 0.0844, 0.0836, 0.0826, 0.0818, 0.0809, 0.08, 0.0792, 0.0782, 0.0774, 0.0765, 0.0757, 0.0749, 0.074, 0.0732, 0.0723, 0.0715, 0.0708, 0.0699, 0.0691, 0.0683, 0.0675, 0.0667, 0.0659, 0.0652, 0.0643, 0.0636, 0.0628, 0.0621, 0.0613, 0.0605, 0.0598, 0.059, 0.0583, 0.0575, 0.0568, 0.0561, 0.0554, 0.0547, 0.0539, 0.0533, 0.0525, 0.0519, 0.0512, 0.0505, 0.0498, 0.0491, 0.0484, 0.0478]}, {"value": 0.0015, "N": [0, 10, 20, 31, 41, 52, 62, 72, 83, 93, 104, 114, 125, 135, 145, 156, 166, 177, 187, 197, 208, 218, 229, 239, 250, 260, 270, 281, 291, 302, 312, 323, 333, 343, 354, 364, 375, 385, 395, 406, 416, 427, 437, 448, 458, 468, 479, 489, 500, 510, 521, 531, 541, 552, 562, 573, 583, 593, 604, 614, 625, 635, 646, 656, 666, 677, 687, 698, 708, 719, 729, 739, 750, 760, 771, 781, 791, 802, 812, 823, 833, 844, 854, 864, 875, 885, 896, 906, 917, 927, 937, 948, 958, 969, 979, 989, 1000, 1010, 1021, 1031, 1042, 1052, 1062, 1073, 1083, 1094, 1104, 1115, 1125, 1135, 1146, 1156, 1167, 1177, 1187, 1198, 1208, 1219, 1229, 1240, 1250, 1260, 1271, 1281, 1292, 1302, 1313, 1323, 1333, 1344, 1354, 1365, 1375, 1385, 1396, 1406, 1417, 1427, 1438, 1448, 1458, 1469, 1479, 1490, 1500, 1511, 1521, 1531, 1542, 1552, 1563, 1573, 1583, 1594, 1604, 1615, 1625, 1636, 1646, 1656, 1667, 1677, 1688, 1698, 1709, 1719, 1729, 1740, 1750, 1761, 1771, 1781, 1792, 1802, 1813, 1823, 1834, 1844, 1854, 1865, 1875, 1886, 1896, 1907, 1917, 1927, 1938, 1948, 1959, 1969, 1979, 1990, 2000, 2011, 2021, 2032, 2042, 2052, 2063, 2073, 2084, 2094, 2105, 2115, 2125, 2136, 2146, 2157, 2167, 2177, 2188, 2198, 2209, 2219, 2230, 2240, 2250, 2261, 2271, 2282, 2292, 2303, 2313, 2323, 2334, 2344, 2355, 2365, 2375, 2386, 2396, 2407, 2417, 2428, 2438, 2448, 2459, 2469, 2480, 2490, 2500], "ratio": [1.0, 0.8785, 0.8323, 0.7923, 0.7608, 0.7298, 0.7041, 0.6803, 0.6561, 0.6356, 0.6147, 0.5968, 0.5784, 0.5628, 0.548, 0.5327, 0.5196, 0.5061, 0.4944, 0.4834, 0.4719, 0.462, 0.4517, 0.4429, 0.4336, 0.4256, 0.4179, 0.4099, 0.403, 0.3957, 0.3894, 0.3828, 0.377, 0.3714, 0.3656, 0.3605, 0.3551, 0.3503, 0.3458, 0.341, 0.3367, 0.3322, 0.3283, 0.3241, 0.3204, 0.3168, 0.3129, 0.3095, 0.3059, 0.3027, 0.2993, 0.2962, 0.2932, 0.2901, 0.2872, 0.2842, 0.2815, 0.2788, 0.276, 0.2734, 0.2707, 0.2682, 0.2655, 0.2632, 0.2608, 0.2583, 0.2561, 0.2536, 0.2514, 0.2491, 0.2469, 0.2448, 0.2426, 0.2405, 0.2383, 0.2363, 0.2343, 0.2322, 0.2303, 0.2282, 0.2263, 0.2243, 0.2224, 0.2206, 0.2186, 0.2168, 0.2149, 0.2131, 0.2112, 0.2095, 0.2078, 0.2059, 0.2043, 0.2024, 0.2008, 0.1992, 0.1974, 0.1958, 0.194, 0.1924, 0.1907, 0.1892, 0.1876, 0.1859, 0.1844, 0.1828, 0.1813, 0.1796, 0.1782, 0.1767, 0.1751, 0.1737, 0.1721, 0.1707, 0.1692, 0.1677, 0.1663, 0.1648, 0.1634, 0.1619, 0.1606, 0.1592, 0.1578, 0.1564, 0.155, 0.1537, 0.1523, 0.151, 0.1497, 0.1483, 0.147, 0.1457, 0.1444, 0.1432, 0.1418, 0.1406, 0.1393, 0.1381, 0.1367, 0.1356, 0.1344, 0.1331, 0.1319, 0.1306, 0.1295, 0.1282, 0.1271, 0.126, 0.1247, 0.1236, 0.1224, 0.1213, 0.1202, 0.119, 0.118, 0.1168, 0.1157, 0.1146, 0.1135, 0.1125, 0.1113, 0.1103, 0.1092, 0.1082, 0.107, 0.106, 0.105, 0.104, 0.103, 0.1019, 0.1009, 0.1, 0.0989, 0.098, 0.0969, 0.096, 0.0949, 0.094, 0.0931, 0.0921, 0.0912, 0.0902, 0.0893, 0.0883, 0.0874, 0.0865, 0.0856, 0.0847, 0.0837, 0.0829, 0.082, 0.0811, 0.0802, 0.0793, 0.0785, 0.0776, 0.0768, 0.0759, 0.0751, 0.0742, 0.0734, 0.0726, 0.0717, 0.0709, 0.0701, 0.0693, 0.0685, 0.0677, 0.0669, 0.0661, 0.0653, 0.0646, 0.0637, 0.063, 0.0622, 0.0615, 0.0607, 0.06, 0.0592, 0.0585, 0.0578, 0.057, 0.0563, 0.0556, 0.0548, 0.0541, 0.0534, 0.0527, 0.0521, 0.0513, 0.0507, 0.0499, 0.0493, 0.0486, 0.0479, 0.0473, 0.0466, 0.0459, 0.0452, 0.0446, 0.044]}, {"value": 0.002, "N": [0, 10, 20, 31, 41, 52, 62, 72, 83, 93, 104, 114, 125, 135, 145, 156, 166, 177, 187, 197, 208, 218, 229, 239, 250, 260, 270, 281, 291, 302, 312, 323, 333, 343, 354, 364, 375, 385, 395, 406, 416, 427, 437, 448, 458, 468, 479, 489, 500, 510, 521, 531, 541, 552, 562, 573, 583, 593, 604, 614, 625, 635, 646, 656, 666, 677, 687, 698, 708, 719, 729, 739, 750, 760, 771, 781, 791, 802, 812, 823, 833, 844, 854, 864, 875, 885, 896, 906, 917, 927, 937, 948, 958, 969, 979, 989, 1000, 1010, 1021, 1031, 1042, 1052, 1062, 1073, 1083, 1094, 1104, 1115, 1125, 1135, 1146, 1156, 1167, 1177, 1187, 1198, 1208, 1219, 1229, 1240, 1250, 1260, 1271, 1281, 1292, 1302, 1313, 1323, 1333, 1344, 1354, 1365, 1375, 1385, 1396, 1406, 1417, 1427, 1438, 1448, 1458, 1469, 1479, 1490, 1500, 1511, 1521, 1531, 1542, 1552, 1563, 1573, 1583, 1594, 1604, 1615, 1625, 1636, 1646, 1656, 1667, 1677, 1688, 1698, 1709, 1719, 1729, 1740, 1750, 1761, 1771, 1781, 1792, 1802, 1813, 1823, 1834, 1844, 1854, 1865, 1875, 1886, 1896, 1907, 1917, 1927, 1938, 1948, 1959, 1969, 1979, 1990, 2000, 2011, 2021, 2032, 2042, 2052, 2063, 2073, 2084, 2094, 2105, 2115, 2125, 2136, 2146, 2157, 2167, 2177, 2188, 2198, 2209, 2219, 2230, 2240, 2250, 2261, 2271, 2282, 2292, 2303, 2313, 2323, 2334, 2344, 2355, 2365, 2375, 2386, 2396, 2407, 2417, 2428, 2438, 2448, 2459, 2469, 2480, 2490, 2500], "ratio": [1.0, 0.8843, 0.8431, 0.8079, 0.7802, 0.7527, 0.7297, 0.7083, 0.6862, 0.6673, 0.6476, 0.6307, 0.6131, 0.5978, 0.5833, 0.5681, 0.5549, 0.541, 0.529, 0.5175, 0.5054, 0.4948, 0.4837, 0.474, 0.4638, 0.4549, 0.4464, 0.4373, 0.4294, 0.4211, 0.4138, 0.406, 0.3993, 0.3927, 0.3858, 0.3797, 0.3732, 0.3676, 0.3621, 0.3563, 0.3511, 0.3457, 0.3409, 0.3358, 0.3313, 0.3269, 0.3222, 0.3181, 0.3137, 0.3098, 0.3056, 0.3019, 0.2983, 0.2945, 0.2911, 0.2874, 0.2842, 0.281, 0.2776, 0.2746, 0.2713, 0.2684, 0.2653, 0.2626, 0.2598, 0.2569, 0.2543, 0.2515, 0.249, 0.2463, 0.2439, 0.2415, 0.239, 0.2367, 0.2342, 0.232, 0.2298, 0.2275, 0.2253, 0.2231, 0.221, 0.2188, 0.2168, 0.2148, 0.2127, 0.2108, 0.2087, 0.2069, 0.2049, 0.203, 0.2012, 0.1993, 0.1975, 0.1956, 0.1939, 0.1922, 0.1904, 0.1887, 0.1869, 0.1853, 0.1836, 0.182, 0.1804, 0.1787, 0.1771, 0.1755, 0.174, 0.1723, 0.1708, 0.1694, 0.1678, 0.1663, 0.1647, 0.1633, 0.1619, 0.1604, 0.159, 0.1575, 0.1561, 0.1546, 0.1533, 0.152, 0.1505, 0.1492, 0.1478, 0.1465, 0.1451, 0.1438, 0.1426, 0.1412, 0.14, 0.1386, 0.1374, 0.1362, 0.1349, 0.1337, 0.1324, 0.1312, 0.1299, 0.1287, 0.1276, 0.1263, 0.1252, 0.124, 0.1228, 0.1216, 0.1205, 0.1194, 0.1182, 0.1171, 0.116, 0.1149, 0.1138, 0.1127, 0.1116, 0.1105, 0.1095, 0.1083, 0.1073, 0.1063, 0.1052, 0.1042, 0.1031, 0.1021, 0.1011, 0.1001, 0.0991, 0.0981, 0.0971, 0.0961, 0.0952, 0.0942, 0.0932, 0.0923, 0.0913, 0.0904, 0.0894, 0.0885, 0.0876, 0.0866, 0.0857, 0.0848, 0.0839, 0.083, 0.0821, 0.0813, 0.0803, 0.0795, 0.0786, 0.0777, 0.0769, 0.076, 0.0752, 0.0743, 0.0735, 0.0726, 0.0718, 0.071, 0.0702, 0.0694, 0.0686, 0.0678, 0.0669, 0.0662, 0.0654, 0.0646, 0.0639, 0.0631, 0.0623, 0.0616, 0.0608, 0.0601, 0.0593, 0.0586, 0.0578, 0.0571, 0.0564, 0.0556, 0.0549, 0.0542, 0.0535, 0.0528, 0.0521, 0.0514, 0.0507, 0.05, 0.0493, 0.0487, 0.048, 0.0473, 0.0467, 0.046, 0.0453, 0.0446, 0.044, 0.0434, 0.0427, 0.0421, 0.0414, 0.0408, 0.0402]}, {"value": 0.0025, "N": [0, 10, 20, 31, 41, 52, 62, 72, 83, 93, 104, 114, 125, 135, 145, 156, 166, 177, 187, 197, 208, 218, 229, 239, 250, 260, 270, 281, 291, 302, 312, 323, 333, 343, 354, 364, 375, 385, 395, 406, 416, 427, 437, 448, 458, 468, 479, 489, 500, 510, 521, 531, 541, 552, 562, 573, 583, 593, 604, 614, 625, 635, 646, 656, 666, 677, 687, 698, 708, 719, 729, 739, 750, 760, 771, 781, 791, 802, 812, 823, 833, 844, 854, 864, 875, 885, 896, 906, 917, 927, 937, 948, 958, 969, 979, 989, 1000, 1010, 1021, 1031, 1042, 1052, 1062, 1073, 1083, 1094, 1104, 1115, 1125, 1135, 1146, 1156, 1167, 1177, 1187, 1198, 1208, 1219, 1229, 1240, 1250, 1260, 1271, 1281, 1292, 1302, 1313, 1323, 1333, 1344, 1354, 1365, 1375, 1385, 1396, 1406, 1417, 1427, 1438, 1448, 1458, 1469, 1479, 1490, 1500, 1511, 1521, 1531, 1542, 1552, 1563, 1573, 1583, 1594, 1604, 1615, 1625, 1636, 1646, 1656, 1667, 1677, 1688, 1698, 1709, 1719, 1729, 1740, 1750, 1761, 1771, 1781, 1792, 1802, 1813, 1823, 1834, 1844, 1854, 1865, 1875, 1886, 1896, 1907, 1917, 1927, 1938, 1948, 1959, 1969, 1979, 1990, 2000, 2011, 2021, 2032, 2042, 2052, 2063, 2073, 2084, 2094, 2105, 2115, 2125, 2136, 2146, 2157, 2167, 2177, 2188, 2198, 2209, 2219, 2230, 2240, 2250, 2261, 2271, 2282, 2292, 2303, 2313, 2323, 2334, 2344, 2355, 2365, 2375, 2386, 2396, 2407, 2417, 2428, 2438, 2448, 2459, 2469, 2480, 2490, 2500], "ratio": [1.0, 0.8878, 0.8498, 0.8177, 0.7925, 0.7675, 0.7465, 0.7268, 0.7064, 0.6888, 0.6705, 0.6545, 0.6378, 0.6232, 0.6092, 0.5944, 0.5815, 0.5679, 0.556, 0.5445, 0.5323, 0.5216, 0.5103, 0.5003, 0.4898, 0.4805, 0.4716, 0.4621, 0.4537, 0.4448, 0.437, 0.4286, 0.4213, 0.4142, 0.4066, 0.3999, 0.3928, 0.3866, 0.3805, 0.374, 0.3682, 0.3621, 0.3567, 0.3509, 0.3458, 0.3408, 0.3355, 0.3307, 0.3257, 0.3212, 0.3165, 0.3122, 0.3081, 0.3037, 0.2997, 0.2955, 0.2918, 0.2881, 0.2842, 0.2807, 0.277, 0.2736, 0.2701, 0.2669, 0.2638, 0.2604, 0.2574, 0.2542, 0.2513, 0.2482, 0.2455, 0.2428, 0.2399, 0.2373, 0.2345, 0.232, 0.2295, 0.2269, 0.2245, 0.2219, 0.2197, 0.2172, 0.215, 0.2128, 0.2104, 0.2083, 0.206, 0.204, 0.2018, 0.1998, 0.1978, 0.1957, 0.1938, 0.1918, 0.1899, 0.1881, 0.1861, 0.1843, 0.1824, 0.1807, 0.1788, 0.1771, 0.1754, 0.1736, 0.172, 0.1702, 0.1687, 0.1669, 0.1654, 0.1638, 0.1622, 0.1607, 0.159, 0.1576, 0.1561, 0.1545, 0.1531, 0.1516, 0.1502, 0.1486, 0.1473, 0.1459, 0.1444, 0.1431, 0.1417, 0.1404, 0.1389, 0.1377, 0.1364, 0.135, 0.1338, 0.1324, 0.1312, 0.13, 0.1286, 0.1274, 0.1261, 0.125, 0.1237, 0.1225, 0.1214, 0.1201, 0.119, 0.1178, 0.1167, 0.1155, 0.1144, 0.1133, 0.1121, 0.111, 0.1099, 0.1088, 0.1078, 0.1067, 0.1056, 0.1045, 0.1035, 0.1024, 0.1014, 0.1004, 0.0993, 0.0983, 0.0973, 0.0963, 0.0953, 0.0943, 0.0934, 0.0924, 0.0914, 0.0904, 0.0895, 0.0886, 0.0876, 0.0867, 0.0857, 0.0848, 0.0839, 0.083, 0.0821, 0.0812, 0.0803, 0.0794, 0.0786, 0.0777, 0.0768, 0.076, 0.0751, 0.0743, 0.0734, 0.0726, 0.0718, 0.0709, 0.0701, 0.0693, 0.0685, 0.0676, 0.0669, 0.0661, 0.0653, 0.0645, 0.0637, 0.063, 0.0622, 0.0614, 0.0607, 0.0599, 0.0592, 0.0584, 0.0577, 0.057, 0.0562, 0.0555, 0.0548, 0.0541, 0.0533, 0.0526, 0.052, 0.0512, 0.0506, 0.0498, 0.0492, 0.0485, 0.0478, 0.0472, 0.0465, 0.0458, 0.0451, 0.0445, 0.0439, 0.0432, 0.0426, 0.0419, 0.0413, 0.0407, 0.0401, 0.0395, 0.0388, 0.0382, 0.0376, 0.037, 0.0364]}, {"value": 0.003, "N": [0, 10, 20, 31, 41, 52, 62, 72, 83, 93, 104, 114, 125, 135, 145, 156, 166, 177, 187, 197, 208, 218, 229, 239, 250, 260, 270, 281, 291, 302, 312, 323, 333, 343, 354, 364, 375, 385, 395, 406, 416, 427, 437, 448, 458, 468, 479, 489, 500, 510, 521, 531, 541, 552, 562, 573, 583, 593, 604, 614, 625, 635, 646, 656, 666, 677, 687, 698, 708, 719, 729, 739, 750, 760, 771, 781, 791, 802, 812, 823, 833, 844, 854, 864, 875, 885, 896, 906, 917, 927, 937, 948, 958, 969, 979, 989, 1000, 1010, 1021, 1031, 1042, 1052, 1062, 1073, 1083, 1094, 1104, 1115, 1125, 1135, 1146, 1156, 1167, 1177, 1187, 1198, 1208, 1219, 1229, 1240, 1250, 1260, 1271, 1281, 1292, 1302, 1313, 1323, 1333, 1344, 1354, 1365, 1375, 1385, 1396, 1406, 1417, 1427, 1438, 1448, 1458, 1469, 1479, 1490, 1500, 1511, 1521, 1531, 1542, 1552, 1563, 1573, 1583, 1594, 1604, 1615, 1625, 1636, 1646, 1656, 1667, 1677, 1688, 1698, 1709, 1719, 1729, 1740, 1750, 1761, 1771, 1781, 1792, 1802, 1813, 1823, 1834, 1844, 1854, 1865, 1875, 1886, 1896, 1907, 1917, 1927, 1938, 1948, 1959, 1969, 1979, 1990, 2000, 2011, 2021, 2032, 2042, 2052, 2063, 2073, 2084, 2094, 2105, 2115, 2125, 2136, 2146, 2157, 2167, 2177, 2188, 2198, 2209, 2219, 2230, 2240, 2250, 2261, 2271, 2282, 2292, 2303, 2313, 2323, 2334, 2344, 2355, 2365, 2375, 2386, 2396, 2407, 2417, 2428, 2438, 2448, 2459, 2469, 2480, 2490, 2500], "ratio": [1.0, 0.8902, 0.8543, 0.8244, 0.801, 0.7778, 0.7583, 0.74, 0.7209, 0.7044, 0.6871, 0.672, 0.6561, 0.6422, 0.6288, 0.6145, 0.6021, 0.5888, 0.5771, 0.5658, 0.5538, 0.5432, 0.5319, 0.522, 0.5114, 0.5021, 0.493, 0.4833, 0.4747, 0.4656, 0.4575, 0.4489, 0.4413, 0.4339, 0.4259, 0.4189, 0.4114, 0.4048, 0.3983, 0.3914, 0.3852, 0.3786, 0.3728, 0.3666, 0.3611, 0.3557, 0.3499, 0.3447, 0.3392, 0.3343, 0.3291, 0.3244, 0.3199, 0.315, 0.3107, 0.306, 0.3019, 0.2978, 0.2935, 0.2896, 0.2854, 0.2817, 0.2777, 0.2742, 0.2707, 0.2669, 0.2636, 0.26, 0.2568, 0.2534, 0.2503, 0.2473, 0.244, 0.2411, 0.238, 0.2352, 0.2325, 0.2295, 0.2269, 0.224, 0.2215, 0.2187, 0.2163, 0.2138, 0.2112, 0.2089, 0.2064, 0.2041, 0.2017, 0.1995, 0.1973, 0.195, 0.1929, 0.1906, 0.1886, 0.1866, 0.1845, 0.1825, 0.1804, 0.1786, 0.1765, 0.1747, 0.1729, 0.1709, 0.1692, 0.1673, 0.1656, 0.1637, 0.1621, 0.1604, 0.1586, 0.157, 0.1553, 0.1538, 0.1522, 0.1505, 0.149, 0.1474, 0.1459, 0.1443, 0.1429, 0.1415, 0.1399, 0.1385, 0.137, 0.1357, 0.1342, 0.1329, 0.1316, 0.1301, 0.1288, 0.1274, 0.1262, 0.1249, 0.1236, 0.1223, 0.121, 0.1198, 0.1185, 0.1173, 0.1161, 0.1149, 0.1137, 0.1125, 0.1114, 0.1101, 0.109, 0.1079, 0.1067, 0.1057, 0.1045, 0.1034, 0.1024, 0.1012, 0.1002, 0.0991, 0.0981, 0.097, 0.096, 0.095, 0.0939, 0.0929, 0.0919, 0.0909, 0.0899, 0.089, 0.088, 0.087, 0.0861, 0.0851, 0.0842, 0.0833, 0.0823, 0.0814, 0.0805, 0.0796, 0.0786, 0.0778, 0.0769, 0.076, 0.0752, 0.0742, 0.0734, 0.0725, 0.0717, 0.0709, 0.07, 0.0692, 0.0683, 0.0676, 0.0668, 0.0659, 0.0652, 0.0643, 0.0636, 0.0627, 0.062, 0.0612, 0.0604, 0.0597, 0.0589, 0.0582, 0.0574, 0.0567, 0.056, 0.0552, 0.0545, 0.0537, 0.0531, 0.0524, 0.0516, 0.051, 0.0502, 0.0496, 0.0488, 0.0482, 0.0475, 0.0468, 0.0462, 0.0455, 0.0448, 0.0441, 0.0435, 0.0429, 0.0422, 0.0416, 0.0409, 0.0403, 0.0397, 0.0391, 0.0385, 0.0378, 0.0372, 0.0366, 0.036, 0.0354, 0.0348, 0.0342, 0.0336, 0.0331, 0.0325]}, {"value": 0.0035, "N": [0, 10, 20, 31, 41, 52, 62, 72, 83, 93, 104, 114, 125, 135, 145, 156, 166, 177, 187, 197, 208, 218, 229, 239, 250, 260, 270, 281, 291, 302, 312, 323, 333, 343, 354, 364, 375, 385, 395, 406, 416, 427, 437, 448, 458, 468, 479, 489, 500, 510, 521, 531, 541, 552, 562, 573, 583, 593, 604, 614, 625, 635, 646, 656, 666, 677, 687, 698, 708, 719, 729, 739, 750, 760, 771, 781, 791, 802, 812, 823, 833, 844, 854, 864, 875, 885, 896, 906, 917, 927, 937, 948, 958, 969, 979, 989, 1000, 1010, 1021, 1031, 1042, 1052, 1062, 1073, 1083, 1094, 1104, 1115, 1125, 1135, 1146, 1156, 1167, 1177, 1187, 1198, 1208, 1219, 1229, 1240, 1250, 1260, 1271, 1281, 1292, 1302, 1313, 1323, 1333, 1344, 1354, 1365, 1375, 1385, 1396, 1406, 1417, 1427, 1438, 1448, 1458, 1469, 1479, 1490, 1500, 1511, 1521, 1531, 1542, 1552, 1563, 1573, 1583, 1594, 1604, 1615, 1625, 1636, 1646, 1656, 1667, 1677, 1688, 1698, 1709, 1719, 1729, 1740, 1750, 1761, 1771, 1781, 1792, 1802, 1813, 1823, 1834, 1844, 1854, 1865, 1875, 1886, 1896, 1907, 1917, 1927, 1938, 1948, 1959, 1969, 1979, 1990, 2000, 2011, 2021, 2032, 2042, 2052, 2063, 2073, 2084, 2094, 2105, 2115, 2125, 2136, 2146, 2157, 2167, 2177, 2188, 2198, 2209, 2219, 2230, 2240, 2250, 2261, 2271, 2282, 2292, 2303, 2313, 2323, 2334, 2344, 2355, 2365, 2375, 2386, 2396, 2407, 2417, 2428, 2438, 2448, 2459, 2469, 2480, 2490, 2500], "ratio": [1.0, 0.8919, 0.8576, 0.8293, 0.8072, 0.7854, 0.767, 0.7497, 0.7317, 0.7161, 0.6997, 0.6854, 0.6702, 0.6569, 0.644, 0.6303, 0.6182, 0.6054, 0.594, 0.583, 0.5712, 0.5608, 0.5497, 0.5399, 0.5294, 0.5201, 0.511, 0.5013, 0.4927, 0.4835, 0.4753, 0.4666, 0.4588, 0.4513, 0.4432, 0.436, 0.4282, 0.4214, 0.4147, 0.4075, 0.4011, 0.3943, 0.3882, 0.3817, 0.3759, 0.3702, 0.3641, 0.3586, 0.3528, 0.3476, 0.3421, 0.3371, 0.3322, 0.327, 0.3224, 0.3174, 0.3129, 0.3086, 0.3039, 0.2997, 0.2952, 0.2912, 0.2869, 0.283, 0.2792, 0.2752, 0.2715, 0.2676, 0.2641, 0.2604, 0.257, 0.2537, 0.2502, 0.247, 0.2436, 0.2405, 0.2375, 0.2343, 0.2314, 0.2283, 0.2255, 0.2225, 0.2198, 0.2171, 0.2143, 0.2117, 0.209, 0.2065, 0.2038, 0.2014, 0.1991, 0.1965, 0.1942, 0.1918, 0.1896, 0.1874, 0.185, 0.1829, 0.1807, 0.1786, 0.1764, 0.1744, 0.1725, 0.1703, 0.1684, 0.1664, 0.1645, 0.1625, 0.1608, 0.159, 0.1571, 0.1554, 0.1535, 0.1518, 0.1502, 0.1484, 0.1468, 0.145, 0.1434, 0.1417, 0.1402, 0.1387, 0.1371, 0.1356, 0.134, 0.1325, 0.131, 0.1296, 0.1282, 0.1267, 0.1253, 0.1239, 0.1225, 0.1212, 0.1198, 0.1185, 0.1171, 0.1159, 0.1145, 0.1133, 0.1121, 0.1108, 0.1096, 0.1083, 0.1071, 0.1058, 0.1047, 0.1036, 0.1024, 0.1012, 0.1, 0.099, 0.0979, 0.0967, 0.0957, 0.0945, 0.0935, 0.0924, 0.0913, 0.0903, 0.0892, 0.0883, 0.0872, 0.0862, 0.0852, 0.0842, 0.0833, 0.0822, 0.0813, 0.0803, 0.0794, 0.0785, 0.0775, 0.0766, 0.0757, 0.0748, 0.0738, 0.073, 0.0721, 0.0712, 0.0704, 0.0695, 0.0686, 0.0677, 0.0669, 0.0661, 0.0652, 0.0645, 0.0636, 0.0628, 0.062, 0.0612, 0.0604, 0.0596, 0.0589, 0.0581, 0.0573, 0.0566, 0.0558, 0.0551, 0.0543, 0.0536, 0.0528, 0.0521, 0.0514, 0.0506, 0.05, 0.0492, 0.0485, 0.0479, 0.0471, 0.0465, 0.0458, 0.0451, 0.0444, 0.0438, 0.0431, 0.0424, 0.0418, 0.0411, 0.0405, 0.0398, 0.0392, 0.0386, 0.038, 0.0374, 0.0367, 0.0361, 0.0355, 0.0349, 0.0343, 0.0337, 0.0331, 0.0325, 0.0319, 0.0314, 0.0308, 0.0302, 0.0296, 0.0291, 0.0285]}, {"value": 0.004, "N": [0, 10, 20, 31, 41, 52, 62, 72, 83, 93, 104, 114, 125, 135, 145, 156, 166, 177, 187, 197, 208, 218, 229, 239, 250, 260, 270, 281, 291, 302, 312, 323, 333, 343, 354, 364, 375, 385, 395, 406, 416, 427, 437, 448, 458, 468, 479, 489, 500, 510, 521, 531, 541, 552, 562, 573, 583, 593, 604, 614, 625, 635, 646, 656, 666, 677, 687, 698, 708, 719, 729, 739, 750, 760, 771, 781, 791, 802, 812, 823, 833, 844, 854, 864, 875, 885, 896, 906, 917, 927, 937, 948, 958, 969, 979, 989, 1000, 1010, 1021, 1031, 1042, 1052, 1062, 1073, 1083, 1094, 1104, 1115, 1125, 1135, 1146, 1156, 1167, 1177, 1187, 1198, 1208, 1219, 1229, 1240, 1250, 1260, 1271, 1281, 1292, 1302, 1313, 1323, 1333, 1344, 1354, 1365, 1375, 1385, 1396, 1406, 1417, 1427, 1438, 1448, 1458, 1469, 1479, 1490, 1500, 1511, 1521, 1531, 1542, 1552, 1563, 1573, 1583, 1594, 1604, 1615, 1625, 1636, 1646, 1656, 1667, 1677, 1688, 1698, 1709, 1719, 1729, 1740, 1750, 1761, 1771, 1781, 1792, 1802, 1813, 1823, 1834, 1844, 1854, 1865, 1875, 1886, 1896, 1907, 1917, 1927, 1938, 1948, 1959, 1969, 1979, 1990, 2000, 2011, 2021, 2032, 2042, 2052, 2063, 2073, 2084, 2094, 2105, 2115, 2125, 2136, 2146, 2157, 2167, 2177, 2188, 2198, 2209, 2219, 2230, 2240, 2250, 2261, 2271, 2282, 2292, 2303, 2313, 2323, 2334, 2344, 2355, 2365, 2375, 2386, 2396, 2407, 2417, 2428, 2438, 2448, 2459, 2469, 2480, 2490, 2500], "ratio": [1.0, 0.8932, 0.8601, 0.833, 0.812, 0.7912, 0.7737, 0.7573, 0.7402, 0.7253, 0.7096, 0.6959, 0.6814, 0.6686, 0.6562, 0.6429, 0.6313, 0.6188, 0.6078, 0.597, 0.5855, 0.5754, 0.5645, 0.5548, 0.5444, 0.5352, 0.5263, 0.5166, 0.5081, 0.4989, 0.4907, 0.4819, 0.4741, 0.4665, 0.4583, 0.4511, 0.4432, 0.4363, 0.4295, 0.4221, 0.4156, 0.4086, 0.4023, 0.3956, 0.3896, 0.3838, 0.3775, 0.3718, 0.3658, 0.3604, 0.3546, 0.3494, 0.3444, 0.3389, 0.334, 0.3288, 0.3241, 0.3195, 0.3145, 0.3101, 0.3054, 0.3011, 0.2965, 0.2925, 0.2884, 0.2841, 0.2803, 0.2761, 0.2724, 0.2684, 0.2648, 0.2612, 0.2574, 0.254, 0.2504, 0.2471, 0.2439, 0.2404, 0.2373, 0.2339, 0.2309, 0.2277, 0.2248, 0.2219, 0.2188, 0.2161, 0.2131, 0.2104, 0.2075, 0.205, 0.2024, 0.1997, 0.1972, 0.1946, 0.1922, 0.1898, 0.1873, 0.185, 0.1826, 0.1803, 0.178, 0.1758, 0.1737, 0.1714, 0.1694, 0.1672, 0.1652, 0.163, 0.1611, 0.1592, 0.1571, 0.1553, 0.1533, 0.1515, 0.1497, 0.1478, 0.1461, 0.1442, 0.1425, 0.1407, 0.1391, 0.1375, 0.1357, 0.1341, 0.1324, 0.1309, 0.1292, 0.1277, 0.1263, 0.1247, 0.1232, 0.1217, 0.1203, 0.1189, 0.1174, 0.116, 0.1145, 0.1132, 0.1118, 0.1105, 0.1092, 0.1078, 0.1066, 0.1052, 0.104, 0.1027, 0.1015, 0.1003, 0.099, 0.0979, 0.0966, 0.0955, 0.0944, 0.0932, 0.0921, 0.0909, 0.0898, 0.0887, 0.0876, 0.0866, 0.0855, 0.0844, 0.0833, 0.0823, 0.0812, 0.0803, 0.0793, 0.0783, 0.0773, 0.0763, 0.0753, 0.0744, 0.0734, 0.0725, 0.0715, 0.0706, 0.0697, 0.0688, 0.0679, 0.067, 0.0662, 0.0652, 0.0644, 0.0635, 0.0627, 0.0619, 0.061, 0.0602, 0.0593, 0.0585, 0.0578, 0.0569, 0.0562, 0.0553, 0.0546, 0.0538, 0.053, 0.0523, 0.0515, 0.0508, 0.05, 0.0493, 0.0485, 0.0478, 0.0471, 0.0464, 0.0457, 0.045, 0.0443, 0.0436, 0.0429, 0.0422, 0.0415, 0.0409, 0.0402, 0.0396, 0.0389, 0.0383, 0.0376, 0.037, 0.0364, 0.0357, 0.0351, 0.0345, 0.0338, 0.0333, 0.0326, 0.032, 0.0315, 0.0308, 0.0303, 0.0297, 0.0291, 0.0285, 0.028, 0.0274, 0.0268, 0.0263, 0.0257, 0.0252, 0.0246]}], "provenance": null, "delta_max": 0.2217, "negligible": false};</script>
+<script>
+(function(){
+  const root=document.documentElement;
+  const cv=document.getElementById('plot'), ctx=cv.getContext('2d');
+  const cs=getComputedStyle(root);
+  function col(n){return cs.getPropertyValue(n).trim();}
+  const PAD={l:58,r:14,t:14,b:40};
+  let cur = (DATA.baseline_idx!=null?DATA.baseline_idx:Math.floor(DATA.curves.length/2));
+  const xmax = Math.max(1, ...DATA.curves.map(c=>c.N[c.N.length-1]));
+
+  function resize(){
+    const w=cv.clientWidth||900, h=Math.round(w*0.5);
+    const dpr=window.devicePixelRatio||1;
+    cv.width=w*dpr; cv.height=h*dpr; cv.style.height=h+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0); draw(cur);
+  }
+  // auto-zoom Y ao envelope das curvas (mudancas pequenas ficam visiveis).
+  let ymin=Infinity, ymax=-Infinity;
+  DATA.curves.forEach(c=>c.ratio.forEach(r=>{if(r<ymin)ymin=r; if(r>ymax)ymax=r;}));
+  if(!isFinite(ymin)){ymin=0; ymax=1;}
+  const _span=ymax-ymin, _pad=_span>0?_span*0.08:0.02;
+  let y0=Math.max(0, ymin-_pad), y1=Math.min(1.02, ymax+_pad);
+  if(y1-y0<0.03){const md=(y0+y1)/2; y0=Math.max(0,md-0.02); y1=Math.min(1.02,md+0.02);}
+  const _zoomed=(y0>0.015 || y1<0.985);
+  function X(n,w){return PAD.l+(n/xmax)*(w-PAD.l-PAD.r);}
+  function Y(r,h){const rr=Math.max(y0,Math.min(y1,r));
+    return PAD.t+(1-(rr-y0)/(y1-y0))*(h-PAD.t-PAD.b);}
+
+  let animT=1, hoverN=null;   // animT: fração desenhada da curva ativa (draw-on)
+  function curvePath(c,w,h,frac){ctx.beginPath();
+    const n=(frac==null)?c.N.length:Math.max(2,Math.floor(c.N.length*frac));
+    for(let i=0;i<n;i++){const x=X(c.N[i],w),y=Y(c.ratio[i],h);
+      i?ctx.lineTo(x,y):ctx.moveTo(x,y);} }
+
+  function draw(idx){
+    cur=idx;
+    const w=cv.clientWidth||900, h=parseInt(cv.style.height)||450;
+    const dec=(y1-y0)<0.2?3:2;
+    ctx.clearRect(0,0,w,h);
+    // grid + axes (rotulos = valores REAIS do eixo zoomado)
+    ctx.strokeStyle=col('--line'); ctx.fillStyle=col('--muted');
+    ctx.lineWidth=1; ctx.font="12px 'Segoe UI',sans-serif";
+    ctx.textAlign='right'; ctx.textBaseline='middle';
+    for(let g=0;g<=5;g++){const val=y1-(g/5)*(y1-y0), y=PAD.t+(g/5)*(h-PAD.t-PAD.b);
+      ctx.globalAlpha=.5;ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(w-PAD.r,y);ctx.stroke();
+      ctx.globalAlpha=1;ctx.fillText(val.toFixed(dec),PAD.l-8,y);}
+    ctx.textAlign='center';ctx.textBaseline='top';
+    for(let g=0;g<=5;g++){const n=Math.round(xmax*g/5),x=X(n,w);
+      ctx.fillText(n,x,h-PAD.b+8);}
+    ctx.save();ctx.translate(14,h/2);ctx.rotate(-Math.PI/2);
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText('F / F0'+(_zoomed?(root.dataset.lang==='pt'?' (zoom)':' (zoom)'):''),0,0);ctx.restore();
+    ctx.textAlign='center';ctx.fillText(root.dataset.lang==='pt'?'ciclo':'cycle',(PAD.l+w-PAD.r)/2,h-16);
+    // ghosts (bem apagados, para nao mascarar a curva ativa)
+    ctx.strokeStyle=col('--ghost');ctx.lineWidth=1;ctx.globalAlpha=.16;
+    DATA.curves.forEach((c,i)=>{if(i===idx)return;curvePath(c,w,h);ctx.stroke();});
+    ctx.globalAlpha=1;
+    // default (tracejado)
+    if(DATA.baseline_idx!=null && DATA.baseline_idx!==idx){
+      ctx.strokeStyle=col('--muted');ctx.setLineDash([5,4]);ctx.lineWidth=1.5;
+      curvePath(DATA.curves[DATA.baseline_idx],w,h);ctx.stroke();ctx.setLineDash([]);}
+    // ativa (destaque forte) — animT controla o desenho progressivo
+    ctx.strokeStyle=col('--accent');ctx.lineWidth=3.2;
+    curvePath(DATA.curves[idx],w,h,animT);ctx.stroke();
+    // leitura interativa: cruz + ponto + rótulo ao passar o cursor
+    if(hoverN!=null && animT>=1){
+      const c=DATA.curves[idx]; let bi=0,bd=1e9;
+      for(let i=0;i<c.N.length;i++){const d=Math.abs(c.N[i]-hoverN);if(d<bd){bd=d;bi=i;}}
+      const hx=X(c.N[bi],w),hy=Y(c.ratio[bi],h);
+      ctx.save();ctx.strokeStyle=col('--muted');ctx.globalAlpha=.55;ctx.setLineDash([3,3]);
+      ctx.beginPath();ctx.moveTo(hx,PAD.t);ctx.lineTo(hx,h-PAD.b);ctx.stroke();ctx.restore();
+      ctx.fillStyle=col('--accent');ctx.beginPath();ctx.arc(hx,hy,4.5,0,6.2832);ctx.fill();
+      const lbl='N='+Math.round(c.N[bi])+'  F/F0='+c.ratio[bi].toFixed(3);
+      ctx.font="12px 'Segoe UI',sans-serif";ctx.textAlign='left';ctx.textBaseline='alphabetic';
+      const tw=ctx.measureText(lbl).width;let lx=hx+8;if(lx+tw>w-PAD.r)lx=hx-8-tw;
+      ctx.globalAlpha=.92;ctx.fillStyle=col('--panel');ctx.fillRect(lx-4,hy-21,tw+8,17);
+      ctx.globalAlpha=1;ctx.fillStyle=col('--ink');ctx.fillText(lbl,lx,hy-8);
+    }
+    syncReadout();
+  }
+
+  function fmt(v){if(typeof v!=='number')return String(v);
+    const a=Math.abs(v);
+    if(v===0)return '0';
+    if(a>=1e4||a<1e-3)return v.toExponential(2);
+    return (Math.round(v*1000)/1000).toString();}
+
+  function syncReadout(){
+    const c=DATA.curves[cur];
+    const vEl=document.getElementById('valout'), fEl=document.getElementById('finalout');
+    if(vEl)vEl.textContent=fmt(c.value)+(DATA.unit?(' '+DATA.unit):'');
+    if(fEl)fEl.textContent=(Math.round(c.ratio[c.ratio.length-1]*1000)/1000).toFixed(3);
+    // proveniencia
+    const pv=document.getElementById('prov');
+    if(pv && DATA.provenance && typeof c.value==='number'){
+      const [lo,hi]=DATA.provenance.band, out=(c.value<lo||c.value>hi);
+      pv.classList.toggle('out',out);
+      const inside=root.dataset.lang==='pt'?'dentro da banda medida':'within measured band';
+      const outside=root.dataset.lang==='pt'?'FORA da banda medida':'OUTSIDE measured band';
+      pv.textContent=(out?outside:inside)+' ['+fmt(lo)+', '+fmt(hi)+']'
+        +(DATA.provenance.fonte?(' \u00b7 '+DATA.provenance.fonte):'');
+    }
+    // indicador de quanto o slider move a curva (Delta max ponto-a-ponto)
+    const eb=document.getElementById('effect');
+    if(eb && typeof DATA.delta_max==='number'){
+      const pt=root.dataset.lang==='pt', d=DATA.delta_max;
+      let msg='\u0394max F/F0 = '+d.toFixed(3);
+      if(DATA.negligible) msg+=pt?' \u00b7 efeito negligível nesta curva-padrão (ver texto)'
+                                 :' \u00b7 negligible effect on this standard curve (see text)';
+      else if(d<0.02) msg+=pt?' \u00b7 efeito pequeno nesta curva-padrão'
+                             :' \u00b7 small effect on this standard curve';
+      eb.textContent=msg;
+      eb.classList.toggle('weak', !!DATA.negligible || d<0.02);
+    }
+  }
+
+  const slider=document.getElementById('slider');
+  if(slider)slider.addEventListener('input',e=>draw(parseInt(e.target.value)));
+  const sel=document.getElementById('sel');
+  if(sel)sel.addEventListener('change',e=>draw(parseInt(e.target.value)));
+  // cruz interativa que segue o cursor sobre a curva
+  function pick(ev){const r=cv.getBoundingClientRect();
+    const cx=(ev.touches&&ev.touches[0]?ev.touches[0].clientX:ev.clientX)-r.left;
+    const w=cv.clientWidth||900;
+    hoverN=Math.max(0,Math.min(xmax,((cx-PAD.l)/(w-PAD.l-PAD.r))*xmax));draw(cur);}
+  cv.addEventListener('mousemove',pick);
+  cv.addEventListener('mouseleave',function(){hoverN=null;draw(cur);});
+  cv.addEventListener('touchmove',function(e){pick(e);e.preventDefault();},{passive:false});
+  // desenho progressivo da curva ativa no primeiro load
+  function drawOn(){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){animT=1;draw(cur);return;}
+    animT=0;let t0=null;
+    function step(ts){if(t0==null)t0=ts;animT=Math.min(1,(ts-t0)/650);draw(cur);
+      if(animT<1)requestAnimationFrame(step);else animT=1;}
+    requestAnimationFrame(step);
+  }
+  window.veRedraw=function(){draw(cur);};   // shell chama no toggle de tema/idioma
+  window.addEventListener('resize',resize);
+  animT=0; resize(); drawOn();
+})();
+</script>
+</body>
+</html>

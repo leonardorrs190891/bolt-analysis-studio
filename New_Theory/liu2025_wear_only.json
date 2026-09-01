@@ -1,0 +1,43 @@
+{
+ "k_wear": 0.1,
+ "w_conf": 7671.0,
+ "median": 0.41070982521748095,
+ "rows": [
+  {
+   "csv": "liu2025_M16_amp0p25.csv",
+   "mae": 0.6380426918193671,
+   "mode": "over-collapse",
+   "e_final": -0.675
+  },
+  {
+   "csv": "liu2025_M16_amp0p3.csv",
+   "mae": 0.6033345548707314,
+   "mode": "over-collapse",
+   "e_final": -0.683
+  },
+  {
+   "csv": "liu2025_M16_amp0p4.csv",
+   "mae": 0.48770087568641285,
+   "mode": "over-collapse",
+   "e_final": -0.33
+  },
+  {
+   "csv": "liu2025_M16_amp0p5.csv",
+   "mae": 0.33371877474854905,
+   "mode": "level-bias",
+   "e_final": -0.1548069070578307
+  },
+  {
+   "csv": "liu2025_M16_amp0p6.csv",
+   "mae": 0.22504459712652633,
+   "mode": "level-bias",
+   "e_final": 0.01801623744034503
+  },
+  {
+   "csv": "liu2025_M16_amp0p8.csv",
+   "mae": 0.1107580346433259,
+   "mode": "tail-slope",
+   "e_final": 0.12300107320957016
+  }
+ ]
+}

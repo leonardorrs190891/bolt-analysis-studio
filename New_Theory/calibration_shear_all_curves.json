@@ -1,0 +1,109 @@
+{
+  "profile_name": "M16_shear_all_curves_global_fit",
+  "description": "Fit global considerando 9 specimens individuais + 2 means (M16, +-0.5mm, 0.5Hz). Estes valores devem virar os defaults do calibration_tuner.html.",
+  "calibrated_at": "2026-05-17",
+  "loading": {
+    "F0_N": 50000,
+    "F_amp_N": 20000,
+    "theta_rad": 1.5707963267948966,
+    "freq_Hz": 0.5,
+    "n_cycles": 2500
+  },
+  "tuners": {
+    "k_emb_scale": 3.086505693795225,
+    "k_creep_scale": 0.006674338601466939,
+    "k_wear_scale_tr": 9.999999999999998,
+    "k_loose_scale_tr": 1.5177593551937723,
+    "Phi_tr_correction": 4.9999999999999964
+  },
+  "tuners_default_per_axial": {
+    "k_wear_scale_ax": 1.0,
+    "k_loose_scale_ax": 1.0,
+    "Phi_ax_correction": 1.0
+  },
+  "fit_quality": {
+    "mean_MAE_per_curve": 0.09197397886370079,
+    "baseline_mean_MAE": 0.44027202797202797,
+    "n_pass": 9,
+    "n_total": 11,
+    "per_curve": [
+      {
+        "name": "MEAN_nova",
+        "mae": 0.04194806764002801,
+        "rmse": 0.06413139928160944,
+        "final_ref": 0.26,
+        "final_sim": 0.08959379345373115
+      },
+      {
+        "name": "MEAN_reusada",
+        "mae": 0.0857933107442603,
+        "rmse": 0.10573971881130376,
+        "final_ref": 0.0288,
+        "final_sim": 0.08959379345373115
+      },
+      {
+        "name": "TP10_reusada",
+        "mae": 0.07493177228272185,
+        "rmse": 0.08876967598746649,
+        "final_ref": 0.08,
+        "final_sim": 0.08959379345373115
+      },
+      {
+        "name": "TP11_nova",
+        "mae": 0.039518801949213166,
+        "rmse": 0.06020410649819122,
+        "final_ref": 0.25,
+        "final_sim": 0.08959379345373115
+      },
+      {
+        "name": "TP3_nova",
+        "mae": 0.05321796073558594,
+        "rmse": 0.07226376607865778,
+        "final_ref": 0.27,
+        "final_sim": 0.08959379345373115
+      },
+      {
+        "name": "TP4_reusada",
+        "mae": 0.08416254151349108,
+        "rmse": 0.1144027732679959,
+        "final_ref": 0.01,
+        "final_sim": 0.08959379345373115
+      },
+      {
+        "name": "TP5_reusada",
+        "mae": 0.08454715689810646,
+        "rmse": 0.10571638049549653,
+        "final_ref": 0.015,
+        "final_sim": 0.08959379345373115
+      },
+      {
+        "name": "TP6_sobretorque",
+        "mae": 0.22281218289834517,
+        "rmse": 0.2649640670366716,
+        "final_ref": 0.6,
+        "final_sim": 0.08959379345373115
+      },
+      {
+        "name": "TP7_reaperto",
+        "mae": 0.17988012479396243,
+        "rmse": 0.21207580238543403,
+        "final_ref": 0.005,
+        "final_sim": 0.08959379345373115
+      },
+      {
+        "name": "TP8_nova",
+        "mae": 0.04535469114688772,
+        "rmse": 0.0678496556593437,
+        "final_ref": 0.26,
+        "final_sim": 0.08959379345373115
+      },
+      {
+        "name": "TP9_reusada",
+        "mae": 0.09954715689810646,
+        "rmse": 0.12289057714158332,
+        "final_ref": 0.01,
+        "final_sim": 0.08959379345373115
+      }
+    ]
+  }
+}

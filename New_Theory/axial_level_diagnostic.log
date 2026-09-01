@@ -1,0 +1,45 @@
+cap=100000
+==============================================================================
+PART A - decomposicao da perda por mecanismo (axial forca, zero-refit)
+==============================================================================
+
+Liu2017 P0=15: F0=15kN A_F=10.0kN M12x1.75 k_b=5.620e+08
+  embedding    -5339N (-35.6%)  creep    -831N (-5.5%)  outros ~0
+  emb frac do total de perda: 87%   pred(norm)=0.589 data=0.790
+  emb_depth que o DADO implica (queda ate 2o ponto) ~ 4.0 um (VDI Rz<10 = 9.5 um)
+
+Liu2017 P0=18: F0=18kN A_F=10.0kN M12x1.75 k_b=5.620e+08
+  embedding    -5339N (-29.7%)  creep   -1076N (-6.0%)  outros ~0
+  emb frac do total de perda: 83%   pred(norm)=0.644 data=0.895
+  emb_depth que o DADO implica (queda ate 2o ponto) ~ 2.2 um (VDI Rz<10 = 9.5 um)
+
+Liu2017 P0=21: F0=21kN A_F=10.0kN M12x1.75 k_b=5.620e+08
+  embedding    -5339N (-25.4%)  creep   -1321N (-6.3%)  outros ~0
+  emb frac do total de perda: 80%   pred(norm)=0.683 data=0.928
+  emb_depth que o DADO implica (queda ate 2o ponto) ~ 1.4 um (VDI Rz<10 = 9.5 um)
+
+Liu2017 AF=12.5: F0=18kN A_F=12.5kN M12x1.75 k_b=5.620e+08
+  embedding    -5339N (-29.7%)  creep    -992N (-5.5%)  outros ~0
+  emb frac do total de perda: 84%   pred(norm)=0.648 data=0.848
+  emb_depth que o DADO implica (queda ate 2o ponto) ~ 3.7 um (VDI Rz<10 = 9.5 um)
+
+Li2022ti 10Hz: F0=10kN A_F=10.0kN M10x1.5 k_b=4.640e+08
+  embedding    -4408N (-44.1%)  creep    -482N (-4.8%)  outros ~0
+  emb frac do total de perda: 90%   pred(norm)=0.934 data=0.829
+  emb_depth que o DADO implica (queda ate 2o ponto) ~ 2.0 um (VDI Rz<10 = 9.5 um)
+
+==============================================================================
+PART C - correcao k_reduced (VDI usa k_b*k_j/(k_b+k_j); engine usa k_b)
+==============================================================================
+  M12x1.75  k_b=5.620e+08  k_j=4.0e+09  k_reduced=4.928e+08  k_reduced/k_b=0.877 (reducao 12%)
+  M10x1.5   k_b=4.640e+08  k_j=4.0e+09  k_reduced=4.158e+08  k_reduced/k_b=0.896 (reducao 10%)
+  M16x2.0   k_b=7.850e+08  k_j=4.0e+09  k_reduced=6.562e+08  k_reduced/k_b=0.836 (reducao 16%)
+
+==============================================================================
+PART B - matriz emb_scale x k_thread_fret (MAE, cap=100000)
+==============================================================================
+combo                   Liu2017 P0=15  Liu2017 P0=18  Liu2017 P0=21  Liu2017 AF=12  Li2022ti 10Hz
+baseline                0.155  0.180  0.183  0.132  0.075  MED=0.155
+emb x0.25               0.062  0.021  0.033  0.036  0.085  MED=0.036
+fret=3 only             0.331  0.356  0.391  0.275  0.632  MED=0.356
+emb x0.25 + fret=3      0.241  0.250  0.294  0.195  0.630  MED=0.250

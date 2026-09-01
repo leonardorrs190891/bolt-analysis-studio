@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/29_Karlsen_Lemu_2022_large_bolt_M20_M42.md:147-157
+bolt,delta_mm,standard_ratio,bondura_ratio,improvement_factor
+M20,1.0,0.180,0.955,5.3
+M30,1.5,0.260,0.960,3.7
+M42,2.0,0.330,0.968,2.9
+M30,0.5,0.700,0.990,1.4
+M30,2.0,0.140,0.940,6.7

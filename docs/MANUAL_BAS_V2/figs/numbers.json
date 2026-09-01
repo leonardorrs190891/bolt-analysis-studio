@@ -1,0 +1,308 @@
+{
+  "_nota": "Gerado por scripts/manual_figs.py a partir do store canônico. NÃO editar à mão: o Manual cita estes números, e o gate da F6 exige que eles venham do store real.",
+  "engine_fingerprint": "4f5bedfbace4",
+  "censo": {
+    "n_registros": 203,
+    "n_fora_do_registry": 0,
+    "ids_fora_do_registry": [],
+    "n_comparaveis": 203,
+    "n_comparaveis_lit": 202,
+    "n_tripe_lit": 147,
+    "pct_tripe_lit": 72.8,
+    "n_tripe": 148,
+    "pct_tripe": 72.9,
+    "n_fora": 55,
+    "n_so_mae": 0,
+    "n_so_maxerr": 34,
+    "n_ambos": 21,
+    "mae_mediana": 0.0315,
+    "mae_media": 0.0445,
+    "maxerr_mediana": 0.0623,
+    "n_erros": 0,
+    "fingerprints": [
+      "4f5bedfbace4"
+    ],
+    "n_fontes": 29,
+    "n_fontes_100": 13,
+    "fontes_100": [
+      "CACCESE_2009",
+      "GRZEJDA_2026",
+      "ICMEZ_2025",
+      "LIU_2017_AXIAL",
+      "LIU_2022_RETIGHT",
+      "LIU_2025",
+      "LI_2022_MARSTRUC",
+      "LI_2022_TRIBOINT",
+      "QIN_2024",
+      "SUN_2025_REASSY",
+      "USER",
+      "ZHANG_2018",
+      "ZHANG_2019"
+    ],
+    "por_fonte": {
+      "BAUER_2024": {
+        "n": 9,
+        "tripe": 2
+      },
+      "CACCESE_2009": {
+        "n": 7,
+        "tripe": 7
+      },
+      "CHU_2026": {
+        "n": 9,
+        "tripe": 2
+      },
+      "ECCLES_2010": {
+        "n": 10,
+        "tripe": 5
+      },
+      "GRZEJDA_2026": {
+        "n": 2,
+        "tripe": 2
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "tripe": 8
+      },
+      "JCSR_2023": {
+        "n": 5,
+        "tripe": 3
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "tripe": 10
+      },
+      "LIU_2016": {
+        "n": 14,
+        "tripe": 13
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "tripe": 9
+      },
+      "LIU_2020_WEAR": {
+        "n": 9,
+        "tripe": 8
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "tripe": 21
+      },
+      "LIU_2025": {
+        "n": 7,
+        "tripe": 7
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "tripe": 6
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "tripe": 4
+      },
+      "LU_2024": {
+        "n": 10,
+        "tripe": 0
+      },
+      "QIN_2024": {
+        "n": 3,
+        "tripe": 3
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "tripe": 3
+      },
+      "SUN_2025_CRIMP": {
+        "n": 8,
+        "tripe": 7
+      },
+      "SUN_2025_REASSY": {
+        "n": 5,
+        "tripe": 5
+      },
+      "UFU_LAB": {
+        "n": 3,
+        "tripe": 1
+      },
+      "USER": {
+        "n": 1,
+        "tripe": 1
+      },
+      "YANG_2019": {
+        "n": 5,
+        "tripe": 1
+      },
+      "YANG_2021": {
+        "n": 6,
+        "tripe": 4
+      },
+      "YANG_2023_AME": {
+        "n": 1,
+        "tripe": 0
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "tripe": 2
+      },
+      "ZHANG_2006": {
+        "n": 2,
+        "tripe": 1
+      },
+      "ZHANG_2018": {
+        "n": 9,
+        "tripe": 9
+      },
+      "ZHANG_2019": {
+        "n": 4,
+        "tripe": 4
+      }
+    },
+    "l7_n_com_valor": 110,
+    "l7_n_fora_da_banda": 64,
+    "l7_banda": {
+      "lo": 1800.0,
+      "hi": 10500.0,
+      "unit": "J/mm^3",
+      "source": "Shipway 2021 10.1016/j.wear.2021.203826 (derivado; taxa-dependente)",
+      "provenance": "derived"
+    }
+  },
+  "figuras": {
+    "fig1": {
+      "arquivo": "fig1_anatomia.svg",
+      "caso": "demir2024_amp0p4_F14p3_lk13p8",
+      "mae": 0.0151,
+      "maxerr": 0.0463,
+      "joelho_N": 50,
+      "joelho_r": 0.577,
+      "piso": 0.308,
+      "r_inicial": 1.0,
+      "r_final": 0.252,
+      "perda_total": 0.748,
+      "variaveis": "eixo x = número de ciclos N; eixo y = F/F₀, a fração da pré-carga inicial ainda retida. Azul = dado digitalizado do artigo; laranja = modelo, já dividido pelo divisor de alinhamento (é a curva que o MAE mede). A faixa cinza é o Estágio II; I/II/III são as janelas 0-10 %, 10-70 % e 70-100 % dos ciclos.",
+      "como_ler": "Procure três coisas: o patamar inicial (Estágio I, assentamento), o joelho onde a queda acelera (marcado no ponto em que metade da perda total já ocorreu) e o piso onde a curva estabiliza — no modelo esse piso é a comporta de auto-travamento, não um ajuste. A distância vertical entre as duas curvas em cada N é o resíduo.",
+      "ressalva": "Esta curva foi escolhida por regra declarada e determinística para EXIBIR a anatomia (patamar + joelho + piso encostado), e o critério final é o menor MAE entre as que passam — ou seja, é um caso bem ajustado, não um caso médio. A distribuição completa, inclusive as curvas que não cumprem a meta, está na figura 3; a mediana do conjunto é o número a usar quando se quer «quão bom é o modelo».",
+      "regra_de_escolha": "patamar<25%, >=12 pontos e piso ENCOSTADO pela curva"
+    },
+    "fig2": {
+      "arquivo": "fig2_decomposicao.svg",
+      "caso": "demir2024_amp0p4_F14p3_lk13p8",
+      "perda_total_final": 0.7013,
+      "parcelas_finais": {
+        "assentamento": 0.386,
+        "creep": 0.0168,
+        "desgaste": 0.003,
+        "afrouxamento rotacional": 0.2955,
+        "fretting de rosca": -0.0,
+        "fadiga": -0.0
+      },
+      "dominante": [
+        "assentamento",
+        55.0
+      ],
+      "variaveis": "eixo x = ciclos N; eixo y = perda de pré-carga acumulada, em fração de F₀. Cada faixa é um dos mecanismos de perda que rodam em paralelo no engine; a linha preta é a soma, que fecha exatamente com 1 − F/F₀ da figura 1 — não é um ajuste da soma, é contabilidade fechada.",
+      "como_ler": "A ESPESSURA de cada faixa em um dado N é quanto aquele mecanismo já tirou de pré-carga até ali; a INCLINAÇÃO é a taxa instantânea. Mecanismos que aparecem cedo e saturam (assentamento) empilham na base; os que crescem com o escorregamento (desgaste, afrouxamento rotacional) engrossam depois do joelho. Mecanismo com menos de 0,5 % da perda final foi dobrado em «outros» para não poluir a legenda."
+    },
+    "fig3": {
+      "arquivo": "fig3_painel.svg",
+      "n": 203,
+      "n_tripe": 148,
+      "n_so_mae": 0,
+      "n_so_maxerr": 34,
+      "n_ambos": 21,
+      "fora_de_escala": [
+        "zhang2006_fig3_illus_M12x125_20kN_amp0p35"
+      ],
+      "escopo": "curvas de artigo (o caso de exemplo do app, fonte USER, fica fora)",
+      "variaveis": "cada ponto é UMA curva de validação: eixo x = MAE, eixo y = resíduo máximo, os dois em unidades de F/F₀. Cor = família de carregamento (transversal, axial, creep). O retângulo azul é a meta — o «tripé» — e a diagonal cinza é o limite geométrico res.máx = MAE.",
+      "como_ler": "Só o que cai DENTRO do retângulo cumpriu a meta. A leitura que muda a estratégia: dos 55 casos fora, 34 violam SÓ o resíduo máximo e 0 violam só o MAE — ou seja, o gargalo é o PICO, não a média. Esforço medido em MAE médio não move esta figura; encurtar o pior ponto de cada curva move."
+    },
+    "fig4": {
+      "arquivo": "fig4_tornado.svg",
+      "n_parametros": 19,
+      "n_congelados": 4,
+      "congelados": [
+        "alpha_GW",
+        "k_j_init",
+        "partial_slip_exp",
+        "slip_capacity_coeff"
+      ],
+      "top5": [
+        [
+          "mu",
+          0.1472
+        ],
+        [
+          "tr_loose_gain",
+          0.1231
+        ],
+        [
+          "c_bend",
+          0.1141
+        ],
+        [
+          "eta_loose",
+          0.0637
+        ],
+        [
+          "C_creep",
+          0.0507
+        ]
+      ],
+      "variaveis": "uma barra por parâmetro; comprimento = maior variação de F/F₀ que o parâmetro produz quando é o ÚNICO a mudar (varredura um-a-um, OAT). Barras cinza são os parâmetros com sensibilidade nula, congelados no registro para que o otimizador nunca os ofereça.",
+      "como_ler": "Leia de cima para baixo: as primeiras barras são as constantes que merecem procedência cuidadosa, porque o resultado depende delas. As barras cinza são a contagem honesta de graus de liberdade — parâmetro que não move nada não é um grau de liberdade escondido, e está explicitamente travado no código."
+    },
+    "fig5": {
+      "arquivo": "fig5_formas_fontes.svg",
+      "n_formas": 11,
+      "n_fontes": 26,
+      "fontes": [
+        "BAUER_2024",
+        "CACCESE_2009",
+        "CHU_2026",
+        "ECCLES_2010",
+        "ICMEZ_2025",
+        "JCSR_2023",
+        "KARLSEN_2022",
+        "LIU_2016",
+        "LIU_2017_AXIAL",
+        "LIU_2020_WEAR",
+        "LIU_2022_RETIGHT",
+        "LIU_2025",
+        "LI_2022_MARSTRUC",
+        "LI_2022_TRIBOINT",
+        "LU_2024",
+        "QIN_2024",
+        "ROUSSEAU_2025",
+        "SUN_2025_CRIMP",
+        "SUN_2025_REASSY",
+        "UFU_LAB",
+        "YANG_2019",
+        "YANG_2021",
+        "YANG_2023_IJPEM",
+        "ZHANG_2006",
+        "ZHANG_2018",
+        "ZHANG_2019"
+      ],
+      "ativacoes_por_forma": {
+        "Rigidez do membro (k_j)": 2,
+        "Conformação por pressão": 2,
+        "Incubação de escorregamento": 3,
+        "Dano de superfície D": 5,
+        "Atrito (µ)": 6,
+        "Auto-travamento (piso)": 6,
+        "Afrouxamento rotacional": 9,
+        "Modos de flexão / membro": 11,
+        "Desgaste (Archard/fretting)": 11,
+        "Creep (log)": 14,
+        "Assentamento (embedding)": 20
+      },
+      "forma_mais_universal": [
+        "Assentamento (embedding)",
+        20
+      ],
+      "variaveis": "linhas = formas (famílias de mecanismo) do engine; colunas = fontes de dado com configuração adotada; célula acesa = a configuração daquela fonte mexe em pelo menos uma constante daquela forma. O número à direita conta em quantas fontes a forma aparece.",
+      "como_ler": "Leia por LINHA, não por célula: uma linha muito preenchida é uma forma que reaparece em bancadas independentes — é isso que a tese central chama de «forma que transfere». O que a figura NÃO mostra, de propósito, é o VALOR das constantes: eles diferem entre fontes, e essa é a outra metade da tese («constantes são por par tribológico / por bancada»). Os valores estão tabelados no volume 1 do Manual, com procedência."
+    }
+  }
+}

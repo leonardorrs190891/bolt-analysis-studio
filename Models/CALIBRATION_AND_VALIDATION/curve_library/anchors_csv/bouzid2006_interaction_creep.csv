@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/85_86_Bouzid_1995_2006_gasket_creep.md:130-142
+stage,mean_ratio,scatter_pm
+after_single_pass,0.88,0.12
+after_3pass,0.96,0.04
+creep_24h_after_3pass,0.68,0.03
+creep_72h,0.63,0.03

@@ -1,0 +1,38 @@
+casos: ['liu2025_M16_amp0p25', 'liu2025_M16_amp0p3', 'liu2025_M16_amp0p4', 'liu2025_M16_amp0p5', 'liu2025_M16_amp0p6', 'liu2025_M16_amp0p8']
+N5 e5 W1e+05: max 0.146 worse 3
+N5 e5 W2e+05: max 0.102 worse 0
+N5 e5 W2e+05: max 0.116 worse 1
+N5 e7 W1e+05: max 0.163 worse 4
+N5 e7 W2e+05: max 0.115 worse 0
+N5 e7 W2e+05: max 0.118 worse 1
+N5 e9 W1e+05: max 0.180 worse 4
+N5 e9 W2e+05: max 0.128 worse 0
+N5 e9 W2e+05: max 0.129 worse 1
+N15 e5 W1e+05: max 0.147 worse 3
+N15 e5 W2e+05: max 0.102 worse 0
+N15 e5 W2e+05: max 0.116 worse 1
+N15 e7 W1e+05: max 0.163 worse 4
+N15 e7 W2e+05: max 0.115 worse 0
+N15 e7 W2e+05: max 0.118 worse 1
+N15 e9 W1e+05: max 0.181 worse 4
+N15 e9 W2e+05: max 0.128 worse 0
+N15 e9 W2e+05: max 0.129 worse 1
+N50 e5 W1e+05: max 0.147 worse 3
+N50 e5 W2e+05: max 0.102 worse 0
+N50 e5 W2e+05: max 0.115 worse 1
+N50 e7 W1e+05: max 0.164 worse 4
+N50 e7 W2e+05: max 0.116 worse 0
+N50 e7 W2e+05: max 0.119 worse 1
+N50 e9 W1e+05: max 0.182 worse 4
+N50 e9 W2e+05: max 0.129 worse 0
+N50 e9 W2e+05: max 0.130 worse 1
+
+BEST {'emb_um': 5.0, 'N_emb': 5.0, 'slip_onset_W': 150000.0}
+  liu2025_M16_amp0p25        0.089 (era 0.104)
+  liu2025_M16_amp0p3         0.077 (era 0.090)
+  liu2025_M16_amp0p4         0.102 (era 0.116)
+  liu2025_M16_amp0p5         0.091 (era 0.106)
+  liu2025_M16_amp0p6         0.069 (era 0.083)
+  liu2025_M16_amp0p8         0.043 (era 0.034)
+worse>0.02: nenhum  | acima de 0.100: ['liu2025_M16_amp0p4']
+PARAMS_JSON: {"emb_um": 5.0, "N_emb": 5.0, "slip_onset_W": 150000.0}

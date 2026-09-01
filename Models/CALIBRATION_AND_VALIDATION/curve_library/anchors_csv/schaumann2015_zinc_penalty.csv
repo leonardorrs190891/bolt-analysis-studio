@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/96_Schaumann_2009_2015_large_bolt_VDI.md:90-102
+bolt,bare_sigmaD_MPa,zinc_sigmaD_MPa,penalty_pct
+M12,95,86,-9.5
+M24,78,68,-12.8
+M36,63,55,-12.7
+M64,52,46,-11.5

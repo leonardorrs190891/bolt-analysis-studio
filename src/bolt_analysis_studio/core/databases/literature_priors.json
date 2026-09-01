@@ -1,0 +1,340 @@
+{
+  "_schema": "Literature-grounded calibration priors for the BAS Two-Stage Jiang/Yang loosening model. Each entry pre-populates the CalibrationDialog with parameter defaults plus ±sigma bounds. params keys must match PRESET_PARAMS in numerical/parameter_identifier.py.",
+  "_regimes": [
+    "transverse_junker",
+    "axial_pulsating",
+    "combined_R_factor",
+    "cfrp_composite",
+    "gasketed_creep",
+    "torsional",
+    "bending"
+  ],
+  "entries": [
+    {
+      "id": "lu_2024_M8_transverse",
+      "label": "Lu 2024 — M8×1.25 Junker (transverse, dry)",
+      "regime": "transverse_junker",
+      "paper": "Lu et al. 2024 — Sensors 24, 3306",
+      "doi": "10.3390/s24113306",
+      "bolt": "M8×1.25, class 8.8",
+      "loading": "δ=1.0 mm, f=1 Hz, F0=11 567 N (70% Sy)",
+      "notes": "T1a tier-1 calibration paper; clean dry-steel transverse Junker baseline. Strong Stage I + clear concave Stage II.",
+      "params": {
+        "mu_initial":           0.14,
+        "C_loosening":          0.45,
+        "N_stage1":             180,
+        "delta_F1_ratio":       0.18,
+        "N_stage2":             1500,
+        "k_stage2":             5.0e-4,
+        "F_infinity_ratio":     0.20,
+        "friction_recovery_gain": 1.5,
+        "transition_sharpness": 3.0
+      },
+      "bounds_sigma": {
+        "mu_initial":           0.02,
+        "C_loosening":          0.10,
+        "N_stage1":             50,
+        "delta_F1_ratio":       0.04,
+        "N_stage2":             400,
+        "k_stage2":             2.0e-4,
+        "F_infinity_ratio":     0.05,
+        "friction_recovery_gain": 0.5,
+        "transition_sharpness": 1.0
+      }
+    },
+    {
+      "id": "jiang_2003_M12_glued",
+      "label": "Jiang 2003 — M12×1.75 Stage I (nut glued)",
+      "regime": "transverse_junker",
+      "paper": "Jiang, Zhang, Chen 2003 — J. Mech. Des.",
+      "doi": "10.1115/1.1598497",
+      "bolt": "M12×1.75, class 10.9",
+      "loading": "δ=0.46 mm, f=10 Hz, F0=25 000 N, nut bonded (Stage I only — no rotation)",
+      "notes": "Tier-1 reference for the non-rotational Stage I exponential embedding curve. Suppresses Stage II — keep k_stage2 small.",
+      "params": {
+        "mu_initial":           0.13,
+        "C_loosening":          0.20,
+        "N_stage1":             250,
+        "delta_F1_ratio":       0.22,
+        "N_stage2":             5000,
+        "k_stage2":             5.0e-5,
+        "F_infinity_ratio":     0.70,
+        "friction_recovery_gain": 1.0,
+        "transition_sharpness": 3.0
+      },
+      "bounds_sigma": {
+        "mu_initial":           0.02,
+        "C_loosening":          0.05,
+        "N_stage1":             80,
+        "delta_F1_ratio":       0.05,
+        "N_stage2":             1000,
+        "k_stage2":             3.0e-5,
+        "F_infinity_ratio":     0.10,
+        "friction_recovery_gain": 0.3,
+        "transition_sharpness": 1.0
+      }
+    },
+    {
+      "id": "jiang_2004_M12_free",
+      "label": "Jiang 2004 — M12×1.75 Stage I+II (free nut)",
+      "regime": "transverse_junker",
+      "paper": "Jiang et al. 2004 — J. Mech. Des.",
+      "doi": "10.1115/1.1767814",
+      "bolt": "M12×1.75, class 10.9",
+      "loading": "δ=0.46 mm, f=10 Hz, F0=25 000 N, free nut — full two-stage decay",
+      "notes": "Tier-1 reference for the rotational Stage II. Cumulative rotation crosses 0.5° around N≈400-600.",
+      "params": {
+        "mu_initial":           0.13,
+        "C_loosening":          0.50,
+        "N_stage1":             200,
+        "delta_F1_ratio":       0.18,
+        "N_stage2":             1800,
+        "k_stage2":             6.0e-4,
+        "F_infinity_ratio":     0.18,
+        "friction_recovery_gain": 1.8,
+        "transition_sharpness": 3.5
+      },
+      "bounds_sigma": {
+        "mu_initial":           0.02,
+        "C_loosening":          0.15,
+        "N_stage1":             60,
+        "delta_F1_ratio":       0.05,
+        "N_stage2":             500,
+        "k_stage2":             2.5e-4,
+        "F_infinity_ratio":     0.05,
+        "friction_recovery_gain": 0.6,
+        "transition_sharpness": 1.0
+      }
+    },
+    {
+      "id": "housari_nassar_2007_friction_sweep",
+      "label": "Housari–Nassar 2007 — friction sweep (M12)",
+      "regime": "transverse_junker",
+      "paper": "Housari & Nassar 2007 — J. Vib. Acoust.",
+      "doi": "10.1115/1.2748473",
+      "bolt": "M12, class 10.9, μ=0.08–0.20 sweep (lubricated → dry)",
+      "loading": "Junker fixture, controlled friction range",
+      "notes": "Use to cross-validate μ-sensitivity. Lubricated cases want lower C_loosening, dry cases want higher.",
+      "params": {
+        "mu_initial":           0.12,
+        "C_loosening":          0.40,
+        "N_stage1":             200,
+        "delta_F1_ratio":       0.15,
+        "N_stage2":             2000,
+        "k_stage2":             4.0e-4,
+        "F_infinity_ratio":     0.25,
+        "friction_recovery_gain": 1.5,
+        "transition_sharpness": 3.0
+      },
+      "bounds_sigma": {
+        "mu_initial":           0.04,
+        "C_loosening":          0.20,
+        "N_stage1":             80,
+        "delta_F1_ratio":       0.06,
+        "N_stage2":             800,
+        "k_stage2":             2.0e-4,
+        "F_infinity_ratio":     0.08,
+        "friction_recovery_gain": 0.7,
+        "transition_sharpness": 1.0
+      }
+    },
+    {
+      "id": "zhang_2006_M12_clamped_length",
+      "label": "Zhang–Jiang 2006 — clamped length series",
+      "regime": "transverse_junker",
+      "paper": "Zhang & Jiang 2006 — J. Press. Vessel Tech.",
+      "doi": "10.1115/1.2218342",
+      "bolt": "M12×1.75, grip lengths 25 / 38 / 51 mm",
+      "loading": "δ=0.5 mm, f=12.5 Hz, F0=25 kN — varies grip stiffness",
+      "notes": "Validation case for grip-length effect. k_bolt should track 1/L. Longer grip → shallower decay.",
+      "params": {
+        "mu_initial":           0.13,
+        "C_loosening":          0.35,
+        "N_stage1":             220,
+        "delta_F1_ratio":       0.16,
+        "N_stage2":             2200,
+        "k_stage2":             3.5e-4,
+        "F_infinity_ratio":     0.22,
+        "friction_recovery_gain": 1.4,
+        "transition_sharpness": 3.0
+      },
+      "bounds_sigma": {
+        "mu_initial":           0.02,
+        "C_loosening":          0.12,
+        "N_stage1":             70,
+        "delta_F1_ratio":       0.05,
+        "N_stage2":             700,
+        "k_stage2":             1.5e-4,
+        "F_infinity_ratio":     0.06,
+        "friction_recovery_gain": 0.5,
+        "transition_sharpness": 1.0
+      }
+    },
+    {
+      "id": "yang_2019_DN_curves",
+      "label": "Yang 2019 — D-N life curves (transverse)",
+      "regime": "transverse_junker",
+      "paper": "Yang 2019 — Shock and Vibration",
+      "doi": "10.1155/2019/2036509",
+      "bolt": "M10×1.5, displacement-amplitude sweep",
+      "loading": "δ=0.3-0.8 mm sweep, f=5 Hz",
+      "notes": "Anchors the displacement-exponent (~2.0) and threshold (~0.15 mm). Below threshold: Stage I only; above: full two-stage.",
+      "params": {
+        "mu_initial":           0.13,
+        "C_loosening":          0.40,
+        "N_stage1":             200,
+        "delta_F1_ratio":       0.15,
+        "N_stage2":             1800,
+        "k_stage2":             5.0e-4,
+        "F_infinity_ratio":     0.20,
+        "friction_recovery_gain": 1.5,
+        "transition_sharpness": 3.0
+      },
+      "bounds_sigma": {
+        "mu_initial":           0.03,
+        "C_loosening":          0.15,
+        "N_stage1":             70,
+        "delta_F1_ratio":       0.05,
+        "N_stage2":             600,
+        "k_stage2":             2.0e-4,
+        "F_infinity_ratio":     0.07,
+        "friction_recovery_gain": 0.6,
+        "transition_sharpness": 1.0
+      }
+    },
+    {
+      "id": "liu_2017_M10_axial_pulsating",
+      "label": "Liu 2017 — M10 axial pulsating (R≈0)",
+      "regime": "axial_pulsating",
+      "paper": "Liu et al. 2017 — Tribology International",
+      "doi": "10.1016/j.triboint.2017.05.037",
+      "bolt": "M10×1.5, axial pulsating tension",
+      "loading": "Axial F_alt at R=0, multiple amplitudes",
+      "notes": "Axial regime — Stage II is much slower than transverse. Use higher k_stage2 only if amplitude is very high.",
+      "params": {
+        "mu_initial":           0.14,
+        "C_loosening":          0.18,
+        "N_stage1":             400,
+        "delta_F1_ratio":       0.12,
+        "N_stage2":             5000,
+        "k_stage2":             8.0e-5,
+        "F_infinity_ratio":     0.45,
+        "friction_recovery_gain": 1.0,
+        "transition_sharpness": 2.5
+      },
+      "bounds_sigma": {
+        "mu_initial":           0.03,
+        "C_loosening":          0.08,
+        "N_stage1":             150,
+        "delta_F1_ratio":       0.04,
+        "N_stage2":             1500,
+        "k_stage2":             4.0e-5,
+        "F_infinity_ratio":     0.10,
+        "friction_recovery_gain": 0.4,
+        "transition_sharpness": 0.8
+      }
+    },
+    {
+      "id": "yang_2021_R_factor",
+      "label": "Yang 2021 — Combined-loading R-factor",
+      "regime": "combined_R_factor",
+      "paper": "Yang et al. 2021 — Engineering Failure Analysis",
+      "doi": "10.1016/j.engfailanal.2021.105697",
+      "bolt": "M10, combined axial+transverse, R=-1 to +1 sweep",
+      "loading": "Mixed loading — non-rotational dominates above R_critical≈0.55",
+      "notes": "C_loosening blends with axial component. Set transition_sharpness lower (smoother knee).",
+      "params": {
+        "mu_initial":           0.13,
+        "C_loosening":          0.30,
+        "N_stage1":             250,
+        "delta_F1_ratio":       0.15,
+        "N_stage2":             3000,
+        "k_stage2":             2.5e-4,
+        "F_infinity_ratio":     0.35,
+        "friction_recovery_gain": 1.2,
+        "transition_sharpness": 2.0
+      },
+      "bounds_sigma": {
+        "mu_initial":           0.03,
+        "C_loosening":          0.12,
+        "N_stage1":             80,
+        "delta_F1_ratio":       0.05,
+        "N_stage2":             1000,
+        "k_stage2":             1.2e-4,
+        "F_infinity_ratio":     0.10,
+        "friction_recovery_gain": 0.5,
+        "transition_sharpness": 0.8
+      }
+    },
+    {
+      "id": "wei_yang_CFRP",
+      "label": "Wei/Yang — CFRP joint two-stage",
+      "regime": "cfrp_composite",
+      "paper": "Studies 90/91 — CFRP loosening (Wei, Yang)",
+      "doi": "n/a",
+      "bolt": "M8 in CFRP laminate",
+      "loading": "Transverse Junker on composite member",
+      "notes": "Non-rotational losses dominate (resin creep). Big delta_F1, low C_loosening, high F_infinity_ratio. Long Stage I tail.",
+      "params": {
+        "mu_initial":           0.18,
+        "C_loosening":          0.10,
+        "N_stage1":             500,
+        "delta_F1_ratio":       0.30,
+        "N_stage2":             8000,
+        "k_stage2":             6.0e-5,
+        "F_infinity_ratio":     0.50,
+        "friction_recovery_gain": 0.8,
+        "transition_sharpness": 2.0,
+        "creep_coefficient":    1.0e-6
+      },
+      "bounds_sigma": {
+        "mu_initial":           0.04,
+        "C_loosening":          0.05,
+        "N_stage1":             200,
+        "delta_F1_ratio":       0.08,
+        "N_stage2":             2000,
+        "k_stage2":             3.0e-5,
+        "F_infinity_ratio":     0.10,
+        "friction_recovery_gain": 0.3,
+        "transition_sharpness": 0.7,
+        "creep_coefficient":    5.0e-7
+      }
+    },
+    {
+      "id": "bouzid_1995_gasket_creep",
+      "label": "Bouzid 1995 — Gasketed flange (creep-dominated)",
+      "regime": "gasketed_creep",
+      "paper": "Bouzid 1995 — J. Press. Vessel Tech.",
+      "doi": "10.1115/1.2842093",
+      "bolt": "M16+, gasketed bolted flange",
+      "loading": "Static + thermal cycling, log-time creep dominant",
+      "notes": "Norton-Bailey creep is the primary mechanism. C_loosening near zero — preload loss is time-driven, not cycle-driven.",
+      "params": {
+        "mu_initial":           0.12,
+        "C_loosening":          0.05,
+        "N_stage1":             100,
+        "delta_F1_ratio":       0.10,
+        "N_stage2":             10000,
+        "k_stage2":             1.0e-5,
+        "F_infinity_ratio":     0.55,
+        "friction_recovery_gain": 1.0,
+        "transition_sharpness": 2.0,
+        "creep_coefficient":    1.0e-5,
+        "creep_exponent":       0.30
+      },
+      "bounds_sigma": {
+        "mu_initial":           0.02,
+        "C_loosening":          0.03,
+        "N_stage1":             40,
+        "delta_F1_ratio":       0.04,
+        "N_stage2":             3000,
+        "k_stage2":             5.0e-6,
+        "F_infinity_ratio":     0.10,
+        "friction_recovery_gain": 0.4,
+        "transition_sharpness": 0.7,
+        "creep_coefficient":    5.0e-6,
+        "creep_exponent":       0.10
+      }
+    }
+  ]
+}

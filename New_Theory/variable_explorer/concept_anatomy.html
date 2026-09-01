@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt" data-lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anatomia de uma curva de afrouxamentoAnatomy of a loosening  — BAS V2</title>
+<style>
+:root{
+  --bg:#eef0f3; --panel:#ffffff; --ink:#161a20; --muted:#5b6675; --line:#d3d8e0;
+  --accent:#2563eb; --accent2:#e11d48; --ghost:#9aa4b2; --ok:#0f9d58; --warn:#c2410c;
+  --code-bg:#f3f5f8; --side:#f7f8fa; --side-w:300px;
+}
+:root[data-theme="dark"]{
+  --bg:#12151b; --panel:#1a1f27; --ink:#e7ebf0; --muted:#93a0b0; --line:#2b323d;
+  --accent:#5b9bff; --accent2:#ff6b8b; --ghost:#4a5563; --ok:#39d98a; --warn:#ffa657;
+  --code-bg:#20262f; --side:#151a21;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,.mono{font-family:'Cascadia Code','Consolas',ui-monospace,monospace}
+
+/* ---- sidebar (sumario tipo help classico) ---- */
+.side{position:fixed;top:0;left:0;bottom:0;width:var(--side-w);overflow-y:auto;
+  background:var(--side);border-right:1px solid var(--line);z-index:20}
+.side-head{position:sticky;top:0;background:var(--side);padding:14px 16px 12px;
+  border-bottom:1px solid var(--line);z-index:2}
+.side-head .home{font-weight:700;font-size:.92rem;display:block;color:var(--ink)}
+.side-head .home small{display:block;color:var(--muted);font-weight:400;font-size:.72rem;margin-top:2px}
+.side-head .toggles{margin:10px 0 8px}
+.toggles button{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:5px 10px;font-size:.78rem;cursor:pointer;margin-right:6px}
+.toggles button:hover{border-color:var(--accent)}
+.filter{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:7px;
+  background:var(--bg);color:var(--ink);font-family:inherit;font-size:.83rem}
+.tiers{display:flex;flex-wrap:wrap;gap:3px 12px;margin-top:9px;font-size:.72rem}
+.tiers label{display:flex;align-items:center;gap:4px;color:var(--muted);cursor:pointer}
+.tiers input{accent-color:var(--accent);margin:0;cursor:pointer}
+.toc{padding:6px 0 60px}
+.toc .grp{padding:12px 16px 3px;font-size:.68rem;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--muted);font-weight:700}
+.toc a.tocitem{display:flex;justify-content:space-between;gap:8px;align-items:baseline;
+  padding:4px 14px 4px 18px;font-family:'Cascadia Code',monospace;font-size:.8rem;
+  color:var(--ink);border-left:3px solid transparent}
+.toc a.tocitem:hover{background:var(--bg);text-decoration:none}
+.toc a.tocitem.current{border-left-color:var(--accent);color:var(--accent);
+  background:var(--bg);font-weight:600}
+.toc a.tocitem .dot{font-size:.6rem;opacity:.6}
+.toc a.tocitem .dot.physical{color:var(--accent)}
+.toc a.tocitem .dot.form{color:var(--warn)}
+.toc a.tocitem .dot.mode{color:var(--ok)}
+.toc a.tocitem .dot.numerical{color:var(--muted)}
+
+/* ---- content ---- */
+.main{margin-left:var(--side-w);padding:26px 34px 90px;max-width:940px}
+.crumbs{font-size:.82rem;color:var(--muted);margin-bottom:2px}
+h1.name{font-family:'Cascadia Code','Consolas',monospace;font-size:1.95rem;margin:.2rem 0 .2rem}
+.sub{color:var(--muted);font-size:.95rem;margin-bottom:.6rem}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:.4rem 0 1rem}
+.badge{font-size:.74rem;padding:3px 9px;border-radius:20px;border:1px solid var(--line);
+  background:var(--panel);color:var(--muted)}
+.badge.cat-physical{border-color:var(--accent);color:var(--accent)}
+.badge.cat-form{border-color:var(--warn);color:var(--warn)}
+.badge.cat-mode{border-color:var(--ok);color:var(--ok)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;margin:14px 0}
+.panel p{margin:.4rem 0}
+.plotwrap{position:relative}
+canvas{width:100%;height:auto;display:block}
+.ctl{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.ctl input[type=range]{flex:1;min-width:220px;accent-color:var(--accent)}
+.ctl select{background:var(--code-bg);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:6px 10px;font-family:inherit}
+.readout{font-family:'Cascadia Code',monospace;font-size:.95rem}
+.readout .v{color:var(--accent);font-weight:600}
+.readout .f{color:var(--accent2);font-weight:600}
+.readout .w{color:var(--warn);font-weight:600}
+.legend .kdash{display:inline-block;width:22px;height:0;border-top:2px dashed var(--muted);vertical-align:middle;margin-right:5px}
+.prov{font-size:.82rem;margin-top:8px;color:var(--muted)}
+.prov.out{color:var(--warn);font-weight:600}
+.effect{font-family:'Cascadia Code',monospace;font-size:.82rem;margin-top:8px;color:var(--accent)}
+.effect.weak{color:var(--muted)}
+h2.sec{font-size:1.05rem;margin:0 0 .5rem;letter-spacing:.02em}
+.eq{background:var(--code-bg);border:1px solid var(--line);border-radius:8px;
+  padding:12px 14px;font-family:'Cascadia Code',monospace;font-size:.92rem;overflow-x:auto;
+  white-space:pre;line-height:1.5;margin:.5rem 0}
+ul.refs{margin:.3rem 0 0;padding-left:1.1rem}
+ul.refs li{margin:.25rem 0;font-size:.9rem}
+ul.refs li.refhead{list-style:none;margin:14px 0 4px -1.1rem;color:var(--muted);
+  font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+ul.refs .src{color:var(--muted);font-size:.82rem}
+.related a{display:inline-block;margin-right:10px;font-family:'Cascadia Code',monospace;font-size:.85rem}
+nav.pn{display:flex;justify-content:space-between;margin-top:24px;font-size:.9rem}
+.note{background:var(--code-bg);border-left:3px solid var(--warn);padding:8px 12px;
+  border-radius:0 6px 6px 0;font-size:.88rem;color:var(--muted);margin:.6rem 0}
+.intro{color:var(--muted);max-width:74ch}
+.legend{display:flex;gap:16px;font-size:.8rem;color:var(--muted);margin-top:6px;flex-wrap:wrap}
+.legend .k{display:inline-block;width:22px;height:0;border-top-width:3px;border-top-style:solid;vertical-align:middle;margin-right:5px}
+[data-lang="pt"] [data-l="en"]{display:none}
+[data-lang="en"] [data-l="pt"]{display:none}
+
+/* ---- responsivo: sidebar recolhivel ---- */
+.menu-btn{display:none;position:fixed;top:10px;left:10px;z-index:40;
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;
+  padding:6px 11px;font-size:1rem;cursor:pointer;color:var(--ink)}
+@media(max-width:900px){
+  .side{transform:translateX(-100%);transition:transform .2s;box-shadow:0 0 30px rgba(0,0,0,.3)}
+  body.nav-open .side{transform:none}
+  .main{margin-left:0;padding:56px 16px 80px}
+  .menu-btn{display:inline-block}
+}
+
+/* ---- animações & interatividade ---- */
+@keyframes ve-pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.ve-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  box-shadow:0 0 8px var(--accent);transition:width .08s linear}
+h1.name{animation:ve-pop .5s cubic-bezier(.2,.7,.2,1) both}
+.reveal{opacity:0;transform:translateY(16px)}
+.reveal.in{opacity:1;transform:none;
+  transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.panel,.badge,.trail,.gal-card,.related a,.toc a.tocitem,.toggles button,
+.menu-btn,nav.pn a{transition:transform .18s ease,box-shadow .18s ease,
+  border-color .18s ease,background .18s ease,color .15s ease}
+.trail:hover,.gal-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.16)}
+.toc a.tocitem:hover{transform:translateX(3px)}
+.related a:hover,nav.pn a:hover{transform:translateY(-1px)}
+.toggles button:active,.menu-btn:active{transform:scale(.94)}
+.plotwrap canvas,.cw canvas{cursor:crosshair}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}
+  h1.name{animation:none}
+  .ve-progress{display:none}
+  .trail:hover,.gal-card:hover,.toc a.tocitem:hover,.related a:hover,nav.pn a:hover{transform:none}
+}
+
+.cw{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0}
+.cw canvas{width:100%;height:auto;display:block}
+.cw-ctrl{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px;align-items:center}
+.cw-ctrl input[type=range]{flex:1;min-width:200px;accent-color:var(--accent)}
+.cw-ctrl select{background:var(--code-bg);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:5px 9px;font-family:inherit}
+.cw-leg{display:flex;align-items:center;gap:5px;font-size:.8rem;color:var(--muted);cursor:pointer}
+.cw-leg .k{display:inline-block;width:16px;height:10px;border:1px solid;border-radius:2px}
+.legend .kd{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:middle;margin-right:5px}
+.cw-note{font-size:.85rem;color:var(--muted);margin-top:10px;line-height:1.5}
+.bars{margin-top:4px}
+.bar-row{display:flex;align-items:center;gap:10px;margin:6px 0}
+.bar-lab{flex:0 0 40%;font-size:.85rem}
+.bar-track{flex:1;height:14px;background:var(--code-bg);border-radius:7px;overflow:hidden}
+.bar-fill{display:block;height:100%;border-radius:7px}
+.bar-val{flex:0 0 auto;font-family:'Cascadia Code',monospace;font-size:.82rem;color:var(--muted)}
+.bar-total{margin-top:8px;font-family:'Cascadia Code',monospace;font-size:.85rem;color:var(--ink)}
+svg.schema{width:100%;height:auto;max-width:640px;display:block;margin:6px auto}
+svg.schema text{fill:var(--ink);font-family:'Segoe UI',sans-serif}
+svg.schema .lab{fill:var(--muted);font-size:12px}
+svg.schema .box{fill:var(--code-bg);stroke:var(--line)}
+svg.schema .hot{cursor:default}
+svg.schema .hot:hover .box{stroke:var(--accent);stroke-width:2}
+svg.schema .node{fill:var(--accent)}
+svg.schema .edge{stroke:var(--accent);fill:none;stroke-width:2;marker-end:url(#arrow)}
+svg.schema .edge-lab{fill:var(--muted);font-size:11px}
+svg.schema .cpl{fill:var(--accent);fill-opacity:.18;stroke:var(--accent);stroke-width:1.6}
+svg.schema .cplt{fill:var(--accent);font-weight:700}
+svg.schema .zero{fill:var(--ghost)}
+svg.schema .diag{fill:var(--code-bg);stroke:var(--line)}
+svg.schema .fill{fill:var(--accent);fill-opacity:.08;stroke:var(--accent);stroke-opacity:.4}
+svg.schema .dash{stroke:var(--muted);stroke-dasharray:4 4;fill:none}
+svg.schema .brk{stroke:var(--muted);stroke-width:2;fill:none}
+.gal-summary{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:8px 0}
+.gal-stat{font-size:.9rem;color:var(--muted)}
+.gal-stat b{color:var(--ink);font-size:1.05rem}
+.gal-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.gal-flt{cursor:pointer;font-size:.82rem;padding:4px 11px;border:1px solid var(--line);border-radius:14px;color:var(--muted)}
+.gal-flt[data-on]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.gal-only{font-size:.82rem;color:var(--muted);margin-left:auto;display:flex;align-items:center;gap:5px}
+.gal-src{margin:18px 0}
+.gal-srch{font-size:1.05rem;margin:0 0 2px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.gal-srcn{font-size:.8rem;color:var(--muted);font-weight:400}
+.gal-blurb{font-size:.82rem;color:var(--muted);margin:2px 0 8px}
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.gal-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:0}
+.gal-cap{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:.8rem}
+.gal-nm{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gal-badge{flex:0 0 auto;font-family:'Cascadia Code',monospace;font-size:.72rem;padding:1px 6px;border-radius:8px;border:1px solid currentColor;background:transparent}
+.gal-badge.ok{color:var(--ok)}
+.gal-badge.mid{color:var(--accent2)}
+.gal-badge.hi{color:var(--warn)}
+.gal-cv{width:100%;height:auto;display:block;margin:4px 0}
+.gal-cond{font-size:.72rem;color:var(--muted);font-family:'Cascadia Code',monospace}
+.gal-cav{font-size:.72rem;color:var(--warn);margin-top:3px;line-height:1.35}
+.gloss-tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem}
+.gloss-tbl th,.gloss-tbl td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.gloss-tbl th{color:var(--muted);font-weight:600;font-size:.82rem;text-transform:uppercase;letter-spacing:.03em}
+.gloss-tbl td.sym{font-family:'Cascadia Code',monospace;color:var(--accent);white-space:nowrap}
+.gloss-tbl td.unit{font-family:'Cascadia Code',monospace;color:var(--muted);white-space:nowrap}
+.gloss-wrap{overflow-x:auto}
+.an-ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.an-scn{cursor:pointer;font-size:.82rem;padding:4px 11px;border:1px solid var(--line);border-radius:14px;color:var(--muted)}
+.an-scn[data-on]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.an-readout{margin-top:10px;font-family:'Cascadia Code',monospace;font-size:.85rem;color:var(--ink);min-height:1.3em;line-height:1.4}
+.an-readout .an-hint{color:var(--muted);font-family:'Segoe UI',sans-serif}
+#plot_an{cursor:crosshair}
+.study-sub{font-size:1rem;color:var(--muted);font-weight:400}
+.study-figs{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0}
+.study-fig{margin:0;flex:1 1 340px;max-width:100%}
+.study-fig img{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+.study-fig figcaption{font-size:.78rem;color:var(--muted);margin-top:4px;text-align:center}
+.study-figcap{font-size:.82rem;color:var(--muted);margin:6px 0}
+.study-nofig{font-size:.9rem;color:var(--muted)}
+.study-cav{font-size:.85rem;color:var(--warn);margin-top:8px;line-height:1.4}
+.study-meta td:first-child{color:var(--muted);white-space:nowrap;width:32%}
+.gal-report{display:inline-block;margin-top:6px;font-size:.74rem;color:var(--accent);text-decoration:none}
+.gal-report:hover{text-decoration:underline}
+.study-note h3,.study-note h4{color:var(--ink);margin:12px 0 4px;font-size:.9rem}
+.study-note table.wide{width:100%;border-collapse:collapse;font-size:.8rem;margin:6px 0}
+.study-note table.wide th,.study-note table.wide td{border-bottom:1px solid var(--line);padding:4px 8px;text-align:left;vertical-align:top}
+.study-note table.wide th{color:var(--muted);font-weight:600;font-size:.72rem}
+.study-note ul{margin:6px 0;padding-left:20px}
+.study-note li{margin:3px 0;font-size:.9rem}
+.study-note p{font-size:.9rem}
+.study-note code{font-family:'Cascadia Code',monospace;font-size:.85em;background:var(--code-bg);padding:1px 4px;border-radius:4px}
+.foundations-hero{background:linear-gradient(0deg,var(--panel),var(--panel));border:1px solid var(--accent);
+  border-radius:12px;padding:14px 16px;margin:14px 0}
+.trails{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}
+.trail{flex:1 1 200px;display:block;text-decoration:none;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--ink)}
+.trail:hover{border-color:var(--accent)}
+.trail b{display:block;color:var(--accent);margin-bottom:4px}
+.trail .desc{display:block;color:var(--muted);font-size:.85rem;line-height:1.4}
+.repro{font-family:'Cascadia Code',monospace;font-size:.82rem;background:var(--code-bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:6px 0;white-space:pre-wrap;overflow-x:auto}
+.gal-csv{display:inline-block;margin:4px 8px 0 0;font-size:.74rem;color:var(--accent);text-decoration:none}
+.gal-csv:hover{text-decoration:underline}
+
+/* ===== chrome do tutorial (sobrepõe o explorador) ===== */
+:root{
+  --bg:#15161b; --panel:#1e1f27; --ink:#cdd6f4; --muted:#a6adc8; --line:#313244;
+  --accent:#4aa3e0; --accent2:#f0868b; --ghost:#454a5a; --code-bg:#232530;
+  --ok:#a6e3a1; --warn:#e5c07b; --side:#1a1b22; --side-w:274px;
+  --bg2:#1a1b22; --line2:#3a3d4d;
+  --disp:'Bahnschrift','DIN Alternate','Segoe UI',system-ui,sans-serif;
+  --mono:'Consolas','Cascadia Code',monospace;
+}
+body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,sans-serif}
+.wrap{display:grid;grid-template-columns:var(--side-w) minmax(0,1fr);max-width:1500px;margin:0 auto}
+nav.toc{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:22px 15px 46px;border-right:1px solid var(--line);background:var(--side)}
+nav.toc .brand{font-family:var(--disp);font-weight:700;letter-spacing:.4px;font-size:15px;color:#fff;line-height:1.2}
+nav.toc .brand span{display:block;font-size:10.5px;font-weight:600;color:var(--accent);letter-spacing:1.4px;margin-top:3px}
+nav.toc .lang{display:flex;gap:6px;margin:14px 4px 4px}
+nav.toc .lang button{flex:1;background:var(--panel);border:1px solid var(--line);color:var(--muted);border-radius:7px;padding:5px;font-size:12px;cursor:pointer;font-family:var(--mono);transition:all .15s}
+nav.toc .lang button.on{background:var(--accent);color:#08121c;border-color:var(--accent);font-weight:700}
+nav.toc .sep{margin:16px 6px 6px;font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+nav.toc a{display:block;color:var(--muted);padding:5px 9px;border-radius:6px;font-size:13px;border-left:2px solid transparent;transition:transform .15s ease,background .15s,color .15s;text-decoration:none}
+nav.toc a:hover{background:var(--panel);color:var(--ink);transform:translateX(2px)}
+nav.toc a.active{background:var(--panel);color:#fff;border-left-color:var(--accent)}
+nav.toc a.cur{color:#fff;font-weight:600}
+main{margin:0;padding:0 clamp(18px,3.5vw,54px) 90px;min-width:0;max-width:1120px}
+header.hero{margin:0 calc(-1*clamp(18px,3.5vw,54px)) 26px;padding:56px clamp(18px,3.5vw,54px) 34px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;
+  background:radial-gradient(1100px 320px at 18% -20%, #24344d66, transparent),radial-gradient(820px 300px at 92% -10%, #2c2140aa, transparent), var(--bg2)}
+header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;opacity:.09}
+header.hero>*{position:relative}
+header.hero .kicker{font-family:var(--mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--accent)}
+header.hero h1{font-family:var(--disp);font-weight:700;letter-spacing:.4px;font-size:clamp(28px,4.4vw,46px);margin:8px 0 10px;color:#fff;line-height:1.03}
+header.hero .lead{max-width:74ch;color:var(--muted);font-size:15.5px;margin:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:18px 0}
+h2.sec{font-family:var(--disp);font-weight:700;font-size:19px;color:#fff;scroll-margin-top:16px}
+.eq{background:linear-gradient(180deg,#262832,var(--code-bg));border:1px solid var(--line);
+  border-left:3px solid var(--accent);border-radius:10px;padding:12px 20px;margin:16px 0;
+  color:#eaf0fc;box-shadow:0 3px 14px rgba(0,0,0,.28)}
+.eq-line{display:flex;align-items:baseline;gap:6px 18px;flex-wrap:wrap;margin:9px 0;line-height:1.55}
+.eq-line math{font-size:1.32rem;color:#eef3ff}
+.eq-raw{font-family:var(--mono);white-space:pre;overflow-x:auto;font-size:1.02rem;color:#eaf0fc}
+.eq .eq-cmt{color:var(--muted);font-family:'Segoe UI',system-ui,sans-serif;font-style:italic;font-size:.82em}
+math{font-family:'Cambria Math','STIX Two Math','Latin Modern Math','Times New Roman',serif}
+code{background:var(--code-bg);border:1px solid var(--line);color:#dfe6f5}
+/* animações */
+@keyframes ve-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.gprog{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;background:linear-gradient(90deg,var(--accent),#cba6f7);box-shadow:0 0 10px var(--accent);transition:width .08s linear}
+.reveal{opacity:0;transform:translateY(18px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+header.hero .kicker{animation:ve-rise .7s cubic-bezier(.2,.7,.2,1) both}
+header.hero h1{animation:ve-rise .7s .08s cubic-bezier(.2,.7,.2,1) both}
+header.hero .lead{animation:ve-rise .7s .16s cubic-bezier(.2,.7,.2,1) both}
+.cw canvas,.plotwrap canvas,#plot_an{cursor:crosshair}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}nav.toc{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}}
+@media(prefers-reduced-motion:reduce){.reveal,.reveal.in{opacity:1!important;transform:none!important;transition:none!important}header.hero .kicker,header.hero h1,header.hero .lead{animation:none}.gprog{display:none}nav.toc a:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc"><div class="brand">Bolt Analysis Studio<span>V2 · FUNDAMENTOS</span></div><div class="lang"><button data-l="pt" onclick="setLang('pt')">PT</button><button data-l="en" onclick="setLang('en')">EN</button></div><div class="sep"><span data-l="pt">Navegação</span><span data-l="en">Navigation</span></div><a href="index.html">← <span data-l="pt">Explorador</span><span data-l="en">Explorer</span></a><div class="sep"><span data-l="pt">Nesta página</span><span data-l="en">On this page</span></div><a href="#s0"><span data-l="pt">Os três estágios</span><span data-l="en">The three stages</span></a><a href="#s1"><span data-l="pt">Runaway ou saturação?</span><span data-l="en">Runaway or saturation?</span></a><div class="sep"><span data-l="pt">Fundamentos</span><span data-l="en">Foundations</span></div><a href="concept_manual.html"><span data-l="pt">Manual do BAS V2 (3 volumes)</span><span data-l="en">BAS V2 Manual (3 volumes)</span></a><a href="concept_usage.html"><span data-l="pt">Guia de uso do programa</span><span data-l="en">How to use the program</span></a><a href="concept_not-a-fit.html"><span data-l="pt">1 · Não é um fit</span><span data-l="en">1 · Not a fit</span></a><a href="concept_msd-model.html"><span data-l="pt">2 · Modelo MSD</span><span data-l="en">2 · MSD model</span></a><a href="concept_mechanisms.html"><span data-l="pt">3 · Estado + mecanismos</span><span data-l="en">3 · State + mechanisms</span></a><a href="concept_coupling.html"><span data-l="pt">4 · Acoplamento</span><span data-l="en">4 · Coupling</span></a><a href="concept_energy.html"><span data-l="pt">5 · Energia</span><span data-l="en">5 · Energy</span></a><a href="concept_methodology.html"><span data-l="pt">6 · Metodologia</span><span data-l="en">6 · Methodology</span></a><a href="concept_coverage.html"><span data-l="pt">Cobertura & limitações</span><span data-l="en">Coverage & limits</span></a><a href="concept_gallery.html"><span data-l="pt">7 · Galeria de validação</span><span data-l="en">7 · Validation gallery</span></a><a href="concept_review.html"><span data-l="pt">8 · Revisão da literatura</span><span data-l="en">8 · Literature review</span></a><a href="concept_equations.html"><span data-l="pt">9 · Equacionamento</span><span data-l="en">9 · Equations</span></a><a href="concept_references.html"><span data-l="pt">10 · Referências</span><span data-l="en">10 · References</span></a><a href="concept_anatomy.html" class="cur"><span data-l="pt">11 · Anatomia da curva</span><span data-l="en">11 · Anatomy of the curve</span></a><a href="concept_glossary.html"><span data-l="pt">12 · Glossário</span><span data-l="en">12 · Glossary</span></a></nav>
+<main>
+<header class="hero"><div class="kicker"><span data-l="pt">Fundamentos</span><span data-l="en">Foundations</span></div><h1><span data-l="pt">Anatomia de uma curva de afrouxamento</span><span data-l="en">Anatomy of a loosening curve</span></h1><div class="lead"><span data-l="pt">Toda curva de F/F0 conta a mesma história física. Abaixo, a
+curva-padrão (M16, ±0.5 mm) é dissecada: o eixo X está em escala <b>logarítmica</b> para separar as
+fases, e cada faixa traz o mecanismo que domina a perda ali.</span>
+<span data-l="en">Every F/F0 curve tells the same physical story. Below, the standard curve (M16, ±0.5
+mm) is dissected: the X axis is <b>logarithmic</b> to separate the phases, and each band names the
+mechanism that dominates the loss there.</span></div></header>
+
+
+<div id="cw" class="widget"><div class="cw"><div class="an-ctrl"><span class="an-scn" data-on="1" data-scn="0"><span data-l="pt">padrão (runaway)</span><span data-l="en">standard (runaway)</span></span><span class="an-scn" data-scn="1"><span data-l="pt">com auto-travamento</span><span data-l="en">with self-locking</span></span><span class="an-scn" data-scn="2"><span data-l="pt">incubação (joelho acentuado)</span><span data-l="en">incubation (sharp knee)</span></span></div><canvas id="plot_an"></canvas><div class="an-readout"></div><div class="cw-note"></div></div></div>
+
+<div class="panel">
+<h2 class="sec" id="s0"><span data-l="pt">Os três estágios</span><span data-l="en">The three stages</span></h2>
+<ul class="refs">
+<li><span data-l="pt"><b>I &mdash; Assentamento</b>: nos primeiros ciclos a pré-carga cai rápido porque as
+asperezas das superfícies se acomodam (embedding, lei de Norton) somadas à fluência inicial (creep).
+É a queda íngreme à esquerda.</span><span data-l="en"><b>I &mdash; Settling</b>: in the first cycles the
+preload drops fast as the surface asperities bed in (embedding, Norton law) plus initial creep. It is
+the steep drop on the left.</span></li>
+<li><span data-l="pt"><b>II &mdash; Afrouxamento</b>: o <b>joelho</b> marca a virada para o regime dirigido
+por escorregamento &mdash; desgaste (Archard) e rotação da porca (two-factor) sustentam o
+declínio.</span><span data-l="en"><b>II &mdash; Loosening</b>: the <b>knee</b> marks the turn into the
+slip-driven regime &mdash; wear (Archard) and nut rotation (two-factor) sustain the decline.</span></li>
+<li><span data-l="pt"><b>III &mdash; Cauda</b>: a curva se aproxima do seu destino; a linha tracejada
+marca o F/F0 final.</span><span data-l="en"><b>III &mdash; Tail</b>: the curve approaches its fate; the
+dashed line marks the final F/F0.</span></li>
+</ul>
+<p class="intro"><span data-l="pt">As fronteiras aqui são por FRAÇÃO DE PERDA (45% / 80% do total), não
+por ciclo fixo; o rótulo de cada faixa é o mecanismo dominante LIDO da decomposição real (ver
+<a href="concept_mechanisms.html">Estado + mecanismos</a>).</span>
+<span data-l="en">The boundaries here are by LOSS FRACTION (45% / 80% of the total), not a fixed cycle;
+each band's label is the dominant mechanism READ from the real decomposition (see
+<a href="concept_mechanisms.html">State + mechanisms</a>).</span></p>
+</div>
+
+<div class="panel">
+<h2 class="sec" id="s1"><span data-l="pt">Runaway ou saturação?</span><span data-l="en">Runaway or saturation?</span></h2>
+<p><span data-l="pt">A cauda tem dois destinos possíveis, decididos pelo mesmo laço de realimentação
+F0&rarr;[K]&rarr;&Phi;&rarr;afrouxamento&rarr;F0. Sem auto-travamento ela cai até ~0 (<b>runaway</b>).
+Com um piso de auto-travamento (<code>loose_arrest_floor</code>) o laço encontra um ponto fixo estável e
+a curva <b>satura</b> num patamar &mdash; vira uma S-curve. Veja a demonstração na página
+<a href="concept_coupling.html">Acoplamento</a>.</span>
+<span data-l="en">The tail has two possible fates, set by the same feedback loop
+F0&rarr;[K]&rarr;&Phi;&rarr;loosening&rarr;F0. Without self-locking it falls to ~0 (<b>runaway</b>). With
+a self-locking floor (<code>loose_arrest_floor</code>) the loop finds a stable fixed point and the curve
+<b>saturates</b> at a plateau &mdash; it becomes an S-curve. See the demo on the
+<a href="concept_coupling.html">Coupling</a> page.</span></p>
+</div>
+
+<nav class="pn"><a href="concept_references.html">&larr; 10 · Referências</a><a href="index.html">&#8962; <span data-l="pt">índice</span><span data-l="en">index</span></a><a href="concept_glossary.html">12 · Glossário &rarr;</a></nav>
+
+</main>
+</div>
+<script>const ADATA = {"kind": "anatomy", "scenarios": [{"id": "runaway", "label_pt": "padr\u00e3o (runaway)", "label_en": "standard (runaway)", "xmode": "log", "N": [0, 10, 20, 31, 41, 52, 62, 72, 83, 93, 104, 114, 125, 135, 145, 156, 166, 177, 187, 197, 208, 218, 229, 239, 250, 260, 270, 281, 291, 302, 312, 323, 333, 343, 354, 364, 375, 385, 395, 406, 416, 427, 437, 448, 458, 468, 479, 489, 500, 510, 521, 531, 541, 552, 562, 573, 583, 593, 604, 614, 625, 635, 646, 656, 666, 677, 687, 698, 708, 719, 729, 739, 750, 760, 771, 781, 791, 802, 812, 823, 833, 844, 854, 864, 875, 885, 896, 906, 917, 927, 937, 948, 958, 969, 979, 989, 1000, 1010, 1021, 1031, 1042, 1052, 1062, 1073, 1083, 1094, 1104, 1115, 1125, 1135, 1146, 1156, 1167, 1177, 1187, 1198, 1208, 1219, 1229, 1240, 1250, 1260, 1271, 1281, 1292, 1302, 1313, 1323, 1333, 1344, 1354, 1365, 1375, 1385, 1396, 1406, 1417, 1427, 1438, 1448, 1458, 1469, 1479, 1490, 1500, 1511, 1521, 1531, 1542, 1552, 1563, 1573, 1583, 1594, 1604, 1615, 1625, 1636, 1646, 1656, 1667, 1677, 1688, 1698, 1709, 1719, 1729, 1740, 1750, 1761, 1771, 1781, 1792, 1802, 1813, 1823, 1834, 1844, 1854, 1865, 1875, 1886, 1896, 1907, 1917, 1927, 1938, 1948, 1959, 1969, 1979, 1990, 2000, 2011, 2021, 2032, 2042, 2052, 2063, 2073, 2084, 2094, 2105, 2115, 2125, 2136, 2146, 2157, 2167, 2177, 2188, 2198, 2209, 2219, 2230, 2240, 2250, 2261, 2271, 2282, 2292, 2303, 2313, 2323, 2334, 2344, 2355, 2365, 2375, 2386, 2396, 2407, 2417, 2428, 2438, 2448, 2459, 2469, 2480, 2490, 2500], "ratio": [1.0, 0.8357, 0.7578, 0.693, 0.6461, 0.6042, 0.573, 0.5469, 0.523, 0.5048, 0.4879, 0.4748, 0.4624, 0.4526, 0.444, 0.4357, 0.4289, 0.4222, 0.4167, 0.4116, 0.4064, 0.402, 0.3974, 0.3935, 0.3894, 0.3858, 0.3823, 0.3787, 0.3754, 0.372, 0.3689, 0.3656, 0.3626, 0.3597, 0.3565, 0.3537, 0.3507, 0.3479, 0.3452, 0.3423, 0.3396, 0.3367, 0.3342, 0.3313, 0.3288, 0.3263, 0.3235, 0.3211, 0.3184, 0.3159, 0.3133, 0.3109, 0.3086, 0.306, 0.3036, 0.3011, 0.2988, 0.2966, 0.2941, 0.2918, 0.2894, 0.2872, 0.2848, 0.2826, 0.2805, 0.2781, 0.276, 0.2737, 0.2716, 0.2694, 0.2673, 0.2653, 0.263, 0.261, 0.2588, 0.2569, 0.2549, 0.2527, 0.2508, 0.2487, 0.2468, 0.2447, 0.2428, 0.241, 0.2389, 0.2371, 0.2351, 0.2332, 0.2313, 0.2295, 0.2277, 0.2257, 0.224, 0.2221, 0.2203, 0.2186, 0.2167, 0.2151, 0.2132, 0.2115, 0.2097, 0.2081, 0.2064, 0.2046, 0.203, 0.2012, 0.1997, 0.1979, 0.1963, 0.1948, 0.1931, 0.1915, 0.1898, 0.1883, 0.1868, 0.1852, 0.1837, 0.1821, 0.1806, 0.179, 0.1775, 0.1761, 0.1745, 0.1731, 0.1715, 0.1701, 0.1686, 0.1672, 0.1658, 0.1643, 0.163, 0.1615, 0.1602, 0.1588, 0.1574, 0.1561, 0.1546, 0.1533, 0.1519, 0.1506, 0.1494, 0.148, 0.1467, 0.1453, 0.1441, 0.1428, 0.1415, 0.1403, 0.139, 0.1378, 0.1365, 0.1353, 0.1341, 0.1328, 0.1317, 0.1304, 0.1293, 0.128, 0.1269, 0.1258, 0.1245, 0.1234, 0.1222, 0.1211, 0.1199, 0.1188, 0.1178, 0.1166, 0.1155, 0.1144, 0.1133, 0.1123, 0.1112, 0.1101, 0.109, 0.108, 0.1069, 0.1059, 0.1049, 0.1038, 0.1028, 0.1018, 0.1008, 0.0997, 0.0988, 0.0978, 0.0968, 0.0958, 0.0948, 0.0939, 0.093, 0.092, 0.0911, 0.0901, 0.0892, 0.0882, 0.0873, 0.0864, 0.0855, 0.0846, 0.0836, 0.0828, 0.0818, 0.081, 0.0801, 0.0792, 0.0784, 0.0775, 0.0767, 0.0759, 0.075, 0.0742, 0.0733, 0.0725, 0.0716, 0.0708, 0.07, 0.0692, 0.0684, 0.0676, 0.0668, 0.066, 0.0652, 0.0645, 0.0637, 0.0629, 0.0621, 0.0614, 0.0607, 0.0599, 0.0592, 0.0584, 0.0577, 0.0569, 0.0562, 0.0555, 0.0548, 0.0541, 0.0533, 0.0527, 0.052], "dom": ["creep", "creep", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "rotational_loosening", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "rotational_loosening", "wear", "wear", "wear", "rotational_loosening", "wear", "wear"], "stages": [{"roman": "I", "name_pt": "assentamento", "name_en": "settling", "start_N": 0, "end_N": 62, "dom": "embedding"}, {"roman": "II", "name_pt": "afrouxamento", "name_en": "loosening", "start_N": 62, "end_N": 864, "dom": "wear"}, {"roman": "III", "name_pt": "cauda", "name_en": "tail", "start_N": 864, "end_N": 2500, "dom": "wear"}], "knee": 62, "floor": 0.052}, {"id": "selflock", "label_pt": "com auto-travamento", "label_en": "with self-locking", "xmode": "log", "N": [0, 10, 20, 31, 41, 52, 62, 72, 83, 93, 104, 114, 125, 135, 145, 156, 166, 177, 187, 197, 208, 218, 229, 239, 250, 260, 270, 281, 291, 302, 312, 323, 333, 343, 354, 364, 375, 385, 395, 406, 416, 427, 437, 448, 458, 468, 479, 489, 500, 510, 521, 531, 541, 552, 562, 573, 583, 593, 604, 614, 625, 635, 646, 656, 666, 677, 687, 698, 708, 719, 729, 739, 750, 760, 771, 781, 791, 802, 812, 823, 833, 844, 854, 864, 875, 885, 896, 906, 917, 927, 937, 948, 958, 969, 979, 989, 1000, 1010, 1021, 1031, 1042, 1052, 1062, 1073, 1083, 1094, 1104, 1115, 1125, 1135, 1146, 1156, 1167, 1177, 1187, 1198, 1208, 1219, 1229, 1240, 1250, 1260, 1271, 1281, 1292, 1302, 1313, 1323, 1333, 1344, 1354, 1365, 1375, 1385, 1396, 1406, 1417, 1427, 1438, 1448, 1458, 1469, 1479, 1490, 1500, 1511, 1521, 1531, 1542, 1552, 1563, 1573, 1583, 1594, 1604, 1615, 1625, 1636, 1646, 1656, 1667, 1677, 1688, 1698, 1709, 1719, 1729, 1740, 1750, 1761, 1771, 1781, 1792, 1802, 1813, 1823, 1834, 1844, 1854, 1865, 1875, 1886, 1896, 1907, 1917, 1927, 1938, 1948, 1959, 1969, 1979, 1990, 2000, 2011, 2021, 2032, 2042, 2052, 2063, 2073, 2084, 2094, 2105, 2115, 2125, 2136, 2146, 2157, 2167, 2177, 2188, 2198, 2209, 2219, 2230, 2240, 2250, 2261, 2271, 2282, 2292, 2303, 2313, 2323, 2334, 2344, 2355, 2365, 2375, 2386, 2396, 2407, 2417, 2428, 2438, 2448, 2459, 2469, 2480, 2490, 2500], "ratio": [1.0, 0.8413, 0.7683, 0.7085, 0.6657, 0.6282, 0.6007, 0.5781, 0.558, 0.5431, 0.5296, 0.5195, 0.5103, 0.5033, 0.4974, 0.492, 0.4878, 0.4838, 0.4807, 0.478, 0.4754, 0.4733, 0.4713, 0.4696, 0.468, 0.4666, 0.4653, 0.464, 0.4628, 0.4617, 0.4606, 0.4596, 0.4586, 0.4577, 0.4568, 0.4559, 0.455, 0.4541, 0.4533, 0.4524, 0.4517, 0.4508, 0.45, 0.4492, 0.4484, 0.4477, 0.4469, 0.4461, 0.4453, 0.4446, 0.4438, 0.443, 0.4423, 0.4415, 0.4408, 0.44, 0.4393, 0.4386, 0.4378, 0.4371, 0.4363, 0.4356, 0.4348, 0.4341, 0.4334, 0.4326, 0.4319, 0.4311, 0.4304, 0.4296, 0.4289, 0.4282, 0.4275, 0.4268, 0.426, 0.4253, 0.4246, 0.4238, 0.4231, 0.4223, 0.4216, 0.4208, 0.4201, 0.4194, 0.4186, 0.4179, 0.4172, 0.4164, 0.4157, 0.415, 0.4142, 0.4135, 0.4127, 0.412, 0.4112, 0.4105, 0.4097, 0.409, 0.4082, 0.4075, 0.4067, 0.406, 0.4053, 0.4045, 0.4037, 0.4029, 0.4022, 0.4014, 0.4007, 0.3999, 0.3991, 0.3984, 0.3976, 0.3969, 0.3961, 0.3953, 0.3946, 0.3938, 0.393, 0.3922, 0.3915, 0.3907, 0.3899, 0.3891, 0.3883, 0.3876, 0.3867, 0.386, 0.3852, 0.3844, 0.3836, 0.3828, 0.382, 0.3813, 0.3804, 0.3797, 0.3788, 0.378, 0.3772, 0.3764, 0.3757, 0.3748, 0.374, 0.3732, 0.3724, 0.3715, 0.3708, 0.37, 0.3691, 0.3683, 0.3675, 0.3667, 0.3659, 0.365, 0.3642, 0.3634, 0.3626, 0.3617, 0.3609, 0.3601, 0.3592, 0.3584, 0.3576, 0.3568, 0.3559, 0.3551, 0.3543, 0.3534, 0.3526, 0.3517, 0.3509, 0.3501, 0.3492, 0.3483, 0.3474, 0.3466, 0.3457, 0.3449, 0.3441, 0.3432, 0.3424, 0.3415, 0.3406, 0.3397, 0.3389, 0.3381, 0.3372, 0.3363, 0.3354, 0.3346, 0.3338, 0.3328, 0.332, 0.3311, 0.3303, 0.3293, 0.3285, 0.3277, 0.3267, 0.3259, 0.325, 0.3241, 0.3232, 0.3224, 0.3215, 0.3206, 0.3197, 0.3188, 0.318, 0.3171, 0.3162, 0.3153, 0.3144, 0.3135, 0.3126, 0.3117, 0.3109, 0.31, 0.3091, 0.3082, 0.3073, 0.3064, 0.3055, 0.3046, 0.3037, 0.3028, 0.3019, 0.301, 0.3002, 0.2992, 0.2984, 0.2974, 0.2966, 0.2956, 0.2948, 0.2939, 0.2929, 0.2921, 0.2911, 0.2903, 0.2894], "dom": ["creep", "creep", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "wear", "creep", "creep", "wear", "creep", "wear", "wear", "wear", "wear", "creep", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear"], "stages": [{"roman": "I", "name_pt": "assentamento", "name_en": "settling", "start_N": 0, "end_N": 41, "dom": "embedding"}, {"roman": "II", "name_pt": "afrouxamento", "name_en": "loosening", "start_N": 41, "end_N": 698, "dom": "embedding"}, {"roman": "III", "name_pt": "cauda", "name_en": "tail", "start_N": 698, "end_N": 2500, "dom": "wear"}], "knee": 41, "floor": 0.289}, {"id": "incubation", "label_pt": "incuba\u00e7\u00e3o (joelho acentuado)", "label_en": "incubation (sharp knee)", "xmode": "linear", "N": [0, 20, 41, 62, 83, 104, 125, 145, 166, 187, 208, 229, 250, 270, 291, 312, 333, 354, 375, 395, 416, 437, 458, 479, 500, 520, 541, 562, 583, 604, 625, 645, 666, 687, 708, 729, 750, 770, 791, 812, 833, 854, 875, 896, 916, 937, 958, 979, 1000, 1021, 1041, 1062, 1083, 1104, 1125, 1146, 1166, 1187, 1208, 1229, 1250, 1271, 1291, 1312, 1333, 1354, 1375, 1396, 1416, 1437, 1458, 1479, 1500, 1521, 1541, 1562, 1583, 1604, 1625, 1646, 1667, 1687, 1708, 1729, 1750, 1771, 1792, 1812, 1833, 1854, 1875, 1896, 1917, 1937, 1958, 1979, 2000, 2021, 2042, 2062, 2083, 2104, 2125, 2146, 2167, 2187, 2208, 2229, 2250, 2271, 2292, 2312, 2333, 2354, 2375, 2396, 2417, 2437, 2458, 2479, 2500, 2521, 2542, 2563, 2583, 2604, 2625, 2646, 2667, 2688, 2708, 2729, 2750, 2771, 2792, 2813, 2833, 2854, 2875, 2896, 2917, 2938, 2958, 2979, 3000, 3021, 3042, 3063, 3083, 3104, 3125, 3146, 3167, 3188, 3208, 3229, 3250, 3271, 3292, 3313, 3334, 3354, 3375, 3396, 3417, 3438, 3459, 3479, 3500, 3521, 3542, 3563, 3584, 3604, 3625, 3646, 3667, 3688, 3709, 3729, 3750, 3771, 3792, 3813, 3834, 3854, 3875, 3896, 3917, 3938, 3959, 3979, 4000, 4021, 4042, 4063, 4084, 4104, 4125, 4146, 4167, 4188, 4209, 4230, 4250, 4271, 4292, 4313, 4334, 4355, 4375, 4396, 4417, 4438, 4459, 4480, 4500, 4521, 4542, 4563, 4584, 4605, 4625, 4646, 4667, 4688, 4709, 4730, 4750, 4771, 4792, 4813, 4834, 4855, 4875, 4896, 4917, 4938, 4959, 4980, 5000], "ratio": [1.0, 0.7683, 0.6657, 0.6007, 0.558, 0.5296, 0.5105, 0.4979, 0.4887, 0.4822, 0.4776, 0.4741, 0.4715, 0.4695, 0.4678, 0.4664, 0.4652, 0.4642, 0.4632, 0.4624, 0.4616, 0.4609, 0.4602, 0.4595, 0.4589, 0.4583, 0.4577, 0.4572, 0.4567, 0.4561, 0.4557, 0.4552, 0.4547, 0.4543, 0.4539, 0.4535, 0.4531, 0.4527, 0.4523, 0.4519, 0.4516, 0.4512, 0.4509, 0.4505, 0.4502, 0.4499, 0.4496, 0.4493, 0.449, 0.4487, 0.4484, 0.4481, 0.4478, 0.4476, 0.4473, 0.447, 0.4468, 0.4465, 0.4463, 0.446, 0.4458, 0.4455, 0.4453, 0.4451, 0.4448, 0.4446, 0.4444, 0.4441, 0.4439, 0.4437, 0.4435, 0.4432, 0.443, 0.4428, 0.4425, 0.4423, 0.4421, 0.4418, 0.4416, 0.4413, 0.4411, 0.4408, 0.4406, 0.4403, 0.44, 0.4397, 0.4394, 0.4391, 0.4388, 0.4385, 0.4382, 0.4378, 0.4374, 0.4371, 0.4367, 0.4362, 0.4358, 0.4353, 0.4349, 0.4344, 0.4338, 0.4333, 0.4327, 0.4321, 0.4314, 0.4308, 0.4301, 0.4293, 0.4285, 0.4277, 0.4268, 0.4259, 0.425, 0.424, 0.4229, 0.4218, 0.4207, 0.4195, 0.4183, 0.417, 0.4156, 0.4142, 0.4127, 0.4112, 0.4097, 0.408, 0.4063, 0.4045, 0.4027, 0.4008, 0.399, 0.3969, 0.3949, 0.3928, 0.3906, 0.3883, 0.3861, 0.3838, 0.3814, 0.3789, 0.3764, 0.3739, 0.3714, 0.3688, 0.3661, 0.3633, 0.3606, 0.3577, 0.355, 0.3521, 0.3492, 0.3463, 0.3433, 0.3403, 0.3374, 0.3344, 0.3313, 0.3282, 0.3251, 0.3219, 0.3188, 0.3158, 0.3126, 0.3094, 0.3063, 0.3031, 0.2999, 0.2968, 0.2937, 0.2905, 0.2873, 0.2841, 0.2809, 0.2779, 0.2747, 0.2715, 0.2683, 0.2652, 0.2621, 0.2591, 0.256, 0.2529, 0.2498, 0.2467, 0.2436, 0.2407, 0.2377, 0.2347, 0.2317, 0.2287, 0.2257, 0.2229, 0.22, 0.2171, 0.2142, 0.2114, 0.2085, 0.2058, 0.203, 0.2002, 0.1975, 0.1947, 0.192, 0.1893, 0.1868, 0.1841, 0.1815, 0.1789, 0.1763, 0.1737, 0.1713, 0.1688, 0.1663, 0.1638, 0.1614, 0.159, 0.1567, 0.1543, 0.1519, 0.1496, 0.1473, 0.145, 0.1428, 0.1406, 0.1383, 0.1361, 0.1339, 0.1318, 0.1297, 0.1276, 0.1255, 0.1234, 0.1214, 0.1193, 0.1174, 0.1154, 0.1134, 0.1115, 0.1095, 0.1076, 0.1058], "dom": ["embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "embedding", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "creep", "wear", "creep", "creep", "wear", "creep", "creep", "wear", "creep", "wear", "creep", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear", "wear"], "stages": [{"roman": "I", "name_pt": "assentamento", "name_en": "settling", "start_N": 0, "end_N": 83, "dom": "embedding"}, {"roman": "II", "name_pt": "incuba\u00e7\u00e3o", "name_en": "incubation", "start_N": 83, "end_N": 1125, "dom": "embedding"}, {"roman": "III", "name_pt": "colapso", "name_en": "collapse", "start_N": 1125, "end_N": 5000, "dom": "wear"}], "knee": 1125, "floor": 0.106}], "start_idx": 0, "mech_pt": {"embedding": "assentamento", "creep": "creep", "wear": "desgaste", "rotational_loosening": "afrouxamento", "thread_fretting": "fretting", "fatigue": "fadiga"}, "mech_en": {"embedding": "embedding", "creep": "creep", "wear": "wear", "rotational_loosening": "loosening", "thread_fretting": "fretting", "fatigue": "fatigue"}, "note_pt": "Arraste o cursor sobre a curva: o painel mostra o ciclo, a pr\u00e9-carga, o est\u00e1gio e o mecanismo dominante ALI. Tr\u00eas cen\u00e1rios da MESMA junta: &lt;b&gt;runaway&lt;/b&gt; (cai a ~0), &lt;b&gt;auto-travamento&lt;/b&gt; (estabiliza num piso) e &lt;b&gt;incuba\u00e7\u00e3o&lt;/b&gt; &mdash; um plat\u00f4 longo (afrouxamento represado pela incuba\u00e7\u00e3o) seguido de um COLAPSO de joelho acentuado, a forma de 3 est\u00e1gios cl\u00e1ssica (Junker). Os dois primeiros usam eixo X log (front-loaded); a incuba\u00e7\u00e3o usa X linear, onde o joelho tardio aparece melhor.", "note_en": "Drag the cursor over the curve: the panel shows the cycle, preload, stage and dominant mechanism THERE. Three scenarios of the SAME joint: &lt;b&gt;runaway&lt;/b&gt; (falls to ~0), &lt;b&gt;self-locking&lt;/b&gt; (stabilizes at a floor) and &lt;b&gt;incubation&lt;/b&gt; &mdash; a long plateau (loosening held back by incubation) followed by a sharp-knee COLLAPSE, the classic 3-stage (Junker) shape. The first two use a log X axis (front-loaded); incubation uses a linear X, where the late knee shows better."};</script>
+<script>
+(function(){ if(typeof ADATA==='undefined'||!ADATA) return;
+  const root=document.documentElement, cs=getComputedStyle(root), col=n=>cs.getPropertyValue(n).trim();
+  const host=document.getElementById('cw'); if(!host) return;
+  const cv=host.querySelector('canvas'); if(!cv) return; const ctx=cv.getContext('2d');
+  const note=host.querySelector('.cw-note'), ro=host.querySelector('.an-readout');
+  const SC=ADATA.scenarios; let cur=ADATA.start_idx||0, hov=-1, geom=null;
+  const PAD={l:52,r:14,t:30,b:38}, BAND=['--accent','--accent2','--warn'];
+  const L=()=>root.dataset.lang==='pt'?'pt':'en';
+  const MN=k=>((L()==='pt'?ADATA.mech_pt:ADATA.mech_en)[k]||k);
+  const lx=n=>Math.log(Math.max(1,n)+1);
+  let y0=1,y1=0; SC.forEach(s=>s.ratio.forEach(v=>{if(v<y0)y0=v;if(v>y1)y1=v;}));
+  const pd=(y1-y0)*0.08||0.02; y0=Math.max(0,y0-pd); y1=Math.min(1.02,y1+pd);
+  function stageAt(s,n){let st=s.stages[0];for(let i=0;i<s.stages.length;i++){if(n>=s.stages[i].start_N)st=s.stages[i];}return st;}
+  function draw(){
+    const s=SC[cur];
+    const w=cv.clientWidth||820,h=Math.round(w*0.5),dpr=window.devicePixelRatio||1;
+    cv.width=w*dpr;cv.height=h*dpr;cv.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
+    const Nmax=s.N[s.N.length-1], logm=(s.xmode!=='linear');
+    const xmin=logm?lx(0):0, xspan=((logm?lx(Nmax):Nmax)-xmin)||1;
+    const xv=n=>logm?lx(n):n;
+    const X=n=>PAD.l+((xv(n)-xmin)/xspan)*(w-PAD.l-PAD.r), Y=v=>{const vv=Math.max(y0,Math.min(y1,v));return PAD.t+(1-(vv-y0)/(y1-y0))*(h-PAD.t-PAD.b);};
+    geom={X:X};
+    s.stages.forEach(function(st,i){const x0=X(st.start_N),x1=X(st.end_N);
+      ctx.fillStyle=col(BAND[i%3]);ctx.globalAlpha=.08;ctx.fillRect(x0,PAD.t,Math.max(0,x1-x0),h-PAD.t-PAD.b);ctx.globalAlpha=1;
+      ctx.fillStyle=col(BAND[i%3]);ctx.font="bold 11px 'Segoe UI',sans-serif";ctx.textAlign='center';ctx.textBaseline='top';
+      ctx.fillText(st.roman+' · '+(L()==='pt'?st.name_pt:st.name_en),(x0+x1)/2,4);
+      ctx.fillStyle=col('--muted');ctx.font="10px 'Segoe UI',sans-serif";ctx.fillText(MN(st.dom),(x0+x1)/2,18);});
+    ctx.strokeStyle=col('--line');ctx.fillStyle=col('--muted');ctx.lineWidth=1;ctx.font="11px 'Segoe UI',sans-serif";ctx.textAlign='right';ctx.textBaseline='middle';
+    for(let g=0;g<=4;g++){const v=y1-(g/4)*(y1-y0),y=PAD.t+(g/4)*(h-PAD.t-PAD.b);ctx.globalAlpha=.4;ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(w-PAD.r,y);ctx.stroke();ctx.globalAlpha=1;ctx.fillText(v.toFixed(2),PAD.l-6,y);}
+    ctx.textAlign='center';ctx.textBaseline='top';
+    const ticks=logm?[1,10,100,1000,Nmax].filter(n=>n<=Nmax):[0,Math.round(Nmax*0.25),Math.round(Nmax*0.5),Math.round(Nmax*0.75),Nmax];
+    ticks.forEach(function(n){ctx.fillText(n,X(n),h-PAD.b+6);});
+    ctx.strokeStyle=col('--muted');ctx.setLineDash([5,4]);ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(PAD.l,Y(s.floor));ctx.lineTo(w-PAD.r,Y(s.floor));ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=col('--muted');ctx.textAlign='left';ctx.fillText('F/F0 = '+s.floor.toFixed(2),PAD.l+4,Y(s.floor)-8);
+    ctx.strokeStyle=col('--accent');ctx.lineWidth=3;ctx.beginPath();
+    for(let i=0;i<s.N.length;i++){const x=X(s.N[i]),y=Y(s.ratio[i]);i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.stroke();
+    let ky=Y(0.5);for(let i=0;i<s.N.length;i++){if(s.N[i]>=s.knee){ky=Y(s.ratio[i]);break;}}
+    const kx=X(s.knee);ctx.fillStyle=col('--warn');ctx.beginPath();ctx.arc(kx,ky,4,0,6.2832);ctx.fill();
+    ctx.font="10px 'Segoe UI',sans-serif";ctx.textAlign='left';ctx.fillText(L()==='pt'?'joelho':'knee',kx+6,ky-6);
+    if(hov>=0&&hov<s.N.length){const hx=X(s.N[hov]),hy=Y(s.ratio[hov]);
+      ctx.strokeStyle=col('--ink');ctx.globalAlpha=.35;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(hx,PAD.t);ctx.lineTo(hx,h-PAD.b);ctx.stroke();ctx.globalAlpha=1;
+      ctx.fillStyle=col('--accent2');ctx.beginPath();ctx.arc(hx,hy,5,0,6.2832);ctx.fill();ctx.strokeStyle=col('--panel');ctx.lineWidth=2;ctx.stroke();}
+    ctx.fillStyle=col('--muted');ctx.save();ctx.translate(12,h/2);ctx.rotate(-Math.PI/2);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('F / F0',0,0);ctx.restore();
+    ctx.textAlign='center';ctx.fillText((L()==='pt'?'ciclo':'cycle')+(logm?' (log)':''),(PAD.l+w-PAD.r)/2,h-14);
+    syncRO();
+  }
+  function syncRO(){ if(!ro)return; const pt=L()==='pt', s=SC[cur];
+    if(hov<0){ ro.innerHTML='<span class="an-hint">'+(pt?'Passe o cursor sobre a curva para inspecionar cada ciclo.':'Hover over the curve to inspect each cycle.')+'</span>'; return; }
+    const n=s.N[hov], rr=s.ratio[hov], st=stageAt(s,n), loss=(s.ratio[0]-rr)*100;
+    ro.innerHTML=(pt?'ciclo ':'cycle ')+'<b>'+n+'</b> &middot; F/F0 <b>'+rr.toFixed(3)+'</b> &middot; '
+      +(pt?'estágio ':'stage ')+'<b>'+st.roman+'</b> ('+(pt?st.name_pt:st.name_en)+') &middot; '
+      +(pt?'mecanismo ':'mechanism ')+'<b>'+MN(s.dom[hov])+'</b> &middot; '
+      +(pt?'perda acum. ':'cum. loss ')+'<b>'+loss.toFixed(1)+'%</b>';
+  }
+  function pick(ev){ if(!geom)return; const rect=cv.getBoundingClientRect();
+    const mx=((ev.touches&&ev.touches[0])?ev.touches[0].clientX:ev.clientX)-rect.left; const s=SC[cur];
+    let best=0,bd=1e9; for(let i=0;i<s.N.length;i++){const d=Math.abs(geom.X(s.N[i])-mx);if(d<bd){bd=d;best=i;}} hov=best;draw(); }
+  cv.addEventListener('mousemove',pick);
+  cv.addEventListener('touchmove',function(e){pick(e);e.preventDefault();},{passive:false});
+  cv.addEventListener('mouseleave',function(){hov=-1;draw();});
+  host.querySelectorAll('.an-scn').forEach(function(b){b.addEventListener('click',function(){
+    host.querySelectorAll('.an-scn').forEach(x=>x.removeAttribute('data-on'));b.setAttribute('data-on','1');cur=parseInt(b.dataset.scn);hov=-1;draw();});});
+  window.veRedraw=draw; window._cwRefresh=function(){if(note)note.innerHTML=ADATA['note_'+L()]||'';draw();};
+  window.addEventListener('resize',draw); window._cwRefresh();
+})();
+</script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.setLang=function(l){document.documentElement.dataset.lang=l;
+    document.querySelectorAll('nav.toc .lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')===l);});
+    if(window._cwRefresh)window._cwRefresh(); if(window.veRedraw)window.veRedraw();};
+  setLang(document.documentElement.dataset.lang||'pt');
+  if(!reduce){
+    var bar=document.createElement('div');bar.className='gprog';document.body.appendChild(bar);
+    function pg(){var hh=document.documentElement.scrollHeight-innerHeight;bar.style.width=(hh>0?scrollY/hh*100:0)+'%';}
+    addEventListener('scroll',pg,{passive:true});addEventListener('resize',pg);pg();
+    var vh=innerHeight||800;
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.panel,.widget').forEach(function(el){if(el.getBoundingClientRect().top>vh*0.9){el.classList.add('reveal');io.observe(el);}});
+  }
+  var links={};document.querySelectorAll('nav.toc a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var aio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var a=links[e.target.id];
+    if(a){for(var k in links)links[k].classList.remove('active');a.classList.add('active');}}});},{rootMargin:'-30% 0px -62% 0px'});
+  Object.keys(links).forEach(function(id){var el=document.getElementById(id);if(el)aio.observe(el);});
+})();
+</script>
+</body>
+</html>

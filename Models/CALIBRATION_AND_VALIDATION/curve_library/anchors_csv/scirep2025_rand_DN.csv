@@ -1,0 +1,10 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/67_68_69_70_MoS2_complex_random_neutron.md:169-188
+delta_eq_mm,NL_cycles,flag
+0.20,1000000,gt
+0.25,420000,
+0.30,85000,
+0.35,22000,
+0.40,6500,
+0.45,2200,
+0.50,850,
+0.55,350,

@@ -1,0 +1,830 @@
+{
+  "version": "4.0",
+  "description": "Bolt Analysis Studio Thread Dimensions Database",
+  "last_updated": "2026-01-23",
+  "sources": [
+    "ISO 68-1:1998",
+    "ISO 724:1993",
+    "ISO 261:1998",
+    "ASME B1.1-2019",
+    "VDI 2230 Part 1 (2015)"
+  ],
+  
+  "iso_metric_coarse": {
+    "description": "ISO Metric Coarse Thread (M series)",
+    "standard": "ISO 262",
+    "thread_angle_deg": 60,
+    "dimensions": [
+      {
+        "designation": "M3",
+        "d": 3.0,
+        "P": 0.5,
+        "d2": 2.675,
+        "d3": 2.387,
+        "D1": 2.459,
+        "At": 5.03,
+        "As": 4.47
+      },
+      {
+        "designation": "M4",
+        "d": 4.0,
+        "P": 0.7,
+        "d2": 3.545,
+        "d3": 3.141,
+        "D1": 3.242,
+        "At": 8.78,
+        "As": 7.75
+      },
+      {
+        "designation": "M5",
+        "d": 5.0,
+        "P": 0.8,
+        "d2": 4.480,
+        "d3": 4.019,
+        "D1": 4.134,
+        "At": 14.2,
+        "As": 12.7
+      },
+      {
+        "designation": "M6",
+        "d": 6.0,
+        "P": 1.0,
+        "d2": 5.350,
+        "d3": 4.773,
+        "D1": 4.917,
+        "At": 20.1,
+        "As": 17.9
+      },
+      {
+        "designation": "M8",
+        "d": 8.0,
+        "P": 1.25,
+        "d2": 7.188,
+        "d3": 6.466,
+        "D1": 6.647,
+        "At": 36.6,
+        "As": 32.8
+      },
+      {
+        "designation": "M10",
+        "d": 10.0,
+        "P": 1.5,
+        "d2": 9.026,
+        "d3": 8.160,
+        "D1": 8.376,
+        "At": 58.0,
+        "As": 52.3
+      },
+      {
+        "designation": "M12",
+        "d": 12.0,
+        "P": 1.75,
+        "d2": 10.863,
+        "d3": 9.853,
+        "D1": 10.106,
+        "At": 84.3,
+        "As": 76.2
+      },
+      {
+        "designation": "M14",
+        "d": 14.0,
+        "P": 2.0,
+        "d2": 12.701,
+        "d3": 11.546,
+        "D1": 11.835,
+        "At": 115,
+        "As": 105
+      },
+      {
+        "designation": "M16",
+        "d": 16.0,
+        "P": 2.0,
+        "d2": 14.701,
+        "d3": 13.546,
+        "D1": 13.835,
+        "At": 157,
+        "As": 144
+      },
+      {
+        "designation": "M18",
+        "d": 18.0,
+        "P": 2.5,
+        "d2": 16.376,
+        "d3": 14.933,
+        "D1": 15.294,
+        "At": 192,
+        "As": 175
+      },
+      {
+        "designation": "M20",
+        "d": 20.0,
+        "P": 2.5,
+        "d2": 18.376,
+        "d3": 16.933,
+        "D1": 17.294,
+        "At": 245,
+        "As": 225
+      },
+      {
+        "designation": "M22",
+        "d": 22.0,
+        "P": 2.5,
+        "d2": 20.376,
+        "d3": 18.933,
+        "D1": 19.294,
+        "At": 303,
+        "As": 282
+      },
+      {
+        "designation": "M24",
+        "d": 24.0,
+        "P": 3.0,
+        "d2": 22.051,
+        "d3": 20.319,
+        "D1": 20.752,
+        "At": 353,
+        "As": 324
+      },
+      {
+        "designation": "M27",
+        "d": 27.0,
+        "P": 3.0,
+        "d2": 25.051,
+        "d3": 23.319,
+        "D1": 23.752,
+        "At": 459,
+        "As": 427
+      },
+      {
+        "designation": "M30",
+        "d": 30.0,
+        "P": 3.5,
+        "d2": 27.727,
+        "d3": 25.706,
+        "D1": 26.211,
+        "At": 561,
+        "As": 519
+      },
+      {
+        "designation": "M33",
+        "d": 33.0,
+        "P": 3.5,
+        "d2": 30.727,
+        "d3": 28.706,
+        "D1": 29.211,
+        "At": 694,
+        "As": 647
+      },
+      {
+        "designation": "M36",
+        "d": 36.0,
+        "P": 4.0,
+        "d2": 33.402,
+        "d3": 31.093,
+        "D1": 31.670,
+        "At": 817,
+        "As": 759
+      },
+      {
+        "designation": "M39",
+        "d": 39.0,
+        "P": 4.0,
+        "d2": 36.402,
+        "d3": 34.093,
+        "D1": 34.670,
+        "At": 976,
+        "As": 913
+      },
+      {
+        "designation": "M42",
+        "d": 42.0,
+        "P": 4.5,
+        "d2": 39.077,
+        "d3": 36.479,
+        "D1": 37.129,
+        "At": 1121,
+        "As": 1045
+      },
+      {
+        "designation": "M48",
+        "d": 48.0,
+        "P": 5.0,
+        "d2": 44.752,
+        "d3": 41.866,
+        "D1": 42.587,
+        "At": 1473,
+        "As": 1377
+      },
+      {
+        "designation": "M56",
+        "d": 56.0,
+        "P": 5.5,
+        "d2": 52.428,
+        "d3": 49.252,
+        "D1": 50.046,
+        "At": 2030,
+        "As": 1905
+      },
+      {
+        "designation": "M64",
+        "d": 64.0,
+        "P": 6.0,
+        "d2": 60.103,
+        "d3": 56.639,
+        "D1": 57.505,
+        "At": 2676,
+        "As": 2520
+      }
+    ]
+  },
+  
+  "iso_metric_fine": {
+    "description": "ISO Metric Fine Thread",
+    "standard": "ISO 261",
+    "thread_angle_deg": 60,
+    "dimensions": [
+      {
+        "designation": "M8x1",
+        "d": 8.0,
+        "P": 1.0,
+        "d2": 7.350,
+        "d3": 6.773,
+        "At": 39.2,
+        "As": 36.0
+      },
+      {
+        "designation": "M10x1",
+        "d": 10.0,
+        "P": 1.0,
+        "d2": 9.350,
+        "d3": 8.773,
+        "At": 64.5,
+        "As": 60.4
+      },
+      {
+        "designation": "M10x1.25",
+        "d": 10.0,
+        "P": 1.25,
+        "d2": 9.188,
+        "d3": 8.466,
+        "At": 61.2,
+        "As": 56.3
+      },
+      {
+        "designation": "M12x1.25",
+        "d": 12.0,
+        "P": 1.25,
+        "d2": 11.188,
+        "d3": 10.466,
+        "At": 92.1,
+        "As": 86.0
+      },
+      {
+        "designation": "M12x1.5",
+        "d": 12.0,
+        "P": 1.5,
+        "d2": 11.026,
+        "d3": 10.160,
+        "At": 88.1,
+        "As": 81.1
+      },
+      {
+        "designation": "M14x1.5",
+        "d": 14.0,
+        "P": 1.5,
+        "d2": 13.026,
+        "d3": 12.160,
+        "At": 125,
+        "As": 116
+      },
+      {
+        "designation": "M16x1.5",
+        "d": 16.0,
+        "P": 1.5,
+        "d2": 15.026,
+        "d3": 14.160,
+        "At": 167,
+        "As": 157
+      },
+      {
+        "designation": "M18x1.5",
+        "d": 18.0,
+        "P": 1.5,
+        "d2": 17.026,
+        "d3": 16.160,
+        "At": 216,
+        "As": 205
+      },
+      {
+        "designation": "M20x1.5",
+        "d": 20.0,
+        "P": 1.5,
+        "d2": 19.026,
+        "d3": 18.160,
+        "At": 272,
+        "As": 259
+      },
+      {
+        "designation": "M20x2",
+        "d": 20.0,
+        "P": 2.0,
+        "d2": 18.701,
+        "d3": 17.546,
+        "At": 258,
+        "As": 242
+      },
+      {
+        "designation": "M24x2",
+        "d": 24.0,
+        "P": 2.0,
+        "d2": 22.701,
+        "d3": 21.546,
+        "At": 384,
+        "As": 364
+      },
+      {
+        "designation": "M27x2",
+        "d": 27.0,
+        "P": 2.0,
+        "d2": 25.701,
+        "d3": 24.546,
+        "At": 496,
+        "As": 473
+      },
+      {
+        "designation": "M30x2",
+        "d": 30.0,
+        "P": 2.0,
+        "d2": 28.701,
+        "d3": 27.546,
+        "At": 621,
+        "As": 596
+      },
+      {
+        "designation": "M36x3",
+        "d": 36.0,
+        "P": 3.0,
+        "d2": 34.051,
+        "d3": 32.319,
+        "At": 865,
+        "As": 820
+      }
+    ]
+  },
+  
+  "unified_coarse_unc": {
+    "description": "Unified National Coarse (UNC) Thread",
+    "standard": "ASME B1.1",
+    "thread_angle_deg": 60,
+    "dimensions": [
+      {
+        "designation": "1/4-20 UNC",
+        "d_inch": 0.250,
+        "d": 6.350,
+        "P": 1.270,
+        "tpi": 20,
+        "d2": 5.537,
+        "d3": 4.826,
+        "At": 20.5,
+        "As": 18.3
+      },
+      {
+        "designation": "5/16-18 UNC",
+        "d_inch": 0.3125,
+        "d": 7.938,
+        "P": 1.411,
+        "tpi": 18,
+        "d2": 7.034,
+        "d3": 6.248,
+        "At": 33.6,
+        "As": 30.7
+      },
+      {
+        "designation": "3/8-16 UNC",
+        "d_inch": 0.375,
+        "d": 9.525,
+        "P": 1.588,
+        "tpi": 16,
+        "d2": 8.509,
+        "d3": 7.620,
+        "At": 50.8,
+        "As": 45.6
+      },
+      {
+        "designation": "7/16-14 UNC",
+        "d_inch": 0.4375,
+        "d": 11.112,
+        "P": 1.814,
+        "tpi": 14,
+        "d2": 9.934,
+        "d3": 8.890,
+        "At": 69.2,
+        "As": 62.1
+      },
+      {
+        "designation": "1/2-13 UNC",
+        "d_inch": 0.500,
+        "d": 12.700,
+        "P": 1.954,
+        "tpi": 13,
+        "d2": 11.430,
+        "d3": 10.302,
+        "At": 92.1,
+        "As": 83.4
+      },
+      {
+        "designation": "9/16-12 UNC",
+        "d_inch": 0.5625,
+        "d": 14.288,
+        "P": 2.117,
+        "tpi": 12,
+        "d2": 12.913,
+        "d3": 11.684,
+        "At": 118,
+        "As": 107
+      },
+      {
+        "designation": "5/8-11 UNC",
+        "d_inch": 0.625,
+        "d": 15.875,
+        "P": 2.309,
+        "tpi": 11,
+        "d2": 14.376,
+        "d3": 13.030,
+        "At": 147,
+        "As": 133
+      },
+      {
+        "designation": "3/4-10 UNC",
+        "d_inch": 0.750,
+        "d": 19.050,
+        "P": 2.540,
+        "tpi": 10,
+        "d2": 17.399,
+        "d3": 15.913,
+        "At": 220,
+        "As": 199
+      },
+      {
+        "designation": "7/8-9 UNC",
+        "d_inch": 0.875,
+        "d": 22.225,
+        "P": 2.822,
+        "tpi": 9,
+        "d2": 20.391,
+        "d3": 18.733,
+        "At": 303,
+        "As": 276
+      },
+      {
+        "designation": "1-8 UNC",
+        "d_inch": 1.000,
+        "d": 25.400,
+        "P": 3.175,
+        "tpi": 8,
+        "d2": 23.338,
+        "d3": 21.463,
+        "At": 399,
+        "As": 362
+      },
+      {
+        "designation": "1-1/8-7 UNC",
+        "d_inch": 1.125,
+        "d": 28.575,
+        "P": 3.629,
+        "tpi": 7,
+        "d2": 26.218,
+        "d3": 24.055,
+        "At": 502,
+        "As": 454
+      },
+      {
+        "designation": "1-1/4-7 UNC",
+        "d_inch": 1.250,
+        "d": 31.750,
+        "P": 3.629,
+        "tpi": 7,
+        "d2": 29.393,
+        "d3": 27.230,
+        "At": 646,
+        "As": 583
+      },
+      {
+        "designation": "1-3/8-6 UNC",
+        "d_inch": 1.375,
+        "d": 34.925,
+        "P": 4.233,
+        "tpi": 6,
+        "d2": 32.174,
+        "d3": 29.616,
+        "At": 758,
+        "As": 689
+      },
+      {
+        "designation": "1-1/2-6 UNC",
+        "d_inch": 1.500,
+        "d": 38.100,
+        "P": 4.233,
+        "tpi": 6,
+        "d2": 35.349,
+        "d3": 32.791,
+        "At": 929,
+        "As": 845
+      }
+    ]
+  },
+  
+  "unified_fine_unf": {
+    "description": "Unified National Fine (UNF) Thread",
+    "standard": "ASME B1.1",
+    "thread_angle_deg": 60,
+    "dimensions": [
+      {
+        "designation": "1/4-28 UNF",
+        "d_inch": 0.250,
+        "d": 6.350,
+        "P": 0.907,
+        "tpi": 28,
+        "d2": 5.791,
+        "d3": 5.302,
+        "At": 24.0,
+        "As": 22.1
+      },
+      {
+        "designation": "5/16-24 UNF",
+        "d_inch": 0.3125,
+        "d": 7.938,
+        "P": 1.058,
+        "tpi": 24,
+        "d2": 7.249,
+        "d3": 6.642,
+        "At": 37.6,
+        "As": 34.6
+      },
+      {
+        "designation": "3/8-24 UNF",
+        "d_inch": 0.375,
+        "d": 9.525,
+        "P": 1.058,
+        "tpi": 24,
+        "d2": 8.836,
+        "d3": 8.229,
+        "At": 57.7,
+        "As": 53.2
+      },
+      {
+        "designation": "7/16-20 UNF",
+        "d_inch": 0.4375,
+        "d": 11.112,
+        "P": 1.270,
+        "tpi": 20,
+        "d2": 10.300,
+        "d3": 9.588,
+        "At": 78.7,
+        "As": 72.2
+      },
+      {
+        "designation": "1/2-20 UNF",
+        "d_inch": 0.500,
+        "d": 12.700,
+        "P": 1.270,
+        "tpi": 20,
+        "d2": 11.887,
+        "d3": 11.176,
+        "At": 106,
+        "As": 98.1
+      },
+      {
+        "designation": "9/16-18 UNF",
+        "d_inch": 0.5625,
+        "d": 14.288,
+        "P": 1.411,
+        "tpi": 18,
+        "d2": 13.383,
+        "d3": 12.598,
+        "At": 135,
+        "As": 125
+      },
+      {
+        "designation": "5/8-18 UNF",
+        "d_inch": 0.625,
+        "d": 15.875,
+        "P": 1.411,
+        "tpi": 18,
+        "d2": 14.971,
+        "d3": 14.185,
+        "At": 170,
+        "As": 158
+      },
+      {
+        "designation": "3/4-16 UNF",
+        "d_inch": 0.750,
+        "d": 19.050,
+        "P": 1.588,
+        "tpi": 16,
+        "d2": 18.034,
+        "d3": 17.145,
+        "At": 249,
+        "As": 231
+      },
+      {
+        "designation": "7/8-14 UNF",
+        "d_inch": 0.875,
+        "d": 22.225,
+        "P": 1.814,
+        "tpi": 14,
+        "d2": 21.047,
+        "d3": 20.003,
+        "At": 340,
+        "As": 314
+      },
+      {
+        "designation": "1-12 UNF",
+        "d_inch": 1.000,
+        "d": 25.400,
+        "P": 2.117,
+        "tpi": 12,
+        "d2": 24.026,
+        "d3": 22.796,
+        "At": 444,
+        "As": 408
+      },
+      {
+        "designation": "1-1/8-12 UNF",
+        "d_inch": 1.125,
+        "d": 28.575,
+        "P": 2.117,
+        "tpi": 12,
+        "d2": 27.201,
+        "d3": 25.971,
+        "At": 573,
+        "As": 530
+      },
+      {
+        "designation": "1-1/4-12 UNF",
+        "d_inch": 1.250,
+        "d": 31.750,
+        "P": 2.117,
+        "tpi": 12,
+        "d2": 30.376,
+        "d3": 29.146,
+        "At": 720,
+        "As": 667
+      },
+      {
+        "designation": "1-1/2-12 UNF",
+        "d_inch": 1.500,
+        "d": 38.100,
+        "P": 2.117,
+        "tpi": 12,
+        "d2": 36.726,
+        "d3": 35.496,
+        "At": 1061,
+        "As": 990
+      }
+    ]
+  },
+  
+  "api_6a_studs": {
+    "description": "API 6A Flange Stud Dimensions",
+    "standard": "API Spec 6A",
+    "note": "Typical stud dimensions for API 6A flanges",
+    "dimensions": [
+      {
+        "flange_size_inch": 2.0,
+        "rating_psi": 5000,
+        "n_bolts": 4,
+        "stud_size": "5/8-11 UNC",
+        "stud_length_inch": 4.5
+      },
+      {
+        "flange_size_inch": 3.0,
+        "rating_psi": 5000,
+        "n_bolts": 4,
+        "stud_size": "3/4-10 UNC",
+        "stud_length_inch": 5.0
+      },
+      {
+        "flange_size_inch": 4.0,
+        "rating_psi": 5000,
+        "n_bolts": 8,
+        "stud_size": "3/4-10 UNC",
+        "stud_length_inch": 5.25
+      },
+      {
+        "flange_size_inch": 2.0,
+        "rating_psi": 10000,
+        "n_bolts": 4,
+        "stud_size": "7/8-9 UNC",
+        "stud_length_inch": 5.5
+      },
+      {
+        "flange_size_inch": 3.0,
+        "rating_psi": 10000,
+        "n_bolts": 8,
+        "stud_size": "7/8-9 UNC",
+        "stud_length_inch": 6.0
+      },
+      {
+        "flange_size_inch": 4.0,
+        "rating_psi": 10000,
+        "n_bolts": 8,
+        "stud_size": "1-8 UNC",
+        "stud_length_inch": 6.5
+      },
+      {
+        "flange_size_inch": 2.0,
+        "rating_psi": 15000,
+        "n_bolts": 4,
+        "stud_size": "1-8 UNC",
+        "stud_length_inch": 6.5
+      },
+      {
+        "flange_size_inch": 3.0,
+        "rating_psi": 15000,
+        "n_bolts": 8,
+        "stud_size": "1-1/8-7 UNC",
+        "stud_length_inch": 7.0
+      },
+      {
+        "flange_size_inch": 4.0,
+        "rating_psi": 15000,
+        "n_bolts": 8,
+        "stud_size": "1-1/4-7 UNC",
+        "stud_length_inch": 8.0
+      }
+    ]
+  },
+  
+  "hex_bolt_head_dimensions": {
+    "description": "Standard Hex Bolt Head Dimensions (ISO 4014/4017)",
+    "standard": "ISO 4014",
+    "dimensions": [
+      {"d": 8, "s": 13, "k": 5.3, "dw_min": 11.63},
+      {"d": 10, "s": 17, "k": 6.4, "dw_min": 15.01},
+      {"d": 12, "s": 19, "k": 7.5, "dw_min": 16.88},
+      {"d": 14, "s": 22, "k": 8.8, "dw_min": 19.64},
+      {"d": 16, "s": 24, "k": 10.0, "dw_min": 21.63},
+      {"d": 18, "s": 27, "k": 11.5, "dw_min": 24.27},
+      {"d": 20, "s": 30, "k": 12.5, "dw_min": 26.75},
+      {"d": 22, "s": 32, "k": 14.0, "dw_min": 29.56},
+      {"d": 24, "s": 36, "k": 15.0, "dw_min": 33.25},
+      {"d": 27, "s": 41, "k": 17.0, "dw_min": 38.02},
+      {"d": 30, "s": 46, "k": 18.7, "dw_min": 42.75},
+      {"d": 36, "s": 55, "k": 22.5, "dw_min": 51.11}
+    ],
+    "notes": {
+      "s": "Width across flats (mm)",
+      "k": "Head height (mm)", 
+      "dw_min": "Minimum bearing surface diameter (mm)"
+    }
+  },
+  
+  "hex_nut_dimensions": {
+    "description": "Standard Hex Nut Dimensions (ISO 4032)",
+    "standard": "ISO 4032",
+    "dimensions": [
+      {"d": 8, "s": 13, "m": 6.8, "dw_min": 11.63},
+      {"d": 10, "s": 17, "m": 8.4, "dw_min": 15.01},
+      {"d": 12, "s": 19, "m": 10.8, "dw_min": 16.88},
+      {"d": 14, "s": 22, "m": 12.8, "dw_min": 19.64},
+      {"d": 16, "s": 24, "m": 14.8, "dw_min": 21.63},
+      {"d": 18, "s": 27, "m": 15.8, "dw_min": 24.27},
+      {"d": 20, "s": 30, "m": 18.0, "dw_min": 26.75},
+      {"d": 22, "s": 32, "m": 19.4, "dw_min": 29.56},
+      {"d": 24, "s": 36, "m": 21.5, "dw_min": 33.25},
+      {"d": 27, "s": 41, "m": 23.8, "dw_min": 38.02},
+      {"d": 30, "s": 46, "m": 25.6, "dw_min": 42.75},
+      {"d": 36, "s": 55, "m": 31.0, "dw_min": 51.11}
+    ],
+    "notes": {
+      "s": "Width across flats (mm)",
+      "m": "Nut thickness (mm)",
+      "dw_min": "Minimum bearing surface diameter (mm)"
+    }
+  },
+  
+  "washer_dimensions": {
+    "description": "Plain Washer Dimensions (ISO 7089 - Normal)",
+    "standard": "ISO 7089",
+    "dimensions": [
+      {"d": 8, "d1": 8.4, "d2": 16, "h": 1.6},
+      {"d": 10, "d1": 10.5, "d2": 20, "h": 2.0},
+      {"d": 12, "d1": 13.0, "d2": 24, "h": 2.5},
+      {"d": 14, "d1": 15.0, "d2": 28, "h": 2.5},
+      {"d": 16, "d1": 17.0, "d2": 30, "h": 3.0},
+      {"d": 18, "d1": 19.0, "d2": 34, "h": 3.0},
+      {"d": 20, "d1": 21.0, "d2": 37, "h": 3.0},
+      {"d": 22, "d1": 23.0, "d2": 39, "h": 3.0},
+      {"d": 24, "d1": 25.0, "d2": 44, "h": 4.0},
+      {"d": 27, "d1": 28.0, "d2": 50, "h": 4.0},
+      {"d": 30, "d1": 31.0, "d2": 56, "h": 4.0},
+      {"d": 36, "d1": 37.0, "d2": 66, "h": 5.0}
+    ],
+    "notes": {
+      "d1": "Inner diameter (mm)",
+      "d2": "Outer diameter (mm)",
+      "h": "Thickness (mm)"
+    }
+  }
+}

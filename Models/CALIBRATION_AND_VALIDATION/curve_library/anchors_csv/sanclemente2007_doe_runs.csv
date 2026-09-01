@@ -1,0 +1,18 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/24_Sanclemente_Hess_2007_DOE_factorial.md:62-85
+run,diameter,pitch,preload,material,clearance,lubrication,loss_pct
+1,1/4in,UNC,Low,Al,Tight,Dry,9.2
+2,1/2in,UNC,Low,Al,Std,Lub,5.8
+3,1/4in,UNF,Low,Al,Std,Lub,6.4
+4,1/2in,UNF,Low,Al,Tight,Dry,3.2
+5,1/4in,UNC,High,Al,Std,Dry,4.8
+6,1/2in,UNC,High,Al,Tight,Lub,2.1
+7,1/4in,UNF,High,Al,Tight,Lub,2.8
+8,1/2in,UNF,High,Al,Std,Dry,1.5
+9,1/4in,UNC,Low,Steel,Std,Dry,14.5
+10,1/2in,UNC,Low,Steel,Tight,Lub,8.2
+11,1/4in,UNF,Low,Steel,Tight,Lub,7.8
+12,1/2in,UNF,Low,Steel,Std,Dry,6.0
+13,1/4in,UNC,High,Steel,Tight,Lub,3.5
+14,1/2in,UNC,High,Steel,Std,Dry,2.8
+15,1/4in,UNF,High,Steel,Std,Dry,5.2
+16,1/2in,UNF,High,Steel,Tight,Lub,1.0

@@ -1,0 +1,1162 @@
+[
+ {
+  "case": "yang2021_fig2_typical",
+  "mae0": 0.09921948726655956,
+  "max0": 0.1624559830523239,
+  "sd0": 0.060418091803240606,
+  "params": {
+   "mu_bearing": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "mu_thread": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "emb_depth": {
+    "S_sd": 0.10765456922001038,
+    "S_mae": 0.4704338481878426,
+    "S_max": 0.5136386098885151,
+    "razao_sd_mae": 0.228841036066402
+   },
+   "N_emb": {
+    "S_sd": 0.0006465865547874497,
+    "S_mae": 0.0008174824725988711,
+    "S_max": 0.000209437674266566,
+    "razao_sd_mae": 0.790948523620178
+   },
+   "k_wear_spec": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "k_j_init": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "alpha_GW": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "C_creep": {
+    "S_sd": 0.00010474591189544094,
+    "S_mae": 0.003949893317844677,
+    "S_max": 0.003942076219823509,
+    "razao_sd_mae": 0.02651866859852236
+   },
+   "tr_loose_gain": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "eta_loose": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "c_bend": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "loose_arrest_floor": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "W_conf_ref": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "conform_pressure_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "p_ref_conform": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_regime_sharpness": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_capacity_coeff": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "partial_slip_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   }
+  }
+ },
+ {
+  "case": "liu2020_fig9_zinc_AF0.4mm_P0-18kN",
+  "mae0": 0.07287775684060771,
+  "max0": 0.13390000000001423,
+  "sd0": 0.03451683127908156,
+  "params": {
+   "mu_bearing": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "mu_thread": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "emb_depth": {
+    "S_sd": 0.002242201297971331,
+    "S_mae": 0.003925019941540084,
+    "S_max": 0.006416666666666293,
+    "razao_sd_mae": 0.571258574826895
+   },
+   "N_emb": {
+    "S_sd": 8.214912490741091e-05,
+    "S_mae": 0.0006974411074773881,
+    "S_max": 9.103828801926284e-15,
+    "razao_sd_mae": 0.11778646831492405
+   },
+   "k_wear_spec": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "k_j_init": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "alpha_GW": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "C_creep": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "tr_loose_gain": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "eta_loose": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "c_bend": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "loose_arrest_floor": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "W_conf_ref": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "conform_pressure_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "p_ref_conform": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_regime_sharpness": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_capacity_coeff": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "partial_slip_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   }
+  }
+ },
+ {
+  "case": "chu2026ti_D0p4mm_F0_73kN_test8",
+  "mae0": 0.16404258199345123,
+  "max0": 0.3456125894406685,
+  "sd0": 0.192439799594511,
+  "params": {
+   "mu_bearing": {
+    "S_sd": 0.006665373597360441,
+    "S_mae": 0.0034094404548459384,
+    "S_max": 0.026317654183295264,
+    "razao_sd_mae": 1.954975804867555
+   },
+   "mu_thread": {
+    "S_sd": 0.00019299150367839413,
+    "S_mae": 0.00010175604611765976,
+    "S_max": 0.0007986983762992006,
+    "razao_sd_mae": 1.8966096958527603
+   },
+   "emb_depth": {
+    "S_sd": 0.0004478022874841586,
+    "S_mae": 0.031864264709984366,
+    "S_max": 0.03278588289744522,
+    "razao_sd_mae": 0.014053432318613774
+   },
+   "N_emb": {
+    "S_sd": 1.0144673511028324e-05,
+    "S_mae": 6.203663936334147e-05,
+    "S_max": 0.00025043129723539836,
+    "razao_sd_mae": 0.16352712872810754
+   },
+   "k_wear_spec": {
+    "S_sd": 0.01348408411172651,
+    "S_mae": 0.005492168452491009,
+    "S_max": 0.060278179348168565,
+    "razao_sd_mae": 2.455147584850701
+   },
+   "k_j_init": {
+    "S_sd": 0.0004504806864490257,
+    "S_mae": 0.00028527639079506395,
+    "S_max": 0.0014967910257631667,
+    "razao_sd_mae": 1.5791025860693841
+   },
+   "alpha_GW": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "C_creep": {
+    "S_sd": 0.0006190374811805011,
+    "S_mae": 0.000295948174692931,
+    "S_max": 0.007309622594583953,
+    "razao_sd_mae": 2.0917090697477696
+   },
+   "tr_loose_gain": {
+    "S_sd": 0.0009619937159250774,
+    "S_mae": 0.000544093076080443,
+    "S_max": 0.00369849035633385,
+    "razao_sd_mae": 1.768068292386887
+   },
+   "eta_loose": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "c_bend": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "loose_arrest_floor": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "W_conf_ref": {
+    "S_sd": 0.0063513434999074025,
+    "S_mae": 0.0032556324557193594,
+    "S_max": 0.02493307365959871,
+    "razao_sd_mae": 1.9508785424317867
+   },
+   "conform_pressure_exp": {
+    "S_sd": 0.003942177454350021,
+    "S_mae": 0.001726440229873255,
+    "S_max": 0.017788442201508298,
+    "razao_sd_mae": 2.2834138049710715
+   },
+   "p_ref_conform": {
+    "S_sd": 0.012627336027536767,
+    "S_mae": 0.006384249787304508,
+    "S_max": 0.049651711303538265,
+    "razao_sd_mae": 1.9778887807063938
+   },
+   "slip_regime_sharpness": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_capacity_coeff": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "partial_slip_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   }
+  }
+ },
+ {
+  "case": "bauer2024_M12_fig8_test1",
+  "mae0": 0.07453421879291003,
+  "max0": 0.3965073149014647,
+  "sd0": 0.09282948782836921,
+  "params": {
+   "mu_bearing": {
+    "S_sd": 0.01266745868713244,
+    "S_mae": 0.03773188296428296,
+    "S_max": 0.11193136570338191,
+    "razao_sd_mae": 0.3357229401756459
+   },
+   "mu_thread": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "emb_depth": {
+    "S_sd": 0.0041181078481479436,
+    "S_mae": 0.005794066893288194,
+    "S_max": 0.025191226984348003,
+    "razao_sd_mae": 0.7107456513693914
+   },
+   "N_emb": {
+    "S_sd": 0.00025576405441467276,
+    "S_mae": 0.0012732572890656116,
+    "S_max": 0.0016042357592879752,
+    "razao_sd_mae": 0.20087381914959773
+   },
+   "k_wear_spec": {
+    "S_sd": 0.0011739458172087755,
+    "S_mae": 0.001148352405594688,
+    "S_max": 0.0059783431084382554,
+    "razao_sd_mae": 1.022287071015307
+   },
+   "k_j_init": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "alpha_GW": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "C_creep": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "tr_loose_gain": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "eta_loose": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "c_bend": {
+    "S_sd": 0.01290017010696267,
+    "S_mae": 0.03744503645698182,
+    "S_max": 0.11276143631491717,
+    "razao_sd_mae": 0.3445094818316666
+   },
+   "loose_arrest_floor": {
+    "S_sd": 0.0019913564595465116,
+    "S_mae": 0.0018184025361316011,
+    "S_max": 0.010205925490131385,
+    "razao_sd_mae": 1.0951131116341521
+   },
+   "W_conf_ref": {
+    "S_sd": 0.00011129367735006335,
+    "S_mae": 8.004210876563084e-05,
+    "S_max": 0.0005706137616604545,
+    "razao_sd_mae": 1.3904390959506001
+   },
+   "conform_pressure_exp": {
+    "S_sd": 6.16610092487313e-05,
+    "S_mae": 4.1674595671455095e-05,
+    "S_max": 0.0003204823727700479,
+    "razao_sd_mae": 1.47958266313705
+   },
+   "p_ref_conform": {
+    "S_sd": 0.00022433434162880128,
+    "S_mae": 0.00016165456500202846,
+    "S_max": 0.001151660264571308,
+    "razao_sd_mae": 1.387738982972651
+   },
+   "slip_regime_sharpness": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_capacity_coeff": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "partial_slip_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   }
+  }
+ },
+ {
+  "case": "eccles2010_fig6_annotated_4kN_axial",
+  "mae0": 0.14571228002609488,
+  "max0": 0.46676572971926933,
+  "sd0": 0.1886651374481767,
+  "params": {
+   "mu_bearing": {
+    "S_sd": 0.0003205287035346893,
+    "S_mae": 0.00016974698807660504,
+    "S_max": 0.0005073955449390044,
+    "razao_sd_mae": 1.8882732893619183
+   },
+   "mu_thread": {
+    "S_sd": 4.243960674107927e-05,
+    "S_mae": 2.6305366940412855e-05,
+    "S_max": 0.00010891275694224767,
+    "razao_sd_mae": 1.6133440311710472
+   },
+   "emb_depth": {
+    "S_sd": 0.07722097226222495,
+    "S_mae": 0.1912464080856891,
+    "S_max": 0.3918111023612034,
+    "razao_sd_mae": 0.403777373050717
+   },
+   "N_emb": {
+    "S_sd": 0.0016827952381068267,
+    "S_mae": 0.001214962553809762,
+    "S_max": 0.0004604668797643652,
+    "razao_sd_mae": 1.3850593442819126
+   },
+   "k_wear_spec": {
+    "S_sd": 0.0072973994470341,
+    "S_mae": 0.005178899568398093,
+    "S_max": 0.02497875364426516,
+    "razao_sd_mae": 1.4090637114423303
+   },
+   "k_j_init": {
+    "S_sd": 0.00022600485171894724,
+    "S_mae": 0.0002518029645294101,
+    "S_max": 0.00021856046141827123,
+    "razao_sd_mae": 0.8975464293731551
+   },
+   "alpha_GW": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "C_creep": {
+    "S_sd": 0.00017616439851973753,
+    "S_mae": 0.0003327277979656845,
+    "S_max": 0.0025398991611941812,
+    "razao_sd_mae": 0.5294550067557205
+   },
+   "tr_loose_gain": {
+    "S_sd": 0.00033276336634660564,
+    "S_mae": 0.00031838607971967914,
+    "S_max": 0.0005089403577364648,
+    "razao_sd_mae": 1.0451567689127141
+   },
+   "eta_loose": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "c_bend": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "loose_arrest_floor": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "W_conf_ref": {
+    "S_sd": 0.00025622295356468594,
+    "S_mae": 0.00012945188365549865,
+    "S_max": 0.0003273354391141736,
+    "razao_sd_mae": 1.979291041036949
+   },
+   "conform_pressure_exp": {
+    "S_sd": 0.0005063440021302323,
+    "S_mae": 0.00028082548164583276,
+    "S_max": 0.0005090472809382574,
+    "razao_sd_mae": 1.8030557596223251
+   },
+   "p_ref_conform": {
+    "S_sd": 0.0005201352553971667,
+    "S_mae": 0.0002632323919572882,
+    "S_max": 0.0006642396707091658,
+    "razao_sd_mae": 1.9759545986329952
+   },
+   "slip_regime_sharpness": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_capacity_coeff": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "partial_slip_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   }
+  }
+ },
+ {
+  "case": "li2022ti_axial_10Hz_full",
+  "mae0": 0.03278167833677359,
+  "max0": 0.05169240930246155,
+  "sd0": 0.020147727701677044,
+  "params": {
+   "mu_bearing": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "mu_thread": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "emb_depth": {
+    "S_sd": 0.15674344898196255,
+    "S_mae": 0.5947716641611992,
+    "S_max": 0.8565812130243162,
+    "razao_sd_mae": 0.2635355018181916
+   },
+   "N_emb": {
+    "S_sd": 0.002876596653173394,
+    "S_mae": 0.005270438306927042,
+    "S_max": 0.0070439455467745105,
+    "razao_sd_mae": 0.5457983730485235
+   },
+   "k_wear_spec": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "k_j_init": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "alpha_GW": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "C_creep": {
+    "S_sd": 0.003053144010121373,
+    "S_mae": 0.005935218208999449,
+    "S_max": 0.008061650910617113,
+    "razao_sd_mae": 0.5144114171728268
+   },
+   "tr_loose_gain": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "eta_loose": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "c_bend": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "loose_arrest_floor": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "W_conf_ref": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "conform_pressure_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "p_ref_conform": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_regime_sharpness": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_capacity_coeff": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "partial_slip_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   }
+  }
+ },
+ {
+  "case": "liu2022_fig8_multi_t1",
+  "mae0": 0.053285297356926185,
+  "max0": 0.08737287839763896,
+  "sd0": 0.02687213934260736,
+  "params": {
+   "mu_bearing": {
+    "S_sd": 0.00072305741806678,
+    "S_mae": 0.0006489632925894238,
+    "S_max": 0.001869423150141547,
+    "razao_sd_mae": 1.1141730608240008
+   },
+   "mu_thread": {
+    "S_sd": 0.000637359841685517,
+    "S_mae": 0.0008637343729435525,
+    "S_max": 0.0019639293651017575,
+    "razao_sd_mae": 0.7379118646319871
+   },
+   "emb_depth": {
+    "S_sd": 0.0024226548804246566,
+    "S_mae": 0.007186832064328519,
+    "S_max": 0.008507742152346176,
+    "razao_sd_mae": 0.33709635326660586
+   },
+   "N_emb": {
+    "S_sd": 9.786347904045326e-06,
+    "S_mae": 1.8709941664640795e-05,
+    "S_max": 1.3314549654475094e-06,
+    "razao_sd_mae": 0.5230560350992527
+   },
+   "k_wear_spec": {
+    "S_sd": 0.003185924610998361,
+    "S_mae": 0.004348121177975051,
+    "S_max": 0.00977170751146822,
+    "razao_sd_mae": 0.7327129306184762
+   },
+   "k_j_init": {
+    "S_sd": 0.00032916354046642025,
+    "S_mae": 0.00042473038091440235,
+    "S_max": 0.0010232039657009362,
+    "razao_sd_mae": 0.7749941027476391
+   },
+   "alpha_GW": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "C_creep": {
+    "S_sd": 0.0002819161798124827,
+    "S_mae": 0.0003596040186755918,
+    "S_max": 0.0008348849895207233,
+    "razao_sd_mae": 0.7839628179094591
+   },
+   "tr_loose_gain": {
+    "S_sd": 0.0019390759010539244,
+    "S_mae": 0.002610364443690498,
+    "S_max": 0.005967582725037723,
+    "razao_sd_mae": 0.7428372332226856
+   },
+   "eta_loose": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "c_bend": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "loose_arrest_floor": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "W_conf_ref": {
+    "S_sd": 0.0011115619144027086,
+    "S_mae": 0.0014922661829072335,
+    "S_max": 0.003449699660097505,
+    "razao_sd_mae": 0.7448817959790278
+   },
+   "conform_pressure_exp": {
+    "S_sd": 0.002108478102282081,
+    "S_mae": 0.002818480645364538,
+    "S_max": 0.006549574588204876,
+    "razao_sd_mae": 0.7480903251011588
+   },
+   "p_ref_conform": {
+    "S_sd": 0.0022091299731822004,
+    "S_mae": 0.002967203058690089,
+    "S_max": 0.006859915826592677,
+    "razao_sd_mae": 0.7445159395856952
+   },
+   "slip_regime_sharpness": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_capacity_coeff": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "partial_slip_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   }
+  }
+ },
+ {
+  "case": "liu2016wear_fig7_run2_5e6cyc",
+  "mae0": 0.033260734899127876,
+  "max0": 0.06397402586748979,
+  "sd0": 0.019296601471958448,
+  "params": {
+   "mu_bearing": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "mu_thread": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "emb_depth": {
+    "S_sd": 0.0016764773527595134,
+    "S_mae": 0.02036659483646174,
+    "S_max": 0.026584676906833526,
+    "razao_sd_mae": 0.08231505395090216
+   },
+   "N_emb": {
+    "S_sd": 0.0007379142124556877,
+    "S_mae": 0.001345002000616092,
+    "S_max": 9.192669273055953e-05,
+    "razao_sd_mae": 0.5486342861331646
+   },
+   "k_wear_spec": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "k_j_init": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "alpha_GW": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "C_creep": {
+    "S_sd": 0.003436013704084539,
+    "S_mae": 0.006105265215655938,
+    "S_max": 0.012379642397401414,
+    "razao_sd_mae": 0.5627951583943401
+   },
+   "tr_loose_gain": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "eta_loose": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "c_bend": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "loose_arrest_floor": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "W_conf_ref": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "conform_pressure_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "p_ref_conform": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_regime_sharpness": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_capacity_coeff": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "partial_slip_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   }
+  }
+ },
+ {
+  "case": "zhang18_fig13_14kN_preload_vs_cycles",
+  "mae0": 0.02077443533133149,
+  "max0": 0.05629806304544471,
+  "sd0": 0.025665342070817398,
+  "params": {
+   "mu_bearing": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "mu_thread": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "emb_depth": {
+    "S_sd": 0.0014307493126868055,
+    "S_mae": 0.002600239916205711,
+    "S_max": 0.01128117346722779,
+    "razao_sd_mae": 0.5502374237737898
+   },
+   "N_emb": {
+    "S_sd": 0.0018857980483873629,
+    "S_mae": 0.001311950197529702,
+    "S_max": 0.005274278301880042,
+    "razao_sd_mae": 1.4374006360440899
+   },
+   "k_wear_spec": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "k_j_init": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "alpha_GW": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "C_creep": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "tr_loose_gain": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "eta_loose": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "c_bend": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "loose_arrest_floor": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "W_conf_ref": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "conform_pressure_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "p_ref_conform": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_regime_sharpness": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_capacity_coeff": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "partial_slip_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   }
+  }
+ },
+ {
+  "case": "liu2025_M16_amp0p25",
+  "mae0": 0.07062803080487635,
+  "max0": 0.09452717668579746,
+  "sd0": 0.030331428526421265,
+  "params": {
+   "mu_bearing": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "mu_thread": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "emb_depth": {
+    "S_sd": 0.0036849090427918743,
+    "S_mae": 0.009673644836910966,
+    "S_max": 0.010979457115559643,
+    "razao_sd_mae": 0.3809225069677622
+   },
+   "N_emb": {
+    "S_sd": 8.77089119572308e-06,
+    "S_mae": 2.3038443125865393e-05,
+    "S_max": 2.6148323899854997e-05,
+    "razao_sd_mae": 0.3807067668507491
+   },
+   "k_wear_spec": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "k_j_init": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "alpha_GW": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "C_creep": {
+    "S_sd": 0.004379706169657769,
+    "S_mae": 0.0088285353815419,
+    "S_max": 0.014351494746407345,
+    "razao_sd_mae": 0.496085248614913
+   },
+   "tr_loose_gain": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "eta_loose": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "c_bend": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "loose_arrest_floor": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "W_conf_ref": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "conform_pressure_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "p_ref_conform": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_regime_sharpness": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "slip_capacity_coeff": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   },
+   "partial_slip_exp": {
+    "S_sd": 0.0,
+    "S_mae": 0.0,
+    "S_max": 0.0,
+    "razao_sd_mae": null
+   }
+  }
+ }
+]

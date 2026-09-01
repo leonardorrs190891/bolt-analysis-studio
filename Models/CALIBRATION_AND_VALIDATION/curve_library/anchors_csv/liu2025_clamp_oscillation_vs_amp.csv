@@ -1,0 +1,8 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/curve_library/apparatus_notes/liu2025_scirep_M16.md:30-42
+amplitude_mm,cycles_to_end,clamp_osc_amplitude_kN,flag
+0.25,3.3e5,1.4,approx
+0.30,2.5e5,1.9,approx
+0.40,7.7e4,2.1,approx
+0.50,3.8e4,2.6,approx
+0.60,2.4e4,2.8,approx
+0.80,1.4e4,6.3,approx

@@ -1,0 +1,85 @@
+{
+ "prereg": "docs/superpowers/specs/2026-07-21-master-f3-preregs.md",
+ "secao": "F3.1-JCSR",
+ "baseline": {
+  "jcsr2023_galv_seawater": {
+   "mae": 0.31149588749442586,
+   "maxerr": 0.427681362916424
+  },
+  "jcsr2023_plain_seawater": {
+   "mae": 0.1848862547223797,
+   "maxerr": 0.27429046723192874
+  },
+  "jcsr2023_stainless_seawater": {
+   "mae": 0.27917155069853167,
+   "maxerr": 0.4132608852782753
+  },
+  "jcsr2023_plain_outdoor": {
+   "mae": 0.21824345468946965,
+   "maxerr": 0.3370397844928199
+  }
+ },
+ "melhores": {
+  "galv_seawater": {
+   "cid": "jcsr2023_galv_seawater",
+   "grupo": "JCSR_2023_galv_seawater",
+   "C_creep": 1.068e-09,
+   "creep_t_c": 1373760.0,
+   "creep_alpha_sat": 3.0,
+   "mae": 0.038969009787603384,
+   "maxerr": 0.09658046349364235,
+   "base": {
+    "mae": 0.31149588749442586,
+    "maxerr": 0.427681362916424
+   }
+  },
+  "plain_seawater": {
+   "cid": "jcsr2023_plain_seawater",
+   "grupo": "JCSR_2023_plain_seawater",
+   "C_creep": 7.125e-10,
+   "creep_t_c": 2531520.0,
+   "creep_alpha_sat": 3.0,
+   "mae": 0.028946044922665833,
+   "maxerr": 0.07843868593979098,
+   "base": {
+    "mae": 0.1848862547223797,
+    "maxerr": 0.27429046723192874
+   }
+  },
+  "stainless_seawater": {
+   "cid": "jcsr2023_stainless_seawater",
+   "grupo": "JCSR_2023_stainless_seawater",
+   "C_creep": 1.302e-09,
+   "creep_t_c": 4268160.0,
+   "creep_alpha_sat": 3.0,
+   "mae": 0.07000029730898308,
+   "maxerr": 0.16945110725794843,
+   "base": {
+    "mae": 0.27917155069853167,
+    "maxerr": 0.4132608852782753
+   }
+  },
+  "outdoor": {
+   "cid": "jcsr2023_plain_outdoor",
+   "grupo": "JCSR_2023_outdoor",
+   "C_creep": 6.8e-10,
+   "creep_t_c": 17107200.0,
+   "creep_alpha_sat": 3.0,
+   "mae": 0.06306289308169857,
+   "maxerr": 0.14669598209275925,
+   "base": {
+    "mae": 0.21824345468946965,
+    "maxerr": 0.3370397844928199
+   }
+  }
+ },
+ "gate": {
+  "tres_seawater_tripe": false,
+  "outdoor_mae": true,
+  "outdoor_tripe_completo": false,
+  "mediana_fonte": 0.038969009787603384,
+  "G_b": true
+ },
+ "nota": "controles/indoor verificados no passo de adoção; outdoor maxerr>0,1 só no rebound → candidata exceção",
+ "verdict": "FAIL"
+}

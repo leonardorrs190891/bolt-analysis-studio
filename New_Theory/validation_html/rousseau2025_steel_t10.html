@@ -1,0 +1,50 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>rousseau2025_steel_t10 — BAS V2 validation</title><style>
+body{margin:0;background:#e8eaed;color:#1a1e24;font-family:'Segoe UI',system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding:28px 20px 60px}
+h1{font-size:22px;margin:6px 0 2px;letter-spacing:-0.01em}
+.sub{font-family:Consolas,monospace;font-size:12px;color:#5c6570;margin:0 0 18px}
+.grid{display:grid;grid-template-columns:280px 1fr;gap:16px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+.card{background:#f8f9fa;border:1px solid #c9ced5;border-radius:8px;padding:14px 16px}
+h2{font-size:12px;font-family:Consolas,monospace;text-transform:uppercase;letter-spacing:0.08em;color:#5c6570;margin:0 0 8px}
+table{border-collapse:collapse;width:100%;font-family:Consolas,monospace;font-size:12.5px}
+td{padding:5px 4px;border-bottom:1px solid #dfe3e7;vertical-align:top}
+td:first-child{color:#5c6570;white-space:nowrap;padding-right:12px}
+tr:last-child td{border-bottom:none}
+.metric{font-size:26px;font-weight:700;color:#2f6690;font-family:Consolas,monospace}
+.cfg{font-size:12px;color:#454b54;background:#eef0f2;border-radius:6px;padding:8px 10px;margin-top:8px}
+svg{display:block;width:100%;height:auto;background:#f8f9fa;border:1px solid #c9ced5;border-radius:8px}
+a{color:#2f6690}
+.foot{font-family:Consolas,monospace;font-size:11px;color:#8b939c;margin-top:22px;border-top:1px solid #c9ced5;padding-top:10px}
+.idx td a{text-decoration:none}
+.hub{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:0 0 22px}
+.hub .card{padding:12px 14px}
+.hub a.t{font-weight:700;text-decoration:none;font-size:14px}
+.hub .d{font-size:12px;color:#454b54;margin:4px 0 6px;line-height:1.45}
+.hub .m{font-family:Consolas,monospace;font-size:11.5px;color:#2f6690;font-weight:700}
+.hgroup{font-size:12px;font-family:Consolas,monospace;text-transform:uppercase;letter-spacing:0.08em;color:#5c6570;margin:18px 0 8px}
+</style></head><body>
+<div class="wrap">
+<p class="sub"><a href="index.html">← index</a> · Rousseau 2025 — M12 thickness · transverse</p>
+<h1>rousseau2025_steel_t10</h1>
+<p class="sub">Bolt Analysis Studio V2 — DynamicStiffnessAnalyzer · validation case</p>
+<svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><line x1="52" y1="326.0" x2="744" y2="326.0" stroke="#dfe3e7"/><text x="46" y="329.0" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0</text><line x1="52" y1="251.7" x2="744" y2="251.7" stroke="#dfe3e7"/><text x="46" y="254.7" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.25</text><line x1="52" y1="177.4" x2="744" y2="177.4" stroke="#dfe3e7"/><text x="46" y="180.4" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.5</text><line x1="52" y1="103.1" x2="744" y2="103.1" stroke="#dfe3e7"/><text x="46" y="106.1" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.75</text><line x1="52" y1="28.9" x2="744" y2="28.9" stroke="#dfe3e7"/><text x="46" y="31.9" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">1</text><line x1="52" y1="14" x2="52" y2="326" stroke="#c9ced5"/><line x1="52" y1="326" x2="744" y2="326" stroke="#c9ced5"/><text x="52.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">0</text><text x="398.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">85</text><text x="744.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">170</text><polyline points="52.0,28.9 64.2,37.1 80.5,43.7 92.7,47.8 109.0,52.8 121.2,56.4 137.5,61.0 149.7,64.3 166.0,68.6 178.2,71.8 194.5,76.0 206.7,79.1 223.0,83.2 235.2,86.3 251.5,90.4 263.7,93.5 280.0,97.6 292.2,100.6 304.4,103.7 320.7,107.9 332.9,111.0 349.2,115.3 361.4,118.5 377.6,122.8 389.9,126.1 406.1,130.6 418.4,134.0 434.6,138.6 446.8,142.2 463.1,146.9 475.3,150.6 491.6,155.6 503.8,159.4 516.0,163.3 532.3,168.5 544.5,172.6 560.8,178.1 573.0,182.4 589.3,188.1 601.5,192.6 617.8,198.6 630.0,203.3 646.3,209.6 658.5,214.5 674.8,221.0 687.0,226.1 703.3,232.9 715.5,238.2 731.8,245.1 744.0,250.4" fill="none" stroke="#2f6690" stroke-width="2.4" stroke-linejoin="round"/><circle cx="52.0" cy="28.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="133.4" cy="36.1" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="214.8" cy="50.6" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="296.2" cy="70.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="377.6" cy="91.2" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="418.4" cy="108.6" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="459.1" cy="128.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="499.8" cy="152.1" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="540.5" cy="175.3" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="581.2" cy="198.4" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="621.9" cy="221.6" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="662.6" cy="244.8" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="703.3" cy="268.0" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="744.0" cy="285.4" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><text x="398" y="358" text-anchor="middle" font-size="12" fill="#454b54" font-family="Segoe UI">ciclos N</text><text x="14" y="170" text-anchor="middle" font-size="12" fill="#454b54" font-family="Segoe UI" transform="rotate(-90 14 170)">F / F₀  (razão de pré-carga) [–]</text></svg>
+<div class="grid" style="margin-top:16px">
+<div class="card"><h2>Boundary conditions</h2><table><tr><td>bolt</td><td>M12x1.75</td></tr><tr><td>F₀</td><td>10.2 kN</td></tr><tr><td>amplitude</td><td>±0.5 mm (disp-controlled)</td></tr><tr><td>frequency</td><td>1 Hz</td></tr><tr><td>grip</td><td>25 mm (paper)</td></tr><tr><td>μ</td><td>0.15 (assumed)</td></tr><tr><td>surface</td><td>Rz10-40 (assumed)</td></tr><tr><td>F_amp</td><td>4.1 kN (0.4·F₀ — lit.: Pai&Hess 2002 mediu 0.38–0.49)</td></tr><tr><td>cycles</td><td>170</td></tr></table>
+<div class="cfg"><b>Configuration:</b> pack + fine-ground embedding (§4.12)</div></div>
+<div class="card"><h2>Result</h2>
+<div class="metric">MAE 0.0727</div>
+<table style="margin-top:8px">
+<tr><td>final F/F₀ (data)</td><td>0.137</td></tr>
+<tr><td>final F/F₀ (model)</td><td>0.254</td></tr>
+<tr><td>final error</td><td>+0.118</td></tr>
+<tr><td>N to F/F₀=0.5 (data)</td><td>121</td></tr><tr><td>N to F/F₀=0.5 (model)</td><td>125</td></tr><tr><td><b>life ratio (model/data)</b></td><td><b>1.03×</b> (factor-2 band is the fatigue-engineering norm)</td></tr>
+<tr><td>family</td><td>transverse</td></tr></table>
+<div class="cfg">Dots = digitized paper data; line = model at the declared per-rig
+configuration. Verdicts and falsification records: <code>New_Theory/MODEL_LEGITIMACY.md</code>
+§4.12–§4.15.</div></div></div>
+<p class="foot"><a href="rousseau2025_steel_t12.html">next →</a> · generated 2026-07-08 · configs and constants carry declared provenance
+(paper / handbook / assumed / read-from-data / fitted-this-rig)</p>
+</div></body></html>

@@ -1,0 +1,228 @@
+{
+ "chosen": {
+  "BAUER_2024": {
+   "c_bend": 0.3,
+   "k_ratchet": 0.0,
+   "median": 0.12525975654756363
+  },
+  "ICMEZ_2025": {
+   "c_bend": 0.3,
+   "k_ratchet": 0.0,
+   "median": 0.0853789418130394
+  },
+  "LIU_2025": {
+   "c_bend": 0.3,
+   "k_ratchet": 0.0,
+   "median": 0.12608960988039042
+  }
+ },
+ "rows": [
+  {
+   "csv": "bauer2024_M8_fig6_rep1.csv",
+   "source": "BAUER_2024",
+   "mae": 0.057862555844840076,
+   "mode": "shape-mixed",
+   "mae_prev_best": 0.057862555844840076,
+   "mode_prev": "shape-mixed",
+   "e_final": 0.12359232232620254
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep2.csv",
+   "source": "BAUER_2024",
+   "mae": 0.07848013606482368,
+   "mode": "level-bias",
+   "mae_prev_best": 0.07848013606482368,
+   "mode_prev": "level-bias",
+   "e_final": -0.050756417941545964
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep3.csv",
+   "source": "BAUER_2024",
+   "mae": 0.10452569888014894,
+   "mode": "level-bias",
+   "mae_prev_best": 0.09768365142691236,
+   "mode_prev": "collapse-missed",
+   "e_final": -0.01995524429052882
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep4.csv",
+   "source": "BAUER_2024",
+   "mae": 0.07965176409047152,
+   "mode": "level-bias",
+   "mae_prev_best": 0.07965176409047152,
+   "mode_prev": "level-bias",
+   "e_final": -0.042256160755031275
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep5.csv",
+   "source": "BAUER_2024",
+   "mae": 0.1567313438182511,
+   "mode": "level-bias",
+   "mae_prev_best": 0.13666784027198084,
+   "mode_prev": "collapse-missed",
+   "e_final": -0.05580048268520571
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep6.csv",
+   "source": "BAUER_2024",
+   "mae": 0.23688170814907916,
+   "mode": "level-bias",
+   "mae_prev_best": 0.11501782043535685,
+   "mode_prev": "shape-mixed",
+   "e_final": -0.11399121446177303
+  },
+  {
+   "csv": "bauer2024_M12_fig8_test1.csv",
+   "source": "BAUER_2024",
+   "mae": 0.12525975654756363,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.12525975654756363,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.39510206258605757
+  },
+  {
+   "csv": "bauer2024_M12_fig8_test2.csv",
+   "source": "BAUER_2024",
+   "mae": 0.18360298780250264,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.18360298780250264,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.4093593566466399
+  },
+  {
+   "csv": "bauer2024_M12_fig8_test3.csv",
+   "source": "BAUER_2024",
+   "mae": 0.1830249320563525,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.1830249320563525,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.38588511500291567
+  },
+  {
+   "csv": "demir2024_amp0p3_F14p3_lk13p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.04034336545261821,
+   "mode": "tail-slope",
+   "mae_prev_best": 0.04034336545261821,
+   "mode_prev": "tail-slope",
+   "e_final": -0.08753682197540155
+  },
+  {
+   "csv": "demir2024_amp0p3_F14p3_lk19p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.0880974787848482,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.0737919035282808,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.35179387159476544
+  },
+  {
+   "csv": "demir2024_amp0p3_F17p6_lk13p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.12010961063010187,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.10224479351291717,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.2974274401283821
+  },
+  {
+   "csv": "demir2024_amp0p3_F17p6_lk19p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.04705807972181367,
+   "mode": "level-bias",
+   "mae_prev_best": 0.03301975533204607,
+   "mode_prev": "tail-slope",
+   "e_final": 0.20695635336387197
+  },
+  {
+   "csv": "demir2024_amp0p4_F14p3_lk13p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.0545292724590611,
+   "mode": "tail-slope",
+   "mae_prev_best": 0.0545292724590611,
+   "mode_prev": "tail-slope",
+   "e_final": -0.157423130416053
+  },
+  {
+   "csv": "demir2024_amp0p4_F14p3_lk19p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.14621644970676695,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.11746007544547996,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.43841951830832887
+  },
+  {
+   "csv": "demir2024_amp0p4_F17p6_lk13p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.0826604048412306,
+   "mode": "shape-mixed",
+   "mae_prev_best": 0.0826604048412306,
+   "mode_prev": "shape-mixed",
+   "e_final": -0.11396327411516455
+  },
+  {
+   "csv": "demir2024_amp0p4_F17p6_lk19p8.csv",
+   "source": "ICMEZ_2025",
+   "mae": 0.15487599082194847,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.12182381095257933,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.457556353363872
+  },
+  {
+   "csv": "liu2025_M16_amp0p25.csv",
+   "source": "LIU_2025",
+   "mae": 0.13619505086046976,
+   "mode": "level-bias",
+   "mae_prev_best": 0.13619505086046976,
+   "mode_prev": "level-bias",
+   "e_final": 0.06003237684103624
+  },
+  {
+   "csv": "liu2025_M16_amp0p3.csv",
+   "source": "LIU_2025",
+   "mae": 0.12093666186055602,
+   "mode": "level-bias",
+   "mae_prev_best": 0.12093666186055602,
+   "mode_prev": "level-bias",
+   "e_final": 0.05484380254167742
+  },
+  {
+   "csv": "liu2025_M16_amp0p4.csv",
+   "source": "LIU_2025",
+   "mae": 0.14829740407809464,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.14829740407809464,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.42084545486368735
+  },
+  {
+   "csv": "liu2025_M16_amp0p5.csv",
+   "source": "LIU_2025",
+   "mae": 0.13124255790022485,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.13124255790022485,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.42858188761103827
+  },
+  {
+   "csv": "liu2025_M16_amp0p6.csv",
+   "source": "LIU_2025",
+   "mae": 0.12019139305626088,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.12019139305626088,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.4336123715976667
+  },
+  {
+   "csv": "liu2025_M16_amp0p8.csv",
+   "source": "LIU_2025",
+   "mae": 0.11827935758269885,
+   "mode": "collapse-missed",
+   "mae_prev_best": 0.11827935758269885,
+   "mode_prev": "collapse-missed",
+   "e_final": 0.4394394748722397
+  }
+ ]
+}

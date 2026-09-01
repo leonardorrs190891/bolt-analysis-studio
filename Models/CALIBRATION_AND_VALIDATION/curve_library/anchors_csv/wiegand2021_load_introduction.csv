@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/71_Wiegand_2021_VDI_validation_index.md:47-57
+Fw_range_kN,n_measured,n_VDI2230,n_FEM
+0-10,0.15,0.30,0.17
+10-20,0.15,0.30,0.15
+20-30,0.25,0.30,0.26
+30-40,0.40,0.30,0.42
+40-50,0.63,0.30,0.62

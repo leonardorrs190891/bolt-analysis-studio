@@ -1,0 +1,14 @@
+liu2017_axial_F0_15kN        MAE 0.0769 (era 0.0033)  fin_eng 0.770 fin_ana 0.764 d=0.0062
+liu2017_axial_F0_16.5kN      MAE 0.0739 (era 0.0170)  fin_eng 0.831 fin_ana 0.828 d=0.0032
+liu2017_axial_F0_18kN        MAE 0.0446 (era 0.0070)  fin_eng 0.873 fin_ana 0.872 d=0.0018
+liu2017_axial_F0_19.5kN      MAE 0.0302 (era 0.0028)  fin_eng 0.903 fin_ana 0.902 d=0.0010
+liu2017_axial_F0_21kN        MAE 0.0253 (era 0.0026)  fin_eng 0.925 fin_ana 0.924 d=0.0006
+liu2017_axial_AF_7p5kN       MAE 0.0254 (era 0.0620)  fin_eng 0.915 fin_ana 0.914 d=0.0009
+liu2017_axial_AF_8p75kN      MAE 0.0342 (era 0.0393)  fin_eng 0.896 fin_ana 0.895 d=0.0013
+liu2017_axial_AF_11p25kN     MAE 0.0583 (era 0.0051)  fin_eng 0.847 fin_ana 0.844 d=0.0023
+liu2017_axial_AF_12p5kN      MAE 0.0689 (era 0.0354)  fin_eng 0.828 fin_ana 0.826 d=0.0027
+
+fonte Liu2017 (9 casos): media 0.0194 -> 0.0486
+A1 engine~analitico (<=0.01): PASS
+A2 campanha (melhora, nenhum piora>0.02): FAIL ['liu2017_axial_F0_15kN', 'liu2017_axial_F0_16.5kN', 'liu2017_axial_F0_18kN', 'liu2017_axial_F0_19.5kN', 'liu2017_axial_F0_21kN', 'liu2017_axial_AF_11p25kN', 'liu2017_axial_AF_12p5kN']
+NAO adotado (gate falhou) — galeria intocada; registrar AS-IS.

@@ -1,0 +1,45 @@
+==============================================================================
+CONTAS E2 — fat_C1 POR CURVA ancorado no N_f da matriz (input-de-paper)
+==============================================================================
+  amp0p25                    passe 1 ( 22s): N_pred  328832  razao 0.9965
+  amp0p3                     passe 1 ( 17s): N_pred  250653  razao 1.0026
+  amp0p4                     passe 1 (  6s): N_pred   73278  razao 0.9517
+  amp0p4                     passe 2 (  6s): N_pred   77459  razao 1.0060
+  amp0p5                     passe 1 (  3s): N_pred   35624  razao 0.9375
+  amp0p5                     passe 2 (  3s): N_pred   38358  razao 1.0094
+  amp0p6                     passe 1 (  2s): N_pred   19634  razao 0.8113
+  amp0p6                     passe 2 (  2s): N_pred   27015  razao 1.1163
+  amp0p8                     passe 1 (  1s): N_pred   16908  razao 1.1742
+  amp0p8                     passe 2 (  1s): N_pred   12871  razao 0.8938
+  liu2025_M16_fig2_single    passe 1: nao fraturou em 1.35x — C1*0.7
+  fig2_single                passe 2 (  1s): N_pred   10013  razao 1.0013
+
+C1 por curva (FIXADOS):
+  amp0p25                    fat_C1 = 3.19733e+32   (relogio residual 0.9965)
+  amp0p3                     fat_C1 = 4.32843e+32   (relogio residual 1.0026)
+  amp0p4                     fat_C1 = 3.27225e+32   (relogio residual 1.0060)
+  amp0p5                     fat_C1 = 3.26716e+32   (relogio residual 1.0094)
+  amp0p6                     fat_C1 = 3.26567e+32   (relogio residual 1.1163)
+  amp0p8                     fat_C1 = 5.22562e+32   (relogio residual 0.8938)
+  fig2_single                fat_C1 = 3.83898e+32   (relogio residual 1.0013)
+
+==============================================================================
+3) previsao central: alpha da rampa NA BORDA DO TRIM (relogio exato)
+==============================================================================
+       curva       trim        N_f     D_trim  alpha(D_trim)
+     amp0p25     240000     330000     0.7273              0
+      amp0p3     180000     250000     0.7200              0
+      amp0p4      60000      77000     0.7792       3.48e-08
+      amp0p5      30000      38000     0.7895       3.86e-07
+      amp0p6      18000      24200     0.7438              0
+      amp0p8      11500      14400     0.7986       2.04e-06
+ fig2_single       8000      10000     0.8000       2.56e-06
+  => alpha <= ~3e-6 em toda janela: a rampa e NUMERICAMENTE NULA na metrica
+
+==============================================================================
+4) CURVA DE PROJETO (liu2025_M16_amp0p8) — pos-trim vs store
+==============================================================================
+  N_pred = 15421 (alvo 14400, residual 1.0709)
+  store: 0.0487/0.0853  ->  com E2: 0.0487/0.0853  (delta -0.00009/+0.00000)
+  tripe: PASSA
+-> New_Theory/liu2025_e2_contas.json

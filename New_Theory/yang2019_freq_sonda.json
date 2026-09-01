@@ -1,0 +1,41 @@
+{
+ "instrumento": {
+  "5Hz": {
+   "freq": 5.0,
+   "dmg_dwell_exp": 1.0,
+   "f_ref_dmg": 10.0,
+   "c_D": 0.1
+  },
+  "10Hz": {
+   "freq": 10.0,
+   "dmg_dwell_exp": 1.0,
+   "f_ref_dmg": 10.0,
+   "c_D": 0.1
+  }
+ },
+ "niveis": [
+  {
+   "nivel": 0.9,
+   "n_mod_5": 159.7942787191389,
+   "n_mod_10": 175.22391373260362,
+   "razao_mod": 1.0965593708181787,
+   "razao_dado": 2.244049218982625
+  },
+  {
+   "nivel": 0.85,
+   "n_mod_5": 2658.6817645095666,
+   "n_mod_10": 3487.794979646095,
+   "razao_mod": 1.311851243802197,
+   "razao_dado": 1.6836176956385875
+  },
+  {
+   "nivel": 0.8,
+   "n_mod_5": 4489.362556585531,
+   "n_mod_10": 4833.944106448642,
+   "razao_mod": 1.076755117351268,
+   "razao_dado": 1.2554144673742518
+  }
+ ],
+ "razao_mediana_modelo": 1.0965593708181787,
+ "veredicto": "CANAL INERTE (o dmg_dwell_exp nao age aqui)"
+}

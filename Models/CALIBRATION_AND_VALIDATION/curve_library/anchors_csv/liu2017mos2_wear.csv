@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/67_68_69_70_MoS2_complex_random_neutron.md:70-79
+coating,wear_depth_um,coating_integrity_pct
+bare_steel,12.5,
+zinc_plated,8.0,30
+MoS2,3.5,85
+PTFE,5.5,55

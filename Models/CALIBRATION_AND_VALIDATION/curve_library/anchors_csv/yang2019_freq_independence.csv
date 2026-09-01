@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/09_Yang_2019_M10_variable_amplitude.md:153-162
+freq_Hz,N50_cycles,flag
+5,100,approx
+10,95,approx
+15,100,approx
+20,105,approx

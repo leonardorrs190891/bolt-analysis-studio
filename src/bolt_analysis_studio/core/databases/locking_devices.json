@@ -1,0 +1,189 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "description": "Locking device retention data and ISO 2320 prevailing torque values",
+    "references": [
+      "ISO 2320:2008 — Prevailing-torque type steel hexagon nuts",
+      "ISO 16130:2015 — Test methods for locking effectiveness under vibration",
+      "Junker DIN 65151 — Vibrational loosening test",
+      "VDI 2230:2015 Part 1 Annex B — Locking and securing elements",
+      "Jiang & Hess (2003) — Self-loosening classification with locking devices"
+    ],
+    "units": {
+      "prevailing_torque": "N·m",
+      "retention_force": "N",
+      "preload_loss_rate": "fraction of F_p0 per 1000 cycles",
+      "friction_increase": "delta-mu added to base friction"
+    }
+  },
+
+  "locking_devices": {
+
+    "free_running_nut": {
+      "label": "Free-running nut (no locking)",
+      "iso_type": null,
+      "mechanism": "none",
+      "prevailing_torque": {
+        "M6":  0.0,  "M8":  0.0,  "M10": 0.0,  "M12": 0.0,
+        "M16": 0.0,  "M20": 0.0,  "M24": 0.0
+      },
+      "retention": {
+        "preload_loss_rate_per_1000_cycles": 0.25,
+        "slip_onset_factor_override": null,
+        "friction_increase": 0.0,
+        "stage_I_reduction": 0.0,
+        "stage_II_suppression": 0.0
+      },
+      "notes": "Baseline — no locking effect"
+    },
+
+    "prevailing_torque_nut": {
+      "label": "Prevailing-torque nut (deformed thread / nylon insert)",
+      "iso_type": "ISO 7042 / ISO 7044",
+      "mechanism": "mechanical_interference",
+      "prevailing_torque": {
+        "M6":  2.0,  "M8":  4.0,  "M10": 7.0,  "M12": 10.0,
+        "M16": 18.0, "M20": 30.0, "M24": 45.0
+      },
+      "retention": {
+        "preload_loss_rate_per_1000_cycles": 0.04,
+        "slip_onset_factor_override": null,
+        "friction_increase": 0.03,
+        "stage_I_reduction": 0.5,
+        "stage_II_suppression": 0.7
+      },
+      "notes": "ISO 2320 minimum prevailing torques. Nylon insert limited to ≤120°C"
+    },
+
+    "all_metal_prevailing_nut": {
+      "label": "All-metal prevailing-torque nut (Stover / oval / tri-dent)",
+      "iso_type": "ISO 7042 type T",
+      "mechanism": "mechanical_interference",
+      "prevailing_torque": {
+        "M6":  1.5,  "M8":  3.5,  "M10": 6.0,  "M12": 9.0,
+        "M16": 16.0, "M20": 27.0, "M24": 40.0
+      },
+      "retention": {
+        "preload_loss_rate_per_1000_cycles": 0.05,
+        "slip_onset_factor_override": null,
+        "friction_increase": 0.025,
+        "stage_I_reduction": 0.45,
+        "stage_II_suppression": 0.65
+      },
+      "notes": "Re-usable up to 5 cycles before prevailing torque degrades >30 %"
+    },
+
+    "lock_washer_spring": {
+      "label": "Spring (split) lock washer",
+      "iso_type": "DIN 127",
+      "mechanism": "spring_load",
+      "prevailing_torque": {
+        "M6":  0.5,  "M8":  0.8,  "M10": 1.2,  "M12": 1.8,
+        "M16": 3.0,  "M20": 5.0,  "M24": 7.5
+      },
+      "retention": {
+        "preload_loss_rate_per_1000_cycles": 0.18,
+        "slip_onset_factor_override": null,
+        "friction_increase": 0.01,
+        "stage_I_reduction": 0.15,
+        "stage_II_suppression": 0.2
+      },
+      "notes": "Limited effectiveness per DIN 65151 vibration tests; not recommended for safety-critical joints. Provides some Stage I embedding resistance."
+    },
+
+    "nord_lock_washer": {
+      "label": "Nord-Lock® wedge-locking washer pair",
+      "iso_type": "patented / NL series",
+      "mechanism": "wedge_cam",
+      "prevailing_torque": {
+        "M6":  3.0,  "M8":  6.0,  "M10": 10.0, "M12": 15.0,
+        "M16": 25.0, "M20": 42.0, "M24": 65.0
+      },
+      "retention": {
+        "preload_loss_rate_per_1000_cycles": 0.02,
+        "slip_onset_factor_override": 0.65,
+        "friction_increase": 0.04,
+        "stage_I_reduction": 0.6,
+        "stage_II_suppression": 0.9
+      },
+      "notes": "Cam angle > helix angle ensures self-locking under vibration. slip_onset_factor raised (harder to slip) compared to bare bearing surface."
+    },
+
+    "belleville_spring_washer": {
+      "label": "Belleville (disc) spring washer",
+      "iso_type": "ISO 16983 / DIN 6796",
+      "mechanism": "spring_load",
+      "prevailing_torque": {
+        "M6":  1.0,  "M8":  2.0,  "M10": 3.5,  "M12": 5.5,
+        "M16": 10.0, "M20": 17.0, "M24": 26.0
+      },
+      "retention": {
+        "preload_loss_rate_per_1000_cycles": 0.06,
+        "slip_onset_factor_override": null,
+        "friction_increase": 0.008,
+        "stage_I_reduction": 0.55,
+        "stage_II_suppression": 0.35
+      },
+      "notes": "Effective against embedding losses (Stage I). High spring rate maintains preload under thermal cycling. Less effective against rotational Stage II."
+    },
+
+    "double_nut": {
+      "label": "Double nut (jam nut / lock nut configuration)",
+      "iso_type": "ISO 4035 (jam nut) + ISO 4032 (primary nut)",
+      "mechanism": "friction_lock",
+      "prevailing_torque": {
+        "M6":  1.2,  "M8":  2.5,  "M10": 4.5,  "M12": 7.0,
+        "M16": 13.0, "M20": 22.0, "M24": 34.0
+      },
+      "retention": {
+        "preload_loss_rate_per_1000_cycles": 0.08,
+        "slip_onset_factor_override": null,
+        "friction_increase": 0.02,
+        "stage_I_reduction": 0.3,
+        "stage_II_suppression": 0.75
+      },
+      "notes": "Requires correct tightening sequence: jam nut first, primary nut second. Effective against Stage II rotational loosening when properly installed. Per CLAUDE.md: BOTH nuts must have their own ThreadContact in the MSD model."
+    },
+
+    "chemical_locking": {
+      "label": "Thread-locking compound (e.g. Loctite 243 / 270)",
+      "iso_type": null,
+      "mechanism": "chemical_adhesion",
+      "prevailing_torque": {
+        "M6":  4.0,  "M8":  8.0,  "M10": 13.0, "M12": 20.0,
+        "M16": 36.0, "M20": 60.0, "M24": 95.0
+      },
+      "retention": {
+        "preload_loss_rate_per_1000_cycles": 0.005,
+        "slip_onset_factor_override": 1.0,
+        "friction_increase": 0.08,
+        "stage_I_reduction": 0.8,
+        "stage_II_suppression": 0.98
+      },
+      "notes": "Values for medium-strength (Loctite 243-equivalent). High-strength (270) approaches permanent. slip_onset_factor raised to 1.0 (classical Coulomb) because chemical adhesion eliminates micro-slip. Temperature limit typically 150°C."
+    }
+  },
+
+  "iso_2320_minimum_prevailing_torques": {
+    "_note": "ISO 2320:2008 Table 1 minimum prevailing torques for property class 8/10 nuts [N·m]",
+    "M6":   { "class_8": 1.5,  "class_10": 2.0 },
+    "M8":   { "class_8": 3.0,  "class_10": 4.0 },
+    "M10":  { "class_8": 5.5,  "class_10": 7.0 },
+    "M12":  { "class_8": 8.0,  "class_10": 10.0 },
+    "M16":  { "class_8": 14.0, "class_10": 18.0 },
+    "M20":  { "class_8": 24.0, "class_10": 30.0 },
+    "M24":  { "class_8": 36.0, "class_10": 45.0 }
+  },
+
+  "junker_din65151_effectiveness_class": {
+    "_note": "Qualitative Junker DIN 65151 test effectiveness ratings",
+    "free_running_nut":         "F  — fails within 200 cycles",
+    "lock_washer_spring":       "D  — fails within 500 cycles",
+    "belleville_spring_washer": "C  — retains >70 % F₀ at 1000 cycles (Stage I only)",
+    "double_nut":               "B  — retains >70 % F₀ at 5000 cycles",
+    "prevailing_torque_nut":    "B  — retains >70 % F₀ at 5000 cycles",
+    "all_metal_prevailing_nut": "B  — retains >70 % F₀ at 5000 cycles",
+    "nord_lock_washer":         "A  — retains >80 % F₀ at 10000+ cycles",
+    "chemical_locking":         "A+ — near-permanent with high-strength compound"
+  }
+}

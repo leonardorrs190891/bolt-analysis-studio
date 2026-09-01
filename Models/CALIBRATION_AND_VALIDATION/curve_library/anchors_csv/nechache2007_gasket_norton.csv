@@ -1,0 +1,5 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/30_Nechache_Bouzid_2007_creep_flange_joints.md:32-38
+gasket,A_per_s_MPan,n,Q_kJ_mol,temp_range_C
+spiral_wound_SS_graphite,1.2e-12,2.5,45,20-400
+PTFE_sheet,8.5e-8,1.8,25,20-200
+PTFE_filled_SW,3.0e-10,2.2,35,20-300

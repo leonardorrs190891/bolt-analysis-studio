@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/35_36_37_38_wear_material_rotational_direction.md:135-142
+cycle,r_0p5deg,r_1p0deg,r_1p5deg,r_2p0deg
+0,1.000,1.000,1.000,1.000
+1000,0.975,0.905,0.820,0.720
+2000,0.955,0.835,0.690,0.530
+5000,0.920,0.695,0.480,0.280

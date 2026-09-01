@@ -1,0 +1,8 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/39_40_41_42_locking_AI_deepsea_3Dprint.md:191-205
+thermal_cycle,ABS2,PLA,glass_filled_nylon,steel_ref
+0,1.000,1.000,1.000,1.000
+1,0.920,0.900,0.910,0.960
+5,0.840,0.800,0.820,0.920
+10,0.780,0.720,0.750,0.895
+20,0.720,0.640,0.680,0.870
+50,0.650,0.540,0.600,0.840

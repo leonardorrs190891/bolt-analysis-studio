@@ -1,0 +1,34 @@
+{
+  "bascase_version": 1,
+  "name": "Exemplo M12 (sintético)",
+  "description": "Caso de DEMONSTRAÇÃO do fluxo de intake: curva sintética de um Junker M12 ±0.5 mm. Use como referência do formato .bascase.json; delete à vontade.",
+  "test": {
+    "bolt_size": "M12x1.75",
+    "bolt_diameter_mm": 12.0,
+    "pitch_mm": 1.75,
+    "grip_mm": 30.0,
+    "preload_N": 30000.0,
+    "preload_percent_yield": null,
+    "loading_type": "TRANSVERSE",
+    "control_mode": "displacement",
+    "delta_amplitude_mm": 0.5,
+    "F_amplitude_N": null,
+    "frequency_Hz": 12.5,
+    "n_cycles": 400,
+    "mu": 0.18,
+    "lubricated": false,
+    "rz_class": "Rz10-40",
+    "material_pair": "aço/aço",
+    "notes": "exemplo embarcado no repositório (demonstração do intake)"
+  },
+  "curve": {
+    "x_unit": "cycles",
+    "y_unit": "F_kN",
+    "points": [[0, 30.0], [50, 29.2], [100, 28.5], [175, 27.7], [250, 27.0], [325, 26.5], [400, 26.1]]
+  },
+  "provenance": {
+    "generated_by": "BAS intake prompt v1 (exemplo embarcado)",
+    "date": "2026-07-10"
+  },
+  "prefit": {}
+}

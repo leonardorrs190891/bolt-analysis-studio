@@ -1,0 +1,8 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/39_40_41_42_locking_AI_deepsea_3Dprint.md:22-34
+device,T_lock_Nm,std_Nm
+nylon_insert_NAS1291,1.8,0.3
+all_metal_NAS1805,2.6,0.4
+adhesive_loctite242,1.9,0.4
+adhesive_loctite271,6.8,0.6
+cotter_pin_castle_nut,6.2,0.8
+inconel_lockwire,4.4,0.5

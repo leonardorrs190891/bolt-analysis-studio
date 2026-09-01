@@ -1,0 +1,8 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/09_Yang_2019_M10_variable_amplitude.md:166-186
+sequence,n1_cycles,n1_over_N1,n2_cycles,n2_over_N2,miner_sum
+high_to_low,50,0.20,850,0.71,0.91
+high_to_low,100,0.40,550,0.46,0.86
+high_to_low,150,0.60,300,0.25,0.85
+low_to_high,200,0.17,220,0.88,1.05
+low_to_high,400,0.33,150,0.60,0.93
+low_to_high,600,0.50,100,0.40,0.90

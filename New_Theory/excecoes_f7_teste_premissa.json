@@ -1,0 +1,252 @@
+{
+ "eccles2010_fig8a_no_axial_baseline1": {
+  "tipo": "F7",
+  "forte": true,
+  "pernas": [
+   {
+    "perna": "res.m\u00e1x",
+    "valor_prova": 0.122,
+    "valor_store": 0.12230611623835637,
+    "deriva": 0.00030611623835637147,
+    "piso": 0.257,
+    "barra": 0.1817264427649427,
+    "coberta": true
+   },
+   {
+    "perna": "\u03c3",
+    "valor_prova": 0.039,
+    "valor_store": 0.039400398685056584,
+    "deriva": 0.0004003986850565841,
+    "piso": 0.083,
+    "barra": 0.058689862838483445,
+    "coberta": true
+   }
+  ]
+ },
+ "eccles2010_fig8c_no_axial_baseline2": {
+  "tipo": "F7",
+  "forte": true,
+  "pernas": [
+   {
+    "perna": "res.m\u00e1x",
+    "valor_prova": 0.145,
+    "valor_store": 0.14519255637036357,
+    "deriva": 0.00019255637036358353,
+    "piso": 0.257,
+    "barra": 0.1817264427649427,
+    "coberta": true
+   },
+   {
+    "perna": "\u03c3",
+    "valor_prova": 0.039,
+    "valor_store": 0.03899020205396661,
+    "deriva": -9.797946033389404e-06,
+    "piso": 0.083,
+    "barra": 0.058689862838483445,
+    "coberta": true
+   }
+  ]
+ },
+ "lu2024_M8_fig18_amp0p5": {
+  "tipo": "F7",
+  "forte": true,
+  "pernas": [
+   {
+    "perna": "MAE",
+    "valor_prova": 0.061,
+    "valor_store": 0.12450104708109674,
+    "deriva": 0.06350104708109675,
+    "piso": 0.281,
+    "barra": 0.19869700551341987,
+    "coberta": true
+   }
+  ]
+ },
+ "lu2024_M8_fig20_T10Nm": {
+  "tipo": "F7",
+  "forte": true,
+  "pernas": [
+   {
+    "perna": "MAE",
+    "valor_prova": 0.209,
+    "valor_store": 0.25924503693179335,
+    "deriva": 0.05024503693179336,
+    "piso": 0.613,
+    "barra": 0.43345645686735357,
+    "coberta": true
+   },
+   {
+    "perna": "mx",
+    "valor_prova": 0.299,
+    "valor_store": 0.33100093785438667,
+    "deriva": 0.03200093785438668,
+    "piso": 0.849,
+    "barra": 0.6003336572273787,
+    "coberta": true
+   },
+   {
+    "perna": "\u03c3",
+    "valor_prova": 0.116,
+    "valor_store": 0.07672715740020705,
+    "deriva": -0.039272842599792954,
+    "piso": 0.159,
+    "barra": 0.11242997820866105,
+    "coberta": true
+   }
+  ]
+ },
+ "lu2024_M8_fig20_T16Nm": {
+  "tipo": "F7",
+  "forte": true,
+  "pernas": [
+   {
+    "perna": "MAE",
+    "valor_prova": 0.123,
+    "valor_store": 0.16715917852550394,
+    "deriva": 0.04415917852550394,
+    "piso": 0.613,
+    "barra": 0.43345645686735357,
+    "coberta": true
+   }
+  ]
+ },
+ "lu2024_M8_fig20_T22Nm": {
+  "tipo": "F7",
+  "forte": true,
+  "pernas": [
+   {
+    "perna": "MAE",
+    "valor_prova": 0.11,
+    "valor_store": 0.0922587884521413,
+    "deriva": -0.017741211547858696,
+    "piso": 0.613,
+    "barra": 0.43345645686735357,
+    "coberta": true
+   }
+  ]
+ },
+ "lu2024_M8_fig20_T28Nm": {
+  "tipo": "F7",
+  "forte": true,
+  "pernas": [
+   {
+    "perna": "MAE",
+    "valor_prova": 0.119,
+    "valor_store": 0.0983919729352211,
+    "deriva": -0.02060802706477889,
+    "piso": 0.613,
+    "barra": 0.43345645686735357,
+    "coberta": true
+   }
+  ]
+ },
+ "bauer2024_M12_fig8_test1": {
+  "tipo": "F5",
+  "prova": "scatter de r\u00e9plicas (desvio-\u00e0-mediana 0.349)"
+ },
+ "bauer2024_M12_fig8_test2": {
+  "tipo": "F5",
+  "prova": "scatter de r\u00e9plicas (desvio-\u00e0-mediana 0.349)"
+ },
+ "bauer2024_M12_fig8_test3": {
+  "tipo": "F5",
+  "prova": "scatter de r\u00e9plicas (desvio-\u00e0-mediana 0.349)"
+ },
+ "bauer2024_M8_fig6_rep1": {
+  "tipo": "F5",
+  "prova": "scatter de r\u00e9plicas (desvio-\u00e0-mediana 0.328)"
+ },
+ "bauer2024_M8_fig6_rep4": {
+  "tipo": "F5",
+  "prova": "scatter de r\u00e9plicas (desvio-\u00e0-mediana 0.328)"
+ },
+ "bauer2024_M8_fig6_rep5": {
+  "tipo": "F5",
+  "prova": "scatter de r\u00e9plicas (desvio-\u00e0-mediana 0.328)"
+ },
+ "bauer2024_M8_fig6_rep6": {
+  "tipo": "F5",
+  "prova": "scatter de r\u00e9plicas (desvio-\u00e0-mediana 0.328)"
+ },
+ "eccles2010_fig6_annotated_4kN_axial": {
+  "tipo": "F5",
+  "prova": "sobreposi\u00e7\u00e3o axial (G-B1 FAIL: receita PR-31 levou o res.m\u00e1x de 0.467 a 1.028) \u2014 o engine n\u00e3o tem contorno axial externo"
+ },
+ "eccles2010_fig7d_axial_3p1kN_constant": {
+  "tipo": "F5",
+  "prova": "sobreposi\u00e7\u00e3o axial \u2014 PASSA no trip\u00e9 por ARTEFATO: o FLOOR_TRIM corta os 4 pontos da cauda a zero. Sai dos aprovados se a fam\u00edlia for tratada como unidade"
+ },
+ "eccles2010_fig8b_axial_0p7kN_intermittent": {
+  "tipo": "F5",
+  "prova": "sobreposi\u00e7\u00e3o axial \u2014 e o FLOOR_TRIM corta 27 dos 35 pontos, logo o MAE 0.044 \u00e9 pontuado sobre 8 pontos"
+ },
+ "eccles2010_fig8d_axial_3p5kN_intermittent": {
+  "tipo": "F5",
+  "prova": "sobreposi\u00e7\u00e3o axial (G-B1 FAIL: res.m\u00e1x 0.252 -> 0.400 com a receita)"
+ },
+ "jcsr2023_plain_outdoor": {
+  "tipo": "F5",
+  "prova": "cliff/rebound de corros\u00e3o (forma faltante)"
+ },
+ "jcsr2023_stainless_seawater": {
+  "tipo": "F5",
+  "prova": "cliff/rebound de corros\u00e3o (forma faltante)"
+ },
+ "liu2020_fig9_zinc_AF0.4mm_P0-18kN": {
+  "tipo": "F5",
+  "prova": "trinca de fadiga atribu\u00edda pelo paper (\u00a73.1.2) \u2014 a regra autom\u00e1tica de changepoint N\u00c3O achou o corte"
+ },
+ "yang2021_amp0p8mm_ax6kN": {
+  "tipo": "F5",
+  "prova": "canal estrutural \u03be-dependente confundido"
+ },
+ "yang2021_fig2_typical": {
+  "tipo": "F5",
+  "prova": "canal estrutural \u03be-dependente confundido"
+ },
+ "_deriva": [
+  [
+   "lu2024_M8_fig18_amp0p5",
+   "MAE",
+   0.061,
+   0.12450104708109674
+  ],
+  [
+   "lu2024_M8_fig20_T10Nm",
+   "MAE",
+   0.209,
+   0.25924503693179335
+  ],
+  [
+   "lu2024_M8_fig20_T10Nm",
+   "mx",
+   0.299,
+   0.33100093785438667
+  ],
+  [
+   "lu2024_M8_fig20_T10Nm",
+   "\u03c3",
+   0.116,
+   0.07672715740020705
+  ],
+  [
+   "lu2024_M8_fig20_T16Nm",
+   "MAE",
+   0.123,
+   0.16715917852550394
+  ],
+  [
+   "lu2024_M8_fig20_T22Nm",
+   "MAE",
+   0.11,
+   0.0922587884521413
+  ],
+  [
+   "lu2024_M8_fig20_T28Nm",
+   "MAE",
+   0.119,
+   0.0983919729352211
+  ]
+ ],
+ "_descobertas": []
+}

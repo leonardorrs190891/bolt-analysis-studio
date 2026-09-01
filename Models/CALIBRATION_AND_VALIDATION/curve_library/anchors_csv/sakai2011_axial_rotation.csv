@@ -1,0 +1,9 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/16_Izumi_Sakai_Japanese_studies.md:148-160
+F_axial_kN,peak_Fext_over_F0,theta_500cyc_deg,flag,stage
+10,0.29,0.01,lt,no_loosening
+20,0.57,0.05,,negligible
+25,0.71,0.2,,very_slow
+28,0.80,0.5,,threshold
+30,0.86,1.5,,moderate
+32,0.91,3.0,,significant
+34,0.97,5.5,,near_separation

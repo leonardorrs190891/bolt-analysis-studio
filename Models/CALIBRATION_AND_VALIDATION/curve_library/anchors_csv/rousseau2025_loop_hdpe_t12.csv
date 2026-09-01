@@ -1,0 +1,9 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/25_Rousseau_Bouzid_2025_material_thickness.md:176-188
+disp_mm,F_loading_kN,F_unloading_kN
+-0.50,-4.0,-4.0
+-0.30,-2.5,-3.2
+-0.10,-0.5,-1.8
+0.00,0.5,-0.8
+0.10,1.5,0.3
+0.30,3.0,1.8
+0.50,4.0,4.0

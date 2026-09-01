@@ -1,0 +1,11 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/51_52_53_54_axial_fatiguewear_noload_energy.md:214-229
+time_label,time_s,ratio
+0,0,1.000
+10s,10,0.975
+1min,60,0.960
+5min,300,0.948
+30min,1800,0.938
+1h,3600,0.932
+6h,21600,0.922
+24h,86400,0.915
+48h,172800,0.912

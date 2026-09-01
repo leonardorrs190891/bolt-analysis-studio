@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/74_76_77_78_torsional_loosening_Liu_group.md:167-175
+cycle,wear_depth_um,mu_thread
+0,0.0,0.180
+500,1.2,0.158
+1000,2.1,0.142
+2000,3.5,0.125
+5000,7.2,0.103

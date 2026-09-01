@@ -1,0 +1,43 @@
+# Fim de linha — fixado em 2026-07-27
+#
+# POR QUE EXISTE: a maquina de desenvolvimento roda Git for Windows, cujo
+# padrao de sistema e' core.autocrlf=true. Sem este arquivo, o comportamento
+# depende da CONFIGURACAO DE CADA MAQUINA: um checkout com autocrlf=false
+# comita CRLF, e a proxima maquina ve o arquivo inteiro como modificado —
+# diff fantasma que esconde a mudanca real no meio de milhares de linhas.
+#
+# SEGURO POR CONSTRUCAO: medido antes de escrever (git ls-files --eol sobre
+# 2306 arquivos rastreados) — 2236 ja estao em LF no repositorio, 63 sao
+# binarios e 7 estao vazios. ZERO gravados em CRLF, entao `text=auto` NAO
+# dispara renormalizacao: nenhum conteudo muda ao adotar este arquivo.
+#
+# Convencao: LF no repositorio, fim-de-linha nativo na copia de trabalho.
+
+* text=auto
+
+# --- Codigo e dados que DEVEM permanecer LF tambem na copia de trabalho ---
+# Scripts e dados lidos por ferramentas sensiveis a CR; os CSVs de curva sao
+# consumidos por np.genfromtxt/csv.DictReader e por parsers do proprio
+# projeto, e um CR pendurado ja custou tempo de depuracao neste repositorio.
+*.py    text eol=lf
+*.csv   text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+*.msd   text eol=lf
+*.svg   text eol=lf
+*.html  text eol=lf
+
+# --- Binarios: nunca converter, nunca tentar diff textual ---
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.pdf   binary
+*.docx  binary
+*.xlsx  binary
+*.zip   binary
+
+# --- Diff mais legivel para os arquivos de trabalho do projeto ---
+*.py    diff=python
+*.md    diff=markdown

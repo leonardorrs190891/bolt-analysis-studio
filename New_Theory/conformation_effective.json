@@ -1,0 +1,58 @@
+{
+  "campaign": "Fase 2 strand 2 — driver de conformacao auto-limitante (spec §7)",
+  "method": "A/B effective-vs-OFF (n=2 fixo) + fit-n no effective; mesmo classificador §9",
+  "thresholds": {
+    "RESOLVE_MAE": 0.06,
+    "PERSIST_MAE": 0.1,
+    "OTHERS_HOLD": 0.01,
+    "OTHERS_DEGRADE": 0.02
+  },
+  "baseline": {
+    "mae_by_condition": {
+      "nova": 0.07509584261271267,
+      "reusada": 0.059345565140983624,
+      "sobretorque": 0.13792952557860086,
+      "reaperto": 0.045894302771570285
+    },
+    "C_creep": 1.1898569437421533e-11,
+    "sobretorque_residual": 8.00818986188824
+  },
+  "treatment": {
+    "driver": "effective",
+    "mae_by_condition": {
+      "nova": 0.07409805318902893,
+      "reusada": 0.05620524009992532,
+      "sobretorque": 0.029945912765968866,
+      "reaperto": 0.043337723120160786
+    },
+    "C_creep": 1.8690263192089978e-11,
+    "W_conf_ref": 7656.607138447558,
+    "conform_pressure_exp": 2.0,
+    "p_ref_conform": 500000000.0,
+    "sobretorque_residual": 4.8478363449467
+  },
+  "fitn_effective": {
+    "mae_by_condition": {
+      "nova": 0.08441530257558819,
+      "reusada": 0.052811990011430075,
+      "sobretorque": 0.02481174153650206,
+      "reaperto": 0.04127693935667322
+    },
+    "conform_pressure_exp_fitted": 3.9999781406782158,
+    "W_conf_ref": 20541.61356311254
+  },
+  "reference_raw_n2": "conformation_fit.json (raw n=2: W_conf_ref 1.253e4, sob 0.0201, RESOLVED)",
+  "reference_raw_fitn": "conformation_fitn.json (raw fit-n: n=3.9999 railed, PARTIAL)",
+  "verdict": {
+    "verdict": "RESOLVED",
+    "sobretorque_mae": 0.029945912765968866,
+    "max_others_delta": -0.0009977894236837398,
+    "others_deltas": {
+      "nova": -0.0009977894236837398,
+      "reusada": -0.003140325041058302,
+      "reaperto": -0.002556579651409499
+    },
+    "resid_ok": true
+  },
+  "canonical_shared_block": "NAO escrito (experimento)"
+}

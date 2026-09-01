@@ -1,0 +1,13 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/10_Yang_2023_phenomenological_model.md:159-181
+bolt,delta_mm,NL_cycles,flag
+M8,0.18,10000,gt_threshold
+M8,0.25,3500,approx
+M8,0.35,700,approx
+M8,0.45,180,approx
+M8,0.55,70,approx
+M8,0.65,25,approx
+M6,0.15,10000,gt_threshold
+M6,0.20,4000,approx
+M6,0.30,400,approx
+M6,0.40,100,approx
+M6,0.50,30,approx

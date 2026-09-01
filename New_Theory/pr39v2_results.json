@@ -1,0 +1,688 @@
+{
+ "preregistro": "PR-39 v2 (classe fratura, caudas _tozero) — sandbox F39, nada adotado",
+ "misterio": {
+  "diagnostico": "REFUTADA a hipotese do slip: FatigueLoss em modo bending usa o delta_amp IMPOSTO cru (sigma_a=Kt*E*d2*delta/L_eff^2, L_eff=40mm grip); delta_free/c_bend nao entram no sigma_a. O contexto entra via GOODMAN: sigma_ar=sigma_a/(1-sigma_m/uts) com sigma_m=F_0(n)/A_s VIVO. Com F0=60kN/A_s=157mm2, sigma_m/uts=0.367 no aperto cheio; conforme a junta afrouxa o denominador cresce e sigma_ar cai ate 27% (amp0p4: 4.067->2.991 GPa) => taxa de dano cai ate ~2.3x => N_D real (engine) fica 30-70% MAIOR que o analitico de tensao constante. Os N_D 'modelo' do PR-24 (272k/76.5k/12k) reproduzem-se EXATAMENTE com N=C1*sigma_ar(F0_inicial)^-2.7 (270k/76.4k/11.7k) — ou seja, o C1 do PR-24 foi calibrado no regime de tensao constante do aperto inicial, nao na trajetoria canonica do engine.",
+  "por_que_alvos_bit_identicos": "amp0p4: N_D@6.7e30 > 90000 (janela 76.5k/77.4k) | fig2/amp0p8: N_D@6.7e30 > 16500 (janelas 9.9k/14.4k) | li2022ti: modo FORCA axial => delta_amp=None => ramo bending nunca roda; sigma_a=Kt*F_amp/A_s=0.603 GPa => N_f ~ 9e6 >> 411k. Nenhum cliff dentro das janelas => bit-identicos.",
+  "por_que_amp0p3_dispara": "amp0p3 e a unica curva cuja janela digitalizada (252k) e LONGA em relacao ao N_D esticado: sigma_a=1.93 GPa, F_0 fica alto a janela inteira (ratio_end 0.807 => pouco alivio Goodman, sigma_ar 3.05->2.74 GPa) => N_D=215621 < 252000 => cliff no meio da curva (dado ~0.70) => MAE 0.077->0.260."
+ },
+ "fase_A_probe": {
+  "liu2025_M16_amp0p25": {
+   "mode": "bending(delta)",
+   "delta_mm": 0.25,
+   "F_amp_N": 24000.0,
+   "F0": 60000,
+   "sigma_a": 1607921875.0,
+   "sigma_ar_c1": 2542036054.899303,
+   "sigma_ar_end": 2282671826.768287,
+   "L_eff_mm": 40.0,
+   "d2_mm": 14.701,
+   "A_s_mm2": 157.0,
+   "E": 200000000000.0,
+   "uts": 1040000000.0,
+   "Kt": 3.5,
+   "grip_prov": "assumed",
+   "window": 327000,
+   "n_run": 340000,
+   "N_D_pr24": null,
+   "fires_in_window": false,
+   "ratio_end": 0.8044167517827326
+  },
+  "liu2025_M16_amp0p3": {
+   "mode": "bending(delta)",
+   "delta_mm": 0.3,
+   "F_amp_N": 24000.0,
+   "F0": 60000,
+   "sigma_a": 1929506249.9999995,
+   "sigma_ar_c1": 3050443265.879163,
+   "sigma_ar_end": 2743418036.5559473,
+   "L_eff_mm": 40.0,
+   "d2_mm": 14.701,
+   "A_s_mm2": 157.0,
+   "E": 200000000000.0,
+   "uts": 1040000000.0,
+   "Kt": 3.5,
+   "grip_prov": "assumed",
+   "window": 252000,
+   "n_run": 265000,
+   "N_D_pr24": 215621,
+   "fires_in_window": true,
+   "ratio_end": 0.8073596962474564
+  },
+  "liu2025_M16_amp0p4": {
+   "mode": "bending(delta)",
+   "delta_mm": 0.4,
+   "F_amp_N": 24000.0,
+   "F0": 60000,
+   "sigma_a": 2572675000.0,
+   "sigma_ar_c1": 4067257687.838885,
+   "sigma_ar_end": 2991064675.9644375,
+   "L_eff_mm": 40.0,
+   "d2_mm": 14.701,
+   "A_s_mm2": 157.0,
+   "E": 200000000000.0,
+   "uts": 1040000000.0,
+   "Kt": 3.5,
+   "grip_prov": "assumed",
+   "window": 76500,
+   "n_run": 90000,
+   "N_D_pr24": null,
+   "fires_in_window": false,
+   "ratio_end": 0.38064831516870506
+  },
+  "liu2025_M16_amp0p5": {
+   "mode": "bending(delta)",
+   "delta_mm": 0.5,
+   "F_amp_N": 24000.0,
+   "F0": 60000,
+   "sigma_a": 3215843750.0,
+   "sigma_ar_c1": 5084072109.798606,
+   "sigma_ar_end": 3762184063.937663,
+   "L_eff_mm": 40.0,
+   "d2_mm": 14.701,
+   "A_s_mm2": 157.0,
+   "E": 200000000000.0,
+   "uts": 1040000000.0,
+   "Kt": 3.5,
+   "grip_prov": "assumed",
+   "window": 38000,
+   "n_run": 42000,
+   "N_D_pr24": null,
+   "fires_in_window": false,
+   "ratio_end": 0.39516493311480005
+  },
+  "liu2025_M16_amp0p6": {
+   "mode": "bending(delta)",
+   "delta_mm": 0.6,
+   "F_amp_N": 24000.0,
+   "F0": 60000,
+   "sigma_a": 3859012499.999999,
+   "sigma_ar_c1": 6100886531.758326,
+   "sigma_ar_end": 4545556317.408955,
+   "L_eff_mm": 40.0,
+   "d2_mm": 14.701,
+   "A_s_mm2": 157.0,
+   "E": 200000000000.0,
+   "uts": 1040000000.0,
+   "Kt": 3.5,
+   "grip_prov": "assumed",
+   "window": 24200,
+   "n_run": 27000,
+   "N_D_pr24": null,
+   "fires_in_window": false,
+   "ratio_end": 0.410982374965492
+  },
+  "liu2025_M16_amp0p8": {
+   "mode": "bending(delta)",
+   "delta_mm": 0.8,
+   "F_amp_N": 24000.0,
+   "F0": 60000,
+   "sigma_a": 5145350000.0,
+   "sigma_ar_c1": 8134515375.67777,
+   "sigma_ar_end": 5963010152.415898,
+   "L_eff_mm": 40.0,
+   "d2_mm": 14.701,
+   "A_s_mm2": 157.0,
+   "E": 200000000000.0,
+   "uts": 1040000000.0,
+   "Kt": 3.5,
+   "grip_prov": "assumed",
+   "window": 14400,
+   "n_run": 16500,
+   "N_D_pr24": null,
+   "fires_in_window": false,
+   "ratio_end": 0.37309427766880193
+  },
+  "liu2025_M16_fig2_single": {
+   "mode": "bending(delta)",
+   "delta_mm": 0.8,
+   "F_amp_N": 24000.0,
+   "F0": 60000,
+   "sigma_a": 5145350000.0,
+   "sigma_ar_c1": 8134515375.67777,
+   "sigma_ar_end": 5963010152.415898,
+   "L_eff_mm": 40.0,
+   "d2_mm": 14.701,
+   "A_s_mm2": 157.0,
+   "E": 200000000000.0,
+   "uts": 1040000000.0,
+   "Kt": 3.5,
+   "grip_prov": "assumed",
+   "window": 9900,
+   "n_run": 16500,
+   "N_D_pr24": null,
+   "fires_in_window": false,
+   "ratio_end": 0.37309427766880193
+  },
+  "li2022ti_axial_10Hz_full": {
+   "mode": "axial(F_amp)",
+   "delta_mm": 0.0,
+   "F_amp_N": 10000.0,
+   "F0": 12500,
+   "sigma_a": 603448275.862069,
+   "sigma_ar_c1": 761187787.5365957,
+   "sigma_ar_end": 686854034.0350492,
+   "L_eff_mm": 25.0,
+   "d2_mm": 9.02575,
+   "A_s_mm2": 58.0,
+   "E": 200000000000.0,
+   "uts": 1040000000.0,
+   "Kt": 3.5,
+   "grip_prov": "assumed",
+   "window": 405000,
+   "n_run": 430000,
+   "N_D_pr24": null,
+   "fires_in_window": false,
+   "ratio_end": 0.5859801334614427
+  },
+  "li2022ti_axialmin_15Hz": {
+   "mode": "axial(F_amp)",
+   "delta_mm": 0.0,
+   "F_amp_N": 10000.0,
+   "F0": 12500,
+   "sigma_a": 603448275.862069,
+   "sigma_ar_c1": 761187787.5365957,
+   "sigma_ar_end": 687929428.505673,
+   "L_eff_mm": 25.0,
+   "d2_mm": 9.02575,
+   "A_s_mm2": 58.0,
+   "E": 200000000000.0,
+   "uts": 1040000000.0,
+   "Kt": 3.5,
+   "grip_prov": "assumed",
+   "window": 200000,
+   "n_run": 205000,
+   "N_D_pr24": null,
+   "fires_in_window": false,
+   "ratio_end": 0.5926076368892594
+  },
+  "li2022ti_axialmin_20Hz": {
+   "mode": "axial(F_amp)",
+   "delta_mm": 0.0,
+   "F_amp_N": 10000.0,
+   "F0": 12500,
+   "sigma_a": 603448275.862069,
+   "sigma_ar_c1": 761187787.5365957,
+   "sigma_ar_end": 688251747.4140062,
+   "L_eff_mm": 25.0,
+   "d2_mm": 9.02575,
+   "A_s_mm2": 58.0,
+   "E": 200000000000.0,
+   "uts": 1040000000.0,
+   "Kt": 3.5,
+   "grip_prov": "assumed",
+   "window": 200000,
+   "n_run": 205000,
+   "N_D_pr24": null,
+   "fires_in_window": false,
+   "ratio_end": 0.5945900124041714
+  }
+ },
+ "candidatos_C1": {
+  "PR24_6.7e30": {
+   "liu2025_M16_amp0p25": {
+    "N_D": null,
+    "window": 327000,
+    "fires_in_window": false,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p3": {
+    "N_D": 215621,
+    "window": 252000,
+    "fires_in_window": true,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p4": {
+    "N_D": null,
+    "window": 76500,
+    "fires_in_window": false,
+    "anchor": 78000,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p5": {
+    "N_D": null,
+    "window": 38000,
+    "fires_in_window": false,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p6": {
+    "N_D": null,
+    "window": 24200,
+    "fires_in_window": false,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p8": {
+    "N_D": null,
+    "window": 14400,
+    "fires_in_window": false,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_fig2_single": {
+    "N_D": null,
+    "window": 9900,
+    "fires_in_window": false,
+    "anchor": 10000,
+    "anchor_err_pct": null
+   }
+  },
+  "A_amp0p4": {
+   "liu2025_M16_amp0p25": {
+    "N_D": 262348,
+    "window": 327000,
+    "fires_in_window": true,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p3": {
+    "N_D": 158987,
+    "window": 252000,
+    "fires_in_window": true,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p4": {
+    "N_D": 78000,
+    "window": 76500,
+    "fires_in_window": false,
+    "anchor": 78000,
+    "anchor_err_pct": 0.0
+   },
+   "liu2025_M16_amp0p5": {
+    "N_D": null,
+    "window": 38000,
+    "fires_in_window": false,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p6": {
+    "N_D": 26498,
+    "window": 24200,
+    "fires_in_window": false,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p8": {
+    "N_D": 11098,
+    "window": 14400,
+    "fires_in_window": true,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_fig2_single": {
+    "N_D": 11098,
+    "window": 9900,
+    "fires_in_window": false,
+    "anchor": 10000,
+    "anchor_err_pct": 11.0
+   }
+  },
+  "B_fig2": {
+   "liu2025_M16_amp0p25": {
+    "N_D": 239334,
+    "window": 327000,
+    "fires_in_window": true,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p3": {
+    "N_D": 145038,
+    "window": 252000,
+    "fires_in_window": true,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p4": {
+    "N_D": 69195,
+    "window": 76500,
+    "fires_in_window": true,
+    "anchor": 78000,
+    "anchor_err_pct": -11.3
+   },
+   "liu2025_M16_amp0p5": {
+    "N_D": 39448,
+    "window": 38000,
+    "fires_in_window": false,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p6": {
+    "N_D": 23239,
+    "window": 24200,
+    "fires_in_window": true,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p8": {
+    "N_D": 10000,
+    "window": 14400,
+    "fires_in_window": true,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_fig2_single": {
+    "N_D": 10000,
+    "window": 9900,
+    "fires_in_window": false,
+    "anchor": 10000,
+    "anchor_err_pct": 0.0
+   }
+  },
+  "G_geomean": {
+   "liu2025_M16_amp0p25": {
+    "N_D": 250577,
+    "window": 327000,
+    "fires_in_window": true,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p3": {
+    "N_D": 151852,
+    "window": 252000,
+    "fires_in_window": true,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p4": {
+    "N_D": 73358,
+    "window": 76500,
+    "fires_in_window": true,
+    "anchor": 78000,
+    "anchor_err_pct": -6.0
+   },
+   "liu2025_M16_amp0p5": {
+    "N_D": null,
+    "window": 38000,
+    "fires_in_window": false,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p6": {
+    "N_D": 24768,
+    "window": 24200,
+    "fires_in_window": false,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_amp0p8": {
+    "N_D": 10528,
+    "window": 14400,
+    "fires_in_window": true,
+    "anchor": null,
+    "anchor_err_pct": null
+   },
+   "liu2025_M16_fig2_single": {
+    "N_D": 10528,
+    "window": 9900,
+    "fires_in_window": false,
+    "anchor": 10000,
+    "anchor_err_pct": 5.3
+   }
+  }
+ },
+ "C1_safe_analise": {
+  "C1_safe": 7.809596858215909e+30,
+  "restricao_dominante": "liu2025_M16_amp0p3",
+  "N_D_amp0p4": null,
+  "anchor_amp0p4": 78000,
+  "err_amp0p4_pct": ">15 (alem do horizonte simulado)",
+  "N_D_fig2": null,
+  "anchor_fig2": 10000,
+  "err_fig2_pct": ">65 (alem do horizonte simulado)",
+  "nota": "C1_safe = max_c S_c(janela_c) sobre os 5 irmaos: qualquer C1 que respeite todas as janelas erra os anchors por este tanto"
+ },
+ "params": {
+  "LIU_2025": {
+   "fatigue_enabled": true,
+   "fat_stress_mode": "bending",
+   "fat_m1": 2.7,
+   "fat_C1": 4.9661304238939004e+30,
+   "escolha": "A_amp0p4",
+   "candidatos": {
+    "A_amp0p4": 4.9661304238939004e+30,
+    "B_fig2": 4.5375835360447677e+30,
+    "G_geomean": 4.747023451523279e+30
+   }
+  },
+  "LI_2022_TRIBOINT": {
+   "fatigue_enabled": true,
+   "fat_stress_mode": "bending (inócuo: modo força => ramo axial sigma=Kt*F_amp/A_s)",
+   "fat_m1": 2.7,
+   "fat_C1": 2.977274444615995e+29
+  }
+ },
+ "sanity_amp0p3_PR24": {
+  "previsto": 215621,
+  "real": 215621
+ },
+ "alvos": {
+  "liu2025_M16_amp0p4": {
+   "tozero_csv": "liu2025_M16_amp0p4_tozero",
+   "C1": 4.9661304238939004e+30,
+   "sem": {
+    "mae": 0.12776136555375,
+    "maxerr": 0.3764955746795081,
+    "maxerr_at": 77400.0,
+    "n_pts": 18,
+    "window": 77400,
+    "n50_modelo": 80003.36122069227
+   },
+   "com": {
+    "mae": 0.12776136555375,
+    "maxerr": 0.3764955746795081,
+    "maxerr_at": 77400.0,
+    "n_pts": 18,
+    "window": 77400,
+    "n50_modelo": 78000.04629718294,
+    "cliff_cycle": 78001
+   },
+   "n50_dado": 75500.0,
+   "N_frat_medido": 78000,
+   "notrim": {
+    "sem": {
+     "mae": 0.17892106253031,
+     "maxerr": 0.5242723320674358,
+     "maxerr_at": 78000.0,
+     "n_pts": 21,
+     "window": 78000
+    },
+    "com": {
+     "mae": 0.17892106253031,
+     "maxerr": 0.5242723320674358,
+     "maxerr_at": 78000.0,
+     "n_pts": 21,
+     "window": 78000
+    }
+   },
+   "simulate_case_janela_original_com": 0.10199462420668055
+  },
+  "liu2025_M16_fig2_single": {
+   "tozero_csv": "liu2025_M16_fig2_single_tozero",
+   "C1": 4.9661304238939004e+30,
+   "sem": {
+    "mae": 0.07770447343360848,
+    "maxerr": 0.4645235653024115,
+    "maxerr_at": 9900.0,
+    "n_pts": 15,
+    "window": 9900,
+    "n50_modelo": 14549.537256529302
+   },
+   "com": {
+    "mae": 0.07770447343360848,
+    "maxerr": 0.4645235653024115,
+    "maxerr_at": 9900.0,
+    "n_pts": 15,
+    "window": 9900,
+    "n50_modelo": 11097.298162073028,
+    "cliff_cycle": 11098
+   },
+   "n50_dado": 9763.636363636364,
+   "N_frat_medido": 10000,
+   "notrim": {
+    "sem": {
+     "mae": 0.1203932946996371,
+     "maxerr": 0.7607256136900664,
+     "maxerr_at": 10000.0,
+     "n_pts": 16,
+     "window": 10000
+    },
+    "com": {
+     "mae": 0.1203932946996371,
+     "maxerr": 0.7607256136900664,
+     "maxerr_at": 10000.0,
+     "n_pts": 16,
+     "window": 10000
+    }
+   },
+   "simulate_case_janela_original_com": 0.07770447343360848
+  },
+  "li2022ti_axial_10Hz_full": {
+   "tozero_csv": "li2022ti_axial_10Hz_full_tozero",
+   "C1": 2.977274444615995e+29,
+   "sem": {
+    "mae": 0.11804827900592582,
+    "maxerr": 0.40529773518460577,
+    "maxerr_at": 405000.0,
+    "n_pts": 10,
+    "window": 405000,
+    "n50_modelo": null
+   },
+   "com": {
+    "mae": 0.11804827900592582,
+    "maxerr": 0.40529773518460577,
+    "maxerr_at": 405000.0,
+    "n_pts": 10,
+    "window": 405000,
+    "n50_modelo": 410000.1470806754,
+    "cliff_cycle": 410001
+   },
+   "n50_dado": 405249.59742351045,
+   "N_frat_medido": 410000,
+   "notrim": {
+    "sem": {
+     "mae": 0.2957039320387904,
+     "maxerr": 0.9268796656324041,
+     "maxerr_at": 411000.0,
+     "n_pts": 13,
+     "window": 411000
+    },
+    "com": {
+     "mae": 0.15772169328676844,
+     "maxerr": 0.8398992226687318,
+     "maxerr_at": 410000.0,
+     "n_pts": 13,
+     "window": 411000
+    }
+   },
+   "simulate_case_janela_original_com": 0.11804827900592582
+  }
+ },
+ "N_D_final": {
+  "liu2025_M16_amp0p25": {
+   "N_D": 262348,
+   "window": 327000,
+   "N_frat_medido": null
+  },
+  "liu2025_M16_amp0p3": {
+   "N_D": 158987,
+   "window": 252000,
+   "N_frat_medido": null
+  },
+  "liu2025_M16_amp0p4": {
+   "N_D": 78000,
+   "window": 76500,
+   "N_frat_medido": 78000
+  },
+  "liu2025_M16_amp0p5": {
+   "N_D": null,
+   "window": 38000,
+   "N_frat_medido": null
+  },
+  "liu2025_M16_amp0p6": {
+   "N_D": 26498,
+   "window": 24200,
+   "N_frat_medido": null
+  },
+  "liu2025_M16_amp0p8": {
+   "N_D": 11098,
+   "window": 14400,
+   "N_frat_medido": null
+  },
+  "liu2025_M16_fig2_single": {
+   "N_D": 11098,
+   "window": 9900,
+   "N_frat_medido": 10000
+  },
+  "li2022ti_axial_10Hz_full": {
+   "N_D": 410000,
+   "window": 405000,
+   "N_frat_medido": 410000
+  },
+  "li2022ti_axialmin_15Hz": {
+   "N_D": null,
+   "window": 200000,
+   "N_frat_medido": null
+  },
+  "li2022ti_axialmin_20Hz": {
+   "N_D": null,
+   "window": 200000,
+   "N_frat_medido": null
+  },
+  "li2022ti_axialmin_10Hz": {
+   "N_D": 410000,
+   "window": 200000,
+   "N_frat_medido": null,
+   "nota": "trajetória idêntica ao full (mesmos F0/AF/freq)"
+  }
+ },
+ "irmaos": {
+  "liu2025_M16_amp0p25": {
+   "base": 0.08920577095890085,
+   "novo": 0.4163831520527425,
+   "identico": false
+  },
+  "liu2025_M16_amp0p3": {
+   "base": 0.07721594774503943,
+   "novo": 0.4220750205291246,
+   "identico": false
+  },
+  "liu2025_M16_amp0p5": {
+   "base": 0.09275154604466342,
+   "novo": 0.09275154604466342,
+   "identico": true
+  },
+  "liu2025_M16_amp0p6": {
+   "base": 0.06604740353371495,
+   "novo": 0.06604740353371495,
+   "identico": true
+  },
+  "liu2025_M16_amp0p8": {
+   "base": 0.04712844855326608,
+   "novo": 0.24238309983737996,
+   "identico": false
+  },
+  "li2022ti_axialmin_10Hz": {
+   "base": 0.08858851402955514,
+   "novo": 0.08858851402955514,
+   "identico": true
+  },
+  "li2022ti_axialmin_15Hz": {
+   "base": 0.058841761394455044,
+   "novo": 0.058841761394455044,
+   "identico": true
+  },
+  "li2022ti_axialmin_20Hz": {
+   "base": 0.017816337506463536,
+   "novo": 0.017816337506463536,
+   "identico": true
+  }
+ },
+ "convencao": "metricas trim y>=0.10 + align 1o ponto (convencao do runner/store); variante notrim informativa (comparavel ao inline pr39_fratura_results.json). N_frat medidos: fig2 10000, amp0p4 78000, li2022ti 410000 (zeros das _tozero).",
+ "gate_pr39": {
+  "LIU_2025": "FALHA na metade (b): cliffs dos alvos dentro de ±15% (amp0p4 78001=0.0%, fig2 11098=+11.0%; n50 +3.3%/+13.7%) MAS 3 irmãos regridem (amp0p25 0.089→0.416, amp0p3 0.077→0.422, amp0p8 0.047→0.242). INFEASÍVEL por construção: janelas exigem C1≥7.81e30 (C1_safe, dominada por amp0p3) e âncoras exigem C1≈4.5–5.0e30; além disso fig2 e amp0p8 têm a MESMA amplitude/trajetória ⇒ N_D idêntico, mas fig2 fraturou a 10k e o espécime do sweep estava vivo a 14.4k (scatter irresolúvel com qualquer C1). Slope local medida 0.3↔0.4 ≈ 4.1 ≠ m1=2.7 do paper.",
+  "LI_2022_TRIBOINT": "PASSA: cliff 410001 (medido 410000, 0.0%; n50 +1.2%), irmãos 10/15/20 Hz bit-idênticos; captura visível só no MAE notrim (0.296→0.158) porque o trim y≥0.10 corta o dado a 405k. C1 próprio da fonte (2.977e29; base de tensão axial Kt·F_amp/A_s — o ramo bending não roda em modo força)."
+ }
+}

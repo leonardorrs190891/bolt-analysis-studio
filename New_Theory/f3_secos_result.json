@@ -1,0 +1,21 @@
+{
+ "verdict": "PASS",
+ "kw": 2.5e-14,
+ "emb_std": 2.25,
+ "emb_crimp": 1.1,
+ "gain": 0.6,
+ "trims": {
+  "nogrease_standard": 6596,
+  "nogrease_crimp": 9514
+ },
+ "std": {
+  "mae": 0.005103935653752122,
+  "maxerr": 0.010261251131157612
+ },
+ "crimp": {
+  "mae": 0.010727399956870198,
+  "maxerr": 0.01645048704604757
+ },
+ "n_robustos": 18,
+ "secao": "F3-SECOS"
+}

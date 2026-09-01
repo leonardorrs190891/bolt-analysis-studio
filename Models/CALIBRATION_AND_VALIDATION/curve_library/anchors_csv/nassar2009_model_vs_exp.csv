@@ -1,0 +1,9 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/05_Nassar_Yang_2009_math_model.md:106-131
+cycle,measured,model
+0,1.000,1.000
+10,0.850,0.870
+20,0.720,0.740
+50,0.480,0.510
+100,0.250,0.280
+150,0.130,0.150
+200,0.070,0.080

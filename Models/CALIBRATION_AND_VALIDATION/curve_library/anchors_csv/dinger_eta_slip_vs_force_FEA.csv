@@ -1,0 +1,16 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/14_Dinger_Friedrich_2011_FEA.md:101-149
+surface,F_trans_kN,eta_n
+thread,0,0.00
+thread,2,0.15
+thread,4,0.35
+thread,6,0.55
+thread,8,0.78
+thread,9,0.92
+thread,10,1.00
+bearing,0,0.00
+bearing,4,0.10
+bearing,8,0.30
+bearing,10,0.45
+bearing,12,0.70
+bearing,14,0.90
+bearing,15,1.00

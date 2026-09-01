@@ -1,0 +1,9 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/35_36_37_38_wear_material_rotational_direction.md:189-206
+angle_deg,N50_cycles,flag
+0,10000,gt
+15,5000,gt
+30,1500,approx
+45,850,approx
+60,550,approx
+75,380,approx
+90,280,approx

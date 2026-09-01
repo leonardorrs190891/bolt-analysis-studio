@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/14_Dinger_Friedrich_2011_FEA.md:153-160
+mu,Fcrit_thread_kN,Fcrit_bearing_kN,controlling_surface
+0.05,5.0,7.5,thread
+0.10,10.0,15.0,thread
+0.15,15.0,22.5,thread
+0.20,20.0,30.0,thread

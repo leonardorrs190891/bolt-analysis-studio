@@ -1,0 +1,46 @@
+{
+ "secao": "F3-style bloco A liu2020 (pós-FAIL2 do G4-b; grade estendida além da borda)",
+ "melhor": "e=0.1|kw=1e-16|g=0.1",
+ "n_pass": 9,
+ "mediana": 0.027391883662774973,
+ "tripe": {
+  "liu2020_fig5b_zinc_P0-12kN_AF0.2mm": {
+   "mae": 0.010425098102472224,
+   "maxerr": 0.03188071993214492
+  },
+  "liu2020_fig5b_zinc_P0-18kN_AF0.2mm": {
+   "mae": 0.02017534213275883,
+   "maxerr": 0.04560851166620827
+  },
+  "liu2020_fig5b_zinc_P0-24kN_AF0.2mm": {
+   "mae": 0.027391883662774973,
+   "maxerr": 0.058421700042531555
+  },
+  "liu2020_fig9_zinc_AF0.1mm_P0-18kN": {
+   "mae": 0.043241788093104284,
+   "maxerr": 0.07612445958977498
+  },
+  "liu2020_fig9_zinc_AF0.2mm_P0-18kN": {
+   "mae": 0.028030700467904034,
+   "maxerr": 0.0539323683436278
+  },
+  "liu2020_fig9_zinc_AF0.3mm_P0-18kN": {
+   "mae": 0.01023673654606022,
+   "maxerr": 0.02762902464658301
+  },
+  "liu2020_fig9_zinc_AF0.4mm_P0-18kN": {
+   "mae": 0.043722206749465954,
+   "maxerr": 0.07397568875859706
+  },
+  "liu2020_fig15_DLC_P0-18kN_AF0.2mm": {
+   "mae": 0.02566584543655859,
+   "maxerr": 0.05560851166620828
+  },
+  "liu2020_fig15_DLC_P0-19.28kN_AF0.2mm": {
+   "mae": 0.027483177864439184,
+   "maxerr": 0.057657951400608476
+  }
+ },
+ "controles": true,
+ "verdict": "PASS"
+}

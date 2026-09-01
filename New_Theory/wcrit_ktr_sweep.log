@@ -1,0 +1,19 @@
+# W_crit sweep no regime CORRIGIDO (k_tr de flexao) — rescue robustness
+# spec 2026-07-05 slip-regime-ktr-fix, Task 3 Step 3.
+# transfer_validation.py --damage-trigger --ktr-bending --wcrit <W>
+# Pergunta: com o regime partial/gross corrigido, algum W_crit separa
+# colapso de plato? Baseline sem-dano (--ktr-bending) = median 0.2341.
+
+--- W_crit=1e3 ---
+GLOBAL          n=46 medianMAE=0.2341 p90=0.6085 vs_exp=4/46 vs_noloss=34/46
+--- W_crit=1e4 ---
+GLOBAL          n=46 medianMAE=0.2341 p90=0.5931 vs_exp=4/46 vs_noloss=34/46
+--- W_crit=1e5 (default) ---
+GLOBAL          n=46 medianMAE=0.2341 p90=0.5787 vs_exp=4/46 vs_noloss=34/46
+--- W_crit=1e6 ---
+GLOBAL          n=46 medianMAE=0.2341 p90=0.5787 vs_exp=4/46 vs_noloss=34/46
+
+# VEREDICTO: NULO. TODOS os W_crit dao median 0.2341 = o run sem dano.
+# O trigger e INERTE no regime corrigido — o colapso corrigido e dirigido
+# pelo gross-slip loosening, nao por dano, entao gatear o dano nao muda a
+# separacao colapso/plato. Confirma (de novo) que o dano nao e o lever aqui.

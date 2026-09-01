@@ -1,0 +1,12 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/67_68_69_70_MoS2_complex_random_neutron.md:244-260
+time_h,stress_ratio
+0,1.000
+0.1,0.920
+0.5,0.820
+1,0.740
+2,0.650
+5,0.510
+8,0.420
+10,0.380
+14,0.330
+20,0.295

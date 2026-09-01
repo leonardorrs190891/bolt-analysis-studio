@@ -1,0 +1,212 @@
+{
+ "escopo": "bloco shared canonico",
+ "n": 10,
+ "constantes": [
+  {
+   "constante": "C_creep",
+   "valor": 1.8667263000051723e-11,
+   "fitada": true,
+   "checavel": false,
+   "check_input": null,
+   "banda": null,
+   "verdict_kb": "POR-PAR",
+   "ancora": "sec4.7 + denotter",
+   "nota_kb": "",
+   "pares": {
+    "UFU": 1.867e-11,
+    "Liu2017": 1.45e-11,
+    "304SS": 9.9e-13,
+    "Al5083_denotter": "0.012-0.025/dec"
+   },
+   "classe": "ANCORA_POR_PAR",
+   "porque": "âncora POR PAR (sec4.7 + denotter): 4 pares; o canônico É o par UFU"
+  },
+  {
+   "constante": "N_emb",
+   "valor": 50.0,
+   "fitada": false,
+   "checavel": false,
+   "check_input": null,
+   "banda": [
+    3,
+    15
+   ],
+   "verdict_kb": "per-rig",
+   "ancora": null,
+   "nota_kb": "timing lido: ~metade do assentamento em 10-20 ciclos",
+   "pares": null,
+   "classe": "BANDA_FORA",
+   "porque": "banda medida [3, 15] (faixa per-rig LIDA do dado); valor FORA, 3.33x ACIMA do teto"
+  },
+  {
+   "constante": "W_conf_ref",
+   "valor": 7671.206304040271,
+   "fitada": true,
+   "checavel": false,
+   "check_input": null,
+   "banda": null,
+   "verdict_kb": null,
+   "ancora": null,
+   "nota_kb": null,
+   "pares": null,
+   "classe": "FIT_SEM_ANCORA",
+   "porque": "está em free_constants e não tem banda nem âncora"
+  },
+  {
+   "constante": "c_D",
+   "valor": 2.0,
+   "fitada": false,
+   "checavel": false,
+   "check_input": null,
+   "banda": null,
+   "verdict_kb": null,
+   "ancora": null,
+   "nota_kb": null,
+   "pares": null,
+   "classe": "SEM_PROCEDENCIA",
+   "porque": "nenhuma banda, âncora ou decisão registrada no KB"
+  },
+  {
+   "constante": "conform_pressure_exp",
+   "valor": 2.0,
+   "fitada": false,
+   "checavel": true,
+   "check_input": null,
+   "banda": [
+    1.48,
+    2.0
+   ],
+   "verdict_kb": "BANDA",
+   "ancora": "liu2021_noload_vs_preload",
+   "nota_kb": "",
+   "pares": null,
+   "classe": "BANDA_DENTRO",
+   "porque": "banda medida [1.48, 2] (liu2021_noload_vs_preload); valor dentro"
+  },
+  {
+   "constante": "emb_depth",
+   "valor": 3e-05,
+   "fitada": false,
+   "checavel": false,
+   "check_input": null,
+   "banda": null,
+   "verdict_kb": "input",
+   "ancora": null,
+   "nota_kb": "por classe Rz (Bolt Science Rz<4 fino)",
+   "pares": null,
+   "classe": "INPUT_POR_JUNTA",
+   "porque": "o KB marca verdict='input' (por classe Rz (Bolt Science Rz<4 fino)) — tabela por junta, não constante universal"
+  },
+  {
+   "constante": "k_dmg_wear",
+   "valor": 4.0,
+   "fitada": false,
+   "checavel": false,
+   "check_input": null,
+   "banda": null,
+   "verdict_kb": null,
+   "ancora": null,
+   "nota_kb": null,
+   "pares": null,
+   "classe": "SEM_PROCEDENCIA",
+   "porque": "nenhuma banda, âncora ou decisão registrada no KB"
+  },
+  {
+   "constante": "k_wear_spec",
+   "valor": 5e-14,
+   "fitada": false,
+   "checavel": true,
+   "check_input": "k_wear_spec=5e-14 fora de TODAS as bandas medidas R5 (1/Pa) — faying|Q355B-Q235B: [6.49e-12, 7e-12] (Li 2025 EngStruct 10.1016/j.engstruct.2025.121158); thread|35CrMo-SCM435: [4e-15, 2e-14] (Zhang 2019 EFA 10.1016/j.engfailanal.2019.05.001)",
+   "banda": null,
+   "verdict_kb": "BANDA-POR-INTERFACE",
+   "ancora": "Li 2025 EngStruct 10.1016/j.engstruct.2025.121158; Zhang 2019 EFA 10.1016/j.engfailanal.2019.05.001",
+   "nota_kb": "bandas POR INTERFACE — classificar banda a banda",
+   "pares": null,
+   "bandas_por_interface": {
+    "thread|35CrMo-SCM435": [
+     4e-15,
+     2e-14
+    ],
+    "faying|Q355B-Q235B": [
+     6.49e-12,
+     7e-12
+    ]
+   },
+   "classe": "BANDA_FORA",
+   "porque": "FORA de TODAS as bandas comparáveis (1/Pa) — thread|35CrMo-SCM435 [4e-15,2e-14]: 2.5x ACIMA · faying|Q355B-Q235B [6.49e-12,7e-12]: 130x abaixo. O valor cai no VÃO entre elas; nenhum valor único pode satisfazer as duas (L6)"
+  },
+  {
+   "constante": "p_ref_conform",
+   "valor": 500000000.0,
+   "fitada": false,
+   "checavel": false,
+   "check_input": null,
+   "banda": null,
+   "verdict_kb": null,
+   "ancora": null,
+   "nota_kb": null,
+   "pares": null,
+   "classe": "FIXO_POR_DECISAO",
+   "porque": "n=2 / p_ref=5e8 declarados FIXOS no bloco shared (rev. 2026-07-04)"
+  },
+  {
+   "constante": "tr_loose_gain",
+   "valor": 2.0,
+   "fitada": false,
+   "checavel": false,
+   "check_input": null,
+   "banda": null,
+   "verdict_kb": "DIRECAO",
+   "ancora": "eccles2010_torque_residual",
+   "nota_kb": "T_res cai MAIS rapido que F0 (T/F medido 0.72-0.90 <1) — torque residual nao e' proporcional puro ao preload (mu de desaperto evolui); o modulo de torque V1 usa T~K*F0: nomeia correcao por-ciclo do K de desaperto (novo; nao afeta o V2 core).",
+   "pares": null,
+   "classe": "DIRECAO",
+   "porque": "âncora confirma a direção, não a magnitude (eccles2010_torque_residual)"
+  }
+ ],
+ "wear_bands": [
+  {
+   "chave": "faying|Q355B-Q235B",
+   "banda": [
+    6.49e-12,
+    7e-12
+   ],
+   "unidade": "1/Pa",
+   "fonte": "Li 2025 EngStruct 10.1016/j.engstruct.2025.121158",
+   "provenance": "composite-validated",
+   "comparavel": true,
+   "dentro": false,
+   "razao": 129.8,
+   "lado": "abaixo do piso"
+  },
+  {
+   "chave": "fretting|52100-52100",
+   "banda": [
+    3.2e-05,
+    0.00024
+   ],
+   "unidade": "norm-own",
+   "fonte": "Warmuth 2015 10.1098/rspa.2014.0291",
+   "provenance": "measured",
+   "comparavel": false,
+   "dentro": false,
+   "razao": null,
+   "lado": null
+  },
+  {
+   "chave": "thread|35CrMo-SCM435",
+   "banda": [
+    4e-15,
+    2e-14
+   ],
+   "unidade": "1/Pa",
+   "fonte": "Zhang 2019 EFA 10.1016/j.engfailanal.2019.05.001",
+   "provenance": "derived-validated",
+   "comparavel": true,
+   "dentro": false,
+   "razao": 2.5,
+   "lado": "ACIMA do teto"
+  }
+ ],
+ "shared_calibrated_at": "2026-07-04"
+}

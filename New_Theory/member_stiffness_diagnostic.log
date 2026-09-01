@@ -1,0 +1,24 @@
+RZ_DEFAULT=Rz10-40  F_AMP_RATIO=0.4
+
+PART A - baseline decomposition (fixed k_j=4e9)
+     grip       k_b    Phi  loose%   emb%  wear%  model   data
+t10    25  6.74e+08  0.144    -0.4  -70.4   -4.2  0.203  0.088
+t12    29  5.81e+08  0.127    -0.3  -60.7   -4.3  0.304  0.624
+t14    33  5.11e+08  0.113    -0.3  -52.8   -4.3  0.388  0.903
+
+PART B - k_j ~1/grip (k_j=4e9*25/grip; rigidez de membro escalada)
+  t10 grip25 model=0.203 data=0.088
+  t12 grip29 model=0.304 data=0.624
+  t14 grip33 model=0.387 data=0.903
+
+PART C - loosening forte (k_loose_scale_tr=20)
+  t10 grip25 loose%=  -8.9 model=0.122 data=0.088
+  t12 grip29 loose%=  -6.8 model=0.242 data=0.624
+  t14 grip33 loose%=  -5.4 model=0.338 data=0.903
+
+PART D - loosening forte + emb x0.25
+  t10 grip25 model=0.639 data=0.088
+  t12 grip29 model=0.688 data=0.624
+  t14 grip33 model=0.726 data=0.903
+
+Dado: 0.088 -> 0.624 -> 0.903 (~10x). Nenhum ajuste single-constant chega la => forma faltante (instabilidade de rotacao dependente de grip), nao escala de k_j (FALSIFICADA em B). Ver MODEL_LEGITIMACY §4.8.

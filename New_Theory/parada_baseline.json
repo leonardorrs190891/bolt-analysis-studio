@@ -1,0 +1,44 @@
+{
+ "medido_em": "2026-08-16",
+ "documento": "New_Theory/regra_de_parada_medida_2026-08-16.md",
+ "reexaminado_em": null,
+ "fingerprint": [
+  "db7de97e682a"
+ ],
+ "regua": {
+  "META_MAE": 0.05,
+  "META_MAX": 0.1,
+  "META_SRES": 0.025,
+  "_SRES_POR_FONTE": true
+ },
+ "censo": {
+  "tripe": 171,
+  "comparaveis": 205
+ },
+ "fila_julgavel": {
+  "liu2025_M16_fig2_single": {
+   "n_pontos": 44,
+   "piso_fonte": 0.014936,
+   "limite_sigma": 0.025,
+   "pior_perna": 1.0793
+  },
+  "yang2021_amp1p0mm_ax2kN": {
+   "n_pontos": 11,
+   "piso_fonte": 0.010287,
+   "limite_sigma": 0.025,
+   "pior_perna": 1.2802
+  },
+  "yang2021_amp0p6mm_ax8kN_r1": {
+   "n_pontos": 9,
+   "piso_fonte": 0.010287,
+   "limite_sigma": 0.025,
+   "pior_perna": 1.0735
+  },
+  "yang2021_amp0p5mm_ax8kN": {
+   "n_pontos": 10,
+   "piso_fonte": 0.010287,
+   "limite_sigma": 0.025,
+   "pior_perna": 1.5505
+  }
+ }
+}

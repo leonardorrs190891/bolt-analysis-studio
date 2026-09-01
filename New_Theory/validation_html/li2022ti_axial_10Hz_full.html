@@ -1,0 +1,50 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>li2022ti_axial_10Hz_full — BAS V2 validation</title><style>
+body{margin:0;background:#e8eaed;color:#1a1e24;font-family:'Segoe UI',system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding:28px 20px 60px}
+h1{font-size:22px;margin:6px 0 2px;letter-spacing:-0.01em}
+.sub{font-family:Consolas,monospace;font-size:12px;color:#5c6570;margin:0 0 18px}
+.grid{display:grid;grid-template-columns:280px 1fr;gap:16px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+.card{background:#f8f9fa;border:1px solid #c9ced5;border-radius:8px;padding:14px 16px}
+h2{font-size:12px;font-family:Consolas,monospace;text-transform:uppercase;letter-spacing:0.08em;color:#5c6570;margin:0 0 8px}
+table{border-collapse:collapse;width:100%;font-family:Consolas,monospace;font-size:12.5px}
+td{padding:5px 4px;border-bottom:1px solid #dfe3e7;vertical-align:top}
+td:first-child{color:#5c6570;white-space:nowrap;padding-right:12px}
+tr:last-child td{border-bottom:none}
+.metric{font-size:26px;font-weight:700;color:#2f6690;font-family:Consolas,monospace}
+.cfg{font-size:12px;color:#454b54;background:#eef0f2;border-radius:6px;padding:8px 10px;margin-top:8px}
+svg{display:block;width:100%;height:auto;background:#f8f9fa;border:1px solid #c9ced5;border-radius:8px}
+a{color:#2f6690}
+.foot{font-family:Consolas,monospace;font-size:11px;color:#8b939c;margin-top:22px;border-top:1px solid #c9ced5;padding-top:10px}
+.idx td a{text-decoration:none}
+.hub{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:0 0 22px}
+.hub .card{padding:12px 14px}
+.hub a.t{font-weight:700;text-decoration:none;font-size:14px}
+.hub .d{font-size:12px;color:#454b54;margin:4px 0 6px;line-height:1.45}
+.hub .m{font-family:Consolas,monospace;font-size:11.5px;color:#2f6690;font-weight:700}
+.hgroup{font-size:12px;font-family:Consolas,monospace;text-transform:uppercase;letter-spacing:0.08em;color:#5c6570;margin:18px 0 8px}
+</style></head><body>
+<div class="wrap">
+<p class="sub"><a href="index.html">← index</a> · Li 2022 — axial × frequency (Ti) · axial</p>
+<h1>li2022ti_axial_10Hz_full</h1>
+<p class="sub">Bolt Analysis Studio V2 — DynamicStiffnessAnalyzer · validation case</p>
+<svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><line x1="52" y1="326.0" x2="744" y2="326.0" stroke="#dfe3e7"/><text x="46" y="329.0" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0</text><line x1="52" y1="251.7" x2="744" y2="251.7" stroke="#dfe3e7"/><text x="46" y="254.7" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.25</text><line x1="52" y1="177.4" x2="744" y2="177.4" stroke="#dfe3e7"/><text x="46" y="180.4" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.5</text><line x1="52" y1="103.1" x2="744" y2="103.1" stroke="#dfe3e7"/><text x="46" y="106.1" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.75</text><line x1="52" y1="28.9" x2="744" y2="28.9" stroke="#dfe3e7"/><text x="46" y="31.9" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">1</text><line x1="52" y1="14" x2="52" y2="326" stroke="#c9ced5"/><line x1="52" y1="326" x2="744" y2="326" stroke="#c9ced5"/><text x="52.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">1</text><text x="177.4" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">10</text><text x="302.8" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">100</text><text x="428.2" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">1 000</text><text x="553.6" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">1e4</text><text x="679.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">1e5</text><polyline points="52.0,14.0 89.7,14.0 111.8,14.0 127.5,14.0 149.6,14.0 165.2,14.0 177.4,14.0 191.7,14.0 209.4,14.0 225.1,14.0 240.7,14.0 256.8,14.0 272.2,14.0 287.8,14.0 303.9,14.0 319.5,17.2 335.1,27.2 350.9,32.5 366.5,34.7 382.2,35.7 398.0,36.5 413.7,37.2 429.5,37.9 445.2,38.6 460.9,39.3 476.6,40.0 492.4,40.7 508.1,41.5 523.8,42.2 539.5,42.9 555.3,43.6 571.0,44.3 586.7,45.0 602.5,45.7 618.2,46.4 633.9,47.1 649.6,47.8 665.4,48.5 681.1,49.2 696.8,49.9 712.5,50.5 728.3,51.2 744.0,51.9" fill="none" stroke="#2f6690" stroke-width="2.4" stroke-linejoin="round"/><circle cx="340.5" cy="28.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="591.3" cy="59.8" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="641.2" cy="67.6" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="679.0" cy="70.2" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="716.7" cy="72.8" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="738.8" cy="75.4" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="744.0" cy="77.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><text x="398" y="358" text-anchor="middle" font-size="12" fill="#454b54" font-family="Segoe UI">ciclos N (log)</text><text x="14" y="170" text-anchor="middle" font-size="12" fill="#454b54" font-family="Segoe UI" transform="rotate(-90 14 170)">F / F₀  (razão de pré-carga) [–]</text></svg>
+<div class="grid" style="margin-top:16px">
+<div class="card"><h2>Boundary conditions</h2><table><tr><td>bolt</td><td>M10×1.5 (Ti)</td></tr><tr><td>grip</td><td>25 mm (2.5d, assumed)</td></tr><tr><td>mu</td><td>0.15 (assumed)</td></tr><tr><td>rz</td><td>Rz<10 (assumed)</td></tr><tr><td>F0</td><td>10 kN</td></tr><tr><td>F_amp</td><td>10 kN</td></tr><tr><td>freq</td><td>full</td></tr><tr><td>cycles</td><td>330 000</td></tr></table>
+<div class="cfg"><b>Configuration:</b> zero-refit: frozen Stage-A constants + Rz<10 handbook embedding</div></div>
+<div class="card"><h2>Result</h2>
+<div class="metric">MAE 0.0614</div>
+<table style="margin-top:8px">
+<tr><td>final F/F₀ (data)</td><td>0.835</td></tr>
+<tr><td>final F/F₀ (model)</td><td>0.922</td></tr>
+<tr><td>final error</td><td>+0.088</td></tr>
+
+<tr><td>family</td><td>axial</td></tr></table>
+<div class="cfg">Dots = digitized paper data; line = model at the declared per-rig
+configuration. Verdicts and falsification records: <code>New_Theory/MODEL_LEGITIMACY.md</code>
+§4.12–§4.15.</div></div></div>
+<p class="foot"><a href="li2022ti_axialmin_20Hz.html">← prev</a> · generated 2026-07-08 · configs and constants carry declared provenance
+(paper / handbook / assumed / read-from-data / fitted-this-rig)</p>
+</div></body></html>

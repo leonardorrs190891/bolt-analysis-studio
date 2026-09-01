@@ -1,0 +1,273 @@
+{
+  "campaign": "B1 zero-refit axial (spec 2026-07-03 §1.6)",
+  "frozen_constants": {
+    "N_emb": 50.0,
+    "K_archard": 0.0001,
+    "C_creep": 1.8667263000051723e-11,
+    "tr_loose_gain": 2.0,
+    "W_conf_ref": 7671.206304040271,
+    "conform_pressure_exp": 2.0,
+    "p_ref_conform": 500000000.0
+  },
+  "provenance": {
+    "N_emb": {
+      "value": 50.0,
+      "source": "stage_a",
+      "note": "bloco shared (joint_calibrations.json)"
+    },
+    "K_archard": {
+      "value": 0.0001,
+      "source": "stage_a",
+      "note": "bloco shared (joint_calibrations.json)"
+    },
+    "C_creep": {
+      "value": 1.8667263000051723e-11,
+      "source": "stage_a",
+      "note": "bloco shared (joint_calibrations.json)"
+    },
+    "tr_loose_gain": {
+      "value": 2.0,
+      "source": "stage_a",
+      "note": "bloco shared (joint_calibrations.json)"
+    },
+    "W_conf_ref": {
+      "value": 7671.206304040271,
+      "source": "stage_a",
+      "note": "bloco shared (joint_calibrations.json)"
+    },
+    "conform_pressure_exp": {
+      "value": 2.0,
+      "source": "stage_a",
+      "note": "bloco shared (joint_calibrations.json)"
+    },
+    "p_ref_conform": {
+      "value": 500000000.0,
+      "source": "stage_a",
+      "note": "bloco shared (joint_calibrations.json)"
+    }
+  },
+  "gate": {
+    "median_MAE": 0.055007058456977204,
+    "beats_exp_baseline": "10/13",
+    "failed": true
+  },
+  "gradients": {
+    "dfinal_dP0": {
+      "data": 2.6333333333333365e-05,
+      "model": 5.623857810761292e-06
+    },
+    "dfinal_dAF": {
+      "data": -2.2159999999999967e-05,
+      "model": 0.0
+    }
+  },
+  "results": [
+    {
+      "name": "Liu2017 P0=15",
+      "csv": "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/liu2017_axial_F0_15kN.csv",
+      "F0_N": 15000.0,
+      "F_amp_N": 10000.0,
+      "emb_depth_um": 3.5,
+      "rz_class": "Rz<4",
+      "n_cycles": 1000000,
+      "MAE": 0.02355854498655268,
+      "MAE_exp_baseline": 0.1721647961315212,
+      "MAE_band": [
+        0.02710331302511764,
+        0.24516689072628906
+      ],
+      "final_data": 0.772,
+      "final_pred": 0.7778998080134586,
+      "conservation_residual": -144.1266615842132
+    },
+    {
+      "name": "Liu2017 P0=16.5",
+      "csv": "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/liu2017_axial_F0_16p5kN.csv",
+      "F0_N": 16500.0,
+      "F_amp_N": 10000.0,
+      "emb_depth_um": 3.5,
+      "rz_class": "Rz<4",
+      "n_cycles": 1000000,
+      "MAE": 0.018060132778795368,
+      "MAE_exp_baseline": 0.14049112482471024,
+      "MAE_band": null,
+      "final_data": 0.812,
+      "final_pred": 0.7886815017096891,
+      "conservation_residual": -143.27117673949263
+    },
+    {
+      "name": "Liu2017 P0=18",
+      "csv": "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/liu2017_axial_F0_18kN.csv",
+      "F0_N": 18000.0,
+      "F_amp_N": 10000.0,
+      "emb_depth_um": 3.5,
+      "rz_class": "Rz<4",
+      "n_cycles": 1000000,
+      "MAE": 0.04609524136167856,
+      "MAE_exp_baseline": 0.08389626873750679,
+      "MAE_band": null,
+      "final_data": 0.885,
+      "final_pred": 0.7976662464565,
+      "conservation_residual": -142.5700348847437
+    },
+    {
+      "name": "Liu2017 P0=19.5",
+      "csv": "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/liu2017_axial_F0_19p5kN.csv",
+      "F0_N": 19500.0,
+      "F_amp_N": 10000.0,
+      "emb_depth_um": 3.5,
+      "rz_class": "Rz<4",
+      "n_cycles": 1000000,
+      "MAE": 0.05530368085083943,
+      "MAE_exp_baseline": 0.0668199440850868,
+      "MAE_band": null,
+      "final_data": 0.905,
+      "final_pred": 0.8052687227807164,
+      "conservation_residual": -141.98480034840435
+    },
+    {
+      "name": "Liu2017 P0=21",
+      "csv": "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/liu2017_axial_F0_21kN.csv",
+      "F0_N": 21000.0,
+      "F_amp_N": 10000.0,
+      "emb_depth_um": 3.5,
+      "rz_class": "Rz<4",
+      "n_cycles": 1000000,
+      "MAE": 0.06447804172162376,
+      "MAE_exp_baseline": 0.05445327834786145,
+      "MAE_band": [
+        0.04479033665485735,
+        0.2536642978263356
+      ],
+      "final_data": 0.923,
+      "final_pred": 0.8117851310586545,
+      "conservation_residual": -141.48882207202576
+    },
+    {
+      "name": "Liu2017 AF=7.5",
+      "csv": "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/liu2017_axial_AF_7p5kN.csv",
+      "F0_N": 18000.0,
+      "F_amp_N": 7500.0,
+      "emb_depth_um": 3.5,
+      "rz_class": "Rz<4",
+      "n_cycles": 1000000,
+      "MAE": 0.09626946271627464,
+      "MAE_exp_baseline": 0.030026707345643455,
+      "MAE_band": null,
+      "final_data": 0.952,
+      "final_pred": 0.7976662464565,
+      "conservation_residual": -80.19056897873648
+    },
+    {
+      "name": "Liu2017 AF=8.75",
+      "csv": "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/liu2017_axial_AF_8p75kN.csv",
+      "F0_N": 18000.0,
+      "F_amp_N": 8750.0,
+      "emb_depth_um": 3.5,
+      "rz_class": "Rz<4",
+      "n_cycles": 1000000,
+      "MAE": 0.07351048539508204,
+      "MAE_exp_baseline": 0.05149470432073542,
+      "MAE_band": null,
+      "final_data": 0.925,
+      "final_pred": 0.7976662464565,
+      "conservation_residual": -109.15246386366628
+    },
+    {
+      "name": "Liu2017 AF=11.25",
+      "csv": "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/liu2017_axial_AF_11p25kN.csv",
+      "F0_N": 18000.0,
+      "F_amp_N": 11250.0,
+      "emb_depth_um": 3.5,
+      "rz_class": "Rz<4",
+      "n_cycles": 1000000,
+      "MAE": 0.03092842372814747,
+      "MAE_exp_baseline": 0.09068165027242167,
+      "MAE_band": null,
+      "final_data": 0.872,
+      "final_pred": 0.7976662464565,
+      "conservation_residual": -180.4432820419545
+    },
+    {
+      "name": "Liu2017 AF=12.5",
+      "csv": "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/liu2017_axial_AF_12p5kN.csv",
+      "F0_N": 18000.0,
+      "F_amp_N": 12500.0,
+      "emb_depth_um": 3.5,
+      "rz_class": "Rz<4",
+      "n_cycles": 1000000,
+      "MAE": 0.02260419094272805,
+      "MAE_exp_baseline": 0.1240534810250975,
+      "MAE_band": [
+        0.024277692531031778,
+        0.21089828806709043
+      ],
+      "final_data": 0.84,
+      "final_pred": 0.7976662464565,
+      "conservation_residual": -222.77220533533554
+    },
+    {
+      "name": "Li2022ti 10Hz",
+      "csv": "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/li2022ti_axialmin_10Hz.csv",
+      "F0_N": 10000.0,
+      "F_amp_N": 10000.0,
+      "emb_depth_um": 9.5,
+      "rz_class": "Rz<10",
+      "n_cycles": 200000,
+      "MAE": 0.08468599607350794,
+      "MAE_exp_baseline": 0.08958426416061957,
+      "MAE_band": [
+        0.05878005445977138,
+        0.10182418499064701
+      ],
+      "final_data": 0.8208,
+      "final_pred": 0.9283895472429622,
+      "conservation_residual": -11.857401635024413
+    },
+    {
+      "name": "Li2022ti 15Hz",
+      "csv": "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/li2022ti_axialmin_15Hz.csv",
+      "F0_N": 10000.0,
+      "F_amp_N": 10000.0,
+      "emb_depth_um": 9.5,
+      "rz_class": "Rz<10",
+      "n_cycles": 200000,
+      "MAE": 0.055007058456977204,
+      "MAE_exp_baseline": 0.07241784772482412,
+      "MAE_band": null,
+      "final_data": 0.8583,
+      "final_pred": 0.9286505537295622,
+      "conservation_residual": -17.748521324040087
+    },
+    {
+      "name": "Li2022ti 20Hz",
+      "csv": "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/li2022ti_axialmin_20Hz.csv",
+      "F0_N": 10000.0,
+      "F_amp_N": 10000.0,
+      "emb_depth_um": 9.5,
+      "rz_class": "Rz<10",
+      "n_cycles": 200000,
+      "MAE": 0.013998701306068026,
+      "MAE_exp_baseline": 0.04539999342263094,
+      "MAE_band": null,
+      "final_data": 0.9108,
+      "final_pred": 0.9288837798191525,
+      "conservation_residual": -23.629412576168658
+    },
+    {
+      "name": "Li2022ti 10Hz full",
+      "csv": "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/li2022ti_axial_10Hz_full.csv",
+      "F0_N": 10000.0,
+      "F_amp_N": 10000.0,
+      "emb_depth_um": 9.5,
+      "rz_class": "Rz<10",
+      "n_cycles": 330000,
+      "MAE": 0.06312379222363677,
+      "MAE_exp_baseline": 0.07432713376511059,
+      "MAE_band": null,
+      "final_data": 0.8348,
+      "final_pred": 0.9243715171807998,
+      "conservation_residual": -19.606803971091185
+    }
+  ]
+}

@@ -1,0 +1,822 @@
+{
+ "conform_pressure_exp": {
+  "anchor": "liu2021_noload_vs_preload",
+  "verdict": "BANDA",
+  "note": "perda fracional estatica 48h cresce SUPERLINEAR com F0 (expoente medido 1.48); direcao do gate de conformacao CONFIRMADA (creep puro seria flat=0); n adotado 2.0 vs medido 1.48 => banda n in [1.4, 2.0]. A ancora que faltava no sec4.9 EXISTE (retry PARCIAL)."
+ },
+ "K_archard": {
+  "anchor": "zhang2019_wear_depth",
+  "verdict": "DIRECAO",
+  "note": "profundidade medida ~N^0.53 (sublinear, running-in) vs Archard K constante ~N^1; nomeia K de running-in decrescente (V1 tinha K_running_in/K_steady; V2 usa K unico). Magnitude exige A/H do rig."
+ },
+ "mu_thread": {
+  "anchor": "qiao2025_torque_preload_M10",
+  "verdict": "PASSA",
+  "note": "nut-factor teorico com mu=0.15: K=0.200 vs medido dry 0.195+-0.008 (25 pts, desvio 2%); mu=0.15 seco validado."
+ },
+ "C_creep": {
+  "anchor": "denotter2020_creep_M16_5083",
+  "verdict": "BANDA",
+  "note": "taxa fracional/decada medida (Al 5083, par NOVO): 0.025@0.70fu / 0.012@0.27fu — mesma ordem do par Liu2017 (~0.009/dec) e 2-4x o UFU; fracional cresce com F0 (consistente com liu2021) => confirma POR-PAR (sec4.7) com o 3o rig independente; per-decade nao-constante (acelera) nomeia desvio do ln puro em Al."
+ },
+ "k_dmg_mu": {
+  "anchor": "eccles2010_mu_evolution_vibration",
+  "verdict": "DIRECAO",
+  "note": "mu_bearing medido SOBE 0.14->0.09 sob vibracao (aco seco) — sinal OPOSTO ao k_dmg_mu (mu cai com D, calibrado no reaperto UFU); o sinal da evolucao de mu e' POR-PAR: Eccles ancora o ramo CRESCENTE (familia k_gall/fretting-roughening), UFU o decrescente. Nomeado: k_dmg_mu com sinal por-par (ou reuso do k_gall no canal de vibracao)."
+ },
+ "mu_bearing": {
+  "anchor": "lu2024_torque_preload_M8",
+  "verdict": "PASSA",
+  "note": "K-factor medido do rig Lu (T/F0/d, 5 pts): 0.231 => mu implicito 0.176 vs 0.15 usado no fechamento sec4.19 — a conversao T->F0 usada nos casos fig20 e' consistente com o proprio dado do rig."
+ },
+ "Phi_ax_correction": {
+  "anchor": "wiegand2021_load_introduction",
+  "verdict": "BANDA",
+  "note": "fator de introducao MEDIDO varia 0.15-0.63 vs VDI constante 0.30 (FEM acompanha o medido) — o Phi do modelo (k_b/(k_b+k_j), ~0.10-0.25 tipico) esta DENTRO da faixa medida; VDI constante e' que nao-conserva. Refuta usar 0.30 fixo; apoia Phi geometrico do engine."
+ },
+ "fat_sigma_endurance": {
+  "anchor": "schaumann2015_fatigue_limits",
+  "verdict": "BANDA",
+  "note": "limite medido 46-63 MPa (M36/M64, zinco penaliza ~12%) vs default do engine 50 MPa (classe 10.9 handbook) — default DENTRO da faixa medida para parafuso grande; VDI sobrestima 19-50% (nao-conservador, confirmado por 2 campanhas). Por-tamanho e por-revestimento => input per-junta."
+ },
+ "k_wear_scale_tr": {
+  "anchor": "liu2017mos2_wear",
+  "verdict": "BANDA",
+  "note": "wear medido por revestimento: bare 12.5um / zinco 8.0um / MoS2 3.5um (3.6x) — confirma K_archard POR-PAR/por-lube (mesma doutrina do c_D per-lube sec4.11); faixa de 3.6x cabe na variacao k_wear usada entre rigs (0.04-1.0)."
+ },
+ "tr_loose_gain": {
+  "anchor": "eccles2010_torque_residual",
+  "verdict": "DIRECAO",
+  "note": "T_res cai MAIS rapido que F0 (T/F medido 0.72-0.90 <1) — torque residual nao e' proporcional puro ao preload (mu de desaperto evolui); o modulo de torque V1 usa T~K*F0: nomeia correcao por-ciclo do K de desaperto (novo; nao afeta o V2 core)."
+ },
+ "[flange gaxetada] abid2014_freq_effect": {
+  "anchor": "abid2014_freq_effect",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: relaxacao de gaxeta — classe de junta fora do V2 atual (V1 tem GasketContact)."
+ },
+ "[flange gaxetada] abid2014_gasket_stress_radial": {
+  "anchor": "abid2014_gasket_stress_radial",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: relaxacao de gaxeta — classe de junta fora do V2 atual (V1 tem GasketContact)."
+ },
+ "[flange gaxetada] abid2014_harmonic_vs_step": {
+  "anchor": "abid2014_harmonic_vs_step",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: relaxacao de gaxeta — classe de junta fora do V2 atual (V1 tem GasketContact)."
+ },
+ "[flange gaxetada] abid2014_pressure_cycles": {
+  "anchor": "abid2014_pressure_cycles",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: relaxacao de gaxeta — classe de junta fora do V2 atual (V1 tem GasketContact)."
+ },
+ "[dispositivos (V1)] amano2024_backlash_vs_retention": {
+  "anchor": "amano2024_backlash_vs_retention",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[multi-parafuso] baek2019_forces": {
+  "anchor": "baek2019_forces",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: interacao multi-parafuso — fora do escopo single-joint do V2 (roadmap frontend)."
+ },
+ "[multi-parafuso] baek2019_typeA": {
+  "anchor": "baek2019_typeA",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: interacao multi-parafuso — fora do escopo single-joint do V2 (roadmap frontend)."
+ },
+ "[multi-parafuso] baek2019_typeC": {
+  "anchor": "baek2019_typeC",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: interacao multi-parafuso — fora do escopo single-joint do V2 (roadmap frontend)."
+ },
+ "[creep/termico] bapokutty2012_IN718_relaxation": {
+  "anchor": "bapokutty2012_IN718_relaxation",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[dispositivos (V1)] bhattacharya2010_M12_devices": {
+  "anchor": "bhattacharya2010_M12_devices",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[dispositivos (V1)] bhattacharya2010_M12_materials": {
+  "anchor": "bhattacharya2010_M12_materials",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[dispositivos (V1)] bhattacharya2010_delta_critical": {
+  "anchor": "bhattacharya2010_delta_critical",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[dispositivos (V1)] bhattacharya2010_small_M4M5M6": {
+  "anchor": "bhattacharya2010_small_M4M5M6",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[dispositivos (V1)] bhattacharya2010_small_M5_washers": {
+  "anchor": "bhattacharya2010_small_M5_washers",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[creep/termico] bouzid1995_graphite_ambient": {
+  "anchor": "bouzid1995_graphite_ambient",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] bouzid1995_swsg_ambient": {
+  "anchor": "bouzid1995_swsg_ambient",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] bouzid1995_swsg_temperature": {
+  "anchor": "bouzid1995_swsg_temperature",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] bouzid1995_thermal_cycles": {
+  "anchor": "bouzid1995_thermal_cycles",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] bouzid2006_8bolt_interaction": {
+  "anchor": "bouzid2006_8bolt_interaction",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] bouzid2006_gasket_comparison": {
+  "anchor": "bouzid2006_gasket_comparison",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] bouzid2006_interaction_creep": {
+  "anchor": "bouzid2006_interaction_creep",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] bouzid2006_norton_bailey": {
+  "anchor": "bouzid2006_norton_bailey",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] brownlim2017_385C_relaxation": {
+  "anchor": "brownlim2017_385C_relaxation",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] brownlim2017_temp_ramp": {
+  "anchor": "brownlim2017_temp_ramp",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] chen2023_IN718_neutron": {
+  "anchor": "chen2023_IN718_neutron",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] denotter2020_creep_M16_materials": {
+  "anchor": "denotter2020_creep_M16_materials",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] denotter2020_creep_M16_vs_M24": {
+  "anchor": "denotter2020_creep_M16_vs_M24",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[validacao/limiar] dinger_eta_slip_vs_force_FEA": {
+  "anchor": "dinger_eta_slip_vs_force_FEA",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[validacao/limiar] dinger_fcrit_FEA": {
+  "anchor": "dinger_fcrit_FEA",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[dispositivos (V1)] dravid2023_undertightening": {
+  "anchor": "dravid2023_undertightening",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[dispositivos (V1)] dravid2023_washer_fullthread": {
+  "anchor": "dravid2023_washer_fullthread",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[dispositivos (V1)] dravid2023_washer_plainshank": {
+  "anchor": "dravid2023_washer_plainshank",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[carga aleatoria] du2022_random_strain": {
+  "anchor": "du2022_random_strain",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: amplitude estocastica/PSD — exige canal de carga aleatoria (nao construido)."
+ },
+ "[carga aleatoria] du2022_random_threshold_psd": {
+  "anchor": "du2022_random_threshold_psd",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: amplitude estocastica/PSD — exige canal de carga aleatoria (nao construido)."
+ },
+ "[carga aleatoria] du2022_random_time_to_loosen": {
+  "anchor": "du2022_random_time_to_loosen",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: amplitude estocastica/PSD — exige canal de carga aleatoria (nao construido)."
+ },
+ "[multi-parafuso] duqiu2025_sor_bolt_variation": {
+  "anchor": "duqiu2025_sor_bolt_variation",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: interacao multi-parafuso — fora do escopo single-joint do V2 (roadmap frontend)."
+ },
+ "[multi-parafuso] duqiu2025_sor_equiv_amplitude": {
+  "anchor": "duqiu2025_sor_equiv_amplitude",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: interacao multi-parafuso — fora do escopo single-joint do V2 (roadmap frontend)."
+ },
+ "[multi-parafuso] duqiu2025_sor_loading_types": {
+  "anchor": "duqiu2025_sor_loading_types",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: interacao multi-parafuso — fora do escopo single-joint do V2 (roadmap frontend)."
+ },
+ "[multi-parafuso] duqiu2025_sor_transition_times": {
+  "anchor": "duqiu2025_sor_transition_times",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: interacao multi-parafuso — fora do escopo single-joint do V2 (roadmap frontend)."
+ },
+ "[atrito/torque] eccles2010_coating_comparison": {
+  "anchor": "eccles2010_coating_comparison",
+  "verdict": "BANDA",
+  "note": "familia atrito/torque: mu por par/lube — coerente com mu=0.15 seco (PASSA nos 2 rigs checados) e variacao por revestimento."
+ },
+ "[atrito/torque] eccles2010_mu_retightening": {
+  "anchor": "eccles2010_mu_retightening",
+  "verdict": "BANDA",
+  "note": "familia atrito/torque: mu por par/lube — coerente com mu=0.15 seco (PASSA nos 2 rigs checados) e variacao por revestimento."
+ },
+ "[atrito/torque] eccles2010_prevailing_torque_allmetal": {
+  "anchor": "eccles2010_prevailing_torque_allmetal",
+  "verdict": "BANDA",
+  "note": "familia atrito/torque: mu por par/lube — coerente com mu=0.15 seco (PASSA nos 2 rigs checados) e variacao por revestimento."
+ },
+ "[atrito/torque] eccles2010_prevailing_torque_nylon": {
+  "anchor": "eccles2010_prevailing_torque_nylon",
+  "verdict": "BANDA",
+  "note": "familia atrito/torque: mu por par/lube — coerente com mu=0.15 seco (PASSA nos 2 rigs checados) e variacao por revestimento."
+ },
+ "[creep/termico] eraliev2021_preload_vs_temp_cycle1": {
+  "anchor": "eraliev2021_preload_vs_temp_cycle1",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] eraliev2021_thermal_cycle_preload": {
+  "anchor": "eraliev2021_thermal_cycle_preload",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[fadiga/vida] fan2023_fatigue_life_stats": {
+  "anchor": "fan2023_fatigue_life_stats",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[fadiga/vida] fan2023_loosening_vs_amplitude": {
+  "anchor": "fan2023_loosening_vs_amplitude",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[dispositivos (V1)] friede_M20_grip_cycles": {
+  "anchor": "friede_M20_grip_cycles",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[validacao/limiar] gong_hysteresis_params_FEA": {
+  "anchor": "gong_hysteresis_params_FEA",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[validacao/limiar] gong_lambda_cr_FEA": {
+  "anchor": "gong_lambda_cr_FEA",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[carga torsional/flexao] hattori2010_Scr_cross_size": {
+  "anchor": "hattori2010_Scr_cross_size",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO PARCIAL: modo de carga torsional/flexao rotativa — V2 cobre transversal/axial; ancora aguarda canal proprio."
+ },
+ "[carga torsional/flexao] hattori2010_Scr_vs_F0_M16": {
+  "anchor": "hattori2010_Scr_vs_F0_M16",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO PARCIAL: modo de carga torsional/flexao rotativa — V2 cobre transversal/axial; ancora aguarda canal proprio."
+ },
+ "[carga torsional/flexao] hattori2010_loosening_speed_M16": {
+  "anchor": "hattori2010_loosening_speed_M16",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO PARCIAL: modo de carga torsional/flexao rotativa — V2 cobre transversal/axial; ancora aguarda canal proprio."
+ },
+ "[atrito/torque] hattori2010_reaction_torques_M16": {
+  "anchor": "hattori2010_reaction_torques_M16",
+  "verdict": "BANDA",
+  "note": "familia atrito/torque: mu por par/lube — coerente com mu=0.15 seco (PASSA nos 2 rigs checados) e variacao por revestimento."
+ },
+ "[dispositivos (V1)] hess2018_locking_moments": {
+  "anchor": "hess2018_locking_moments",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[dispositivos (V1)] hess2023_jackbolt_preload_effect": {
+  "anchor": "hess2023_jackbolt_preload_effect",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[dispositivos (V1)] hess2023_jackbolt_secondary": {
+  "anchor": "hess2023_jackbolt_secondary",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[dispositivos (V1)] hess2023_jackbolt_vs_hex": {
+  "anchor": "hess2023_jackbolt_vs_hex",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[creep/termico] hu2020_interference_23C": {
+  "anchor": "hu2020_interference_23C",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] hu2020_temperature_1p0fit": {
+  "anchor": "hu2020_temperature_1p0fit",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] huzhang2020_deltaT_scaling": {
+  "anchor": "huzhang2020_deltaT_scaling",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] huzhang2020_thermal_cycles": {
+  "anchor": "huzhang2020_thermal_cycles",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] huzhang2020_thermal_mech": {
+  "anchor": "huzhang2020_thermal_mech",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[validacao/limiar] icmez2025_model_vs_exp": {
+  "anchor": "icmez2025_model_vs_exp",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[creep/termico] in783_relax_0p15strain": {
+  "anchor": "in783_relax_0p15strain",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[fadiga/vida] ishimura2010_bending_decay": {
+  "anchor": "ishimura2010_bending_decay",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[validacao/limiar] izumi_ftr_slip_fraction_FEA": {
+  "anchor": "izumi_ftr_slip_fraction_FEA",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[fadiga/vida] jiang2004_DN_M12": {
+  "anchor": "jiang2004_DN_M12",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[theta/rotacao] junker1995_thread_movement": {
+  "anchor": "junker1995_thread_movement",
+  "verdict": "DIRECAO",
+  "note": "familia theta: endpoints/curvas de rotacao — insumo do canal theta (sec4.23; free_spin + escala do drive em aberto)."
+ },
+ "[dispositivos (V1)] karakaya2023_taguchi_L16": {
+  "anchor": "karakaya2023_taguchi_L16",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[validacao/limiar] karlsen2022_retention_2000cyc": {
+  "anchor": "karlsen2022_retention_2000cyc",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[multi-parafuso] li2019_8bolt_scatter": {
+  "anchor": "li2019_8bolt_scatter",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: interacao multi-parafuso — fora do escopo single-joint do V2 (roadmap frontend)."
+ },
+ "[multi-parafuso] li2019_interaction_coeffs": {
+  "anchor": "li2019_interaction_coeffs",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: interacao multi-parafuso — fora do escopo single-joint do V2 (roadmap frontend)."
+ },
+ "[multi-parafuso] li2019_seq_4bolt": {
+  "anchor": "li2019_seq_4bolt",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: interacao multi-parafuso — fora do escopo single-joint do V2 (roadmap frontend)."
+ },
+ "[theta/rotacao] li2021_rotational_amplitude": {
+  "anchor": "li2021_rotational_amplitude",
+  "verdict": "DIRECAO",
+  "note": "familia theta: endpoints/curvas de rotacao — insumo do canal theta (sec4.23; free_spin + escala do drive em aberto)."
+ },
+ "[theta/rotacao] li2021_rotational_freq": {
+  "anchor": "li2021_rotational_freq",
+  "verdict": "DIRECAO",
+  "note": "familia theta: endpoints/curvas de rotacao — insumo do canal theta (sec4.23; free_spin + escala do drive em aberto)."
+ },
+ "[validacao/limiar] liu2016_retighten_Ra": {
+  "anchor": "liu2016_retighten_Ra",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[validacao/limiar] liu2016_retighten_axial": {
+  "anchor": "liu2016_retighten_axial",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[atrito/torque] liu2016_retighten_kfactor": {
+  "anchor": "liu2016_retighten_kfactor",
+  "verdict": "BANDA",
+  "note": "familia atrito/torque: mu por par/lube — coerente com mu=0.15 seco (PASSA nos 2 rigs checados) e variacao por revestimento."
+ },
+ "[atrito/torque] liu2017mos2_amplitude": {
+  "anchor": "liu2017mos2_amplitude",
+  "verdict": "BANDA",
+  "note": "familia atrito/torque: mu por par/lube — coerente com mu=0.15 seco (PASSA nos 2 rigs checados) e variacao por revestimento."
+ },
+ "[atrito/torque] liu2017mos2_coating": {
+  "anchor": "liu2017mos2_coating",
+  "verdict": "BANDA",
+  "note": "familia atrito/torque: mu por par/lube — coerente com mu=0.15 seco (PASSA nos 2 rigs checados) e variacao por revestimento."
+ },
+ "[atrito/torque] liu2017mos2_ranking_200k": {
+  "anchor": "liu2017mos2_ranking_200k",
+  "verdict": "BANDA",
+  "note": "familia atrito/torque: mu por par/lube — coerente com mu=0.15 seco (PASSA nos 2 rigs checados) e variacao por revestimento."
+ },
+ "[atrito/torque] liu2017mos2_torque": {
+  "anchor": "liu2017mos2_torque",
+  "verdict": "BANDA",
+  "note": "familia atrito/torque: mu por par/lube — coerente com mu=0.15 seco (PASSA nos 2 rigs checados) e variacao por revestimento."
+ },
+ "[carga torsional/flexao] liu2018_torsional_freq": {
+  "anchor": "liu2018_torsional_freq",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO PARCIAL: modo de carga torsional/flexao rotativa — V2 cobre transversal/axial; ancora aguarda canal proprio."
+ },
+ "[carga torsional/flexao] liu2018_torsional_preload": {
+  "anchor": "liu2018_torsional_preload",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO PARCIAL: modo de carga torsional/flexao rotativa — V2 cobre transversal/axial; ancora aguarda canal proprio."
+ },
+ "[creep/termico] liu2021_noload_relaxation": {
+  "anchor": "liu2021_noload_relaxation",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[carga torsional/flexao] liu2022tors_wear_coupling": {
+  "anchor": "liu2022tors_wear_coupling",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO PARCIAL: modo de carga torsional/flexao rotativa — V2 cobre transversal/axial; ancora aguarda canal proprio."
+ },
+ "[carga torsional/flexao] liu2022tors_wear_mu": {
+  "anchor": "liu2022tors_wear_mu",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO PARCIAL: modo de carga torsional/flexao rotativa — V2 cobre transversal/axial; ancora aguarda canal proprio."
+ },
+ "[validacao/limiar] liu2025_clamp_oscillation_vs_amp": {
+  "anchor": "liu2025_clamp_oscillation_vs_amp",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[atrito/torque] liucai2016_axial_coating": {
+  "anchor": "liucai2016_axial_coating",
+  "verdict": "BANDA",
+  "note": "familia atrito/torque: mu por par/lube — coerente com mu=0.15 seco (PASSA nos 2 rigs checados) e variacao por revestimento."
+ },
+ "[carga torsional/flexao] liucai2016_axial_preload": {
+  "anchor": "liucai2016_axial_preload",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO PARCIAL: modo de carga torsional/flexao rotativa — V2 cobre transversal/axial; ancora aguarda canal proprio."
+ },
+ "[validacao/limiar] liumi2021_N_vs_amplitude": {
+  "anchor": "liumi2021_N_vs_amplitude",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[fadiga/vida] liumi2021_decay_by_R": {
+  "anchor": "liumi2021_decay_by_R",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[validacao/limiar] liumi2021_failure_mode_map": {
+  "anchor": "liumi2021_failure_mode_map",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[multi-parafuso] nasa2018_cupcone_positions": {
+  "anchor": "nasa2018_cupcone_positions",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: interacao multi-parafuso — fora do escopo single-joint do V2 (roadmap frontend)."
+ },
+ "[validacao/limiar] nassar2009_model_vs_exp": {
+  "anchor": "nassar2009_model_vs_exp",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[creep/termico] nechache2007_B7_norton": {
+  "anchor": "nechache2007_B7_norton",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] nechache2007_gasket_norton": {
+  "anchor": "nechache2007_gasket_norton",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[fadiga/vida] noda2016_fatigue_life": {
+  "anchor": "noda2016_fatigue_life",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[dispositivos (V1)] noda2016_pitch_difference": {
+  "anchor": "noda2016_pitch_difference",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[atrito/torque] noda2016_prevailing_torque": {
+  "anchor": "noda2016_prevailing_torque",
+  "verdict": "BANDA",
+  "note": "familia atrito/torque: mu por par/lube — coerente com mu=0.15 seco (PASSA nos 2 rigs checados) e variacao por revestimento."
+ },
+ "[validacao/limiar] pai2002_ftr_ratio_vs_F0": {
+  "anchor": "pai2002_ftr_ratio_vs_F0",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[validacao/limiar] pai2002_hysteresis_loop_5560N": {
+  "anchor": "pai2002_hysteresis_loop_5560N",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[validacao/limiar] pai2003_fcrit_thread": {
+  "anchor": "pai2003_fcrit_thread",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[creep/termico] rahimi2017_IN718_720C": {
+  "anchor": "rahimi2017_IN718_720C",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[validacao/limiar] rousseau2025_loop_hdpe_t12": {
+  "anchor": "rousseau2025_loop_hdpe_t12",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[validacao/limiar] rousseau2025_loop_steel_t12": {
+  "anchor": "rousseau2025_loop_steel_t12",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[theta/rotacao] rousseau2025_theta_by_config": {
+  "anchor": "rousseau2025_theta_by_config",
+  "verdict": "DIRECAO",
+  "note": "familia theta: endpoints/curvas de rotacao — insumo do canal theta (sec4.23; free_spin + escala do drive em aberto)."
+ },
+ "[theta/rotacao] sakai2011_axial_rotation": {
+  "anchor": "sakai2011_axial_rotation",
+  "verdict": "DIRECAO",
+  "note": "familia theta: endpoints/curvas de rotacao — insumo do canal theta (sec4.23; free_spin + escala do drive em aberto)."
+ },
+ "[dispositivos (V1)] sanclemente2007_doe_runs": {
+  "anchor": "sanclemente2007_doe_runs",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[dispositivos (V1)] sase1996_amplitude_standard_nut": {
+  "anchor": "sase1996_amplitude_standard_nut",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[dispositivos (V1)] sase1996_devices_7types": {
+  "anchor": "sase1996_devices_7types",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[dispositivos (V1)] sase1996_grade_4p8_vs_10p9": {
+  "anchor": "sase1996_grade_4p8_vs_10p9",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[dispositivos (V1)] sase1996_shaking_30g": {
+  "anchor": "sase1996_shaking_30g",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[fadiga/vida] schaumann2009_SN_M36": {
+  "anchor": "schaumann2009_SN_M36",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[fadiga/vida] schaumann2009_size_effect": {
+  "anchor": "schaumann2009_size_effect",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[fadiga/vida] schaumann2015_zinc_penalty": {
+  "anchor": "schaumann2015_zinc_penalty",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[fadiga/vida] scirep2025_rand_DN": {
+  "anchor": "scirep2025_rand_DN",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[fadiga/vida] scirep2025_rand_SuN": {
+  "anchor": "scirep2025_rand_SuN",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[fadiga/vida] scirep2025_rand_decay": {
+  "anchor": "scirep2025_rand_decay",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[creep/termico] suye2016_cfrp_temp": {
+  "anchor": "suye2016_cfrp_temp",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[creep/termico] suye2016_creep_fit_params": {
+  "anchor": "suye2016_creep_fit_params",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[validacao/limiar] wei2025_cfrp_vs_steel": {
+  "anchor": "wei2025_cfrp_vs_steel",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[creep/termico] wi2022_3dprint_thermal": {
+  "anchor": "wi2022_3dprint_thermal",
+  "verdict": "BANDA",
+  "note": "familia creep/relaxacao: reforca C_creep POR-PAR (sec4.7); taxa por decada da mesma ordem dos pares ja ancorados; alta-T/CFRP = limite de envelope declarado."
+ },
+ "[validacao/limiar] wiegand2021_bolt_force_vs_load": {
+  "anchor": "wiegand2021_bolt_force_vs_load",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[validacao/limiar] wiegand2021_clamp_separation": {
+  "anchor": "wiegand2021_clamp_separation",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[validacao/limiar] wiegand2021_eccentric_forces": {
+  "anchor": "wiegand2021_eccentric_forces",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[atrito/torque] xu2025_odn_torque_ratio": {
+  "anchor": "xu2025_odn_torque_ratio",
+  "verdict": "BANDA",
+  "note": "familia atrito/torque: mu por par/lube — coerente com mu=0.15 seco (PASSA nos 2 rigs checados) e variacao por revestimento."
+ },
+ "[dispositivos (V1)] xu2025_single_vs_doublenut": {
+  "anchor": "xu2025_single_vs_doublenut",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: dispositivo de travamento — modelado na camada V1 (locking_devices.json), fora do core V2; ancora catalogada p/ validacao V1."
+ },
+ "[fadiga/vida] yan2024_N50_by_direction": {
+  "anchor": "yan2024_N50_by_direction",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[validacao/limiar] yan2024_load_direction": {
+  "anchor": "yan2024_load_direction",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[theta/rotacao] yang2011_theta_by_preload": {
+  "anchor": "yang2011_theta_by_preload",
+  "verdict": "DIRECAO",
+  "note": "familia theta: endpoints/curvas de rotacao — insumo do canal theta (sec4.23; free_spin + escala do drive em aberto)."
+ },
+ "[theta/rotacao] yang2011_theta_rate_F11120": {
+  "anchor": "yang2011_theta_rate_F11120",
+  "verdict": "DIRECAO",
+  "note": "familia theta: endpoints/curvas de rotacao — insumo do canal theta (sec4.23; free_spin + escala do drive em aberto)."
+ },
+ "[fadiga/vida] yang2019_DN_M10": {
+  "anchor": "yang2019_DN_M10",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[validacao/limiar] yang2019_freq_independence": {
+  "anchor": "yang2019_freq_independence",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[fadiga/vida] yang2019_miner_blocks": {
+  "anchor": "yang2019_miner_blocks",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[fadiga/vida] yang2021R_N50_map": {
+  "anchor": "yang2021R_N50_map",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[fadiga/vida] yang2021R_decay_by_R": {
+  "anchor": "yang2021R_decay_by_R",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[validacao/limiar] yang2021R_xi_critical": {
+  "anchor": "yang2021R_xi_critical",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[validacao/limiar] yang2021_failure_mode_map": {
+  "anchor": "yang2021_failure_mode_map",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[fadiga/vida] yang2023_DN_M8_M6": {
+  "anchor": "yang2023_DN_M8_M6",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[validacao/limiar] yang2023cfrp_biaxial": {
+  "anchor": "yang2023cfrp_biaxial",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[validacao/limiar] yang2023cfrp_decomposition": {
+  "anchor": "yang2023cfrp_decomposition",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[validacao/limiar] yang2023cfrp_washers": {
+  "anchor": "yang2023cfrp_washers",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[fadiga/vida] yangjeong2025_DN_M6_M8": {
+  "anchor": "yangjeong2025_DN_M6_M8",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[fadiga/vida] yangjeong2025_LDR_summary": {
+  "anchor": "yangjeong2025_LDR_summary",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[fadiga/vida] yangjeong2025_miner_blocks": {
+  "anchor": "yangjeong2025_miner_blocks",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[multi-parafuso] yangjeong2025_multibolt_NL": {
+  "anchor": "yangjeong2025_multibolt_NL",
+  "verdict": "ESCOPO",
+  "note": "ESCOPO: interacao multi-parafuso — fora do escopo single-joint do V2 (roadmap frontend)."
+ },
+ "[theta/rotacao] yokoyama2012_rotary_bending": {
+  "anchor": "yokoyama2012_rotary_bending",
+  "verdict": "DIRECAO",
+  "note": "familia theta: endpoints/curvas de rotacao — insumo do canal theta (sec4.23; free_spin + escala do drive em aberto)."
+ },
+ "[theta/rotacao] yokoyama2012_rotary_vs_junker": {
+  "anchor": "yokoyama2012_rotary_vs_junker",
+  "verdict": "DIRECAO",
+  "note": "familia theta: endpoints/curvas de rotacao — insumo do canal theta (sec4.23; free_spin + escala do drive em aberto)."
+ },
+ "[validacao/limiar] yuan2024_iwan_hysteresis": {
+  "anchor": "yuan2024_iwan_hysteresis",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[validacao/limiar] yuan2024_stiffness_damping": {
+  "anchor": "yuan2024_stiffness_damping",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ },
+ "[fadiga/vida] zhang2006_N50_vs_grip": {
+  "anchor": "zhang2006_N50_vs_grip",
+  "verdict": "BANDA",
+  "note": "familia vida/D-N: alimenta as constantes fat_* (Su-N bilinear); expoentes na faixa m~3-9 usada; per-material (sec4.13)."
+ },
+ "[validacao/limiar] zhang2019_wear_exp_vs_fea": {
+  "anchor": "zhang2019_wear_exp_vs_fea",
+  "verdict": "CATALOGADO",
+  "note": "ancora de validacao/limiar catalogada; confronto dedicado em lote futuro (nao bloqueante)."
+ }
+}

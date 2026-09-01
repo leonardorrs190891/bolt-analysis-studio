@@ -1,0 +1,63 @@
+{
+  "campaign": "Fase 2 — sobretorque F0-bound (MODEL_LEGITIMACY §4.5)",
+  "provenance": {
+    "f0_ceiling_N": 132822.0,
+    "f0_ceiling_formula": "0.9 * Rp0.2(10.9=940MPa) * A_s(M16=157mm2)",
+    "only_change": "estimate_F0[sobretorque] top 120kN -> 132.8kN",
+    "canonical_shared_block": "NAO escrito (experimento)"
+  },
+  "thresholds": {
+    "RESCUE_MAE": 0.06,
+    "PERSIST_MAE": 0.1
+  },
+  "baseline": {
+    "mae": 0.1377819393099515,
+    "f0_N": 119999.99999947973,
+    "mae_global": 0.07958141068617827
+  },
+  "raised": {
+    "mae_sobretorque": 0.1351409970279197,
+    "f0_test_N": 132821.9999985031,
+    "mae_global": 0.07878280427621448,
+    "free_constants": [
+      "C_creep"
+    ],
+    "constants": {
+      "emb_depth": 3e-05,
+      "N_emb": 50.0,
+      "K_archard": 0.0001,
+      "C_creep": 1.2316984593595729e-11,
+      "tr_loose_gain": 2.0,
+      "c_D": 2.0,
+      "k_dmg_wear": 4.0
+    },
+    "selection_history": [
+      [
+        "(defaults+estados)",
+        0.1025823834971211
+      ],
+      [
+        "C_creep",
+        0.07878280427621448
+      ]
+    ],
+    "mae_by_condition": {
+      "nova": 0.07577123738167373,
+      "reusada": 0.05888219086945096,
+      "sobretorque": 0.1351409970279197,
+      "reaperto": 0.0453367918258135
+    },
+    "F0_estimates": {
+      "sobretorque": 132821.9999985031
+    }
+  },
+  "verdict": {
+    "verdict": "missing mechanism (falsified again)",
+    "pinned_at_new_ceiling": true,
+    "delta_mae": 0.002640942282031794,
+    "mae_base": 0.1377819393099515,
+    "mae_new": 0.1351409970279197,
+    "f0_new_N": 132821.9999985031
+  },
+  "caveat": "GW k_tr(F0) tem sinal desfavoravel no slip atual (spec Fase 1 §4) — 'missing mechanism' NAO avaliza k_tr(F0) ingenuo."
+}

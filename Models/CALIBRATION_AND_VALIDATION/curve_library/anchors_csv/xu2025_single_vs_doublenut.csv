@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/43_44_45_46_jackbolt_washer_doublenut_pitch.md:173-187
+cycle,single_nut,ODN_0p5T_1p5T,FODN_0p5T_1p5T
+0,1.000,1.000,1.000
+500,0.580,0.810,0.830
+1000,0.350,0.680,0.710
+2000,0.150,0.540,0.580
+3000,0.060,0.440,0.490

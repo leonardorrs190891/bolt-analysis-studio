@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+.DS_Store
+_ul
+_ul-*
+
+# Environment
+.env
+.venv/
+env/
+venv/
+
+# Claude Code
+.claude/
+# .superpowers/ fica de fora, EXCETO o ledger mestre: ele e' a fonte de
+# retomada da execucao (uma linha por passo, com numeros) e ate 2026-07-27
+# existia so nesta maquina. Padrao com /* + negacao porque o git NAO reinclui
+# arquivo dentro de diretorio excluido por regra de diretorio.
+.superpowers/*
+!.superpowers/master-0p1-progress.md
+
+# Analysis outputs
+*.png
+*.pdf
+*.csv
+!examples/*.csv
+# Figuras dos artigos usadas pelos estudos de caso do explorador (assets versionados)
+!New_Theory/variable_explorer/paper_figures/*.png

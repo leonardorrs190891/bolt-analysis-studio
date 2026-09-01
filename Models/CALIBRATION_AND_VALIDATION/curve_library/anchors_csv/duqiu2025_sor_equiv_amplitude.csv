@@ -1,0 +1,4 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/33_Du_Qiu_2025_sine_on_random_vibration.md:145-160
+condition,delta_sine_mm,sigma_random_mm,delta_eq_mm,NL_predicted,NL_actual,error_pct
+C,0.42,0.12,0.47,1450,1320,9.8
+D,0.63,0.24,0.75,280,255,9.8

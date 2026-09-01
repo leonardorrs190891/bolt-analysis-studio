@@ -1,0 +1,79 @@
+Saida VERBATIM da execucao dos gates M0-M6 do prereg 2026-07-28 (metrica em
+vida), sobre o store re-simulado com a implementacao que foi DEPOIS REVERTIDA.
+Artefato congelado: a implementacao nao vive mais no runner canonico, entao esta
+varredura de 202 casos nao e' re-executavel sem re-aplicar o patch. O gate que
+DECIDIU (M2) e' reproduzivel em ~2 min e sem patch:
+    py -3.12 New_Theory/metrica_vida_rejeitada.py
+
+Re-simulacao: 202 casos / 6 workers / 1490 s. Verificado apos a varredura:
+ZERO divergencias nos campos VERTICAIS (mae, maxerr, resid_std, rmse,
+final_pred, align, maxerr_at) nos 203 casos — a mudanca foi puramente aditiva.
+
+==============================================================================
+GATES M0-M6 -- metrica em vida (prereg congelado em 3a26b4a)
+==============================================================================
+casos no store: 203   com metrica de curva: 203   com campo de vida: 202
+
+M5 fingerprint inalterado ...... OK  ({'4f5bedfbace4'})
+M6 nenhuma curva piora ......... OK  (202 curvas comparadas)
+
+M0 identidade no trecho plano .. FALHA  (pior desvio 4.70e-02 em 2325 pontos; limiar 1e-6)
+
+M1 curva plana nao se mexe ..... FALHA  (94 curvas planas; 3 violam)
+     chu2026ti_D0p3mm_F0_49kN_test1     dMAE -0.0003  dmax -0.0013
+     sun2025efa110030_fig11a_loosening_reassy06 dMAE -0.0002  dmax -0.0013
+     sun2025efa110030_fig11a_loosening_reassy04 dMAE -0.0002  dmax -0.0011
+
+==============================================================================
+M4 -- VIRADAS (falha -> passe) e M3 -- toda virada em trecho INGREME?
+==============================================================================
+  passavam antes: 147   VIRAM: 6   seguem falhando: 49
+  M4 teto de 25 viradas ........ OK
+
+curva que virou                    antes mae/max     depois mae/max    incl*sigN M3
+bauer2024_M12_fig8_test2           0.0290/0.1795     0.0183/0.0638        0.0320 ingreme
+bauer2024_M12_fig8_test3           0.0241/0.1198     0.0204/0.0859        0.0584 ingreme
+bauer2024_M8_fig6_rep1             0.0431/0.1259     0.0289/0.0805        0.0048 RASO <<<
+bauer2024_M8_fig6_rep5             0.0494/0.1116     0.0356/0.0689        0.0108 RASO <<<
+eccles2010_fig8a_no_axial_baseline1 0.0436/0.1223     0.0356/0.0968        0.0150 RASO <<<
+eccles2010_fig8b_axial_0p7kN_intermittent 0.0438/0.1296     0.0309/0.0915        0.0141 RASO <<<
+  M3 toda virada em trecho ingreme ... FALHA -> BRECHA: bauer2024_M8_fig6_rep1, bauer2024_M8_fig6_rep5, eccles2010_fig8a_no_axial_baseline1, eccles2010_fig8b_axial_0p7kN_intermittent
+
+==============================================================================
+M2 -- DISCRIMINANCIA: sem forma e cliff CONTINUAM falhando sob a metrica nova?
+==============================================================================
+  (roda o arnes do prereg v2 com a metrica em vida nas 3 do nucleo + fig2 fino)
+curva                      sem forma          rampa              cliff
+amp0p4                     0.100/0.450 F      0.030/0.062 P      0.035/0.062 P
+amp0p5                     0.081/0.437 F      0.021/0.052 P      0.025/0.052 P
+amp0p6                     0.044/0.188 F      0.030/0.070 P      0.028/0.070 P
+fig2_single(fino)          0.223/0.673 F      0.019/0.057 P      0.034/0.079 P
+  M2 discriminancia preservada ....... FALHA -> a metrica virou BRECHA
+
+==============================================================================
+VEREDICTO
+==============================================================================
+  M0 FALHA
+  M1 FALHA
+  M2 FALHA
+  M3 FALHA
+  M4 OK
+  M5 OK
+  M6 OK
+
+  META: 147 -> 153 de 202 curvas comparaveis no tripe
+  -> New_Theory/metrica_vida_result.json
+
+------------------------------------------------------------------------------
+DIAGNOSTICO DO MECANISMO (sonda posterior, mesmo store)
+------------------------------------------------------------------------------
+PIOR M0: jcsr2023_plain_outdoor ponto 30  N=150
+  dado r=0.7287  modelo r=0.6006  =>  residuo VERTICAL 0.1282
+  residuo em VIDA 0.0811   (desvio 0.0470)
+  inclinacao do DADO ali: 0.000e+00 /ciclo  => fuga horiz. do dado = 0.0000
+  MODELO nos pontos vizinhos (N, r): [(133, 0.694), (140, 0.654), (145, 0.626), (150, 0.601)]
+  DADO   nos pontos vizinhos (N, r): [(133, 0.75), (140, 0.734), (145, 0.729), (150, 0.729)]
+  => inclinacao do MODELO ali: 5.184e-03 /ciclo
+
+Leitura: o dado esta PLANO e o modelo esta DESPENCANDO. A fuga horizontal corre
+pela inclinacao do MODELO, nao pela do DADO — que era o que M0/M1 testavam.

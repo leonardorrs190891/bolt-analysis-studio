@@ -1,0 +1,282 @@
+{
+  "description": "4 perfis M16 shear +-0.5mm 0.5Hz calibrados em estagios (StagedCalibrator) com surface_damage nos perfis reaperto/reusada.",
+  "global_settings": {
+    "geometry": "M16 ISO metric (d_2=14.701mm, p=2.0mm, A_s=157mm2)",
+    "loading": "shear puro +-0.5mm 0.5Hz, F0=50kN, F_amp=20kN"
+  },
+  "profiles": {
+    "nova": {
+      "profile_name": "M16_shear_nova",
+      "condition": "nova",
+      "calibrated_at": "2026-06-20",
+      "calibration_method": "parsimonious (forward selection, tol=0.005)",
+      "loading": {
+        "F0_N": 50000.0,
+        "F_amp_N": 20000.0,
+        "theta_rad": 1.5707963267948966,
+        "freq_Hz": 0.5,
+        "n_cycles": 2500,
+        "D_init": 0.0
+      },
+      "damage_active": false,
+      "free_tuners": [
+        "k_wear_scale_tr",
+        "k_emb_scale"
+      ],
+      "tuners": {
+        "k_emb_scale": 0.6629643268191411,
+        "k_creep_scale": 1.0,
+        "k_wear_scale_tr": 0.4445924851794651,
+        "k_loose_scale_tr": 1.0,
+        "Phi_tr_correction": 1.0,
+        "k_damage_scale": 1.0
+      },
+      "fit_quality": {
+        "mean_MAE_global": 0.023569381747102196,
+        "n_free_tuners": 2,
+        "selection_history": [
+          [
+            "(defaults)",
+            0.13656573171629083
+          ],
+          [
+            "k_wear_scale_tr",
+            0.05347890549472422
+          ],
+          [
+            "k_emb_scale",
+            0.023569381747102196
+          ]
+        ]
+      }
+    },
+    "reusada": {
+      "profile_name": "M16_shear_reusada",
+      "condition": "reusada",
+      "calibrated_at": "2026-06-20",
+      "calibration_method": "parsimonious (forward selection, tol=0.005)",
+      "loading": {
+        "F0_N": 50000.0,
+        "F_amp_N": 20000.0,
+        "theta_rad": 1.5707963267948966,
+        "freq_Hz": 0.5,
+        "n_cycles": 2500,
+        "D_init": 0.3
+      },
+      "damage_active": true,
+      "free_tuners": [
+        "k_emb_scale",
+        "k_wear_scale_tr"
+      ],
+      "tuners": {
+        "k_emb_scale": 0.18023401990908175,
+        "k_creep_scale": 1.0,
+        "k_wear_scale_tr": 0.7348313898268565,
+        "k_loose_scale_tr": 1.0,
+        "Phi_tr_correction": 1.0,
+        "k_damage_scale": 1.0
+      },
+      "fit_quality": {
+        "mean_MAE_global": 0.02569279846388007,
+        "n_free_tuners": 2,
+        "selection_history": [
+          [
+            "(defaults)",
+            0.15161583673937226
+          ],
+          [
+            "k_emb_scale",
+            0.040385872649846735
+          ],
+          [
+            "k_wear_scale_tr",
+            0.02569279846388007
+          ]
+        ]
+      }
+    },
+    "sobretorque": {
+      "profile_name": "M16_shear_sobretorque",
+      "condition": "sobretorque",
+      "calibrated_at": "2026-06-20",
+      "calibration_method": "parsimonious (forward selection, tol=0.005)",
+      "loading": {
+        "F0_N": 50000.0,
+        "F_amp_N": 20000.0,
+        "theta_rad": 1.5707963267948966,
+        "freq_Hz": 0.5,
+        "n_cycles": 2500,
+        "D_init": 0.0
+      },
+      "damage_active": false,
+      "free_tuners": [
+        "k_emb_scale",
+        "k_wear_scale_tr"
+      ],
+      "tuners": {
+        "k_emb_scale": 0.26348308005240684,
+        "k_creep_scale": 1.0,
+        "k_wear_scale_tr": 0.04454626154092803,
+        "k_loose_scale_tr": 1.0,
+        "Phi_tr_correction": 1.0,
+        "k_damage_scale": 1.0
+      },
+      "fit_quality": {
+        "mean_MAE_global": 0.007311366427559789,
+        "n_free_tuners": 2,
+        "selection_history": [
+          [
+            "(defaults)",
+            0.32579457787013705
+          ],
+          [
+            "k_emb_scale",
+            0.14164716415288642
+          ],
+          [
+            "k_wear_scale_tr",
+            0.007311366427559789
+          ]
+        ]
+      }
+    },
+    "reaperto": {
+      "profile_name": "M16_shear_reaperto",
+      "condition": "reaperto",
+      "calibrated_at": "2026-06-20",
+      "calibration_method": "parsimonious (forward selection, tol=0.005)",
+      "loading": {
+        "F0_N": 50000.0,
+        "F_amp_N": 20000.0,
+        "theta_rad": 1.5707963267948966,
+        "freq_Hz": 0.5,
+        "n_cycles": 2500,
+        "D_init": 0.3
+      },
+      "damage_active": true,
+      "free_tuners": [],
+      "tuners": {
+        "k_emb_scale": 1.0,
+        "k_creep_scale": 1.0,
+        "k_wear_scale_tr": 1.0,
+        "k_loose_scale_tr": 1.0,
+        "Phi_tr_correction": 1.0,
+        "k_damage_scale": 1.0
+      },
+      "fit_quality": {
+        "mean_MAE_global": 0.03777385121453681,
+        "n_free_tuners": 0,
+        "selection_history": [
+          [
+            "(defaults)",
+            0.03777385121453681
+          ]
+        ]
+      }
+    }
+  },
+  "schema": 2,
+  "shared": {
+    "calibrated_at": "2026-07-04",
+    "method": "SharedCalibrator.fit_parsimonious (tol=0.005, log-priors); conformacao dependente de pressao ADOTADA (driver effective, spec §7); emb_depth mantido como INPUT fixo (nao-candidato, decisao 2026-07-04)",
+    "conformation": {
+      "driver": "effective",
+      "conform_pressure_exp": 2.0,
+      "p_ref_conform": 500000000.0,
+      "adopted": "2026-07-04 — resolve a falsificacao do sobretorque (MODEL_LEGITIMACY §4.9 strand 2); n/p_ref fixos, W_conf_ref fitado, sem ancora independente (§4.9 strand 3)"
+    },
+    "loading": {
+      "F_amp_N": 20000.0,
+      "delta_amp_m": 0.0005,
+      "theta_rad": 1.5707963267948966,
+      "freq_Hz": 0.5,
+      "n_cycles": 2500
+    },
+    "free_constants": [
+      "W_conf_ref",
+      "C_creep"
+    ],
+    "constants": {
+      "emb_depth": 3e-05,
+      "N_emb": 50.0,
+      "k_wear_spec": 5e-14,
+      "C_creep": 1.8667263000051723e-11,
+      "tr_loose_gain": 2.0,
+      "c_D": 2.0,
+      "k_dmg_wear": 4.0,
+      "W_conf_ref": 7671.206304040271,
+      "conform_pressure_exp": 2.0,
+      "p_ref_conform": 500000000.0
+    },
+    "selection_history": [
+      [
+        "(defaults+estados)",
+        0.09959172980017598
+      ],
+      [
+        "W_conf_ref",
+        0.06560018449605276
+      ],
+      [
+        "C_creep",
+        0.050902795547058455
+      ]
+    ],
+    "mae_global": 0.050902795547058455,
+    "conditions": {
+      "nova": {
+        "states": {
+          "F0_N": 50000.0,
+          "F0_provenance": "nominal"
+        },
+        "damage_active": false,
+        "MAE": 0.07407577405530373
+      },
+      "reusada": {
+        "states": {
+          "D_init": 0.3,
+          "emb_consumed_frac": 1.0,
+          "F0_N": 50000.0,
+          "F0_provenance": "nominal"
+        },
+        "damage_active": true,
+        "MAE": 0.05622442187925205
+      },
+      "sobretorque": {
+        "states": {
+          "F0_test_N": 119999.99999833164,
+          "F0_provenance": "estimated"
+        },
+        "damage_active": false,
+        "MAE": 0.029962304063635186
+      },
+      "reaperto": {
+        "states": {
+          "D_init": 0.3,
+          "F0_N": 50000.0,
+          "F0_provenance": "nominal"
+        },
+        "damage_active": true,
+        "MAE": 0.04334868219004287
+      }
+    },
+    "loco": {
+      "nova": {
+        "MAE_pred": 0.08726821072160489,
+        "state_F0_from_full_fit": false
+      },
+      "reusada": {
+        "MAE_pred": 0.062407262625081825,
+        "state_F0_from_full_fit": false
+      },
+      "sobretorque": {
+        "MAE_pred": 0.12056093504634244,
+        "state_F0_from_full_fit": true
+      },
+      "reaperto": {
+        "MAE_pred": 0.045515774244923306,
+        "state_F0_from_full_fit": false
+      }
+    }
+  }
+}

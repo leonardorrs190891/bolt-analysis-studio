@@ -1,0 +1,50 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>liu2025_M16_amp0p6 — BAS V2 validation</title><style>
+body{margin:0;background:#e8eaed;color:#1a1e24;font-family:'Segoe UI',system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding:28px 20px 60px}
+h1{font-size:22px;margin:6px 0 2px;letter-spacing:-0.01em}
+.sub{font-family:Consolas,monospace;font-size:12px;color:#5c6570;margin:0 0 18px}
+.grid{display:grid;grid-template-columns:280px 1fr;gap:16px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+.card{background:#f8f9fa;border:1px solid #c9ced5;border-radius:8px;padding:14px 16px}
+h2{font-size:12px;font-family:Consolas,monospace;text-transform:uppercase;letter-spacing:0.08em;color:#5c6570;margin:0 0 8px}
+table{border-collapse:collapse;width:100%;font-family:Consolas,monospace;font-size:12.5px}
+td{padding:5px 4px;border-bottom:1px solid #dfe3e7;vertical-align:top}
+td:first-child{color:#5c6570;white-space:nowrap;padding-right:12px}
+tr:last-child td{border-bottom:none}
+.metric{font-size:26px;font-weight:700;color:#2f6690;font-family:Consolas,monospace}
+.cfg{font-size:12px;color:#454b54;background:#eef0f2;border-radius:6px;padding:8px 10px;margin-top:8px}
+svg{display:block;width:100%;height:auto;background:#f8f9fa;border:1px solid #c9ced5;border-radius:8px}
+a{color:#2f6690}
+.foot{font-family:Consolas,monospace;font-size:11px;color:#8b939c;margin-top:22px;border-top:1px solid #c9ced5;padding-top:10px}
+.idx td a{text-decoration:none}
+.hub{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:0 0 22px}
+.hub .card{padding:12px 14px}
+.hub a.t{font-weight:700;text-decoration:none;font-size:14px}
+.hub .d{font-size:12px;color:#454b54;margin:4px 0 6px;line-height:1.45}
+.hub .m{font-family:Consolas,monospace;font-size:11.5px;color:#2f6690;font-weight:700}
+.hgroup{font-size:12px;font-family:Consolas,monospace;text-transform:uppercase;letter-spacing:0.08em;color:#5c6570;margin:18px 0 8px}
+</style></head><body>
+<div class="wrap">
+<p class="sub"><a href="index.html">← index</a> · Liu 2025 — M16 amplitude sweep · transverse</p>
+<h1>liu2025_M16_amp0p6</h1>
+<p class="sub">Bolt Analysis Studio V2 — DynamicStiffnessAnalyzer · validation case</p>
+<svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><line x1="52" y1="326.0" x2="744" y2="326.0" stroke="#dfe3e7"/><text x="46" y="329.0" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0</text><line x1="52" y1="251.7" x2="744" y2="251.7" stroke="#dfe3e7"/><text x="46" y="254.7" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.25</text><line x1="52" y1="177.4" x2="744" y2="177.4" stroke="#dfe3e7"/><text x="46" y="180.4" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.5</text><line x1="52" y1="103.1" x2="744" y2="103.1" stroke="#dfe3e7"/><text x="46" y="106.1" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.75</text><line x1="52" y1="28.9" x2="744" y2="28.9" stroke="#dfe3e7"/><text x="46" y="31.9" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">1</text><line x1="52" y1="14" x2="52" y2="326" stroke="#c9ced5"/><line x1="52" y1="326" x2="744" y2="326" stroke="#c9ced5"/><text x="52.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">0</text><text x="398.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">1e4</text><text x="744.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">2e4</text><polyline points="52.0,28.9 57.0,59.2 62.0,61.7 66.9,63.3 71.9,64.3 76.9,65.2 81.9,65.9 86.9,66.5 91.8,67.0 96.8,67.4 101.8,67.8 106.8,68.2 111.7,68.5 116.7,68.8 121.7,69.1 126.7,69.3 131.7,69.6 136.6,69.8 141.6,70.0 146.6,70.2 151.6,70.4 156.5,70.6 161.5,70.8 166.5,70.9 171.5,71.1 176.5,71.3 181.4,71.4 186.4,71.6 191.4,71.7 196.4,71.9 201.4,72.0 206.3,72.2 211.3,72.3 216.3,72.4 221.3,72.6 226.3,72.7 231.2,72.9 236.2,73.0 241.2,73.2 246.2,73.3 251.1,73.5 256.1,73.6 261.1,73.8 266.1,73.9 271.0,74.1 276.0,74.3 281.0,74.5 286.0,74.6 291.0,74.8 295.9,75.0 300.9,75.2 305.9,75.5 310.9,75.7 315.8,75.9 320.8,76.2 325.8,76.4 330.8,76.7 335.8,77.0 340.8,77.3 345.7,77.6 350.7,77.9 355.7,78.2 360.7,78.6 365.6,79.0 370.6,79.3 375.6,79.7 380.6,80.2 385.6,80.6 390.5,81.0 395.5,81.5 400.5,82.0 405.5,82.5 410.4,83.0 415.4,83.6 420.4,84.1 425.4,84.7 430.4,85.3 435.3,85.9 440.3,86.6 445.3,87.2 450.3,87.9 455.2,88.6 460.2,89.3 465.2,90.1 470.2,90.9 475.2,91.6 480.2,92.5 485.1,93.3 490.1,94.1 495.1,95.0 500.1,95.9 505.0,96.8 510.0,97.8 515.0,98.7 520.0,99.7 525.0,100.7 529.9,101.8 534.9,102.8 539.9,103.9 544.9,105.0 549.8,106.1 554.8,107.2 559.8,108.4 564.8,109.5 569.7,110.7 574.7,111.9 579.7,113.2 584.7,114.4 589.7,115.7 594.6,117.0 599.6,118.3 604.6,119.6 609.6,120.9 614.6,122.3 619.5,123.7 624.5,125.1 629.5,126.5 634.5,127.9 639.5,129.4 644.4,130.8 649.4,132.3 654.4,133.8 659.4,135.3 664.3,136.8 669.3,138.4 674.3,139.9 679.3,141.5 684.3,143.1 689.2,144.7 694.2,146.3 699.2,148.0 704.2,149.6 709.1,151.3 714.1,153.0 719.1,154.6 724.1,156.4 729.1,158.1 734.0,159.8 739.0,161.6 744.0,163.3" fill="none" stroke="#2f6690" stroke-width="2.4" stroke-linejoin="round"/><circle cx="52.0" cy="28.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="57.7" cy="45.2" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="80.6" cy="51.7" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="195.0" cy="60.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="280.8" cy="65.1" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="395.1" cy="71.1" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="480.9" cy="76.4" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="566.7" cy="84.7" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="623.9" cy="94.2" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="681.1" cy="112.1" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="709.7" cy="135.8" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="732.6" cy="183.4" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="744.0" cy="227.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><text x="398" y="358" text-anchor="middle" font-size="12" fill="#454b54" font-family="Segoe UI">ciclos N</text><text x="14" y="170" text-anchor="middle" font-size="12" fill="#454b54" font-family="Segoe UI" transform="rotate(-90 14 170)">F / F₀  (razão de pré-carga) [–]</text></svg>
+<div class="grid" style="margin-top:16px">
+<div class="card"><h2>Boundary conditions</h2><table><tr><td>bolt</td><td>M16x2.0</td></tr><tr><td>F₀</td><td>60.0 kN</td></tr><tr><td>amplitude</td><td>±0.6 mm (disp-controlled)</td></tr><tr><td>frequency</td><td>12.5 Hz</td></tr><tr><td>grip</td><td>40 mm (assumed)</td></tr><tr><td>μ</td><td>0.15 (assumed)</td></tr><tr><td>surface</td><td>Rz10-40 (assumed)</td></tr><tr><td>F_amp</td><td>24.0 kN (0.4·F₀ — lit.: Pai&Hess 2002 mediu 0.38–0.49)</td></tr><tr><td>cycles</td><td>24 200</td></tr></table>
+<div class="cfg"><b>Configuration:</b> slip-regime pack (c_bend=0.3)</div></div>
+<div class="card"><h2>Result</h2>
+<div class="metric">MAE 0.0687</div>
+<table style="margin-top:8px">
+<tr><td>final F/F₀ (data)</td><td>0.330</td></tr>
+<tr><td>final F/F₀ (model)</td><td>0.547</td></tr>
+<tr><td>final error</td><td>+0.217</td></tr>
+
+<tr><td>family</td><td>transverse</td></tr></table>
+<div class="cfg">Dots = digitized paper data; line = model at the declared per-rig
+configuration. Verdicts and falsification records: <code>New_Theory/MODEL_LEGITIMACY.md</code>
+§4.12–§4.15.</div></div></div>
+<p class="foot"><a href="liu2025_M16_amp0p5.html">← prev</a> · <a href="liu2025_M16_amp0p8.html">next →</a> · generated 2026-07-08 · configs and constants carry declared provenance
+(paper / handbook / assumed / read-from-data / fitted-this-rig)</p>
+</div></body></html>

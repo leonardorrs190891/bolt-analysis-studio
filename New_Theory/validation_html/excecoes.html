@@ -1,0 +1,131 @@
+<style>
+body{font-family:Georgia,'Times New Roman',serif;max-width:1080px;margin:24px auto;
+padding:0 16px;color:#1c2733;line-height:1.55}
+h1{font-size:1.7em;border-bottom:3px solid #2f6f8f;padding-bottom:6px}
+h2{font-size:1.25em;color:#2f6f8f;margin-top:2em;border-bottom:1px solid #cfdce6}
+h3{font-size:1.05em;margin-top:1.4em}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.92em;
+font-family:'Segoe UI',Arial,sans-serif}
+th,td{border:1px solid #b9c9d6;padding:5px 8px;text-align:left;vertical-align:top}
+th{background:#eef4f8}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ok{color:#116633;font-weight:600}.bad{color:#a02020;font-weight:600}
+.mono{font-family:Consolas,monospace;font-size:.92em}
+.box{background:#f4f8fb;border-left:4px solid #2f6f8f;padding:10px 14px;margin:12px 0}
+.warn{background:#fdf6ec;border-left:4px solid #b07818}
+.small{font-size:.85em;color:#4a5a68}
+caption{caption-side:top;text-align:left;font-weight:700;padding:4px 0}
+</style>
+<h1>Exceções assinadas — o registro completo, com as contas</h1>
+<p class="small">Gerado em 2026-08-02 do store canônico (fingerprint <span class="mono">63722b266dc0</span>), 205 curvas comparáveis. Regenerar: <span class="mono">py -3.12 New_Theory/build_excecoes_page.py</span>. Toda contagem desta página é recomputada na geração — nada é digitado à mão.</p>
+<h2>1. O que é uma exceção — e o que ela não é</h2>
+<div class="box"><b>Exceção não é perdão para o modelo.</b> É a prova matemática de que aquela curva não pode ser fechada por modelo nenhum, porque o próprio experimento não se reproduz dentro do limite que a régua exige.</div>
+<p>A meta por curva (o <i>tripé</i>) exige <b>MAE ≤ 0.05</b>, <b>res.máx ≤ 0.1</b> e <b>σ_res ≤ max(0.025; piso da fonte)</b> contra a curva publicada. Mas quando o mesmo ensaio, repetido em condição nominal idêntica, produz duas curvas que discordam entre si por MAIS que esses limites, exigir que o modelo fique mais perto de uma delas do que elas ficam uma da outra deixa de medir física: passa a exigir que o modelo adivinhe qual espécime foi montado naquele dia. Um modelo <i>perfeito</i> — que previsse exatamente o comportamento médio verdadeiro — reprovaria contra qualquer uma das gêmeas.</p>
+<p>Por isso a meta é sempre publicada em <b>dois números</b>: a leitura <b>estrita</b> (tripé: <b>129/205</b> hoje — onde o modelo <i>acertou</i>) e a <b>resolvida/declarada</b> (<b>170/205</b> — tripé + exceções + declaradas, onde cada curva tem <i>estatuto com prova</i>). Uma exceção nunca conta como acerto do modelo.</p>
+<h2>2. As barras da prova e a aritmética</h2>
+<p>O <b>piso de repetibilidade</b> de uma condição é medido comparando réplicas independentes do próprio dado (janela de x comum, interpolada; três métricas: MAE, res.máx e σ). A prova da exceção compara o erro do modelo com esse piso, <b>perna a perna</b>:</p>
+<ul><li><b>PROVA</b>: erro ≤ piso — o modelo erra menos do que as réplicas discordam entre si;</li><li><b>FORTE</b>: erro ≤ piso/√2 — o modelo é tão bom quanto o preditor ideal (o centro das réplicas), que erra piso/√2 contra cada gêmea.</li></ul>
+<div class="box warn"><b>Regra endurecida em 2026-07-31:</b> a prova tem de cobrir <b>todas</b> as pernas que a curva viola — não a métrica conveniente. Duas assinaturas desta campanha foram retratadas na mesma noite por perna descoberta (ver §7), pegas pelo rigor do próprio gate.</div>
+<p>Onde existe piso <b>por condição</b> (pares de réplica declarados, §3), a barra usa o piso da <i>mesma condição</i> — nunca a média da fonte, que misturaria o scatter do colapso com o regime estável.</p>
+<h2>3. Categoria A — prova de piso POR CONDIÇÃO (5 curvas, LU_2024)</h2>
+<p>Os pisos vêm dos <b>pares de réplica declarados</b>: a Fig. 14a do paper (corridas longas, §3.1.3) repete as condições da Fig. 18/20 em corridas independentes. Medido par a par na janela comum: a 1,0 mm as gêmeas discordam com <b>MAE 0,613</b> entre si; a 0,5 mm, 0,283; a 0,25 mm, 0,094. A barra de cada assinatura está na tabela; <b>múltiplo &lt; 1 = prova válida</b>.</p>
+<table><caption>Exceções por condição — cada perna violada contra o piso da condição</caption><tr><th>curva</th><th>condição</th><th>barra</th><th>pernas violadas (tripé)</th><th>prova por perna (erro / barra = múltiplo)</th></tr>
+<tr><td class='mono'>lu2024_M8_fig20_T10Nm</td><td>1,0 mm / 22 N·m</td><td><b>PROVA</b></td><td>MAE = 0,2592 (limite 0,0500)<br>res.máx = 0,3310 (limite 0,1000)</td><td>MAE: 0,2592 / 0,6134 = <b class='ok'>0,42×</b><br>res,máx: 0,3310 / 0,8492 = <b class='ok'>0,39×</b></td></tr>
+<tr><td class='mono'>lu2024_M8_fig20_T16Nm</td><td>1,0 mm / 22 N·m</td><td><b>FORTE</b></td><td>MAE = 0,1672 (limite 0,0500)<br>res.máx = 0,2541 (limite 0,1000)</td><td>MAE: 0,1672 / 0,4337 = <b class='ok'>0,39×</b><br>res,máx: 0,2541 / 0,6005 = <b class='ok'>0,42×</b></td></tr>
+<tr><td class='mono'>lu2024_M8_fig20_T22Nm</td><td>1,0 mm / 22 N·m</td><td><b>FORTE</b></td><td>MAE = 0,0923 (limite 0,0500)<br>res.máx = 0,2138 (limite 0,1000)</td><td>MAE: 0,0923 / 0,4337 = <b class='ok'>0,21×</b><br>res,máx: 0,2138 / 0,6005 = <b class='ok'>0,36×</b></td></tr>
+<tr><td class='mono'>lu2024_M8_fig20_T28Nm</td><td>1,0 mm / 22 N·m</td><td><b>FORTE</b></td><td>MAE = 0,0984 (limite 0,0500)<br>res.máx = 0,1872 (limite 0,1000)</td><td>MAE: 0,0984 / 0,4337 = <b class='ok'>0,23×</b><br>res,máx: 0,1872 / 0,6005 = <b class='ok'>0,31×</b></td></tr>
+<tr><td class='mono'>lu2024_M8_fig18_amp0p5</td><td>0,5 mm / 22 N·m</td><td><b>FORTE</b></td><td>MAE = 0,1245 (limite 0,0500)<br>res.máx = 0,1682 (limite 0,1000)</td><td>MAE: 0,1245 / 0,2003 = <b class='ok'>0,62×</b><br>res,máx: 0,1682 / 0,4023 = <b class='ok'>0,42×</b></td></tr>
+</table>
+<p class="small">Leitura: a T22Nm, por exemplo, viola o MAE do tripé (0,05) — mas seu erro é uma fração pequena do que as próprias réplicas do ensaio discordam entre si na mesma condição. O modelo está mais perto de cada gêmea do que elas estão uma da outra.</p>
+<h2>4. Categoria B — prova de piso POR FONTE (5 curvas)</h2>
+<p>Assinadas em 2026-07-29 (F7) contra o piso de repetibilidade medido da fonte (famílias de réplicas; <span class='mono'>piso_repetibilidade_medido.md</span>). O texto de cada prova é o assinado; valores em F/F₀.</p>
+<table><tr><th>curva</th><th>fonte</th><th>prova assinada (erro / piso da fonte)</th></tr>
+<tr><td class='mono'>caccese2009_tapered_45kN_rep1</td><td>CACCESE_2009</td><td>prova de piso (FORTE): MAE 0.052/0.121</td></tr>
+<tr><td class='mono'>eccles2010_fig8a_no_axial_baseline1</td><td>ECCLES_2010</td><td>prova de piso (FORTE): res.máx 0.122/0.257 · σ 0.039/0.083</td></tr>
+<tr><td class='mono'>eccles2010_fig8c_no_axial_baseline2</td><td>ECCLES_2010</td><td>prova de piso (FORTE): res.máx 0.145/0.257 · σ 0.039/0.083</td></tr>
+<tr><td class='mono'>karlsen2022_M30_HV_run1p2</td><td>KARLSEN_2022</td><td>prova de piso (FORTE): MAE 0.060/0.235 · σ 0.031/0.174</td></tr>
+<tr><td class='mono'>karlsen2022_M30_HVtorqued_run14p2</td><td>KARLSEN_2022</td><td>prova de piso (FORTE): res.máx 0.236/0.540 · MAE 0.090/0.235 · σ 0.085/0.174</td></tr>
+</table>
+<h2>5. Categoria C — exceções F5 (16 curvas)</h2>
+<p>A primeira geração de exceções (assinadas no S4, 2026-07-28): provas de que <i>a curva ideal já violaria a meta</i> — scatter de réplicas medido, limitação em nível de lei física, ou par-a-par de espécimes. O texto é o da assinatura.</p>
+<table><tr><th>curva</th><th>fonte</th><th>prova assinada</th></tr>
+<tr><td class='mono'>bauer2024_M12_fig8_test1</td><td>BAUER_2024</td><td>scatter de réplicas (desvio-à-mediana 0.349)</td></tr>
+<tr><td class='mono'>bauer2024_M12_fig8_test2</td><td>BAUER_2024</td><td>scatter de réplicas (desvio-à-mediana 0.349)</td></tr>
+<tr><td class='mono'>bauer2024_M12_fig8_test3</td><td>BAUER_2024</td><td>scatter de réplicas (desvio-à-mediana 0.349)</td></tr>
+<tr><td class='mono'>bauer2024_M8_fig6_rep1</td><td>BAUER_2024</td><td>scatter de réplicas (desvio-à-mediana 0.328)</td></tr>
+<tr><td class='mono'>bauer2024_M8_fig6_rep4</td><td>BAUER_2024</td><td>scatter de réplicas (desvio-à-mediana 0.328)</td></tr>
+<tr><td class='mono'>bauer2024_M8_fig6_rep5</td><td>BAUER_2024</td><td>scatter de réplicas (desvio-à-mediana 0.328)</td></tr>
+<tr><td class='mono'>bauer2024_M8_fig6_rep6</td><td>BAUER_2024</td><td>scatter de réplicas (desvio-à-mediana 0.328)</td></tr>
+<tr><td class='mono'>eccles2010_fig6_annotated_4kN_axial</td><td>ECCLES_2010</td><td>sobreposição axial (G-B1 FAIL: receita PR-31 levou o res.máx de 0.467 a 1.028) — o engine não tem contorno axial externo</td></tr>
+<tr><td class='mono'>eccles2010_fig7d_axial_3p1kN_constant</td><td>ECCLES_2010</td><td>sobreposição axial — PASSA no tripé por ARTEFATO: o FLOOR_TRIM corta os 4 pontos da cauda a zero. Sai dos aprovados se a família for tratada como unidade</td></tr>
+<tr><td class='mono'>eccles2010_fig8b_axial_0p7kN_intermittent</td><td>ECCLES_2010</td><td>sobreposição axial — e o FLOOR_TRIM corta 27 dos 35 pontos, logo o MAE 0.044 é pontuado sobre 8 pontos</td></tr>
+<tr><td class='mono'>eccles2010_fig8d_axial_3p5kN_intermittent</td><td>ECCLES_2010</td><td>sobreposição axial (G-B1 FAIL: res.máx 0.252 -&gt; 0.400 com a receita)</td></tr>
+<tr><td class='mono'>jcsr2023_plain_outdoor</td><td>JCSR_2023</td><td>cliff/rebound de corrosão (forma faltante)</td></tr>
+<tr><td class='mono'>jcsr2023_stainless_seawater</td><td>JCSR_2023</td><td>cliff/rebound de corrosão (forma faltante)</td></tr>
+<tr><td class='mono'>liu2020_fig9_zinc_AF0.4mm_P0-18kN</td><td>LIU_2020_WEAR</td><td>trinca de fadiga atribuída pelo paper (§3.1.2) — a regra automática de changepoint NÃO achou o corte</td></tr>
+<tr><td class='mono'>yang2021_amp0p8mm_ax6kN</td><td>YANG_2021</td><td>canal estrutural ξ-dependente confundido</td></tr>
+<tr><td class='mono'>yang2021_fig2_typical</td><td>YANG_2021</td><td>canal estrutural ξ-dependente confundido</td></tr>
+</table>
+<h2>6. Declaradas (15 curvas) — não são exceções</h2>
+<p>Curvas em que <b>a métrica ou o dado não decidem</b> — declará-las separa “o modelo errou” de “não dá para julgar”. Critérios medidos (camada 2 da regra de parada): <i>n&lt;6</i> (σ_res sem suporte estatístico), <i>colapso quase-vertical</i> (|Δdado|&gt;0,25 entre pontos consecutivos — nenhuma métrica automática resolve), <i>escopo</i> (a condição está fora do domínio físico declarado, com as palavras do próprio paper), <i>proveniência</i> (a figura de origem é rotulada ilustração) e <i>scatter-bound</i> (o erro excede o piso da própria condição por margem pequena a n=2 réplicas).</p>
+<table><tr><th>curva</th><th>fonte</th><th>critério declarado</th></tr>
+<tr><td class='mono'>10_Yang_2023_phenomenological_model__0_15_mm_below_threshold__7</td><td>YANG_2023_IJPEM</td><td>não-julgável: n=4 &lt; 6 pontos na janela — σ_res sem suporte (regra N_MIN_SRES assinada 2026-08-01, prereg n-minimo-sres; as 2 pernas julgáveis passam — mae 0,007, mx 0,015 — mas a afirmação de tripé exige as três; reabre com dado denso)</td></tr>
+<tr><td class='mono'>10_Yang_2023_phenomenological_model__0_18_mm_below_threshold__1</td><td>YANG_2023_IJPEM</td><td>não-julgável: n=5 &lt; 6 pontos na janela — σ_res sem suporte (regra N_MIN_SRES assinada 2026-08-01; mae 0,008 / mx 0,017 passam; reabre com dado denso)</td></tr>
+<tr><td class='mono'>10_Yang_2023_phenomenological_model__0_30_mm__8</td><td>YANG_2023_IJPEM</td><td>data-limited (resolução): mediana |Δdado| = 0,180 ≥ 0,10 entre pontos consecutivos (CSV de tabela, 7 pts) — o passo típico do próprio dado vale a tolerância inteira; res.máx/σ medem amostragem (prereg 2026-08-01-resolucao-do-dado, varredura global; por delegação, &#x27;ok&#x27; de 2026-08-01; reabre com dado denso)</td></tr>
+<tr><td class='mono'>10_Yang_2023_phenomenological_model__0_35_mm__3</td><td>YANG_2023_IJPEM</td><td>data-limited (resolução): mediana |Δdado| = 0,140 ≥ 0,10 entre pontos consecutivos (CSV de tabela, 8 pts) — mesmo critério e procedência da 0_30; a 0,25 mm (salto 0,08) NÃO entra e fica na fila por mérito (previsão do prereg confirmada)</td></tr>
+<tr><td class='mono'>10_Yang_2023_phenomenological_model__0_45_mm__4</td><td>YANG_2023_IJPEM</td><td>metric-limited: colapso quase-vertical (Δdado&gt;0,25 entre pontos)</td></tr>
+<tr><td class='mono'>10_Yang_2023_phenomenological_model__0_50_mm__9</td><td>YANG_2023_IJPEM</td><td>não-julgável: n&lt;6 pontos na janela — σ_res sem suporte</td></tr>
+<tr><td class='mono'>10_Yang_2023_phenomenological_model__0_55_mm__5</td><td>YANG_2023_IJPEM</td><td>não-julgável: n&lt;6 pontos na janela — σ_res sem suporte</td></tr>
+<tr><td class='mono'>10_Yang_2023_phenomenological_model__0_65_mm__6</td><td>YANG_2023_IJPEM</td><td>não-julgável: n&lt;6 pontos na janela — σ_res sem suporte</td></tr>
+<tr><td class='mono'>lu2024_M8_fig14_amp0p25_long</td><td>LU_2024</td><td>data-limited (scatter, n=2): misfit 0,102 vs piso do par da própria condição 0,0936 (1,09×; falha a PROVA por 9%) com as gêmeas discordando 0,06 no plateau — indistinguível de scatter; reabre com 3ª réplica (prereg excecao-elastica §3)</td></tr>
+<tr><td class='mono'>lu2024_M8_fig18_amp1p5</td><td>LU_2024</td><td>metric-limited: colapso quase-vertical (Δdado&gt;0,25 entre pontos)</td></tr>
+<tr><td class='mono'>lu2024_M8_fig20_T4Nm</td><td>LU_2024</td><td>fora de escopo de junta apertada (P5, professor 2026-07-31): o próprio paper — &#x27;does not reach the tightening effect&#x27; (F₀=2105 N a 4 N·m); degradou em TODA parametrização das rodadas R1/R2 do P3</td></tr>
+<tr><td class='mono'>yang2019_M10_amp0p6_5Hz</td><td>YANG_2019</td><td>metric-limited: colapso quase-vertical (Δdado&gt;0,25 entre pontos)</td></tr>
+<tr><td class='mono'>yang2023ame_axial</td><td>YANG_2023_AME</td><td>fora de escopo de material (plano_tripe_restante Bloco 7, aprovado pelo professor em 2026-07-31 — &#x27;concordo&#x27; sobre a recomendação explícita): junta com membro CFRP — o modelo não tem relaxação viscoelástica de matriz polimérica; MAE 7,7× o limite. Reabre se uma forma de membro viscoelástico entrar no engine</td></tr>
+<tr><td class='mono'>zhang19_fig4_1e3cyc_Test1to3_preload_vs_cycles</td><td>ZHANG_2019</td><td>não-julgável: n=5 &lt; 6 pontos na janela — σ_res sem suporte (regra N_MIN_SRES assinada 2026-08-01; mae/mx passam com folga; reabre com dado denso)</td></tr>
+<tr><td class='mono'>zhang2006_fig3_illus_M12x125_20kN_amp0p35</td><td>ZHANG_2006</td><td>data-limited (proveniência): a Fig. 3 é rotulada &#x27;Illustration of self-loosening process&#x27; — rig do paper ANTERIOR (Jiang 2003/2004), end-hook desenhado &#x27;kept as drawn&#x27; (apparatus_notes/zhang2006.md)</td></tr>
+</table>
+<h3>Fora do censo (duplicatas)</h3><table><tr><th>curva</th><th>motivo</th></tr>
+<tr><td class='mono'>lu2024_M8_fig18_amp1p0</td><td>duplicata de lu2024_M8_fig20_T22Nm (mesmo teste em 2 figuras; Tabela 8@1,0mm ≡ Tabela 9@22N·m; P2, professor 2026-07-31)</td></tr>
+</table>
+<h2>7. A trilha de retiradas e retratações (26 assinaturas) — o sistema se corrige</h2>
+<p>Uma exceção é um invariante de prova: quando a prova cai (regra nova a absorve, mérito a torna desnecessária, ou um erro é encontrado), a assinatura <b>sai</b> — registrada, nunca apagada. Esta trilha é tão importante para a tese quanto as exceções vivas: ela mostra que o mecanismo não é válvula de escape.</p>
+<h3>D1 (regra do piso por fonte absorveu a prova) (19)</h3><table><tr><th>curva</th><th>registro</th></tr>
+<tr><td class='mono'>bauer2024_M8_fig6_rep2</td><td>prova de piso (FORTE): σ 0.034/0.090</td></tr>
+<tr><td class='mono'>bauer2024_M8_fig6_rep3</td><td>prova de piso (FORTE): σ 0.038/0.090</td></tr>
+<tr><td class='mono'>chu2026ti_D1p0mm_F0_49kN_test5</td><td>prova de piso (PROVA): σ 0.044/0.051</td></tr>
+<tr><td class='mono'>chu2026ti_D1p0mm_F0_49kN_test6_repeat</td><td>prova de piso (FORTE): σ 0.029/0.051</td></tr>
+<tr><td class='mono'>demir2024_amp0p3_F14p3_lk13p8</td><td>prova de piso (PROVA): σ 0.043/0.057</td></tr>
+<tr><td class='mono'>demir2024_amp0p3_F14p3_lk19p8</td><td>prova de piso (FORTE): σ 0.034/0.057</td></tr>
+<tr><td class='mono'>demir2024_amp0p3_F17p6_lk13p8</td><td>prova de piso (PROVA): σ 0.044/0.057</td></tr>
+<tr><td class='mono'>demir2024_amp0p3_F17p6_lk19p8</td><td>prova de piso (FORTE): σ 0.029/0.057</td></tr>
+<tr><td class='mono'>demir2024_amp0p4_F17p6_lk13p8</td><td>prova de piso (FORTE): σ 0.036/0.057</td></tr>
+<tr><td class='mono'>eccles2010_fig7c_axial_2p7kN_constant</td><td>prova de piso (FORTE): σ 0.026/0.083</td></tr>
+<tr><td class='mono'>jcsr2023_galv_seawater</td><td>prova de piso (FORTE): σ 0.047/0.221</td></tr>
+<tr><td class='mono'>jcsr2023_plain_seawater</td><td>prova de piso (FORTE): σ 0.037/0.221</td></tr>
+<tr><td class='mono'>karlsen2022_M30_HV_run2p2</td><td>prova de piso (FORTE): σ 0.055/0.174</td></tr>
+<tr><td class='mono'>karlsen2022_M30_HV_run6p2</td><td>prova de piso (FORTE): σ 0.030/0.174</td></tr>
+<tr><td class='mono'>karlsen2022_M30_HV_run7p1</td><td>prova de piso (FORTE): σ 0.050/0.174</td></tr>
+<tr><td class='mono'>karlsen2022_M42_HV_run21p0</td><td>prova de piso (FORTE): σ 0.034/0.174</td></tr>
+<tr><td class='mono'>rousseau2025_hdpe_t14</td><td>prova de piso (FORTE): σ 0.030/0.186</td></tr>
+<tr><td class='mono'>rousseau2025_steel_t12</td><td>prova de piso (FORTE): σ 0.031/0.186</td></tr>
+<tr><td class='mono'>sun2025efa109235_transverse_grease_crimp</td><td>prova de piso (FORTE): σ 0.030/0.066</td></tr>
+</table>
+<h3>mérito pós-adoção LIU_2016 (1)</h3><table><tr><th>curva</th><th>registro</th></tr>
+<tr><td class='mono'>liu2016wear_fig9a_m45nm</td><td>prova de piso (FORTE): MAE 0.050/0.102</td></tr>
+</table>
+<h3>piso INVÁLIDO (par cruzado 0,5×1,0 mm — retratação) (1)</h3><table><tr><th>curva</th><th>registro</th></tr>
+<tr><td class='mono'>lu2024_M8_fig20_T22Nm</td><td>RETRATADA: prova usava piso de par cruzado 0,5×1,0 mm</td></tr>
+</table>
+<h3>perna descoberta (prova F7 exige TODAS as pernas violadas) (2)</h3><table><tr><th>curva</th><th>registro</th></tr>
+<tr><td class='mono'>lu2024_M8_fig14_amp0p5_long</td><td>mx 0.604/0.569 nao coberto</td></tr>
+<tr><td class='mono'>lu2024_M8_fig14_amp1p0_long</td><td>σ 0.333/0.159 nao coberto</td></tr>
+</table>
+<h3>piso INVÁLIDO ROUSSEAU (espessuras ≠ pareadas como réplica + drive do aço 10× — erratum 2026-08-01) (3)</h3><table><tr><th>curva</th><th>registro</th></tr>
+<tr><td class='mono'>rousseau2025_hdpe_t10</td><td>prova de piso (FORTE): res.máx 0.153/0.546 · MAE 0.058/0.206 · σ 0.057/0.186</td></tr>
+<tr><td class='mono'>rousseau2025_hdpe_t12</td><td>prova de piso (FORTE): res.máx 0.138/0.546 · MAE 0.064/0.206 · σ 0.056/0.186</td></tr>
+<tr><td class='mono'>rousseau2025_steel_t10</td><td>prova de piso (FORTE): res.máx 0.188/0.546 · MAE 0.087/0.206 · σ 0.098/0.186</td></tr>
+</table>
+<h2>8. Condições de reabertura e reprodutibilidade</h2>
+<ul><li>Todo piso é <b>recomputado do store na geração</b> — se uma réplica nova entrar (ex.: a 3ª corrida de uma condição), o piso re-mede e cada prova desta página ou se sustenta ou cai.</li><li>Mudança de régua, de fingerprint do engine ou de dado reabre as provas afetadas (regra §4.43: toda pendência carrega o contexto contra o qual foi medida).</li><li>Os testes <span class='mono'>test_medicoes_cruzadas</span> (exceção-dentro-do-tripé é ruído e é acusada) e <span class='mono'>test_meta_numeros_nao_envelhecem</span> (os números publicados batem com o store) vigiam esta página em toda suíte.</li></ul>
+<p class="small">Resumo vivo: 26 exceções ativas (16 F5 + 10 F7) · 15 declaradas · 26 retiradas/retratadas registradas · tripé 129/205 · resolvida/declarada 170/205.</p>

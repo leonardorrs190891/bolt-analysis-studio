@@ -1,0 +1,5 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/83_84_Pai_Hess_2002_2003_thread_multibolt.md:35-45
+preload_pct_proof,Fcrit_UNC_N,Fcrit_UNF_N,ratio_UNF_UNC
+50,1820,2340,1.29
+70,2550,3300,1.29
+90,3280,4230,1.29

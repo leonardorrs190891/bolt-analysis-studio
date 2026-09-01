@@ -1,0 +1,12 @@
+{
+  "mu_static": "Coefficient of static friction (dry: 0.10-0.20 · lubricated: 0.05-0.12). Higher = more resistance to initial slip. Pai-Hess slip-onset uses 0.46xmu.",
+  "F_preload": "Initial clamp force F0 [kN]. Sets the joint's starting tension; loosening is measured as its decay.",
+  "percent_yield": "Preload as a fraction of bolt proof/yield. Typical target 70%.",
+  "delta_amplitude": "Transverse displacement amplitude [mm] of the imposed cyclic motion (Junker/disp-mode).",
+  "frequency": "Excitation frequency [Hz] of the cyclic load.",
+  "n_cycles": "Number of load cycles to simulate.",
+  "load_type": "TRANSVERSE (shear/Junker), AXIAL, or COMBINED loading regime.",
+  "locking_type": "Locking device: free-running, prevailing-torque, Nord-Lock, Belleville, double-nut, chemical, etc.",
+  "integrator": "Newmark-beta (default, unconditionally stable) or HHT-alpha (adds numerical damping for spurious high-freq modes).",
+  "k_thread": "Thread-contact stiffness [N/m]."
+}

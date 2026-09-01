@@ -1,0 +1,50 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>bauer2024_M8_fig6_rep2 — BAS V2 validation</title><style>
+body{margin:0;background:#e8eaed;color:#1a1e24;font-family:'Segoe UI',system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding:28px 20px 60px}
+h1{font-size:22px;margin:6px 0 2px;letter-spacing:-0.01em}
+.sub{font-family:Consolas,monospace;font-size:12px;color:#5c6570;margin:0 0 18px}
+.grid{display:grid;grid-template-columns:280px 1fr;gap:16px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+.card{background:#f8f9fa;border:1px solid #c9ced5;border-radius:8px;padding:14px 16px}
+h2{font-size:12px;font-family:Consolas,monospace;text-transform:uppercase;letter-spacing:0.08em;color:#5c6570;margin:0 0 8px}
+table{border-collapse:collapse;width:100%;font-family:Consolas,monospace;font-size:12.5px}
+td{padding:5px 4px;border-bottom:1px solid #dfe3e7;vertical-align:top}
+td:first-child{color:#5c6570;white-space:nowrap;padding-right:12px}
+tr:last-child td{border-bottom:none}
+.metric{font-size:26px;font-weight:700;color:#2f6690;font-family:Consolas,monospace}
+.cfg{font-size:12px;color:#454b54;background:#eef0f2;border-radius:6px;padding:8px 10px;margin-top:8px}
+svg{display:block;width:100%;height:auto;background:#f8f9fa;border:1px solid #c9ced5;border-radius:8px}
+a{color:#2f6690}
+.foot{font-family:Consolas,monospace;font-size:11px;color:#8b939c;margin-top:22px;border-top:1px solid #c9ced5;padding-top:10px}
+.idx td a{text-decoration:none}
+.hub{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:0 0 22px}
+.hub .card{padding:12px 14px}
+.hub a.t{font-weight:700;text-decoration:none;font-size:14px}
+.hub .d{font-size:12px;color:#454b54;margin:4px 0 6px;line-height:1.45}
+.hub .m{font-family:Consolas,monospace;font-size:11.5px;color:#2f6690;font-weight:700}
+.hgroup{font-size:12px;font-family:Consolas,monospace;text-transform:uppercase;letter-spacing:0.08em;color:#5c6570;margin:18px 0 8px}
+</style></head><body>
+<div class="wrap">
+<p class="sub"><a href="index.html">← index</a> · Bauer 2024 — M8 repeats + M12 · transverse</p>
+<h1>bauer2024_M8_fig6_rep2</h1>
+<p class="sub">Bolt Analysis Studio V2 — DynamicStiffnessAnalyzer · validation case</p>
+<svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><line x1="52" y1="326.0" x2="744" y2="326.0" stroke="#dfe3e7"/><text x="46" y="329.0" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0</text><line x1="52" y1="251.7" x2="744" y2="251.7" stroke="#dfe3e7"/><text x="46" y="254.7" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.25</text><line x1="52" y1="177.4" x2="744" y2="177.4" stroke="#dfe3e7"/><text x="46" y="180.4" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.5</text><line x1="52" y1="103.1" x2="744" y2="103.1" stroke="#dfe3e7"/><text x="46" y="106.1" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.75</text><line x1="52" y1="28.9" x2="744" y2="28.9" stroke="#dfe3e7"/><text x="46" y="31.9" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">1</text><line x1="52" y1="14" x2="52" y2="326" stroke="#c9ced5"/><line x1="52" y1="326" x2="744" y2="326" stroke="#c9ced5"/><text x="52.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">0</text><text x="398.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">84</text><text x="744.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">168</text><polyline points="52.0,28.9 56.1,30.8 64.3,34.6 68.4,36.4 72.5,38.2 80.7,41.6 84.8,43.3 93.0,46.6 97.1,48.2 101.3,49.7 109.5,52.8 113.6,54.3 117.7,55.8 125.9,58.7 130.0,60.1 138.2,63.0 142.3,64.3 146.4,65.7 154.6,68.4 158.7,69.7 162.8,71.0 171.0,73.6 175.1,74.9 179.2,76.2 187.4,78.7 191.5,79.9 199.8,82.4 203.9,83.6 208.0,84.8 216.2,87.2 220.3,88.4 224.4,89.6 232.6,91.9 236.7,93.1 240.8,94.2 249.0,96.5 253.1,97.7 261.3,100.0 265.4,101.1 269.5,102.2 277.7,104.5 281.8,105.6 286.0,106.7 294.2,109.0 298.3,110.1 306.5,112.3 310.6,113.4 314.7,114.6 322.9,116.8 327.0,117.9 331.1,119.0 339.3,121.2 343.4,122.4 347.5,123.5 355.7,125.7 359.8,126.9 368.0,129.1 372.1,130.3 376.2,131.4 384.5,133.7 388.6,134.8 392.7,136.0 400.9,138.3 405.0,139.5 409.1,140.6 417.3,143.0 421.4,144.2 429.6,146.5 433.7,147.7 437.8,149.0 446.0,151.4 450.1,152.6 454.2,153.8 462.4,156.3 466.5,157.6 474.8,160.1 478.9,161.4 483.0,162.7 491.2,165.3 495.3,166.6 499.4,167.9 507.6,170.6 511.7,172.0 515.8,173.3 524.0,176.1 528.1,177.5 536.3,180.3 540.4,181.8 544.5,183.2 552.7,186.1 556.8,187.6 560.9,189.1 569.2,192.1 573.3,193.7 577.4,195.2 585.6,198.4 589.7,199.9 597.9,203.2 602.0,204.8 606.1,206.5 614.3,209.8 618.4,211.5 622.5,213.2 630.7,216.7 634.8,218.4 643.0,222.0 647.1,223.8 651.2,225.6 659.4,229.4 663.6,231.2 667.7,233.1 675.9,237.0 680.0,238.9 684.1,240.9 692.3,244.9 696.4,246.9 704.6,250.9 708.7,253.0 712.8,255.0 721.0,259.2 725.1,261.3 729.2,263.4 737.4,267.6 741.5,269.7 745.6,271.9 753.9,276.1 758.0,278.2 766.2,282.3 770.3,284.3 774.4,286.3 782.6,290.2 786.7,292.1 790.8,293.9 799.0,297.3 803.1,298.9 811.3,301.7 815.4,303.0 819.5,304.1 827.7,306.0 831.8,306.8" fill="none" stroke="#2f6690" stroke-width="2.4" stroke-linejoin="round"/><circle cx="52.0" cy="28.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="95.5" cy="61.6" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="136.6" cy="77.4" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="235.1" cy="105.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="292.5" cy="115.4" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="350.0" cy="129.7" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="366.4" cy="137.6" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="423.9" cy="151.8" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="563.4" cy="202.5" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="579.8" cy="202.5" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="645.5" cy="227.8" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="653.7" cy="240.5" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="744.0" cy="281.6" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><text x="398" y="358" text-anchor="middle" font-size="12" fill="#454b54" font-family="Segoe UI">ciclos N</text><text x="14" y="170" text-anchor="middle" font-size="12" fill="#454b54" font-family="Segoe UI" transform="rotate(-90 14 170)">F / F₀  (razão de pré-carga) [–]</text></svg>
+<div class="grid" style="margin-top:16px">
+<div class="card"><h2>Boundary conditions</h2><table><tr><td>bolt</td><td>M8x1.25</td></tr><tr><td>F₀</td><td>20.0 kN</td></tr><tr><td>amplitude</td><td>±0.07 mm (disp-controlled)</td></tr><tr><td>frequency</td><td>12.5 Hz</td></tr><tr><td>grip</td><td>8 mm (paper)</td></tr><tr><td>μ</td><td>0.15 (assumed)</td></tr><tr><td>surface</td><td>Rz10-40 (assumed)</td></tr><tr><td>F_amp</td><td>8.0 kN (0.4·F₀ — lit.: Pai&Hess 2002 mediu 0.38–0.49)</td></tr><tr><td>cycles</td><td>168</td></tr></table>
+<div class="cfg"><b>Configuration:</b> baseline (model at the data's repeat-scatter floor 0.115)</div></div>
+<div class="card"><h2>Result</h2>
+<div class="metric">MAE 0.0287</div>
+<table style="margin-top:8px">
+<tr><td>final F/F₀ (data)</td><td>0.149</td></tr>
+<tr><td>final F/F₀ (model)</td><td>0.065</td></tr>
+<tr><td>final error</td><td>-0.085</td></tr>
+<tr><td>N to F/F₀=0.5 (data)</td><td>108</td></tr><tr><td>N to F/F₀=0.5 (model)</td><td>116</td></tr><tr><td><b>life ratio (model/data)</b></td><td><b>1.08×</b> (factor-2 band is the fatigue-engineering norm)</td></tr><tr><td>repeat-scatter floor</td><td>0.115 (6 repeats fig6) — the data's own repeats disagree by this much; MAE at/below it is unimprovable</td></tr>
+<tr><td>family</td><td>transverse</td></tr></table>
+<div class="cfg">Dots = digitized paper data; line = model at the declared per-rig
+configuration. Verdicts and falsification records: <code>New_Theory/MODEL_LEGITIMACY.md</code>
+§4.12–§4.15.</div></div></div>
+<p class="foot"><a href="bauer2024_M8_fig6_rep1.html">← prev</a> · <a href="bauer2024_M8_fig6_rep3.html">next →</a> · generated 2026-07-08 · configs and constants carry declared provenance
+(paper / handbook / assumed / read-from-data / fitted-this-rig)</p>
+</div></body></html>

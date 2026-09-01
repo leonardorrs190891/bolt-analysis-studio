@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/51_52_53_54_axial_fatiguewear_noload_energy.md:88-97
+retighten_cycle,Ra_um,surface_condition
+0,0.8,new_machining_marks
+1,1.2,light_scratching_adhesive_particles
+3,2.0,moderate_plowing_zinc_worn_through
+5,2.8,severe_deformation_micropitting
+10,3.2,stabilized_damage_oxide_layer

@@ -1,0 +1,1205 @@
+{
+ "prereg": "docs/superpowers/specs/2026-07-21-master-f2-onda-b-prereg.md",
+ "fonte": "JCSR_2023",
+ "casos": [
+  "jcsr2023_galv_seawater",
+  "jcsr2023_plain_indoor",
+  "jcsr2023_plain_outdoor",
+  "jcsr2023_plain_seawater",
+  "jcsr2023_stainless_seawater"
+ ],
+ "baseline": {
+  "jcsr2023_galv_seawater": {
+   "mae": 0.31149588749442586,
+   "maxerr": 0.427681362916424
+  },
+  "jcsr2023_plain_indoor": {
+   "mae": 0.0008646556364157509,
+   "maxerr": 0.002103713900186044
+  },
+  "jcsr2023_plain_outdoor": {
+   "mae": 0.21824345468946965,
+   "maxerr": 0.3370397844928199
+  },
+  "jcsr2023_plain_seawater": {
+   "mae": 0.1848862547223797,
+   "maxerr": 0.27429046723192874
+  },
+  "jcsr2023_stainless_seawater": {
+   "mae": 0.27917155069853167,
+   "maxerr": 0.4132608852782753
+  }
+ },
+ "escopo_nota": "Caccese/Qin/MarStruc excluídos: 0 violadores (no_piso não se persegue, parcimônia); Nah2014 não wired",
+ "fit": {
+  "creep_t_c": 1000000.0,
+  "creep_alpha_sat": 1.65
+ },
+ "tripe_fitado": {
+  "jcsr2023_galv_seawater": {
+   "mae": 0.47539387765537594,
+   "maxerr": 0.6731475960205273
+  },
+  "jcsr2023_plain_indoor": {
+   "mae": 0.003448096843732895,
+   "maxerr": 0.007296987174800984
+  },
+  "jcsr2023_plain_outdoor": {
+   "mae": 0.0942825810095345,
+   "maxerr": 0.24941069622660672
+  },
+  "jcsr2023_plain_seawater": {
+   "mae": 0.31805465275035943,
+   "maxerr": 0.5238271435846795
+  },
+  "jcsr2023_stainless_seawater": {
+   "mae": 0.3466670131652335,
+   "maxerr": 0.6611475960205273
+  }
+ },
+ "mediana": {
+  "antes": 0.21824345468946965,
+  "depois": 0.31805465275035943
+ },
+ "violadores": {
+  "antes": 4,
+  "depois": 4
+ },
+ "grade": {
+  "tc=1.000e+02,a=0.40": {
+   "jcsr2023_plain_seawater": {
+    "mae": 0.31868302947969124,
+    "maxerr": 0.5234364958398369,
+    "ok": true
+   },
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47246043602045606,
+    "maxerr": 0.6727569482176954,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.0953073716648173,
+    "maxerr": 0.24902004848224235,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.003459143810750942,
+    "maxerr": 0.0072866471394889,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.34786707950431045,
+    "maxerr": 0.6607569482176954,
+    "ok": true
+   }
+  },
+  "tc=1.000e+02,a=0.73": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47246043592007786,
+    "maxerr": 0.6727569481013893,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.318683029400392,
+    "maxerr": 0.5234364957235308,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3478670794636037,
+    "maxerr": 0.6607569481013893,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09530737170233566,
+    "maxerr": 0.24902004836593628,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034591438069174864,
+    "maxerr": 0.007286647132518809,
+    "ok": true
+   }
+  },
+  "tc=1.000e+02,a=1.07": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47246043592007786,
+    "maxerr": 0.6727569481013893,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034591438069174864,
+    "maxerr": 0.007286647132518809,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3478670794636037,
+    "maxerr": 0.6607569481013893,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.318683029400392,
+    "maxerr": 0.5234364957235308,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09530737170233566,
+    "maxerr": 0.24902004836593628,
+    "ok": true
+   }
+  },
+  "tc=1.000e+02,a=1.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47246043592007786,
+    "maxerr": 0.6727569481013893,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034591438069174864,
+    "maxerr": 0.007286647132518809,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09530737170233566,
+    "maxerr": 0.24902004836593628,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.318683029400392,
+    "maxerr": 0.5234364957235308,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3478670794636037,
+    "maxerr": 0.6607569481013893,
+    "ok": true
+   }
+  },
+  "tc=1.000e+03,a=0.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.472461190620589,
+    "maxerr": 0.6727578997730277,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.003459172012785161,
+    "maxerr": 0.0072867033482577614,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09530705761374135,
+    "maxerr": 0.24902100003757477,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.31868366827755595,
+    "maxerr": 0.5234374473951693,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3478674015472268,
+    "maxerr": 0.6607578997730277,
+    "ok": true
+   }
+  },
+  "tc=1.000e+03,a=0.73": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4724604359200788,
+    "maxerr": 0.6727569481013904,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034591438069176083,
+    "maxerr": 0.007286647132519031,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.31868302940039267,
+    "maxerr": 0.523436495723532,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.34786707946360407,
+    "maxerr": 0.6607569481013904,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09530737170233529,
+    "maxerr": 0.2490200483659375,
+    "ok": true
+   }
+  },
+  "tc=1.000e+03,a=1.07": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47246043592007786,
+    "maxerr": 0.6727569481013893,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034591438069174864,
+    "maxerr": 0.007286647132518809,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09530737170233566,
+    "maxerr": 0.24902004836593628,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.318683029400392,
+    "maxerr": 0.5234364957235308,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3478670794636037,
+    "maxerr": 0.6607569481013893,
+    "ok": true
+   }
+  },
+  "tc=1.000e+03,a=1.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47246043592007786,
+    "maxerr": 0.6727569481013893,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034591438069174864,
+    "maxerr": 0.007286647132518809,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09530737170233566,
+    "maxerr": 0.24902004836593628,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3478670794636037,
+    "maxerr": 0.6607569481013893,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.318683029400392,
+    "maxerr": 0.5234364957235308,
+    "ok": true
+   }
+  },
+  "tc=1.000e+04,a=0.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47248852293314453,
+    "maxerr": 0.6727920908445568,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034580827836468487,
+    "maxerr": 0.007288546723483669,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3186968046855639,
+    "maxerr": 0.5234716182601092,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09528730760127317,
+    "maxerr": 0.2490551530758407,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3478661679402384,
+    "maxerr": 0.6607920908445568,
+    "ok": true
+   }
+  },
+  "tc=1.000e+04,a=0.73": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47246282414297464,
+    "maxerr": 0.6727597309731566,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034592352220464253,
+    "maxerr": 0.0072868133982491035,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09530647392476597,
+    "maxerr": 0.24902283123770352,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3478680533493729,
+    "maxerr": 0.6607597309731565,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3186849267044611,
+    "maxerr": 0.523439278595298,
+    "ok": true
+   }
+  },
+  "tc=1.000e+04,a=1.07": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47246045042018087,
+    "maxerr": 0.6727569648909822,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09530736628633793,
+    "maxerr": 0.2490200651555292,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.31868304084784166,
+    "maxerr": 0.5234365125131237,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034591443606499074,
+    "maxerr": 0.007286648139305019,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.34786708533996125,
+    "maxerr": 0.6607569648909822,
+    "ok": true
+   }
+  },
+  "tc=1.000e+04,a=1.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4724604359204793,
+    "maxerr": 0.6727569481018542,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034591438069328405,
+    "maxerr": 0.007286647132546675,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3186830294007088,
+    "maxerr": 0.5234364957239956,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3478670794637663,
+    "maxerr": 0.6607569481018541,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.0953073717021857,
+    "maxerr": 0.24902004836640113,
+    "ok": true
+   }
+  },
+  "tc=1.000e+05,a=0.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4731963027437666,
+    "maxerr": 0.6730258521227009,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034465078937360783,
+    "maxerr": 0.007300941312749831,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.31881956419116003,
+    "maxerr": 0.5236814743546823,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09496103096369944,
+    "maxerr": 0.2492190753796174,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3477413226645279,
+    "maxerr": 0.6610258521227009,
+    "ok": true
+   }
+  },
+  "tc=1.000e+05,a=0.73": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4725336621999317,
+    "maxerr": 0.6728838121922865,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.003451809562974961,
+    "maxerr": 0.0072931743897228785,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.0952302002620145,
+    "maxerr": 0.24914691242982556,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.31871976351125303,
+    "maxerr": 0.5235633597907686,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.34785531598875064,
+    "maxerr": 0.6608838121922865,
+    "ok": true
+   }
+  },
+  "tc=1.000e+05,a=1.07": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47251777229939956,
+    "maxerr": 0.6728736720058713,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034606889559078815,
+    "maxerr": 0.007293033121962056,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09526478525038509,
+    "maxerr": 0.24913677227041842,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3187556620262505,
+    "maxerr": 0.5235532196280129,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3479002857818899,
+    "maxerr": 0.6608736720058713,
+    "ok": true
+   }
+  },
+  "tc=1.000e+05,a=1.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4725386562447142,
+    "maxerr": 0.6728682818158965,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.003462459941669055,
+    "maxerr": 0.007292856572139295,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09527121172186884,
+    "maxerr": 0.2491313820804435,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.34790566515121124,
+    "maxerr": 0.6608682818158965,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3187585922853105,
+    "maxerr": 0.523547829438038,
+    "ok": true
+   }
+  },
+  "tc=1.000e+06,a=0.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47687199042288664,
+    "maxerr": 0.6754420646024047,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0037620842071738768,
+    "maxerr": 0.007658455872037506,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.32076241439168107,
+    "maxerr": 0.5258289536983733,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09340099917408898,
+    "maxerr": 0.25077938623362006,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.348590794403143,
+    "maxerr": 0.6633808689479443,
+    "ok": true
+   }
+  },
+  "tc=1.000e+06,a=0.73": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4759243998053247,
+    "maxerr": 0.6735908851903382,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09388491372976987,
+    "maxerr": 0.24950123402068158,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.003435869470372632,
+    "maxerr": 0.007314816387980372,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3473610143601159,
+    "maxerr": 0.6615764285899617,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3193368363398834,
+    "maxerr": 0.5241279572258868,
+    "ok": true
+   }
+  },
+  "tc=1.000e+06,a=1.07": {
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034082737859898295,
+    "maxerr": 0.007297072199097365,
+    "ok": true
+   },
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47553526584562017,
+    "maxerr": 0.6731748909138588,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3186039596999093,
+    "maxerr": 0.5238424684445143,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09416679853075138,
+    "maxerr": 0.24941961978800542,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.34684707633152023,
+    "maxerr": 0.6611748909138588,
+    "ok": true
+   }
+  },
+  "tc=1.000e+06,a=1.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4754168453354042,
+    "maxerr": 0.6731494354389463,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.003430440347530289,
+    "maxerr": 0.00729702534642962,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09425777459409443,
+    "maxerr": 0.24941246771162462,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3182288355400605,
+    "maxerr": 0.5238289203402586,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3466964342693766,
+    "maxerr": 0.6611494354389463,
+    "ok": true
+   }
+  },
+  "tc=1.000e+07,a=0.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4822232419917889,
+    "maxerr": 0.6811465391358844,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0050464557963083466,
+    "maxerr": 0.008977449910364421,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09141122299058742,
+    "maxerr": 0.25592348415665434,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3252568109416213,
+    "maxerr": 0.53138710261086,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3512717237306188,
+    "maxerr": 0.6690376198336822,
+    "ok": true
+   }
+  },
+  "tc=1.000e+07,a=0.73": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.48426625904998133,
+    "maxerr": 0.6826137624021374,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.00536684572532436,
+    "maxerr": 0.008957143383375166,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09030968040397307,
+    "maxerr": 0.25595421450540634,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3266921940901804,
+    "maxerr": 0.5322781717552131,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.35179144049818456,
+    "maxerr": 0.6701853951899082,
+    "ok": true
+   }
+  },
+  "tc=1.000e+07,a=1.07": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4856399832739582,
+    "maxerr": 0.6840009205675533,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.005589172282386418,
+    "maxerr": 0.008936639539140367,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3278655848849616,
+    "maxerr": 0.5330984520346709,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.08947905648921539,
+    "maxerr": 0.2559351041475467,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3524018225822769,
+    "maxerr": 0.6712338141017816,
+    "ok": true
+   }
+  },
+  "tc=1.000e+07,a=1.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4865832919029154,
+    "maxerr": 0.6851958786978788,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.005743570857003916,
+    "maxerr": 0.008916122663287007,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.08884222998340029,
+    "maxerr": 0.25588694422128433,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.32877802646091153,
+    "maxerr": 0.5338614984027359,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.35299755097903074,
+    "maxerr": 0.6721896868796373,
+    "ok": true
+   }
+  },
+  "tc=1.000e+08,a=0.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4861355383267286,
+    "maxerr": 0.6861075664545507,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.006186202453957434,
+    "maxerr": 0.010393972803338758,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.0902516913778303,
+    "maxerr": 0.2613680995711013,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3288516842915616,
+    "maxerr": 0.5365229751232485,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3536925309337405,
+    "maxerr": 0.6740624846951301,
+    "ok": true
+   }
+  },
+  "tc=1.000e+08,a=0.73": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.48845890263006786,
+    "maxerr": 0.6889370286790798,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0068264169907330694,
+    "maxerr": 0.01113493877335714,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.330954400671016,
+    "maxerr": 0.5393896256600283,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.08948253129690652,
+    "maxerr": 0.2642347219338259,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3550707763675263,
+    "maxerr": 0.6769076315454156,
+    "ok": true
+   }
+  },
+  "tc=1.000e+08,a=1.07": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.48925521644377756,
+    "maxerr": 0.6901725444474833,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.007100882609208592,
+    "maxerr": 0.01154195992797391,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.08932245177222335,
+    "maxerr": 0.2657887998813685,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3317599301339634,
+    "maxerr": 0.5407268833361365,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.35568689130809694,
+    "maxerr": 0.6781725444474833,
+    "ok": true
+   }
+  },
+  "tc=1.000e+08,a=1.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4895257093763337,
+    "maxerr": 0.6906929021646281,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.007217901997051751,
+    "maxerr": 0.011747837769902958,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.08932554948914033,
+    "maxerr": 0.2665716430617384,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3559311545253445,
+    "maxerr": 0.6786929021646281,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3320504737803986,
+    "maxerr": 0.5413042469274758,
+    "ok": true
+   }
+  },
+  "tc=3.162e+05,a=1.15": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4731418239905013,
+    "maxerr": 0.6729773647028421,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09507109273847768,
+    "maxerr": 0.24924046496738728,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0034173155599763307,
+    "maxerr": 0.007296022853046313,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.34769728115028664,
+    "maxerr": 0.6609773647028421,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.31860410701356423,
+    "maxerr": 0.5236569123249818,
+    "ok": true
+   }
+  },
+  "tc=3.162e+05,a=1.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47306831915703723,
+    "maxerr": 0.6729733422836945,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09510520975610008,
+    "maxerr": 0.2492364425482415,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.003418717251758507,
+    "maxerr": 0.007295968141832754,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3186441779853688,
+    "maxerr": 0.523652889905836,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.34774629142457303,
+    "maxerr": 0.6609733422836945,
+    "ok": true
+   }
+  },
+  "tc=3.162e+05,a=1.65": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4730242974931343,
+    "maxerr": 0.6729703122304466,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.003421946510003898,
+    "maxerr": 0.007295855776318305,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.31867216275290955,
+    "maxerr": 0.523649859852588,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.34777810440991186,
+    "maxerr": 0.6609703122304466,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09512759141444568,
+    "maxerr": 0.24923341249499353,
+    "ok": true
+   }
+  },
+  "tc=5.623e+05,a=1.15": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47404461523250047,
+    "maxerr": 0.6730495785702457,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.00338548807651618,
+    "maxerr": 0.007296668111837379,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.31836886059403924,
+    "maxerr": 0.5237291228609854,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.34730230090541603,
+    "maxerr": 0.6610495785702457,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09476418505628084,
+    "maxerr": 0.24931267522202594,
+    "ok": true
+   }
+  },
+  "tc=5.623e+05,a=1.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47397565577190426,
+    "maxerr": 0.673044851518296,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0033781285931867634,
+    "maxerr": 0.007296632100303513,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.31833688988316966,
+    "maxerr": 0.5237243991404231,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.0948063726767091,
+    "maxerr": 0.2493079517828285,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3473517855307586,
+    "maxerr": 0.661044851518296,
+    "ok": true
+   }
+  },
+  "tc=5.623e+05,a=1.65": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47395166902008795,
+    "maxerr": 0.6730422303341044,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0033695952362414296,
+    "maxerr": 0.007296565034824787,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09482737163022262,
+    "maxerr": 0.24930533059865145,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3183380484680317,
+    "maxerr": 0.5237217779562459,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.347381104402941,
+    "maxerr": 0.6610422303341044,
+    "ok": true
+   }
+  },
+  "tc=1.000e+06,a=1.15": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47549049029469775,
+    "maxerr": 0.6731599876920092,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.00341278321560321,
+    "maxerr": 0.007297049007560563,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3184883024758225,
+    "maxerr": 0.523835051424817,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09419995359993277,
+    "maxerr": 0.24941697040480693,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.34678874106980856,
+    "maxerr": 0.6611599876920092,
+    "ok": true
+   }
+  },
+  "tc=1.000e+06,a=1.65": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47539387765537594,
+    "maxerr": 0.6731475960205273,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.003448096843732895,
+    "maxerr": 0.007296987174800984,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.0942825810095345,
+    "maxerr": 0.24941069622660672,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.31805465275035943,
+    "maxerr": 0.5238271435846795,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3466670131652335,
+    "maxerr": 0.6611475960205273,
+    "ok": true
+   }
+  },
+  "tc=1.778e+06,a=1.15": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.477650493899311,
+    "maxerr": 0.6736236629771161,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.003654054443157856,
+    "maxerr": 0.007299609132474738,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.319860765778373,
+    "maxerr": 0.524123907132463,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09321305979958687,
+    "maxerr": 0.2495713875253177,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3468665353923307,
+    "maxerr": 0.6615842591725003,
+    "ok": true
+   }
+  },
+  "tc=1.778e+06,a=1.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47762054124425807,
+    "maxerr": 0.6733658323509986,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0036369219397736794,
+    "maxerr": 0.007297303840841929,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.31954878291980665,
+    "maxerr": 0.5240006319170826,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09329676450210217,
+    "maxerr": 0.24956335572188493,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.346453684339787,
+    "maxerr": 0.6613658323509986,
+    "ok": true
+   }
+  },
+  "tc=1.778e+06,a=1.65": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.47763190296171026,
+    "maxerr": 0.673310321764062,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.0036302598630026605,
+    "maxerr": 0.007297248271282308,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.31933789867769197,
+    "maxerr": 0.523982256977128,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3461585996828484,
+    "maxerr": 0.661310321764062,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09333272133032876,
+    "maxerr": 0.2495644074463581,
+    "ok": true
+   }
+  },
+  "tc=3.162e+06,a=1.15": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.48049088278807006,
+    "maxerr": 0.6763235632513409,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.004175069731112585,
+    "maxerr": 0.007389504063148755,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.322483946435155,
+    "maxerr": 0.5256069223837261,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09169133088016361,
+    "maxerr": 0.2500603398194795,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.34823245214250176,
+    "maxerr": 0.6635349759290482,
+    "ok": true
+   }
+  },
+  "tc=3.162e+06,a=1.40": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4806438207613425,
+    "maxerr": 0.6757989452911671,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.004170796819468442,
+    "maxerr": 0.007321201774822428,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09168624346586057,
+    "maxerr": 0.24983768035807763,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3224207246802935,
+    "maxerr": 0.5250251148284152,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.34784975662638024,
+    "maxerr": 0.6629122361567709,
+    "ok": true
+   }
+  },
+  "tc=3.162e+06,a=1.65": {
+   "jcsr2023_galv_seawater": {
+    "mae": 0.4807645365977221,
+    "maxerr": 0.6753110947540084,
+    "ok": true
+   },
+   "jcsr2023_plain_indoor": {
+    "mae": 0.004179226582039131,
+    "maxerr": 0.007301266095884662,
+    "ok": true
+   },
+   "jcsr2023_plain_outdoor": {
+    "mae": 0.09170275876382693,
+    "maxerr": 0.24978172277986121,
+    "ok": true
+   },
+   "jcsr2023_plain_seawater": {
+    "mae": 0.3223974439091268,
+    "maxerr": 0.524631311200765,
+    "ok": true
+   },
+   "jcsr2023_stainless_seawater": {
+    "mae": 0.3475354239048897,
+    "maxerr": 0.6624218403788587,
+    "ok": true
+   }
+  }
+ },
+ "verdict": "FAIL"
+}

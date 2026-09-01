@@ -1,0 +1,210 @@
+{
+ "bauer2024_efa": [
+  {
+   "pag": 7,
+   "n": 6,
+   "frase": "For the performed tests the initial preload loss was empirically determined to 10 % of the initial preload for a loosening probability PL = 10 % and to 5 % of the initial preload for a loosening probability PL = 50 % and to 0 % of the initial preload for a loosening probability PL = 90 %."
+  },
+  {
+   "pag": 8,
+   "n": 3,
+   "frase": "Each group contains three bars which show the calculated number of cycles, using the boundary curve parameters for loosening probabilities of PL = 10 %, PL = 50 % and PL = 90 %."
+  },
+  {
+   "pag": 3,
+   "n": 2,
+   "frase": "With the evaluated standard deviations such lines were also generated for loosening probabilities of 10 % or 90 % (Fig."
+  },
+  {
+   "pag": 6,
+   "n": 2,
+   "frase": "For both evaluated courses an initial preload loss of ΔFV,init = 1 kN is assumed, which corresponds to 5 % of initial preload."
+  },
+  {
+   "pag": 7,
+   "n": 2,
+   "frase": "The chosen spectrum contains 18 cycles with a displacement amplitude which corresponds to 80 % of the critical displacement scrit(FM) at the initial preload FM and will not initially lead to self-loosening."
+  },
+  {
+   "pag": 7,
+   "n": 2,
+   "frase": "The two dashed lines also show the calculated results for loosening probabilities of PL = 10 % and PL = 90 %."
+  },
+  {
+   "pag": 7,
+   "n": 2,
+   "frase": "When the remaining preload reaches a level of FV = 35 kN up to FV = 40 kN, the preload starts to decrease faster and asymptotically approaches a steeper linear course."
+  },
+  {
+   "pag": 7,
+   "n": 2,
+   "frase": "For identical connections but with an initial preload of FM = 35 kN, a critical displacement of scrit = 76 µm at a loosening probability of PL = 50 % was experimentally observed."
+  }
+ ],
+ "demir2024_ejrnd_M8": [
+  {
+   "pag": 13,
+   "n": 2,
+   "frase": "Slight over-predictions are observed at higher loosening rates (> 0.07 kN/cycle), which are primarily associated with high-displacement (0.4 mm) and low clamping load (14.3 kN) conditions."
+  }
+ ],
+ "karlsen2022_M30M42": [
+  {
+   "pag": 7,
+   "n": 4,
+   "frase": "The HV reference bolts lost 86–92% of their preload before 400 cycles, while the bolt locking systems had a loss of 3–9% before 3000 cycles, for the same tests."
+  },
+  {
+   "pag": 7,
+   "n": 3,
+   "frase": "The HV bolt system had a preload loss of 86–92% within 200–400 trans­ versal load cycles, while the novel locking bolt system had a loss of only 3–9% within 3000 cycles."
+  },
+  {
+   "pag": 9,
+   "n": 3,
+   "frase": "In the non-linear analysis, the corresponding preloads required to reach the locking nut preload of 930 kN were 32 105 kN from the FE analysis and 32 890 kN as calculated from Eq."
+  },
+  {
+   "pag": 1,
+   "n": 2,
+   "frase": "[12] indicated that surveys from the USA show that up to 23% of all car service problems were related to loosening fasteners, and even for new cars around 12% had this problem."
+  },
+  {
+   "pag": 2,
+   "n": 2,
+   "frase": "In general, it is commonly accepted practice that up to 85–90% of the input-torque in threaded fasteners is converted into heat when overcoming the two main friction torque components, and down to 10–15% contributes to increased preload in the bolt [12,18], if not sufficient or correct lubrication is applied."
+  }
+ ],
+ "liu2017_triboint_axial": [
+  {
+   "pag": 5,
+   "n": 4,
+   "frase": "OM morphologies of the first three thread surfaces at varying preloads (AF=10 kN): (a) P0=15 kN; (b) P0=18 kN; (c) P0=21 kN"
+  },
+  {
+   "pag": 4,
+   "n": 3,
+   "frase": "Considering that the error of torque wrenches can reach ±20%, the preloads of 15 kN and 21 kN are selected."
+  },
+  {
+   "pag": 7,
+   "n": 3,
+   "frase": "SEM images of the first thread surface at varying preloads (AF=10 kN): (a) P0=15 kN; (b) P0=21 kN Fig."
+  },
+  {
+   "pag": 4,
+   "n": 2,
+   "frase": "(1), the recommended preload is determined and it ranges from 16.4 kN to 19.2 kN."
+  },
+  {
+   "pag": 4,
+   "n": 2,
+   "frase": "In order to better study the effect of preload on the self-loosening behaviour of bolted joints, interpolation of above three levels of preload has been conducted, and the preloads of 16.5 kN and 19.5 kN are also selected."
+  },
+  {
+   "pag": 4,
+   "n": 2,
+   "frase": "In this study, the numerical results show that under the preload of 18 kN, one of the connected parts is separated from its adjacent part when the axial excitation, Fe ( e F F = - cos(60 ) π ⋅ F A A t ), reaches 18.5 kN, and the clamp force drops to zero."
+  },
+  {
+   "pag": 6,
+   "n": 2,
+   "frase": "4 shows the wear micrographs of the first thread surface for the preload of 15 kN and 21 kN."
+  },
+  {
+   "pag": 6,
+   "n": 2,
+   "frase": "4(b), the damage of the first thread surface for the preload of 21 kN gets slighter than that for the preload of 15 kN, and delamination phenomenon occurs at the crest of the thread."
+  },
+  {
+   "pag": 13,
+   "n": 2,
+   "frase": "(3), the equivalent stress at the thread root can be determined when a preload of 18kN is applied to the uncoated bolt, and then the preload for the coated MoS2 bolt, which results in the same equivalent stress as that of the uncoated bolt at the thread root, can be determined as 0 21.5 kN P = (6) Tab."
+  },
+  {
+   "pag": 20,
+   "n": 2,
+   "frase": "Under the preload of 18 kN, the top fixture is separated from the load cell when the axial excitation reaches 18.5 kN."
+  },
+  {
+   "pag": 20,
+   "n": 2,
+   "frase": "It is found that the separation of the top fixture and the load cell does not occur under the preload of 21 kN until the axial excitation reaches 20 kN."
+  },
+  {
+   "pag": 21,
+   "n": 2,
+   "frase": "As discussed before, the top fixture is separated from the load cell and all the axial excitation adds to the bolt at t3 when the preload is 15kN and 18 kN."
+  }
+ ],
+ "liu2025_scirep_M16": [
+  {
+   "pag": 9,
+   "n": 2,
+   "frase": "Because the pre-tightening force of the M16 bolts in the loosening life tests was 60 kN, to verify the accuracy of the normalized Su–N curve for evaluating the bolt-loosening life of the same bolt under different pre-tightening forces, the pre-tightening force of the bolt was set to 20 kN in the bench test."
+  }
+ ],
+ "lu2024_sensors_M8": [
+  {
+   "pag": 18,
+   "n": 6,
+   "frase": "After 100 cycles of tangential 1 mm displacement, the remaining pre-loading is 78 N, 1845 N, 1568 N, 742 N, and 3523 N, respectively, and the specific decay percentages are shown in Table 9."
+  },
+  {
+   "pag": 18,
+   "n": 5,
+   "frase": "The initial pre-loading is 2105 N, 5963 N, 8402 N, 11,567 N, and 15,027 N, respectively."
+  },
+  {
+   "pag": 13,
+   "n": 3,
+   "frase": "The torque of 22 Nm was applied in the three groups of experiments, and the initial pre-loading values were 12,398 N, 12,285 N, and 12,696 N, respectively."
+  },
+  {
+   "pag": 13,
+   "n": 2,
+   "frase": "At the end of the experiment, 10,539 N of pre-loading remained, with a loss of only 15%."
+  },
+  {
+   "pag": 16,
+   "n": 2,
+   "frase": "The pre-loading loss is only 22.0% after 100 cycles."
+  }
+ ],
+ "rousseau2025_materials_M12": [],
+ "yang2019_sv_M10": [
+  {
+   "pag": 4,
+   "n": 6,
+   "frase": "Item Low cycle 90% Low cycle 80% Low cycle 70% High cycle 90% High cycle 80% High cycle 70% m 20.732 15.526 11.010 2.386 2.028 2.028 C 12.000 63.000 193.000 963.829 1674.943 1825.324 Table 5: Summary of line expressions of the loosening D-N curve."
+  },
+  {
+   "pag": 4,
+   "n": 3,
+   "frase": "1 Amplitude (mm) Inflection point (about 2500 times) Low-cycle loosening High-cycle loosening 90% residual preload 80% residual preload 70% residual preload 10 100 1000 10000 1 Vibration times Figure 8: Low-cycle loosening and high-cycle loosening of the loosening D-N curve."
+  },
+  {
+   "pag": 5,
+   "n": 3,
+   "frase": "Te values of vibration time were recorded, respectively, when the residual preload reached 80% and reached 70% from 80%."
+  },
+  {
+   "pag": 5,
+   "n": 2,
+   "frase": "Te vibration times note as n0.8−1 when the residual preload decreased to 70% from 80% with displacement amplitude at 0.8 mm."
+  },
+  {
+   "pag": 5,
+   "n": 2,
+   "frase": "Te vibration times note as n0.6−2 when the residual preload decreased to 70% from 80% with displacement amplitude at 0.6 mm."
+  }
+ ],
+ "yang2021_sv_combined": [
+  {
+   "pag": 8,
+   "n": 3,
+   "frase": "Figure 7 shows the comparison of macrofracture mor- phology and simulation stress of the bolts under a pure axial load of 0 mm–12 kN (Mode I, fatigue failure), a composite load of 0.6 mm–8 kN (Mode II, critical competition failure), and a pure transverse load of 0.6 mm–0 kN (Mode III, loosening failure)."
+  }
+ ],
+ "yang2025_materials_M8": []
+}

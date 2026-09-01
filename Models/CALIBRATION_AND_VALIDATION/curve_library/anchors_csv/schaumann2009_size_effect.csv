@@ -1,0 +1,9 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/96_Schaumann_2009_2015_large_bolt_VDI.md:46-61
+bolt,sigmaD_exp_MPa,sigmaD_VDI_MPa,VDI_overestimate_pct,flag
+M12,95,98,3,
+M16,88,93,6,
+M20,82,88,7,
+M24,78,85,9,
+M30,72,80,11,
+M36,63,75,19,
+M42,57,72,26,extrapolated

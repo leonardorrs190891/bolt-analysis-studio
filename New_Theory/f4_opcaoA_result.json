@@ -1,0 +1,97 @@
+{
+ "secao": "OPÇÃO A — leituras puras (PARE F4)",
+ "n_pass": 21,
+ "excecao_unica": true,
+ "controles": true,
+ "tripe": {
+  "liu2020_fig5b_zinc_P0-12kN_AF0.2mm": {
+   "mae": 0.010254422586962731,
+   "maxerr": 0.02441789380512449
+  },
+  "liu2020_fig5b_zinc_P0-18kN_AF0.2mm": {
+   "mae": 0.00896797170347511,
+   "maxerr": 0.02052686037117124
+  },
+  "liu2020_fig5b_zinc_P0-24kN_AF0.2mm": {
+   "mae": 0.006568288015294036,
+   "maxerr": 0.013537101116340322
+  },
+  "liu2020_fig9_zinc_AF0.1mm_P0-18kN": {
+   "mae": 0.015700726943467937,
+   "maxerr": 0.02815545781695683
+  },
+  "liu2020_fig9_zinc_AF0.2mm_P0-18kN": {
+   "mae": 0.005002887576865318,
+   "maxerr": 0.011226860371171155
+  },
+  "liu2020_fig9_zinc_AF0.3mm_P0-18kN": {
+   "mae": 0.01932993075365117,
+   "maxerr": 0.03150000000001418
+  },
+  "liu2020_fig9_zinc_AF0.4mm_P0-18kN": {
+   "mae": 0.07287775684060771,
+   "maxerr": 0.13390000000001423
+  },
+  "liu2020_fig15_DLC_P0-18kN_AF0.2mm": {
+   "mae": 0.005926868484777149,
+   "maxerr": 0.012493029857524984
+  },
+  "liu2020_fig15_DLC_P0-19.28kN_AF0.2mm": {
+   "mae": 0.005494253005360902,
+   "maxerr": 0.011983583334081005
+  },
+  "zhang18_fig2_test1_20kN_1e3cyc_preload_vs_cycles": {
+   "mae": 0.015976670019350533,
+   "maxerr": 0.02538084524568396
+  },
+  "zhang18_fig2_test2_20kN_1e4cyc_preload_vs_cycles": {
+   "mae": 0.012661105300493683,
+   "maxerr": 0.04191826754427119
+  },
+  "zhang18_fig2_test3_20kN_1e5cyc_preload_vs_cycles": {
+   "mae": 0.019243629223758833,
+   "maxerr": 0.04322735167226588
+  },
+  "zhang18_fig2_test4_20kN_5e5cyc_preload_vs_cycles": {
+   "mae": 0.024045009004122722,
+   "maxerr": 0.059769040321320466
+  },
+  "zhang18_fig13_14kN_preload_vs_cycles": {
+   "mae": 0.02486613602970292,
+   "maxerr": 0.05629806304544471
+  },
+  "zhang18_fig13_20kN_preload_vs_cycles": {
+   "mae": 0.02122609034465457,
+   "maxerr": 0.05066904032132047
+  },
+  "zhang18_fig13_26kN_preload_vs_cycles": {
+   "mae": 0.01742952583181589,
+   "maxerr": 0.04130334316012563
+  },
+  "zhang18_fig16_with_locker_preload_vs_cycles": {
+   "mae": 0.008099788026266059,
+   "maxerr": 0.017706666739815913
+  },
+  "zhang18_fig16_without_locker_preload_vs_cycles": {
+   "mae": 0.02292589430784969,
+   "maxerr": 0.05076904032132057
+  },
+  "zhang19_fig4_1e3cyc_Test1to3_preload_vs_cycles": {
+   "mae": 0.0026766073584849393,
+   "maxerr": 0.0045425630704892805
+  },
+  "zhang19_fig4_1e4cyc_Test4to6_preload_vs_cycles": {
+   "mae": 0.0180485008101728,
+   "maxerr": 0.02597489890802951
+  },
+  "zhang19_fig4_1e5cyc_Test7to9_preload_vs_cycles": {
+   "mae": 0.023882932228770002,
+   "maxerr": 0.04547489890802947
+  },
+  "zhang19_fig4_2e5cyc_Test10to12_preload_vs_cycles": {
+   "mae": 0.020344523087524182,
+   "maxerr": 0.05837489890802949
+  }
+ },
+ "verdict": "PASS"
+}

@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/26_Yang_Jeong_2025_variable_amplitude_multibolt.md:179-190
+bolt_position,delta_FEA_mm,NL_predicted,NL_experimental,flag
+1_near_load,0.58,1320,1180,
+2_near_load,0.55,2050,1850,
+3_far,0.42,22000,18500,
+4_far,0.40,42000,30000,gt_exp

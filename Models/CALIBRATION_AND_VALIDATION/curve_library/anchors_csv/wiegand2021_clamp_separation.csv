@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/71_Wiegand_2021_VDI_validation_index.md:59-70
+F0_kN,Fw_sep_measured_kN,Fw_sep_VDI_kN,error_pct
+30,22,25,13.6
+40,32,35,9.4
+50,43,46,7.0
+60,55,57,3.6
+70,68,68,0.0

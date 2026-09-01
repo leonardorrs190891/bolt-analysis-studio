@@ -1,0 +1,119 @@
+==============================================================================
+PREREG v2 -- gates congelados em 5ce4324. Execucao 2026-07-28 09:22
+==============================================================================
+caso                           N_f      trim Delta_col   tol[cic]    N_sim
+liu2025_M16_amp0p25         330000    240000     90000      13500   330000
+liu2025_M16_amp0p3          250000    180000     70000      10500   252000
+liu2025_M16_amp0p4           77000     60000     17000       2550    77000
+liu2025_M16_amp0p5           38000     30000      8000       1200    38000
+liu2025_M16_amp0p6           24200     18000      6200        930    24200
+liu2025_M16_amp0p8           14400     11500      2900        435    14400
+liu2025_M16_fig2_single      10000      8000      2000        300    10000
+
+INFORMACIONAL -- margem do gate sobre a incerteza do proprio dado
+caso                       tol[cic]     +-3% N    razao leitura
+liu2025_M16_amp0p4             2550       2310     0.91 gate ACIMA da resolucao
+liu2025_M16_amp0p5             1200       1140     0.95 gate ACIMA da resolucao
+liu2025_M16_amp0p6              930        726     0.78 gate ACIMA da resolucao
+  n_pts do dado NO COLAPSO (apos o joelho): amp0p4=6, amp0p5=5, amp0p6=5
+
+==============================================================================
+G0 -- INERCIA: forma desligada reproduz o store 4f5bedfbace4?
+==============================================================================
+caso                     store (mae/max/sig)    inline (mae/max/sig)   delta_mae
+liu2025_M16_amp0p4       0.0462/0.0623/0.0203   0.0462/0.0623/0.0203   0.00e+00
+liu2025_M16_amp0p5       0.0291/0.0516/0.0184   0.0291/0.0516/0.0184   0.00e+00
+liu2025_M16_amp0p6       0.0228/0.0650/0.0201   0.0228/0.0650/0.0201   0.00e+00
+  => G0 OK (bit-a-bit)
+
+==============================================================================
+G1 -- FORMA EM VIDA no nucleo (25 celulas x 15 cruzamentos)
+==============================================================================
+cruzamentos do DADO (ciclo em que r desce a cada nivel):
+caso                        r=0.80    r=0.70    r=0.60    r=0.50    r=0.40
+liu2025_M16_amp0p4           67600     73000     74667     75500     76111
+liu2025_M16_amp0p5           33000     35750     36833     37500     37794
+liu2025_M16_amp0p6           18750     22250     23200     23700     24013
+
+celula      amp0p4            amp0p5            amp0p6              PASSA
+D=0.70 q=1  .....             .....             .....               0/15
+D=0.70 q=2  .....             .....             .....               0/15
+D=0.70 q=3  .....             .....             .....               0/15
+D=0.70 q=5  X..XX             X...X             .....               5/15
+D=0.70 q=8  XXXXX             XXXXX             ....X               11/15
+D=0.75 q=1  .....             .....             .....               0/15
+D=0.75 q=2  .....             .....             .....               0/15
+D=0.75 q=3  .....             .....             .....               0/15
+D=0.75 q=5  XXXXX             XXXXX             .....               10/15
+D=0.75 q=8  XXXXX             XXXXX             ...XX               12/15
+D=0.80 q=1  .....             .....             .....               0/15
+D=0.80 q=2  .....             .....             .....               0/15
+D=0.80 q=3  X..XX             X...X             .....               5/15
+D=0.80 q=5  XXXXX             XXXXX             ....X               11/15
+D=0.80 q=8  .XXXX             .XXXX             ...XX               10/15
+D=0.85 q=1  X....             X....             .....               2/15
+D=0.85 q=2  X..XX             X....             .....               4/15
+D=0.85 q=3  XXXXX             XXXXX             ....X               11/15
+D=0.85 q=5  XXXXX             .XXXX             ...XX               11/15
+D=0.85 q=8  .XXXX             .XXXX             ...XX               10/15
+D=0.90 q=1  XX...             .X...             .....               3/15
+D=0.90 q=2  XXXXX             .XXXX             ....X               10/15
+D=0.90 q=3  .XXXX             .XXXX             ...XX               10/15
+D=0.90 q=5  .XXXX             .XXXX             ...XX               10/15
+D=0.90 q=8  .XXXX             ..XXX             ...XX               9/15
+
+  melhor celula: D_on=0.75 q=8  ->  12/15  (pior erro = 3.18x a tolerancia)
+  G1 FALHA PARCIAL (>=12/15)
+
+  detalhe da melhor celula (erro de cruzamento em ciclos / tolerancia):
+caso                            r=0.80        r=0.70        r=0.60        r=0.50        r=0.40
+liu2025_M16_amp0p4            +1554 ok       +125 ok       +477 ok       +489 ok       +505 ok  (tol 2550)
+liu2025_M16_amp0p5             +801 ok       +138 ok       +260 ok       +506 ok       +498 ok  (tol 1200)
+liu2025_M16_amp0p6            +2954 XX      +2729 XX      +1274 XX       +771 ok       +605 ok  (tol 930)
+
+==============================================================================
+G1b -- o PLATO nao regride (N <= trim_n_max, metrica vertical bem-posta)
+==============================================================================
+caso                     store              com rampa          delta mae/max
+liu2025_M16_amp0p4       0.0462/0.0623      0.0462/0.0623      +0.0000/+0.0000 ok
+liu2025_M16_amp0p5       0.0291/0.0516      0.0291/0.0516      +0.0000/+0.0000 ok
+liu2025_M16_amp0p6       0.0228/0.0650      0.0228/0.0650      +0.0000/+0.0000 ok
+  => G1b PASSA
+
+==============================================================================
+G2 -- nao regride quem NAO fratura no range (metrica canonica POS-TRIM)
+==============================================================================
+  liu2025_M16_amp0p25      pos-trim 0.0757 (store 0.0757, +0.0000) ok | INFORMACIONAL inteira 0.114/0.418
+  liu2025_M16_amp0p3       pos-trim 0.0645 (store 0.0645, +0.0000) ok | INFORMACIONAL inteira 0.127/0.683
+  => G2 PASSA
+
+==============================================================================
+G3 -- DISCRIMINANCIA: a rampa passa onde (i) sem forma e (ii) cliff falham?
+==============================================================================
+  sem forma  .....             .....             .....              0/15
+  cliff      ..XXX             ..XXX             ...XX              8/15
+  rampa     XXXXX             XXXXX             ...XX              12/15
+  => G3 FALHA -- G1 nao passou; G3 so vale com G1
+
+==============================================================================
+G4 -- a perda de secao atravessa o loose_arrest_floor = 0.25?
+==============================================================================
+  liu2025_M16_amp0p4       r_fim: sem rampa 0.780 | com rampa 0.000
+  liu2025_M16_amp0p5       r_fim: sem rampa 0.767 | com rampa 0.000
+  liu2025_M16_amp0p6       r_fim: sem rampa 0.518 | com rampa 0.000
+  liu2025_M16_fig2_single  r_fim: sem rampa 0.777 | com rampa 0.000
+
+==============================================================================
+G5 -- extremas com o par vencedor (MEDIDAS, NAO gateadas)
+==============================================================================
+caso                     pos-trim         inteira          cruzamentos
+liu2025_M16_amp0p25      0.0757/0.0945    0.1140/0.4177    XX
+liu2025_M16_amp0p3       0.0645/0.0865    0.1267/0.6830    X.
+liu2025_M16_amp0p8       0.0487/0.0853    0.0683/0.3300    ..XXX
+liu2025_M16_fig2_single  0.0389/0.0546    0.0381/0.0546    .XXXX
+
+==============================================================================
+VEREDICTO (ramos pre-declarados no prereg v2 4.1)
+==============================================================================
+  G0 OK | G1 12/15 FALHA | G1b OK | G2 OK | G3 FALHA
+  -> New_Theory/liu2025_ramp_v2_result.json

@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/67_68_69_70_MoS2_complex_random_neutron.md:61-69
+coating,T_Nm,K_factor,reduction_pct
+bare_steel,48.0,0.240,
+zinc_plated,42.0,0.210,-12.5
+MoS2,29.0,0.145,-39.6
+PTFE,31.0,0.155,-35.4

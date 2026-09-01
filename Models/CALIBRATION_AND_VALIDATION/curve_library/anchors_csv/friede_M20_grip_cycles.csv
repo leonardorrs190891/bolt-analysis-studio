@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/18_Junker_test_locking_devices.md:223-231
+l_over_d,N50_cycles,flag
+2.0,50,approx
+3.0,150,approx
+4.0,500,approx
+4.5,1500,approx
+5.0,5000,gte_near_endurance

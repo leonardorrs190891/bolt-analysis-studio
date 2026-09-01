@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/63_64_65_66_thermal_interaction_CFRP_cycling.md:149-157
+sequence,mean_final_kN,std_kN,max_scatter_pct
+sequential_1_to_8,30.2,3.8,28.5
+star,32.5,2.1,15.0
+modified_star_plus_2nd_pass,34.2,0.8,5.2
+compensated_single_pass,34.5,0.6,3.8

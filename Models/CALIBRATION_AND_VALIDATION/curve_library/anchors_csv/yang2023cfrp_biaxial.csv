@@ -1,0 +1,9 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/90_91_CFRP_loosening_Wei_Yang.md:107-122
+cycle,transverse_only,axial_only,combined
+0,1.000,1.000,1.000
+20,0.935,0.978,0.910
+50,0.880,0.960,0.845
+100,0.840,0.945,0.790
+500,0.790,0.920,0.720
+1000,0.765,0.910,0.690
+5000,0.730,0.895,0.645

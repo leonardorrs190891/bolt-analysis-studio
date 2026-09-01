@@ -1,0 +1,11 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/11_Hattori_2010_critical_slippage.md:91-108
+delta_mm,speed_N_per_cycle,S_over_Scr,flag
+0.20,0,0.51,no_loosening
+0.30,0,0.77,stageI_only
+0.39,10,1.00,approx_onset
+0.50,80,1.28,approx
+0.60,200,1.54,approx
+0.70,400,1.79,approx
+0.80,650,2.05,approx
+0.90,900,2.31,approx
+1.00,1200,2.56,approx

@@ -1,0 +1,5 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/80_Du_2022_random_vibration_3stage.md:81-88
+T_Nm,psd_threshold_g2_Hz
+10,0.06
+20,0.12
+30,0.18

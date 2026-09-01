@@ -1,0 +1,416 @@
+[
+ {
+  "csv": "liu2025_M16_amp0p25.csv",
+  "source": "LIU_2025",
+  "cfg": "pack",
+  "mae_base": 0.7397700304529207,
+  "mae_pack": 0.13619505086046976,
+  "mode_best": "level-bias",
+  "e_final": 0.06003237684103624
+ },
+ {
+  "csv": "liu2025_M16_amp0p3.csv",
+  "source": "LIU_2025",
+  "cfg": "pack",
+  "mae_base": 0.707099276784818,
+  "mae_pack": 0.12093666186055602,
+  "mode_best": "level-bias",
+  "e_final": 0.05484380254167742
+ },
+ {
+  "csv": "liu2025_M16_amp0p4.csv",
+  "source": "LIU_2025",
+  "cfg": "pack",
+  "mae_base": 0.6485053998519272,
+  "mae_pack": 0.14829740407809464,
+  "mode_best": "collapse-missed",
+  "e_final": 0.42084545486368735
+ },
+ {
+  "csv": "liu2025_M16_amp0p5.csv",
+  "source": "LIU_2025",
+  "cfg": "pack",
+  "mae_base": 0.6308085654281878,
+  "mae_pack": 0.13124255790022485,
+  "mode_best": "collapse-missed",
+  "e_final": 0.42858188761103827
+ },
+ {
+  "csv": "liu2025_M16_amp0p6.csv",
+  "source": "LIU_2025",
+  "cfg": "pack",
+  "mae_base": 0.5966183461609178,
+  "mae_pack": 0.12019139305626088,
+  "mode_best": "collapse-missed",
+  "e_final": 0.4336123715976667
+ },
+ {
+  "csv": "liu2025_M16_amp0p8.csv",
+  "source": "LIU_2025",
+  "cfg": "pack",
+  "mae_base": 0.5078600603693119,
+  "mae_pack": 0.11827935758269885,
+  "mode_best": "collapse-missed",
+  "e_final": 0.4394394748722397
+ },
+ {
+  "csv": "bauer2024_M8_fig6_rep1.csv",
+  "source": "BAUER_2024",
+  "cfg": "pack",
+  "mae_base": 0.11599897140949852,
+  "mae_pack": 0.057862555844840076,
+  "mode_best": "shape-mixed",
+  "e_final": 0.12359232232620254
+ },
+ {
+  "csv": "bauer2024_M8_fig6_rep2.csv",
+  "source": "BAUER_2024",
+  "cfg": "pack",
+  "mae_base": 0.08898227078787019,
+  "mae_pack": 0.07848013606482368,
+  "mode_best": "level-bias",
+  "e_final": -0.050756417941545964
+ },
+ {
+  "csv": "bauer2024_M8_fig6_rep3.csv",
+  "source": "BAUER_2024",
+  "cfg": "base",
+  "mae_base": 0.09768365142691236,
+  "mae_pack": 0.10452569888014894,
+  "mode_best": "collapse-missed",
+  "e_final": 0.34528573840128973
+ },
+ {
+  "csv": "bauer2024_M8_fig6_rep4.csv",
+  "source": "BAUER_2024",
+  "cfg": "pack",
+  "mae_base": 0.10814187334776719,
+  "mae_pack": 0.07965176409047152,
+  "mode_best": "level-bias",
+  "e_final": -0.042256160755031275
+ },
+ {
+  "csv": "bauer2024_M8_fig6_rep5.csv",
+  "source": "BAUER_2024",
+  "cfg": "base",
+  "mae_base": 0.13666784027198084,
+  "mae_pack": 0.1567313438182511,
+  "mode_best": "collapse-missed",
+  "e_final": 0.3017498924118627
+ },
+ {
+  "csv": "bauer2024_M8_fig6_rep6.csv",
+  "source": "BAUER_2024",
+  "cfg": "base",
+  "mae_base": 0.11501782043535685,
+  "mae_pack": 0.23688170814907916,
+  "mode_best": "shape-mixed",
+  "e_final": 0.23678850530761938
+ },
+ {
+  "csv": "bauer2024_M12_fig8_test1.csv",
+  "source": "BAUER_2024",
+  "cfg": "pack",
+  "mae_base": 0.1490843741581169,
+  "mae_pack": 0.12525975654756363,
+  "mode_best": "collapse-missed",
+  "e_final": 0.39510206258605757
+ },
+ {
+  "csv": "bauer2024_M12_fig8_test2.csv",
+  "source": "BAUER_2024",
+  "cfg": "pack",
+  "mae_base": 0.24304328375926668,
+  "mae_pack": 0.18360298780250264,
+  "mode_best": "collapse-missed",
+  "e_final": 0.4093593566466399
+ },
+ {
+  "csv": "bauer2024_M12_fig8_test3.csv",
+  "source": "BAUER_2024",
+  "cfg": "pack",
+  "mae_base": 0.22654943364972238,
+  "mae_pack": 0.1830249320563525,
+  "mode_best": "collapse-missed",
+  "e_final": 0.38588511500291567
+ },
+ {
+  "csv": "lu2024_M8_fig18_amp0p25.csv",
+  "source": "LU_2024",
+  "cfg": "pack",
+  "mae_base": 0.09241367441770504,
+  "mae_pack": 0.08779024035268641,
+  "mode_best": "settling-early",
+  "e_final": -0.0813594043491952
+ },
+ {
+  "csv": "lu2024_M8_fig18_amp0p5.csv",
+  "source": "LU_2024",
+  "cfg": "base",
+  "mae_base": 0.3955892757258776,
+  "mae_pack": 0.4203884129323281,
+  "mode_best": "collapse-missed",
+  "e_final": 0.5113072207688453
+ },
+ {
+  "csv": "lu2024_M8_fig18_amp1p0.csv",
+  "source": "LU_2024",
+  "cfg": "base",
+  "mae_base": 0.45724906084907696,
+  "mae_pack": 0.4759901903977738,
+  "mode_best": "collapse-missed",
+  "e_final": 0.5906745452305893
+ },
+ {
+  "csv": "lu2024_M8_fig18_amp1p5.csv",
+  "source": "LU_2024",
+  "cfg": "base",
+  "mae_base": 0.5132266877677234,
+  "mae_pack": 0.5142363296115039,
+  "mode_best": "collapse-missed",
+  "e_final": 0.5834890258811513
+ },
+ {
+  "csv": "lu2024_M8_fig18_amp2p0.csv",
+  "source": "LU_2024",
+  "cfg": "base",
+  "mae_base": 0.5046425730687465,
+  "mae_pack": 0.5051439040839416,
+  "mode_best": "collapse-missed",
+  "e_final": 0.70249328863876
+ },
+ {
+  "csv": "lu2024_M8_fig20_T4Nm.csv",
+  "source": "LU_2024",
+  "cfg": "base",
+  "mae_base": 0.14851352168164403,
+  "mae_pack": 0.16479227653372427,
+  "mode_best": "shape-mixed",
+  "e_final": -0.1425
+ },
+ {
+  "csv": "lu2024_M8_fig20_T10Nm.csv",
+  "source": "LU_2024",
+  "cfg": "pack",
+  "mae_base": 0.22550087621247386,
+  "mae_pack": 0.22369675209111978,
+  "mode_best": "shape-mixed",
+  "e_final": -0.19895993052752653
+ },
+ {
+  "csv": "lu2024_M8_fig20_T16Nm.csv",
+  "source": "LU_2024",
+  "cfg": "base",
+  "mae_base": 0.36523960495574237,
+  "mae_pack": 0.3803472734095428,
+  "mode_best": "collapse-missed",
+  "e_final": 0.32813919190511
+ },
+ {
+  "csv": "lu2024_M8_fig20_T22Nm.csv",
+  "source": "LU_2024",
+  "cfg": "base",
+  "mae_base": 0.42620990288715066,
+  "mae_pack": 0.43942581718689344,
+  "mode_best": "collapse-missed",
+  "e_final": 0.6071216553570467
+ },
+ {
+  "csv": "lu2024_M8_fig20_T28Nm.csv",
+  "source": "LU_2024",
+  "cfg": "base",
+  "mae_base": 0.430764945232734,
+  "mae_pack": 0.45445173856791604,
+  "mode_best": "collapse-missed",
+  "e_final": 0.46202441793954585
+ },
+ {
+  "csv": "rousseau2025_steel_t10.csv",
+  "source": "ROUSSEAU_2025",
+  "cfg": "base",
+  "mae_base": 0.23505476137939502,
+  "mae_pack": 0.42452602507378784,
+  "mode_best": "level-bias",
+  "e_final": 0.0726019806260639
+ },
+ {
+  "csv": "rousseau2025_steel_t12.csv",
+  "source": "ROUSSEAU_2025",
+  "cfg": "base",
+  "mae_base": 0.3811796584561036,
+  "mae_pack": 0.5884754791584347,
+  "mode_best": "over-collapse",
+  "e_final": -0.31999305762823693
+ },
+ {
+  "csv": "rousseau2025_steel_t14.csv",
+  "source": "ROUSSEAU_2025",
+  "cfg": "base",
+  "mae_base": 0.3868314440857529,
+  "mae_pack": 0.5150813178122567,
+  "mode_best": "over-collapse",
+  "e_final": -0.5157568276152142
+ },
+ {
+  "csv": "demir2024_amp0p3_F14p3_lk13p8.csv",
+  "source": "ICMEZ_2025",
+  "cfg": "pack",
+  "mae_base": 0.09218209108806281,
+  "mae_pack": 0.04034336545261821,
+  "mode_best": "tail-slope",
+  "e_final": -0.08753682197540155
+ },
+ {
+  "csv": "demir2024_amp0p3_F14p3_lk19p8.csv",
+  "source": "ICMEZ_2025",
+  "cfg": "base",
+  "mae_base": 0.0737919035282808,
+  "mae_pack": 0.0880974787848482,
+  "mode_best": "collapse-missed",
+  "e_final": 0.29171248027541424
+ },
+ {
+  "csv": "demir2024_amp0p3_F17p6_lk13p8.csv",
+  "source": "ICMEZ_2025",
+  "cfg": "base",
+  "mae_base": 0.10224479351291717,
+  "mae_pack": 0.12010961063010187,
+  "mode_best": "collapse-missed",
+  "e_final": 0.30800430013788066
+ },
+ {
+  "csv": "demir2024_amp0p3_F17p6_lk19p8.csv",
+  "source": "ICMEZ_2025",
+  "cfg": "base",
+  "mae_base": 0.03301975533204607,
+  "mae_pack": 0.04705807972181367,
+  "mode_best": "tail-slope",
+  "e_final": 0.14106387728438308
+ },
+ {
+  "csv": "demir2024_amp0p4_F14p3_lk13p8.csv",
+  "source": "ICMEZ_2025",
+  "cfg": "pack",
+  "mae_base": 0.10856816890114743,
+  "mae_pack": 0.0545292724590611,
+  "mode_best": "tail-slope",
+  "e_final": -0.157423130416053
+ },
+ {
+  "csv": "demir2024_amp0p4_F14p3_lk19p8.csv",
+  "source": "ICMEZ_2025",
+  "cfg": "base",
+  "mae_base": 0.11746007544547996,
+  "mae_pack": 0.14621644970676695,
+  "mode_best": "collapse-missed",
+  "e_final": 0.3644001868575492
+ },
+ {
+  "csv": "demir2024_amp0p4_F17p6_lk13p8.csv",
+  "source": "ICMEZ_2025",
+  "cfg": "pack",
+  "mae_base": 0.14258185555843142,
+  "mae_pack": 0.0826604048412306,
+  "mode_best": "shape-mixed",
+  "e_final": -0.11396327411516455
+ },
+ {
+  "csv": "demir2024_amp0p4_F17p6_lk19p8.csv",
+  "source": "ICMEZ_2025",
+  "cfg": "base",
+  "mae_base": 0.12182381095257933,
+  "mae_pack": 0.15487599082194847,
+  "mode_best": "collapse-missed",
+  "e_final": 0.3714225146711919
+ },
+ {
+  "csv": "yang2019_M10_amp0p4_5Hz.csv",
+  "source": "YANG_2019",
+  "cfg": "pack",
+  "mae_base": 0.7650951914008273,
+  "mae_pack": 0.175307943339758,
+  "mode_best": "level-bias",
+  "e_final": 0.024735581879450907
+ },
+ {
+  "csv": "yang2019_M10_amp0p6_10Hz.csv",
+  "source": "YANG_2019",
+  "cfg": "pack",
+  "mae_base": 0.6564329187668094,
+  "mae_pack": 0.11554783359655793,
+  "mode_best": "level-bias",
+  "e_final": 0.006031970714864943
+ },
+ {
+  "csv": "yang2019_M10_amp0p6_5Hz.csv",
+  "source": "YANG_2019",
+  "cfg": "pack",
+  "mae_base": 0.550273562890681,
+  "mae_pack": 0.14914156104836926,
+  "mode_best": "collapse-missed",
+  "e_final": 0.5291178669864639
+ },
+ {
+  "csv": "karlsen2022_M30_HV_run1p2.csv",
+  "source": "KARLSEN_2022",
+  "cfg": "base",
+  "mae_base": 0.2149389555917615,
+  "mae_pack": 0.24317846236586393,
+  "mode_best": "collapse-missed",
+  "e_final": 0.599244008442324
+ },
+ {
+  "csv": "karlsen2022_M30_HV_run2p2.csv",
+  "source": "KARLSEN_2022",
+  "cfg": "base",
+  "mae_base": 0.24463646419176183,
+  "mae_pack": 0.27208597079494445,
+  "mode_best": "collapse-missed",
+  "e_final": 0.6539524087534138
+ },
+ {
+  "csv": "karlsen2022_M30_HV_run6p2.csv",
+  "source": "KARLSEN_2022",
+  "cfg": "base",
+  "mae_base": 0.22966303050823234,
+  "mae_pack": 0.25732566848172234,
+  "mode_best": "collapse-missed",
+  "e_final": 0.6378244852206812
+ },
+ {
+  "csv": "karlsen2022_M30_HV_run7p1.csv",
+  "source": "KARLSEN_2022",
+  "cfg": "base",
+  "mae_base": 0.24690502968398206,
+  "mae_pack": 0.2697177353198028,
+  "mode_best": "collapse-missed",
+  "e_final": 0.6479116156605463
+ },
+ {
+  "csv": "karlsen2022_M30_HVtorqued_run14p2.csv",
+  "source": "KARLSEN_2022",
+  "cfg": "base",
+  "mae_base": 0.20432330641978863,
+  "mae_pack": 0.22883107265125804,
+  "mode_best": "collapse-missed",
+  "e_final": 0.5393776486436069
+ },
+ {
+  "csv": "karlsen2022_M42_HV_run20p0.csv",
+  "source": "KARLSEN_2022",
+  "cfg": "base",
+  "mae_base": 0.22634761079077956,
+  "mae_pack": 0.25165347122818543,
+  "mode_best": "collapse-missed",
+  "e_final": 0.5810481213123857
+ },
+ {
+  "csv": "karlsen2022_M42_HV_run21p0.csv",
+  "source": "KARLSEN_2022",
+  "cfg": "base",
+  "mae_base": 0.1893071358906462,
+  "mae_pack": 0.20919921745728087,
+  "mode_best": "collapse-missed",
+  "e_final": 0.5768250803851516
+ }
+]

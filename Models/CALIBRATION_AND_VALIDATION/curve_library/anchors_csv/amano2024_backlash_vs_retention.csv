@@ -1,0 +1,8 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/34_Amano_2024_double_thread_bolt_ISO16130.md:125-138
+backlash_mm,ratio_2000cyc,T_prevail_Nm
+0.01,0.900,4.0
+0.02,0.878,3.5
+0.03,0.840,3.0
+0.05,0.750,2.5
+0.08,0.640,1.8
+0.10,0.520,1.2

@@ -1,0 +1,14 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/63_64_65_66_thermal_interaction_CFRP_cycling.md:118-147
+sequence,tighten_order,bolt,applied_kN,final_kN,error_pct
+A_circular,1,1,35,29.8,-14.9
+A_circular,2,2,35,31.2,-10.9
+A_circular,3,3,35,32.5,-7.1
+A_circular,4,4,35,35.0,0.0
+B_cross,1,1,35,31.5,-10.0
+B_cross,2,3,35,32.8,-6.3
+B_cross,3,2,35,32.0,-8.6
+B_cross,4,4,35,35.0,0.0
+C_compensated,1,1,39.0,34.5,-1.4
+C_compensated,2,3,37.5,34.8,-0.6
+C_compensated,3,2,37.5,34.6,-1.1
+C_compensated,4,4,35.0,35.0,0.0

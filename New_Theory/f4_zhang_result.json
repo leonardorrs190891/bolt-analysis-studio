@@ -1,0 +1,61 @@
+{
+ "secao": "F4 zhang18/19 bloco A per-rig",
+ "melhor": "e=0.25|kw=1e-16|g=0.1",
+ "n_pass": 13,
+ "tripe": {
+  "zhang18_fig2_test1_20kN_1e3cyc_preload_vs_cycles": {
+   "mae": 0.007745733212340192,
+   "maxerr": 0.01545395752990919
+  },
+  "zhang18_fig2_test2_20kN_1e4cyc_preload_vs_cycles": {
+   "mae": 0.016051872224305742,
+   "maxerr": 0.034651281116190424
+  },
+  "zhang18_fig2_test3_20kN_1e5cyc_preload_vs_cycles": {
+   "mae": 0.012751023650964189,
+   "maxerr": 0.03729498308502166
+  },
+  "zhang18_fig2_test4_20kN_5e5cyc_preload_vs_cycles": {
+   "mae": 0.01770078021510025,
+   "maxerr": 0.050890248161592155
+  },
+  "zhang18_fig13_14kN_preload_vs_cycles": {
+   "mae": 0.01998385124563647,
+   "maxerr": 0.05999774417333481
+  },
+  "zhang18_fig13_20kN_preload_vs_cycles": {
+   "mae": 0.014184415550785867,
+   "maxerr": 0.05435618588207314
+  },
+  "zhang18_fig13_26kN_preload_vs_cycles": {
+   "mae": 0.030088723313620926,
+   "maxerr": 0.06795833296163623
+  },
+  "zhang18_fig16_with_locker_preload_vs_cycles": {
+   "mae": 0.0198268622377116,
+   "maxerr": 0.09070490353441607
+  },
+  "zhang18_fig16_without_locker_preload_vs_cycles": {
+   "mae": 0.016961905401583634,
+   "maxerr": 0.054735219157988735
+  },
+  "zhang19_fig4_1e3cyc_Test1to3_preload_vs_cycles": {
+   "mae": 0.004690173365101491,
+   "maxerr": 0.006523553620112588
+  },
+  "zhang19_fig4_1e4cyc_Test4to6_preload_vs_cycles": {
+   "mae": 0.006730276491998116,
+   "maxerr": 0.013290047938663063
+  },
+  "zhang19_fig4_1e5cyc_Test7to9_preload_vs_cycles": {
+   "mae": 0.0116242707270217,
+   "maxerr": 0.04047853181818217
+  },
+  "zhang19_fig4_2e5cyc_Test10to12_preload_vs_cycles": {
+   "mae": 0.010248951917450858,
+   "maxerr": 0.042099938969946904
+  }
+ },
+ "controles": true,
+ "verdict": "PASS"
+}

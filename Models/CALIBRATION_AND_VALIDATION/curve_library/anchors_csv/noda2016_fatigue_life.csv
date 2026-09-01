@@ -1,0 +1,5 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/43_44_45_46_jackbolt_washer_doublenut_pitch.md:232-239
+dp_mm,fatigue_life_kcycles,improvement_factor
+0,150,1.0
+0.010,210,1.4
+0.020,280,1.87

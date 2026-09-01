@@ -1,0 +1,50 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>karlsen2022_M42_HV_run20p0 — BAS V2 validation</title><style>
+body{margin:0;background:#e8eaed;color:#1a1e24;font-family:'Segoe UI',system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding:28px 20px 60px}
+h1{font-size:22px;margin:6px 0 2px;letter-spacing:-0.01em}
+.sub{font-family:Consolas,monospace;font-size:12px;color:#5c6570;margin:0 0 18px}
+.grid{display:grid;grid-template-columns:280px 1fr;gap:16px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+.card{background:#f8f9fa;border:1px solid #c9ced5;border-radius:8px;padding:14px 16px}
+h2{font-size:12px;font-family:Consolas,monospace;text-transform:uppercase;letter-spacing:0.08em;color:#5c6570;margin:0 0 8px}
+table{border-collapse:collapse;width:100%;font-family:Consolas,monospace;font-size:12.5px}
+td{padding:5px 4px;border-bottom:1px solid #dfe3e7;vertical-align:top}
+td:first-child{color:#5c6570;white-space:nowrap;padding-right:12px}
+tr:last-child td{border-bottom:none}
+.metric{font-size:26px;font-weight:700;color:#2f6690;font-family:Consolas,monospace}
+.cfg{font-size:12px;color:#454b54;background:#eef0f2;border-radius:6px;padding:8px 10px;margin-top:8px}
+svg{display:block;width:100%;height:auto;background:#f8f9fa;border:1px solid #c9ced5;border-radius:8px}
+a{color:#2f6690}
+.foot{font-family:Consolas,monospace;font-size:11px;color:#8b939c;margin-top:22px;border-top:1px solid #c9ced5;padding-top:10px}
+.idx td a{text-decoration:none}
+.hub{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:0 0 22px}
+.hub .card{padding:12px 14px}
+.hub a.t{font-weight:700;text-decoration:none;font-size:14px}
+.hub .d{font-size:12px;color:#454b54;margin:4px 0 6px;line-height:1.45}
+.hub .m{font-family:Consolas,monospace;font-size:11.5px;color:#2f6690;font-weight:700}
+.hgroup{font-size:12px;font-family:Consolas,monospace;text-transform:uppercase;letter-spacing:0.08em;color:#5c6570;margin:18px 0 8px}
+</style></head><body>
+<div class="wrap">
+<p class="sub"><a href="index.html">← index</a> · Karlsen 2022 — M30/M42 HV · transverse</p>
+<h1>karlsen2022_M42_HV_run20p0</h1>
+<p class="sub">Bolt Analysis Studio V2 — DynamicStiffnessAnalyzer · validation case</p>
+<svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><line x1="52" y1="326.0" x2="744" y2="326.0" stroke="#dfe3e7"/><text x="46" y="329.0" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0</text><line x1="52" y1="251.7" x2="744" y2="251.7" stroke="#dfe3e7"/><text x="46" y="254.7" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.25</text><line x1="52" y1="177.4" x2="744" y2="177.4" stroke="#dfe3e7"/><text x="46" y="180.4" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.5</text><line x1="52" y1="103.1" x2="744" y2="103.1" stroke="#dfe3e7"/><text x="46" y="106.1" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">0.75</text><line x1="52" y1="28.9" x2="744" y2="28.9" stroke="#dfe3e7"/><text x="46" y="31.9" text-anchor="end" font-size="10" fill="#8b939c" font-family="Consolas">1</text><line x1="52" y1="14" x2="52" y2="326" stroke="#c9ced5"/><line x1="52" y1="326" x2="744" y2="326" stroke="#c9ced5"/><text x="52.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">0</text><text x="398.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">170</text><text x="744.0" y="340" text-anchor="middle" font-size="10" fill="#8b939c" font-family="Consolas">340</text><polyline points="52.0,19.8 56.1,34.3 60.1,41.4 64.2,46.3 68.3,50.3 72.4,53.7 76.4,56.6 80.5,59.2 84.6,61.6 88.6,63.9 92.7,66.0 96.8,68.0 100.8,69.8 104.9,71.6 109.0,73.3 113.1,75.0 117.1,76.5 121.2,78.1 125.3,79.6 129.3,81.0 133.4,82.4 137.5,83.8 141.6,85.1 145.6,86.4 149.7,87.7 153.8,88.9 157.8,90.1 161.9,91.3 166.0,92.5 170.0,93.6 174.1,94.8 178.2,95.9 182.3,97.0 186.3,98.1 190.4,99.1 194.5,100.2 198.5,101.2 202.6,102.3 206.7,103.3 210.8,104.3 214.8,105.3 218.9,106.2 223.0,107.2 227.0,108.2 231.1,109.1 235.2,110.1 239.2,111.0 243.3,112.0 247.4,112.9 251.5,113.8 255.5,114.7 259.6,115.6 263.7,116.5 267.7,117.4 271.8,118.3 275.9,119.2 280.0,120.0 284.0,120.9 288.1,121.8 292.2,122.6 296.2,123.5 300.3,124.3 304.4,125.2 308.4,126.0 312.5,126.9 316.6,127.7 320.7,128.6 324.7,129.4 328.8,130.2 332.9,131.1 336.9,131.9 341.0,132.7 345.1,133.5 349.2,134.3 353.2,135.2 357.3,136.0 361.4,136.8 365.4,137.6 369.5,138.4 373.6,139.2 377.6,140.0 381.7,140.9 385.8,141.7 389.9,142.5 393.9,143.3 398.0,144.1 402.1,144.9 406.1,145.7 410.2,146.5 414.3,147.3 418.4,148.1 422.4,148.9 426.5,149.7 430.6,150.5 434.6,151.3 438.7,152.1 442.8,152.9 446.8,153.7 450.9,154.5 455.0,155.3 459.1,156.1 463.1,156.9 467.2,157.7 471.3,158.5 475.3,159.3 479.4,160.1 483.5,160.9 487.6,161.7 491.6,162.5 495.7,163.3 499.8,164.1 503.8,164.9 507.9,165.8 512.0,166.6 516.0,167.4 520.1,168.2 524.2,169.0 528.3,169.8 532.3,170.6 536.4,171.4 540.5,172.2 544.5,173.1 548.6,173.9 552.7,174.7 556.8,175.5 560.8,176.3 564.9,177.2 569.0,178.0 573.0,178.8 577.1,179.6 581.2,180.5 585.2,181.3 589.3,182.1 593.4,183.0 597.5,183.8 601.5,184.6 605.6,185.5 609.7,186.3 613.7,187.1 617.8,188.0 621.9,188.8 626.0,189.7 630.0,190.5 634.1,191.4 638.2,192.2 642.2,193.1 646.3,193.9 650.4,194.8 654.4,195.6 658.5,196.5 662.6,197.3 666.7,198.2 670.7,199.1 674.8,199.9 678.9,200.8 682.9,201.7 687.0,202.5 691.1,203.4 695.2,204.3 699.2,205.2 703.3,206.0 707.4,206.9 711.4,207.8 715.5,208.7 719.6,209.6 723.6,210.4 727.7,211.3 731.8,212.2 735.9,213.1 739.9,214.0 744.0,214.9 744.0,214.9" fill="none" stroke="#2f6690" stroke-width="2.4" stroke-linejoin="round"/><circle cx="54.0" cy="28.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="153.8" cy="55.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="296.2" cy="100.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="418.4" cy="145.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="540.5" cy="190.9" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="642.2" cy="236.0" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><circle cx="744.0" cy="281.0" r="3" fill="#f8f9fa" stroke="#454b54" stroke-width="1.6"/><text x="398" y="358" text-anchor="middle" font-size="12" fill="#454b54" font-family="Segoe UI">ciclos N</text><text x="14" y="170" text-anchor="middle" font-size="12" fill="#454b54" font-family="Segoe UI" transform="rotate(-90 14 170)">F / F₀  (razão de pré-carga) [–]</text></svg>
+<div class="grid" style="margin-top:16px">
+<div class="card"><h2>Boundary conditions</h2><table><tr><td>bolt</td><td>M42x4.5</td></tr><tr><td>F₀</td><td>660.0 kN</td></tr><tr><td>amplitude</td><td>±1.5 mm (disp-controlled)</td></tr><tr><td>frequency</td><td>1 Hz</td></tr><tr><td>grip</td><td>105 mm (assumed)</td></tr><tr><td>μ</td><td>0.15 (assumed)</td></tr><tr><td>surface</td><td>Rz10-40 (assumed)</td></tr><tr><td>F_amp</td><td>264.0 kN (0.4·F₀ — lit.: Pai&Hess 2002 mediu 0.38–0.49)</td></tr><tr><td>cycles</td><td>340</td></tr></table>
+<div class="cfg"><b>Configuration:</b> c_bend=2.5 (gate opened; §4.15)</div></div>
+<div class="card"><h2>Result</h2>
+<div class="metric">MAE 0.0892</div>
+<table style="margin-top:8px">
+<tr><td>final F/F₀ (data)</td><td>0.151</td></tr>
+<tr><td>final F/F₀ (model)</td><td>0.374</td></tr>
+<tr><td>final error</td><td>+0.222</td></tr>
+<tr><td>N to F/F₀=0.5 (data)</td><td>222</td></tr><tr><td>N to F/F₀=0.5 (model)</td><td>253</td></tr><tr><td><b>life ratio (model/data)</b></td><td><b>1.14×</b> (factor-2 band is the fatigue-engineering norm)</td></tr><tr><td>repeat-scatter floor</td><td>0.115 (4 repeats @1.0mm) — the data's own repeats disagree by this much; MAE at/below it is unimprovable</td></tr>
+<tr><td>family</td><td>transverse</td></tr></table>
+<div class="cfg">Dots = digitized paper data; line = model at the declared per-rig
+configuration. Verdicts and falsification records: <code>New_Theory/MODEL_LEGITIMACY.md</code>
+§4.12–§4.15.</div></div></div>
+<p class="foot"><a href="karlsen2022_M30_HVtorqued_run14p2.html">← prev</a> · <a href="karlsen2022_M42_HV_run21p0.html">next →</a> · generated 2026-07-08 · configs and constants carry declared provenance
+(paper / handbook / assumed / read-from-data / fitted-this-rig)</p>
+</div></body></html>

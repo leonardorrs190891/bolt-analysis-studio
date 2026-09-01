@@ -1,0 +1,89 @@
+{
+ "prereg": "docs/superpowers/specs/2026-07-22-f4-l1v2-prereg-b1v3.md",
+ "s_ref": 8.540925266903917e-06,
+ "mu_kb": {
+  "zinc": 0.15,
+  "DLC": 0.126
+ },
+ "melhor": "k=3.16e-15|fr=0.0",
+ "n_pass": 0,
+ "mediana": 0.4828363227760262,
+ "tripe": {
+  "liu2020_fig5b_zinc_P0-12kN_AF0.2mm": {
+   "mae": 0.5698747866893897,
+   "maxerr": 0.9394
+  },
+  "liu2020_fig5b_zinc_P0-18kN_AF0.2mm": {
+   "mae": 0.49343136051503045,
+   "maxerr": 0.9559000000000001
+  },
+  "liu2020_fig5b_zinc_P0-24kN_AF0.2mm": {
+   "mae": 0.45639762938895223,
+   "maxerr": 0.9684999999999999
+  },
+  "liu2020_fig9_zinc_AF0.1mm_P0-18kN": {
+   "mae": 0.4648962906848094,
+   "maxerr": 0.9883
+  },
+  "liu2020_fig9_zinc_AF0.2mm_P0-18kN": {
+   "mae": 0.48487681776891234,
+   "maxerr": 0.9642000000000001
+  },
+  "liu2020_fig9_zinc_AF0.3mm_P0-18kN": {
+   "mae": 0.48927358297907725,
+   "maxerr": 0.9383687540138969
+  },
+  "liu2020_fig9_zinc_AF0.4mm_P0-18kN": {
+   "mae": 0.4526506165667215,
+   "maxerr": 0.8648
+  },
+  "liu2020_fig15_DLC_P0-18kN_AF0.2mm": {
+   "mae": 0.4828363227760262,
+   "maxerr": 0.9664
+  },
+  "liu2020_fig15_DLC_P0-19.28kN_AF0.2mm": {
+   "mae": 0.4733270388027781,
+   "maxerr": 0.9690000000000001
+  }
+ },
+ "baseline": {
+  "liu2020_fig5b_zinc_P0-12kN_AF0.2mm": {
+   "mae": 0.5698747866893897,
+   "maxerr": 0.9394
+  },
+  "liu2020_fig5b_zinc_P0-18kN_AF0.2mm": {
+   "mae": 0.49343136051503045,
+   "maxerr": 0.9559000000000001
+  },
+  "liu2020_fig5b_zinc_P0-24kN_AF0.2mm": {
+   "mae": 0.45639762938895223,
+   "maxerr": 0.9684999999999999
+  },
+  "liu2020_fig9_zinc_AF0.1mm_P0-18kN": {
+   "mae": 0.4648962906848094,
+   "maxerr": 0.9883
+  },
+  "liu2020_fig9_zinc_AF0.2mm_P0-18kN": {
+   "mae": 0.48487681776891234,
+   "maxerr": 0.9642000000000001
+  },
+  "liu2020_fig9_zinc_AF0.3mm_P0-18kN": {
+   "mae": 0.48927358297907725,
+   "maxerr": 0.9383687540138969
+  },
+  "liu2020_fig9_zinc_AF0.4mm_P0-18kN": {
+   "mae": 0.4526506165667215,
+   "maxerr": 0.8648
+  },
+  "liu2020_fig15_DLC_P0-18kN_AF0.2mm": {
+   "mae": 0.4823768177689123,
+   "maxerr": 0.9664
+  },
+  "liu2020_fig15_DLC_P0-19.28kN_AF0.2mm": {
+   "mae": 0.4728550009948219,
+   "maxerr": 0.9690000000000001
+  }
+ },
+ "G4c_controles": true,
+ "verdict": "FAIL"
+}

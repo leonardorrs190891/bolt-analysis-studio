@@ -1,0 +1,545 @@
+{
+  "version": "4.0",
+  "description": "Bolt Analysis Studio Material Database - ASTM, ISO, DIN Standards",
+  "last_updated": "2026-01-23",
+  "sources": [
+    "ASTM A193/A193M-23",
+    "ASTM A320/A320M-23", 
+    "ASTM A354-22",
+    "ISO 898-1:2013",
+    "VDI 2230 Part 1 (2015)"
+  ],
+  
+  "materials": {
+    "A193_B7": {
+      "name": "ASTM A193 Grade B7",
+      "specification": "ASTM A193/A193M",
+      "description": "Chromium-Molybdenum steel, high temperature service",
+      "chemical_composition": {
+        "C": "0.38-0.48",
+        "Mn": "0.75-1.00",
+        "P_max": "0.035",
+        "S_max": "0.040",
+        "Si": "0.15-0.35",
+        "Cr": "0.80-1.15",
+        "Mo": "0.15-0.25"
+      },
+      "mechanical_properties": {
+        "E": 205000,
+        "G": 79000,
+        "nu": 0.3,
+        "rho": 7850,
+        "alpha": 11.5e-6
+      },
+      "strength": {
+        "d_range_mm": [6.35, 101.6],
+        "profiles": [
+          {
+            "d_max_mm": 63.5,
+            "Sy_MPa": 720,
+            "Su_MPa": 860,
+            "elongation_percent": 16,
+            "reduction_area_percent": 50
+          },
+          {
+            "d_max_mm": 101.6,
+            "Sy_MPa": 550,
+            "Su_MPa": 725,
+            "elongation_percent": 16,
+            "reduction_area_percent": 50
+          }
+        ]
+      },
+      "temperature_limits": {
+        "T_min_C": -40,
+        "T_max_C": 450,
+        "T_max_continuous_C": 400
+      },
+      "temperature_factors": {
+        "Sy": {
+          "20": 1.00,
+          "100": 0.97,
+          "150": 0.94,
+          "200": 0.90,
+          "250": 0.86,
+          "300": 0.81,
+          "350": 0.76,
+          "400": 0.70,
+          "450": 0.63
+        },
+        "E": {
+          "20": 1.00,
+          "100": 0.98,
+          "200": 0.95,
+          "300": 0.91,
+          "400": 0.86,
+          "450": 0.82
+        }
+      },
+      "nace_compliant": false,
+      "max_hardness_hrc": 35
+    },
+    
+    "A193_B7M": {
+      "name": "ASTM A193 Grade B7M",
+      "specification": "ASTM A193/A193M",
+      "description": "Chromium-Molybdenum steel, enhanced impact toughness, NACE compliant",
+      "chemical_composition": {
+        "C": "0.38-0.48",
+        "Mn": "0.75-1.00",
+        "P_max": "0.035",
+        "S_max": "0.040",
+        "Si": "0.15-0.35",
+        "Cr": "0.80-1.15",
+        "Mo": "0.15-0.25"
+      },
+      "mechanical_properties": {
+        "E": 205000,
+        "G": 79000,
+        "nu": 0.3,
+        "rho": 7850,
+        "alpha": 11.5e-6
+      },
+      "strength": {
+        "d_range_mm": [6.35, 101.6],
+        "profiles": [
+          {
+            "d_max_mm": 101.6,
+            "Sy_MPa": 550,
+            "Su_MPa": 725,
+            "elongation_percent": 18,
+            "reduction_area_percent": 50
+          }
+        ]
+      },
+      "temperature_limits": {
+        "T_min_C": -40,
+        "T_max_C": 450,
+        "T_max_continuous_C": 400
+      },
+      "nace_compliant": true,
+      "max_hardness_hrc": 22,
+      "nace_mr0175": "MR0103"
+    },
+    
+    "A193_B16": {
+      "name": "ASTM A193 Grade B16",
+      "specification": "ASTM A193/A193M",
+      "description": "Chromium-Molybdenum-Vanadium steel, high temperature service",
+      "chemical_composition": {
+        "C": "0.36-0.47",
+        "Mn": "0.45-0.70",
+        "P_max": "0.035",
+        "S_max": "0.040",
+        "Si": "0.15-0.35",
+        "Cr": "0.80-1.15",
+        "Mo": "0.50-0.65",
+        "V": "0.25-0.35"
+      },
+      "mechanical_properties": {
+        "E": 205000,
+        "G": 79000,
+        "nu": 0.3,
+        "rho": 7850,
+        "alpha": 12.0e-6
+      },
+      "strength": {
+        "d_range_mm": [6.35, 101.6],
+        "profiles": [
+          {
+            "d_max_mm": 63.5,
+            "Sy_MPa": 725,
+            "Su_MPa": 860,
+            "elongation_percent": 18,
+            "reduction_area_percent": 50
+          },
+          {
+            "d_max_mm": 101.6,
+            "Sy_MPa": 655,
+            "Su_MPa": 795,
+            "elongation_percent": 17,
+            "reduction_area_percent": 45
+          }
+        ]
+      },
+      "temperature_limits": {
+        "T_min_C": -40,
+        "T_max_C": 540,
+        "T_max_continuous_C": 480
+      },
+      "nace_compliant": false,
+      "max_hardness_hrc": 35
+    },
+    
+    "A320_L7": {
+      "name": "ASTM A320 Grade L7",
+      "specification": "ASTM A320/A320M",
+      "description": "Chromium-Molybdenum steel, low temperature service",
+      "chemical_composition": {
+        "C": "0.38-0.48",
+        "Mn": "0.75-1.00",
+        "P_max": "0.035",
+        "S_max": "0.040",
+        "Si": "0.15-0.35",
+        "Cr": "0.80-1.15",
+        "Mo": "0.15-0.25"
+      },
+      "mechanical_properties": {
+        "E": 205000,
+        "G": 79000,
+        "nu": 0.3,
+        "rho": 7850,
+        "alpha": 11.5e-6
+      },
+      "strength": {
+        "d_range_mm": [6.35, 101.6],
+        "profiles": [
+          {
+            "d_max_mm": 63.5,
+            "Sy_MPa": 720,
+            "Su_MPa": 860,
+            "elongation_percent": 16,
+            "reduction_area_percent": 50,
+            "charpy_J": 27,
+            "charpy_T_C": -100
+          },
+          {
+            "d_max_mm": 101.6,
+            "Sy_MPa": 550,
+            "Su_MPa": 725,
+            "elongation_percent": 16,
+            "reduction_area_percent": 50,
+            "charpy_J": 27,
+            "charpy_T_C": -100
+          }
+        ]
+      },
+      "temperature_limits": {
+        "T_min_C": -100,
+        "T_max_C": 400,
+        "T_design_C": -60
+      },
+      "nace_compliant": false,
+      "max_hardness_hrc": 35
+    },
+    
+    "A320_L7M": {
+      "name": "ASTM A320 Grade L7M",
+      "specification": "ASTM A320/A320M",
+      "description": "Chromium-Molybdenum steel, low temperature, NACE compliant, sour service",
+      "chemical_composition": {
+        "C": "0.38-0.48",
+        "Mn": "0.75-1.00",
+        "P_max": "0.035",
+        "S_max": "0.040",
+        "Si": "0.15-0.35",
+        "Cr": "0.80-1.15",
+        "Mo": "0.15-0.25"
+      },
+      "mechanical_properties": {
+        "E": 205000,
+        "G": 79000,
+        "nu": 0.3,
+        "rho": 7850,
+        "alpha": 11.5e-6
+      },
+      "strength": {
+        "d_range_mm": [6.35, 101.6],
+        "profiles": [
+          {
+            "d_max_mm": 101.6,
+            "Sy_MPa": 550,
+            "Su_MPa": 725,
+            "elongation_percent": 18,
+            "reduction_area_percent": 50,
+            "charpy_J": 54,
+            "charpy_T_C": -100
+          }
+        ]
+      },
+      "temperature_limits": {
+        "T_min_C": -100,
+        "T_max_C": 400,
+        "T_design_C": -60
+      },
+      "nace_compliant": true,
+      "max_hardness_hrc": 22,
+      "nace_mr0175": "MR0103",
+      "sour_service": true
+    },
+    
+    "A320_L43": {
+      "name": "ASTM A320 Grade L43",
+      "specification": "ASTM A320/A320M",
+      "description": "Nickel-Chromium-Molybdenum steel, low temperature service",
+      "chemical_composition": {
+        "C": "0.38-0.43",
+        "Mn": "0.70-0.90",
+        "P_max": "0.035",
+        "S_max": "0.040",
+        "Si": "0.15-0.35",
+        "Ni": "1.65-2.00",
+        "Cr": "0.70-0.90",
+        "Mo": "0.20-0.30"
+      },
+      "mechanical_properties": {
+        "E": 205000,
+        "G": 79000,
+        "nu": 0.3,
+        "rho": 7850,
+        "alpha": 11.5e-6
+      },
+      "strength": {
+        "d_range_mm": [6.35, 101.6],
+        "profiles": [
+          {
+            "d_max_mm": 101.6,
+            "Sy_MPa": 720,
+            "Su_MPa": 860,
+            "elongation_percent": 16,
+            "reduction_area_percent": 50,
+            "charpy_J": 27,
+            "charpy_T_C": -100
+          }
+        ]
+      },
+      "temperature_limits": {
+        "T_min_C": -100,
+        "T_max_C": 400
+      },
+      "nace_compliant": false,
+      "max_hardness_hrc": 35
+    },
+    
+    "ISO_8_8": {
+      "name": "ISO Property Class 8.8",
+      "specification": "ISO 898-1",
+      "description": "Medium carbon steel, quenched and tempered",
+      "mechanical_properties": {
+        "E": 210000,
+        "G": 81000,
+        "nu": 0.3,
+        "rho": 7850,
+        "alpha": 11.0e-6
+      },
+      "strength": {
+        "d_range_mm": [3, 39],
+        "profiles": [
+          {
+            "d_max_mm": 16,
+            "Sy_MPa": 640,
+            "Su_MPa": 800,
+            "elongation_percent": 12
+          },
+          {
+            "d_max_mm": 39,
+            "Sy_MPa": 640,
+            "Su_MPa": 800,
+            "elongation_percent": 12
+          }
+        ]
+      },
+      "temperature_limits": {
+        "T_min_C": -20,
+        "T_max_C": 300
+      }
+    },
+    
+    "ISO_10_9": {
+      "name": "ISO Property Class 10.9",
+      "specification": "ISO 898-1",
+      "description": "Alloy steel, quenched and tempered",
+      "mechanical_properties": {
+        "E": 210000,
+        "G": 81000,
+        "nu": 0.3,
+        "rho": 7850,
+        "alpha": 11.0e-6
+      },
+      "strength": {
+        "d_range_mm": [3, 39],
+        "profiles": [
+          {
+            "d_max_mm": 16,
+            "Sy_MPa": 900,
+            "Su_MPa": 1000,
+            "elongation_percent": 9
+          },
+          {
+            "d_max_mm": 39,
+            "Sy_MPa": 900,
+            "Su_MPa": 1000,
+            "elongation_percent": 9
+          }
+        ]
+      },
+      "temperature_limits": {
+        "T_min_C": -20,
+        "T_max_C": 250
+      }
+    },
+    
+    "ISO_12_9": {
+      "name": "ISO Property Class 12.9",
+      "specification": "ISO 898-1",
+      "description": "Alloy steel, highest strength",
+      "mechanical_properties": {
+        "E": 210000,
+        "G": 81000,
+        "nu": 0.3,
+        "rho": 7850,
+        "alpha": 11.0e-6
+      },
+      "strength": {
+        "d_range_mm": [1.6, 39],
+        "profiles": [
+          {
+            "d_max_mm": 39,
+            "Sy_MPa": 1080,
+            "Su_MPa": 1200,
+            "elongation_percent": 8
+          }
+        ]
+      },
+      "temperature_limits": {
+        "T_min_C": -20,
+        "T_max_C": 200
+      }
+    }
+  },
+  
+  "flange_materials": {
+    "A105": {
+      "name": "ASTM A105",
+      "specification": "ASTM A105/A105M",
+      "description": "Carbon steel forgings for piping applications",
+      "mechanical_properties": {
+        "E": 200000,
+        "G": 77000,
+        "nu": 0.3,
+        "rho": 7850,
+        "alpha": 11.9e-6
+      },
+      "strength": {
+        "Sy_MPa": 250,
+        "Su_MPa": 485
+      },
+      "temperature_limits": {
+        "T_min_C": -29,
+        "T_max_C": 425
+      }
+    },
+    
+    "A182_F304": {
+      "name": "ASTM A182 Grade F304",
+      "specification": "ASTM A182/A182M",
+      "description": "304 Stainless steel forgings",
+      "mechanical_properties": {
+        "E": 193000,
+        "G": 77000,
+        "nu": 0.29,
+        "rho": 8000,
+        "alpha": 15.9e-6
+      },
+      "strength": {
+        "Sy_MPa": 205,
+        "Su_MPa": 515
+      },
+      "temperature_limits": {
+        "T_min_C": -254,
+        "T_max_C": 425
+      }
+    },
+    
+    "A182_F316": {
+      "name": "ASTM A182 Grade F316",
+      "specification": "ASTM A182/A182M",
+      "description": "316 Stainless steel forgings",
+      "mechanical_properties": {
+        "E": 193000,
+        "G": 77000,
+        "nu": 0.29,
+        "rho": 8000,
+        "alpha": 15.9e-6
+      },
+      "strength": {
+        "Sy_MPa": 205,
+        "Su_MPa": 515
+      },
+      "temperature_limits": {
+        "T_min_C": -254,
+        "T_max_C": 425
+      }
+    }
+  },
+  
+  "gasket_materials": {
+    "spiral_wound_316_graphite": {
+      "name": "Spiral Wound 316SS/Graphite",
+      "type": "spiral_wound",
+      "description": "316 SS windings with flexible graphite filler",
+      "properties": {
+        "k_n_GPa_mm": 27.5,
+        "k_s_GPa_mm": 10.6,
+        "rho": 2500,
+        "max_temp_C": 650,
+        "min_temp_C": -200
+      },
+      "seating_stress_MPa": {
+        "m": 3.0,
+        "y": 68.9
+      }
+    },
+    
+    "ring_joint_R": {
+      "name": "Ring Joint Gasket (R-type)",
+      "type": "ring_joint",
+      "description": "Solid metal ring joint, octagonal cross-section",
+      "properties": {
+        "k_n_GPa_mm": 50.0,
+        "k_s_GPa_mm": 20.0,
+        "rho": 7850,
+        "max_temp_C": 815,
+        "min_temp_C": -254
+      },
+      "seating_stress_MPa": {
+        "m": 6.5,
+        "y": 179.3
+      }
+    },
+    
+    "graphite_sheet": {
+      "name": "Flexible Graphite Sheet",
+      "type": "flat",
+      "description": "Expanded graphite sheet gasket",
+      "properties": {
+        "k_n_GPa_mm": 15.0,
+        "k_s_GPa_mm": 5.0,
+        "rho": 1100,
+        "max_temp_C": 450,
+        "min_temp_C": -200
+      },
+      "seating_stress_MPa": {
+        "m": 2.0,
+        "y": 20.7
+      }
+    },
+    
+    "ptfe_filled": {
+      "name": "PTFE Filled",
+      "type": "flat",
+      "description": "Glass-filled PTFE gasket",
+      "properties": {
+        "k_n_GPa_mm": 5.0,
+        "k_s_GPa_mm": 2.0,
+        "rho": 2200,
+        "max_temp_C": 260,
+        "min_temp_C": -200
+      },
+      "seating_stress_MPa": {
+        "m": 2.0,
+        "y": 6.9
+      }
+    }
+  }
+}

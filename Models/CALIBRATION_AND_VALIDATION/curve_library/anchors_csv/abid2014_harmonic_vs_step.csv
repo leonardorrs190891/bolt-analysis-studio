@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/88_Abid_Nash_2014_dynamic_gasket_flange.md:57-70
+cycle,harmonic_5Hz,step_transient
+0,1.000,1.000
+50,0.988,0.994
+100,0.978,0.990
+200,0.966,0.986
+500,0.944,0.981

@@ -1,0 +1,39 @@
+% Tabela das excecoes assinadas — GERADA, nao editar a mao.
+% Regenerar: py -3.12 New_Theory/export_excecoes_artigo.py
+% Store fingerprint: 20be19aabe11 · gerada em 2026-08-16
+% Requer: \usepackage{booktabs} e compilacao LuaLaTeX/XeLaTeX (UTF-8).
+\begin{table*}[t]
+\centering
+\caption{Curvas sob exce\c{c}\~ao assinada: casos em que o erro do modelo cabe dentro da repetibilidade medida do pr\'oprio dado (F5) ou do piso da fonte (F7) --- nenhum modelo determin\'istico passaria o crit\'erio ali.}
+\label{tab:excecoes}
+\small
+\begin{tabular}{lllllll}
+\toprule
+caso & fonte & classe & MAE & res.\ m\'ax & teto p/curva & prova assinada \\
+\midrule
+bauer2024\_M12\_fig8\_test2 & Bauer 2024 — M8/M12 spectrum (Eng. Fail. Anal.) & replicas (F5) & 0.029 & 0.180 & = & scatter de réplicas (desvio-à-mediana 0.349) \\
+bauer2024\_M12\_fig8\_test3 & Bauer 2024 — M8/M12 spectrum (Eng. Fail. Anal.) & replicas (F5) & 0.024 & 0.120 & = & scatter de réplicas (desvio-à-mediana 0.349) \\
+bauer2024\_M8\_fig6\_rep1 & Bauer 2024 — M8/M12 spectrum (Eng. Fail. Anal.) & replicas (F5) & 0.043 & 0.126 & = & scatter de réplicas (desvio-à-mediana 0.328) \\
+bauer2024\_M8\_fig6\_rep4 & Bauer 2024 — M8/M12 spectrum (Eng. Fail. Anal.) & replicas (F5) & 0.078 & 0.171 & = & scatter de réplicas (desvio-à-mediana 0.328) \\
+bauer2024\_M8\_fig6\_rep5 & Bauer 2024 — M8/M12 spectrum (Eng. Fail. Anal.) & replicas (F5) & 0.049 & 0.112 & = & scatter de réplicas (desvio-à-mediana 0.328) \\
+bauer2024\_M8\_fig6\_rep6 & Bauer 2024 — M8/M12 spectrum (Eng. Fail. Anal.) & replicas (F5) & 0.076 & 0.130 & = & scatter de réplicas (desvio-à-mediana 0.328) \\
+chu2026ti\_D0p4mm\_F0\_49kN\_test2 & Chu 2026 — MJ10 superligas Junker (Tribol. Int.) & replicas (F5) & 0.157 & 0.526 & 0.097 & form-limited com prova em lei (5 degraus): onset/chute são função explícita de (D,F0) — estrutura que nenhuma forma nomeável carrega \\
+chu2026ti\_D0p4mm\_F0\_61kN\_test7 & Chu 2026 — MJ10 superligas Junker (Tribol. Int.) & replicas (F5) & 0.150 & 0.270 & 0.139 & form-limited com prova em lei (5 degraus); vida 3,8$\times$ a do test2 com mesmo D — proteção de F0 mediada por $\mu$(N), lei do autor inverte \\
+chu2026ti\_D0p4mm\_F0\_73kN\_test8 & Chu 2026 — MJ10 superligas Junker (Tribol. Int.) & replicas (F5) & 0.161 & 0.393 & 0.095 & form-limited com prova em lei (5 degraus); idem test7 (F0 73 kN) \\
+chu2026ti\_D0p5mm\_F0\_49kN\_Ra1p6um\_test9 & Chu 2026 — MJ10 superligas Junker (Tribol. Int.) & replicas (F5) & 0.046 & 0.105 & 0.034 & form-limited com prova em lei (5 degraus); a mais próxima (0,0454/0,1056/0,0544) e sem alavanca que feche $\sigma$ sem quebrar test5/6 — e a digitalização carrega discrepância Tabela-1 de 29\% declarada na nota de aparato \\
+chu2026ti\_D0p5mm\_F0\_49kN\_test3 & Chu 2026 — MJ10 superligas Junker (Tribol. Int.) & replicas (F5) & 0.080 & 0.114 & 0.019 & form-limited com prova em lei (5 degraus); fecha isolada com slip\_onset\_W=4000 (0,0402/0,0666/0,0264) — constante não transfere \\
+chu2026ti\_D0p7mm\_F0\_49kN\_test4 & Chu 2026 — MJ10 superligas Junker (Tribol. Int.) & replicas (F5) & 0.135 & 0.226 & 0.083 & form-limited com prova em lei (5 degraus); N90=406 > N90(0,4mm)=278 — não-monotonicidade em D que lei uniforme não tem \\
+eccles2010\_fig6\_annotated\_4kN\_axial & Eccles 2010 — M8 prevailing-torque (Proc IMechE C) & replicas (F5) & 0.147 & 0.474 & = & sobreposição axial (G-B1 FAIL: receita PR-31 levou o res.máx de 0.467 a 1.028) — o engine não tem contorno axial externo \\
+eccles2010\_fig7d\_axial\_3p1kN\_constant & Eccles 2010 — M8 prevailing-torque (Proc IMechE C) & replicas (F5) & 0.067 & 0.090 & = & sobreposição axial — PASSA no tripé por ARTEFATO: o FLOOR\_TRIM corta os 4 pontos da cauda a zero. Sai dos aprovados se a família for tratada como unidade \\
+eccles2010\_fig8a\_no\_axial\_baseline1 & Eccles 2010 — M8 prevailing-torque (Proc IMechE C) & prova de piso (F7) & 0.049 & 0.132 & = & prova de piso (PROVA): res.máx 0.1320/0.1866 · $\sigma$ 0.0395/0.0698 — denominador RE-MEDIDO em 2026-08-15 (prereg eccles-par-replica-declarado). O anterior (0.257/0.083) era o piso INVÁLIDO que a P-15 retratou: dispersão entre cargas axiais de 0 a 3,5 kN, a variável varrida do paper. O válido vem do par declarado fig8a$\times$fig8c — baseline1/baseline2, rótulo DO AUTOR, ambos axial=0. ⚠️ Grau PROVA e não FORTE de propósito: passa a barra FORTE (0.13196) por 4e-6, margem que não sobrevive a arredondamento — o veredito é estável, o grau não. \\
+eccles2010\_fig8b\_axial\_0p7kN\_intermittent & Eccles 2010 — M8 prevailing-torque (Proc IMechE C) & replicas (F5) & 0.043 & 0.130 & = & sobreposição axial — e o FLOOR\_TRIM corta 27 dos 35 pontos, logo o MAE 0.044 é pontuado sobre 8 pontos \\
+eccles2010\_fig8c\_no\_axial\_baseline2 & Eccles 2010 — M8 prevailing-torque (Proc IMechE C) & prova de piso (F7) & 0.046 & 0.146 & = & prova de piso (PROVA): res.máx 0.1463/0.1866 · $\sigma$ 0.0386/0.0698 — denominador RE-MEDIDO em 2026-08-15 (prereg eccles-par-replica-declarado). O anterior (0.257/0.083) era o piso INVÁLIDO que a P-15 retratou. O válido vem do par declarado fig8a$\times$fig8c — baseline1/baseline2, rótulo DO AUTOR, ambos axial=0. Falha a barra FORTE no res.máx (0.1463 > 0.13196) e passa em PROVA. \\
+eccles2010\_fig8d\_axial\_3p5kN\_intermittent & Eccles 2010 — M8 prevailing-torque (Proc IMechE C) & replicas (F5) & 0.129 & 0.246 & = & sobreposição axial (G-B1 FAIL: res.máx 0.252 -> 0.400 com a receita) \\
+jcsr2023\_plain\_outdoor & Yang/Bai/Ding 2023 — M20 relaxação x ambiente (JCSR) & replicas (F5) & 0.062 & 0.131 & = & cliff/rebound de corrosão (forma faltante) \\
+liu2020\_fig9\_zinc\_AF0.4mm\_P0-18kN & LIU\_2020\_WEAR & replicas (F5) & 0.053 & 0.077 & = & trinca de fadiga atribuída pelo paper (§3.1.2) — a regra automática de changepoint NÃO achou o corte \\
+yang2021\_amp0p8mm\_ax6kN & Yang 2021 — M12 combined excitation (Shock \& Vib.) & replicas (F5) & 0.054 & 0.174 & 0.034 & canal estrutural ξ-dependente confundido \\
+yang2021\_fig2\_typical & Yang 2021 — M12 combined excitation (Shock \& Vib.) & replicas (F5) & 0.040 & 0.161 & 0.030 & canal estrutural ξ-dependente confundido \\
+10\_Yang\_2023\_phenomenological\_model\_\_0\_25\_mm\_\_2 & Yang 2023 — M8 (IJPEM) & replicas (F5) & 0.166 & 0.426 & 0.086 & sub-slip (stick 100\% medido): dado colapsa sob stick e nenhuma alavanca alcança — gth (q=3,8 do próprio paper) varrido 27 células, máx. −48\% sem fechar (0,086/0,296/0,113 na melhor) \\
+\bottomrule
+\end{tabular}
+\end{table*}

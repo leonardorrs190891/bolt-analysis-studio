@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/96_Schaumann_2009_2015_large_bolt_VDI.md:77-89
+condition,sigmaD_exp_MPa,sigmaD_VDI_MPa,VDI_overestimate_pct
+M64_bare_R0p1,52,69,33
+M64_zinc_R0p1,46,69,50
+M36_bare_R0p1,63,75,19
+M36_zinc_R0p1,55,75,36

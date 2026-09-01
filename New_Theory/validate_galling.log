@@ -1,0 +1,15 @@
+emb Rz<4=4.0um k_wear_tr=0.06 c_D per-lube: dry=0.5 oil=0.03
+data dry recovery = [1.0, 0.918, 0.832, 0.793]
+data oil recovery = [1.0, 1.01, 1.038, 1.025]
+
+  dry k_gall= 0.0 recovery=[1.0, 1.0, 1.0, 1.0] MAE=0.114 D=0.28
+  dry k_gall= 1.0 recovery=[1.0, 0.973, 0.947, 0.925] MAE=0.075 D=0.27
+  dry k_gall= 2.0 recovery=[1.0, 0.947, 0.9, 0.863] MAE=0.042 D=0.27
+  dry k_gall= 3.0 recovery=[1.0, 0.922, 0.859, 0.811] MAE=0.012 D=0.26
+  dry k_gall= 5.0 recovery=[1.0, 0.876, 0.789, 0.728] MAE=0.038 D=0.24
+
+BEST dry k_gall=3.0 MAE=0.012 (k=0 MAE=0.114)
+OIL (same k_gall=3.0, c_D=0.03): recovery=[1.0, 0.994, 0.988, 0.983] D_end=0.02
+
+GATES: G4'(dry declines, MAE<0.05)=True  G-sign(oil flat >=0.95)=True  G-parsimony(k_gall +>0.005)=True
+Contraste dry-vs-oil = c_D PER-LUBE (nao forma faltante); §8: forma transfere, c_D per-lube.

@@ -1,0 +1,54 @@
+{
+ "prereg": "docs/superpowers/specs/2026-07-21-master-f1-onda-a-prereg.md",
+ "baseline_store_commit": "ae2d7e0",
+ "G1b": {
+  "engajados": [
+   "rousseau2025_hdpe_t10",
+   "rousseau2025_hdpe_t12",
+   "rousseau2025_hdpe_t14",
+   "rousseau2025_steel_t10",
+   "rousseau2025_steel_t12",
+   "rousseau2025_steel_t14",
+   "zhang2006_fig16_runout_40kN_amp0p125",
+   "zhang2006_fig3_illus_M12x125_20kN_amp0p35"
+  ],
+  "esperado": [
+   "rousseau2025_hdpe_t10",
+   "rousseau2025_hdpe_t12",
+   "rousseau2025_hdpe_t14",
+   "rousseau2025_steel_t10",
+   "rousseau2025_steel_t12",
+   "rousseau2025_steel_t14",
+   "zhang2006_fig16_runout_40kN_amp0p125",
+   "zhang2006_fig3_illus_M12x125_20kN_amp0p35"
+  ],
+  "inesperados": [],
+  "faltando": [],
+  "erros": {},
+  "PASS": true,
+  "rerun": "2a rodada flags-only 2026-07-21: a 1a rodada tinha bug NO CHECADOR (inputs_for(rec) em vez de inputs_for(rec.validation_case) — 202 AttributeError); os sims da paridade G1a usaram o runner real e VALEM (0 diffs). Nenhum código de engine/runner mudou entre as rodadas."
+ },
+ "G1a_G2a": {
+  "n": 202,
+  "n_diffs": 0,
+  "diffs": [],
+  "PASS": true
+ },
+ "L7": {
+  "n_com_implied": 127,
+  "n_fora_banda": 0,
+  "fora_banda": []
+ },
+ "verdict": "PASS",
+ "G1a_hdpe_recheck_pos_adocao": {
+  "ids": [
+   "rousseau2025_hdpe_t10",
+   "rousseau2025_hdpe_t12",
+   "rousseau2025_hdpe_t14"
+  ],
+  "n_diffs": 0,
+  "diffs": [],
+  "PASS": true,
+  "nota": "re-prova de paridade dos 3 HDPE após a adoção do grupo ROUSSEAU_HDPE (a paridade-202 rodou antes dela; os demais 199 casos não tiveram config alterada depois da paridade-202)"
+ }
+}

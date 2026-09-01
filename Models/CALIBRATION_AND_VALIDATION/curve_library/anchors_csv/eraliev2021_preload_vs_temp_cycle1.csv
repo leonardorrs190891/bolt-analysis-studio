@@ -1,0 +1,17 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/12_Eraliev_2021_thermal_cycling.md:71-93
+branch,T_C,F_N
+heating,25,5000
+heating,30,5400
+heating,35,5900
+heating,40,6500
+heating,45,7200
+heating,50,7600
+heating,55,7900
+heating,60,8000
+cooling,55,7600
+cooling,50,7000
+cooling,45,6300
+cooling,40,5600
+cooling,35,5000
+cooling,30,4700
+cooling,25,4500

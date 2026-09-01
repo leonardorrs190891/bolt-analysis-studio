@@ -1,0 +1,10 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/02_Jiang_2003_2004_M12_early_stage.md:166-183
+delta_mm,N_to_0p10F0,N_to_0p50F0,flag
+0.254,,,no_loosening
+0.381,450,150,approx
+0.46,220,65,approx
+0.508,150,40,approx
+0.635,80,20,approx
+0.762,50,12,approx
+1.016,25,6,approx
+1.27,15,4,approx

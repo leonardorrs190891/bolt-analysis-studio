@@ -1,0 +1,8 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/11_Hattori_2010_critical_slippage.md:111-126
+phase,T_thread_Nm,T_bearing_Nm,T_net_Nm
+loading_0_to_plus_delta,3.2,5.8,-9.0
+max_displacement_plus_delta,2.0,4.5,-6.5
+unloading_plus_delta_to_0,-1.5,3.0,-1.5
+reversal_0_to_minus_delta,-3.0,-0.5,3.5
+max_negative_minus_delta,-2.5,-1.0,3.5
+return_minus_delta_to_0,1.0,2.0,-3.0

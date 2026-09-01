@@ -1,0 +1,9 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/17_Eccles_2010_tribological.md:102-114
+coating,mu_initial,N50_cycles,N80_cycles
+bare_steel_degreased,0.25,80,250
+zinc_plated_dry,0.22,50,150
+zinc_plated_oil,0.14,25,80
+cadmium_plated,0.10,12,40
+phosphate_oil,0.12,18,60
+phosphate_MoS2,0.08,8,25
+zinc_flake_geomet,0.12,20,65

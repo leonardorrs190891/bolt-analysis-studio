@@ -1,0 +1,6 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/33_Du_Qiu_2025_sine_on_random_vibration.md:109-126
+condition,t_transition_min,t_loosen_min,flag
+pure_sine_10g,50,100,
+pure_random_0p04,160,240,gt_loosen
+SOR_10g_0p04,20,55,
+SOR_15g_0p08,5,18,

@@ -1,0 +1,427 @@
+{
+ "chosen": {
+  "BAUER_2024": 0.0,
+  "ICMEZ_2025": 0.0,
+  "KARLSEN_2022": 0.0,
+  "LIU_2025": 0.0,
+  "LU_2024": 0.02,
+  "ROUSSEAU_2025": 0.0,
+  "YANG_2019": 0.0
+ },
+ "rows": [
+  {
+   "csv": "bauer2024_M8_fig6_rep1.csv",
+   "source": "BAUER_2024",
+   "k": 0.0,
+   "mae": 0.057862555844840076,
+   "mae_prev_best": 0.057862555844840076,
+   "mode": "shape-mixed",
+   "mode_prev": "shape-mixed"
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep2.csv",
+   "source": "BAUER_2024",
+   "k": 0.0,
+   "mae": 0.07848013606482368,
+   "mae_prev_best": 0.07848013606482368,
+   "mode": "level-bias",
+   "mode_prev": "level-bias"
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep3.csv",
+   "source": "BAUER_2024",
+   "k": 0.0,
+   "mae": 0.10452569888014894,
+   "mae_prev_best": 0.09768365142691236,
+   "mode": "level-bias",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep4.csv",
+   "source": "BAUER_2024",
+   "k": 0.0,
+   "mae": 0.07965176409047152,
+   "mae_prev_best": 0.07965176409047152,
+   "mode": "level-bias",
+   "mode_prev": "level-bias"
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep5.csv",
+   "source": "BAUER_2024",
+   "k": 0.0,
+   "mae": 0.1567313438182511,
+   "mae_prev_best": 0.13666784027198084,
+   "mode": "level-bias",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "bauer2024_M8_fig6_rep6.csv",
+   "source": "BAUER_2024",
+   "k": 0.0,
+   "mae": 0.23688170814907916,
+   "mae_prev_best": 0.11501782043535685,
+   "mode": "level-bias",
+   "mode_prev": "shape-mixed"
+  },
+  {
+   "csv": "bauer2024_M12_fig8_test1.csv",
+   "source": "BAUER_2024",
+   "k": 0.0,
+   "mae": 0.12525975654756363,
+   "mae_prev_best": 0.12525975654756363,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "bauer2024_M12_fig8_test2.csv",
+   "source": "BAUER_2024",
+   "k": 0.0,
+   "mae": 0.18360298780250264,
+   "mae_prev_best": 0.18360298780250264,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "bauer2024_M12_fig8_test3.csv",
+   "source": "BAUER_2024",
+   "k": 0.0,
+   "mae": 0.1830249320563525,
+   "mae_prev_best": 0.1830249320563525,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "demir2024_amp0p3_F14p3_lk13p8.csv",
+   "source": "ICMEZ_2025",
+   "k": 0.0,
+   "mae": 0.04034336545261821,
+   "mae_prev_best": 0.04034336545261821,
+   "mode": "tail-slope",
+   "mode_prev": "tail-slope"
+  },
+  {
+   "csv": "demir2024_amp0p3_F14p3_lk19p8.csv",
+   "source": "ICMEZ_2025",
+   "k": 0.0,
+   "mae": 0.0880974787848482,
+   "mae_prev_best": 0.0737919035282808,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "demir2024_amp0p3_F17p6_lk13p8.csv",
+   "source": "ICMEZ_2025",
+   "k": 0.0,
+   "mae": 0.12010961063010187,
+   "mae_prev_best": 0.10224479351291717,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "demir2024_amp0p3_F17p6_lk19p8.csv",
+   "source": "ICMEZ_2025",
+   "k": 0.0,
+   "mae": 0.04705807972181367,
+   "mae_prev_best": 0.03301975533204607,
+   "mode": "level-bias",
+   "mode_prev": "tail-slope"
+  },
+  {
+   "csv": "demir2024_amp0p4_F14p3_lk13p8.csv",
+   "source": "ICMEZ_2025",
+   "k": 0.0,
+   "mae": 0.0545292724590611,
+   "mae_prev_best": 0.0545292724590611,
+   "mode": "tail-slope",
+   "mode_prev": "tail-slope"
+  },
+  {
+   "csv": "demir2024_amp0p4_F14p3_lk19p8.csv",
+   "source": "ICMEZ_2025",
+   "k": 0.0,
+   "mae": 0.14621644970676695,
+   "mae_prev_best": 0.11746007544547996,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "demir2024_amp0p4_F17p6_lk13p8.csv",
+   "source": "ICMEZ_2025",
+   "k": 0.0,
+   "mae": 0.0826604048412306,
+   "mae_prev_best": 0.0826604048412306,
+   "mode": "shape-mixed",
+   "mode_prev": "shape-mixed"
+  },
+  {
+   "csv": "demir2024_amp0p4_F17p6_lk19p8.csv",
+   "source": "ICMEZ_2025",
+   "k": 0.0,
+   "mae": 0.15487599082194847,
+   "mae_prev_best": 0.12182381095257933,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "karlsen2022_M30_HV_run1p2.csv",
+   "source": "KARLSEN_2022",
+   "k": 0.0,
+   "mae": 0.08697782260054543,
+   "mae_prev_best": 0.2149389555917615,
+   "mode": "level-bias",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "karlsen2022_M30_HV_run2p2.csv",
+   "source": "KARLSEN_2022",
+   "k": 0.0,
+   "mae": 0.10736181974193915,
+   "mae_prev_best": 0.24463646419176183,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "karlsen2022_M30_HV_run6p2.csv",
+   "source": "KARLSEN_2022",
+   "k": 0.0,
+   "mae": 0.06266958568715641,
+   "mae_prev_best": 0.22966303050823234,
+   "mode": "shape-mixed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "karlsen2022_M30_HV_run7p1.csv",
+   "source": "KARLSEN_2022",
+   "k": 0.0,
+   "mae": 0.14046919470645083,
+   "mae_prev_best": 0.24690502968398206,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "karlsen2022_M30_HVtorqued_run14p2.csv",
+   "source": "KARLSEN_2022",
+   "k": 0.0,
+   "mae": 0.09503300509339371,
+   "mae_prev_best": 0.20432330641978863,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "karlsen2022_M42_HV_run20p0.csv",
+   "source": "KARLSEN_2022",
+   "k": 0.0,
+   "mae": 0.09972025734008845,
+   "mae_prev_best": 0.22634761079077956,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "karlsen2022_M42_HV_run21p0.csv",
+   "source": "KARLSEN_2022",
+   "k": 0.0,
+   "mae": 0.09782546114919113,
+   "mae_prev_best": 0.1893071358906462,
+   "mode": "tail-slope",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "liu2025_M16_amp0p25.csv",
+   "source": "LIU_2025",
+   "k": 0.0,
+   "mae": 0.13619505086046976,
+   "mae_prev_best": 0.13619505086046976,
+   "mode": "level-bias",
+   "mode_prev": "level-bias"
+  },
+  {
+   "csv": "liu2025_M16_amp0p3.csv",
+   "source": "LIU_2025",
+   "k": 0.0,
+   "mae": 0.12093666186055602,
+   "mae_prev_best": 0.12093666186055602,
+   "mode": "level-bias",
+   "mode_prev": "level-bias"
+  },
+  {
+   "csv": "liu2025_M16_amp0p4.csv",
+   "source": "LIU_2025",
+   "k": 0.0,
+   "mae": 0.14829740407809464,
+   "mae_prev_best": 0.14829740407809464,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "liu2025_M16_amp0p5.csv",
+   "source": "LIU_2025",
+   "k": 0.0,
+   "mae": 0.13124255790022485,
+   "mae_prev_best": 0.13124255790022485,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "liu2025_M16_amp0p6.csv",
+   "source": "LIU_2025",
+   "k": 0.0,
+   "mae": 0.12019139305626088,
+   "mae_prev_best": 0.12019139305626088,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "liu2025_M16_amp0p8.csv",
+   "source": "LIU_2025",
+   "k": 0.0,
+   "mae": 0.11827935758269885,
+   "mae_prev_best": 0.11827935758269885,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "lu2024_M8_fig18_amp0p25.csv",
+   "source": "LU_2024",
+   "k": 0.02,
+   "mae": 0.08779024035268641,
+   "mae_prev_best": 0.08779024035268641,
+   "mode": "settling-early",
+   "mode_prev": "settling-early"
+  },
+  {
+   "csv": "lu2024_M8_fig18_amp0p5.csv",
+   "source": "LU_2024",
+   "k": 0.02,
+   "mae": 0.2540344974183147,
+   "mae_prev_best": 0.3955892757258776,
+   "mode": "shape-mixed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "lu2024_M8_fig18_amp1p0.csv",
+   "source": "LU_2024",
+   "k": 0.02,
+   "mae": 0.21050686932236035,
+   "mae_prev_best": 0.45724906084907696,
+   "mode": "shape-mixed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "lu2024_M8_fig18_amp1p5.csv",
+   "source": "LU_2024",
+   "k": 0.02,
+   "mae": 0.20910888411959375,
+   "mae_prev_best": 0.5132266877677234,
+   "mode": "shape-mixed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "lu2024_M8_fig18_amp2p0.csv",
+   "source": "LU_2024",
+   "k": 0.02,
+   "mae": 0.1834382158800527,
+   "mae_prev_best": 0.5046425730687465,
+   "mode": "tail-slope",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "lu2024_M8_fig20_T4Nm.csv",
+   "source": "LU_2024",
+   "k": 0.02,
+   "mae": 0.3338792761872946,
+   "mae_prev_best": 0.14851352168164403,
+   "mode": "level-bias",
+   "mode_prev": "shape-mixed"
+  },
+  {
+   "csv": "lu2024_M8_fig20_T10Nm.csv",
+   "source": "LU_2024",
+   "k": 0.02,
+   "mae": 0.3097321733671619,
+   "mae_prev_best": 0.22369675209111978,
+   "mode": "over-collapse",
+   "mode_prev": "shape-mixed"
+  },
+  {
+   "csv": "lu2024_M8_fig20_T16Nm.csv",
+   "source": "LU_2024",
+   "k": 0.02,
+   "mae": 0.21922733631330857,
+   "mae_prev_best": 0.36523960495574237,
+   "mode": "shape-mixed",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "lu2024_M8_fig20_T22Nm.csv",
+   "source": "LU_2024",
+   "k": 0.02,
+   "mae": 0.2423875520282172,
+   "mae_prev_best": 0.42620990288715066,
+   "mode": "level-bias",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "lu2024_M8_fig20_T28Nm.csv",
+   "source": "LU_2024",
+   "k": 0.02,
+   "mae": 0.40434668911655836,
+   "mae_prev_best": 0.430764945232734,
+   "mode": "level-bias",
+   "mode_prev": "collapse-missed"
+  },
+  {
+   "csv": "rousseau2025_steel_t10.csv",
+   "source": "ROUSSEAU_2025",
+   "k": 0.0,
+   "mae": 0.42452602507378784,
+   "mae_prev_best": 0.23505476137939502,
+   "mode": "level-bias",
+   "mode_prev": "level-bias"
+  },
+  {
+   "csv": "rousseau2025_steel_t12.csv",
+   "source": "ROUSSEAU_2025",
+   "k": 0.0,
+   "mae": 0.5884754791584347,
+   "mae_prev_best": 0.3811796584561036,
+   "mode": "over-collapse",
+   "mode_prev": "over-collapse"
+  },
+  {
+   "csv": "rousseau2025_steel_t14.csv",
+   "source": "ROUSSEAU_2025",
+   "k": 0.0,
+   "mae": 0.5150813178122567,
+   "mae_prev_best": 0.3868314440857529,
+   "mode": "over-collapse",
+   "mode_prev": "over-collapse"
+  },
+  {
+   "csv": "yang2019_M10_amp0p4_5Hz.csv",
+   "source": "YANG_2019",
+   "k": 0.0,
+   "mae": 0.175307943339758,
+   "mae_prev_best": 0.175307943339758,
+   "mode": "level-bias",
+   "mode_prev": "level-bias"
+  },
+  {
+   "csv": "yang2019_M10_amp0p6_10Hz.csv",
+   "source": "YANG_2019",
+   "k": 0.0,
+   "mae": 0.11554783359655793,
+   "mae_prev_best": 0.11554783359655793,
+   "mode": "level-bias",
+   "mode_prev": "level-bias"
+  },
+  {
+   "csv": "yang2019_M10_amp0p6_5Hz.csv",
+   "source": "YANG_2019",
+   "k": 0.0,
+   "mae": 0.14914156104836926,
+   "mae_prev_best": 0.14914156104836926,
+   "mode": "collapse-missed",
+   "mode_prev": "collapse-missed"
+  }
+ ]
+}

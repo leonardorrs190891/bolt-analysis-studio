@@ -1,0 +1,171 @@
+{
+ "cut": 200000.0,
+ "casos": {
+  "liu2016wear_fig7_run1_1e6cyc": {
+   "late_share": {
+    "embedding": 2.0037046929558505e-09,
+    "creep": 0.9999999979962954,
+    "wear": 0.0,
+    "rotational_loosening": 0.0,
+    "thread_fretting": 0.0,
+    "fatigue": 0.0
+   },
+   "late_total_frac": 0.0129606335561597,
+   "n_tail": 4,
+   "fit_dado": {
+    "rms_log": 0.00039487102253677164,
+    "slope_log": -0.018036435873549524,
+    "rms_pow": 0.000453910784996535,
+    "m_pow": 0.1,
+    "veredicto": "empate"
+   },
+   "fit_modelo": {
+    "rms_log": 7.0479734507172516e-06,
+    "slope_log": -0.008049077152601917,
+    "rms_pow": 7.350247005012193e-05,
+    "m_pow": 0.1,
+    "veredicto": "log"
+   }
+  },
+  "liu2016wear_fig7_run2_5e6cyc": {
+   "late_share": {
+    "embedding": 6.023303905190201e-09,
+    "creep": 0.9999999939766961,
+    "wear": 0.0,
+    "rotational_loosening": 0.0,
+    "thread_fretting": 0.0,
+    "fatigue": 0.0
+   },
+   "late_total_frac": 0.025882323594845644,
+   "n_tail": 17,
+   "fit_dado": {
+    "rms_log": 0.005131603394632757,
+    "slope_log": -0.011514636014616027,
+    "rms_pow": 0.0054447881326961335,
+    "m_pow": 0.1,
+    "veredicto": "empate"
+   },
+   "fit_modelo": {
+    "rms_log": 2.7864435621014206e-05,
+    "slope_log": -0.008017470961041611,
+    "rms_pow": 0.0002868140999834716,
+    "m_pow": 0.1,
+    "veredicto": "log"
+   }
+  },
+  "liu2016wear_fig9a_m30nm": {
+   "late_share": {
+    "embedding": 2.0183026672371994e-09,
+    "creep": 0.9999999979816974,
+    "wear": 0.0,
+    "rotational_loosening": 0.0,
+    "thread_fretting": 0.0,
+    "fatigue": 0.0
+   },
+   "late_total_frac": 0.01286689191948942,
+   "n_tail": 4,
+   "fit_dado": {
+    "rms_log": 0.000406837197017706,
+    "slope_log": -0.015791585504454368,
+    "rms_pow": 0.0005358460720710085,
+    "m_pow": 0.1,
+    "veredicto": "log"
+   },
+   "fit_modelo": {
+    "rms_log": 6.996996875780554e-06,
+    "slope_log": -0.007990859808267402,
+    "rms_pow": 7.297084156477014e-05,
+    "m_pow": 0.1,
+    "veredicto": "log"
+   }
+  },
+  "liu2016wear_fig9a_m40nm": {
+   "late_share": {
+    "embedding": 1.317665699626477e-09,
+    "creep": 0.9999999986823342,
+    "wear": 0.0,
+    "rotational_loosening": 0.0,
+    "thread_fretting": 0.0,
+    "fatigue": 0.0
+   },
+   "late_total_frac": 0.007664441369264752,
+   "n_tail": 4,
+   "fit_dado": {
+    "rms_log": 0.00026557568442411254,
+    "slope_log": -0.006544157555050726,
+    "rms_pow": 0.0001006032028398075,
+    "m_pow": 0.5,
+    "veredicto": "pow"
+   },
+   "fit_modelo": {
+    "rms_log": 2.138425633380319e-06,
+    "slope_log": -0.004764659395234538,
+    "rms_pow": 4.147665077479293e-05,
+    "m_pow": 0.1,
+    "veredicto": "log"
+   }
+  },
+  "zhang18_fig2_test4_20kN_5e5cyc_preload_vs_cycles": {
+   "late_share": {
+    "embedding": 1.0,
+    "creep": 0.0,
+    "wear": 0.0,
+    "rotational_loosening": 0.0,
+    "thread_fretting": 0.0,
+    "fatigue": 0.0
+   },
+   "late_total_frac": 3.9030098597514495e-12,
+   "n_tail": 6,
+   "fit_dado": {
+    "rms_log": 0.0009941131152178208,
+    "slope_log": -0.011187478400355678,
+    "rms_pow": 0.0010055735739893344,
+    "m_pow": 0.1,
+    "veredicto": "empate"
+   },
+   "fit_modelo": {
+    "rms_log": 5.751055286780865e-16,
+    "slope_log": -1.8318168926622596e-16,
+    "rms_pow": 0.0,
+    "m_pow": 0.5,
+    "veredicto": "pow"
+   }
+  },
+  "zhang18_fig13_14kN_preload_vs_cycles": {
+   "late_share": {
+    "embedding": 1.0,
+    "creep": 0.0,
+    "wear": 0.0,
+    "rotational_loosening": 0.0,
+    "thread_fretting": 0.0,
+    "fatigue": 0.0
+   },
+   "late_total_frac": 7.929754075597373e-12,
+   "n_tail": 2
+  },
+  "zhang18_fig16_without_locker_preload_vs_cycles": {
+   "late_share": {
+    "embedding": 1.0,
+    "creep": 0.0,
+    "wear": 0.0,
+    "rotational_loosening": 0.0,
+    "thread_fretting": 0.0,
+    "fatigue": 0.0
+   },
+   "late_total_frac": 5.518571710716458e-12,
+   "n_tail": 3
+  },
+  "li2022ti_axial_10Hz_full": {
+   "late_share": {
+    "embedding": 0.0,
+    "creep": 0.057814020403821276,
+    "wear": 0.0,
+    "rotational_loosening": 0.0,
+    "thread_fretting": 0.9421859795961788,
+    "fatigue": 0.0
+   },
+   "late_total_frac": 0.053582427201517326,
+   "n_tail": 2
+  }
+ }
+}

@@ -1,0 +1,5 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/87_Liu_Mi_2021_competitive_failure_Rfactor.md:60-77
+amplitude_level,N50_loosening_R0p1,N_fatigue_R0p9,flag
+low,18000,100000,gt_fatigue
+medium,4500,35000,
+high,800,8000,

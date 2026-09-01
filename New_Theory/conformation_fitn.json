@@ -1,0 +1,38 @@
+{
+  "campaign": "Fase 2 — robustez do expoente n (spec §11 #1)",
+  "method": "A/B; treatment livre {C_creep, W_conf_ref, conform_pressure_exp}",
+  "baseline": {
+    "mae_by_condition": {
+      "nova": 0.07509584261271267,
+      "reusada": 0.059345565140983624,
+      "sobretorque": 0.13792952557860086,
+      "reaperto": 0.045894302771570285
+    },
+    "sobretorque_residual": 8.00818986188824
+  },
+  "treatment": {
+    "mae_by_condition": {
+      "nova": 0.08802671891723084,
+      "reusada": 0.05103585616857107,
+      "sobretorque": 0.014334907183303606,
+      "reaperto": 0.04003137425997094
+    },
+    "W_conf_ref": 36032.49306984517,
+    "conform_pressure_exp_fitted": 3.9999082276362414,
+    "p_ref_conform": 500000000.0,
+    "sobretorque_residual": 3.7958052363901515
+  },
+  "reference_n2": "conformation_fit.json (n=2 fixo: W_conf_ref 1.253e4, sob 0.0201, RESOLVED)",
+  "verdict": {
+    "verdict": "PARTIAL",
+    "sobretorque_mae": 0.014334907183303606,
+    "max_others_delta": 0.012930876304518168,
+    "others_deltas": {
+      "nova": 0.012930876304518168,
+      "reusada": -0.008309708972412552,
+      "reaperto": -0.005862928511599343
+    },
+    "resid_ok": true
+  },
+  "canonical_shared_block": "NAO escrito (experimento)"
+}

@@ -1,0 +1,7 @@
+# fonte: Models/CALIBRATION_AND_VALIDATION/20_Gong_Liu_2018_2019_FEA_factors.md:259-286
+l_over_d,clearance_pct_d,Lambda_cr,clearance_class
+2.0,0,0.85,body-fit
+2.0,4,0.65,std
+2.0,8,0.50,loose
+4.0,4,0.75,std
+6.0,4,0.82,std
