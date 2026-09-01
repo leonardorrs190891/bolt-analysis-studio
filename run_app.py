@@ -12,13 +12,16 @@ Usage:
     python run_app.py --v1         # Launch classic V1 (7 tabs, fallback)
     python run_app.py --builder    # Launch MSD Model Builder
     python run_app.py --help       # Show help
+    python run_app.py --skip-deps-check    # Start without the dependency check
 
 Requirements:
     - Python 3.10+
-    - PyQt6
-    - numpy
-    - scipy
-    - matplotlib
+    - PyQt6, numpy, scipy, matplotlib
+
+    Read from requirements.txt at startup. Whatever is missing is listed with
+    the interpreter it would go into, and installed after you agree; nothing is
+    installed without being asked, and nothing at all when there is no terminal
+    to ask on.
 """
 
 import sys
@@ -66,6 +69,195 @@ def _install_crash_logging():
     sys.excepthook = _hook
 
 
+# --------------------------------------------------------------- dependencies
+# What the application needs to start, used when requirements.txt cannot be
+# read. Kept here and not imported from the package: the package itself pulls
+# numpy, so nothing under src/ can run before this check has passed.
+_DEPS_FALLBACK = [("numpy", (1, 21, 0)), ("scipy", (1, 7, 0)),
+                  ("matplotlib", (3, 5, 0)), ("PyQt6", (6, 4, 0))]
+
+
+def _version_tuple(texto):
+    """Leading numeric segments of a version, or None when there are none.
+
+    "6.4.0.dev0+g12ab" -> (6, 4, 0); "unknown" -> None. Stopping at the first
+    non-numeric segment is what makes a pre-release compare as its own release
+    rather than as something older."""
+    partes = []
+    for seg in str(texto).split("."):
+        digitos = ""
+        for ch in seg:
+            if not ch.isdigit():
+                break
+            digitos += ch
+        if not digitos:
+            break
+        partes.append(int(digitos))
+    return tuple(partes) or None
+
+
+def _parse_requirements(texto):
+    """requirements.txt -> [(distribution, minimum version or None)].
+
+    Comment lines are dropped whole rather than stripped inline, because the
+    optional block of that file is commented out entry by entry: reading it as
+    required would install the report generators on someone who only wants to
+    open the GUI."""
+    specs = []
+    for linha in texto.splitlines():
+        linha = linha.strip()
+        if not linha or linha.startswith("#"):
+            continue
+        for sep in (">=", "==", ">"):
+            if sep in linha:
+                nome, _, versao = linha.partition(sep)
+                specs.append((nome.strip(), _version_tuple(versao.strip())))
+                break
+        else:
+            specs.append((linha, None))
+    return specs
+
+
+def _installed_version(nome):
+    """Installed version of a distribution, or None when it is absent.
+
+    A module that imports but carries no metadata reports "unknown", which
+    compares as unreadable and therefore as good enough: this check exists to
+    unblock someone who lacks a dependency, not to invent an obstacle for
+    someone who has it."""
+    import importlib.metadata
+    import importlib.util
+
+    try:
+        return importlib.metadata.version(nome)
+    except importlib.metadata.PackageNotFoundError:
+        pass
+    try:
+        if importlib.util.find_spec(nome) is not None:
+            return "unknown"
+    except (ImportError, ValueError):
+        pass
+    return None
+
+
+def _spec_text(nome, minimo):
+    return f"{nome}>={'.'.join(str(x) for x in minimo)}" if minimo else nome
+
+
+def _command_text(comando):
+    """The command written so it survives being pasted into a shell.
+
+    `pip install numpy>=1.21.0` unquoted is a redirection: the shell reads the
+    '>' and writes a file called '=1.21.0' while installing plain numpy. That
+    holds in bash, cmd and PowerShell alike, so every argument carrying a
+    character a shell acts on is quoted. Only the printed form needs this;
+    subprocess is handed the list and never sees a shell."""
+    partes = []
+    for arg in comando:
+        if any(ch in arg for ch in ' <>|&^"'):
+            partes.append('"' + arg.replace('"', '\\"') + '"')
+        else:
+            partes.append(arg)
+    return " ".join(partes)
+
+
+def _dependency_gaps(specs, version_of):
+    """The specs that are absent or older than asked, worded as pip takes them.
+
+    `version_of` is injected so the whole decision can be tested without
+    touching the environment of whoever runs the tests."""
+    faltando = []
+    for nome, minimo in specs:
+        atual = version_of(nome)
+        if atual is None:
+            faltando.append(_spec_text(nome, minimo))
+            continue
+        if minimo is None:
+            continue
+        tupla = _version_tuple(atual)
+        if tupla is not None and tupla < minimo:
+            faltando.append(_spec_text(nome, minimo))
+    return faltando
+
+
+def _ensure_dependencies():
+    """Check the runtime dependencies and offer to install what is missing.
+
+    Returns True when the application can start. With no terminal to ask (a
+    service, a CI job) it never installs on its own: it prints the command and
+    gives up, because a silent install is not something to do to an environment
+    nobody is watching."""
+    import subprocess
+
+    arquivo = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           "requirements.txt")
+    try:
+        with open(arquivo, encoding="utf-8") as fh:
+            specs = _parse_requirements(fh.read())
+    except OSError:
+        specs = []
+    specs = specs or list(_DEPS_FALLBACK)
+
+    faltando = _dependency_gaps(specs, _installed_version)
+    if not faltando:
+        return True
+
+    comando = [sys.executable, "-m", "pip", "install", *faltando]
+    plural = "y" if len(faltando) == 1 else "ies"
+    verbo = "is" if len(faltando) == 1 else "are"
+    print()
+    print(f"Bolt Analysis Studio needs {len(faltando)} dependenc{plural} "
+          f"that {verbo} not installed:")
+    for spec in faltando:
+        print(f"    {spec}")
+    print()
+    print(f"Target environment: {sys.executable}")
+
+    try:
+        interativo = sys.stdin is not None and sys.stdin.isatty()
+    except (AttributeError, ValueError):
+        interativo = False
+    if not interativo:
+        print()
+        print("No terminal to ask on, so nothing was installed. Run:")
+        print("    " + _command_text(comando))
+        return False
+
+    print()
+    try:
+        resposta = input("Install them now? [Y/n] ").strip().lower()
+    except (EOFError, KeyboardInterrupt):
+        resposta = "n"
+    if resposta not in ("", "y", "yes", "s", "sim"):
+        print()
+        print("Nothing installed. To do it by hand:")
+        print("    " + _command_text(comando))
+        return False
+
+    print()
+    try:
+        subprocess.check_call(comando)
+    except (subprocess.CalledProcessError, OSError) as exc:
+        print()
+        print(f"pip failed ({exc}). To do it by hand:")
+        print("    " + _command_text(comando))
+        return False
+
+    import importlib
+    importlib.invalidate_caches()
+    ainda = _dependency_gaps(specs, _installed_version)
+    if ainda:
+        print()
+        print("pip reported success but these are still missing: "
+              + ", ".join(ainda))
+        print("A virtual environment or a second Python may be in the way.")
+        return False
+    print()
+    print("Dependencies installed. Starting.")
+    print()
+    return True
+
+
 def main():
     """Main entry point."""
     _install_crash_logging()
@@ -99,12 +291,22 @@ def main():
         help='Override saved theme (dark, light, green, engineering)'
     )
     parser.add_argument(
+        '--skip-deps-check',
+        action='store_true',
+        help='Start without checking that the dependencies are installed'
+    )
+    parser.add_argument(
         '--version',
         action='version',
         version='Bolt Analysis Studio v4.0 (January 2026)'
     )
 
     args = parser.parse_args()
+
+    # Before the first import that needs them, --test included: that path
+    # shells out to the suite, which needs the same dependencies the GUI does.
+    if not args.skip_deps_check and not _ensure_dependencies():
+        return 1
 
     if args.test:
         # Run test suite
@@ -131,6 +333,11 @@ def main():
         saved = Theme.load_theme_preference()
     Theme.set_theme(saved)
     app.setStyleSheet(Theme.get_stylesheet())
+
+    # Idioma (PT/EN) — restaura a preferência antes de construir a janela, para
+    # que os textos já saiam no idioma salvo. Toggle na GUI em Exibir/View.
+    from bolt_analysis_studio.gui.i18n import Lang
+    Lang.load_preference()
 
     from bolt_analysis_studio.gui.icons import icon
     app.setWindowIcon(icon("app_icon", size=256))
