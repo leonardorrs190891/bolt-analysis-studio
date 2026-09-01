@@ -7,12 +7,20 @@ date-released: 2026-09-01
 license: MIT
 repository-code: "https://github.com/leonardorrs190891/bolt-analysis-studio"
 url: "https://github.com/leonardorrs190891/bolt-analysis-studio"
-# doi: 10.5281/zenodo.XXXXXXX   (mint from the first GitHub release via Zenodo)
+doi: "10.5281/zenodo.22233437"   # concept DOI: resolves to the newest version
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22233438"
+    description: "Archived snapshot of version 2.0.0 on Zenodo"
 authors:
   - family-names: "Ribeiro da Silva"
     given-names: "Leonardo Rosa"
     email: "leorrs@ufu.br"
     affiliation: "Faculdade de Engenharia Mecânica, Universidade Federal de Uberlândia"
+  - family-names: "de Souza da Silva"
+    given-names: "Neilon"
+    email: "neilon@petrobras.com.br"
+    affiliation: "Petróleo Brasileiro S.A. (Petrobras)"
 keywords:
   - bolted joint
   - self-loosening

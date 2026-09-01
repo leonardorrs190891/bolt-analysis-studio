@@ -951,16 +951,24 @@ MECH_COR = {
 }
 
 
+DPI_DOC, DPI_ARTE = 300, 600
+
+
 def _salva(figura, nome):
+    """Three files per figure. The 300 dpi PNG is what the documents embed:
+    above what the journal asks for a halftone, and light enough that a version
+    history of the .docx stays cheap. The 600 dpi PNG is production quality and
+    travels as separate artwork. The PDF is the vector original, which is what
+    the journal prefers for a line drawing."""
     FIGS.mkdir(parents=True, exist_ok=True)
-    figura.savefig(FIGS / f"{nome}.png", dpi=300, bbox_inches="tight",
+    figura.savefig(FIGS / f"{nome}.png", dpi=DPI_DOC, bbox_inches="tight",
                    facecolor="white")
-    # journals ask for vector artwork; the PDF carries the same figure, with
-    # any raster panel embedded, and is what goes into the submission package
+    figura.savefig(FIGS / f"{nome}_600dpi.png", dpi=DPI_ARTE,
+                   bbox_inches="tight", facecolor="white")
     figura.savefig(FIGS / f"{nome}.pdf", bbox_inches="tight",
                    facecolor="white")
     plt.close(figura)
-    print(f"  [fig] {nome}.png")
+    print(f"  [fig] {nome}.png ({DPI_DOC} dpi) + _600dpi + .pdf")
 
 
 def _mx(rr):
@@ -1727,6 +1735,9 @@ def estilo(doc):
     n.font.size = Pt(10.5)
     n.paragraph_format.space_after = Pt(6)
     n.paragraph_format.line_spacing = 1.15
+    # body text justified. Captions, the title page and table cells set their
+    # own alignment, so they are not affected
+    n.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     for lvl, sz in ((0, 20), (1, 15), (2, 12.5), (3, 11)):
         try:
             s = doc.styles[f"Heading {lvl}"] if lvl else doc.styles["Title"]
@@ -1829,6 +1840,7 @@ def tabela(doc, cab, linhas, larguras=None, size=9):
     for i, c in enumerate(cab):
         cel = t.rows[0].cells[i]
         cel.text = ""
+        cel.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.LEFT
         r = cel.paragraphs[0].add_run(str(c))
         r.bold = True
         r.font.size = Pt(size)
@@ -1837,6 +1849,7 @@ def tabela(doc, cab, linhas, larguras=None, size=9):
         for i, v in enumerate(ln):
             cells[i].text = ""
             par = cells[i].paragraphs[0]
+            par.alignment = WD_ALIGN_PARAGRAPH.LEFT   # never justify a cell
             for pedaco, forte in _negrito(str(v)):
                 r = par.add_run(pedaco)
                 r.bold = forte
@@ -1907,13 +1920,18 @@ def monta(doc, comp, res, pisos, store, m, refs, specs,
     r.font.color.rgb = RGBColor(0x5B, 0x64, 0x72)
     doc.add_paragraph()
     for linha in ("Leonardo Rosa Ribeiro da Silva (corresponding author, leorrs@ufu.br), "
+                  "Neilon de Souza da Silva, "
                   "Luiz Eduardo dos Santos Paes, Aldemir Aparecido Cavallini Junior, "
+                  "Bruno Sousa Carneiro da Cunha, Fernando Buiatti Rodrigues, "
                   "Artur Martins Alves, Bruno César Alvares Teixeira, "
                   "Douglas da Silva Carvalho, Gabriel Henrique Arruda Tavares de Lima, "
                   "João Paulo de Jesus Vieira",
                   "Faculdade de Engenharia Mecânica, Universidade Federal de "
                   "Uberlândia (UFU), Brazil",
-                  "Software written by Leonardo Rosa Ribeiro da Silva."):
+                  "Neilon de Souza da Silva: Petróleo Brasileiro S.A. "
+                  "(Petrobras), Rio de Janeiro, RJ, Brazil",
+                  "Software written by Leonardo Rosa Ribeiro da Silva and "
+                  "Neilon de Souza da Silva."):
         pa = doc.add_paragraph()
         pa.alignment = WD_ALIGN_PARAGRAPH.CENTER
         pa.paragraph_format.space_after = Pt(1)
@@ -3404,7 +3422,9 @@ def monta(doc, comp, res, pisos, store, m, refs, specs,
     doc.add_heading("14.4 Software", 2)
     p(doc, "Bolt Analysis Studio V2, written by Leonardo Rosa Ribeiro da Silva "
            "(Faculdade de Engenharia Mecânica, Universidade Federal de "
-           "Uberlândia, leorrs@ufu.br). Released under the MIT licence; the validation "
+           "Uberlândia, leorrs@ufu.br) and Neilon de Souza da Silva "
+           "(Petróleo Brasileiro S.A., neilon@petrobras.com.br). "
+           "Released under the MIT licence; the validation "
            "corpus, the adopted configurations and the result store are "
            "distributed with it.", size=9.5)
 

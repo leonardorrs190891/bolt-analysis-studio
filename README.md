@@ -12,10 +12,11 @@ recomputed from this repository. The paper itself is not part of it: what
 is published here is the software, the corpus, the configurations and the
 results it is built on.
 
-**Author.** Leonardo Rosa Ribeiro da Silva (leorrs@ufu.br), Faculdade de
-Engenharia Mecânica, Universidade Federal de Uberlândia, Brazil. Sole author of
-the software: the model, the implementation, the digitisation of the validation
-corpus, the testing and the validation. It was written as a free tool for the self-loosening
+**Authors.** Leonardo Rosa Ribeiro da Silva (leorrs@ufu.br), Faculdade de
+Engenharia Mecânica, Universidade Federal de Uberlândia, Brazil, and Neilon de
+Souza da Silva (neilon@petrobras.com.br), Petróleo Brasileiro S.A. (Petrobras),
+Brazil. Authors of the software: the model, the implementation, the digitisation
+of the validation corpus, the testing and the validation. It was written as a free tool for the self-loosening
 analyses of the group at UFU and is released openly so that the same analyses
 can be run, checked and extended by others.
 
@@ -121,8 +122,8 @@ metadata in `CITATION.cff` and the companion paper once published.
 
 Claude Code with the Claude Opus 5 model (Anthropic) was used during development
 as a coding assistant: to debug and refactor code, write tests, generate
-documentation, and draft and translate text that the author then reviewed. The
-author is not a native speaker of English, so the tool also provided language
+documentation, and draft and translate text that the authors then reviewed. The
+authors are not native speakers of English, so the tool also provided language
 support for the documentation and the accompanying text. The physical model, every calibration decision, the
-acceptance criteria, the data and the conclusions are the author's own and were
-verified by the author, who takes full responsibility for the content.
+acceptance criteria, the data and the conclusions are the authors' own and were
+verified by the authors, who take full responsibility for the content.
