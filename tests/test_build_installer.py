@@ -342,7 +342,12 @@ def test_iss_recebe_versao_e_autores_do_setup_py():
     iss = _iss()
     assert "AppVersion=2.0.0" in iss
     assert "Neilon de Souza da Silva" in iss
-    assert "OutputBaseFilename=BAS-V2-Setup-2.0.0" in iss
+    # sem "V2": e' a primeira versao publicada, e o nome do produto
+    # deixou de carregar o sufixo em 2026-09-02
+    assert "OutputBaseFilename=BAS-Setup-2.0.0" in iss
+    linhas = [l.strip() for l in iss.splitlines()]
+    assert "AppName=Bolt Analysis Studio" in linhas
+    assert "Studio V2" not in iss
 
 
 def test_iss_nao_deixa_campo_sem_substituir():

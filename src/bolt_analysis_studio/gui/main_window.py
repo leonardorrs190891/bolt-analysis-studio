@@ -5149,7 +5149,7 @@ class BoltAnalysisStudio(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Bolt Analysis Studio V2")
+        self.setWindowTitle("Bolt Analysis Studio")
         self.setMinimumSize(1280, 800)
 
         # Application state

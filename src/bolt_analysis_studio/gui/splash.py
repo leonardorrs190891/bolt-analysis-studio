@@ -166,7 +166,7 @@ class AnimatedSplashScreen(QWidget):
         painter.setPen(QColor(Theme.BLUE))
         painter.drawText(sub_rect,
                          Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignVCenter,
-                         'V2 \u00b7 Bolted Joint Self-Loosening Analysis')
+                         'Bolted Joint Self-Loosening Analysis')
 
         auth_rect = QRectF(0, 78, self.WIDTH, 16)
         font = QFont('Segoe UI', 8)

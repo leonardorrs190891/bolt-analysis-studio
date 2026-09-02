@@ -1,4 +1,4 @@
-# Bolt Analysis Studio V2 — Biblioteca de Reports de Validação
+# Bolt Analysis Studio — Biblioteca de Reports de Validação
 
 **Escopo:** os **114 casos de validação comparáveis** (curva completa, simuláveis) da biblioteca de literatura + laboratório UFU, cada um com report individual completo + documento mestre.
 **Rev.:** 2026-07-10 (report v2 — resíduo assinado, modelo MSD reproduzível,

@@ -1,4 +1,4 @@
-"""ChromeWindow — shell CAE do BAS V2 (spec abaqus §3). Opt-in via run_app.py --v2.
+"""ChromeWindow — shell CAE do BAS (spec abaqus §3). Opt-in via run_app.py --v2.
 
 Reutiliza Theme (design-system) e AppState (barramento) as-is; a V1 de 7 abas
 permanece como fallback. Os viewports mostram placeholders nomeados — os modulos
@@ -54,7 +54,7 @@ class ChromeWindow(QMainWindow):
         super().__init__(parent)
         self.app_state = app_state or get_app_state()
         self._current_module = None
-        self.setWindowTitle("Bolt Analysis Studio V2 (chrome)")
+        self.setWindowTitle("Bolt Analysis Studio (chrome)")
         self.resize(1280, 800)
         self._build_chrome()
         self._wire_signals()

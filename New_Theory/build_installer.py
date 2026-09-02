@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Instalador Windows auto-contido do BAS V2 (2026-09-02).
+"""Instalador Windows auto-contido do BAS (2026-09-02).
 
     py -3.12 New_Theory/build_installer.py [--out dir] [--skip-download]
 
@@ -362,7 +362,7 @@ def _longpath(p: Path) -> Path:
     Medido 2026-09-02: o CSV mais longo do payload tem 183 chars de caminho
     RELATIVO, e o proprio caminho de origem ja' tem 251. Qualquer raiz de
     destino acima de ~77 chars passa dos 260 do MAX_PATH, e o destino default
-    do instalador (%LOCALAPPDATA%/Programs/Bolt Analysis Studio V2 no perfil
+    do instalador (%LOCALAPPDATA%/Programs/Bolt Analysis Studio no perfil
     de um usuario) passa. Sem isto o build falha por FileNotFoundError num
     .csv do meio do corpus, em maquina real e nao so' no teste. O
     publish_snapshot.py resolve o mesmo problema na extracao do tar.
@@ -460,7 +460,7 @@ DOI_CONCEITO = "10.5281/zenodo.22233437"
 
 _LEIAME = """<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8">
-<title>Bolt Analysis Studio V2 {versao} - leia-me</title>
+<title>Bolt Analysis Studio {versao} - leia-me</title>
 <style>
  body{{font:15px/1.6 "Segoe UI",system-ui,sans-serif;color:#2b2b2b;
       background:#fbfbfd;margin:0;padding:2.5rem 1.5rem}}
@@ -482,11 +482,11 @@ _LEIAME = """<!doctype html>
  a{{color:#3b5bdb}}
 </style></head><body><main>
 
-<h1>Bolt Analysis Studio V2</h1>
+<h1>Bolt Analysis Studio</h1>
 <p class="sub">Vers&atilde;o {versao} &middot; {autores}</p>
 
 <h2>Como abrir</h2>
-<p>Menu Iniciar &rarr; <b>Bolt Analysis Studio V2</b>. Se a janela n&atilde;o
+<p>Menu Iniciar &rarr; <b>Bolt Analysis Studio</b>. Se a janela n&atilde;o
 aparecer, rode <code>BAS-console.cmd</code> na pasta de instala&ccedil;&atilde;o:
 &eacute; o mesmo programa, com console, mostrando a mensagem de erro.</p>
 
@@ -708,7 +708,7 @@ def main(argv=None) -> int:
     import tempfile
 
     ap = argparse.ArgumentParser(
-        description="Instalador Windows auto-contido do Bolt Analysis Studio V2")
+        description="Instalador Windows auto-contido do Bolt Analysis Studio")
     ap.add_argument("--out", default=str(RAIZ / "dist"),
                     help="diretorio de saida do .exe (padrao: dist/)")
     ap.add_argument("--build-dir", default=None,
@@ -733,7 +733,7 @@ def main(argv=None) -> int:
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"Bolt Analysis Studio V2 {meta['version']}")
+    print(f"Bolt Analysis Studio {meta['version']}")
     print(f"  autores: {meta['author']}")
 
     if not args.skip_download:
@@ -779,7 +779,7 @@ def main(argv=None) -> int:
     iss.write_text(iss_txt, encoding="utf-8", newline="")
     _compile_iss(iss)
 
-    exe = out_dir / f"BAS-V2-Setup-{meta['version']}.exe"
+    exe = out_dir / f"BAS-Setup-{meta['version']}.exe"
     if not exe.is_file():
         raise SystemExit(f"[installer] o ISCC terminou mas {exe} nao existe")
 

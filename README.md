@@ -1,4 +1,4 @@
-# Bolt Analysis Studio V2 (BAS V2)
+# Bolt Analysis Studio (BAS)
 
 Energy-based lumped-parameter model of bolted-joint self-loosening, validated
 against 205 preload curves digitised from 27 independent published studies.

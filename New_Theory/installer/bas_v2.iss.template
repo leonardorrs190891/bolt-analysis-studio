@@ -1,4 +1,4 @@
-; Bolt Analysis Studio V2 - instalador auto-contido
+; Bolt Analysis Studio - instalador auto-contido
 ; GERADO por New_Theory/build_installer.py a partir deste template.
 ; Nao editar o .iss gerado em _build/: editar ESTE arquivo.
 ;
@@ -9,17 +9,17 @@
 
 [Setup]
 AppId={{8E4C1F2A-6B7D-4A91-9C3E-BA52V2INSTALL}
-AppName=Bolt Analysis Studio V2
+AppName=Bolt Analysis Studio
 AppVersion=@VERSION@
 AppPublisher=@AUTHOR@
 AppPublisherURL=https://github.com/leonardorrs190891/bolt-analysis-studio
-DefaultDirName={localappdata}\Programs\Bolt Analysis Studio V2
-DefaultGroupName=Bolt Analysis Studio V2
+DefaultDirName={localappdata}\Programs\Bolt Analysis Studio
+DefaultGroupName=Bolt Analysis Studio
 OutputDir=@OUTDIR@
-OutputBaseFilename=BAS-V2-Setup-@VERSION@
+OutputBaseFilename=BAS-Setup-@VERSION@
 SetupIconFile=@ICO@
 UninstallDisplayIcon={app}\bas.ico
-UninstallDisplayName=Bolt Analysis Studio V2 @VERSION@
+UninstallDisplayName=Bolt Analysis Studio @VERSION@
 LicenseFile=@BUILDDIR@\LICENSE
 ; por usuario: sem UAC, e e' o que faz sentido para uma ferramenta cientifica
 PrivilegesRequired=lowest
@@ -44,15 +44,15 @@ Source: "@BUILDDIR@\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs cr
 ; mantem sys.executable sendo um Python real, que e' a razao da pilha.
 ; --skip-deps-check porque as dependencias vao embutidas e pythonw.exe nao tem
 ; console onde uma mensagem do preflight pudesse aparecer.
-Name: "{group}\Bolt Analysis Studio V2"; Filename: "{app}\python\pythonw.exe"; Parameters: """{app}\run_app.py"" --skip-deps-check"; WorkingDir: "{app}"; IconFilename: "{app}\bas.ico"
+Name: "{group}\Bolt Analysis Studio"; Filename: "{app}\python\pythonw.exe"; Parameters: """{app}\run_app.py"" --skip-deps-check"; WorkingDir: "{app}"; IconFilename: "{app}\bas.ico"
 Name: "{group}\Leia-me (como usar)"; Filename: "{app}\LEIAME.html"
 Name: "{group}\Dados de calibracao por artigo"; Filename: "{app}\New_Theory\variable_explorer\index.html"
 Name: "{group}\Diagnostico (console)"; Filename: "{app}\BAS-console.cmd"; WorkingDir: "{app}"
-Name: "{autodesktop}\Bolt Analysis Studio V2"; Filename: "{app}\python\pythonw.exe"; Parameters: """{app}\run_app.py"" --skip-deps-check"; WorkingDir: "{app}"; IconFilename: "{app}\bas.ico"; Tasks: desktopicon
+Name: "{autodesktop}\Bolt Analysis Studio"; Filename: "{app}\python\pythonw.exe"; Parameters: """{app}\run_app.py"" --skip-deps-check"; WorkingDir: "{app}"; IconFilename: "{app}\bas.ico"; Tasks: desktopicon
 
 [Tasks]
 Name: "desktopicon"; Description: "Criar atalho na area de trabalho"; GroupDescription: "Atalhos adicionais:"
 
 [Run]
 Filename: "{app}\LEIAME.html"; Description: "Ver o leia-me: como usar e onde estao os dados de calibracao"; Flags: postinstall shellexec skipifsilent nowait
-Filename: "{app}\python\pythonw.exe"; Parameters: """{app}\run_app.py"" --skip-deps-check"; WorkingDir: "{app}"; Description: "Abrir o Bolt Analysis Studio V2"; Flags: postinstall nowait skipifsilent unchecked
+Filename: "{app}\python\pythonw.exe"; Parameters: """{app}\run_app.py"" --skip-deps-check"; WorkingDir: "{app}"; Description: "Abrir o Bolt Analysis Studio"; Flags: postinstall nowait skipifsilent unchecked

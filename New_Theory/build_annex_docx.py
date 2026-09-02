@@ -1904,7 +1904,7 @@ def monta(doc, comp, res, pisos, store, m, refs, specs,
     cadeia = info.get("cadeia") or {}
     anat = info.get("anatomia") or {}
     # ---------------------------------------------------------------- title
-    t = doc.add_heading("Bolt Analysis Studio V2", 0)
+    t = doc.add_heading("Bolt Analysis Studio", 0)
     t.alignment = WD_ALIGN_PARAGRAPH.CENTER
     sub = doc.add_paragraph()
     sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -1975,12 +1975,12 @@ def monta(doc, comp, res, pisos, store, m, refs, specs,
 
     # ---------------------------------------------------------------- 2
     doc.add_heading("2. What the software is", 1)
-    p(doc, "Bolt Analysis Studio V2 (BAS V2) predicts the loss of preload in a "
+    p(doc, "Bolt Analysis Studio (BAS) predicts the loss of preload in a "
            "bolted joint subjected to cyclic loading. The joint is represented "
            "as a mass–spring–damper (MSD) assembly: bolt, nut, washers and "
            "clamped members are discrete elements, and the interfaces between "
            "them carry the tribology. Neither a curve-fitting tool nor a "
-           "finite-element code, BAS V2 is a lumped-parameter physical model "
+           "finite-element code, BAS is a lumped-parameter physical model "
            "integrated cycle by cycle.")
     p(doc, "The quantity it predicts is the retained preload ratio "
            "F/F₀ as a function of cycle number N. That is what the "
@@ -3420,7 +3420,7 @@ def monta(doc, comp, res, pisos, store, m, refs, specs,
               "carries a declared provenance class (§9.3).")
 
     doc.add_heading("14.4 Software", 2)
-    p(doc, "Bolt Analysis Studio V2, written by Leonardo Rosa Ribeiro da Silva "
+    p(doc, "Bolt Analysis Studio, written by Leonardo Rosa Ribeiro da Silva "
            "(Faculdade de Engenharia Mecânica, Universidade Federal de "
            "Uberlândia, leorrs@ufu.br) and Neilon de Souza da Silva "
            "(Petróleo Brasileiro S.A., neilon@petrobras.com.br). "

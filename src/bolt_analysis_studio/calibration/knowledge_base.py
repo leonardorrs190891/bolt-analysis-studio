@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Base de conhecimento do BAS V2 — o aprendizado das campanhas ACESSIVEL AO
+"""Base de conhecimento do BAS — o aprendizado das campanhas ACESSIVEL AO
 SOFTWARE (pedido do professor 2026-07-08: "devemos salvar e ter isso tudo
 implementado no software").
 

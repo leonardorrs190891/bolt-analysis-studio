@@ -57,7 +57,7 @@ def citation_block(rec) -> str:
     doi = (getattr(caso, "doi", "") or "").strip()
 
     linhas = [
-        f"Bolt Analysis Studio V2 - validation case {rec.case_id}",
+        f"Bolt Analysis Studio - validation case {rec.case_id}",
         "Model built from the ADOPTED configuration of this case.",
         "",
         "SOURCE OF THE EXPERIMENTAL CURVE",
