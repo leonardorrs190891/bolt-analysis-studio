@@ -6036,9 +6036,11 @@ Vingsbo &amp; Söderberg (1988).</p>"""),
 <li>VDI 2230 safety calculations</li>
 </ul>
 
-<h3>Developer:</h3>
+<h3>Developers:</h3>
 <p><b>Prof. Leonardo Rosa Ribeiro da Silva, PhD</b><br>
-<a href="mailto:leorrs@ufu.br">leorrs@ufu.br</a></p>
+<a href="mailto:leorrs@ufu.br">leorrs@ufu.br</a><br>
+<b>Neilon de Souza da Silva, PhD</b><br>
+<a href="mailto:neilon@petrobras.com.br">neilon@petrobras.com.br</a></p>
 
 <p><i>January 2026</i></p>
 """
@@ -10433,7 +10435,7 @@ Vingsbo &amp; Söderberg (1988).</p>"""),
             r'\usepackage{hyperref}',
             r'\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}',
             r'\title{Bolt Analysis Studio — Analysis Report}',
-            f'\\author{{{_esc(project.author or "Prof. Leonardo Rosa Ribeiro da Silva, PhD")}}}',
+            f'\\author{{{_esc(project.author or "Prof. Leonardo Rosa Ribeiro da Silva, PhD; Neilon de Souza da Silva, PhD")}}}',
             f'\\date{{{ts}}}',
             r'\begin{document}',
             r'\maketitle',

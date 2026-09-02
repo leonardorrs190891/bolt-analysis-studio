@@ -12,10 +12,10 @@ recomputed from this repository. The paper itself is not part of it: what
 is published here is the software, the corpus, the configurations and the
 results it is built on.
 
-**Authors.** Leonardo Rosa Ribeiro da Silva (leorrs@ufu.br), Faculdade de
-Engenharia Mecânica, Universidade Federal de Uberlândia, Brazil, and Neilon de
-Souza da Silva (neilon@petrobras.com.br), Petróleo Brasileiro S.A. (Petrobras),
-Brazil. Authors of the software: the model, the implementation, the digitisation
+**Authors.** Prof. Leonardo Rosa Ribeiro da Silva, PhD (leorrs@ufu.br),
+Faculdade de Engenharia Mecânica, Universidade Federal de Uberlândia, Brazil,
+and Neilon de Souza da Silva, PhD (neilon@petrobras.com.br), Petróleo
+Brasileiro S.A. (Petrobras), Brazil. Authors of the software: the model, the implementation, the digitisation
 of the validation corpus, the testing and the validation. It was written as a free tool for the self-loosening
 analyses of the group at UFU and is released openly so that the same analyses
 can be run, checked and extended by others.

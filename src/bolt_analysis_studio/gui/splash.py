@@ -172,9 +172,13 @@ class AnimatedSplashScreen(QWidget):
         font = QFont('Segoe UI', 8)
         painter.setFont(font)
         painter.setPen(QColor(Theme.OVERLAY))
+        # os DOIS autores do software (decisao de 2026-09-01). Medido: 359 px
+        # dos 640 disponiveis a 8 pt, e 15 px de altura no rect de 16 — cabe
+        # numa linha, sem precisar reduzir a fonte nem quebrar em duas.
         painter.drawText(auth_rect,
                          Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignVCenter,
-                         'Prof. Leonardo Rosa Ribeiro da Silva, PhD')
+                         'Prof. Leonardo Rosa Ribeiro da Silva, PhD'
+                         '  ·  Neilon de Souza da Silva, PhD')
 
     @staticmethod
     def _flange_gradient(y: float, h: float) -> QLinearGradient:

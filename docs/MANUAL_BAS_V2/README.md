@@ -3,7 +3,7 @@
 **Bolt Analysis Studio V2** — análise de auto-afrouxamento de juntas aparafusadas
 por um modelo massa-mola-amortecedor com estado lento e energia fechada.
 
-Desenvolvedor: **Prof. Leonardo Rosa Ribeiro da Silva, PhD** — leorrs@ufu.br
+Desenvolvedores: **Prof. Leonardo Rosa Ribeiro da Silva, PhD** — leorrs@ufu.br · **Neilon de Souza da Silva, PhD** — neilon@petrobras.com.br
 
 ---
 

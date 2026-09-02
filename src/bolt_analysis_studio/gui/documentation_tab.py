@@ -1617,8 +1617,8 @@ c_critical = 2 × √(k × m)
 <h3>12.6 Contact</h3>
 <p>For technical questions or contributions:</p>
 <ul>
-    <li>Prof. Leonardo Rosa Ribeiro da Silva, PhD</li>
-    <li><a href="mailto:leorrs@ufu.br">leorrs@ufu.br</a></li>
+    <li>Prof. Leonardo Rosa Ribeiro da Silva, PhD — <a href="mailto:leorrs@ufu.br">leorrs@ufu.br</a></li>
+    <li>Neilon de Souza da Silva, PhD — <a href="mailto:neilon@petrobras.com.br">neilon@petrobras.com.br</a></li>
 </ul>
 """
     },
@@ -2311,7 +2311,7 @@ Proposed:
     <li>Documentation improvements</li>
 </ul>
 
-<p>Contact: Prof. Leonardo Rosa Ribeiro da Silva, PhD — <a href="mailto:leorrs@ufu.br">leorrs@ufu.br</a></p>
+<p>Contact: Prof. Leonardo Rosa Ribeiro da Silva, PhD — <a href="mailto:leorrs@ufu.br">leorrs@ufu.br</a><br>Neilon de Souza da Silva, PhD — <a href="mailto:neilon@petrobras.com.br">neilon@petrobras.com.br</a></p>
 """
     },
 
