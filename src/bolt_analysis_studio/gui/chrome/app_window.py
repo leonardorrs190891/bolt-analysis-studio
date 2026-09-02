@@ -87,6 +87,9 @@ class ChromeWindow(QMainWindow):
             QShortcut(QKeySequence(f"Ctrl+{i}"), self,
                       activated=lambda name=m: self.switch_module(name))
         QShortcut(QKeySequence("Ctrl+R"), self, activated=self._run_shortcut)
+        # F1: o rotulo do menu Ajuda promete o atalho, entao ele existe.
+        QShortcut(QKeySequence("F1"), self,
+                  activated=self._open_documentation)
         QShortcut(QKeySequence("Shift+F"), self,
                   activated=self.viewport_toolbar._fit)
 
@@ -256,7 +259,14 @@ class ChromeWindow(QMainWindow):
         for m in MODULES:
             mod_menu.addAction(m, lambda _c=False, name=m: self.switch_module(name))
         help_menu = mb.addMenu("Ajuda")
-        help_menu.addAction("Reports de Validação (114 casos)",
+        # A documentacao vem PRIMEIRO: ate' 2026-09-02 as 25 secoes so'
+        # existiam na janela V1 e o chrome V2, que e' o padrao, nao tinha
+        # porta para elas. Escrito e inalcancavel e' o mesmo que ausente.
+        help_menu.addAction("Documentação (F1)", self._open_documentation)
+        help_menu.addAction("Idioma: Português / English",
+                            self._toggle_idioma)
+        help_menu.addSeparator()
+        help_menu.addAction("Reports de Validação (210 casos)",
                             self._open_validation_docs)
         help_menu.addAction("Prompt de intake (IA) — copiar",
                             self._copy_intake_prompt)
@@ -558,6 +568,49 @@ class ChromeWindow(QMainWindow):
         self.validation_controller.copy_prompt()
         self.prompt.set_prompt("Prompt de intake copiado — cole em qualquer "
                                "IA junto com sua curva experimental.")
+
+    def _open_documentation(self):
+        """Abre a aba Documentation numa janela propria.
+
+        Ate' 2026-09-02 as 25 secoes so' existiam na janela V1 (`--v1`): o
+        chrome V2, que e' o padrao, nao tinha nenhuma porta para elas. Todo o
+        help — revisao de literatura, fontes por artigo, tipos de elemento e
+        de ligacao, guia do zero, catalogo de dialogos — estava escrito e
+        inalcancavel para quem abre o programa normalmente.
+        """
+        from PyQt6.QtWidgets import QVBoxLayout, QWidget
+        try:
+            from ...gui.documentation_tab import DocumentationTab
+        except Exception as exc:                              # pragma: no cover
+            self.prompt.set_prompt(f"Documentação indisponível: {exc}")
+            return
+        if getattr(self, "_doc_win", None) is None:
+            win = QWidget()
+            win.setWindowTitle("Bolt Analysis Studio — Documentação")
+            win.resize(1180, 820)
+            lay = QVBoxLayout(win)
+            lay.setContentsMargins(0, 0, 0, 0)
+            lay.addWidget(DocumentationTab())
+            self._doc_win = win
+        self._doc_win.show()
+        self._doc_win.raise_()
+        self._doc_win.activateWindow()
+
+    def _toggle_idioma(self):
+        """Alterna PT/EN. As secoes 23-25 do help sao bilingues; as 18 antigas
+        seguem em ingles, e a aba mostra o ingles nelas."""
+        from ...gui.i18n import Lang
+        Lang.toggle()
+        win = getattr(self, "_doc_win", None)
+        if win is not None:
+            lay = win.layout()
+            antigo = lay.itemAt(0).widget()
+            lay.removeWidget(antigo)
+            antigo.deleteLater()
+            from ...gui.documentation_tab import DocumentationTab
+            lay.addWidget(DocumentationTab())
+        self.prompt.set_prompt(
+            "Idioma: " + ("English" if Lang.is_en() else "Português"))
 
     def _open_validation_docs(self):
         # Biblioteca de documentacao: documento mestre dos 128 reports de

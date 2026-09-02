@@ -209,3 +209,57 @@ def test_o_alternador_de_idioma_troca_o_conteudo(qapp):
         assert "ligacao" in pt.lower() or "ligação" in pt.lower()
     finally:
         Lang.set_lang("en")
+
+
+def test_o_menu_ajuda_do_chrome_V2_abre_a_documentacao(qapp):
+    """A porta, nao so' o conteudo. Ate' 2026-09-02 as 25 secoes existiam e o
+    chrome V2 — que E' o padrao — nao tinha item de menu para elas: estavam
+    escritas e inalcancaveis para quem abre o programa normalmente. Conteudo
+    sem porta e' o mesmo que conteudo ausente."""
+    from PyQt6.QtWidgets import QMenu
+    from bolt_analysis_studio.core.app_state import get_app_state
+    from bolt_analysis_studio.gui.chrome.app_window import ChromeWindow
+
+    w = ChromeWindow(get_app_state())
+    ajuda = [m for m in w.menuBar().findChildren(QMenu) if m.title() == "Ajuda"]
+    assert ajuda, "o chrome V2 nao tem menu Ajuda"
+    textos = [a.text() for a in ajuda[0].actions()]
+    assert any("Documenta" in t for t in textos), textos
+
+    w._open_documentation()
+    doc = getattr(w, "_doc_win", None)
+    assert doc is not None, "o item de menu nao abriu janela"
+    tab = doc.layout().itemAt(0).widget()
+
+    from bolt_analysis_studio.gui.documentation_tab import DOCUMENTATION
+    assert tab.nav_tree.topLevelItemCount() == len(DOCUMENTATION)
+
+    # e a revisao de self-loosening abre de verdade
+    tab._show_section("literature_review")
+    assert "self-loosening" in tab.content_browser.toPlainText().lower()
+
+
+def test_o_menu_ajuda_nao_promete_atalho_que_nao_existe(qapp):
+    """O rotulo diz '(F1)'. Se o atalho nao estiver registrado, o menu mente."""
+    from PyQt6.QtGui import QKeySequence, QShortcut
+    from bolt_analysis_studio.core.app_state import get_app_state
+    from bolt_analysis_studio.gui.chrome.app_window import ChromeWindow
+
+    w = ChromeWindow(get_app_state())
+    teclas = {s.key().toString() for s in w.findChildren(QShortcut)}
+    assert QKeySequence("F1").toString() in teclas, sorted(teclas)
+
+
+def test_a_contagem_do_menu_ajuda_nao_esta_vencida(qapp):
+    """O item dizia '114 casos' quando o corpus ja' tinha 210. Contagem
+    escrita a mao envelhece calada; esta afere contra o registry."""
+    from PyQt6.QtWidgets import QMenu
+    from bolt_analysis_studio.core.app_state import get_app_state
+    from bolt_analysis_studio.gui.chrome.app_window import ChromeWindow
+    from bolt_analysis_studio.validation.case_registry import all_records
+
+    w = ChromeWindow(get_app_state())
+    ajuda = [m for m in w.menuBar().findChildren(QMenu) if m.title() == "Ajuda"][0]
+    alvo = [a.text() for a in ajuda.actions() if "Reports de Valida" in a.text()]
+    assert alvo, "item de reports sumiu do menu"
+    assert str(len(all_records())) in alvo[0], alvo[0]
