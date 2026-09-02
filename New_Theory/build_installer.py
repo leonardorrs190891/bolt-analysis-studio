@@ -276,6 +276,7 @@ PAYLOAD = [
     ("src/**/*.py", "o pacote"),
     ("src/**/*.json", "bases de dados de material do pacote"),
     ("src/**/*.svg", "icones do tema"),
+    ("src/**/*.png", "prints da referencia de interface (secao 22 da aba Documentation); sem isto as imagens do help ficam quebradas"),
     ("src/**/*.qss", "folhas de estilo"),
     ("Models/CALIBRATION_AND_VALIDATION/validation_store.json", "as 210 analises"),
     ("Models/CALIBRATION_AND_VALIDATION/curve_library/**/*.csv", "curvas digitalizadas"),

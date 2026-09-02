@@ -2316,7 +2316,7 @@ Proposed:
     },
 
     "validation_reports": {
-        "title": "17. Validation Case Reports (114 comparáveis)",
+        "title": "17. Validation Case Reports (210 casos)",
         "content": """
 <h2>17. Validation Case Reports (114 casos comparáveis)</h2>
 
@@ -2399,6 +2399,48 @@ os dados experimentais, sem overfitting (rev. 2026-07-10).</p>
 """
     }
 }
+
+
+# =============================================================================
+# SECOES GERADAS NO BUILD (2026-09-02)
+# =============================================================================
+# As secoes de literatura (19-21) e a referencia de interface (22) sao geradas
+# por New_Theory/build_literature_sections.py e build_ui_reference.py, e lidas
+# aqui de JSON em resources/docs/. Ficam FORA do literal acima por dois
+# motivos: o conteudo vem de dados (o corpus, o Crossref, capturas da propria
+# GUI) e teria de ser mantido a mao aqui; e sao ~35 KB e ~N KB de HTML que
+# inflariam este arquivo sem ganho.
+#
+# Lidas no IMPORT e nao sob demanda porque a busca da aba faz
+# `section["content"].lower()` sobre o dict inteiro: conteudo preguicoso
+# sumiria da busca em silencio.
+_DOCS_GERADOS = ("literature.json", "ui_reference.json")
+
+
+def _carrega_secoes_geradas() -> dict:
+    """Funde as secoes geradas. Ausencia NAO e' erro: um checkout que nunca
+    rodou os geradores tem de abrir o programa com as 18 secoes escritas a
+    mao, e nao quebrar na aba de documentacao."""
+    import json as _json
+    from pathlib import Path as _Path
+
+    base = _Path(__file__).resolve().parent.parent / "resources" / "docs"
+    fora = {}
+    for nome in _DOCS_GERADOS:
+        arq = base / nome
+        if not arq.is_file():
+            continue
+        try:
+            d = _json.loads(arq.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        for chave, secao in d.items():
+            if isinstance(secao, dict) and secao.get("title") and secao.get("content"):
+                fora[chave] = secao
+    return fora
+
+
+DOCUMENTATION.update(_carrega_secoes_geradas())
 
 
 # =============================================================================
@@ -2504,6 +2546,12 @@ class DocumentationTab(QWidget):
 
         # Content browser
         self.content_browser = QTextBrowser()
+        # Sem isto os <img> da secao 22 (referencia de interface) ficam
+        # quebrados: o QTextBrowser resolve src relativo contra os
+        # searchPaths, e o HTML usa 'ui_reference/<tela>.png'.
+        from pathlib import Path as _P
+        self.content_browser.setSearchPaths(
+            [str(_P(__file__).resolve().parent.parent / "resources")])
         self.content_browser.setOpenExternalLinks(True)
         self._apply_browser_style()
 
