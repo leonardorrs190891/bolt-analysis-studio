@@ -29,6 +29,7 @@ class ValidationBrowser(QWidget):
     resim_case_requested = pyqtSignal(str)
     resim_all_requested = pyqtSignal()
     open_report_requested = pyqtSignal(str)
+    save_msd_requested = pyqtSignal(str)
     master_report_requested = pyqtSignal()
     import_case_requested = pyqtSignal()
     copy_prompt_requested = pyqtSignal()
@@ -74,6 +75,7 @@ class ValidationBrowser(QWidget):
         self.btn_resim_all = QPushButton("Re-simular tudo")
         self.btn_report = QPushButton("Report HTML")
         self.btn_master = QPushButton("Report geral")
+        self.btn_save_msd = QPushButton("Salvar caso como .msd…")
         self.btn_open_model.clicked.connect(
             lambda: self._emit(self.open_in_model_requested))
         self.btn_resim.clicked.connect(
@@ -82,7 +84,10 @@ class ValidationBrowser(QWidget):
         self.btn_report.clicked.connect(
             lambda: self._emit(self.open_report_requested))
         self.btn_master.clicked.connect(self.master_report_requested.emit)
-        for b in (self.btn_open_model, self.btn_resim, self.btn_report):
+        self.btn_save_msd.clicked.connect(
+            lambda: self._emit(self.save_msd_requested))
+        for b in (self.btn_open_model, self.btn_resim, self.btn_report,
+                  self.btn_save_msd):
             b.setEnabled(False)
 
         # intake de casos do usuario — PAINEL DESTACADO (pedido do professor
@@ -118,7 +123,7 @@ class ValidationBrowser(QWidget):
 
         btns = QHBoxLayout()
         for b in (self.btn_open_model, self.btn_resim, self.btn_resim_all,
-                  self.btn_report, self.btn_master):
+                  self.btn_report, self.btn_master, self.btn_save_msd):
             btns.addWidget(b)
         right = QWidget()
         rl = QVBoxLayout(right)
@@ -179,6 +184,9 @@ class ValidationBrowser(QWidget):
         runnable = rec.family != "other"
         self.btn_open_model.setEnabled(runnable)
         self.btn_resim.setEnabled(runnable)
+        # mesmo criterio do 'Abrir no Model/Run': um caso family='other'
+        # nao monta modelo, entao nao ha' o que salvar.
+        self.btn_save_msd.setEnabled(runnable)
         self.btn_report.setEnabled(True)
         # metricas
         if res is None:

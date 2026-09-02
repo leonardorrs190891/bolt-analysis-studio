@@ -65,6 +65,7 @@ class ValidationController(QObject):
         b.resim_case_requested.connect(lambda cid: self.resimulate([cid]))
         b.resim_all_requested.connect(self._resim_all)
         b.open_report_requested.connect(self._open_case_report)
+        b.save_msd_requested.connect(self._save_msd_dialog)
         b.master_report_requested.connect(self._open_master)
         b.import_case_requested.connect(self._import_dialog)
         b.copy_prompt_requested.connect(self.copy_prompt)
@@ -100,6 +101,38 @@ class ValidationController(QObject):
         target = master.parent / "reports" / f"{case_id}.html"
         if target.exists():
             webbrowser.open(target.as_uri())
+
+    def _save_msd_dialog(self, case_id: str) -> None:
+        """Salva o caso como .msd com a configuracao adotada E a citacao.
+
+        Os 210 ja' vem prontos em Models/SAVED_CASES; este botao existe
+        para quem quer o arquivo em outro lugar, ou depois de editar. A
+        citacao sai de validation.provenance, a mesma que o gerador em
+        lote usa: o arquivo carrega curva digitalizada de publicacao de
+        terceiro e nao pode sair sem dizer de onde veio.
+        """
+        from PyQt6.QtWidgets import QFileDialog, QMessageBox
+        from ....validation.case_registry import record
+        from ....validation.provenance import citation_block
+
+        rec = record(case_id)
+        if rec is None:
+            return
+        caminho, _ = QFileDialog.getSaveFileName(
+            self.browser, "Salvar caso como .msd",
+            f"{case_id}.msd", "Modelo MSD (*.msd);;Todos os arquivos (*)")
+        if not caminho:
+            return
+        try:
+            model = build_case_model(rec)
+            model.name = rec.name or case_id
+            model.description = citation_block(rec)
+            model.save(caminho)
+        except Exception as exc:                          # noqa: BLE001
+            QMessageBox.warning(self.browser, "Salvar caso",
+                                f"Nao foi possivel salvar:\n{exc}")
+            return
+        self.browser.set_intake_status(f"Caso salvo em {caminho}")
 
     def _open_master(self) -> None:
         webbrowser.open(ensure_reports().as_uri())

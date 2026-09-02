@@ -1481,6 +1481,15 @@ class MSDModel:
             # Calibrated fixture overrides (k_bolt, k_member, k_transverse_ratio,
             # damping_zeta, mu_thread, mu_bearing). Same persistence path.
             "fixture_overrides": dict(getattr(self, '_fixture_overrides', {}) or {}),
+            # Os dois canais do V2, anexados por gui_bridge.build_case_model a
+            # partir da configuracao ADOTADA do caso. Ficaram fora daqui ate'
+            # 2026-09-02: salvar um caso da validacao devolvia o modelo com os
+            # 11 elementos, F0 e mu certos e ZERO constantes adotadas, ou seja
+            # parecia correto e nao era. O solver honra os dois
+            # (solver_worker.py:1071 e :1092, onde override explicito VENCE),
+            # logo a perda mudava resultado.
+            "v2_tuner_overrides": dict(getattr(self, '_v2_tuner_overrides', {}) or {}),
+            "v2_geometry_overrides": dict(getattr(self, '_v2_geometry_overrides', {}) or {}),
             "analysis": {
                 "k_eq": self.get_equivalent_stiffness(),
                 "m_total": self.get_total_mass(),
@@ -1540,6 +1549,15 @@ class MSDModel:
         fix = data.get("fixture_overrides")
         if isinstance(fix, dict) and fix:
             model._fixture_overrides = dict(fix)
+
+        # Os dois canais do V2 (constantes adotadas do caso e geometria). O
+        # `and ov` nao e' redundante: dict vazio tem de deixar o atributo
+        # AUSENTE, porque o solver liga o ramo de override pela presenca.
+        for chave, attr in (("v2_tuner_overrides", "_v2_tuner_overrides"),
+                            ("v2_geometry_overrides", "_v2_geometry_overrides")):
+            ov = data.get(chave)
+            if isinstance(ov, dict) and ov:
+                setattr(model, attr, dict(ov))
 
         # Auto-compute F_preload from % yield if F_preload is 0
         if model.global_loading.F_preload == 0:

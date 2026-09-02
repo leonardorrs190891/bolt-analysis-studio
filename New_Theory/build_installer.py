@@ -304,6 +304,9 @@ PAYLOAD = [
     ("New_Theory/convergence_ledger.json", "ledger de convergencia dos reports"),
     ("Models/CALIBRATION_AND_VALIDATION/error_budget.json",
      "orcamento de erro por fonte (error_budget.BUDGET_PATH)"),
+    ("Models/SAVED_CASES/*/*.msd",
+     "os 210 casos salvos na configuracao adotada, uma pasta por artigo, "
+     "importaveis por File > Open; cada um cita a fonte dentro do arquivo"),
 ]
 
 # Nunca, sob nenhum padrao. O .pdf esta' aqui por DIREITOS: e' material de
