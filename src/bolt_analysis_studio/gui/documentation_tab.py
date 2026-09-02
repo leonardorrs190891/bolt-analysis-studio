@@ -1,3 +1,4 @@
+import re
 """
 Documentation Tab for Bolt Analysis Studio v4.0
 ================================================
@@ -2414,7 +2415,8 @@ os dados experimentais, sem overfitting (rev. 2026-07-10).</p>
 # Lidas no IMPORT e nao sob demanda porque a busca da aba faz
 # `section["content"].lower()` sobre o dict inteiro: conteudo preguicoso
 # sumiria da busca em silencio.
-_DOCS_GERADOS = ("literature.json", "ui_reference.json")
+_DOCS_GERADOS = ("literature.json", "ui_reference.json",
+                 "help_sections.json")
 
 
 def _carrega_secoes_geradas() -> dict:
@@ -2438,6 +2440,24 @@ def _carrega_secoes_geradas() -> dict:
             if isinstance(secao, dict) and secao.get("title") and secao.get("content"):
                 fora[chave] = secao
     return fora
+
+
+
+def _titulo_secao(sec: dict) -> str:
+    """Titulo na lingua ativa. Secao sem variante PT devolve o EN, que e' o
+    caso das 18 escritas a mao — traduzir 150 KB de prosa de fisica sem
+    revisao seria pior que deixar em ingles e dizer isso."""
+    from .i18n import Lang
+    if not Lang.is_en() and sec.get("title_pt"):
+        return sec["title_pt"]
+    return sec.get("title", "")
+
+
+def _conteudo_secao(sec: dict) -> str:
+    from .i18n import Lang
+    if not Lang.is_en() and sec.get("content_pt"):
+        return sec["content_pt"]
+    return sec.get("content", "")
 
 
 DOCUMENTATION.update(_carrega_secoes_geradas())
@@ -2563,34 +2583,24 @@ class DocumentationTab(QWidget):
         return panel
 
     def _populate_nav_tree(self):
-        """Populate the navigation tree."""
+        """Popula a arvore de navegacao A PARTIR do DOCUMENTATION.
+
+        Era uma lista escrita a mao com 16 pares, e o dict ja' tinha 18: as
+        secoes 17 e 18 existiam e NAO eram navegaveis, so' alcancaveis pela
+        busca. Com as secoes geradas (19-25) o desencontro so' cresceria.
+        Ordena pelo numero do proprio titulo, que e' onde a numeracao mora.
+        """
         self.nav_tree.clear()
 
-        sections = [
-            ("1. Software Overview", "overview"),
-            ("2. MSD Model", "msd_model"),
-            ("3. Contact System", "contact_system"),
-            ("4. Friction Evolution", "friction_model"),
-            ("5. Wear Model", "wear_model"),
-            ("6. Junker Loosening", "loosening_model"),
-            ("7. Solver Parameters", "solver_params"),
-            ("8. Plot Guide", "plots_guide"),
-            ("9. Step-by-Step Tutorial", "workflow"),
-            ("10. Equations Summary", "equations_summary"),
-            ("11. Troubleshooting", "troubleshooting"),
-            ("12. References", "references"),
-            ("13. Parameter Tables", "parameter_tables"),
-            ("14. Model Coupling", "model_coupling"),
-            ("15. Best Practices", "best_practices"),
-            ("16. Next Steps", "next_steps"),
-        ]
+        def _num(par):
+            m = re.match(r"\s*(\d+)", _titulo_secao(par[1]))
+            return (int(m.group(1)) if m else 999, _titulo_secao(par[1]))
 
-        for title, key in sections:
-            item = QTreeWidgetItem([title])
+        for key, _sec in sorted(DOCUMENTATION.items(), key=_num):
+            item = QTreeWidgetItem([_titulo_secao(_sec)])
             item.setData(0, Qt.ItemDataRole.UserRole, key)
             self.nav_tree.addTopLevelItem(item)
 
-        # Expand all
         self.nav_tree.expandAll()
 
     def _show_welcome(self):
@@ -2639,8 +2649,10 @@ specific topics.</p>
         """Show a documentation section."""
         if key in DOCUMENTATION:
             section = DOCUMENTATION[key]
-            self.section_title.setText(section["title"])
-            self.content_browser.setHtml(_theme_html(section["content"]))
+            self._current_key = key
+            self.section_title.setText(_titulo_secao(section))
+            self.content_browser.setHtml(
+                _theme_html(_conteudo_secao(section)))
 
     def _on_search(self, text: str):
         """Handle search."""
@@ -2652,8 +2664,10 @@ specific topics.</p>
         results = []
 
         for key, section in DOCUMENTATION.items():
-            if text_lower in section["title"].lower() or text_lower in section["content"].lower():
-                results.append((section["title"], key))
+            alvo = " ".join(str(section.get(c, "")) for c in
+                            ("title", "content", "title_pt", "content_pt")).lower()
+            if text_lower in alvo:
+                results.append((_titulo_secao(section), key))
 
         if results:
             # Show search results

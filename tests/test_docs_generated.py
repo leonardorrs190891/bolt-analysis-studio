@@ -130,3 +130,82 @@ def test_a_aba_de_documentacao_funde_as_secoes_geradas(qapp):
     # a busca da aba le content.lower() no dict inteiro: string, nao preguicoso
     for s in DOCUMENTATION.values():
         assert isinstance(s["content"], str)
+
+
+# ---------------------------------------------------------------------------
+# secoes 23-25 (bilingues) e a navegacao
+# ---------------------------------------------------------------------------
+
+def test_todo_tipo_de_elemento_tem_texto_revisado():
+    """17 tipos no enum. Um tipo novo sem prosa tem de ACUSAR aqui: a doc
+    explicava bem os corpos e quase nada as ligacoes, que e' onde a fisica do
+    afrouxamento acontece."""
+    from bolt_analysis_studio.core.models.element import ElementType
+    import help_content
+
+    faltando = [e.name for e in ElementType if e.name not in help_content.ELEMENTOS]
+    assert not faltando, f"tipos sem texto: {faltando}"
+
+
+def test_ligacoes_estao_marcadas_como_tal():
+    """A separacao corpo/ligacao e' a informacao central da secao 23."""
+    import help_content
+
+    papeis = {v.get("papel") for v in help_content.ELEMENTOS.values()}
+    assert papeis <= {"corpo", "ligacao", "fronteira"}, papeis
+    ligas = [k for k, v in help_content.ELEMENTOS.items()
+             if v.get("papel") == "ligacao"]
+    assert len(ligas) >= 6, f"so {len(ligas)} ligacoes marcadas: {ligas}"
+
+
+def test_todo_dialogo_do_codigo_aparece_na_secao_25():
+    """Cobertura completa e' o requisito; profundidade e' proporcional. O que
+    nao tem analise revisada aparece com o texto REAL da mensagem, marcado."""
+    import build_help_sections as bhs
+
+    d = _json("help_sections.json")
+    html = d["dialogues"]["content"]
+    dlgs = bhs.extrai_dialogos()
+    assert dlgs, "nenhum dialogo extraido do codigo"
+    # escapa o titulo antes de procurar: o gerador passa por html.escape, e um
+    # titulo como 'Apply & Re-run' vira 'Apply &amp; Re-run' no HTML
+    import html as _html
+    fora = [t for t in dlgs if _html.escape(t, quote=False) not in html]
+    assert not fora, f"{len(fora)} dialogos do codigo fora da secao: {fora[:5]}"
+
+
+def test_secoes_novas_sao_bilingues():
+    d = _json("help_sections.json")
+    for chave, s in d.items():
+        for campo in ("title", "content", "title_pt", "content_pt"):
+            assert s.get(campo), f"{chave} sem {campo}"
+        assert s["content"] != s["content_pt"], f"{chave}: PT igual ao EN"
+
+
+def test_a_navegacao_mostra_TODAS_as_secoes(qapp):
+    """Era lista escrita a mao com 16 pares contra 18 no dict: as secoes 17 e
+    18 existiam e nao eram navegaveis. Agora a arvore sai do dict."""
+    from bolt_analysis_studio.gui.documentation_tab import (
+        DOCUMENTATION, DocumentationTab)
+
+    t = DocumentationTab()
+    assert t.nav_tree.topLevelItemCount() == len(DOCUMENTATION)
+
+
+def test_o_alternador_de_idioma_troca_o_conteudo(qapp):
+    from bolt_analysis_studio.gui.documentation_tab import DocumentationTab
+    from bolt_analysis_studio.gui.i18n import Lang
+
+    try:
+        Lang.set_lang("en")
+        t = DocumentationTab()
+        t._show_section("element_types")
+        en = t.content_browser.toPlainText()
+        Lang.set_lang("pt")
+        t2 = DocumentationTab()
+        t2._show_section("element_types")
+        pt = t2.content_browser.toPlainText()
+        assert en and pt and en != pt
+        assert "ligacao" in pt.lower() or "ligação" in pt.lower()
+    finally:
+        Lang.set_lang("en")
