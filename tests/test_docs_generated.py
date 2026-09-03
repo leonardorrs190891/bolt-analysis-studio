@@ -263,3 +263,79 @@ def test_a_contagem_do_menu_ajuda_nao_esta_vencida(qapp):
     alvo = [a.text() for a in ajuda.actions() if "Reports de Valida" in a.text()]
     assert alvo, "item de reports sumiu do menu"
     assert str(len(all_records())) in alvo[0], alvo[0]
+
+
+# ---------------------------------------------------------------------------
+# estetica do help: caixas, folha de estilo e equacoes
+# ---------------------------------------------------------------------------
+
+def test_nenhuma_caixa_sobra_como_div_ou_pre_solto(qapp):
+    """MEDIDO em 2026-09-02: o motor de rich text do Qt IGNORA padding em div
+    e pre. As 53 caixas escritas a mao apareciam com altura de uma linha e o
+    texto colado na borda. Em td o padding e' honrado, entao caixa e' TABELA
+    DE UMA CELULA."""
+    import re as _re
+    from bolt_analysis_studio.gui.documentation_tab import (
+        DOCUMENTATION, _theme_html)
+
+    for chave, sec in DOCUMENTATION.items():
+        out = _theme_html(sec["content"])
+        assert not _re.search(r"<div\b", out), f"{chave} ainda tem <div>"
+        soltos = _re.findall(r"(?<!<td>)<pre\b", out)
+        assert not soltos, f"{chave} tem <pre> fora de celula"
+
+
+def test_a_folha_de_estilo_entra_no_documento(qapp):
+    from bolt_analysis_studio.gui.documentation_tab import _theme_html
+
+    out = _theme_html("<p>x</p>")
+    assert "<style>" in out
+    assert "border-collapse" in out
+    assert "{{" not in out, "sobrou token nao resolvido na folha de estilo"
+
+
+def test_toda_equacao_tem_as_DUAS_variantes_de_cor():
+    """Um PNG transparente de cor unica fica invisivel num dos extremos de
+    tema. Foi o que quase aconteceu com o icone do instalador."""
+    import build_equations as be
+
+    pasta = RECURSOS / "equations"
+    faltando = []
+    for nome, _latex, _alt in be.EQUACOES:
+        for var in be.VARIANTES:
+            if not (pasta / f"{nome}_{var}.png").is_file():
+                faltando.append(f"{nome}_{var}")
+    assert not faltando, f"variantes ausentes: {faltando}"
+
+
+def test_a_variante_da_equacao_segue_o_tema(qapp):
+    import re as _re
+    from bolt_analysis_studio.gui.theme import Theme, THEME_DARK, THEME_LIGHT
+    from bolt_analysis_studio.gui.documentation_tab import _theme_html
+
+    html = '<p><img src="equations/eq_motion.png"></p>'
+    saidas = {}
+    for rot, pal in (("dark", THEME_DARK), ("light", THEME_LIGHT)):
+        for k, v in pal.items():
+            if hasattr(Theme, k):
+                setattr(Theme, k, v)
+        saidas[rot] = _re.search(r'src="([^"]+)"', _theme_html(html)).group(1)
+    for k, v in THEME_DARK.items():          # devolve o tema
+        if hasattr(Theme, k):
+            setattr(Theme, k, v)
+    assert saidas["dark"].endswith("_dark.png"), saidas
+    assert saidas["light"].endswith("_light.png"), saidas
+
+
+def test_toda_imagem_de_equacao_referenciada_existe(qapp):
+    import re as _re
+    from bolt_analysis_studio.gui.documentation_tab import (
+        DOCUMENTATION, _theme_html)
+
+    quebradas = []
+    for chave, sec in DOCUMENTATION.items():
+        for src in _re.findall(r'src="(equations/[^"]+)"',
+                               _theme_html(sec["content"])):
+            if not (RECURSOS / src).is_file():
+                quebradas.append((chave, src))
+    assert not quebradas, f"imagens de equacao quebradas: {quebradas[:5]}"

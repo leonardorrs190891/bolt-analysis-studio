@@ -24,6 +24,150 @@ import numpy as np
 from bolt_analysis_studio.gui.theme import Theme
 
 
+
+
+# =============================================================================
+# FOLHA DE ESTILO DO DOCUMENTO (2026-09-02)
+# =============================================================================
+# Ate' agora o HTML das 25 secoes ia para o QTextBrowser SEM `<style>`: so'
+# `style=` inline em 5 lugares e um setStyleSheet no widget (que estiliza o
+# widget, nao os elementos do documento). Por isso h2/h3/table/p saiam com o
+# padrao cru do Qt.
+#
+# ⚠️ O motor de rich text do Qt aceita um SUBCONJUNTO de CSS 2.1, e a diferenca
+# importa. MEDIDO em 2026-09-02, renderizando e olhando:
+#   HONRA  : <style> no documento, seletor de classe, cor e border-bottom em
+#            h2/h3, border-collapse, fundo e borda em th/td, PADDING EM TD,
+#            fundo em code e pre.
+#   IGNORA : padding e border-left em div e pre, e margin entre blocos.
+# Consequencia contra-intuitiva: uma "caixa" bonita NAO e' um <div> nem um
+# <pre> — e' uma TABELA DE UMA CELULA, porque td honra padding. Com <div> o
+# fundo aparece com altura de uma linha e o texto sai cortado, o que ficava
+# PIOR que sem estilo nenhum.
+_ESTILO_DOC = """<style>
+ body      { font-family: 'Segoe UI', sans-serif; font-size: {{FONT_SIZE_LABEL}};
+             color: {{TEXT}}; }
+ h1        { color: {{BLUE}}; font-size: {{FONT_SIZE_LARGE}}; }
+ h2        { color: {{BLUE}}; font-size: {{FONT_SIZE_HEADING}};
+             border-bottom: 2px solid {{SURFACE1}}; }
+ h3        { color: {{TEAL}}; font-size: {{FONT_SIZE_SUBHEADING}}; }
+ h4        { color: {{LAVENDER}}; font-size: {{FONT_SIZE_LABEL}}; }
+ a         { color: {{SKY}}; }
+ b, strong { color: {{TEXT}}; }
+ i, em     { color: {{SUBTEXT}}; }
+ code      { font-family: 'Consolas', monospace; background-color: {{SURFACE0}};
+             color: {{PINK}}; }
+ table     { border-collapse: collapse; }
+ th        { background-color: {{SURFACE0}}; color: {{TEXT}};
+             padding: 6px 10px; border: 1px solid {{SURFACE1}};
+             text-align: left; }
+ td        { padding: 6px 10px; border: 1px solid {{SURFACE1}};
+             color: {{TEXT}}; }
+ table.caixa td      { background-color: {{MANTLE}}; padding: 12px 16px;
+                       border: 1px solid {{SURFACE0}};
+                       border-left: 4px solid {{BLUE}}; }
+ table.caixa-nota td { background-color: {{MANTLE}}; padding: 12px 16px;
+                       border: 1px solid {{SURFACE0}};
+                       border-left: 4px solid {{MAUVE}}; }
+ table.caixa-aviso td{ background-color: {{MANTLE}}; padding: 12px 16px;
+                       border: 1px solid {{SURFACE0}};
+                       border-left: 4px solid {{PEACH}}; }
+ table.caixa-eq td   { background-color: {{MANTLE}}; padding: 14px 18px;
+                       border: 1px solid {{SURFACE0}};
+                       border-left: 4px solid {{TEAL}}; }
+ td.mono   { font-family: 'Consolas', monospace; color: {{GREEN}}; }
+</style>
+"""
+
+_CLASSE_CAIXA = {"info": "caixa", "nota": "caixa-nota",
+                 "aviso": "caixa-aviso", "eq": "caixa-eq",
+                 "codigo": "caixa"}
+
+
+def caixa(tipo: str, conteudo: str, mono: bool = False) -> str:
+    """Uma caixa destacada, como TABELA DE UMA CELULA.
+
+    Nao use <div> nem <pre> para isto: medido em 2026-09-02, o Qt ignora
+    padding neles e a caixa sai com altura de uma linha, com o texto cortado.
+    Em td o padding e' honrado.
+    """
+    cls = _CLASSE_CAIXA.get(tipo, "caixa")
+    td = ' class="mono"' if mono else ""
+    return (f'<table class="{cls}" width="100%" cellspacing="0">'
+            f'<tr><td{td}>{conteudo}</td></tr></table>')
+
+
+
+_RE_EQ_IMG = re.compile(r'src="equations/([A-Za-z0-9_]+)\.png"')
+
+
+def _tema_e_escuro() -> bool:
+    """Luminancia do fundo decide a variante da imagem de equacao.
+
+    Nao ha' campo "is_dark" no Theme, e sao 5 paletas; medir o proprio BASE
+    funciona para todas, inclusive uma paleta nova que alguem acrescente.
+    """
+    base = (getattr(Theme, "BASE", "#1e1e2e") or "#1e1e2e").lstrip("#")
+    try:
+        r, g, b = (int(base[i:i + 2], 16) for i in (0, 2, 4))
+    except (ValueError, IndexError):
+        return True
+    return (0.2126 * r + 0.7152 * g + 0.0722 * b) < 128
+
+
+def _variante_equacoes(html: str) -> str:
+    """Aponta cada <img> de equacao para a variante de cor do tema ativo.
+
+    As equacoes sao PNG com fundo TRANSPARENTE, entao a cor do glifo tem de
+    vir da variante certa: uma unica cor ficaria invisivel num dos extremos.
+    E' a mesma armadilha do icone do instalador, que quase saiu quase branco
+    sobre fundo claro por usar o Theme.TEXT do tema escuro.
+    """
+    suf = "dark" if _tema_e_escuro() else "light"
+    return _RE_EQ_IMG.sub(lambda m: f'src="equations/{m.group(1)}_{suf}.png"',
+                          html)
+
+_RE_DIV_CAIXA = re.compile(
+    r'<div\s+style="background-color:\s*([^;"]+);([^"]*)"\s*>(.*?)</div>',
+    re.S | re.I)
+_RE_PRE_SOLTO = re.compile(r'(?<!<td>)(<pre\b[^>]*>.*?</pre>)', re.S | re.I)
+
+
+def _caixas_no_html(html: str) -> str:
+    """Converte caixas escritas como <div> ou <pre> solto em TABELA DE 1 CELULA.
+
+    As 18 secoes escritas a mao usam 53 <div style="background-color: ...;
+    padding: 15px"> como quadro, inclusive para as equacoes da secao 10. MEDIDO
+    em 2026-09-02: o motor de rich text do Qt IGNORA padding em div, entao esses
+    quadros ja' apareciam com altura de uma linha e o texto colado na borda. Em
+    <td> o padding e' honrado.
+
+    Feito aqui, na exibicao, e nao editando o HTML: sao 150 KB de texto escrito
+    a mao, e uma transformacao mecanica e testavel arrisca menos que 53 edicoes.
+    Seguro porque foi medido que NAO ha' div aninhado (53 abertos, 53 fechados,
+    0 aninhados); com aninhamento o casamento nao-guloso pegaria o </div>
+    errado.
+
+    O <pre> e' EMBRULHADO, nao convertido: dentro de um td ele mantem o
+    espacamento que preserva o alinhamento das formulas, e ganha o padding da
+    celula.
+    """
+    def _div(m):
+        resto = m.group(2) or ""
+        corpo = m.group(3)
+        # `text-align: center` num quadro e' o sinal de que aquilo e' equacao
+        # em display, e nao um aviso: ganha a classe de equacao.
+        cls = "caixa-eq" if "center" in resto.lower() else "caixa"
+        estilo = ' style="text-align:center;"' if "center" in resto.lower() else ""
+        return (f'<table class="{cls}" width="100%" cellspacing="0">'
+                f'<tr><td{estilo}>{corpo}</td></tr></table>')
+
+    html = _RE_DIV_CAIXA.sub(_div, html)
+    html = _RE_PRE_SOLTO.sub(
+        lambda m: ('<table class="caixa" width="100%" cellspacing="0">'
+                   f'<tr><td>{m.group(1)}</td></tr></table>'), html)
+    return html
+
 def _theme_html(html: str) -> str:
     """Resolve ``{{TOKEN}}`` placeholders in HTML with current Theme values.
 
@@ -63,6 +207,9 @@ def _theme_html(html: str) -> str:
         "{{BORDER_RADIUS_LG}}": f"{Theme.BORDER_RADIUS_LG}px",
         "{{BORDER_RADIUS_XL}}": f"{Theme.BORDER_RADIUS_XL}px",
     }
+    # o estilo entra ANTES do corpo e passa pelos mesmos tokens, senao as
+    # cores da folha ficariam presas ao tema em que o texto foi escrito
+    html = _ESTILO_DOC + _variante_equacoes(_caixas_no_html(html))
     for placeholder, value in tokens.items():
         html = html.replace(placeholder, value)
     return html
@@ -139,7 +286,7 @@ subject to vibration-induced loosening. The software implements physics-based mo
 The equation of motion is:</p>
 
 <div style="background-color: {{SURFACE0}}; padding: 15px; border-radius: {{BORDER_RADIUS_LG}}; text-align: center;">
-<b>[M]{ẍ} + [C]{ẋ} + [K]{x} = {F(t)}</b>
+<p><img src="equations/eq_motion.png" width="380"></p>
 </div>
 
 <p>Where:</p>
@@ -1374,24 +1521,21 @@ Typical F_trans: 5-15 kN for M16
 
 <h3>10.1 Equation of Motion</h3>
 <div style="background-color: {{SURFACE0}}; padding: 15px; border-radius: {{BORDER_RADIUS_LG}}; text-align: center; font-size: {{FONT_SIZE_LARGE}};">
-<b>[M]{ẍ} + [C]{ẋ} + [K]{x} = {F(t)}</b>
+<p><img src="equations/eq_motion.png" width="380"></p>
 </div>
 
 <h3>10.2 System Stiffness</h3>
 <div style="background-color: {{SURFACE0}}; padding: 10px; border-radius: {{BORDER_RADIUS_LG}};">
-<b>Bolt (series):</b>
-<br>1/k_bolt = 1/k_head + 1/k_shank + 1/k_thread
+<b>Bolt (series):</b><p><img src="equations/eq_k_bolt.png" width="330"></p>
 <br><br>
-<b>System:</b>
-<br>k_system = (k_bolt × k_member) / (k_bolt + k_member)
+<b>System:</b><p><img src="equations/eq_k_system.png" width="300"></p>
 <br><br>
-<b>Stiffness ratio:</b>
-<br>Φ = k_bolt / (k_bolt + k_member)
+<b>Stiffness ratio:</b><p><img src="equations/eq_phi.png" width="230"></p>
 </div>
 
 <h3>10.3 Friction Evolution</h3>
 <div style="background-color: {{SURFACE0}}; padding: 10px; border-radius: {{BORDER_RADIUS_LG}};">
-μ(N) = μ₀ + (μ_peak - μ₀)(1-e^(-N/N₁))e^(-N/N₂) + (μ_steady - μ₀)(1-e^(-N/N₃))
+<p><img src="equations/eq_friction.png" width="620"></p>
 </div>
 
 <h3>10.4 Critical Friction</h3>
