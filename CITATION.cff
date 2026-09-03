@@ -8,12 +8,13 @@ license: MIT
 repository-code: "https://github.com/leonardorrs190891/bolt-analysis-studio"
 url: "https://github.com/leonardorrs190891/bolt-analysis-studio"
 doi: "10.5281/zenodo.22233437"   # concept DOI: resolves to the newest version
-# O identificador de VERSAO foi removido em 2026-09-02, com a renumeracao para
-# 1.0.0. O DOI 10.5281/zenodo.22233438 foi cunhado para o deposito rotulado
-# v2.0.0, e o registro do Zenodo e IMUTAVEL: descreve-lo como "version 1.0.0"
-# seria afirmar algo falso sobre um registro publico. Campo opcional ausente e
-# honesto; campo presente e errado nao e. Volta quando o deposito de 1.0.0 for
-# feito e o Zenodo cunhar o DOI de versao correspondente.
+# O deposito de 1.0.0 foi feito em 2026-09-02 e o Zenodo cunhou o DOI abaixo,
+# CONFERIDO contra a API: recid 22263034, version v1.0.0. O DOI ...438 do
+# deposito anterior, rotulado v2.0.0, continua existindo e nao e citado aqui.
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22263034"
+    description: "Archived snapshot of version 1.0.0 on Zenodo"
 authors:
   - family-names: "Ribeiro da Silva"
     given-names: "Leonardo Rosa"
