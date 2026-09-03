@@ -1,7 +1,9 @@
 def test_chrome_window_factory_importable(qapp):
     from bolt_analysis_studio.gui.chrome.app_window import ChromeWindow
     w = ChromeWindow()
-    assert w.windowTitle().startswith("Bolt Analysis Studio V2")
+    # sem "V2" desde 2026-09-02: e' a primeira versao publicada
+    assert w.windowTitle().startswith("Bolt Analysis Studio")
+    assert "V2" not in w.windowTitle()
 
 
 def test_run_app_declares_v2_flag():

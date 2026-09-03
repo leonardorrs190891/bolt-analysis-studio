@@ -45,19 +45,17 @@ def test_o_menu_arquivo_tem_abrir_e_salvar(janela):
     assert atalhos["Salvar"] == "Ctrl+S"
 
 
-def test_a_pasta_padrao_e_a_dos_casos_dos_artigos(janela, monkeypatch, tmp_path):
+def test_a_pasta_padrao_e_a_dos_casos_dos_artigos(janela):
     """Na primeira vez o dialogo abre nos 210 modelos dos artigos, que e' o
-    que alguem quer antes de ter projeto proprio."""
-    monkeypatch.setattr(type(janela), "_PREFS", tmp_path / "sem_prefs.json")
+    que alguem quer antes de ter projeto proprio. O _PREFS ja' vem isolado
+    pelo conftest, entao aqui NAO ha' preferencia gravada."""
     d = janela._dir_inicial_projeto()
     assert "SAVED_CASES" in d, d
     assert list(Path(d).glob("*/*.msd")), "a pasta padrao nao tem .msd"
 
 
-def test_a_pasta_padrao_passa_a_ser_a_ultima_usada(janela, monkeypatch, tmp_path):
+def test_a_pasta_padrao_passa_a_ser_a_ultima_usada(janela, tmp_path):
     """Senao quem trabalha nos proprios modelos voltaria sempre aos artigos."""
-    prefs = tmp_path / "prefs.json"
-    monkeypatch.setattr(type(janela), "_PREFS", prefs)
     meu = tmp_path / "meus_projetos"
     meu.mkdir()
     janela._lembra_dir_projeto(str(meu / "x.msd"))
@@ -109,3 +107,23 @@ def test_o_titulo_da_janela_mostra_o_projeto_aberto(janela, qapp, tmp_path):
     janela._after_wizard(MSDModel.load(str(CASO)))
     janela._grava_projeto(str(tmp_path / "meu.msd"))
     assert "meu.msd" in janela.windowTitle()
+
+
+def test_a_suite_nao_toca_no_preferences_do_usuario(janela, tmp_path):
+    """O guard contra a reincidencia. Em 2026-09-03 dois testes gravaram
+    `ultimo_dir_projeto` no arquivo real e o Ctrl+O do usuario passou a abrir
+    num diretorio do pytest. Aqui se afere que o caminho em uso NAO e' o de
+    casa, e que gravar de verdade nao encosta nele."""
+    import json
+
+    real = Path.home() / ".bolt_analysis_studio" / "preferences.json"
+    em_uso = Path(type(janela)._PREFS)
+    assert em_uso != real, "o teste esta' apontando para o preferences REAL"
+
+    antes = real.read_text(encoding="utf-8") if real.is_file() else None
+    janela._lembra_dir_projeto(str(tmp_path / "x.msd"))
+    depois = real.read_text(encoding="utf-8") if real.is_file() else None
+    assert antes == depois, "gravar preferencia encostou no arquivo do usuario"
+
+    gravado = json.loads(em_uso.read_text(encoding="utf-8"))
+    assert gravado.get("ultimo_dir_projeto") == str(tmp_path)

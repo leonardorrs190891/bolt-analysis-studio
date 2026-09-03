@@ -485,6 +485,22 @@ DIALOGOS = {
         "The module is missing from the installation. Run BAS-console.cmd to "
         "see the import error.")),
     # --- arquivos ---
+    "Abrir projeto": dict(pt=("O arquivo .msd nao pode ser aberto.",
+        "Arquivo corrompido, gravado por uma versao incompativel, ou "
+        "sem permissao de leitura. Os 210 casos da validacao estao em "
+        "Models/SAVED_CASES e sempre abrem."),
+        en=("The .msd file could not be opened.",
+        "A corrupt file, one written by an incompatible version, or no "
+        "read permission. The 210 validation cases live in "
+        "Models/SAVED_CASES and always open.")),
+    "Salvar projeto": dict(pt=("O projeto nao foi gravado.",
+        "Permissao de escrita, caminho inexistente, ou o arquivo aberto "
+        "noutro programa. Se a mensagem diz que nao ha modelo, monte ou "
+        "abra um antes de salvar."),
+        en=("The project was not written.",
+        "Write permission, a path that does not exist, or the file open "
+        "in another program. If the message says there is no model, "
+        "assemble or open one before saving.")),
     "Save Failed": dict(pt=("O arquivo nao foi gravado.",
         "Permissao de escrita, caminho inexistente, ou arquivo aberto em "
         "outro programa. Em caminho muito longo, o Windows corta em 260 "
