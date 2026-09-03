@@ -234,6 +234,12 @@ class ChromeWindow(QMainWindow):
         act = file_menu.addAction("Abrir projeto…")
         act.setShortcut("Ctrl+O")
         act.triggered.connect(self._abrir_projeto)
+        # Abrir por caminho serve para projeto proprio; para os casos do artigo
+        # obrigava a saber em qual das 29 pastas de fonte esta' a curva e o
+        # nome exato do arquivo. Este item lista as 205 do censo por nome.
+        act = file_menu.addAction("Importar caso da validação…")
+        act.setShortcut("Ctrl+I")
+        act.triggered.connect(self._importar_caso_validacao)
         file_menu.addSeparator()
         act = file_menu.addAction("Salvar")
         act.setShortcut("Ctrl+S")
@@ -696,29 +702,63 @@ class ChromeWindow(QMainWindow):
         except (OSError, ValueError):        # preferencia e' conveniencia:
             pass                              # falhar aqui nao pode travar nada
 
-    def _abrir_projeto(self):
-        from PyQt6.QtWidgets import QFileDialog, QMessageBox
+    def _carrega_projeto(self, caminho: str, *, como_projeto: bool = True,
+                         rotulo: str = "Projeto aberto") -> bool:
+        """Le um .msd e o poe na interface. Unico caminho de carga.
+
+        `como_projeto=False` carrega sem adotar o arquivo como destino de
+        Ctrl+S: e' o caso da importacao de um caso da validacao, que vive no
+        repositorio, e' regenerado por `build_saved_cases.py` e nao pode ser
+        sobrescrito por um Ctrl+S distraido. Quem importa e edita cai em
+        "Salvar como" e grava onde quiser.
+        """
+        from PyQt6.QtWidgets import QMessageBox
         from ...core.models.model import MSDModel
 
-        caminho, _ = QFileDialog.getOpenFileName(
-            self, "Abrir projeto", self._dir_inicial_projeto(),
-            "Modelo MSD (*.msd);;Todos os arquivos (*)")
-        if not caminho:
-            return
         try:
             modelo = MSDModel.load(caminho)
         except Exception as exc:                             # noqa: BLE001
             QMessageBox.warning(self, "Abrir projeto",
                                 f"Nao foi possivel abrir:\n{exc}")
-            return
-        self._caminho_projeto = caminho
-        self._lembra_dir_projeto(caminho)
+            return False
+        if como_projeto:
+            self._caminho_projeto = caminho
+            self._lembra_dir_projeto(caminho)
+        else:
+            self._caminho_projeto = None
         # mesmo caminho do wizard: poe no AppState, reconstroi o esquematico e
         # leva para o modulo Model
         self._after_wizard(modelo)
         nome = Path(caminho).name
-        self.prompt.set_prompt(f"Projeto aberto: {nome}")
+        self.prompt.set_prompt(f"{rotulo}: {nome}")
         self.setWindowTitle(f"Bolt Analysis Studio (chrome) — {nome}")
+        return True
+
+    def _abrir_projeto(self):
+        from PyQt6.QtWidgets import QFileDialog
+
+        caminho, _ = QFileDialog.getOpenFileName(
+            self, "Abrir projeto", self._dir_inicial_projeto(),
+            "Modelo MSD (*.msd);;Todos os arquivos (*)")
+        if caminho:
+            self._carrega_projeto(caminho)
+
+    def _importar_caso_validacao(self):
+        """Abre um dos casos da validacao pelo nome, sem navegar 29 pastas."""
+        from PyQt6.QtWidgets import QMessageBox
+        from .widgets.case_picker import CasePicker
+
+        dlg = CasePicker(self)
+        if not dlg.exec() or not dlg.escolhido:
+            return
+        if not self._carrega_projeto(dlg.escolhido, como_projeto=False,
+                                     rotulo="Caso da validação importado"):
+            return
+        QMessageBox.information(
+            self, "Importar caso da validação",
+            "Caso carregado na configuração adotada no artigo.\n\n"
+            "O arquivo de origem fica no repositório e é regerado pelo "
+            "gerador de casos, então Ctrl+S vai pedir um novo destino.")
 
     def _salvar_projeto(self):
         if getattr(self, "_caminho_projeto", None):

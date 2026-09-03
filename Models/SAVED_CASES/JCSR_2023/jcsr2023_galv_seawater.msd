@@ -1,9 +1,9 @@
 {
   "version": "4.0",
   "name": "JCSR2023 galv seawater",
-  "description": "Bolt Analysis Studio - validation case jcsr2023_galv_seawater\nModel built from the ADOPTED configuration of this case.\n\nSOURCE OF THE EXPERIMENTAL CURVE\nYang, Bai & Ding (2023). JCSR 211:108211\nDOI: 10.1016/j.jcsr.2023.108211  (https://doi.org/10.1016/j.jcsr.2023.108211)\n\nThe curve was DIGITISED from a figure of the publication above by the authors of Bolt Analysis Studio. It is not original data: the measurements belong to the original authors, and the terms are in DATA_LICENSE.md.\n\nPROVENANCE\nSource key      : JCSR_2023\nDigitised curve : BAS_V2_papers/E. Rodada 4 (deep-research 2026-07-11)/digitized_csv/jcsr2023_galv_seawater.csv\nApparatus notes : BAS_V2_papers/E. Rodada 4 (deep-research 2026-07-11)/apparatus_notes/jcsr2023.md\nAdopted constants: New_Theory/adopted_configs.json",
-  "created": "2026-09-02T18:13:28.354097",
-  "modified": "2026-09-02T18:13:28.427925",
+  "description": "Bolt Analysis Studio - validation case jcsr2023_galv_seawater\nModel built from the ADOPTED configuration of this case.\n\nSOURCE OF THE EXPERIMENTAL CURVE\nYang, Bai & Ding (2023). JCSR 211:108211\nDOI: 10.1016/j.jcsr.2023.108211  (https://doi.org/10.1016/j.jcsr.2023.108211)\n\nThe curve was DIGITISED from a figure of the publication above by the authors of Bolt Analysis Studio. It is not original data: the measurements belong to the original authors, and the terms are in DATA_LICENSE.md.\n\nPAPER CENSUS\nIn the census of the accompanying paper (205 of 210 records).\n\nPROVENANCE\nSource key      : JCSR_2023\nDigitised curve : BAS_V2_papers/E. Rodada 4 (deep-research 2026-07-11)/digitized_csv/jcsr2023_galv_seawater.csv\nApparatus notes : BAS_V2_papers/E. Rodada 4 (deep-research 2026-07-11)/apparatus_notes/jcsr2023.md\nAdopted constants: New_Theory/adopted_configs.json",
+  "created": "2026-09-03T14:25:41.944997",
+  "modified": "2026-09-03T14:25:41.967448",
   "elements": [
     {
       "id": 1,
@@ -107,8 +107,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:28.355094",
-      "modified": "2026-09-02T18:13:28.355094",
+      "created": "2026-09-03T14:25:41.945994",
+      "modified": "2026-09-03T14:25:41.945994",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -215,8 +215,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:28.355094",
-      "modified": "2026-09-02T18:13:28.355094",
+      "created": "2026-09-03T14:25:41.945994",
+      "modified": "2026-09-03T14:25:41.945994",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -323,8 +323,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:28.355094",
-      "modified": "2026-09-02T18:13:28.355094",
+      "created": "2026-09-03T14:25:41.945994",
+      "modified": "2026-09-03T14:25:41.945994",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -431,8 +431,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:28.355094",
-      "modified": "2026-09-02T18:13:28.355094",
+      "created": "2026-09-03T14:25:41.945994",
+      "modified": "2026-09-03T14:25:41.945994",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -539,8 +539,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:28.355094",
-      "modified": "2026-09-02T18:13:28.355094",
+      "created": "2026-09-03T14:25:41.945994",
+      "modified": "2026-09-03T14:25:41.945994",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -647,8 +647,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:28.355094",
-      "modified": "2026-09-02T18:13:28.355094",
+      "created": "2026-09-03T14:25:41.945994",
+      "modified": "2026-09-03T14:25:41.945994",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -755,8 +755,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:28.356091",
-      "modified": "2026-09-02T18:13:28.356091",
+      "created": "2026-09-03T14:25:41.945994",
+      "modified": "2026-09-03T14:25:41.945994",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -863,8 +863,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:28.356091",
-      "modified": "2026-09-02T18:13:28.356091",
+      "created": "2026-09-03T14:25:41.945994",
+      "modified": "2026-09-03T14:25:41.945994",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -971,8 +971,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:28.356091",
-      "modified": "2026-09-02T18:13:28.356091",
+      "created": "2026-09-03T14:25:41.945994",
+      "modified": "2026-09-03T14:25:41.945994",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -1079,8 +1079,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:28.356091",
-      "modified": "2026-09-02T18:13:28.356091",
+      "created": "2026-09-03T14:25:41.945994",
+      "modified": "2026-09-03T14:25:41.945994",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -1187,8 +1187,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:28.356091",
-      "modified": "2026-09-02T18:13:28.356091",
+      "created": "2026-09-03T14:25:41.945994",
+      "modified": "2026-09-03T14:25:41.945994",
       "locked": false,
       "visible": true,
       "metadata": {}

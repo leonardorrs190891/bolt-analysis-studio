@@ -307,7 +307,15 @@ PAYLOAD = [
      "orcamento de erro por fonte (error_budget.BUDGET_PATH)"),
     ("Models/SAVED_CASES/*/*.msd",
      "os 210 casos salvos na configuracao adotada, uma pasta por artigo, "
-     "importaveis por File > Open; cada um cita a fonte dentro do arquivo"),
+     "importaveis por Arquivo > Importar caso da validacao (Ctrl+I); cada um "
+     "cita a fonte dentro do arquivo"),
+    # Fica na RAIZ de SAVED_CASES, entao o glob dos .msd nao o pega. Sem ele o
+    # seletor do Ctrl+I abre vazio na instalacao — os casos estariam todos la',
+    # e o dialogo nao teria como saber quais sao nem qual esta' no censo.
+    ("Models/SAVED_CASES/indice.json",
+     "indice que o seletor de casos le: censo, criterio e MAE de cada curva"),
+    ("Models/SAVED_CASES/INDICE.md",
+     "o mesmo indice em texto, para quem abre a pasta pelo Explorer"),
 ]
 
 # Nunca, sob nenhum padrao. O .pdf esta' aqui por DIREITOS: e' material de
@@ -497,6 +505,17 @@ curva</b>: {n_fontes} fontes da literatura e {n_casos} curvas, cada uma com o
 erro m&eacute;dio absoluto ao lado. Selecionando uma curva, aparece o dado
 digitalizado contra a previs&atilde;o do modelo.</p>
 
+<h2>Como abrir uma curva como modelo edit&aacute;vel</h2>
+<p><b>Arquivo &rarr; Importar caso da valida&ccedil;&atilde;o</b>
+(<kbd>Ctrl</kbd>+<kbd>I</kbd>) lista todas as curvas por nome, com busca por
+artigo, DOI ou caso. A curva escolhida chega montada no MSD Builder, com as
+constantes adotadas daquele artigo, pronta para rodar ou modificar. A lista
+mostra por padr&atilde;o as <b>{n_censo} curvas do censo do artigo</b>; as
+{n_fora} de fora aparecem ao desmarcar <i>Somente o censo</i>, e o motivo de
+cada uma est&aacute; no Ap&ecirc;ndice B do anexo.</p>
+<p>Os arquivos ficam em <code>Models\\SAVED_CASES\\</code>, um por curva,
+organizados por artigo; <code>INDICE.md</code> na mesma pasta lista todos.</p>
+
 <h2>Como ver os dados de calibra&ccedil;&atilde;o</h2>
 <table>
 <tr><th>Caminho</th><th>O que mostra</th></tr>
@@ -536,11 +555,13 @@ n&atilde;o reconhecido.</div>
 """
 
 
-def _write_leiame(dest: Path, meta: dict, n_fontes: int, n_casos: int) -> Path:
+def _write_leiame(dest: Path, meta: dict, n_fontes: int, n_casos: int,
+                  n_censo: int) -> Path:
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(_LEIAME.format(versao=meta["version"],
                                    autores=meta["author"],
                                    n_fontes=n_fontes, n_casos=n_casos,
+                                   n_censo=n_censo, n_fora=n_casos - n_censo,
                                    doi=DOI_CONCEITO),
                     encoding="utf-8", newline="")
     return dest
@@ -765,9 +786,12 @@ def main(argv=None) -> int:
     # contagem do leiame vem do REGISTRY, nunca digitada
     sys.path.insert(0, str(RAIZ / "src"))
     from bolt_analysis_studio.validation.case_registry import all_records
+    from bolt_analysis_studio.validation.report_html import caso_comparavel
     recs = all_records()
     n_fontes = len({r.source for r in recs})
-    _write_leiame(build / "LEIAME.html", meta, n_fontes, len(recs))
+    # o censo tambem sai do codigo, pelo predicado do Apendice B
+    n_censo = sum(1 for r in recs if caso_comparavel(r.source, r.case_id))
+    _write_leiame(build / "LEIAME.html", meta, n_fontes, len(recs), n_censo)
     _write_console_cmd(build / "BAS-console.cmd")
     print(f"  [6/7] icone, leiame ({n_fontes} fontes, {len(recs)} casos) "
           f"e BAS-console.cmd")

@@ -1,9 +1,9 @@
 {
   "version": "4.0",
   "name": "Li2022 axial 10Hz",
-  "description": "Bolt Analysis Studio - validation case li2022ti_axialmin_10Hz\nModel built from the ADOPTED configuration of this case.\n\nSOURCE OF THE EXPERIMENTAL CURVE\nH. Li et al. (2022). Tribology Int. 176:107933\nDOI: 10.1016/j.triboint.2022.107933  (https://doi.org/10.1016/j.triboint.2022.107933)\n\nThe curve was DIGITISED from a figure of the publication above by the authors of Bolt Analysis Studio. It is not original data: the measurements belong to the original authors, and the terms are in DATA_LICENSE.md.\n\nPROVENANCE\nSource key      : LI_2022_TRIBOINT\nDigitised curve : Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/li2022ti_axialmin_10Hz.csv\nApparatus notes : Models/CALIBRATION_AND_VALIDATION/curve_library/apparatus_notes/li2022_triboint_axial_freq.md\nAdopted constants: New_Theory/adopted_configs.json",
-  "created": "2026-09-02T18:13:19.343183",
-  "modified": "2026-09-02T18:13:19.508257",
+  "description": "Bolt Analysis Studio - validation case li2022ti_axialmin_10Hz\nModel built from the ADOPTED configuration of this case.\n\nSOURCE OF THE EXPERIMENTAL CURVE\nH. Li et al. (2022). Tribology Int. 176:107933\nDOI: 10.1016/j.triboint.2022.107933  (https://doi.org/10.1016/j.triboint.2022.107933)\n\nThe curve was DIGITISED from a figure of the publication above by the authors of Bolt Analysis Studio. It is not original data: the measurements belong to the original authors, and the terms are in DATA_LICENSE.md.\n\nPAPER CENSUS\nIn the census of the accompanying paper (205 of 210 records).\n\nPROVENANCE\nSource key      : LI_2022_TRIBOINT\nDigitised curve : Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/li2022ti_axialmin_10Hz.csv\nApparatus notes : Models/CALIBRATION_AND_VALIDATION/curve_library/apparatus_notes/li2022_triboint_axial_freq.md\nAdopted constants: New_Theory/adopted_configs.json",
+  "created": "2026-09-03T14:25:39.501093",
+  "modified": "2026-09-03T14:25:39.525232",
   "elements": [
     {
       "id": 1,
@@ -107,8 +107,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:19.343183",
-      "modified": "2026-09-02T18:13:19.343183",
+      "created": "2026-09-03T14:25:39.501093",
+      "modified": "2026-09-03T14:25:39.501093",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -215,8 +215,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:19.343183",
-      "modified": "2026-09-02T18:13:19.343183",
+      "created": "2026-09-03T14:25:39.501093",
+      "modified": "2026-09-03T14:25:39.501093",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -323,8 +323,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:19.343183",
-      "modified": "2026-09-02T18:13:19.343183",
+      "created": "2026-09-03T14:25:39.501093",
+      "modified": "2026-09-03T14:25:39.501093",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -431,8 +431,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:19.343183",
-      "modified": "2026-09-02T18:13:19.343183",
+      "created": "2026-09-03T14:25:39.501093",
+      "modified": "2026-09-03T14:25:39.501093",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -539,8 +539,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:19.343183",
-      "modified": "2026-09-02T18:13:19.343183",
+      "created": "2026-09-03T14:25:39.501093",
+      "modified": "2026-09-03T14:25:39.501093",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -647,8 +647,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:19.343183",
-      "modified": "2026-09-02T18:13:19.343183",
+      "created": "2026-09-03T14:25:39.501093",
+      "modified": "2026-09-03T14:25:39.501093",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -755,8 +755,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:19.343183",
-      "modified": "2026-09-02T18:13:19.343183",
+      "created": "2026-09-03T14:25:39.501093",
+      "modified": "2026-09-03T14:25:39.501093",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -863,8 +863,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:19.343183",
-      "modified": "2026-09-02T18:13:19.343183",
+      "created": "2026-09-03T14:25:39.501093",
+      "modified": "2026-09-03T14:25:39.501093",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -971,8 +971,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:19.344181",
-      "modified": "2026-09-02T18:13:19.344181",
+      "created": "2026-09-03T14:25:39.501093",
+      "modified": "2026-09-03T14:25:39.501093",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -1079,8 +1079,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:19.344181",
-      "modified": "2026-09-02T18:13:19.344181",
+      "created": "2026-09-03T14:25:39.502088",
+      "modified": "2026-09-03T14:25:39.502088",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -1187,8 +1187,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:19.344181",
-      "modified": "2026-09-02T18:13:19.344181",
+      "created": "2026-09-03T14:25:39.502088",
+      "modified": "2026-09-03T14:25:39.502088",
       "locked": false,
       "visible": true,
       "metadata": {}

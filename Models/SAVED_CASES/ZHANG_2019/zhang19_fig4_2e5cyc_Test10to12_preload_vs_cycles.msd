@@ -1,9 +1,9 @@
 {
   "version": "4.0",
   "name": "Zhang2019 M12 2e5cyc Test10-12",
-  "description": "Bolt Analysis Studio - validation case zhang19_fig4_2e5cyc_Test10to12_preload_vs_cycles\nModel built from the ADOPTED configuration of this case.\n\nSOURCE OF THE EXPERIMENTAL CURVE\nZhang, Zeng, Lu, Zhang, Wang & Xu (2019). Eng. Fail. Anal. 104:341-353\nDOI: 10.1016/j.engfailanal.2019.05.001  (https://doi.org/10.1016/j.engfailanal.2019.05.001)\n\nThe curve was DIGITISED from a figure of the publication above by the authors of Bolt Analysis Studio. It is not original data: the measurements belong to the original authors, and the terms are in DATA_LICENSE.md.\n\nPROVENANCE\nSource key      : ZHANG_2019\nDigitised curve : BAS_V2_papers/F. Rodada 5 (limitacoes 2026-07-16)/digitized_csv/zhang19_fig4_2e5cyc_Test10to12_preload_vs_cycles.csv\nApparatus notes : BAS_V2_papers/F. Rodada 5 (limitacoes 2026-07-16)/apparatus_notes/zhang.md\nAdopted constants: New_Theory/adopted_configs.json",
-  "created": "2026-09-02T18:13:31.771516",
-  "modified": "2026-09-02T18:13:31.858285",
+  "description": "Bolt Analysis Studio - validation case zhang19_fig4_2e5cyc_Test10to12_preload_vs_cycles\nModel built from the ADOPTED configuration of this case.\n\nSOURCE OF THE EXPERIMENTAL CURVE\nZhang, Zeng, Lu, Zhang, Wang & Xu (2019). Eng. Fail. Anal. 104:341-353\nDOI: 10.1016/j.engfailanal.2019.05.001  (https://doi.org/10.1016/j.engfailanal.2019.05.001)\n\nThe curve was DIGITISED from a figure of the publication above by the authors of Bolt Analysis Studio. It is not original data: the measurements belong to the original authors, and the terms are in DATA_LICENSE.md.\n\nPAPER CENSUS\nIn the census of the accompanying paper (205 of 210 records).\n\nPROVENANCE\nSource key      : ZHANG_2019\nDigitised curve : BAS_V2_papers/F. Rodada 5 (limitacoes 2026-07-16)/digitized_csv/zhang19_fig4_2e5cyc_Test10to12_preload_vs_cycles.csv\nApparatus notes : BAS_V2_papers/F. Rodada 5 (limitacoes 2026-07-16)/apparatus_notes/zhang.md\nAdopted constants: New_Theory/adopted_configs.json",
+  "created": "2026-09-03T14:25:42.786224",
+  "modified": "2026-09-03T14:25:42.804786",
   "elements": [
     {
       "id": 1,
@@ -107,8 +107,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:31.771516",
-      "modified": "2026-09-02T18:13:31.771516",
+      "created": "2026-09-03T14:25:42.786224",
+      "modified": "2026-09-03T14:25:42.786224",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -215,8 +215,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:31.771516",
-      "modified": "2026-09-02T18:13:31.771516",
+      "created": "2026-09-03T14:25:42.786224",
+      "modified": "2026-09-03T14:25:42.786224",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -323,8 +323,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:31.771516",
-      "modified": "2026-09-02T18:13:31.771516",
+      "created": "2026-09-03T14:25:42.786224",
+      "modified": "2026-09-03T14:25:42.786224",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -431,8 +431,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:31.771516",
-      "modified": "2026-09-02T18:13:31.771516",
+      "created": "2026-09-03T14:25:42.786224",
+      "modified": "2026-09-03T14:25:42.786224",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -539,8 +539,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:31.772514",
-      "modified": "2026-09-02T18:13:31.772514",
+      "created": "2026-09-03T14:25:42.786224",
+      "modified": "2026-09-03T14:25:42.786224",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -647,8 +647,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:31.772514",
-      "modified": "2026-09-02T18:13:31.772514",
+      "created": "2026-09-03T14:25:42.786224",
+      "modified": "2026-09-03T14:25:42.786224",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -755,8 +755,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:31.772514",
-      "modified": "2026-09-02T18:13:31.772514",
+      "created": "2026-09-03T14:25:42.786224",
+      "modified": "2026-09-03T14:25:42.786224",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -863,8 +863,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:31.772514",
-      "modified": "2026-09-02T18:13:31.772514",
+      "created": "2026-09-03T14:25:42.786224",
+      "modified": "2026-09-03T14:25:42.786224",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -971,8 +971,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:31.775505",
-      "modified": "2026-09-02T18:13:31.775505",
+      "created": "2026-09-03T14:25:42.786224",
+      "modified": "2026-09-03T14:25:42.786224",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -1079,8 +1079,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:31.775505",
-      "modified": "2026-09-02T18:13:31.775505",
+      "created": "2026-09-03T14:25:42.786224",
+      "modified": "2026-09-03T14:25:42.786224",
       "locked": false,
       "visible": true,
       "metadata": {}
@@ -1187,8 +1187,8 @@
       "constraints": [],
       "x": 0.0,
       "y": 0.0,
-      "created": "2026-09-02T18:13:31.775505",
-      "modified": "2026-09-02T18:13:31.775505",
+      "created": "2026-09-03T14:25:42.786224",
+      "modified": "2026-09-03T14:25:42.786224",
       "locked": false,
       "visible": true,
       "metadata": {}

@@ -12,6 +12,7 @@ Escrito em 2026-09-02, com dois invariantes que valem mais que os outros:
 2. Todo <img> da secao 22 tem de apontar para arquivo que existe. Imagem
    quebrada num help e' pior que help sem imagem: parece que falta conteudo.
 """
+import inspect
 import json
 import re
 import sys
@@ -71,6 +72,36 @@ def test_toda_superficie_descrita_foi_capturada():
     assert descritas == no_html, (
         f"descritas mas fora do HTML: {sorted(descritas - no_html)}; "
         f"no HTML mas nao descritas: {sorted(no_html - descritas)}")
+
+
+def test_cada_superficie_tem_um_print_DIFERENTE():
+    """Print presente nao e' print certo. As tres entradas do inspector saiam
+    byte a byte iguais ao print do modulo Model: o dock "Properties" chegava
+    escondido (o layout vem do QSettings da maquina do build) e a troca de aba
+    acontecia atras de um painel invisivel. Tres legendas descreviam uma aba
+    especifica e mostravam a mesma tela — o teste anterior passava."""
+    import hashlib
+    from collections import defaultdict
+
+    por_hash = defaultdict(list)
+    for p in sorted((RECURSOS / "ui_reference").glob("*.png")):
+        por_hash[hashlib.sha256(p.read_bytes()).hexdigest()].append(p.stem)
+    iguais = [v for v in por_hash.values() if len(v) > 1]
+    assert not iguais, f"prints identicos entre si: {iguais}"
+
+
+def test_o_print_do_inspector_mostra_um_elemento_selecionado():
+    """Sem selecao o painel diz "No element selected" e exibe os defaults, e a
+    legenda falaria de valores que o print nao tem. Com o SHANK selecionado
+    aparecem a rigidez e o material do caso."""
+    import build_ui_reference as bur
+
+    fonte = (RAIZ / "New_Theory" / "build_ui_reference.py").read_text(
+        encoding="utf-8")
+    assert "_seleciona_elemento" in fonte
+    assert "dock.setVisible(True)" in fonte
+    # e o gerador para em vez de gravar um print mudo
+    assert "SystemExit" in inspect.getsource(bur._seleciona_elemento)
 
 
 def test_nenhum_doi_das_secoes_e_sem_origem():

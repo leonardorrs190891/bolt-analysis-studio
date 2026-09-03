@@ -70,6 +70,25 @@ def citation_block(rec) -> str:
     else:
         linhas.append(_SEM_DOI.get(rec.source, "Not a publication: no DOI."))
 
+    # Censo do artigo: 205 dos 210. O predicado e' `caso_comparavel`, o MESMO
+    # que o Apendice B usa para listar os de fora — nao uma regra paralela que
+    # poderia divergir do manuscrito.
+    try:
+        from .report_html import caso_comparavel
+        no_censo = bool(caso_comparavel(rec.source, rec.case_id))
+    except Exception:                                        # noqa: BLE001
+        no_censo = None
+    if no_censo is True:
+        linhas += ["", "PAPER CENSUS",
+                   "In the census of the accompanying paper (205 of 210 "
+                   "records)."]
+    elif no_censo is False:
+        linhas += ["", "PAPER CENSUS",
+                   "NOT in the census of the accompanying paper. It is "
+                   "simulated and published, but counted in no number of the "
+                   "manuscript; the reason is in Appendix B of the software "
+                   "annex."]
+
     csv_rel = _rel(getattr(caso, "reference_csv_path", None) or rec.csv_path)
     nota_rel = _rel(rec.apparatus_note_path)
     linhas += ["", "PROVENANCE", f"Source key      : {rec.source}"]

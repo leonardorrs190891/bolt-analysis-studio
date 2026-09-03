@@ -1,0 +1,86 @@
+{
+ "eq_motion": {
+  "latex": "$[M]\\{\\ddot{x}\\} + [C]\\{\\dot{x}\\} + [K]\\{x\\} = \\{F(t)\\}$",
+  "bytes": {
+   "dark": 9085,
+   "light": 9059
+  }
+ },
+ "eq_k_bolt": {
+  "latex": "$\\dfrac{1}{k_{bolt}} = \\dfrac{1}{k_{head}} + \\dfrac{1}{k_{shank}} + \\dfrac{1}{k_{thread}}$",
+  "bytes": {
+   "dark": 9199,
+   "light": 9155
+  }
+ },
+ "eq_k_system": {
+  "latex": "$k_{system} = \\dfrac{k_{bolt}\\,k_{member}}{k_{bolt} + k_{member}}$",
+  "bytes": {
+   "dark": 12058,
+   "light": 12086
+  }
+ },
+ "eq_phi": {
+  "latex": "$\\Phi = \\dfrac{k_{bolt}}{k_{bolt} + k_{member}}$",
+  "bytes": {
+   "dark": 7723,
+   "light": 7711
+  }
+ },
+ "eq_friction": {
+  "latex": "$\\mu(N) = \\mu_0 + (\\mu_{peak}-\\mu_0)\\,(1-e^{-N/N_1})\\,e^{-N/N_2} + (\\mu_{steady}-\\mu_0)\\,(1-e^{-N/N_3})$",
+  "bytes": {
+   "dark": 18052,
+   "light": 17918
+  }
+ },
+ "eq_mu_crit": {
+  "latex": "$\\mu_{crit} = \\dfrac{p}{2\\pi}\\cdot\\dfrac{2\\cos\\alpha}{d_2 + 2\\,r_{eff}\\cos\\alpha}$",
+  "bytes": {
+   "dark": 10962,
+   "light": 11063
+  }
+ },
+ "eq_t_pitch": {
+  "latex": "$T_{pitch} = F_p\\,\\dfrac{p}{2\\pi}$",
+  "bytes": {
+   "dark": 4596,
+   "light": 4602
+  }
+ },
+ "eq_t_thread": {
+  "latex": "$T_{thread} = \\mu_t\\,F_p\\,\\dfrac{d_2}{2\\cos\\alpha}$",
+  "bytes": {
+   "dark": 7757,
+   "light": 7760
+  }
+ },
+ "eq_t_bearing": {
+  "latex": "$T_{bearing} = \\mu_b\\,F_p\\,r_{eff}$",
+  "bytes": {
+   "dark": 5416,
+   "light": 5432
+  }
+ },
+ "eq_margin": {
+  "latex": "$\\mathrm{Margin} = \\dfrac{T_{thread} + T_{bearing}}{T_{pitch}}$",
+  "bytes": {
+   "dark": 9266,
+   "light": 9278
+  }
+ },
+ "eq_slip_bearing": {
+  "latex": "$|F_{trans}| > \\mu_{bearing}\\,F_p$",
+  "bytes": {
+   "dark": 5873,
+   "light": 5876
+  }
+ },
+ "eq_slip_thread": {
+  "latex": "$|F_{trans}| > \\mu_{thread}\\,F_p\\,\\cos\\lambda$",
+  "bytes": {
+   "dark": 7464,
+   "light": 7466
+  }
+ }
+}
