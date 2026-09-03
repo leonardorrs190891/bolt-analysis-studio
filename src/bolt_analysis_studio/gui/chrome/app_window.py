@@ -6,6 +6,9 @@ reais vem em planos subsequentes.
 """
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtWidgets import (QDockWidget, QLabel, QMainWindow, QStackedWidget,
                              QStatusBar, QToolBar)
@@ -224,6 +227,20 @@ class ChromeWindow(QMainWindow):
         act = file_menu.addAction("Nova Análise…")
         act.setShortcut("Ctrl+Shift+N")
         act.triggered.connect(self._open_wizard)
+        # Abrir ao lado de Nova Analise: ate' 2026-09-03 o chrome V2
+        # nao tinha como abrir um .msd salvo, nem como gravar o que
+        # foi editado. Abrir sem salvar seria armadilha, entao os dois
+        # entraram juntos.
+        act = file_menu.addAction("Abrir projeto…")
+        act.setShortcut("Ctrl+O")
+        act.triggered.connect(self._abrir_projeto)
+        file_menu.addSeparator()
+        act = file_menu.addAction("Salvar")
+        act.setShortcut("Ctrl+S")
+        act.triggered.connect(self._salvar_projeto)
+        act = file_menu.addAction("Salvar como…")
+        act.setShortcut("Ctrl+Shift+S")
+        act.triggered.connect(self._salvar_projeto_como)
         file_menu.addSeparator()
         file_menu.addAction("Sair", self.close)
         mb.addMenu("Editar")
@@ -631,6 +648,137 @@ class ChromeWindow(QMainWindow):
         self.switch_module("Model")
         self.prompt.set_prompt("Modelo criado. Revise em Model → Loads → Analysis "
                                "e rode em Analysis.")
+
+    # --- abrir / salvar projeto (2026-09-03) ---------------------------------
+    # O chrome V2, que e' o padrao, tinha um menu Arquivo com "Nova Analise" e
+    # "Sair": NAO dava para abrir um modelo salvo nem para gravar o que voce
+    # editou. Os 210 casos da validacao ja' vinham como .msd desde 02-09 e nao
+    # havia porta para eles na interface.
+    #
+    # Abrir sem salvar seria armadilha — o usuario abre um caso, edita e perde.
+    # Por isso os dois vieram juntos.
+    _PREFS = Path.home() / ".bolt_analysis_studio" / "preferences.json"
+
+    def _dir_inicial_projeto(self) -> str:
+        """Pasta que o dialogo abre.
+
+        Na PRIMEIRA vez, os casos da validacao: e' onde estao os 210 modelos
+        dos artigos, e e' o que alguem quer abrir antes de ter projeto proprio.
+        Depois disso, a ultima pasta usada — senao quem trabalha nos proprios
+        modelos voltaria sempre para os artigos.
+        """
+        try:
+            if self._PREFS.is_file():
+                ultimo = json.loads(self._PREFS.read_text(encoding="utf-8")
+                                    ).get("ultimo_dir_projeto")
+                if ultimo and Path(ultimo).is_dir():
+                    return ultimo
+        except (OSError, ValueError):
+            pass
+        try:
+            from ...validation.inputs import repo_root
+            casos = repo_root() / "Models" / "SAVED_CASES"
+            if casos.is_dir():
+                return str(casos)
+        except Exception:                                    # noqa: BLE001
+            pass
+        return str(Path.home())
+
+    def _lembra_dir_projeto(self, caminho: str) -> None:
+        try:
+            self._PREFS.parent.mkdir(parents=True, exist_ok=True)
+            prefs = {}
+            if self._PREFS.is_file():
+                prefs = json.loads(self._PREFS.read_text(encoding="utf-8"))
+            prefs["ultimo_dir_projeto"] = str(Path(caminho).parent)
+            self._PREFS.write_text(json.dumps(prefs, indent=2),
+                                   encoding="utf-8")
+        except (OSError, ValueError):        # preferencia e' conveniencia:
+            pass                              # falhar aqui nao pode travar nada
+
+    def _abrir_projeto(self):
+        from PyQt6.QtWidgets import QFileDialog, QMessageBox
+        from ...core.models.model import MSDModel
+
+        caminho, _ = QFileDialog.getOpenFileName(
+            self, "Abrir projeto", self._dir_inicial_projeto(),
+            "Modelo MSD (*.msd);;Todos os arquivos (*)")
+        if not caminho:
+            return
+        try:
+            modelo = MSDModel.load(caminho)
+        except Exception as exc:                             # noqa: BLE001
+            QMessageBox.warning(self, "Abrir projeto",
+                                f"Nao foi possivel abrir:\n{exc}")
+            return
+        self._caminho_projeto = caminho
+        self._lembra_dir_projeto(caminho)
+        # mesmo caminho do wizard: poe no AppState, reconstroi o esquematico e
+        # leva para o modulo Model
+        self._after_wizard(modelo)
+        nome = Path(caminho).name
+        self.prompt.set_prompt(f"Projeto aberto: {nome}")
+        self.setWindowTitle(f"Bolt Analysis Studio (chrome) — {nome}")
+
+    def _salvar_projeto(self):
+        if getattr(self, "_caminho_projeto", None):
+            self._grava_projeto(self._caminho_projeto)
+        else:
+            self._salvar_projeto_como()
+
+    def _salvar_projeto_como(self):
+        from PyQt6.QtWidgets import QFileDialog
+
+        sugestao = getattr(self, "_caminho_projeto", None) or str(
+            Path(self._dir_inicial_projeto()) / "projeto.msd")
+        caminho, _ = QFileDialog.getSaveFileName(
+            self, "Salvar projeto como", sugestao,
+            "Modelo MSD (*.msd);;Todos os arquivos (*)")
+        if caminho:
+            self._grava_projeto(caminho)
+
+    def _grava_projeto(self, caminho: str) -> None:
+        from PyQt6.QtWidgets import QMessageBox
+
+        # export_model() le o ESQUEMATICO, e' o que garante que uma edicao no
+        # canvas ainda nao propagada entre no arquivo. MAS o desenho nao conhece
+        # os canais de override, a descricao nem o nome: esses vivem no modelo
+        # do AppState. Salvar so' com o exportado perdia as 23 constantes
+        # adotadas e a citacao da fonte — o arquivo abria com os 11 elementos e
+        # o F0 certos, e estava errado. Pego pelo teste de ida e volta em
+        # 2026-09-03, e e' a mesma perda silenciosa que MSDModel.to_dict tinha,
+        # um andar acima. Estrutura vem do esquematico, metadado vem do estado.
+        _CARREGA = ("_v2_tuner_overrides", "_v2_geometry_overrides",
+                    "_two_stage_overrides", "_fixture_overrides",
+                    "description", "name")
+        modelo = None
+        try:
+            modelo = self.model_controller.export_model()
+        except Exception:                                    # noqa: BLE001
+            modelo = None
+        estado = getattr(self.app_state, "model", None)
+        if modelo is not None and estado is not None:
+            for campo in _CARREGA:
+                valor = getattr(estado, campo, None)
+                if valor:
+                    setattr(modelo, campo, valor)
+        if modelo is None:
+            modelo = getattr(self.app_state, "model", None)
+        if modelo is None:
+            QMessageBox.warning(self, "Salvar projeto",
+                                "Nao ha' modelo para salvar.")
+            return
+        try:
+            modelo.save(caminho)
+        except Exception as exc:                             # noqa: BLE001
+            QMessageBox.warning(self, "Salvar projeto",
+                                f"Nao foi possivel salvar:\n{exc}")
+            return
+        self._caminho_projeto = caminho
+        self._lembra_dir_projeto(caminho)
+        nome = Path(caminho).name
+        self.prompt.set_prompt(f"Projeto salvo: {caminho}")
+        self.setWindowTitle(f"Bolt Analysis Studio (chrome) — {nome}")
 
     def _open_wizard(self):
         try:
