@@ -11,7 +11,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="bolt-analysis-studio",
-    version="2.0.0",
+    version="1.0.0",
     author="Prof. Leonardo Rosa Ribeiro da Silva, PhD; Neilon de Souza da Silva, PhD",
     author_email="leorrs@ufu.br",
     description="Comprehensive bolted joint analysis software for oil and gas applications",
