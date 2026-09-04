@@ -1,6 +1,6 @@
 # Project Tab (Tab 1) — Design & Usability Study
 
-**Bolt Analysis Studio v4.0** — LTAD/UFU / Petrobras R&D
+**Bolt Analysis Studio v4.0** — internal reference / Petrobras R&D
 **Date:** 2026-02-18
 **Scope:** Complete audit of Tab 1 (ProjectTab), with layout, responsiveness, usability, visual design, and data-integrity improvement plans.
 
@@ -121,7 +121,7 @@
 
 | # | Issue | Severity | Note |
 |---|-------|----------|------|
-| D1 | Missing field: Institution / Laboratory (UFU/LTAD context) | High | `ProjectInfo` |
+| D1 | Missing field: Institution / Laboratory (âncora interna/LTAD context) | High | `ProjectInfo` |
 | D2 | Missing field: Project Number / Document Number | Medium | Engineering DCC |
 | D3 | Missing field: Revision letter/number | Medium | Version control |
 | D4 | Missing field: Notes / Comments (separate from description) | Low | Traceability |
@@ -197,7 +197,7 @@ Keeps the 2-panel concept but adds a fixed-height hero bar, uses `QSplitter`, an
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │  HERO BANNER (fixed 56px)                                                   │
-│  [BAS v4.0 | LTAD/UFU]  ·····  [● My Project  —  UNSAVED]  [Open] [Save]  │
+│  [BAS v4.0 | internal reference]  ·····  [● My Project  —  UNSAVED]  [Open] [Save]  │
 ├──────────────────────────────────┬──────────────────────────────────────────┤
 │  LEFT PANEL (QScrollArea, 55%)   │  RIGHT PANEL (40%)                      │
 │                                  │                                          │
@@ -273,7 +273,7 @@ A fixed 48–56px bar at the top of the tab (outside the scrollable content area
 ```
 ╔═══════════════════════════════════════════════════════════════════════╗
 ║  [BAS ICON]  Bolt Analysis Studio v4.0       ● UNSAVED  model.msd  ║
-║  LTAD/UFU — Petrobras R&D                    [Open ▼]  [Save ■]    ║
+║  internal reference — Petrobras R&D                    [Open ▼]  [Save ■]    ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 ```
 
@@ -420,7 +420,7 @@ def resizeEvent(self, event):
 
 ### 7.1 Recent Projects — Full Implementation
 
-**Storage:** `QSettings("LTAD-UFU", "BoltAnalysisStudio")`
+**Storage:** `QSettings("LTAD-âncora interna", "BoltAnalysisStudio")`
 **Key:** `"recent_projects"` → JSON list of `{path, name, modified_iso}` dicts
 **Capacity:** 10 items, FIFO
 
@@ -431,7 +431,7 @@ class RecentProjectsManager:
 
     @staticmethod
     def get() -> list[dict]:
-        s = QSettings("LTAD-UFU", "BoltAnalysisStudio")
+        s = QSettings("LTAD-âncora interna", "BoltAnalysisStudio")
         raw = s.value(RecentProjectsManager.SETTINGS_KEY, "[]")
         return json.loads(raw)
 
@@ -445,7 +445,7 @@ class RecentProjectsManager:
             "modified_iso": datetime.now().isoformat()
         })
         items = items[:RecentProjectsManager.MAX_ITEMS]
-        s = QSettings("LTAD-UFU", "BoltAnalysisStudio")
+        s = QSettings("LTAD-âncora interna", "BoltAnalysisStudio")
         s.setValue(RecentProjectsManager.SETTINGS_KEY, json.dumps(items))
 ```
 
@@ -535,7 +535,7 @@ new_btn.setShortcut(QKeySequence("Ctrl+N"))
 
 | Field | Type | Default | UI Widget | Purpose |
 |-------|------|---------|-----------|---------|
-| `institution` | `str` | `"LTAD/UFU"` | `QLineEdit` | Laboratory / university name |
+| `institution` | `str` | `"internal reference"` | `QLineEdit` | Laboratory / university name |
 | `project_number` | `str` | `""` | `QLineEdit` | Engineering document control number |
 | `revision` | `str` | `"A"` | `QLineEdit` (max 5) | Revision letter/number |
 | `notes` | `str` | `""` | `QTextEdit` (small) | Free-text notes separate from description |
@@ -551,7 +551,7 @@ class ProjectInfo:
     description: str = ""
     author: str = ""
     company: str = "Petrobras"
-    institution: str = "LTAD/UFU"          # NEW
+    institution: str = "internal reference"          # NEW
     project_number: str = ""               # NEW
     revision: str = "A"                    # NEW
     notes: str = ""                        # NEW
@@ -586,7 +586,7 @@ def from_dict(cls, data: Dict[str, Any]) -> 'ProjectInfo':
         description=data.get("description", ""),
         author=data.get("author", ""),
         company=data.get("company", "Petrobras"),
-        institution=data.get("institution", "LTAD/UFU"),          # NEW — safe default
+        institution=data.get("institution", "internal reference"),          # NEW — safe default
         project_number=data.get("project_number", ""),            # NEW
         revision=data.get("revision", "A"),                       # NEW
         notes=data.get("notes", ""),                              # NEW
@@ -621,7 +621,7 @@ ProjectTab (QVBoxLayout)
 ```
 
 **HeroBar content:**
-- Left: App icon (16px) + "Bolt Analysis Studio v4.0" label + " — LTAD/UFU"
+- Left: App icon (16px) + "Bolt Analysis Studio v4.0" label + " — internal reference"
 - Center: Project name (auto-updates via signal)
 - Right: Status badge (`QLabel` with colored background) + [Save] button
 
@@ -704,11 +704,11 @@ All new fields must be tested for save/load round-trip. Verify `.msd` JSON file 
 # In tests/test_project_info.py
 def test_project_info_round_trip():
     info = ProjectInfo(
-        name="Test", institution="UFU", project_number="P-001", revision="B"
+        name="Test", institution="âncora interna", project_number="P-001", revision="B"
     )
     d = info.to_dict()
     info2 = ProjectInfo.from_dict(d)
-    assert info2.institution == "UFU"
+    assert info2.institution == "âncora interna"
     assert info2.project_number == "P-001"
     assert info2.revision == "B"
 
@@ -716,7 +716,7 @@ def test_project_info_backward_compatible():
     # Old file without new fields
     old_dict = {"name": "OldProject", "author": "Alice", "company": "ACME"}
     info = ProjectInfo.from_dict(old_dict)
-    assert info.institution == "LTAD/UFU"   # uses default
+    assert info.institution == "internal reference"   # uses default
     assert info.revision == "A"             # uses default
 ```
 
@@ -917,7 +917,7 @@ def _create_actions_group(self) -> QGroupBox:
 def _load_recent_projects(self):
     """Populate list from QSettings."""
     self.recent_list.clear()
-    s = QSettings("LTAD-UFU", "BoltAnalysisStudio")
+    s = QSettings("LTAD-âncora interna", "BoltAnalysisStudio")
     raw = s.value("recent_projects", "[]")
     items = json.loads(raw) if isinstance(raw, str) else []
 
@@ -993,7 +993,7 @@ def _update_timestamps(self, info: ProjectInfo):
 
 4. **P1 — Status badge.** Engineers need immediate visual confirmation of "is my work saved?" — this is a basic data-safety concern.
 
-5. **P1 — Add Institution, Project Number, Revision fields.** These are standard in engineering document control and are expected by the Petrobras/UFU user base.
+5. **P1 — Add Institution, Project Number, Revision fields.** These are standard in engineering document control and are expected by the Petrobras/âncora interna user base.
 
 6. **P1 — Display timestamps.** The data is already in `ProjectInfo` — show it.
 
@@ -1005,5 +1005,5 @@ def _update_timestamps(self, info: ProjectInfo):
 
 ---
 
-*Document prepared by Claude Code for LTAD/UFU — Bolt Analysis Studio v4.0*
+*Document prepared by Claude Code for internal reference — Bolt Analysis Studio v4.0*
 *Date: 2026-02-18*

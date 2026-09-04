@@ -54,7 +54,7 @@ as duas medidas:
 1. **A simulação para ANTES de `N_frat`** ⇒ a fratura é inobservável pelo runner. Era
    isto que quebrava o G1, não a álgebra.
 2. **A fase final do colapso está fora do escopo da métrica em 43 das 203 curvas**
-   (588 pontos, 13 fontes): `ECCLES_2010` 56 pts · `UFU_LAB` 449 · `LU_2024` 24 ·
+   (588 pontos, 13 fontes): `ECCLES_2010` 56 pts · `ANCORA_INTERNA` 449 · `LU_2024` 24 ·
    `SUN_2025_CRIMP` 12 · `LIU_2025` 10 · `ZHANG_2006` 9 · `BAUER_2024` 9 · `YANG_2021`
    6 · `YANG_2023_IJPEM` 6 · outras 4 fontes com 1–3.
 

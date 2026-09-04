@@ -53,9 +53,9 @@ curve_library/
 |---|---|---|
 | `k_emb_scale` | queda rápida inicial (assentamento, Stage I) | qualquer curva, primeiros ~10 ciclos |
 | `k_wear_scale_tr` | inclinação do colapso (Stage II), cresce c/ amplitude | sweep de amplitude (Lu Fig 18; Jiang) |
-| `slip_onset_W` | **platô inicial** antes da queda (incubação 3-estágios) | Du 2025 (3 estágios); UFU nova; Junker M16 |
+| `slip_onset_W` | **platô inicial** antes da queda (incubação 3-estágios) | Du 2025 (3 estágios); âncora interna nova; Junker M16 |
 | `k_creep_scale` | cauda lenta / dependência de tempo | térmico/creep (Eraliev; Bouzid gasket) |
-| `c_D,k_dmg_*` (dano) | colapso acelerado / parafuso reusado | UFU reaperto; ensaios de reaperto/reuso |
+| `c_D,k_dmg_*` (dano) | colapso acelerado / parafuso reusado | âncora interna reaperto; ensaios de reaperto/reuso |
 | `Phi_tr_correction`,`tr_loose_gain` | efeito de grip/rigidez do membro | Rousseau-Bouzid (grip, aço×HDPE); Zhang-Jiang (clamped length) |
 | validação cross-condição | famílias variando 1 parâmetro | Lu (amplitude/preload/freq); Hattori (3 tamanhos) |
 
@@ -100,11 +100,11 @@ Curvas valiosas porém pagas (use DOI via instituição). Já resumidas na bibli
 | Eraliev et al. (2021), Adv. Mech. Eng. — thermal cycling | `10.1177/16878140211015423` | `k_creep` (térmico) | `12_Eraliev_2021` |
 | Bhattacharya et al. (2010), Mech. Mach. Theory 45(8):1215 | `10.1016/j.mechmachtheory.2010.04.001` | escala de tamanho (M4/M5/M6) | `89_Bhattacharya` |
 
-## C. Já digitalizadas (UFU) — prontas
+## C. Já digitalizadas (âncora interna) — prontas
 
 | Caso | Curva | Uso |
 |---|---|---|
-| UFU 5A / 13A-1ª / 13A-def | `Models/EXPERIMENTAL_UFU/reference_curves/UFU_*_preload_decay.csv` | nova/reusada/sobretorque/reaperto (M16, ±0.5 mm, 0.5 Hz) |
+| âncora interna 5A / 13A-1ª / 13A-def | `Models/EXPERIMENTAL_ANCORA/reference_curves/ancora_interna*_preload_decay.csv` | nova/reusada/sobretorque/reaperto (M16, ±0.5 mm, 0.5 Hz) |
 | M16 shear (New_Theory) | `New_Theory/M16_shear_*.csv` (9 curvas) | calibração-base do shear |
 
 ---
@@ -115,7 +115,7 @@ Curvas valiosas porém pagas (use DOI via instituição). Já resumidas na bibli
    sweeps limpos para `k_wear_scale_tr` e a dependência amplitude/preload (validação
    cross-condição, o teste que falta no `MODEL_LEGITIMACY` §4.3).
 2. **OA2 Du 2025** + **OA6 Du 2022** — curvas de **3 estágios** → calibrar e validar
-   o novo **`slip_onset_W`** (platô do Stage I) fora da condição UFU.
+   o novo **`slip_onset_W`** (platô do Stage I) fora da condição âncora interna.
 3. **OA3 Rousseau-Bouzid 2025** — grip/rigidez do membro → `Phi_tr`,`tr_loose_gain`.
 4. **B/Liu 2017 (axial)** — abrir o **track axial** (hoje só shear é calibrado).
 5. **B/Hattori 2010** — M6/M10/M16 mesmo ensaio → efeito de tamanho.

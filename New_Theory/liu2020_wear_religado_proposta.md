@@ -42,7 +42,7 @@ Estendida para baixo (~7,7× menor, estimado pelo alvo), a região existe:
 
 As duas curvas `fig15` são **DLC**; as sete restantes, **zinco eletrolítico**. A regra da
 campanha para constante tribológica é **por par** (§4.7, `C_creep`: âncora 304SS 9,9e-13
-contra fit UFU 1,2e-11, ICs disjuntos). Aplicar um `k_wear_spec` comum a zinco e DLC seria
+contra fit da âncora interna 1,2e-11, ICs disjuntos). Aplicar um `k_wear_spec` comum a zinco e DLC seria
 violar a própria disciplina.
 
 Com o grupo **só zinco**, as 2 DLC ficam **bit-idênticas** e a lista de pioras encolhe de

@@ -24,7 +24,7 @@ nunca knobs livres por curva).
 
 | Sub-campanha | Pergunta | Dados |
 |---|---|---|
-| **A. Transferência zero-refit** | as constantes do Estágio A (M16 shear UFU) predizem rigs alheios mudando SÓ inputs? | sweeps transversais disp-mode: Liu2025 (M16, 0.25–0.8 mm), Lu2024 (M8, 0.25–2.0 mm), Icmez/demir2024 (M8 fatorial), Bauer2024 (M8/M12), Yang2019 (M10), Rousseau2025 (M12 aço), Karlsen2022 (M30/M42) |
+| **A. Transferência zero-refit** | as constantes do Estágio A (M16 shear âncora interna) predizem rigs alheios mudando SÓ inputs? | sweeps transversais disp-mode: Liu2025 (M16, 0.25–0.8 mm), Lu2024 (M8, 0.25–2.0 mm), Icmez/demir2024 (M8 fatorial), Bauer2024 (M8/M12), Yang2019 (M10), Rousseau2025 (M12 aço), Karlsen2022 (M30/M42) |
 | **B. Trilho axial (1º fit)** | o modelo fecha carregamento AXIAL força-controlada com as constantes sempre-ativas (embedding/creep) + loosening axial — sem K_archard/tr_loose_gain (registro exclui por construção)? | liu2017 (9 curvas: sweeps de P0 15–21 kN e A_F 7.5–12.5 kN, 30 Hz) + li2022ti (4: A_F 10 kN, 10/15/20 Hz) |
 | **C. Âncora independente de C_creep** | estimar C_creep de creep ESTÁTICO (sem vibração) — a constante mais fraca do fit compartilhado (IC ×2.30) | li2022marstruc (6 curvas, eixo x = MINUTOS, 5/10/15 kN, sweep de Ra, M16 304SS) |
 
@@ -33,7 +33,7 @@ nunca knobs livres por curva).
 1. **Sub-campanha A é 100% out-of-sample:** as constantes vêm do bloco `shared`
    do `joint_calibrations.json` (Estágio A) e **não são reajustadas** para
    nenhuma curva da biblioteca. Não há split treino/teste — o treino foi o
-   dataset UFU; a biblioteca inteira é teste.
+   dataset âncora interna; a biblioteca inteira é teste.
 2. **Casos incluídos em A (v1):** todos os casos transversais disp-mode dos 9
    papers prioritários listados acima, com os **trims obrigatórios** do HANDOFF
    §5.4 (caudas de fratura por fadiga são out-of-model: Yang2021 pós-N2,
@@ -51,11 +51,11 @@ nunca knobs livres por curva).
    2026-07-03, thread paralela): assentamento f_Z depende da rugosidade e do
    nº de interfaces — tabelas publicadas (VDI 2230 f_Z por classe de
    acabamento; DIN 25201-4). Evidência: no M12 curto/retificado do Liu2017,
-   os 30 µm do rig UFU engolem ~99% da perda predita; ~3 µm reproduz o dado.
+   os 30 µm do rig âncora interna engolem ~99% da perda predita; ~3 µm reproduz o dado.
    **Disciplina anti-knob:** o valor por fonte vem DA TABELA (procedência
    `handbook`: classe de Rz + nº de interfaces documentados), NUNCA do ajuste
    à curva; sensibilidade pré-registrada = classe de rugosidade adjacente.
-   O valor UFU (30 µm) permanece o do rig UFU. Implicação futura (fora deste
+   O valor da âncora interna (30 µm) permanece o do rig âncora interna. Implicação futura (fora deste
    spec): no registro de ativação, `emb_depth` tende a migrar de constante
    fitável para estado nomeado com proveniência — decidir após a Fase 1.
 4. **Métricas:** MAE_pred por curva; agregado por paper e por regime;
@@ -82,7 +82,7 @@ nunca knobs livres por curva).
 7. **Sub-campanha C:** modo estático no engine = ciclos a F_amp=0, delta_amp=0,
    freq tal que 1 ciclo = 1 minuto (1/60 Hz) → só embedding+creep ativos.
    Fit de C_creep (+ emb_depth por nível de Ra, conforme a nota do paper) às 6
-   curvas. **Uso honesto:** 304SS ≠ par UFU — o valor NÃO substitui o do
+   curvas. **Uso honesto:** 304SS ≠ par da âncora interna — o valor NÃO substitui o do
    Estágio A por decreto; ele **re-centra o prior e aperta os bounds** de
    C_creep (log-prior de literatura → log-prior de dado independente) e o
    Estágio A é re-rodado com esse prior para medir o impacto.
@@ -118,7 +118,7 @@ nunca knobs livres por curva).
 Fase 2: sobretorque (F₀-bound 133 kN + hipótese de wear dependente de pressão —
 nota: a hipótese GW k_tr(F₀) tem sinal DESFAVORÁVEL na equação de slip atual,
 ver análise 2026-07-03), embedding renewal (liu2022 fig6–8), acoplamento F↔δ
-(yang2021). Fase 3: colapso adimensional, profile likelihood. Fase 4 (lab UFU):
+(yang2021). Fase 3: colapso adimensional, profile likelihood. Fase 4 (lab âncora interna):
 campanha de generalização, F₀ do TP6, Exp 1–5.
 
 ## 5. Riscos

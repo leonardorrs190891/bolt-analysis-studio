@@ -256,12 +256,12 @@ free **at most** `{k_gall, k_emb_renew}` (galling + renewal), **never** per-curv
 ### 5.1 CRITICAL DEPENDENCY — the Liu2022 level confound (must be resolved FIRST)
 
 **§4.10 showed the zero-refit Liu2022 validation COLLAPSES.** Three cross-rig constants
-transferred from M16/UFU do **not** transfer to M12/Liu2022:
+transferred from M16/âncora interna do **not** transfer to M12/Liu2022:
 
-1. `c_D=2.0` / `k_dmg_wear=4.0` (the UFU **collapse** signature) drive a spurious runaway
+1. `c_D=2.0` / `k_dmg_wear=4.0` (the âncora interna **collapse** signature) drive a spurious runaway
    (D→1, wear→5×) on a joint that in reality loses only 14–27%;
 2. `emb_depth` (VDI) over-predicts settling of the fine-ground M12 surface (§4.6 again);
-3. `k_wear_scale=1.0` (frozen) vs the 0.44 fitted to M16 UFU nova ⇒ wear ~2.3× too fast.
+3. `k_wear_scale=1.0` (frozen) vs the 0.44 fitted to M16 âncora interna nova ⇒ wear ~2.3× too fast.
 
 The joint collapses to `F0→0` within the first phase — and **on a joint already at ≈0, any
 recovery term is unobservable** (galling raising K, or renewal of δ_emb, do nothing to a

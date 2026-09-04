@@ -1,10 +1,10 @@
 # Casos de validacao salvos como modelo
 
-210 arquivos `.msd`, um por curva, na configuracao adotada de cada caso. Abra qualquer um por **Arquivo > Abrir projeto** (`Ctrl+O`) ou, mais direto, por **Arquivo > Importar caso da validacao** (`Ctrl+I`).
+207 arquivos `.msd`, um por curva, na configuracao adotada de cada caso. Abra qualquer um por **Arquivo > Abrir projeto** (`Ctrl+O`) ou, mais direto, por **Arquivo > Importar caso da validacao** (`Ctrl+I`).
 
 - **205** estao no **censo do artigo** — sao os que o manuscrito conta.
 - **171** desses atendem ao criterio de aceitacao das tres pernas.
-- **5** ficam fora do censo: simulados e publicados, contados em nenhum numero do manuscrito. O motivo de cada um esta' no Apendice B do anexo.
+- **2** ficam fora do censo: simulados e publicados, contados em nenhum numero do manuscrito. O motivo de cada um esta' no Apendice B do anexo.
 
 Gerado por `New_Theory/build_saved_cases.py`. O censo usa `caso_comparavel`, o mesmo predicado do Apendice B.
 
@@ -178,9 +178,6 @@ Gerado por `New_Theory/build_saved_cases.py`. O censo usa `caso_comparavel`, o m
 | `sun2025efa110030_fig11a_loosening_reassy06` | SUN_2025_REASSY | sim | sim | 0.0195 |
 | `sun2025efa110030_fig11a_loosening_reassy08` | SUN_2025_REASSY | sim | sim | 0.0184 |
 | `sun2025efa110030_fig11a_loosening_reassy10` | SUN_2025_REASSY | sim | sim | 0.0176 |
-| `UFU_13A_def_preload_decay` | UFU_LAB | **nao** | - | 0.0516 |
-| `UFU_13A_first_preload_decay` | UFU_LAB | **nao** | - | 0.0962 |
-| `UFU_5A_preload_decay` | UFU_LAB | **nao** | - | 0.0523 |
 | `exemplo_m12_sintetico` | USER | **nao** | - | 0.0100 |
 | `yang2019_M10_amp0p4_5Hz` | YANG_2019 | sim | sim | 0.0087 |
 | `yang2019_M10_amp0p6_10Hz` | YANG_2019 | sim | sim | 0.0235 |

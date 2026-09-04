@@ -27,9 +27,9 @@ número publicado desloca**, inclusive os que estão sob guarda.
 
 | caso | fonte | motivo | verificável? |
 |---|---|---|---|
-| `UFU_13A_def_preload_decay` | `UFU_LAB` | fonte fora do projeto (decisão do professor, 2026-08-01) | decisão |
-| `UFU_13A_first_preload_decay` | `UFU_LAB` | idem | decisão |
-| `UFU_5A_preload_decay` | `UFU_LAB` | idem | decisão |
+| `ancora_interna` | `ANCORA_INTERNA` | fonte fora do projeto (decisão do professor, 2026-08-01) | decisão |
+| `ancora_interna` | `ANCORA_INTERNA` | idem | decisão |
+| `ancora_interna` | `ANCORA_INTERNA` | idem | decisão |
 | `exemplo_m12_sintetico` | `USER` | caso sintético, não é dado experimental | escopo |
 | `lu2024_M8_fig18_amp1p0` | `LU_2024` | **duplicata** de `fig20_T22Nm` — mesmo teste em 2 figuras | ✅ **medível** |
 

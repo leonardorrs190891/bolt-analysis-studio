@@ -117,7 +117,7 @@ def test_override_explicito_vence_o_bloco_compartilhado(qapp):
 
 def test_chave_de_modo_sobrevive_a_montagem(qapp):
     """Nove chaves do JointMaterial sao modo (string/bool). Coagi-las a float
-    derrubava o ajuste em todas as 210 configuracoes adotadas."""
+    derrubava o ajuste em todas as 207 configuracoes adotadas."""
     from bolt_analysis_studio.core.solver_worker import build_v2_material
 
     mat = build_v2_material({"conform_driver": "effective",

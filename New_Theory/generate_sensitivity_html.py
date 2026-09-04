@@ -57,7 +57,7 @@ INVENTORY = {
     "t_0": ("shared", "tempo de referencia Norton"),
     "tr_loose_gain": ("shared", "amplificacao dinamica transversal (2.0)"),
     "eta_loose": ("shared", "rigidez torsional efetiva (bolt_torsion, 15)"),
-    "W_conf_ref": ("shared", "conformacao — per-par UFU, sem ancora (§4.9 null)"),
+    "W_conf_ref": ("shared", "conformacao — per-par da âncora interna, sem ancora (§4.9 null)"),
     "conform_pressure_exp": ("shared", "expoente de pressao da conformacao (2)"),
     "p_ref_conform": ("shared", "pressao de referencia da conformacao"),
     "slip_regime_sharpness": ("shared", "nitidez do gate de gross-slip (1.0)"),

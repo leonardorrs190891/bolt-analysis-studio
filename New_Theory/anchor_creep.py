@@ -3,7 +3,7 @@
 Creep ESTATICO li2022marstruc (M16 304SS, sem vibracao, eixo x em MINUTOS):
 isola o mecanismo de creep. Fit declarado de {C_creep + emb_depth por Ra}
 (5 parametros, 6 curvas); depois re-roda o Estagio A com o prior de C_creep
-re-centrado na ancora (cross-material: 304SS != par UFU — re-centra, nao
+re-centrado na ancora (cross-material: 304SS != par da âncora interna — re-centra, nao
 substitui por decreto).
 
 Run:  python New_Theory/anchor_creep.py [--skip-stage-a]
@@ -212,7 +212,7 @@ def main():
                provenance=dict(
                    geometry="paper (li2022_marstruc: M16x80 304SS E=193GPa, L=20mm)",
                    x_axis="minutos (1 pseudo-ciclo = 1 min, freq=1/60 Hz)",
-                   cross_material="304SS != par UFU: ancora re-centra o prior"),
+                   cross_material="304SS != par da âncora interna: ancora re-centra o prior"),
                conservation_residual_static=resid_static,
                anchor=anchor, stage_a_rerun=stage_a)
     (ROOT / "New_Theory" / "creep_anchor.json").write_text(

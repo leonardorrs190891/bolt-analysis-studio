@@ -39,7 +39,7 @@ Sete módulos, na ordem do workflow:
 
 A aba **Documentation** é removida; conteúdo migra para o menu **Help → User Guide** inalterado.
 
-Validation aparece como **nó dedicado da Tree** (ao lado de Similitude) com sub-nós Reference Curves / Calibration Papers / Validation Cases, e também como **overlay dentro do módulo Results** (chip "Overlay: UFU-13A" na context bar). Duas portas de entrada para o mesmo dado.
+Validation aparece como **nó dedicado da Tree** (ao lado de Similitude) com sub-nós Reference Curves / Calibration Papers / Validation Cases, e também como **overlay dentro do módulo Results** (chip "Overlay: âncora interna-13A" na context bar). Duas portas de entrada para o mesmo dado.
 
 ---
 
@@ -87,7 +87,7 @@ Hierarquia única, presente em todos os módulos:
 │   └── Job-N
 │       ├── Preload Decay · Friction μ · Wear · Phase Map · Miner's D · Rotation
 ├── ✅ Validation
-│   ├── Reference Curves    (UFU 5A, 13A, ...)
+│   ├── Reference Curves    (âncora interna 5A, 13A, ...)
 │   ├── Calibration Papers  (Lu 2024, Jiang 2003, ...)
 │   └── Validation Cases    (entradas de validation_cases.py)
 ├── 📐 Similitude Studies

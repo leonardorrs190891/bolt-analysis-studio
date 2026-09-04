@@ -53,7 +53,7 @@ def _preferencias_isoladas(tmp_path_factory, monkeypatch):
     Em 2026-09-03 dois testes de "abrir/salvar projeto" chamaram
     `_grava_projeto` com um tmp_path e gravaram `ultimo_dir_projeto` no arquivo
     REAL do usuario. Efeito na maquina dele: o Ctrl+O passou a abrir num
-    diretorio temporario do pytest com 1 arquivo solto, em vez dos 210 casos
+    diretorio temporario do pytest com 1 arquivo solto, em vez dos 207 casos
     dos artigos. Os modelos estavam la'; o que quebrou foi para onde o dialogo
     apontava.
 

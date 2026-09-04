@@ -1,7 +1,7 @@
 # MSD Framework -- Supplementary: Matrix Coupling, Force Propagation, and Visualization
 
 **Authors:** L. Ribeiro, D. Carvalho, S.C. Naves, T. Santos, V. Marques, G. Arruda
-**Institution:** LTAD/UFU -- Tribology and Wear Technology Laboratory, Federal University of Uberlândia
+**Institution:** internal reference -- Tribology and Wear Technology Laboratory, Federal University of Uberlândia
 **Project:** Petrobras R&D -- Bolted Flange Joint Integrity
 
 ---

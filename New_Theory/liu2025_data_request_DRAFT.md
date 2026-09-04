@@ -97,8 +97,8 @@ Thank you for considering this, and for a very useful paper.
 With best regards,
 
 Prof. Leonardo Rosa Ribeiro da Silva, PhD
-School of Mechanical Engineering, Federal University of Uberlândia (UFU), Brazil
-leorrs@ufu.br
+School of Mechanical Engineering, Federal University of Uberlândia (âncora interna), Brazil
+leorrs@ancora_interna.br
 
 ---
 

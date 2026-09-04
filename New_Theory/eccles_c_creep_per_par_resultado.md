@@ -27,11 +27,11 @@ errada — é o argumento inteiro a favor de o controle ser **gate**, e não con
 ## A física
 
 As 8 configs do ECCLES **não declaravam `C_creep`**: a fonte herdava o valor do bloco
-`shared`, **1,8667e-11**, que é o **fit UFU**. A adoção cria um valor **per-fonte** de
+`shared`, **1,8667e-11**, que é o **fit da âncora interna**. A adoção cria um valor **per-fonte** de
 **2,8e-11** (×1,5).
 
 Isso é o que a §4.7 documenta como correto — **`C_creep` é POR PAR tribológico**, não universal
-(âncora 304SS 9,9e-13 vs fit UFU 1,2e-11, **ICs disjuntos**) — e os pares são distintos: a nota
+(âncora 304SS 9,9e-13 vs fit da âncora interna 1,2e-11, **ICs disjuntos**) — e os pares são distintos: a nota
 de aparato do ECCLES registra **parafuso M8 eletro-zincado**, com a porca apoiando **direto na
 placa móvel, sem arruela**. Zinco relaxa mais que aço nu, e ×1,5 é movimento de mesma ordem.
 

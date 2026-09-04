@@ -80,7 +80,7 @@ perturbação sai. É o que separa "teste que passa" de "teste que funciona".
    tamanho **1** e eu estava a um passo de publicar *"ponto cego de 62 curvas"*. O que
    denunciou foi o próprio absurdo do número — mapa de 1 curva não existe.
 2. **Esqueci o filtro de comparabilidade** na seção nova. Deu **10** em vez de 6: entraram as
-   3 `UFU_*` (fora do projeto desde 08-01) e a duplicata `lu2024_fig18_amp1p0`
+   3 `ancora_interna*` (fora do projeto desde 08-01) e a duplicata `lu2024_fig18_amp1p0`
    (`_CID_NAO_COMPARAVEL`) — exatamente as que **não estão no censo**. Corrigido na mesma
    escrita, com o motivo em comentário: o `res` do script inclui incomparáveis **de
    propósito**, e todo consumidor novo precisa re-aplicar `rh.caso_comparavel`.

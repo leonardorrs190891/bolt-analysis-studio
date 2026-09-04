@@ -1,8 +1,8 @@
 """Shallow-collapse, tentativa 2: gate aberto (c_bend bracketado) + WEAR per-rig.
 
 A varredura c_bend pura FALSIFICOU o gate como unico bloqueador: aberto com
-k_wear_tr=1 (nivel UFU) over-colapsa (Liu2025 0.126->0.711). Precedente §4.8:
-k_wear e' per-rig (UFU 0.44, Liu2022 0.06). Grid: c_bend fixo no bracket de
+k_wear_tr=1 (nivel âncora interna) over-colapsa (Liu2025 0.126->0.711). Precedente §4.8:
+k_wear e' per-rig (âncora interna 0.44, Liu2022 0.06). Grid: c_bend fixo no bracket de
 onset + k_wear_scale_tr x loose_arrest_floor per-rig. O wear ∝F0·slip
 auto-desacelera => plateau/finais dependentes de amplitude (assinatura Liu2025).
 

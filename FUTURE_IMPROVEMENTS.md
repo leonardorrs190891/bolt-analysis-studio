@@ -1,6 +1,6 @@
 # Future Improvements — Bolt Analysis Studio v4.0
 
-**LTAD/UFU — Petrobras R&D**
+**internal reference — Petrobras R&D**
 *Suggested by development team — February 2026*
 
 ---

@@ -155,7 +155,7 @@ Structural first; MAE is a consequence.
 - **Liu 2017** (`New_Theory/slip_regime_axial.py`): `d(final)/dP₀` steepens from
   5.6e-6 toward the data's 2.6e-5 /N, with κ from thread geometry.
 - **No regression** (standing constraint): a test asserts `slip_regime_mode="off"`
-  is bit-identical; UFU shear, axial zero-refit (`calibrate_axial`), and
+  is bit-identical; âncora interna shear, axial zero-refit (`calibrate_axial`), and
   re-tightening (`validate_galling`) re-run green.
 - **Verdict** logged AS-IS in `MODEL_LEGITIMACY.md` §4.12 (validated capability vs
   adopted fix, per the project doctrine).

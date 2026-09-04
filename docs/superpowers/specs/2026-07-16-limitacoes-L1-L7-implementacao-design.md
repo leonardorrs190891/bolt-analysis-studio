@@ -52,7 +52,7 @@ CLAUDE.md; (vi) encoding utf-8.
 ### Fatia 0 — Proveniência no knowledge_base (sem engine)
 Âncoras R5 em `calibration/knowledge_base.py`/dados: tabela `k_wear_spec` por **interface+par**
 (rosca 35CrMo/SCM435 8,34e-15 · faiamento Q355B/Q235B 6,5–7,0e-12 · bandas Fouvry/Warmuth),
-µ_rosca por coating (zinco 0,150/DLC 0,126), classes de `C_creep` (Nah α,β por espessura; UFU;
+µ_rosca por coating (zinco 0,150/DLC 0,126), classes de `C_creep` (Nah α,β por espessura; âncora interna;
 JCSR; Caccese; Qin; Lakes), constantes k_j (Pedersen Eq.31; Wileman A,B por material), bound L7
 (1–10 kJ/mm³). `anchor_priors`/`check_input` passam a avisar fora-da-banda por interface.
 **Gate:** testes de KB (query por par/interface devolve valor+proveniência+banda).
@@ -103,7 +103,7 @@ inalterado; teste de conservação novo.
 ### Fatia 6 — L4: documentação (sem engine)
 `MODEL_LEGITIMACY.md` §4.9 append: null 3× confirmado; precedentes de forma (n_p≈0,5–0,6
 sub-GPa; teto de aspereza 1,5·H como sanity de `p_ref`; saturação em deslocamento ~5 ciclos vs
-energia que não satura — Etsion×Frérot); valor segue dependente do experimento âncora UFU.
+energia que não satura — Etsion×Frérot); valor segue dependente do experimento âncora âncora interna.
 
 ### Fatia 7 — Wiring de casos novos (D4)
 Zhang 2018 (Tests1-4, 3 preloads, locker on/off) + Zhang 2019 (4 grupos) + Liu 2020 (3 preloads

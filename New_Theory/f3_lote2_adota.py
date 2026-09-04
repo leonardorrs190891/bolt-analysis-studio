@@ -18,13 +18,13 @@ ALVOS = {
     "sun2025efa109235_transverse_grease_crimp": (0.0221, 0.0886),
     "sun2025efa109235_axial_F7.5kN_standard": (0.0253, 0.0395),
     "sun2025efa109235_axial_F17.5kN_standard": (0.0330, 0.0468),
-    "UFU_13A_first_preload_decay": (0.052, 0.093),
+    "ancora_interna": (0.052, 0.093),
     "zhang2006_fig16_runout_40kN_amp0p125": (0.0124, 0.0240),
 }
 CONTROLES = ["sun2025efa109235_axial_F7.5kN_crimp",
              "sun2025efa109235_transverse_grease_standard",
              "sun2025efa109235_transverse_nogrease_standard",
-             "UFU_13A_def_preload_decay", "UFU_5A_preload_decay",
+             "ancora_interna", "ancora_interna",
              "zhang2006_fig3_illus_M12x125_20kN_amp0p35"]
 
 
@@ -72,7 +72,7 @@ def main(argv=None) -> int:
         "axiais standard 0,091/0,140→0,025/0,039 e 0,096/0,154→0,033/0,047 "
         "(C_creep proxy per-token 9e-11)")
     # L2b 13A_first
-    g13 = d["sources"]["UFU_LAB_13A_first"]
+    g13 = d["sources"]["ancora_interna"]
     g13["cfg"]["emb_um"] = 2.0
     g13["cfg"]["k_ratchet"] = 3e-5
     g13.setdefault("prov", {})["emb_um"] = "lido-do-dado (queda inicial 0,016)"

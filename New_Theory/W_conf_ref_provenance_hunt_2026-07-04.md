@@ -23,7 +23,7 @@ even pin the order of magnitude.
 This matches the honest C_creep outcome almost verbatim: **forms/frameworks transfer,
 constants are per tribological pair.** `W_conf_ref`'s provenance is genuine Phase-3 work
 and, on today's evidence, will remain a fitted-per-pair constant (its magnitude is
-*internally* sensible against the UFU test's own dissipation budget, but that is not an
+*internally* sensible against the âncora interna test's own dissipation budget, but that is not an
 independent anchor).
 
 ---
@@ -39,8 +39,8 @@ independent anchor).
 **How C_creep was anchored (the template):** an *independent* experiment isolating the
 mechanism (li2022marstruc static contact-creep relaxation, 304SS, no vibration → wear/
 loosening structurally inert) was fitted for C_creep alone. The anchored value
-(9.9e-13) **disagreed with the UFU dynamic fit (1.2e-11) by ~11.7× with disjoint CIs** →
-honest conclusion: C_creep is **per tribological pair**; the UFU value is estimate-on-curve.
+(9.9e-13) **disagreed with the âncora interna dynamic fit (1.2e-11) by ~11.7× with disjoint CIs** →
+honest conclusion: C_creep is **per tribological pair**; the âncora interna value is estimate-on-curve.
 The analogous hunt for `W_conf_ref` would need an independent experiment yielding a
 conformation/shakedown *energy scale* for a clamped metallic contact.
 
@@ -91,7 +91,7 @@ weighting (p/p_ref)ⁿ ≈ 2.5² ≈ 6.25, half-conformation (`W_conf = W_conf_r
 is reached at ≈ 2e3 J of *raw* work ≈ **~55 cycles**, consistent with the observed ~75-cycle
 settle→plateau of TP6 (spec §1 diagnosis). Dividing by A_contact≈1e-4 m² gives a raw areal
 density ≈ **~20 J/mm²** — dimensionally the same kind of quantity as Fouvry's χ and not
-obviously implausible. **But this uses the same UFU data + model geometry that produced the
+obviously implausible. **But this uses the same âncora interna data + model geometry that produced the
 fit, so it is internal consistency, not an independent anchor**, and no literature χ value
 was obtained to confirm/refute the 20 J/mm² magnitude.
 
@@ -114,7 +114,7 @@ wording for §4.9 (or its Phase-3 provenance note) and the §5.1 provenance tabl
    be sourced. So: **framework anchors the *concept and the per-pair status*, not the value.**
 
 2. **Do not claim numeric consistency.** The ~20 J/mm² implied areal density is an
-   *internal* order-of-magnitude check (same UFU data), not a literature match — label it as
+   *internal* order-of-magnitude check (same âncora interna data), not a literature match — label it as
    such; no uncited number should be presented as an anchor.
 
 3. **§5.1 provenance table:** add `W_conf_ref` with Camada = tunável/físico-fenomenológico,

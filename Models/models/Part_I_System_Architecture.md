@@ -3,11 +3,11 @@
 ## PART I: SYSTEM ARCHITECTURE AND FUNDAMENTALS
 
 **Version 4.0 - Extended English Edition**
-**For: Bolt Analysis Studio - Petrobras/LTAD-UFU R&D Project**
+**For: Bolt Analysis Studio - Petrobras/LTAD-âncora interna R&D Project**
 
 **Authors:** L. Ribeiro, D. Carvalho, S.C. Naves, T. Santos, V. Marques, G. Arruda
-**General Coordination:** Professor Leonardo Ribeiro, PhD (leorrs@ufu.br)
-**Institution:** LTAD/UFU - Tribology and Wear Technology Laboratory, Federal University of Uberlândia
+**General Coordination:** Professor Leonardo Ribeiro, PhD (leorrs@ancora_interna.br)
+**Institution:** internal reference - Tribology and Wear Technology Laboratory, Federal University of Uberlândia
 
 ---
 
@@ -27,7 +27,7 @@
 
 ### 1.1 Purpose of This Document
 
-This comprehensive technical reference provides the complete mathematical framework for modeling bolted flanged joints using Mass-Spring-Damper (MSD) representations. The document covers all aspects from fundamental theory through numerical implementation and visualization, specifically targeting the Bolt Analysis Studio software development for the Petrobras R&D project in collaboration with LTAD/UFU.
+This comprehensive technical reference provides the complete mathematical framework for modeling bolted flanged joints using Mass-Spring-Damper (MSD) representations. The document covers all aspects from fundamental theory through numerical implementation and visualization, specifically targeting the Bolt Analysis Studio software development for the Petrobras R&D project in collaboration with internal reference.
 
 The document serves multiple purposes:
 

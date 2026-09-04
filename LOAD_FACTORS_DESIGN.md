@@ -1,7 +1,7 @@
 # Load Factors Integration — Design Document
 
 **Bolt Analysis Studio v4.0**
-LTAD/UFU — Petrobras R&D
+internal reference — Petrobras R&D
 February 2026
 
 ---

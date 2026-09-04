@@ -878,7 +878,7 @@ The highest-priority fixes are:
 
 ---
 
-*Prepared by Claude Code (Sonnet 4.6) — LTAD/UFU Petrobras R&D Analysis*
+*Prepared by Claude Code (Sonnet 4.6) — internal reference Petrobras R&D Analysis*
 *Files analyzed: app_state.py, solver_worker.py, model.py, element.py,*
 *contacts/base.py, contacts/thread_contact.py, contacts/bearing_contact.py,*
 *coupled_loosening_analyzer.py, preload_loss_models.py, friction_models.py,*

@@ -44,7 +44,7 @@
 >
 > **Sobrevive deste documento:** a natureza do achado — o `FLOOR_TRIM` encurta a simulação
 > **e** a janela, e a queda em relação ao censo de 2026-07-29 é **composicional** (saída da
-> `UFU_LAB`, entrada das corridas longas do `LU_2024`). **Os três números do título, não.**
+> `ANCORA_INTERNA`, entrada das corridas longas do `LU_2024`). **Os três números do título, não.**
 
 ---
 
@@ -56,7 +56,7 @@
 Instância de **§4.43**: número publicado que envelheceu em silêncio. O `CLAUDE.md` afirmava,
 medido em **2026-07-29**, que a convenção `FLOOR_TRIM = 0,10` põe fora de escopo
 
-> *43 das 203 curvas … 588 pontos, 13 fontes — `ECCLES_2010` 56 pts, `UFU_LAB` 449,
+> *43 das 203 curvas … 588 pontos, 13 fontes — `ECCLES_2010` 56 pts, `ANCORA_INTERNA` 449,
 > `LU_2024` 24, `YANG_2021` 6/6 com mínimo 0,000*
 
 Dezessete dias e **vários re-carimbos** depois, ninguém re-mediu.
@@ -81,13 +81,13 @@ mudança de **composição**, não de física. As duas causas somam quase exatam
 
 | evento | data | efeito |
 |---|---|---|
-| **`UFU_LAB` sai do projeto** ("a UFU não faz parte mais desse projeto") | 08-01 | **−449 pontos** em 3 curvas |
+| **`ANCORA_INTERNA` sai do projeto** ("a âncora interna não faz parte mais desse projeto") | 08-01 | **−449 pontos** em 3 curvas |
 | **`LU_2024` ganha as 3 corridas `fig14_*_long`** (P4 do plano LU) | 07-31 | LU vai de 24 → **92+** pontos |
 
 ⇒ 588 − 449 + ~68 ≈ 207, contra 216 medidos; o resíduo é re-digitalização (D-W, D-R, D-S, D-U).
 
 **Nenhuma leitura de mérito do modelo muda.** Quem lesse "588 → 216" como o modelo passando a
-cobrir o colapso final estaria lendo a saída da UFU como melhoria de física.
+cobrir o colapso final estaria lendo a saída da âncora interna como melhoria de física.
 
 ## 3. Distribuição de hoje
 

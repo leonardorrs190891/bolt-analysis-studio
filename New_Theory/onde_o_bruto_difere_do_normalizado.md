@@ -21,7 +21,7 @@ do artigo e o que o store guarda, e só quando o 1º ponto do dado está longe d
 ## 2. A população, medida
 
 Fator `|F₀_bruto − 1|` por curva, lido pelo **carregador canônico**
-(`inputs.load_full_curve`: coluna 0 e a **última** — as CSVs UFU têm 3 colunas e as do
+(`inputs.load_full_curve`: coluna 0 e a **última** — as CSVs âncora interna têm 3 colunas e as do
 `LIU_2020` estão em porcentagem):
 
 | limiar | curvas | % das 210 |
@@ -82,7 +82,7 @@ engano de cada vez.
 `audit_align.py` + `chk_align.py` no scratchpad. ~2 min, só-leitura.
 
 ⚠️ **Nota de método:** a 1ª versão desta sonda parseava as CSVs à mão e devolvia
-`F₀ = 120` (UFU, 3 colunas — peguei a do meio, em kN) e `F₀ = 100` (`LIU_2020`, em
+`F₀ = 120` (âncora interna, 3 colunas — peguei a do meio, em kN) e `F₀ = 100` (`LIU_2020`, em
 porcentagem). O absurdo denunciou na hora, mas a lição é a de sempre nesta campanha:
 **pergunte ao helper**. `load_full_curve` carrega convenções — qual coluna, quais unidades —
 que ninguém lembra de cabeça.

@@ -69,7 +69,7 @@ manual, que **2 dessas 10** eram falsas.
 
 ⚠️ **`C_creep` lidera com 17** — e é justamente a constante que a §4.7 do
 `MODEL_LEGITIMACY.md` documenta como **por par tribológico**, com ICs disjuntos entre a
-âncora 304SS e o fit UFU. ⇒ uma banda global para ela seria **errada por construção**; a
+âncora 304SS e o fit da âncora interna. ⇒ uma banda global para ela seria **errada por construção**; a
 checagem correta teria de ser **por par**, que é informação que o repositório ainda não
 organiza.
 

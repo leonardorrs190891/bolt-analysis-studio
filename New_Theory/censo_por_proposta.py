@@ -134,7 +134,7 @@ if fechadas:
 # conhece. A assimetria mostrava progresso e escondia regressao/crescimento, e
 # num relatorio de cobertura de proposta isso e' exatamente o vies errado.
 # ⚠️ O filtro de COMPARABILIDADE tem de estar aqui tambem. Sem ele a secao
-# lista as 3 `UFU_*` (fora do projeto desde 2026-08-01) e a duplicata
+# lista as 3 `ancora_interna*` (fora do projeto desde 2026-08-01) e a duplicata
 # `lu2024_fig18_amp1p0` (`_CID_NAO_COMPARAVEL`) — 10 em vez de 6, e as 4 a mais
 # sao justamente as que NAO estao no censo. Erro cometido e corrigido na mesma
 # escrita: o `res` do script inclui incomparaveis de proposito, e todo consumidor

@@ -41,7 +41,7 @@ def bic(params_k, data, p):
 
 
 def fit_subset(data, free):
-    """Fit so os indices `free` (demais fixos nos priors handbook/UFU)."""
+    """Fit so os indices `free` (demais fixos nos priors handbook/âncora interna)."""
     base = [3.5e-6, 50.0, 1.8667e-11, 4.0, 2.0]
     grids = [np.linspace(2.5e-6, 5.0e-6, 26), np.linspace(10, 90, 33),
              np.linspace(0.8e-11, 2.4e-11, 33), np.linspace(2.0, 6.0, 33),

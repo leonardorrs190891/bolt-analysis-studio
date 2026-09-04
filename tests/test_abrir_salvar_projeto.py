@@ -46,7 +46,7 @@ def test_o_menu_arquivo_tem_abrir_e_salvar(janela):
 
 
 def test_a_pasta_padrao_e_a_dos_casos_dos_artigos(janela):
-    """Na primeira vez o dialogo abre nos 210 modelos dos artigos, que e' o
+    """Na primeira vez o dialogo abre nos 207 modelos dos artigos, que e' o
     que alguem quer antes de ter projeto proprio. O _PREFS ja' vem isolado
     pelo conftest, entao aqui NAO ha' preferencia gravada."""
     d = janela._dir_inicial_projeto()

@@ -1,6 +1,6 @@
 {
- "gerado_em": "2026-09-03",
- "total": 210,
+ "gerado_em": "2026-09-04",
+ "total": 207,
  "no_censo": 205,
  "atendem_criterio": 171,
  "casos": [
@@ -1851,39 +1851,6 @@
    "mae": 0.0176,
    "doi": "10.1016/j.engfailanal.2025.110030",
    "reference": "Sun et al. (2025). Eng. Fail. Anal. 182:110030"
-  },
-  {
-   "case_id": "UFU_13A_def_preload_decay",
-   "source": "UFU_LAB",
-   "name": "UFU 13A definitive (3/4\" UNC, Junker)",
-   "arquivo": "UFU_LAB/UFU_13A_def_preload_decay.msd",
-   "censo": false,
-   "criterio": false,
-   "mae": 0.0516,
-   "doi": "",
-   "reference": "UFU Laboratório de Tribologia de Parafusos, trial 13A-def (2025-04-14)"
-  },
-  {
-   "case_id": "UFU_13A_first_preload_decay",
-   "source": "UFU_LAB",
-   "name": "UFU 13A 1st attempt (3/4\" UNC, interrupted)",
-   "arquivo": "UFU_LAB/UFU_13A_first_preload_decay.msd",
-   "censo": false,
-   "criterio": false,
-   "mae": 0.0962,
-   "doi": "",
-   "reference": "UFU Laboratório de Tribologia de Parafusos, trial 13A-1ª (2025-03-19)"
-  },
-  {
-   "case_id": "UFU_5A_preload_decay",
-   "source": "UFU_LAB",
-   "name": "UFU 5A (3/4\" UNC, Junker)",
-   "arquivo": "UFU_LAB/UFU_5A_preload_decay.msd",
-   "censo": false,
-   "criterio": false,
-   "mae": 0.0523,
-   "doi": "",
-   "reference": "UFU Laboratório de Tribologia de Parafusos, trial 5A (2025-03-05)"
   },
   {
    "case_id": "exemplo_m12_sintetico",

@@ -8,9 +8,9 @@ C1 inercia EXATA sem vizinho medido .. OK  (1952 pontos; pior desvio 0.00e+00)
 C5 nao e afrouxamento cego ........... OK  (mediana da melhora 0.00000; criterio < 0.005)
      media 0.00643  p90 0.02052  max 0.18865
 C7 ganho CONCENTRADO (<50% dos pts) .. FALHA  (36 curvas violam)
-     UFU_13A_first_preload_decay                94% dos pontos mudam
-     UFU_13A_def_preload_decay                  94% dos pontos mudam
-     UFU_5A_preload_decay                       85% dos pontos mudam
+     ancora_interna                94% dos pontos mudam
+     ancora_interna                  94% dos pontos mudam
+     ancora_interna                       85% dos pontos mudam
      liu2016wear_fig9a_m35nm                    73% dos pontos mudam
      liu2016wear_fig9a_m40nm                    73% dos pontos mudam
      liu2016wear_fig11a_af7p5kn                 73% dos pontos mudam
@@ -26,7 +26,7 @@ yang2019_M10_varamp_small_to_large         0.0636/0.1939     0.0477/0.0904      
   C6 OK
 
 ==============================================================================
-C2 (invariancia) + C3 (discriminancia no fig2) -- CASO DE PROJETO, ver §0
+C2 (invariancia) + C3 (discriminancia no fig2) -- CASO DE PROJETO, ver ï¿½0
 ==============================================================================
   canonica 15pt  sem forma 0.0520/0.1783 F  rampa 0.0285/0.0546 P  CLIFF 0.0520/0.1783 F
   fina 124pt     sem forma 0.0760/0.1319 F  rampa 0.0138/0.0567 P  CLIFF 0.0760/0.1319 F
@@ -63,7 +63,7 @@ yang2021_amp0p5mm_ax8kN                    0.0649/0.1850     0.0466/0.0945     P
 li2022ti_axial_10Hz_full                   0.0519/0.2392     0.0519/0.2392     falha
 sun2025efa109235_transverse_nogrease_standard 0.0708/0.2779     0.0388/0.1709     falha
 sun2025efa109235_transverse_nogrease_crimp 0.0526/0.2102     0.0131/0.0555     PASSA
-  => 7 de 16  (nivel: 0/16 · banda v1: 10/16)
+  => 7 de 16  (nivel: 0/16 ï¿½ banda v1: 10/16)
 
 C0 nada de canonico tocado ........... FALHA [' M src/bolt_analysis_studio/calibration/knowledge_base.py', ' M src/bolt_analysis_studio/calibration/parameter_registry.py']
 

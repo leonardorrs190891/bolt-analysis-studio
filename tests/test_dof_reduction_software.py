@@ -241,7 +241,7 @@ def test_kb_sensitivity_and_dof():
     #
     # E DORMENTE, e a NAO-ADOCAO e o resultado: prereg
     # 2026-08-16-lu2024-embedding-dirigido-por-pressao, ramo G8 (falsificacao
-    # honesta). G0 passou EXATO (pior |delta| = 0,000e+00 nas 210 curvas) e o
+    # honesta). G0 passou EXATO (pior |delta| = 0,000e+00 nas 207 curvas) e o
     # G1 REPROVOU — "a lei conserta o defeito que nomeou e NAO fecha a curva".
     # A alvo (lu2024_fig20_T10Nm) segue na fila form_limited, com uma rota a
     # menos. Commits 945f363 e d70a38f.

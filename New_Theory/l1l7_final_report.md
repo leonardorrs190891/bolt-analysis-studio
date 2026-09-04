@@ -30,7 +30,7 @@ síntese `Models/CALIBRATION_AND_VALIDATION/curve_library/ANALISE_MODELOS_R5.md`
     Measurement-2021, JMP-2021), testada unitariamente (bit-identidade + guarda de caminho de código
     + efeito físico correto), **não calibrada per-rig**.
   - **L4** (conformação a ~1 GPa) — **null de literatura reconfirmado 3×** (Rodadas 4 e 5); nenhuma
-    mudança de engine; valor segue dependente do experimento-âncora UFU.
+    mudança de engine; valor segue dependente do experimento-âncora âncora interna.
   - **L5** (creep) — docstring corrigido (log-t, não Norton-Bailey) + forma saturante **opt-in**
     validada (Alamos), default permanece log-t.
   - **L6** (K_archard/k_wear_spec por par) — tabela de âncoras no `knowledge_base` por
@@ -45,7 +45,7 @@ síntese `Models/CALIBRATION_AND_VALIDATION/curve_library/ANALISE_MODELOS_R5.md`
     futura rodada de fechamento de L1 — o modelo **sobre-prevê** nesses casos hoje (sinal
     consistente com a falsificação do Gate B1, não uma regressão).
 - **Painel global (flags off = paridade):** ver §5 — a suíte completa foi re-simulada no worktree
-  (199 casos: 180 herdados − 3 UFU não-versionados + 22 Rodada 5) e comparada byte-a-byte contra o
+  (199 casos: 180 herdados − 3 âncora interna não-versionados + 22 Rodada 5) e comparada byte-a-byte contra o
   baseline pré-branch.
 - **ADOÇÃO REALIZADA NESTA BRANCH: ZERO.** `adopted_configs.json`/`joint_calibrations.json`
   permanecem intocados (verificado por `git diff main` no §8). Toda decisão de ligar qualquer
@@ -63,7 +63,7 @@ síntese `Models/CALIBRATION_AND_VALIDATION/curve_library/ANALISE_MODELOS_R5.md`
 | 3+3b | L2 | T5+T6 | `9c3f954..29c3d74` (+ fix `8514a13`, `e0f6baf`) | Gate D5 Rousseau/Zhang | **PASS-inert** (8/8, Δ MAE = 0,0 exato) | **Seguro adotar como proveniência** (`kj_mode="pedersen"` substitui a constante `k_j_init` fixa sem risco numérico nos casos testados) — **mas não fecha** a falsificação de escala-com-espessura sozinho (efeito estruturalmente nulo no PACK atual). Follow-up: confronto axial + campo `E_member` separado. | forma (Pedersen 2008, ranking Rousseau 2024: +24% vs Wileman +45–59%) |
 | 4 | L5 | T7 | `374bc4e` (+docfix `ed4e3ec`) | Suíte de creep (JCSR/Caccese/Qin/li2022marstruc) sem regressão | **PASS** | **Manter log-t como default** (já coincide com a regressão do Nah 2014 p/ faiamento — achado, não trabalho novo); saturante disponível como opção per-rig se uma curva mostrar platô claro — decisão do calibrador. | forma (Alamos 2021/2022, 1os princípios) |
 | 5 | L7 + C2 | T8 | `cc403a2` | (i) resíduo axial-força; (ii) bound de remoção | (i) **já resolvido em `main` antes desta branch** (commit `bd9c779`), travado em teste absoluto <1 J; (ii) bound sempre presente, nunca bloqueia | **C2: sem ação** (já é comportamento de `main`). **L7: informacional, adotar por default** (não muda trajetória, só relata quando fora da banda 1,8–10,5 kJ/mm³) — achado colateral: com `mu_bearing` default + `k_wear_spec` Zhang (par não-casado), o implied fica 1,71× acima do teto — usar pares casados na calibração. | derivado (Shipway 2021, taxa-dependente) |
-| 6 | L4 | T9 | `aa0f8a1` | — (documentação) | Reconfirma null 3× (R4 Fouvry sub-GPa; R5 busca dirigida; R5 digitalização) | **Nenhuma ação de engine.** Valor de `W_conf_ref`/`n` segue dependente do experimento-âncora UFU (fretting ~1,2 GPa, medindo `n`) — spec já existe. | contexto (não transfere) |
+| 6 | L4 | T9 | `aa0f8a1` | — (documentação) | Reconfirma null 3× (R4 Fouvry sub-GPa; R5 busca dirigida; R5 digitalização) | **Nenhuma ação de engine.** Valor de `W_conf_ref`/`n` segue dependente do experimento-âncora âncora interna (fretting ~1,2 GPa, medindo `n`) — spec já existe. | contexto (não transfere) |
 | 7 | Wiring | T10 | `9e3dd67` | 22 casos novos (Zhang2018/2019 + Liu2020) | Registry/spot-checks — PASS | **Casos entram na suíte de validação** (não em `adopted_configs`); servem de alvo para fechar L1 numa rodada futura. | medido (curvas experimentais digitalizadas) |
 | 8 | Este relatório | T11 | *(esta fatia)* | consolidação | Master run + reconciliações | — | — |
 
@@ -292,7 +292,7 @@ aspereza `1,5·H` como sanity bound p/ `p_ref_conform` (hoje 5e8 Pa); tensão Et
 conformação satura em ~5 ciclos, mas em DESLOCAMENTO; Frérot: rugosidade satura mas a energia
 plástica dissipada NUNCA satura — um `W_conf_ref` único em energia pode ser uma idealização).
 **Conclusão sem mudança de veredicto:** o valor de `W_conf_ref`/`n` a ~1–1,5 GPa segue dependente do
-experimento-âncora UFU (fretting ~1,2 GPa, medindo `n`, já spec'd). Cross-referência registrada:
+experimento-âncora âncora interna (fretting ~1,2 GPa, medindo `n`, já spec'd). Cross-referência registrada:
 `r5_anchors.json` não tem entrada de L4 (coerente com "forma sim, valor não"); o gate L2 (§3.3)
 achou a trajetória transversal cega a `k_j` sob o PACK — por isso a dependência de pressão do
 transversal mora na conformação (§4.9), não em `k_j`. Review clean sem findings; fatos checados
@@ -338,15 +338,15 @@ Três correções pequenas, acumuladas dos reviews de cada fatia, aplicadas nest
    e `tests/test_user_cases.py::test_user_records_and_registry_integration`): o full-checkout
    (todos os CSVs presentes) é **202** = 180 herdados (114 + 64 Rodada 4) + 22 Rodada 5. Dois
    ambientes conhecidos degradam esse número **sem erro** (o `case_registry` classifica como
-   `final_ratio` e descarta silenciosamente, spec §3): os **3 CSVs UFU não-versionados**
-   (`Models/EXPERIMENTAL_UFU/reference_curves/*.csv`, gitignored, dado de lab) e a pasta
+   `final_ratio` e descarta silenciosamente, spec §3): os **3 CSVs âncora interna não-versionados**
+   (`Models/EXPERIMENTAL_ANCORA/reference_curves/*.csv`, gitignored, dado de lab) e a pasta
    **ainda-não-commitada** `BAS_V2_papers/F. Rodada 5 (limitacoes 2026-07-16)/` (o commit de
    wiring `9e3dd67` trouxe só o código Python, não os 336 CSVs/notas — permanece `Untracked` no
    `git status` desta branch). Os dois testes agora **medem** quantas dessas duas lacunas
    conhecidas estão de fato ausentes no ambiente corrente e exigem **exatidão** no resto — o pin
    ainda FALHA se qualquer OUTRA fonte wired for removida por acidente, mas não falha só porque um
-   checkout não tem os CSVs UFU e/ou a pasta F. No worktree atual (ambos ausentes/presentes
-   parcialmente: UFU ausente, pasta F presente) o valor esperado computado é 199, batendo com
+   checkout não tem os CSVs âncora interna e/ou a pasta F. No worktree atual (ambos ausentes/presentes
+   parcialmente: âncora interna ausente, pasta F presente) o valor esperado computado é 199, batendo com
    `n_registry` medido diretamente.
 2. **`case_registry.py` `_SOURCE_NOTES`** — adicionadas as 3 novas fontes → caminhos de nota de
    aparato: `ZHANG_2018` e `ZHANG_2019` → `BAS_V2_papers/F. Rodada 5 (limitacoes 2026-07-16)/apparatus_notes/zhang.md`
@@ -387,15 +387,15 @@ não-regressão de L1/L2/L3/L5/L7/C2 ao mesmo tempo).
 
 | | n | mediana | média | gt_010 | gt_015 |
 |---|---:|---:|---:|---:|---:|
-| **Baseline** (main, pré-branch, `d960b4b`, ledger #59, 180 casos c/ UFU) | 180 | 0,04287 | 0,06589 | 32 | 17 |
+| **Baseline** (main, pré-branch, `d960b4b`, ledger #59, 180 casos c/ âncora interna) | 180 | 0,04287 | 0,06589 | 32 | 17 |
 | **Worktree (flags off)** — 177 herdados re-simulados | 177 | 0,04197 | 0,06588 | 32 | 17 |
-| **Worktree + UFU herdados do store** — 180 (equivalente ao baseline) | 180 | **0,04287** | **0,06589** | **32** | **17** |
+| **Worktree + âncora interna herdados do store** — 180 (equivalente ao baseline) | 180 | **0,04287** | **0,06589** | **32** | **17** |
 | **Worktree (flags off)** — 199 (177 + 22 R5) | 199 | 0,04700 | 0,12079 | 54 | 39 |
 | **Equivalente full-checkout** — 202 (180 + 22 R5) | 202 | 0,04713 | 0,11998 | 54 | 39 |
 
 **Paridade EXATA certificada:** a linha 180-equivalente reproduz o baseline dígito a dígito
 (mediana 0,04287, média 0,06589, >0,10: 32, >0,15: 17) — zero regressão das 8 fatias com flags
-off, verificada no conjunto completo, não em amostra. (Os 3 casos UFU usam os MAEs herdados do
+off, verificada no conjunto completo, não em amostra. (Os 3 casos âncora interna usam os MAEs herdados do
 store canônico — CSVs de referência não-versionados, ausentes do worktree; 2 chaves stale de dev
 no store — `ensaio_teste_m12`, `exemplo_m12_sintetico` — foram excluídas por não pertencerem ao
 registry.) O aumento de mediana/gt no painel de 199/202 vem INTEIRAMENTE dos 22 casos novos (§6).
@@ -494,7 +494,7 @@ adotada, é do professor — seguindo as regras de promoção por classe de proc
   dela fisicamente; recomendo versionar (force-add, mesmo padrão da Rodada 4) antes de qualquer
   merge para `main`, ou os 22 casos somem silenciosamente num clone fresco.
 - **`W_conf_ref`/`n` seguem sem âncora de literatura** (L4, 3ª confirmação do null) — o único
-  caminho aberto é o experimento-âncora UFU (fretting ~1,2 GPa) já spec'd; não é um item que a
+  caminho aberto é o experimento-âncora âncora interna (fretting ~1,2 GPa) já spec'd; não é um item que a
   literatura resolve.
 - **Par não-casado no check L7** (§3.5): usar `mu_bearing`/`k_wear_spec` de interfaces diferentes
   juntos produz um "implied" fisicamente inconsistente (1,71× acima do teto) — lembrete para a

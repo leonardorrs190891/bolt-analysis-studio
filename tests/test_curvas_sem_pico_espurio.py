@@ -19,7 +19,7 @@ primeiro ⇒ o salto contra vizinhos caía para **0,050**. Evidência local é
 cega a defeito correlacionado; a estatística aqui é **global** —
 `max(y − mínimo corrente)`, insensível a quantos pontos o artefato ocupa.
 
-Separação medida no universo (210 curvas, 2026-08-16):
+Separação medida no universo (207 curvas, 2026-08-16):
 
 | população | valor |
 |---|---:|

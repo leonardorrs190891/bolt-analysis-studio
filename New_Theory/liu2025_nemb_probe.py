@@ -21,7 +21,7 @@ from library_common import geometry_for, frozen_constants, load_full_curve  # no
 LEGACY = dict(conform_driver="effective", slip_regime_mode="cattaneo_mindlin",
               slip_regime_sharpness=1.0, k_tr_mode="bending",
               loose_torsion_mode="legacy", loose_arrest_floor=0.0)
-BASE = dict(LEGACY, c_bend=50.0, delta_free=0.30e-3, k_wear_scale_tr=0.0,
+BASE = dict(LEGACY, c_bend=50.0, delta_free=0.30e-3, K_archard=0.0,
             W_conf_ref=0.0, slip_onset_W=1.5e5, k_ratchet=1e-4)
 
 

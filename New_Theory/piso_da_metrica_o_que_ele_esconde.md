@@ -15,7 +15,7 @@ de modelagem disfarçada de filtro** — ele decide o que conta como "errado".
 
 ## 2. Escopo medido
 
-**38 curvas** (fora as 3 do `UFU_LAB`, que saiu do projeto), **662 pontos
+**38 curvas** (fora as 3 do `ANCORA_INTERNA`, que saiu do projeto), **662 pontos
 ocultos**, **12 fontes**: `LU_2024` 7 · `YANG_2023_IJPEM` 6 · `BAUER_2024` 5 ·
 `SUN_2025_CRIMP` 5 · `ECCLES_2010` 4 · `KARLSEN_2022` 3 · `YANG_2019` 2 ·
 `YANG_2021` 2 · `ROUSSEAU_2025`/`LI_2022_TRIBOINT`/`LIU_2025`/`ZHANG_2006` 1.

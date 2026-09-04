@@ -1,4 +1,4 @@
-"""Os 210 casos salvos como .msd, citados (2026-09-02).
+"""Os 207 casos salvos como .msd, citados (2026-09-02).
 
 Pedido: "os modelos finais salvos na melhor configuracao", numa pasta de .msd
 importada pelo software, e "SENDO CITADOS CORRETAMENTE" no git.
@@ -7,8 +7,8 @@ Citacao nao e' formalidade aqui: cada modelo carrega uma curva DIGITALIZADA de
 uma publicacao de terceiro, e os arquivos vao para um repositorio publico. O
 `ValidationCase` ja' guarda `reference` e `doi` — nada e' redigitado.
 
-Medido no dia: dos 210 casos, 210 tem `reference` e 206 tem DOI. Os 4 sem DOI
-sao os que NAO sao publicacao (3 UFU_LAB, medicao do proprio laboratorio, e 1
+Medido no dia: dos 207 casos, 210 tem `reference` e 206 tem DOI. Os 4 sem DOI
+sao os que NAO sao publicacao (3 ANCORA_INTERNA, medicao do proprio laboratorio, e 1
 USER, exemplo sintetico), e por isso dizem o que sao em vez de deixar um campo
 vazio que se leria como omissao.
 """
@@ -24,7 +24,7 @@ import pytest                                                    # noqa: E402
 
 @pytest.fixture(scope="module")
 def gerados(tmp_path_factory, qapp):
-    """Gera os 210 numa pasta temporaria, uma vez para todos os testes."""
+    """Gera os 207 numa pasta temporaria, uma vez para todos os testes."""
     import build_saved_cases as bsc
     destino = tmp_path_factory.mktemp("saved_cases")
     n, falhas = bsc.build_all(destino)
@@ -117,7 +117,7 @@ def test_a_melhor_configuracao_sobrevive_no_arquivo(gerados):
 
 
 def test_nenhum_arquivo_fica_sem_constantes_adotadas(gerados):
-    """Varredura nos 210: um caso que saia sem overrides seria um modelo
+    """Varredura nos 207: um caso que saia sem overrides seria um modelo
     plausivel e errado, que e' o pior resultado possivel."""
     import json
     destino, _n = gerados

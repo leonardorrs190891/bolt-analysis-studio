@@ -242,27 +242,27 @@ _SEM_PROV_BASELINE = frozenset((
     "ROUSSEAU_HDPE::free_spin",
     "ROUSSEAU_HDPE::mu_bearing",
     "ROUSSEAU_HDPE::mu_thread",
-    "UFU_LAB_13A_def::W_ref",
-    "UFU_LAB_13A_def::c_D",
-    "UFU_LAB_13A_def::c_bend",
-    "UFU_LAB_13A_def::k_dmg_mu",
-    "UFU_LAB_13A_def::k_dmg_wear",
-    "UFU_LAB_13A_def::k_wear_scale_tr",
-    "UFU_LAB_13A_def::loose_arrest_floor",
-    "UFU_LAB_13A_first::W_ref",
-    "UFU_LAB_13A_first::c_D",
-    "UFU_LAB_13A_first::c_bend",
-    "UFU_LAB_13A_first::k_dmg_mu",
-    "UFU_LAB_13A_first::k_dmg_wear",
-    "UFU_LAB_13A_first::k_wear_scale_tr",
-    "UFU_LAB_13A_first::loose_arrest_floor",
-    "UFU_LAB_5A::W_ref",
-    "UFU_LAB_5A::c_D",
-    "UFU_LAB_5A::c_bend",
-    "UFU_LAB_5A::k_dmg_mu",
-    "UFU_LAB_5A::k_dmg_wear",
-    "UFU_LAB_5A::k_wear_scale_tr",
-    "UFU_LAB_5A::loose_arrest_floor",
+    "ancora_interna::W_ref",
+    "ancora_interna::c_D",
+    "ancora_interna::c_bend",
+    "ancora_interna::k_dmg_mu",
+    "ancora_interna::k_dmg_wear",
+    "ancora_interna::k_wear_scale_tr",
+    "ancora_interna::loose_arrest_floor",
+    "ancora_interna::W_ref",
+    "ancora_interna::c_D",
+    "ancora_interna::c_bend",
+    "ancora_interna::k_dmg_mu",
+    "ancora_interna::k_dmg_wear",
+    "ancora_interna::k_wear_scale_tr",
+    "ancora_interna::loose_arrest_floor",
+    "ancora_interna::W_ref",
+    "ancora_interna::c_D",
+    "ancora_interna::c_bend",
+    "ancora_interna::k_dmg_mu",
+    "ancora_interna::k_dmg_wear",
+    "ancora_interna::k_wear_scale_tr",
+    "ancora_interna::loose_arrest_floor",
     "YANG_2019::W_ref",
     "YANG_2019::c_D",
     "YANG_2019::dmg_dwell_exp",
@@ -317,9 +317,16 @@ def _sem_prov(sources: dict) -> set:
 
 def test_baseline_tem_o_tamanho_declarado():
     """Guarda o proprio literal: se alguem editar o baseline sem medir, isto
-    denuncia. 206 e' o numero publicado no doc da auditoria (corrigido)."""
-    assert len(_SEM_PROV_BASELINE) == 206, (
-        "o baseline declarado tem %d entradas, e o documento publica 206 — "
+    denuncia.
+
+    192 desde 2026-09-04, RE-MEDIDO. Eram 206 ate' os tres casos de bancada
+    sairem do projeto; as 14 entradas que sumiram eram constantes daqueles
+    grupos, e nao divida que alguem tenha pago. A catraca so' vale se o numero
+    acompanhar o corpus — deixa-lo em 206 faria o teste falhar pelo motivo
+    certo com a mensagem errada.
+    """
+    assert len(_SEM_PROV_BASELINE) == 192, (
+        "o baseline declarado tem %d entradas, e o documento publica 192 — "
         "re-meca antes de editar" % len(_SEM_PROV_BASELINE))
 
 

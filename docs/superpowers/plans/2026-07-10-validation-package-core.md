@@ -13,7 +13,7 @@
 - `encoding='utf-8'` em TODO I/O; `ast.parse` após cada edição; um commit por tarefa; `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>`.
 - **NÃO tocar**: engine (`numerical/`), `core/validation_cases.py`, `New_Theory/library_common.py`/`transfer_validation.py` (o follow-up de delegação é outro plano), arquivos foreign (`New_Theory/frontier_polish.py`, `New_Theory/liu2025_nemb_probe.py`).
 - V1 `main_window.py`: só o handler `_open_validation_gallery` (linhas ~8208-8239).
-- Fatos verificados no código-base (2026-07-10): `CycleSnapshot.dF_0_by_mech: Dict[str,float]` (`dynamic_stiffness_analyzer.py:510`, preenchido em :1585 com `mech.name` ∈ {embedding, creep, wear, thread_fretting, fatigue, rotational_loosening}); `knowledge_base.suggest_overrides(source)->dict`; `calibration.profiles.load_shared_material()->dict`; gallery = `report_data.json["gallery"]` (82 entradas, campos `csv, source, mae, data{x,y}, model{x,y}, n_max, amp_mm, ...`); UFU CSVs têm **3 colunas** (cycle, F_kN, F_over_F0); axial: F_amp por tabela curada (P0 sweep: 10 kN; AF sweep: token `AF_*kN` do stem; Li2022ti: 10 kN, M10x1.5 grip 25 mm Rz<10; Liu2017: M12x1.75 grip 30 mm Rz<4).
+- Fatos verificados no código-base (2026-07-10): `CycleSnapshot.dF_0_by_mech: Dict[str,float]` (`dynamic_stiffness_analyzer.py:510`, preenchido em :1585 com `mech.name` ∈ {embedding, creep, wear, thread_fretting, fatigue, rotational_loosening}); `knowledge_base.suggest_overrides(source)->dict`; `calibration.profiles.load_shared_material()->dict`; gallery = `report_data.json["gallery"]` (82 entradas, campos `csv, source, mae, data{x,y}, model{x,y}, n_max, amp_mm, ...`); âncora interna CSVs têm **3 colunas** (cycle, F_kN, F_over_F0); axial: F_amp por tabela curada (P0 sweep: 10 kN; AF sweep: token `AF_*kN` do stem; Li2022ti: 10 kN, M10x1.5 grip 25 mm Rz<10; Liu2017: M12x1.75 grip 30 mm Rz<4).
 - Runtime: testes usam `n_cap` pequeno (≤2000 ciclos) — NUNCA rodar 128 casos completos em teste.
 
 ## File Structure
@@ -86,10 +86,10 @@ def test_frozen_constants_reads_shared_block():
     assert "c_D" in consts_d
 
 
-def test_load_full_curve_handles_3col_ufu():
+def test_load_full_curve_handles_3ancora_interna():
     from bolt_analysis_studio.validation.inputs import load_full_curve
     cyc, ratio = load_full_curve(
-        "Models/EXPERIMENTAL_UFU/reference_curves/UFU_5A_preload_decay.csv")
+        "Models/EXPERIMENTAL_ANCORA/reference_curves/ancora_interna.csv")
     assert len(cyc) == len(ratio) > 3
     assert 0.0 <= ratio[-1] <= 1.5              # coluna F/F0, nao F_kN
 
@@ -155,7 +155,7 @@ SHARED_JSON = repo_root() / "New_Theory" / "joint_calibrations.json"
 
 def load_full_curve(csv_rel_path: str) -> Tuple[np.ndarray, np.ndarray]:
     """Curva de referencia (repo-relativa). 2 colunas (cycle, ratio) ou
-    3 colunas UFU (cycle, F_kN, F_over_F0) — sempre col 0 e a ULTIMA."""
+    3 colunas âncora interna (cycle, F_kN, F_over_F0) — sempre col 0 e a ULTIMA."""
     d = np.genfromtxt(repo_root() / csv_rel_path, delimiter=",",
                       skip_header=1, encoding="utf-8")
     return d[:, 0], d[:, -1]
@@ -251,7 +251,7 @@ def test_classification_and_families():
     by_class = {}
     for r in recs:
         by_class.setdefault(r.case_class, []).append(r)
-    assert len(by_class["full_curve"]) >= 110         # digitalizados + UFU legado c/ CSV
+    assert len(by_class["full_curve"]) >= 110         # digitalizados + âncora interna legado c/ CSV
     assert len(by_class["final_ratio"]) >= 8          # built-in sem CSV
     fams = {r.family for r in recs}
     assert {"transverse", "axial", "creep"} <= fams

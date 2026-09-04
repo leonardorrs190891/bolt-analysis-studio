@@ -255,7 +255,7 @@ PRINCIPAIS = {
          "where the logarithmic form was falsified (§8.3), so the constant "
          "keeps one meaning under both forms.",
          "It is a property of the tribological pair, not a universal number. "
-         "An anchor on 304 stainless steel and the fit on the UFU rig differ "
+         "An anchor on 304 stainless steel and the fit on the âncora interna rig differ "
          "by more than an order of magnitude, with disjoint confidence "
          "intervals, and several sources carry their own value (§9.3). Time "
          "enters through the real clock t = N/f, so the same constant serves "
@@ -1924,7 +1924,7 @@ def monta(doc, comp, res, pisos, store, m, refs, specs,
     r.font.size = Pt(10)
     r.font.color.rgb = RGBColor(0x5B, 0x64, 0x72)
     doc.add_paragraph()
-    for linha in ("Leonardo Rosa Ribeiro da Silva (corresponding author, leorrs@ufu.br), "
+    for linha in ("Leonardo Rosa Ribeiro da Silva (corresponding author, leorrs@ancora_interna.br), "
                   "Neilon de Souza da Silva, "
                   "Luiz Eduardo dos Santos Paes, Aldemir Aparecido Cavallini Junior, "
                   "Bruno Sousa Carneiro da Cunha, Fernando Buiatti Rodrigues, "
@@ -1932,7 +1932,7 @@ def monta(doc, comp, res, pisos, store, m, refs, specs,
                   "Douglas da Silva Carvalho, Gabriel Henrique Arruda Tavares de Lima, "
                   "João Paulo de Jesus Vieira",
                   "Faculdade de Engenharia Mecânica, Universidade Federal de "
-                  "Uberlândia (UFU), Brazil",
+                  "Uberlândia (âncora interna), Brazil",
                   "Neilon de Souza da Silva: Petróleo Brasileiro S.A. "
                   "(Petrobras), Rio de Janeiro, RJ, Brazil",
                   "Software written by Leonardo Rosa Ribeiro da Silva and "
@@ -3427,7 +3427,7 @@ def monta(doc, comp, res, pisos, store, m, refs, specs,
     doc.add_heading("14.4 Software", 2)
     p(doc, "Bolt Analysis Studio, written by Leonardo Rosa Ribeiro da Silva "
            "(Faculdade de Engenharia Mecânica, Universidade Federal de "
-           "Uberlândia, leorrs@ufu.br) and Neilon de Souza da Silva "
+           "Uberlândia, leorrs@ancora_interna.br) and Neilon de Souza da Silva "
            "(Petróleo Brasileiro S.A., neilon@petrobras.com.br). "
            "Released under the MIT licence; the validation "
            "corpus, the adopted configurations and the result store are "
@@ -3559,7 +3559,7 @@ def apendices(doc, comp, res, pisos, store, m, todos_id, res_all, info):
            f"this annex. They are listed so that the denominator of {m['n']} "
            f"is auditable rather than asserted.", size=9.5)
     motivos = {
-        "UFU_LAB": "the laboratory's own test bench; left the project on "
+        "ANCORA_INTERNA": "the laboratory's own test bench; left the project on "
                    "2026-08-01 and kept only for the record. A curve produced "
                    "by the software's authors would in any case violate the "
                    "rule of §4",

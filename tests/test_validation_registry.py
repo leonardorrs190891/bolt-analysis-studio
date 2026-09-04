@@ -2,35 +2,26 @@ def test_registry_covers_all_cases_with_unique_ids():
     from bolt_analysis_studio.validation.case_registry import all_records
     recs = all_records()
     core = [r for r in recs if r.source != "USER"]   # USER = casos importados
-    # Full-checkout (todos os CSVs presentes) = 202: 180 herdados (114 + 64
-    # Rodada 4, 2026-07-14) + 22 Rodada 5 (Zhang2018/2019 + Liu2020_Wear,
-    # 2026-07-17, fatia 7 do plano L1-L7). Duas lacunas de CSV CONHECIDAS
-    # reduzem esse numero SEM erro (case_registry degrada p/ final_ratio-e
-    # -descarta, spec §3): os 3 CSVs UFU nao-versionados (gitignored, dado
-    # de lab) e a pasta ainda-nao-commitada "BAS_V2_papers/F. Rodada 5
-    # (limitacoes 2026-07-16)/" de onde os 22 casos novos leem (T11 ledger:
-    # o commit de wiring 9e3dd67 trouxe so o codigo, nao a pasta). O pin
-    # abaixo mede quantas dessas DUAS lacunas conhecidas estao de fato
-    # ausentes neste ambiente e exige EXATIDAO no resto -- falha se
-    # qualquer OUTRA fonte wired sumir por acidente (o caso que a diretriz
-    # do professor pede para nao tolerar).
-    UFU_IDS = {"UFU_5A_preload_decay", "UFU_13A_first_preload_decay",
-               "UFU_13A_def_preload_decay"}
+    # 206 desde 2026-09-04, e agora e' numero EXATO em vez de conta com
+    # desconto. A conta antiga partia de 209 e subtraia duas lacunas conhecidas
+    # de CSV: os 3 casos de bancada, cujos CSVs nao eram versionados, e a pasta
+    # da Rodada 5, que podia faltar no checkout. A primeira deixou de ser
+    # lacuna — aqueles casos sairam do projeto por inteiro naquela data, e
+    # descontar do total quem ja' nao esta' no total contaria duas vezes. A
+    # segunda virou verificacao explicita abaixo: se a pasta sumir, o teste
+    # aponta a pasta, e nao um total misterioso.
+    #
+    # Historico do 209: 205 em 2026-07-31 (+3 corridas longas da Fig.14a do
+    # LU_2024), 207 na mesma noite (+2 replicas 0.6mm-8kN do YANG_2021) e 209
+    # em 2026-08-01 (+2 da Fig. 6 do ROUSSEAU_2025, pos-erratum).
     R5_SOURCES = {"ZHANG_2018", "ZHANG_2019", "LIU_2020_WEAR"}
-    n_ufu = sum(1 for r in core if r.case_id in UFU_IDS)
     n_r5 = sum(1 for r in core if r.source in R5_SOURCES)
-    # 205 desde 2026-07-31: +3 corridas longas da Fig.14a do LU_2024 (P4 do
-    # plano lu2024_plano_melhoria.md, digitalizadas com gate de round-trip).
-    # 207 desde 2026-07-31 (noite): +2 replicas 0.6mm-8kN do YANG_2021
-    # (Fig. 6b2/6b3, prereg 2026-07-31-yang2021-replicas-0p6-prereg.md,
-    # G1 round-trip 1.2% vs Tabela 3; ambas no tripe por merito).
-    # 209 desde 2026-08-01: +2 da Fig. 6 do ROUSSEAU_2025 (recuperacao
-    # pos-erratum; condicao NOVA 0.2mm/3.5kN nos dois materiais — o HDPE
-    # entrou no tripe por predicao zero-refit).
-    expected = 209 - (len(UFU_IDS) - n_ufu) - (22 - n_r5)
-    assert len(core) == expected, (
-        f"len(core)={len(core)} != {expected} -- uma fonte wired sumiu? "
-        "(a ausencia dos 3 CSVs UFU e/ou da pasta F ja e' descontada acima)")
+    assert n_r5 == 22, (
+        f"Rodada 5 com {n_r5} casos, esperados 22 — a pasta "
+        f"'BAS_V2_papers/F. Rodada 5 (limitacoes 2026-07-16)/' sumiu do "
+        f"checkout?")
+    assert len(core) == 206, (
+        f"len(core)={len(core)} != 206 — uma fonte cabeada sumiu?")
     ids = [r.case_id for r in recs]
     assert len(set(ids)) == len(ids)
 
@@ -41,7 +32,7 @@ def test_classification_and_families():
     by_class = {}
     for r in recs:
         by_class.setdefault(r.case_class, []).append(r)
-    assert len(by_class["full_curve"]) >= 110         # digitalizados + UFU c/ CSV
+    assert len(by_class["full_curve"]) >= 110         # digitalizados + âncora interna c/ CSV
     assert "final_ratio" not in by_class              # removidos (diretriz 2026-07-11)
     fams = {r.family for r in recs}
     assert {"transverse", "axial", "creep"} <= fams

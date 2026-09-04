@@ -148,7 +148,7 @@ vetado pelo próprio diagnóstico. O que destrava: (a) o candidato de FORMA
 cross-rig "resposta graduada de limiar" (amp0p4 + Yang2023, fila da
 campanha); (b) reabertura da classe "aceleração tardia" pela cláusula
 automática (fingerprint mudou desde o fechamento) — decisão de campanha;
-(c) réplicas de bancada (UFU) para dar piso à fonte.
+(c) réplicas de bancada (âncora interna) para dar piso à fonte.
 
 ---
 

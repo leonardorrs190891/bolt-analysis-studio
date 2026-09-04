@@ -174,11 +174,11 @@ does not disturb the low-loss end.
 residual is monotone in `f_min` and lands in the data band at `f_min≈0.05`. (Because the
 approach is logarithmic, the finite-window residual is ~2× the asymptotic `F_min`.)
 
-**Guard — shear UFU inertness (even when turned on).** Loosening-only gate, M16 grip-40
+**Guard — shear âncora interna inertness (even when turned on).** Loosening-only gate, M16 grip-40
 δ0.5 `legacy` mode (the profile's mode): `f_min=0→0.3273`, `0.05→0.3315`, `0.09→0.3348`
-— a **<0.005 perturbation**, because shear-UFU loss is wear-dominated and the rotation it
+— a **<0.005 perturbation**, because shear-âncora interna loss is wear-dominated and the rotation it
 throttles is tiny. (The profiles keep `loose_arrest_floor=0` regardless → *zero*
-perturbation.) NB: applying the gate to **wear too** perturbs shear-UFU materially
+perturbation.) NB: applying the gate to **wear too** perturbs shear-âncora interna materially
 (0.3273→0.3573) — so the design scopes the gate to **loosening only** (§7).
 
 **Guard — genuine collapses.** With `f_min < FLOOR_TRIM (0.10)` the arrested residual
@@ -252,7 +252,7 @@ live `F_0`/`F_0_init` — no bookkeeping).
 - **Force-mode / axial** (`theta=0`, `slip_amp_override is None`): loosening already
   inert (`loosening_slip_gate`/`F_tr<F_slip`), so the floor is doubly inert. Axial track
   unaffected.
-- **Shear-UFU profiles** keep `loose_arrest_floor=0` → untouched (and near-inert even if
+- **Shear-âncora interna profiles** keep `loose_arrest_floor=0` → untouched (and near-inert even if
   on, §4).
 - Honors `model._v2_tuner_overrides` (`loose_arrest_floor` is numeric → passes the
   type-aware filter).
@@ -278,7 +278,7 @@ live `F_0`/`F_0_init` — no bookkeeping).
   physical meaning).
 - **Gate applied to wear too** (hard multi-mechanism floor, mirroring
   `conformation_gate`). More physical as a *true* preload floor, but perturbs the
-  wear-calibrated shear UFU (§4, 0.327→0.357). Deferred/optional; the runaway to arrest
+  wear-calibrated shear âncora interna (§4, 0.327→0.357). Deferred/optional; the runaway to arrest
   is rotational, so the headline scopes the gate to loosening. If a wear-dominated
   collapse later leaks past `F_min`, extend then.
 
@@ -307,7 +307,7 @@ One declared `(loose_arrest_floor, eta_loose, c_bend, emb_scale)` across t10/t12
   returns 1.0 and `RotationalLooseningLoss.rate` returns identical `dF_0`/`dE` for any
   state; the standing V2 / calibration suite passes unchanged. `bolt_torsion` + floor-off
   reproduces #10 bit-for-bit.
-- **Shear calibration (UFU 4 profiles):** profiles keep `loose_arrest_floor=0` →
+- **Shear calibration (âncora interna 4 profiles):** profiles keep `loose_arrest_floor=0` →
   untouched; even forced on (loosening-only gate) the final perturbs **< 0.005** (probe
   0.3273→0.3315).
 - **46-curve transfer, trio + floor, universal `f_min` (reported AS IS):** median MAE

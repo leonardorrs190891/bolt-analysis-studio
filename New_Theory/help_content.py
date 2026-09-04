@@ -230,7 +230,7 @@ ELEMENTOS = {
         "Conector de viga, para juntas de varios parafusos. EXISTE NO MODELO "
         "MAS NAO ESTA' NA PALETA.",
         "Em analise multi-parafuso ele liga as cadeias individuais a "
-        "estrutura. Modelos de um parafuso, que sao os 210 da validacao, nao "
+        "estrutura. Modelos de um parafuso, que sao os 207 da validacao, nao "
         "o usam."), en=(
         "A beam connector, for multi-bolt joints. IT EXISTS IN THE MODEL BUT "
         "IS NOT IN THE PALETTE.",
@@ -332,7 +332,7 @@ PASSOS = [
         "resultado: sao estas constantes que a validacao calibra.",
         "Se voce nao tem valores medidos, comece pelos padroes e compare com "
         "um caso do corpus que se pareca com a sua junta: a secao 20 lista as "
-        "29 fontes com as condicoes de cada uma."), en=(
+        "28 fontes com as condicoes de cada uma."), en=(
         "4. Fill in the tribology of the connections",
         "In the <b>Contacts</b> module (<kbd>Ctrl</kbd>+<kbd>2</kbd>), select "
         "each interface and open the <b>Contact</b> tab. Friction "
@@ -342,7 +342,7 @@ PASSOS = [
         "validation calibrates.",
         "If you have no measured values, start from the defaults and compare "
         "with a corpus case that resembles your joint: Section 20 lists the "
-        "29 sources with the conditions of each.")),
+        "28 sources with the conditions of each.")),
 
     dict(chave="loads", print_="chrome_loads", pt=(
         "5. Defina a carga e a pre-carga",
@@ -531,11 +531,11 @@ DIALOGOS = {
     # --- arquivos ---
     "Abrir projeto": dict(pt=("O arquivo .msd nao pode ser aberto.",
         "Arquivo corrompido, gravado por uma versao incompativel, ou "
-        "sem permissao de leitura. Os 210 casos da validacao estao em "
+        "sem permissao de leitura. Os 207 casos da validacao estao em "
         "Models/SAVED_CASES e sempre abrem."),
         en=("The .msd file could not be opened.",
         "A corrupt file, one written by an incompatible version, or no "
-        "read permission. The 210 validation cases live in "
+        "read permission. The 207 validation cases live in "
         "Models/SAVED_CASES and always open.")),
     "Calibrar parâmetros": dict(pt=(
         "O ajuste automatico nao pode comecar, ou terminou.",
@@ -560,7 +560,7 @@ DIALOGOS = {
         "Confirma que o caso do artigo entrou na configuracao adotada.",
         "Aparece depois de Arquivo > Importar caso da validacao (Ctrl+I). O "
         "dialogo lista por nome as 205 curvas do censo do artigo; desmarque "
-        "'Somente o censo do artigo' para ver as 210 do repositorio. O "
+        "'Somente o censo do artigo' para ver as 207 do repositorio. O "
         "arquivo de origem e' versionado e regerado pelo gerador de casos, "
         "entao o Ctrl+S seguinte pede um destino novo em vez de escrever "
         "por cima da referencia."),
@@ -587,11 +587,11 @@ DIALOGOS = {
         "another program. On a very long path Windows cuts off at 260 "
         "characters: choose a shorter destination.")),
     "Salvar caso": dict(pt=("O caso da validacao nao foi salvo como .msd.",
-        "Mesmas causas de 'Save Failed'. Os 210 casos ja' vem salvos em "
+        "Mesmas causas de 'Save Failed'. Os 207 casos ja' vem salvos em "
         "Models/SAVED_CASES, entao voce pode abrir de la' em vez de "
         "regravar."),
         en=("The validation case was not saved as .msd.",
-        "Same causes as 'Save Failed'. The 210 cases already ship saved in "
+        "Same causes as 'Save Failed'. The 207 cases already ship saved in "
         "Models/SAVED_CASES, so you can open from there instead of writing "
         "again.")),
     "CSV Import Error": dict(pt=("O CSV nao pode ser lido.",
@@ -659,10 +659,10 @@ DIALOGOS = {
         "analysis.")),
     "No URL Available": dict(pt=("Nao ha' endereco para abrir.",
         "O item nao tem DOI ou link registrado. Os casos que nao sao "
-        "publicacao (UFU_LAB, USER) nao tem DOI por natureza."),
+        "publicacao (ANCORA_INTERNA, USER) nao tem DOI por natureza."),
         en=("There is no address to open.",
         "The item has no DOI or link on record. Cases that are not "
-        "publications (UFU_LAB, USER) have no DOI by nature.")),
+        "publications (ANCORA_INTERNA, USER) have no DOI by nature.")),
     "Pin Limit Reached": dict(pt=("Limite de itens fixados atingido.",
         "Solte um item antes de fixar outro."),
         en=("The limit of pinned items has been reached.",

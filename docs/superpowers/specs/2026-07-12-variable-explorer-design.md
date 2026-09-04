@@ -11,7 +11,7 @@ Um documento didático interativo: para **cada variável** do modelo V2
 (`JointMaterial`), uma página com a **curva-padrão** de afrouxamento (F/F₀ vs
 ciclo), um **slider** que muda o valor da variável e **reforma a curva ao vivo**,
 o **texto de física**, a **equação** governante e as **referências de literatura**.
-Público: laboratório UFU + leitores externos. Complementa (não substitui) o
+Público: laboratório âncora interna + leitores externos. Complementa (não substitui) o
 inventário estático `New_Theory/validation_html/variables.html` e o tuner
 server-backed `New_Theory/calibration_tuner.html`.
 
@@ -73,7 +73,7 @@ de slider-vivo).
 Três contextos de carga, puxados **verbatim** de casos canônicos existentes (não
 inventar números):
 
-1. **`transverse`** — UFU nova M16 shear ±0.5 mm 0.5 Hz, disp-mode
+1. **`transverse`** — âncora interna nova M16 shear ±0.5 mm 0.5 Hz, disp-mode
    (`F0_init`, `delta_amp`, `freq`, `theta`, `F_amp`, `N`, `D_init` copiados do
    `ValidationCase` nova / default do tuner). **É a curva-padrão principal** — a
    maioria das variáveis usa este contexto.

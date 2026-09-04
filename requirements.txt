@@ -1,5 +1,5 @@
 # Bolt Analysis Studio v4.0 - Requirements
-# LTAD/UFU - Petrobras R&D
+# internal reference - Petrobras R&D
 
 # Core scientific computing
 numpy>=1.21.0

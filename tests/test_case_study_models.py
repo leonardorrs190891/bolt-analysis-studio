@@ -66,7 +66,14 @@ def test_literature_cases_have_no_bundled_msd(qapp):
 
 
 def test_bundled_msd_cases_load_from_file(qapp):
-    """UFU cases ship a .msd whose file exists and parses to a real model."""
+    """A case that bundles a .msd must have the file, and it must parse.
+
+    No case bundles one since 2026-09-04 — the only ones that did were the
+    bench cases, removed from the project. The invariant is kept and skips on
+    its own: `msd_model_path` is still a field, and the day a case uses it
+    again the check has to be here already, not written after the file is
+    found missing in a release.
+    """
     import json
     from bolt_analysis_studio.core.models.model import MSDModel
 
@@ -74,7 +81,8 @@ def test_bundled_msd_cases_load_from_file(qapp):
         os.path.join(os.path.dirname(__file__), ".."))
     bundled = [c for c in _all_cases()
                if (getattr(c, "msd_model_path", "") or "")]
-    assert bundled, "expected at least the UFU cases to bundle a .msd"
+    if not bundled:
+        pytest.skip("nenhum caso empacota .msd")
     for c in bundled:
         abs_path = os.path.join(repo_root, c.msd_model_path)
         assert os.path.isfile(abs_path), f"{c.name}: {abs_path} missing"

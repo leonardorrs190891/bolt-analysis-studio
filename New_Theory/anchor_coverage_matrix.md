@@ -38,7 +38,7 @@ Critérios declarados ANTES de medir — ver o docstring do script. Resumo:
 | `ROUSSEAU_2025` | 6 | 5 | rotational_loosening | 3 | 3 | sim | 0.1859 | **FORTE-** | 3 amplitudes distintas |
 | `SUN_2025_CRIMP` | 8 | 2 | rotational_loosening | 1 | 1 | sim | 0.0663 | **NAO** | 1 amplitude(s) — limiar seria FITADO |
 | `SUN_2025_REASSY` | 5 | 0 | — | 1 | 1 | sim | 0.0120 | **n/a** | fonte fechada — nao precisa de forma nova |
-| `UFU_LAB` | 3 | 3 | rotational_loosening | 1 | 3 | **NAO** | — | **NAO** | 1 amplitude(s) — limiar seria FITADO |
+| `ANCORA_INTERNA` | 3 | 3 | rotational_loosening | 1 | 3 | **NAO** | — | **NAO** | 1 amplitude(s) — limiar seria FITADO |
 | `YANG_2019` | 5 | 5 | embedding | 3 | 5 | sim | — | **NAO** | queda inicial NAO resolvida no dado (0 de 5 curvas com 2o ponto <=1% do N) |
 | `YANG_2021` | 6 | 4 | embedding | 5 | 1 | sim | 0.0155 | **FRACO** | queda inicial resolvida em so 1/6 curvas — ancora de minoria, nao da fonte |
 | `YANG_2023_AME` | 1 | 1 | embedding | 0 | 1 | sim | — | **NAO** | queda inicial NAO resolvida no dado (0 de 1 curvas com 2o ponto <=1% do N) |

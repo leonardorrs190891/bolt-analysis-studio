@@ -620,7 +620,7 @@ def build_model(spec: AnalysisSpec) -> MSDModel:
 
     # Boundary condition: a runnable joint needs a fixed ground anchor at the
     # top of the chain, otherwise matrix assembly has no reference and
-    # validation fails ("No ground element defined"). Matches the UFU .msd
+    # validation fails ("No ground element defined"). Matches the âncora interna .msd
     # models (GROUND is the first element).
     model.add_element(create_ground(id=_next_id(model)))
 

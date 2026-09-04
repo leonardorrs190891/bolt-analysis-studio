@@ -8,7 +8,7 @@ forma nova NUNCA (fila do professor). Um prereg por seção, numerados F3.x.
 ## F3.1-JCSR — níveis per-condição + cinética saturante (autorização F2.2 do prompt-mestre)
 
 **Diagnóstico (agente 2026-07-21):** os 4 violadores rodam SEM grupo adotado (overrides {}),
-caindo no C_creep compartilhado UFU (par errado) + t_0=1 s ⇒ joelho no dia 1 e piso errado.
+caindo no C_creep compartilhado âncora interna (par errado) + t_0=1 s ⇒ joelho no dia 1 e piso errado.
 O FAIL do P2.2 era CONFUNDIDO: a grade testou a saturante com C_creep preso ao nível
 compartilhado (teto de queda ~1,8% — a grade inteira saturava no teto). Com nível
 per-condição, a sonda do diagnóstico dá: galv 0,008/0,021 · stainless 0,016/0,040 ·
@@ -25,7 +25,7 @@ empata em score de matching com o grupo indoor no caso plain_indoor). Por grupo:
   14,65 d · stainless 24,7 d · outdoor 99 d — INPUT-DE-PAPER, em segundos no engine)
   com ajuste fino permitido ±meia década (fitado-this-rig);
 - `C_creep` per-condição (fitado-this-rig, rótulo obrigatório "proxy ambiental
-  per-par×ambiente" — 18–64× o UFU; aviso do check_input/creep_class ESPERADO e
+  per-par×ambiente" — 18–64× a âncora interna; aviso do check_input/creep_class ESPERADO e
   documentado, precedente k_wear_flank; NUNCA poolar com pares metálicos limpos);
 - `creep_alpha_sat` fitado (grade).
 
@@ -84,7 +84,7 @@ como destravado pela digitalização.
 C ∈ {0,5, 0,77, 1,0, 1,3}e-11. GATE: fig16 tripé<0,1; fig3 (kernel-fila) MAE não piora
 >0,005 — senão grupo per-figura ZHANG_2006_fig16 (precedente Bauer/LIU).
 
-**L2b UFU:** 5A: emb_um lido da queda-zero (0,000) ∈ {0; 0,5; 1} µm; 13A_first: emb_um
+**L2b âncora interna:** 5A: emb_um lido da queda-zero (0,000) ∈ {0; 0,5; 1} µm; 13A_first: emb_um
 ∈ {0; 1; 2} × k_ratchet ∈ {0; 3e-5; 1e-4} (dreno linear per-espécime, precedente Karlsen).
 GATE: 5A e 13A_first tripé<0,1; 13A_def (0,093) não piora >0,005; classes: lido-do-dado +
 fitado-this-rig(ratchet).

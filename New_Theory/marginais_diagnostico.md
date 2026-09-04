@@ -136,7 +136,7 @@ e mais PLANO que o dado: perde 6.7% de N200→200k vs 17.9% do dado. O erro é
 ordenado por frequência (10Hz 0.112 > 15Hz 0.075 > 20Hz 0.024) e o dado perde
 MAIS a menos freq (finais 0.821/0.858/0.911) com durações 20000/9333/4000 s ⇒
 canal de TEMPO/dwell que o modelo sub-representa (grupo `LI_2022_TRIBOINT`
-com cfg VAZIO — roda default+shared; C_creep UFU é por-par, §4.7, e este par
+com cfg VAZIO — roda default+shared; C_creep da âncora interna é por-par, §4.7, e este par
 é Ti). Nota: emb data-implied 2.47 µm vs VDI 9.5 µm existe, mas o alinhamento
 em N=200 absorve o nível — NÃO é a alavanca (não repropor o emb do PR-20
 aqui). **Classe (a) knob-alcançável (baixo rendimento)**: `C_creep` per-par

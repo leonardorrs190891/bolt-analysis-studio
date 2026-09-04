@@ -586,8 +586,8 @@ discipline as the fretting/loosening mechanisms (energy routing, backward-compat
 - Spec §3.1 (retighten state transform) → Task 2. §3.2 (torque→preload) → Task 1. §3.3
   (renewal rule) → Task 2. §3.4 (API) → Tasks 1–2. §3.5 (energy rebase) → Task 2
   (test_retighten_rebases_energy_budget).
-- Spec §4 (validation protocol, dry/oil, secondary UFU reaperto) → Task 3 (dry/oil);
-  **secondary UFU-reaperto fidelity check is deferred** to a follow-up (noted here — it needs
-  the UFU reaperto tightening history; not blocking the Liu2022 falsification).
+- Spec §4 (validation protocol, dry/oil, secondary âncora interna reaperto) → Task 3 (dry/oil);
+  **secondary âncora interna-reaperto fidelity check is deferred** to a follow-up (noted here — it needs
+  the âncora interna reaperto tightening history; not blocking the Liu2022 falsification).
 - Spec §5 gates G1–G5 → Task 3 (`evaluate`/`main`) + Task 4 (verdict).
 - Spec §6 discipline (opt-in, TDD, conservation, Opus review) → Tasks 2, 4.

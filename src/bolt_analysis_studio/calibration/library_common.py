@@ -61,7 +61,7 @@ def kj_from_geometry(d_mm: float, L_mm: float, E_Pa: float,
             ``ValueError``.
         material: só usado por ``mode="wileman"``. Default ``"steel"`` — a
             maioria dos casos calibrados desta biblioteca é parafuso de aço
-            (M16 shear UFU, Rousseau steel); chave ausente na tabela AB
+            (M16 shear âncora interna, Rousseau steel); chave ausente na tabela AB
             levanta ``KeyError`` (loud by design, mesmo idioma de
             ``wear_spec_anchor``/``mu_thread_anchor`` em `knowledge_base.py`
             — passe ``material="general"`` explicitamente p/ junta de

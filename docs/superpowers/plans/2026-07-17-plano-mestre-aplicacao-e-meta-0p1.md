@@ -31,7 +31,7 @@ switch = prereg da campanha (os switches estão `fittable=False` de propósito �
 0.1 Fechar a onda final de fixes do branch (DOF-guard 94, VarSpecs×12, pasta F versionada) — em curso.
 0.2 **Pausar a campanha** (vigília) e fazer o merge `feature/l1-l7-gaps` → main (zero conflitos
     esperados; o fix do `test_transfer_validation` já está no main e resolve a única falha herdada).
-0.3 Pós-merge no main: suíte completa + `report --all` (lá com os 3 CSVs UFU → 202 casos) e commit
+0.3 Pós-merge no main: suíte completa + `report --all` (lá com os 3 CSVs âncora interna → 202 casos) e commit
     do store pela via normal da campanha. NÃO carregar o store do worktree.
 0.4 **Re-pinar o baseline da campanha**: novo indicador = 202 casos / mediana ~0,0471 / MAE>0,1: 54
     + **censo de maxerr>0,1** (rodar `error_budget` e registrar o tripé por curva — este censo é a
@@ -72,7 +72,7 @@ Cada prereg: fit em curvas completas, tripé no gate, adoção por-fonte (nunca 
 4.2 Mesmo protocolo deste branch: default-inerte → gate B1-v3 (slope Liu2017 −2,2e-5/N ± 2×) **+**
     os 22 casos R5 como gate de forma (MAE alvo <0,1 neles) + zero regressão transversal.
 4.3 Se 2 preregs falharem de novo → rodada 6 de literatura focada no mecanismo (leads Mäntylä 2020,
-    Juoksukangas, Jiménez-Peña já nomeados) e/ou experimento UFU.
+    Juoksukangas, Jiménez-Peña já nomeados) e/ou experimento âncora interna.
 Fechar L1 é o que converte os 22 casos (0,33–0,75) para a meta — maior alavanca individual.
 
 ### Fase 5 — Certificação final
@@ -81,7 +81,7 @@ Fechar L1 é o que converte os 22 casos (0,33–0,75) para a meta — maior alav
     trecho out-of-model trimado por convenção — e autorizada pelo professor, como Karlsen run7p1).
 5.2 Atualizar `concept_coverage.html`, `MODEL_LEGITIMACY.md` (§ novo: estado da meta), CLAUDE.md
     (roadmap: itens 4/9/10 fechados/reescritos) e o relatório mestre com o painel final.
-5.3 (Opcional) Experimento-âncora UFU do `W_conf_ref` segue como único item físico externo ao software.
+5.3 (Opcional) Experimento-âncora âncora interna do `W_conf_ref` segue como único item físico externo ao software.
 
 ### Fase 6 — Documentação completa do processo (o Manual; fecha o projeto)
 Deliverable: `docs/MANUAL_BAS_V2/` (pt-BR) + hub `manual.html` no explorador de variáveis. O manual

@@ -143,7 +143,7 @@ redutíveis sem tocar em número nenhum**.
 |---|---|
 | `BAUER_2024_fig6_rep2/rep3/rep4` | 3 idênticos |
 | `KARLSEN_2022_run2p2/run7p1/run14p2` | 3 idênticos |
-| `UFU_LAB_13A_first/def` | 2 idênticos |
+| `ancora_interna/def` | 2 idênticos |
 | `LI_2022_MARSTRUC_ra0p8/ra0p306` | 2 idênticos |
 
 ⚠️ Menor que o *"116 de 200 parâmetros são repetição"* da manhã, porque aquilo contava

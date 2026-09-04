@@ -515,15 +515,15 @@ VARIABLE_SPECS += [
             "assentamento lento cresce com log do tempo e escala com F_0. Aumentar "
             "C_creep aprofunda a cauda lenta da curva (perda continuada de F/F_0 "
             "muito depois do assentamento inicial). E POR PAR tribologico, nao "
-            "universal: a ancora 304SS (9.9e-13) e o fit UFU (1.2e-11) tem ICs "
-            "disjuntos — o bloco 'shared' canonico mantem o valor UFU."),
+            "universal: a ancora 304SS (9.9e-13) e o fit da âncora interna (1.2e-11) tem ICs "
+            "disjuntos — o bloco 'shared' canonico mantem o valor da âncora interna."),
         physics_en=(
             "Logarithmic (Norton-Bailey) creep of the interface under preload: the "
             "slow settling grows with log-time and scales with F_0. Raising C_creep "
             "deepens the slow tail of the curve (continued F/F_0 loss long after "
             "initial embedding). It is PER tribological pair, not universal: the "
-            "304SS anchor (9.9e-13) and the UFU fit (1.2e-11) have disjoint CIs — "
-            "the canonical 'shared' block keeps the UFU value."),
+            "304SS anchor (9.9e-13) and the âncora interna fit (1.2e-11) have disjoint CIs — "
+            "the canonical 'shared' block keeps the âncora interna value."),
         anchor_key="C_creep_por_par",
         lessons=[],
         refs=[("Li 2022 (creep estatico, ancora)", "Li 2022 (static creep, anchor)",

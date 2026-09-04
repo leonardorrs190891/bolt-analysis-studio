@@ -1,5 +1,5 @@
 # Validation Candidates by Loading Condition — BAS v4.0
-## LTAD/UFU — Petrobras R&D
+## internal reference — Petrobras R&D
 **Compiled**: 2026-02-26
 **Purpose**: Select 2+ papers per condition to validate the coupled loosening analyzer, preload loss models, and similitude module.
 

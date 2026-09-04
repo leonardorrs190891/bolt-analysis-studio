@@ -90,7 +90,7 @@
    "nota": "residuo terminal; incerteza local 0.012"
   },
   {
-   "cid": "UFU_13A_first_preload_decay",
+   "cid": "ancora_interna",
    "classe": "FORM-limited",
    "mae": 0.09620057457269042,
    "maxerr": 0.17646074148429852,
@@ -102,7 +102,7 @@
    "nota": "residuo meio da curva (98% da janela); incerteza local 0.014"
   },
   {
-   "cid": "UFU_5A_preload_decay",
+   "cid": "ancora_interna",
    "classe": "FORM-limited",
    "mae": 0.05230431484044651,
    "maxerr": 0.1581580604564703,

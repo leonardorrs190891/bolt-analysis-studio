@@ -10,9 +10,15 @@
 
 O modo de falha que estes testes perseguem é o **vazamento**: a fonte sai da
 tabela principal e sobrevive num painel que lê de OUTRA origem. Aconteceu de
-verdade — o `_budget_section` lê do `error_budget.json`, não de `records`, e o
-UFU_LAB continuou lá depois de retirado de todo o resto. O sintoma era o rótulo
-sair cru (`UFU_LAB`) em vez de passar pelo mapa `NICE`.
+verdade — o `_budget_section` lê do `error_budget.json`, não de `records`, e a
+fonte continuou lá depois de retirada de todo o resto. O sintoma era o rótulo
+sair cru em vez de passar pelo mapa `NICE`.
+
+DESDE 2026-09-04 `_SRC_RETIRADO` está VAZIO: a única fonte que estava nele saiu
+do projeto por inteiro, e um caso removido não vaza para lugar nenhum. O
+arquivo fica, e pula sozinho, porque retirar uma fonte já foi decisão tomada
+uma vez: no dia em que voltar a ser, a rede de vazamento tem de estar de pé —
+escrevê-la de novo depois do vazamento é tarde.
 """
 import re
 
@@ -21,6 +27,10 @@ import pytest
 from bolt_analysis_studio.validation import report_html as rh
 from bolt_analysis_studio.validation.case_registry import all_records
 from bolt_analysis_studio.validation.store import ValidationStore
+
+pytestmark = pytest.mark.skipif(
+    not rh._SRC_RETIRADO,
+    reason="nenhuma fonte retirada; os invariantes de vazamento são vazios")
 
 
 @pytest.fixture(scope="module")
@@ -135,7 +145,7 @@ def test_write_reports_nao_gera_pagina_para_fonte_retirada(tmp_path):
 
     Só deixar de escrever não basta: o arquivo antigo continua no disco (e no
     git) servindo um report que nenhum documento linka. Foi o estado real em
-    2026-08-01 — os 3 `reports/UFU_*.html` tinham sido REGERADOS naquele mesmo
+    2026-08-01 — os 3 `reports/ancora_interna*.html` tinham sido REGERADOS naquele mesmo
     dia, então eram órfãos vivos, não resíduo velho.
 
     O `orfao` plantado é o coração do teste: prova a remoção, não só a omissão.

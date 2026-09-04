@@ -1,1377 +1,1356 @@
 {
- "cases": {
-  "UFU_5A_preload_decay": {
-   "label": "no_piso",
-   "evidence": "mae 0.052 <= max(piso+0.02, 0.1)=0.100",
-   "source": "UFU_LAB",
-   "family": "transverse"
-  },
-  "UFU_13A_first_preload_decay": {
-   "label": "no_piso",
-   "evidence": "mae 0.096 <= max(piso+0.02, 0.1)=0.100",
-   "source": "UFU_LAB",
-   "family": "transverse"
-  },
-  "UFU_13A_def_preload_decay": {
-   "label": "no_piso",
-   "evidence": "mae 0.052 <= max(piso+0.02, 0.1)=0.100",
-   "source": "UFU_LAB",
-   "family": "transverse"
-  },
-  "liu2025_M16_amp0p25": {
-   "label": "no_piso",
-   "evidence": "mae 0.076 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2025",
-   "family": "transverse"
-  },
-  "liu2025_M16_amp0p3": {
-   "label": "no_piso",
-   "evidence": "mae 0.064 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2025",
-   "family": "transverse"
-  },
-  "liu2025_M16_amp0p4": {
-   "label": "no_piso",
-   "evidence": "mae 0.046 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2025",
-   "family": "transverse"
-  },
-  "liu2025_M16_amp0p5": {
-   "label": "no_piso",
-   "evidence": "mae 0.029 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2025",
-   "family": "transverse"
-  },
-  "liu2025_M16_amp0p6": {
-   "label": "no_piso",
-   "evidence": "mae 0.023 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2025",
-   "family": "transverse"
-  },
-  "liu2025_M16_amp0p8": {
-   "label": "no_piso",
-   "evidence": "mae 0.049 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2025",
-   "family": "transverse"
-  },
-  "liu2025_M16_fig2_single": {
-   "label": "no_piso",
-   "evidence": "mae 0.039 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2025",
-   "family": "transverse"
-  },
-  "bauer2024_M8_fig6_rep1": {
-   "label": "no_piso",
-   "evidence": "mae 0.043 <= max(piso+0.02, 0.1)=0.135",
-   "source": "BAUER_2024",
-   "family": "transverse"
-  },
-  "bauer2024_M8_fig6_rep2": {
-   "label": "no_piso",
-   "evidence": "mae 0.042 <= max(piso+0.02, 0.1)=0.135",
-   "source": "BAUER_2024",
-   "family": "transverse"
-  },
-  "bauer2024_M8_fig6_rep3": {
-   "label": "no_piso",
-   "evidence": "mae 0.034 <= max(piso+0.02, 0.1)=0.135",
-   "source": "BAUER_2024",
-   "family": "transverse"
-  },
-  "bauer2024_M8_fig6_rep4": {
-   "label": "no_piso",
-   "evidence": "mae 0.078 <= max(piso+0.02, 0.1)=0.135",
-   "source": "BAUER_2024",
-   "family": "transverse"
-  },
-  "bauer2024_M8_fig6_rep5": {
-   "label": "no_piso",
-   "evidence": "mae 0.049 <= max(piso+0.02, 0.1)=0.135",
-   "source": "BAUER_2024",
-   "family": "transverse"
-  },
-  "bauer2024_M8_fig6_rep6": {
-   "label": "no_piso",
-   "evidence": "mae 0.076 <= max(piso+0.02, 0.1)=0.135",
-   "source": "BAUER_2024",
-   "family": "transverse"
-  },
-  "bauer2024_M12_fig8_test1": {
-   "label": "no_piso",
-   "evidence": "mae 0.075 <= max(piso+0.02, 0.1)=0.113",
-   "source": "BAUER_2024",
-   "family": "transverse"
-  },
-  "bauer2024_M12_fig8_test2": {
-   "label": "no_piso",
-   "evidence": "mae 0.029 <= max(piso+0.02, 0.1)=0.113",
-   "source": "BAUER_2024",
-   "family": "transverse"
-  },
-  "bauer2024_M12_fig8_test3": {
-   "label": "no_piso",
-   "evidence": "mae 0.024 <= max(piso+0.02, 0.1)=0.113",
-   "source": "BAUER_2024",
-   "family": "transverse"
-  },
-  "liu2017_axial_F0_15kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.003 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2017_AXIAL",
-   "family": "axial"
-  },
-  "liu2017_axial_F0_16p5kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.009 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2017_AXIAL",
-   "family": "axial"
-  },
-  "liu2017_axial_F0_18kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.020 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2017_AXIAL",
-   "family": "axial"
-  },
-  "liu2017_axial_F0_19p5kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.013 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2017_AXIAL",
-   "family": "axial"
-  },
-  "liu2017_axial_F0_21kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.008 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2017_AXIAL",
-   "family": "axial"
-  },
-  "liu2017_axial_AF_7p5kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.036 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2017_AXIAL",
-   "family": "axial"
-  },
-  "liu2017_axial_AF_8p75kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.031 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2017_AXIAL",
-   "family": "axial"
-  },
-  "liu2017_axial_AF_11p25kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.032 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2017_AXIAL",
-   "family": "axial"
-  },
-  "liu2017_axial_AF_12p5kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2017_AXIAL",
-   "family": "axial"
-  },
-  "lu2024_M8_fig18_amp0p25": {
-   "label": "nivel",
-   "sublabels": [
-    "2 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
-   "source": "LU_2024",
-   "family": "transverse"
-  },
-  "lu2024_M8_fig18_amp0p5": {
-   "label": "no_piso",
-   "evidence": "mae 0.061 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LU_2024",
-   "family": "transverse"
-  },
-  "lu2024_M8_fig18_amp1p0": {
-   "label": "forma",
-   "sublabels": [
-    "2 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
-   "source": "LU_2024",
-   "family": "transverse"
-  },
-  "lu2024_M8_fig18_amp1p5": {
-   "label": "forma",
-   "sublabels": [
-    "2 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
-   "source": "LU_2024",
-   "family": "transverse"
-  },
-  "lu2024_M8_fig18_amp2p0": {
-   "label": "forma",
-   "sublabels": [
-    "2 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
-   "source": "LU_2024",
-   "family": "transverse"
-  },
-  "lu2024_M8_fig20_T4Nm": {
-   "label": "no_piso",
-   "evidence": "mae 0.107 <= max(piso+0.02, 0.1)=0.113",
-   "source": "LU_2024",
-   "family": "transverse"
-  },
-  "lu2024_M8_fig20_T10Nm": {
-   "label": "forma",
-   "sublabels": [
-    "2 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
-   "source": "LU_2024",
-   "family": "transverse"
-  },
-  "lu2024_M8_fig20_T16Nm": {
-   "label": "no_piso",
-   "evidence": "mae 0.035 <= max(piso+0.02, 0.1)=0.113",
-   "source": "LU_2024",
-   "family": "transverse"
-  },
-  "lu2024_M8_fig20_T22Nm": {
-   "label": "no_piso",
-   "evidence": "mae 0.052 <= max(piso+0.02, 0.1)=0.113",
-   "source": "LU_2024",
-   "family": "transverse"
-  },
-  "lu2024_M8_fig20_T28Nm": {
-   "label": "no_piso",
-   "evidence": "mae 0.041 <= max(piso+0.02, 0.1)=0.113",
-   "source": "LU_2024",
-   "family": "transverse"
-  },
-  "rousseau2025_hdpe_t10": {
-   "label": "no_piso",
-   "evidence": "mae 0.058 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ROUSSEAU_2025",
-   "family": "transverse"
-  },
-  "rousseau2025_hdpe_t12": {
-   "label": "no_piso",
-   "evidence": "mae 0.064 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ROUSSEAU_2025",
-   "family": "transverse"
-  },
-  "rousseau2025_hdpe_t14": {
-   "label": "no_piso",
-   "evidence": "mae 0.044 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ROUSSEAU_2025",
-   "family": "transverse"
-  },
-  "rousseau2025_steel_t10": {
-   "label": "no_piso",
-   "evidence": "mae 0.087 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ROUSSEAU_2025",
-   "family": "transverse"
-  },
-  "rousseau2025_steel_t12": {
-   "label": "no_piso",
-   "evidence": "mae 0.046 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ROUSSEAU_2025",
-   "family": "transverse"
-  },
-  "rousseau2025_steel_t14": {
-   "label": "no_piso",
-   "evidence": "mae 0.020 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ROUSSEAU_2025",
-   "family": "transverse"
-  },
-  "demir2024_amp0p3_F14p3_lk13p8": {
-   "label": "no_piso",
-   "evidence": "mae 0.041 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ICMEZ_2025",
-   "family": "transverse"
-  },
-  "demir2024_amp0p3_F14p3_lk19p8": {
-   "label": "no_piso",
-   "evidence": "mae 0.044 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ICMEZ_2025",
-   "family": "transverse"
-  },
-  "demir2024_amp0p3_F17p6_lk13p8": {
-   "label": "no_piso",
-   "evidence": "mae 0.042 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ICMEZ_2025",
-   "family": "transverse"
-  },
-  "demir2024_amp0p3_F17p6_lk19p8": {
-   "label": "no_piso",
-   "evidence": "mae 0.035 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ICMEZ_2025",
-   "family": "transverse"
-  },
-  "demir2024_amp0p4_F14p3_lk13p8": {
-   "label": "no_piso",
-   "evidence": "mae 0.015 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ICMEZ_2025",
-   "family": "transverse"
-  },
-  "demir2024_amp0p4_F14p3_lk19p8": {
-   "label": "no_piso",
-   "evidence": "mae 0.016 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ICMEZ_2025",
-   "family": "transverse"
-  },
-  "demir2024_amp0p4_F17p6_lk13p8": {
-   "label": "no_piso",
-   "evidence": "mae 0.031 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ICMEZ_2025",
-   "family": "transverse"
-  },
-  "demir2024_amp0p4_F17p6_lk19p8": {
-   "label": "no_piso",
-   "evidence": "mae 0.028 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ICMEZ_2025",
-   "family": "transverse"
-  },
-  "yang2021_fig2_typical": {
-   "label": "no_piso",
-   "evidence": "mae 0.099 <= max(piso+0.02, 0.1)=0.100",
-   "source": "YANG_2021",
-   "family": "transverse"
-  },
-  "yang2021_amp1p0mm_ax2kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.058 <= max(piso+0.02, 0.1)=0.100",
-   "source": "YANG_2021",
-   "family": "transverse"
-  },
-  "yang2021_amp0p8mm_ax6kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.094 <= max(piso+0.02, 0.1)=0.100",
-   "source": "YANG_2021",
-   "family": "transverse"
-  },
-  "yang2021_amp0p6mm_ax8kN_r1": {
-   "label": "no_piso",
-   "evidence": "mae 0.027 <= max(piso+0.02, 0.1)=0.100",
-   "source": "YANG_2021",
-   "family": "transverse"
-  },
-  "yang2021_amp0p7mm_ax11p2kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.017 <= max(piso+0.02, 0.1)=0.100",
-   "source": "YANG_2021",
-   "family": "transverse"
-  },
-  "yang2021_amp0p5mm_ax8kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.055 <= max(piso+0.02, 0.1)=0.100",
-   "source": "YANG_2021",
-   "family": "transverse"
-  },
-  "yang2019_M10_amp0p4_5Hz": {
-   "label": "no_piso",
-   "evidence": "mae 0.100 <= max(piso+0.02, 0.1)=0.101",
-   "source": "YANG_2019",
-   "family": "transverse"
-  },
-  "yang2019_M10_amp0p6_10Hz": {
-   "label": "no_piso",
-   "evidence": "mae 0.055 <= max(piso+0.02, 0.1)=0.101",
-   "source": "YANG_2019",
-   "family": "transverse"
-  },
-  "yang2019_M10_amp0p6_5Hz": {
-   "label": "no_piso",
-   "evidence": "mae 0.086 <= max(piso+0.02, 0.1)=0.101",
-   "source": "YANG_2019",
-   "family": "transverse"
-  },
-  "yang2019_M10_varamp_small_to_large": {
-   "label": "no_piso",
-   "evidence": "mae 0.064 <= max(piso+0.02, 0.1)=0.101",
-   "source": "YANG_2019",
-   "family": "transverse"
-  },
-  "yang2019_M10_varamp_large_to_small": {
-   "label": "no_piso",
-   "evidence": "mae 0.052 <= max(piso+0.02, 0.1)=0.101",
-   "source": "YANG_2019",
-   "family": "transverse"
-  },
-  "karlsen2022_M30_HV_run1p2": {
-   "label": "no_piso",
-   "evidence": "mae 0.060 <= max(piso+0.02, 0.1)=0.135",
-   "source": "KARLSEN_2022",
-   "family": "transverse"
-  },
-  "karlsen2022_M30_HV_run2p2": {
-   "label": "no_piso",
-   "evidence": "mae 0.049 <= max(piso+0.02, 0.1)=0.135",
-   "source": "KARLSEN_2022",
-   "family": "transverse"
-  },
-  "karlsen2022_M30_HV_run6p2": {
-   "label": "no_piso",
-   "evidence": "mae 0.031 <= max(piso+0.02, 0.1)=0.135",
-   "source": "KARLSEN_2022",
-   "family": "transverse"
-  },
-  "karlsen2022_M30_HV_run7p1": {
-   "label": "no_piso",
-   "evidence": "mae 0.041 <= max(piso+0.02, 0.1)=0.135",
-   "source": "KARLSEN_2022",
-   "family": "transverse"
-  },
-  "karlsen2022_M30_HVtorqued_run14p2": {
-   "label": "no_piso",
-   "evidence": "mae 0.090 <= max(piso+0.02, 0.1)=0.135",
-   "source": "KARLSEN_2022",
-   "family": "transverse"
-  },
-  "karlsen2022_M30_vibralock_run9p0": {
-   "label": "no_piso",
-   "evidence": "mae 0.012 <= max(piso+0.02, 0.1)=0.135",
-   "source": "KARLSEN_2022",
-   "family": "transverse"
-  },
-  "karlsen2022_M30_vibralock_torqued_run16p0": {
-   "label": "no_piso",
-   "evidence": "mae 0.047 <= max(piso+0.02, 0.1)=0.135",
-   "source": "KARLSEN_2022",
-   "family": "transverse"
-  },
-  "karlsen2022_M42_HV_run20p0": {
-   "label": "no_piso",
-   "evidence": "mae 0.016 <= max(piso+0.02, 0.1)=0.135",
-   "source": "KARLSEN_2022",
-   "family": "transverse"
-  },
-  "karlsen2022_M42_HV_run21p0": {
-   "label": "no_piso",
-   "evidence": "mae 0.037 <= max(piso+0.02, 0.1)=0.135",
-   "source": "KARLSEN_2022",
-   "family": "transverse"
-  },
-  "karlsen2022_M42_vibralock_run23p0": {
-   "label": "no_piso",
-   "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.135",
-   "source": "KARLSEN_2022",
-   "family": "transverse"
-  },
-  "karlsen2022_M42_vibralock_torqued_run29p0": {
-   "label": "no_piso",
-   "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.135",
-   "source": "KARLSEN_2022",
-   "family": "transverse"
-  },
-  "liu2022_fig5_dry_F19p78kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.013 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig5_dry_F21p50kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.017 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig5_oil_F28p18kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.016 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig5_oil_F26p00kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.009 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig6a_dry_release_t0": {
-   "label": "no_piso",
-   "evidence": "mae 0.010 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig6a_dry_release_t1": {
-   "label": "no_piso",
-   "evidence": "mae 0.015 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig6a_dry_release_t2": {
-   "label": "no_piso",
-   "evidence": "mae 0.032 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig6a_dry_release_t3": {
-   "label": "no_piso",
-   "evidence": "mae 0.029 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig6b_oil_release_t0": {
-   "label": "no_piso",
-   "evidence": "mae 0.010 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig6b_oil_release_t1": {
-   "label": "no_piso",
-   "evidence": "mae 0.013 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig6b_oil_release_t2": {
-   "label": "no_piso",
-   "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig6b_oil_release_t3": {
-   "label": "no_piso",
-   "evidence": "mae 0.005 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig7a_oil_direct_t0": {
-   "label": "no_piso",
-   "evidence": "mae 0.015 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig7a_oil_direct_t1": {
-   "label": "no_piso",
-   "evidence": "mae 0.013 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig7a_oil_direct_t2": {
-   "label": "no_piso",
-   "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig7a_oil_direct_t3": {
-   "label": "no_piso",
-   "evidence": "mae 0.010 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig8_multi_t0": {
-   "label": "no_piso",
-   "evidence": "mae 0.016 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig8_multi_t1": {
-   "label": "no_piso",
-   "evidence": "mae 0.053 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig8_multi_t2": {
-   "label": "no_piso",
-   "evidence": "mae 0.058 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig8_multi_t3": {
-   "label": "no_piso",
-   "evidence": "mae 0.040 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "liu2022_fig8_multi_t4": {
-   "label": "no_piso",
-   "evidence": "mae 0.037 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2022_RETIGHT",
-   "family": "transverse"
-  },
-  "li2022marstruc_creep_10kN_Ra0p8_min": {
-   "label": "no_piso",
-   "evidence": "mae 0.006 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LI_2022_MARSTRUC",
-   "family": "creep"
-  },
-  "li2022marstruc_creep_10kN_Ra0p078_min": {
-   "label": "no_piso",
-   "evidence": "mae 0.001 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LI_2022_MARSTRUC",
-   "family": "creep"
-  },
-  "li2022marstruc_creep_10kN_Ra0p122_min": {
-   "label": "no_piso",
-   "evidence": "mae 0.001 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LI_2022_MARSTRUC",
-   "family": "creep"
-  },
-  "li2022marstruc_creep_10kN_Ra0p306_min": {
-   "label": "no_piso",
-   "evidence": "mae 0.003 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LI_2022_MARSTRUC",
-   "family": "creep"
-  },
-  "li2022marstruc_creep_5kN_Ra0p8_min": {
-   "label": "no_piso",
-   "evidence": "mae 0.008 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LI_2022_MARSTRUC",
-   "family": "creep"
-  },
-  "li2022marstruc_creep_15kN_Ra0p8_min": {
-   "label": "no_piso",
-   "evidence": "mae 0.004 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LI_2022_MARSTRUC",
-   "family": "creep"
-  },
-  "li2022ti_axialmin_10Hz": {
-   "label": "no_piso",
-   "evidence": "mae 0.053 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LI_2022_TRIBOINT",
-   "family": "axial"
-  },
-  "li2022ti_axialmin_15Hz": {
-   "label": "no_piso",
-   "evidence": "mae 0.030 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LI_2022_TRIBOINT",
-   "family": "axial"
-  },
-  "li2022ti_axialmin_20Hz": {
-   "label": "no_piso",
-   "evidence": "mae 0.020 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LI_2022_TRIBOINT",
-   "family": "axial"
-  },
-  "li2022ti_axial_10Hz_full": {
-   "label": "no_piso",
-   "evidence": "mae 0.032 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LI_2022_TRIBOINT",
-   "family": "axial"
-  },
-  "10_Yang_2023_phenomenological_model__0_18_mm_below_threshold__1": {
-   "label": "no_piso",
-   "evidence": "mae 0.008 <= max(piso+0.02, 0.1)=0.100",
-   "source": "YANG_2023_IJPEM",
-   "family": "transverse"
-  },
-  "10_Yang_2023_phenomenological_model__0_25_mm__2": {
-   "label": "nivel",
-   "sublabels": [
-    "1 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
-   "source": "YANG_2023_IJPEM",
-   "family": "transverse"
-  },
-  "10_Yang_2023_phenomenological_model__0_35_mm__3": {
-   "label": "forma",
-   "sublabels": [
-    "1 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
-   "source": "YANG_2023_IJPEM",
-   "family": "transverse"
-  },
-  "10_Yang_2023_phenomenological_model__0_45_mm__4": {
-   "label": "forma",
-   "sublabels": [
-    "1 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
-   "source": "YANG_2023_IJPEM",
-   "family": "transverse"
-  },
-  "10_Yang_2023_phenomenological_model__0_55_mm__5": {
-   "label": "nivel",
-   "sublabels": [
-    "1 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
-   "source": "YANG_2023_IJPEM",
-   "family": "transverse"
-  },
-  "10_Yang_2023_phenomenological_model__0_65_mm__6": {
-   "label": "no_piso",
-   "evidence": "mae 0.082 <= max(piso+0.02, 0.1)=0.100",
-   "source": "YANG_2023_IJPEM",
-   "family": "transverse"
-  },
-  "10_Yang_2023_phenomenological_model__0_15_mm_below_threshold__7": {
-   "label": "no_piso",
-   "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.100",
-   "source": "YANG_2023_IJPEM",
-   "family": "transverse"
-  },
-  "10_Yang_2023_phenomenological_model__0_30_mm__8": {
-   "label": "forma",
-   "sublabels": [
-    "1 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
-   "source": "YANG_2023_IJPEM",
-   "family": "transverse"
-  },
-  "10_Yang_2023_phenomenological_model__0_50_mm__9": {
-   "label": "forma",
-   "sublabels": [
-    "1 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
-   "source": "YANG_2023_IJPEM",
-   "family": "transverse"
-  },
-  "liu2016wear_fig9a_m30nm": {
-   "label": "no_piso",
-   "evidence": "mae 0.047 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "liu2016wear_fig9a_m35nm": {
-   "label": "no_piso",
-   "evidence": "mae 0.047 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "liu2016wear_fig9a_m40nm": {
-   "label": "no_piso",
-   "evidence": "mae 0.054 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "liu2016wear_fig9a_m45nm": {
-   "label": "no_piso",
-   "evidence": "mae 0.050 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "liu2016wear_fig9a_m50nm": {
-   "label": "no_piso",
-   "evidence": "mae 0.043 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "liu2016wear_fig11a_af7p5kn": {
-   "label": "no_piso",
-   "evidence": "mae 0.015 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "liu2016wear_fig11a_af8p75kn": {
-   "label": "no_piso",
-   "evidence": "mae 0.026 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "liu2016wear_fig11a_af10kn": {
-   "label": "no_piso",
-   "evidence": "mae 0.031 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "liu2016wear_fig11a_af11p25kn": {
-   "label": "no_piso",
-   "evidence": "mae 0.033 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "liu2016wear_fig11a_af12p5kn": {
-   "label": "no_piso",
-   "evidence": "mae 0.037 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "liu2016wear_fig13a_dry": {
-   "label": "no_piso",
-   "evidence": "mae 0.039 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "liu2016wear_fig13a_mos2": {
-   "label": "no_piso",
-   "evidence": "mae 0.013 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "liu2016wear_fig7_run1_1e6cyc": {
-   "label": "no_piso",
-   "evidence": "mae 0.045 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "liu2016wear_fig7_run2_5e6cyc": {
-   "label": "no_piso",
-   "evidence": "mae 0.060 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2016",
-   "family": "axial"
-  },
-  "chu2026ti_D0p3mm_F0_49kN_test1": {
-   "label": "no_piso",
-   "evidence": "mae 0.066 <= max(piso+0.02, 0.1)=0.100",
-   "source": "CHU_2026",
-   "family": "transverse"
-  },
-  "chu2026ti_D0p4mm_F0_49kN_test2": {
-   "label": "forma",
-   "sublabels": [
-    "3 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
-   "source": "CHU_2026",
-   "family": "transverse"
-  },
-  "chu2026ti_D0p4mm_F0_61kN_test7": {
-   "label": "forma",
-   "sublabels": [
-    "3 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
-   "source": "CHU_2026",
-   "family": "transverse"
-  },
-  "chu2026ti_D0p4mm_F0_73kN_test8": {
-   "label": "forma",
-   "sublabels": [
-    "3 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
-   "source": "CHU_2026",
-   "family": "transverse"
-  },
-  "chu2026ti_D0p5mm_F0_49kN_test3": {
-   "label": "nivel",
-   "sublabels": [
-    "3 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
-   "source": "CHU_2026",
-   "family": "transverse"
-  },
-  "chu2026ti_D0p5mm_F0_49kN_Ra1p6um_test9": {
-   "label": "no_piso",
-   "evidence": "mae 0.045 <= max(piso+0.02, 0.1)=0.100",
-   "source": "CHU_2026",
-   "family": "transverse"
-  },
-  "chu2026ti_D0p7mm_F0_49kN_test4": {
-   "label": "forma",
-   "sublabels": [
-    "3 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
-   "source": "CHU_2026",
-   "family": "transverse"
-  },
-  "chu2026ti_D1p0mm_F0_49kN_test5": {
-   "label": "no_piso",
-   "evidence": "mae 0.040 <= max(piso+0.02, 0.1)=0.100",
-   "source": "CHU_2026",
-   "family": "transverse"
-  },
-  "chu2026ti_D1p0mm_F0_49kN_test6_repeat": {
-   "label": "no_piso",
-   "evidence": "mae 0.027 <= max(piso+0.02, 0.1)=0.100",
-   "source": "CHU_2026",
-   "family": "transverse"
-  },
-  "eccles2010_fig3_typical_no_axial": {
-   "label": "no_piso",
-   "evidence": "mae 0.023 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ECCLES_2010",
-   "family": "transverse"
-  },
-  "eccles2010_fig7a_no_axial": {
-   "label": "no_piso",
-   "evidence": "mae 0.027 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ECCLES_2010",
-   "family": "transverse"
-  },
-  "eccles2010_fig8a_no_axial_baseline1": {
-   "label": "no_piso",
-   "evidence": "mae 0.044 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ECCLES_2010",
-   "family": "transverse"
-  },
-  "eccles2010_fig8c_no_axial_baseline2": {
-   "label": "no_piso",
-   "evidence": "mae 0.043 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ECCLES_2010",
-   "family": "transverse"
-  },
-  "eccles2010_fig6_annotated_4kN_axial": {
-   "label": "forma",
-   "sublabels": [
-    "3 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
-   "source": "ECCLES_2010",
-   "family": "transverse"
-  },
-  "eccles2010_fig7b_axial_1p1kN_constant": {
-   "label": "no_piso",
-   "evidence": "mae 0.026 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ECCLES_2010",
-   "family": "transverse"
-  },
-  "eccles2010_fig7c_axial_2p7kN_constant": {
-   "label": "no_piso",
-   "evidence": "mae 0.025 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ECCLES_2010",
-   "family": "transverse"
-  },
-  "eccles2010_fig7d_axial_3p1kN_constant": {
-   "label": "no_piso",
-   "evidence": "mae 0.067 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ECCLES_2010",
-   "family": "transverse"
-  },
-  "eccles2010_fig8b_axial_0p7kN_intermittent": {
-   "label": "no_piso",
-   "evidence": "mae 0.044 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ECCLES_2010",
-   "family": "transverse"
-  },
-  "eccles2010_fig8d_axial_3p5kN_intermittent": {
-   "label": "nivel",
-   "sublabels": [
-    "3 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
-   "source": "ECCLES_2010",
-   "family": "transverse"
-  },
-  "yang2023ame_axial": {
-   "label": "nivel",
-   "sublabels": [
-    "3 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
-   "source": "YANG_2023_AME",
-   "family": "axial"
-  },
-  "sun2025efa109235_transverse_nogrease_standard": {
-   "label": "no_piso",
-   "evidence": "mae 0.005 <= max(piso+0.02, 0.1)=0.100",
-   "source": "SUN_2025_CRIMP",
-   "family": "transverse"
-  },
-  "sun2025efa109235_transverse_nogrease_crimp": {
-   "label": "no_piso",
-   "evidence": "mae 0.011 <= max(piso+0.02, 0.1)=0.100",
-   "source": "SUN_2025_CRIMP",
-   "family": "transverse"
-  },
-  "sun2025efa109235_transverse_grease_standard": {
-   "label": "no_piso",
-   "evidence": "mae 0.100 <= max(piso+0.02, 0.1)=0.100",
-   "source": "SUN_2025_CRIMP",
-   "family": "transverse"
-  },
-  "sun2025efa109235_transverse_grease_crimp": {
-   "label": "no_piso",
-   "evidence": "mae 0.022 <= max(piso+0.02, 0.1)=0.100",
-   "source": "SUN_2025_CRIMP",
-   "family": "transverse"
-  },
-  "sun2025efa109235_axial_F7.5kN_standard": {
-   "label": "no_piso",
-   "evidence": "mae 0.025 <= max(piso+0.02, 0.1)=0.100",
-   "source": "SUN_2025_CRIMP",
-   "family": "axial"
-  },
-  "sun2025efa109235_axial_F7.5kN_crimp": {
-   "label": "no_piso",
-   "evidence": "mae 0.022 <= max(piso+0.02, 0.1)=0.100",
-   "source": "SUN_2025_CRIMP",
-   "family": "axial"
-  },
-  "sun2025efa109235_axial_F17.5kN_standard": {
-   "label": "no_piso",
-   "evidence": "mae 0.033 <= max(piso+0.02, 0.1)=0.100",
-   "source": "SUN_2025_CRIMP",
-   "family": "axial"
-  },
-  "sun2025efa109235_axial_F17.5kN_crimp": {
-   "label": "no_piso",
-   "evidence": "mae 0.032 <= max(piso+0.02, 0.1)=0.100",
-   "source": "SUN_2025_CRIMP",
-   "family": "axial"
-  },
-  "sun2025efa110030_fig11a_loosening_reassy02": {
-   "label": "no_piso",
-   "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
-   "source": "SUN_2025_REASSY",
-   "family": "transverse"
-  },
-  "sun2025efa110030_fig11a_loosening_reassy04": {
-   "label": "no_piso",
-   "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
-   "source": "SUN_2025_REASSY",
-   "family": "transverse"
-  },
-  "sun2025efa110030_fig11a_loosening_reassy06": {
-   "label": "no_piso",
-   "evidence": "mae 0.019 <= max(piso+0.02, 0.1)=0.100",
-   "source": "SUN_2025_REASSY",
-   "family": "transverse"
-  },
-  "sun2025efa110030_fig11a_loosening_reassy08": {
-   "label": "no_piso",
-   "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
-   "source": "SUN_2025_REASSY",
-   "family": "transverse"
-  },
-  "sun2025efa110030_fig11a_loosening_reassy10": {
-   "label": "no_piso",
-   "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
-   "source": "SUN_2025_REASSY",
-   "family": "transverse"
-  },
-  "grzejda2026mat_bolt1_base": {
-   "label": "no_piso",
-   "evidence": "mae 0.034 <= max(piso+0.02, 0.1)=0.100",
-   "source": "GRZEJDA_2026",
-   "family": "axial"
-  },
-  "grzejda2026mat_bolt6_central": {
-   "label": "no_piso",
-   "evidence": "mae 0.036 <= max(piso+0.02, 0.1)=0.100",
-   "source": "GRZEJDA_2026",
-   "family": "axial"
-  },
-  "jcsr2023_plain_indoor": {
-   "label": "no_piso",
-   "evidence": "mae 0.001 <= max(piso+0.02, 0.1)=0.100",
-   "source": "JCSR_2023",
-   "family": "creep"
-  },
-  "jcsr2023_plain_outdoor": {
-   "label": "no_piso",
-   "evidence": "mae 0.062 <= max(piso+0.02, 0.1)=0.100",
-   "source": "JCSR_2023",
-   "family": "creep"
-  },
-  "jcsr2023_plain_seawater": {
-   "label": "no_piso",
-   "evidence": "mae 0.029 <= max(piso+0.02, 0.1)=0.100",
-   "source": "JCSR_2023",
-   "family": "creep"
-  },
-  "jcsr2023_galv_seawater": {
-   "label": "no_piso",
-   "evidence": "mae 0.039 <= max(piso+0.02, 0.1)=0.100",
-   "source": "JCSR_2023",
-   "family": "creep"
-  },
-  "jcsr2023_stainless_seawater": {
-   "label": "no_piso",
-   "evidence": "mae 0.062 <= max(piso+0.02, 0.1)=0.100",
-   "source": "JCSR_2023",
-   "family": "creep"
-  },
-  "caccese2009_retighten_12p7mm_no_retighten": {
-   "label": "no_piso",
-   "evidence": "mae 0.015 <= max(piso+0.02, 0.1)=0.100",
-   "source": "CACCESE_2009",
-   "family": "creep"
-  },
-  "caccese2009_retighten_19p1mm_no_retighten": {
-   "label": "no_piso",
-   "evidence": "mae 0.024 <= max(piso+0.02, 0.1)=0.100",
-   "source": "CACCESE_2009",
-   "family": "creep"
-  },
-  "caccese2009_compblock_34kPa": {
-   "label": "no_piso",
-   "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.100",
-   "source": "CACCESE_2009",
-   "family": "creep"
-  },
-  "caccese2009_compblock_71kPa": {
-   "label": "no_piso",
-   "evidence": "mae 0.008 <= max(piso+0.02, 0.1)=0.100",
-   "source": "CACCESE_2009",
-   "family": "creep"
-  },
-  "caccese2009_protruding_45kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
-   "source": "CACCESE_2009",
-   "family": "creep"
-  },
-  "caccese2009_tapered_45kN_rep1": {
-   "label": "no_piso",
-   "evidence": "mae 0.052 <= max(piso+0.02, 0.1)=0.100",
-   "source": "CACCESE_2009",
-   "family": "creep"
-  },
-  "caccese2009_tapered_45kN_rep2": {
-   "label": "no_piso",
-   "evidence": "mae 0.027 <= max(piso+0.02, 0.1)=0.100",
-   "source": "CACCESE_2009",
-   "family": "creep"
-  },
-  "qin2024acm_25C_i0pct": {
-   "label": "no_piso",
-   "evidence": "mae 0.002 <= max(piso+0.02, 0.1)=0.100",
-   "source": "QIN_2024",
-   "family": "creep"
-  },
-  "qin2024acm_25C_i0p6pct": {
-   "label": "no_piso",
-   "evidence": "mae 0.005 <= max(piso+0.02, 0.1)=0.100",
-   "source": "QIN_2024",
-   "family": "creep"
-  },
-  "qin2024acm_25C_i1p2pct": {
-   "label": "no_piso",
-   "evidence": "mae 0.010 <= max(piso+0.02, 0.1)=0.100",
-   "source": "QIN_2024",
-   "family": "creep"
-  },
-  "zhang2006_fig3_illus_M12x125_20kN_amp0p35": {
-   "label": "nivel",
-   "sublabels": [
-    "3 inputs 'assumed' (µ domina o OAT §4.42)"
-   ],
-   "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
-   "source": "ZHANG_2006",
-   "family": "transverse"
-  },
-  "zhang2006_fig16_runout_40kN_amp0p125": {
-   "label": "no_piso",
-   "evidence": "mae 0.012 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2006",
-   "family": "transverse"
-  },
-  "zhang18_fig2_test1_20kN_1e3cyc_preload_vs_cycles": {
-   "label": "no_piso",
-   "evidence": "mae 0.016 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2018",
-   "family": "transverse"
-  },
-  "zhang18_fig2_test2_20kN_1e4cyc_preload_vs_cycles": {
-   "label": "no_piso",
-   "evidence": "mae 0.013 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2018",
-   "family": "transverse"
-  },
-  "zhang18_fig2_test3_20kN_1e5cyc_preload_vs_cycles": {
-   "label": "no_piso",
-   "evidence": "mae 0.019 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2018",
-   "family": "transverse"
-  },
-  "zhang18_fig2_test4_20kN_5e5cyc_preload_vs_cycles": {
-   "label": "no_piso",
-   "evidence": "mae 0.024 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2018",
-   "family": "transverse"
-  },
-  "zhang18_fig13_14kN_preload_vs_cycles": {
-   "label": "no_piso",
-   "evidence": "mae 0.025 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2018",
-   "family": "transverse"
-  },
-  "zhang18_fig13_20kN_preload_vs_cycles": {
-   "label": "no_piso",
-   "evidence": "mae 0.021 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2018",
-   "family": "transverse"
-  },
-  "zhang18_fig13_26kN_preload_vs_cycles": {
-   "label": "no_piso",
-   "evidence": "mae 0.017 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2018",
-   "family": "transverse"
-  },
-  "zhang18_fig16_with_locker_preload_vs_cycles": {
-   "label": "no_piso",
-   "evidence": "mae 0.008 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2018",
-   "family": "transverse"
-  },
-  "zhang18_fig16_without_locker_preload_vs_cycles": {
-   "label": "no_piso",
-   "evidence": "mae 0.023 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2018",
-   "family": "transverse"
-  },
-  "zhang19_fig4_1e3cyc_Test1to3_preload_vs_cycles": {
-   "label": "no_piso",
-   "evidence": "mae 0.003 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2019",
-   "family": "transverse"
-  },
-  "zhang19_fig4_1e4cyc_Test4to6_preload_vs_cycles": {
-   "label": "no_piso",
-   "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2019",
-   "family": "transverse"
-  },
-  "zhang19_fig4_1e5cyc_Test7to9_preload_vs_cycles": {
-   "label": "no_piso",
-   "evidence": "mae 0.024 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2019",
-   "family": "transverse"
-  },
-  "zhang19_fig4_2e5cyc_Test10to12_preload_vs_cycles": {
-   "label": "no_piso",
-   "evidence": "mae 0.020 <= max(piso+0.02, 0.1)=0.100",
-   "source": "ZHANG_2019",
-   "family": "transverse"
-  },
-  "liu2020_fig5b_zinc_P0-12kN_AF0.2mm": {
-   "label": "no_piso",
-   "evidence": "mae 0.010 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2020_WEAR",
-   "family": "transverse"
-  },
-  "liu2020_fig5b_zinc_P0-18kN_AF0.2mm": {
-   "label": "no_piso",
-   "evidence": "mae 0.009 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2020_WEAR",
-   "family": "transverse"
-  },
-  "liu2020_fig5b_zinc_P0-24kN_AF0.2mm": {
-   "label": "no_piso",
-   "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2020_WEAR",
-   "family": "transverse"
-  },
-  "liu2020_fig9_zinc_AF0.1mm_P0-18kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.016 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2020_WEAR",
-   "family": "transverse"
-  },
-  "liu2020_fig9_zinc_AF0.2mm_P0-18kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.005 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2020_WEAR",
-   "family": "transverse"
-  },
-  "liu2020_fig9_zinc_AF0.3mm_P0-18kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.019 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2020_WEAR",
-   "family": "transverse"
-  },
-  "liu2020_fig9_zinc_AF0.4mm_P0-18kN": {
-   "label": "no_piso",
-   "evidence": "mae 0.073 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2020_WEAR",
-   "family": "transverse"
-  },
-  "liu2020_fig15_DLC_P0-18kN_AF0.2mm": {
-   "label": "no_piso",
-   "evidence": "mae 0.006 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2020_WEAR",
-   "family": "transverse"
-  },
-  "liu2020_fig15_DLC_P0-19.28kN_AF0.2mm": {
-   "label": "no_piso",
-   "evidence": "mae 0.005 <= max(piso+0.02, 0.1)=0.100",
-   "source": "LIU_2020_WEAR",
-   "family": "transverse"
+  "cases": {
+    "liu2025_M16_amp0p25": {
+      "label": "no_piso",
+      "evidence": "mae 0.076 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2025",
+      "family": "transverse"
+    },
+    "liu2025_M16_amp0p3": {
+      "label": "no_piso",
+      "evidence": "mae 0.064 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2025",
+      "family": "transverse"
+    },
+    "liu2025_M16_amp0p4": {
+      "label": "no_piso",
+      "evidence": "mae 0.046 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2025",
+      "family": "transverse"
+    },
+    "liu2025_M16_amp0p5": {
+      "label": "no_piso",
+      "evidence": "mae 0.029 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2025",
+      "family": "transverse"
+    },
+    "liu2025_M16_amp0p6": {
+      "label": "no_piso",
+      "evidence": "mae 0.023 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2025",
+      "family": "transverse"
+    },
+    "liu2025_M16_amp0p8": {
+      "label": "no_piso",
+      "evidence": "mae 0.049 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2025",
+      "family": "transverse"
+    },
+    "liu2025_M16_fig2_single": {
+      "label": "no_piso",
+      "evidence": "mae 0.039 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2025",
+      "family": "transverse"
+    },
+    "bauer2024_M8_fig6_rep1": {
+      "label": "no_piso",
+      "evidence": "mae 0.043 <= max(piso+0.02, 0.1)=0.135",
+      "source": "BAUER_2024",
+      "family": "transverse"
+    },
+    "bauer2024_M8_fig6_rep2": {
+      "label": "no_piso",
+      "evidence": "mae 0.042 <= max(piso+0.02, 0.1)=0.135",
+      "source": "BAUER_2024",
+      "family": "transverse"
+    },
+    "bauer2024_M8_fig6_rep3": {
+      "label": "no_piso",
+      "evidence": "mae 0.034 <= max(piso+0.02, 0.1)=0.135",
+      "source": "BAUER_2024",
+      "family": "transverse"
+    },
+    "bauer2024_M8_fig6_rep4": {
+      "label": "no_piso",
+      "evidence": "mae 0.078 <= max(piso+0.02, 0.1)=0.135",
+      "source": "BAUER_2024",
+      "family": "transverse"
+    },
+    "bauer2024_M8_fig6_rep5": {
+      "label": "no_piso",
+      "evidence": "mae 0.049 <= max(piso+0.02, 0.1)=0.135",
+      "source": "BAUER_2024",
+      "family": "transverse"
+    },
+    "bauer2024_M8_fig6_rep6": {
+      "label": "no_piso",
+      "evidence": "mae 0.076 <= max(piso+0.02, 0.1)=0.135",
+      "source": "BAUER_2024",
+      "family": "transverse"
+    },
+    "bauer2024_M12_fig8_test1": {
+      "label": "no_piso",
+      "evidence": "mae 0.075 <= max(piso+0.02, 0.1)=0.113",
+      "source": "BAUER_2024",
+      "family": "transverse"
+    },
+    "bauer2024_M12_fig8_test2": {
+      "label": "no_piso",
+      "evidence": "mae 0.029 <= max(piso+0.02, 0.1)=0.113",
+      "source": "BAUER_2024",
+      "family": "transverse"
+    },
+    "bauer2024_M12_fig8_test3": {
+      "label": "no_piso",
+      "evidence": "mae 0.024 <= max(piso+0.02, 0.1)=0.113",
+      "source": "BAUER_2024",
+      "family": "transverse"
+    },
+    "liu2017_axial_F0_15kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.003 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2017_AXIAL",
+      "family": "axial"
+    },
+    "liu2017_axial_F0_16p5kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.009 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2017_AXIAL",
+      "family": "axial"
+    },
+    "liu2017_axial_F0_18kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.020 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2017_AXIAL",
+      "family": "axial"
+    },
+    "liu2017_axial_F0_19p5kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.013 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2017_AXIAL",
+      "family": "axial"
+    },
+    "liu2017_axial_F0_21kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.008 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2017_AXIAL",
+      "family": "axial"
+    },
+    "liu2017_axial_AF_7p5kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.036 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2017_AXIAL",
+      "family": "axial"
+    },
+    "liu2017_axial_AF_8p75kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.031 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2017_AXIAL",
+      "family": "axial"
+    },
+    "liu2017_axial_AF_11p25kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.032 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2017_AXIAL",
+      "family": "axial"
+    },
+    "liu2017_axial_AF_12p5kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2017_AXIAL",
+      "family": "axial"
+    },
+    "lu2024_M8_fig18_amp0p25": {
+      "label": "nivel",
+      "sublabels": [
+        "2 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
+      "source": "LU_2024",
+      "family": "transverse"
+    },
+    "lu2024_M8_fig18_amp0p5": {
+      "label": "no_piso",
+      "evidence": "mae 0.061 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LU_2024",
+      "family": "transverse"
+    },
+    "lu2024_M8_fig18_amp1p0": {
+      "label": "forma",
+      "sublabels": [
+        "2 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
+      "source": "LU_2024",
+      "family": "transverse"
+    },
+    "lu2024_M8_fig18_amp1p5": {
+      "label": "forma",
+      "sublabels": [
+        "2 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
+      "source": "LU_2024",
+      "family": "transverse"
+    },
+    "lu2024_M8_fig18_amp2p0": {
+      "label": "forma",
+      "sublabels": [
+        "2 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
+      "source": "LU_2024",
+      "family": "transverse"
+    },
+    "lu2024_M8_fig20_T4Nm": {
+      "label": "no_piso",
+      "evidence": "mae 0.107 <= max(piso+0.02, 0.1)=0.113",
+      "source": "LU_2024",
+      "family": "transverse"
+    },
+    "lu2024_M8_fig20_T10Nm": {
+      "label": "forma",
+      "sublabels": [
+        "2 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
+      "source": "LU_2024",
+      "family": "transverse"
+    },
+    "lu2024_M8_fig20_T16Nm": {
+      "label": "no_piso",
+      "evidence": "mae 0.035 <= max(piso+0.02, 0.1)=0.113",
+      "source": "LU_2024",
+      "family": "transverse"
+    },
+    "lu2024_M8_fig20_T22Nm": {
+      "label": "no_piso",
+      "evidence": "mae 0.052 <= max(piso+0.02, 0.1)=0.113",
+      "source": "LU_2024",
+      "family": "transverse"
+    },
+    "lu2024_M8_fig20_T28Nm": {
+      "label": "no_piso",
+      "evidence": "mae 0.041 <= max(piso+0.02, 0.1)=0.113",
+      "source": "LU_2024",
+      "family": "transverse"
+    },
+    "rousseau2025_hdpe_t10": {
+      "label": "no_piso",
+      "evidence": "mae 0.058 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ROUSSEAU_2025",
+      "family": "transverse"
+    },
+    "rousseau2025_hdpe_t12": {
+      "label": "no_piso",
+      "evidence": "mae 0.064 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ROUSSEAU_2025",
+      "family": "transverse"
+    },
+    "rousseau2025_hdpe_t14": {
+      "label": "no_piso",
+      "evidence": "mae 0.044 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ROUSSEAU_2025",
+      "family": "transverse"
+    },
+    "rousseau2025_steel_t10": {
+      "label": "no_piso",
+      "evidence": "mae 0.087 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ROUSSEAU_2025",
+      "family": "transverse"
+    },
+    "rousseau2025_steel_t12": {
+      "label": "no_piso",
+      "evidence": "mae 0.046 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ROUSSEAU_2025",
+      "family": "transverse"
+    },
+    "rousseau2025_steel_t14": {
+      "label": "no_piso",
+      "evidence": "mae 0.020 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ROUSSEAU_2025",
+      "family": "transverse"
+    },
+    "demir2024_amp0p3_F14p3_lk13p8": {
+      "label": "no_piso",
+      "evidence": "mae 0.041 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ICMEZ_2025",
+      "family": "transverse"
+    },
+    "demir2024_amp0p3_F14p3_lk19p8": {
+      "label": "no_piso",
+      "evidence": "mae 0.044 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ICMEZ_2025",
+      "family": "transverse"
+    },
+    "demir2024_amp0p3_F17p6_lk13p8": {
+      "label": "no_piso",
+      "evidence": "mae 0.042 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ICMEZ_2025",
+      "family": "transverse"
+    },
+    "demir2024_amp0p3_F17p6_lk19p8": {
+      "label": "no_piso",
+      "evidence": "mae 0.035 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ICMEZ_2025",
+      "family": "transverse"
+    },
+    "demir2024_amp0p4_F14p3_lk13p8": {
+      "label": "no_piso",
+      "evidence": "mae 0.015 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ICMEZ_2025",
+      "family": "transverse"
+    },
+    "demir2024_amp0p4_F14p3_lk19p8": {
+      "label": "no_piso",
+      "evidence": "mae 0.016 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ICMEZ_2025",
+      "family": "transverse"
+    },
+    "demir2024_amp0p4_F17p6_lk13p8": {
+      "label": "no_piso",
+      "evidence": "mae 0.031 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ICMEZ_2025",
+      "family": "transverse"
+    },
+    "demir2024_amp0p4_F17p6_lk19p8": {
+      "label": "no_piso",
+      "evidence": "mae 0.028 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ICMEZ_2025",
+      "family": "transverse"
+    },
+    "yang2021_fig2_typical": {
+      "label": "no_piso",
+      "evidence": "mae 0.099 <= max(piso+0.02, 0.1)=0.100",
+      "source": "YANG_2021",
+      "family": "transverse"
+    },
+    "yang2021_amp1p0mm_ax2kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.058 <= max(piso+0.02, 0.1)=0.100",
+      "source": "YANG_2021",
+      "family": "transverse"
+    },
+    "yang2021_amp0p8mm_ax6kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.094 <= max(piso+0.02, 0.1)=0.100",
+      "source": "YANG_2021",
+      "family": "transverse"
+    },
+    "yang2021_amp0p6mm_ax8kN_r1": {
+      "label": "no_piso",
+      "evidence": "mae 0.027 <= max(piso+0.02, 0.1)=0.100",
+      "source": "YANG_2021",
+      "family": "transverse"
+    },
+    "yang2021_amp0p7mm_ax11p2kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.017 <= max(piso+0.02, 0.1)=0.100",
+      "source": "YANG_2021",
+      "family": "transverse"
+    },
+    "yang2021_amp0p5mm_ax8kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.055 <= max(piso+0.02, 0.1)=0.100",
+      "source": "YANG_2021",
+      "family": "transverse"
+    },
+    "yang2019_M10_amp0p4_5Hz": {
+      "label": "no_piso",
+      "evidence": "mae 0.100 <= max(piso+0.02, 0.1)=0.101",
+      "source": "YANG_2019",
+      "family": "transverse"
+    },
+    "yang2019_M10_amp0p6_10Hz": {
+      "label": "no_piso",
+      "evidence": "mae 0.055 <= max(piso+0.02, 0.1)=0.101",
+      "source": "YANG_2019",
+      "family": "transverse"
+    },
+    "yang2019_M10_amp0p6_5Hz": {
+      "label": "no_piso",
+      "evidence": "mae 0.086 <= max(piso+0.02, 0.1)=0.101",
+      "source": "YANG_2019",
+      "family": "transverse"
+    },
+    "yang2019_M10_varamp_small_to_large": {
+      "label": "no_piso",
+      "evidence": "mae 0.064 <= max(piso+0.02, 0.1)=0.101",
+      "source": "YANG_2019",
+      "family": "transverse"
+    },
+    "yang2019_M10_varamp_large_to_small": {
+      "label": "no_piso",
+      "evidence": "mae 0.052 <= max(piso+0.02, 0.1)=0.101",
+      "source": "YANG_2019",
+      "family": "transverse"
+    },
+    "karlsen2022_M30_HV_run1p2": {
+      "label": "no_piso",
+      "evidence": "mae 0.060 <= max(piso+0.02, 0.1)=0.135",
+      "source": "KARLSEN_2022",
+      "family": "transverse"
+    },
+    "karlsen2022_M30_HV_run2p2": {
+      "label": "no_piso",
+      "evidence": "mae 0.049 <= max(piso+0.02, 0.1)=0.135",
+      "source": "KARLSEN_2022",
+      "family": "transverse"
+    },
+    "karlsen2022_M30_HV_run6p2": {
+      "label": "no_piso",
+      "evidence": "mae 0.031 <= max(piso+0.02, 0.1)=0.135",
+      "source": "KARLSEN_2022",
+      "family": "transverse"
+    },
+    "karlsen2022_M30_HV_run7p1": {
+      "label": "no_piso",
+      "evidence": "mae 0.041 <= max(piso+0.02, 0.1)=0.135",
+      "source": "KARLSEN_2022",
+      "family": "transverse"
+    },
+    "karlsen2022_M30_HVtorqued_run14p2": {
+      "label": "no_piso",
+      "evidence": "mae 0.090 <= max(piso+0.02, 0.1)=0.135",
+      "source": "KARLSEN_2022",
+      "family": "transverse"
+    },
+    "karlsen2022_M30_vibralock_run9p0": {
+      "label": "no_piso",
+      "evidence": "mae 0.012 <= max(piso+0.02, 0.1)=0.135",
+      "source": "KARLSEN_2022",
+      "family": "transverse"
+    },
+    "karlsen2022_M30_vibralock_torqued_run16p0": {
+      "label": "no_piso",
+      "evidence": "mae 0.047 <= max(piso+0.02, 0.1)=0.135",
+      "source": "KARLSEN_2022",
+      "family": "transverse"
+    },
+    "karlsen2022_M42_HV_run20p0": {
+      "label": "no_piso",
+      "evidence": "mae 0.016 <= max(piso+0.02, 0.1)=0.135",
+      "source": "KARLSEN_2022",
+      "family": "transverse"
+    },
+    "karlsen2022_M42_HV_run21p0": {
+      "label": "no_piso",
+      "evidence": "mae 0.037 <= max(piso+0.02, 0.1)=0.135",
+      "source": "KARLSEN_2022",
+      "family": "transverse"
+    },
+    "karlsen2022_M42_vibralock_run23p0": {
+      "label": "no_piso",
+      "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.135",
+      "source": "KARLSEN_2022",
+      "family": "transverse"
+    },
+    "karlsen2022_M42_vibralock_torqued_run29p0": {
+      "label": "no_piso",
+      "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.135",
+      "source": "KARLSEN_2022",
+      "family": "transverse"
+    },
+    "liu2022_fig5_dry_F19p78kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.013 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig5_dry_F21p50kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.017 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig5_oil_F28p18kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.016 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig5_oil_F26p00kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.009 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig6a_dry_release_t0": {
+      "label": "no_piso",
+      "evidence": "mae 0.010 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig6a_dry_release_t1": {
+      "label": "no_piso",
+      "evidence": "mae 0.015 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig6a_dry_release_t2": {
+      "label": "no_piso",
+      "evidence": "mae 0.032 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig6a_dry_release_t3": {
+      "label": "no_piso",
+      "evidence": "mae 0.029 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig6b_oil_release_t0": {
+      "label": "no_piso",
+      "evidence": "mae 0.010 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig6b_oil_release_t1": {
+      "label": "no_piso",
+      "evidence": "mae 0.013 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig6b_oil_release_t2": {
+      "label": "no_piso",
+      "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig6b_oil_release_t3": {
+      "label": "no_piso",
+      "evidence": "mae 0.005 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig7a_oil_direct_t0": {
+      "label": "no_piso",
+      "evidence": "mae 0.015 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig7a_oil_direct_t1": {
+      "label": "no_piso",
+      "evidence": "mae 0.013 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig7a_oil_direct_t2": {
+      "label": "no_piso",
+      "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig7a_oil_direct_t3": {
+      "label": "no_piso",
+      "evidence": "mae 0.010 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig8_multi_t0": {
+      "label": "no_piso",
+      "evidence": "mae 0.016 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig8_multi_t1": {
+      "label": "no_piso",
+      "evidence": "mae 0.053 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig8_multi_t2": {
+      "label": "no_piso",
+      "evidence": "mae 0.058 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig8_multi_t3": {
+      "label": "no_piso",
+      "evidence": "mae 0.040 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "liu2022_fig8_multi_t4": {
+      "label": "no_piso",
+      "evidence": "mae 0.037 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2022_RETIGHT",
+      "family": "transverse"
+    },
+    "li2022marstruc_creep_10kN_Ra0p8_min": {
+      "label": "no_piso",
+      "evidence": "mae 0.006 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LI_2022_MARSTRUC",
+      "family": "creep"
+    },
+    "li2022marstruc_creep_10kN_Ra0p078_min": {
+      "label": "no_piso",
+      "evidence": "mae 0.001 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LI_2022_MARSTRUC",
+      "family": "creep"
+    },
+    "li2022marstruc_creep_10kN_Ra0p122_min": {
+      "label": "no_piso",
+      "evidence": "mae 0.001 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LI_2022_MARSTRUC",
+      "family": "creep"
+    },
+    "li2022marstruc_creep_10kN_Ra0p306_min": {
+      "label": "no_piso",
+      "evidence": "mae 0.003 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LI_2022_MARSTRUC",
+      "family": "creep"
+    },
+    "li2022marstruc_creep_5kN_Ra0p8_min": {
+      "label": "no_piso",
+      "evidence": "mae 0.008 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LI_2022_MARSTRUC",
+      "family": "creep"
+    },
+    "li2022marstruc_creep_15kN_Ra0p8_min": {
+      "label": "no_piso",
+      "evidence": "mae 0.004 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LI_2022_MARSTRUC",
+      "family": "creep"
+    },
+    "li2022ti_axialmin_10Hz": {
+      "label": "no_piso",
+      "evidence": "mae 0.053 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LI_2022_TRIBOINT",
+      "family": "axial"
+    },
+    "li2022ti_axialmin_15Hz": {
+      "label": "no_piso",
+      "evidence": "mae 0.030 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LI_2022_TRIBOINT",
+      "family": "axial"
+    },
+    "li2022ti_axialmin_20Hz": {
+      "label": "no_piso",
+      "evidence": "mae 0.020 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LI_2022_TRIBOINT",
+      "family": "axial"
+    },
+    "li2022ti_axial_10Hz_full": {
+      "label": "no_piso",
+      "evidence": "mae 0.032 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LI_2022_TRIBOINT",
+      "family": "axial"
+    },
+    "10_Yang_2023_phenomenological_model__0_18_mm_below_threshold__1": {
+      "label": "no_piso",
+      "evidence": "mae 0.008 <= max(piso+0.02, 0.1)=0.100",
+      "source": "YANG_2023_IJPEM",
+      "family": "transverse"
+    },
+    "10_Yang_2023_phenomenological_model__0_25_mm__2": {
+      "label": "nivel",
+      "sublabels": [
+        "1 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
+      "source": "YANG_2023_IJPEM",
+      "family": "transverse"
+    },
+    "10_Yang_2023_phenomenological_model__0_35_mm__3": {
+      "label": "forma",
+      "sublabels": [
+        "1 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
+      "source": "YANG_2023_IJPEM",
+      "family": "transverse"
+    },
+    "10_Yang_2023_phenomenological_model__0_45_mm__4": {
+      "label": "forma",
+      "sublabels": [
+        "1 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
+      "source": "YANG_2023_IJPEM",
+      "family": "transverse"
+    },
+    "10_Yang_2023_phenomenological_model__0_55_mm__5": {
+      "label": "nivel",
+      "sublabels": [
+        "1 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
+      "source": "YANG_2023_IJPEM",
+      "family": "transverse"
+    },
+    "10_Yang_2023_phenomenological_model__0_65_mm__6": {
+      "label": "no_piso",
+      "evidence": "mae 0.082 <= max(piso+0.02, 0.1)=0.100",
+      "source": "YANG_2023_IJPEM",
+      "family": "transverse"
+    },
+    "10_Yang_2023_phenomenological_model__0_15_mm_below_threshold__7": {
+      "label": "no_piso",
+      "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.100",
+      "source": "YANG_2023_IJPEM",
+      "family": "transverse"
+    },
+    "10_Yang_2023_phenomenological_model__0_30_mm__8": {
+      "label": "forma",
+      "sublabels": [
+        "1 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
+      "source": "YANG_2023_IJPEM",
+      "family": "transverse"
+    },
+    "10_Yang_2023_phenomenological_model__0_50_mm__9": {
+      "label": "forma",
+      "sublabels": [
+        "1 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
+      "source": "YANG_2023_IJPEM",
+      "family": "transverse"
+    },
+    "liu2016wear_fig9a_m30nm": {
+      "label": "no_piso",
+      "evidence": "mae 0.047 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "liu2016wear_fig9a_m35nm": {
+      "label": "no_piso",
+      "evidence": "mae 0.047 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "liu2016wear_fig9a_m40nm": {
+      "label": "no_piso",
+      "evidence": "mae 0.054 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "liu2016wear_fig9a_m45nm": {
+      "label": "no_piso",
+      "evidence": "mae 0.050 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "liu2016wear_fig9a_m50nm": {
+      "label": "no_piso",
+      "evidence": "mae 0.043 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "liu2016wear_fig11a_af7p5kn": {
+      "label": "no_piso",
+      "evidence": "mae 0.015 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "liu2016wear_fig11a_af8p75kn": {
+      "label": "no_piso",
+      "evidence": "mae 0.026 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "liu2016wear_fig11a_af10kn": {
+      "label": "no_piso",
+      "evidence": "mae 0.031 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "liu2016wear_fig11a_af11p25kn": {
+      "label": "no_piso",
+      "evidence": "mae 0.033 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "liu2016wear_fig11a_af12p5kn": {
+      "label": "no_piso",
+      "evidence": "mae 0.037 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "liu2016wear_fig13a_dry": {
+      "label": "no_piso",
+      "evidence": "mae 0.039 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "liu2016wear_fig13a_mos2": {
+      "label": "no_piso",
+      "evidence": "mae 0.013 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "liu2016wear_fig7_run1_1e6cyc": {
+      "label": "no_piso",
+      "evidence": "mae 0.045 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "liu2016wear_fig7_run2_5e6cyc": {
+      "label": "no_piso",
+      "evidence": "mae 0.060 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2016",
+      "family": "axial"
+    },
+    "chu2026ti_D0p3mm_F0_49kN_test1": {
+      "label": "no_piso",
+      "evidence": "mae 0.066 <= max(piso+0.02, 0.1)=0.100",
+      "source": "CHU_2026",
+      "family": "transverse"
+    },
+    "chu2026ti_D0p4mm_F0_49kN_test2": {
+      "label": "forma",
+      "sublabels": [
+        "3 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
+      "source": "CHU_2026",
+      "family": "transverse"
+    },
+    "chu2026ti_D0p4mm_F0_61kN_test7": {
+      "label": "forma",
+      "sublabels": [
+        "3 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
+      "source": "CHU_2026",
+      "family": "transverse"
+    },
+    "chu2026ti_D0p4mm_F0_73kN_test8": {
+      "label": "forma",
+      "sublabels": [
+        "3 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
+      "source": "CHU_2026",
+      "family": "transverse"
+    },
+    "chu2026ti_D0p5mm_F0_49kN_test3": {
+      "label": "nivel",
+      "sublabels": [
+        "3 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
+      "source": "CHU_2026",
+      "family": "transverse"
+    },
+    "chu2026ti_D0p5mm_F0_49kN_Ra1p6um_test9": {
+      "label": "no_piso",
+      "evidence": "mae 0.045 <= max(piso+0.02, 0.1)=0.100",
+      "source": "CHU_2026",
+      "family": "transverse"
+    },
+    "chu2026ti_D0p7mm_F0_49kN_test4": {
+      "label": "forma",
+      "sublabels": [
+        "3 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
+      "source": "CHU_2026",
+      "family": "transverse"
+    },
+    "chu2026ti_D1p0mm_F0_49kN_test5": {
+      "label": "no_piso",
+      "evidence": "mae 0.040 <= max(piso+0.02, 0.1)=0.100",
+      "source": "CHU_2026",
+      "family": "transverse"
+    },
+    "chu2026ti_D1p0mm_F0_49kN_test6_repeat": {
+      "label": "no_piso",
+      "evidence": "mae 0.027 <= max(piso+0.02, 0.1)=0.100",
+      "source": "CHU_2026",
+      "family": "transverse"
+    },
+    "eccles2010_fig3_typical_no_axial": {
+      "label": "no_piso",
+      "evidence": "mae 0.023 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ECCLES_2010",
+      "family": "transverse"
+    },
+    "eccles2010_fig7a_no_axial": {
+      "label": "no_piso",
+      "evidence": "mae 0.027 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ECCLES_2010",
+      "family": "transverse"
+    },
+    "eccles2010_fig8a_no_axial_baseline1": {
+      "label": "no_piso",
+      "evidence": "mae 0.044 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ECCLES_2010",
+      "family": "transverse"
+    },
+    "eccles2010_fig8c_no_axial_baseline2": {
+      "label": "no_piso",
+      "evidence": "mae 0.043 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ECCLES_2010",
+      "family": "transverse"
+    },
+    "eccles2010_fig6_annotated_4kN_axial": {
+      "label": "forma",
+      "sublabels": [
+        "3 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo cruza zero (forma errada — candidato a falsificação)",
+      "source": "ECCLES_2010",
+      "family": "transverse"
+    },
+    "eccles2010_fig7b_axial_1p1kN_constant": {
+      "label": "no_piso",
+      "evidence": "mae 0.026 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ECCLES_2010",
+      "family": "transverse"
+    },
+    "eccles2010_fig7c_axial_2p7kN_constant": {
+      "label": "no_piso",
+      "evidence": "mae 0.025 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ECCLES_2010",
+      "family": "transverse"
+    },
+    "eccles2010_fig7d_axial_3p1kN_constant": {
+      "label": "no_piso",
+      "evidence": "mae 0.067 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ECCLES_2010",
+      "family": "transverse"
+    },
+    "eccles2010_fig8b_axial_0p7kN_intermittent": {
+      "label": "no_piso",
+      "evidence": "mae 0.044 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ECCLES_2010",
+      "family": "transverse"
+    },
+    "eccles2010_fig8d_axial_3p5kN_intermittent": {
+      "label": "nivel",
+      "sublabels": [
+        "3 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
+      "source": "ECCLES_2010",
+      "family": "transverse"
+    },
+    "yang2023ame_axial": {
+      "label": "nivel",
+      "sublabels": [
+        "3 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
+      "source": "YANG_2023_AME",
+      "family": "axial"
+    },
+    "sun2025efa109235_transverse_nogrease_standard": {
+      "label": "no_piso",
+      "evidence": "mae 0.005 <= max(piso+0.02, 0.1)=0.100",
+      "source": "SUN_2025_CRIMP",
+      "family": "transverse"
+    },
+    "sun2025efa109235_transverse_nogrease_crimp": {
+      "label": "no_piso",
+      "evidence": "mae 0.011 <= max(piso+0.02, 0.1)=0.100",
+      "source": "SUN_2025_CRIMP",
+      "family": "transverse"
+    },
+    "sun2025efa109235_transverse_grease_standard": {
+      "label": "no_piso",
+      "evidence": "mae 0.100 <= max(piso+0.02, 0.1)=0.100",
+      "source": "SUN_2025_CRIMP",
+      "family": "transverse"
+    },
+    "sun2025efa109235_transverse_grease_crimp": {
+      "label": "no_piso",
+      "evidence": "mae 0.022 <= max(piso+0.02, 0.1)=0.100",
+      "source": "SUN_2025_CRIMP",
+      "family": "transverse"
+    },
+    "sun2025efa109235_axial_F7.5kN_standard": {
+      "label": "no_piso",
+      "evidence": "mae 0.025 <= max(piso+0.02, 0.1)=0.100",
+      "source": "SUN_2025_CRIMP",
+      "family": "axial"
+    },
+    "sun2025efa109235_axial_F7.5kN_crimp": {
+      "label": "no_piso",
+      "evidence": "mae 0.022 <= max(piso+0.02, 0.1)=0.100",
+      "source": "SUN_2025_CRIMP",
+      "family": "axial"
+    },
+    "sun2025efa109235_axial_F17.5kN_standard": {
+      "label": "no_piso",
+      "evidence": "mae 0.033 <= max(piso+0.02, 0.1)=0.100",
+      "source": "SUN_2025_CRIMP",
+      "family": "axial"
+    },
+    "sun2025efa109235_axial_F17.5kN_crimp": {
+      "label": "no_piso",
+      "evidence": "mae 0.032 <= max(piso+0.02, 0.1)=0.100",
+      "source": "SUN_2025_CRIMP",
+      "family": "axial"
+    },
+    "sun2025efa110030_fig11a_loosening_reassy02": {
+      "label": "no_piso",
+      "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
+      "source": "SUN_2025_REASSY",
+      "family": "transverse"
+    },
+    "sun2025efa110030_fig11a_loosening_reassy04": {
+      "label": "no_piso",
+      "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
+      "source": "SUN_2025_REASSY",
+      "family": "transverse"
+    },
+    "sun2025efa110030_fig11a_loosening_reassy06": {
+      "label": "no_piso",
+      "evidence": "mae 0.019 <= max(piso+0.02, 0.1)=0.100",
+      "source": "SUN_2025_REASSY",
+      "family": "transverse"
+    },
+    "sun2025efa110030_fig11a_loosening_reassy08": {
+      "label": "no_piso",
+      "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
+      "source": "SUN_2025_REASSY",
+      "family": "transverse"
+    },
+    "sun2025efa110030_fig11a_loosening_reassy10": {
+      "label": "no_piso",
+      "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
+      "source": "SUN_2025_REASSY",
+      "family": "transverse"
+    },
+    "grzejda2026mat_bolt1_base": {
+      "label": "no_piso",
+      "evidence": "mae 0.034 <= max(piso+0.02, 0.1)=0.100",
+      "source": "GRZEJDA_2026",
+      "family": "axial"
+    },
+    "grzejda2026mat_bolt6_central": {
+      "label": "no_piso",
+      "evidence": "mae 0.036 <= max(piso+0.02, 0.1)=0.100",
+      "source": "GRZEJDA_2026",
+      "family": "axial"
+    },
+    "jcsr2023_plain_indoor": {
+      "label": "no_piso",
+      "evidence": "mae 0.001 <= max(piso+0.02, 0.1)=0.100",
+      "source": "JCSR_2023",
+      "family": "creep"
+    },
+    "jcsr2023_plain_outdoor": {
+      "label": "no_piso",
+      "evidence": "mae 0.062 <= max(piso+0.02, 0.1)=0.100",
+      "source": "JCSR_2023",
+      "family": "creep"
+    },
+    "jcsr2023_plain_seawater": {
+      "label": "no_piso",
+      "evidence": "mae 0.029 <= max(piso+0.02, 0.1)=0.100",
+      "source": "JCSR_2023",
+      "family": "creep"
+    },
+    "jcsr2023_galv_seawater": {
+      "label": "no_piso",
+      "evidence": "mae 0.039 <= max(piso+0.02, 0.1)=0.100",
+      "source": "JCSR_2023",
+      "family": "creep"
+    },
+    "jcsr2023_stainless_seawater": {
+      "label": "no_piso",
+      "evidence": "mae 0.062 <= max(piso+0.02, 0.1)=0.100",
+      "source": "JCSR_2023",
+      "family": "creep"
+    },
+    "caccese2009_retighten_12p7mm_no_retighten": {
+      "label": "no_piso",
+      "evidence": "mae 0.015 <= max(piso+0.02, 0.1)=0.100",
+      "source": "CACCESE_2009",
+      "family": "creep"
+    },
+    "caccese2009_retighten_19p1mm_no_retighten": {
+      "label": "no_piso",
+      "evidence": "mae 0.024 <= max(piso+0.02, 0.1)=0.100",
+      "source": "CACCESE_2009",
+      "family": "creep"
+    },
+    "caccese2009_compblock_34kPa": {
+      "label": "no_piso",
+      "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.100",
+      "source": "CACCESE_2009",
+      "family": "creep"
+    },
+    "caccese2009_compblock_71kPa": {
+      "label": "no_piso",
+      "evidence": "mae 0.008 <= max(piso+0.02, 0.1)=0.100",
+      "source": "CACCESE_2009",
+      "family": "creep"
+    },
+    "caccese2009_protruding_45kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
+      "source": "CACCESE_2009",
+      "family": "creep"
+    },
+    "caccese2009_tapered_45kN_rep1": {
+      "label": "no_piso",
+      "evidence": "mae 0.052 <= max(piso+0.02, 0.1)=0.100",
+      "source": "CACCESE_2009",
+      "family": "creep"
+    },
+    "caccese2009_tapered_45kN_rep2": {
+      "label": "no_piso",
+      "evidence": "mae 0.027 <= max(piso+0.02, 0.1)=0.100",
+      "source": "CACCESE_2009",
+      "family": "creep"
+    },
+    "qin2024acm_25C_i0pct": {
+      "label": "no_piso",
+      "evidence": "mae 0.002 <= max(piso+0.02, 0.1)=0.100",
+      "source": "QIN_2024",
+      "family": "creep"
+    },
+    "qin2024acm_25C_i0p6pct": {
+      "label": "no_piso",
+      "evidence": "mae 0.005 <= max(piso+0.02, 0.1)=0.100",
+      "source": "QIN_2024",
+      "family": "creep"
+    },
+    "qin2024acm_25C_i1p2pct": {
+      "label": "no_piso",
+      "evidence": "mae 0.010 <= max(piso+0.02, 0.1)=0.100",
+      "source": "QIN_2024",
+      "family": "creep"
+    },
+    "zhang2006_fig3_illus_M12x125_20kN_amp0p35": {
+      "label": "nivel",
+      "sublabels": [
+        "3 inputs 'assumed' (µ domina o OAT §4.42)"
+      ],
+      "evidence": "resíduo de um sinal só (curva certa, nível errado — alavanca: constante/input per-rig)",
+      "source": "ZHANG_2006",
+      "family": "transverse"
+    },
+    "zhang2006_fig16_runout_40kN_amp0p125": {
+      "label": "no_piso",
+      "evidence": "mae 0.012 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2006",
+      "family": "transverse"
+    },
+    "zhang18_fig2_test1_20kN_1e3cyc_preload_vs_cycles": {
+      "label": "no_piso",
+      "evidence": "mae 0.016 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2018",
+      "family": "transverse"
+    },
+    "zhang18_fig2_test2_20kN_1e4cyc_preload_vs_cycles": {
+      "label": "no_piso",
+      "evidence": "mae 0.013 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2018",
+      "family": "transverse"
+    },
+    "zhang18_fig2_test3_20kN_1e5cyc_preload_vs_cycles": {
+      "label": "no_piso",
+      "evidence": "mae 0.019 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2018",
+      "family": "transverse"
+    },
+    "zhang18_fig2_test4_20kN_5e5cyc_preload_vs_cycles": {
+      "label": "no_piso",
+      "evidence": "mae 0.024 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2018",
+      "family": "transverse"
+    },
+    "zhang18_fig13_14kN_preload_vs_cycles": {
+      "label": "no_piso",
+      "evidence": "mae 0.025 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2018",
+      "family": "transverse"
+    },
+    "zhang18_fig13_20kN_preload_vs_cycles": {
+      "label": "no_piso",
+      "evidence": "mae 0.021 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2018",
+      "family": "transverse"
+    },
+    "zhang18_fig13_26kN_preload_vs_cycles": {
+      "label": "no_piso",
+      "evidence": "mae 0.017 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2018",
+      "family": "transverse"
+    },
+    "zhang18_fig16_with_locker_preload_vs_cycles": {
+      "label": "no_piso",
+      "evidence": "mae 0.008 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2018",
+      "family": "transverse"
+    },
+    "zhang18_fig16_without_locker_preload_vs_cycles": {
+      "label": "no_piso",
+      "evidence": "mae 0.023 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2018",
+      "family": "transverse"
+    },
+    "zhang19_fig4_1e3cyc_Test1to3_preload_vs_cycles": {
+      "label": "no_piso",
+      "evidence": "mae 0.003 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2019",
+      "family": "transverse"
+    },
+    "zhang19_fig4_1e4cyc_Test4to6_preload_vs_cycles": {
+      "label": "no_piso",
+      "evidence": "mae 0.018 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2019",
+      "family": "transverse"
+    },
+    "zhang19_fig4_1e5cyc_Test7to9_preload_vs_cycles": {
+      "label": "no_piso",
+      "evidence": "mae 0.024 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2019",
+      "family": "transverse"
+    },
+    "zhang19_fig4_2e5cyc_Test10to12_preload_vs_cycles": {
+      "label": "no_piso",
+      "evidence": "mae 0.020 <= max(piso+0.02, 0.1)=0.100",
+      "source": "ZHANG_2019",
+      "family": "transverse"
+    },
+    "liu2020_fig5b_zinc_P0-12kN_AF0.2mm": {
+      "label": "no_piso",
+      "evidence": "mae 0.010 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2020_WEAR",
+      "family": "transverse"
+    },
+    "liu2020_fig5b_zinc_P0-18kN_AF0.2mm": {
+      "label": "no_piso",
+      "evidence": "mae 0.009 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2020_WEAR",
+      "family": "transverse"
+    },
+    "liu2020_fig5b_zinc_P0-24kN_AF0.2mm": {
+      "label": "no_piso",
+      "evidence": "mae 0.007 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2020_WEAR",
+      "family": "transverse"
+    },
+    "liu2020_fig9_zinc_AF0.1mm_P0-18kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.016 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2020_WEAR",
+      "family": "transverse"
+    },
+    "liu2020_fig9_zinc_AF0.2mm_P0-18kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.005 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2020_WEAR",
+      "family": "transverse"
+    },
+    "liu2020_fig9_zinc_AF0.3mm_P0-18kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.019 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2020_WEAR",
+      "family": "transverse"
+    },
+    "liu2020_fig9_zinc_AF0.4mm_P0-18kN": {
+      "label": "no_piso",
+      "evidence": "mae 0.073 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2020_WEAR",
+      "family": "transverse"
+    },
+    "liu2020_fig15_DLC_P0-18kN_AF0.2mm": {
+      "label": "no_piso",
+      "evidence": "mae 0.006 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2020_WEAR",
+      "family": "transverse"
+    },
+    "liu2020_fig15_DLC_P0-19.28kN_AF0.2mm": {
+      "label": "no_piso",
+      "evidence": "mae 0.005 <= max(piso+0.02, 0.1)=0.100",
+      "source": "LIU_2020_WEAR",
+      "family": "transverse"
+    }
+  },
+  "by_source": {
+    "LIU_2025": {
+      "no_piso": 7
+    },
+    "BAUER_2024": {
+      "no_piso": 9
+    },
+    "LIU_2017_AXIAL": {
+      "no_piso": 9
+    },
+    "LU_2024": {
+      "nivel": 1,
+      "no_piso": 5,
+      "forma": 4
+    },
+    "ROUSSEAU_2025": {
+      "no_piso": 6
+    },
+    "ICMEZ_2025": {
+      "no_piso": 8
+    },
+    "YANG_2021": {
+      "no_piso": 6
+    },
+    "YANG_2019": {
+      "no_piso": 5
+    },
+    "KARLSEN_2022": {
+      "no_piso": 11
+    },
+    "LIU_2022_RETIGHT": {
+      "no_piso": 21
+    },
+    "LI_2022_MARSTRUC": {
+      "no_piso": 6
+    },
+    "LI_2022_TRIBOINT": {
+      "no_piso": 4
+    },
+    "YANG_2023_IJPEM": {
+      "no_piso": 3,
+      "nivel": 2,
+      "forma": 4
+    },
+    "LIU_2016": {
+      "no_piso": 14
+    },
+    "CHU_2026": {
+      "no_piso": 4,
+      "forma": 4,
+      "nivel": 1
+    },
+    "ECCLES_2010": {
+      "no_piso": 8,
+      "forma": 1,
+      "nivel": 1
+    },
+    "YANG_2023_AME": {
+      "nivel": 1
+    },
+    "SUN_2025_CRIMP": {
+      "no_piso": 8
+    },
+    "SUN_2025_REASSY": {
+      "no_piso": 5
+    },
+    "GRZEJDA_2026": {
+      "no_piso": 2
+    },
+    "JCSR_2023": {
+      "no_piso": 5
+    },
+    "CACCESE_2009": {
+      "no_piso": 7
+    },
+    "QIN_2024": {
+      "no_piso": 3
+    },
+    "ZHANG_2006": {
+      "nivel": 1,
+      "no_piso": 1
+    },
+    "ZHANG_2018": {
+      "no_piso": 9
+    },
+    "ZHANG_2019": {
+      "no_piso": 4
+    },
+    "LIU_2020_WEAR": {
+      "no_piso": 9
+    }
+  },
+  "totals": {
+    "n": 202,
+    "no_piso": 182,
+    "nivel": 7,
+    "forma": 13
   }
- },
- "by_source": {
-  "UFU_LAB": {
-   "no_piso": 3
-  },
-  "LIU_2025": {
-   "no_piso": 7
-  },
-  "BAUER_2024": {
-   "no_piso": 9
-  },
-  "LIU_2017_AXIAL": {
-   "no_piso": 9
-  },
-  "LU_2024": {
-   "nivel": 1,
-   "no_piso": 5,
-   "forma": 4
-  },
-  "ROUSSEAU_2025": {
-   "no_piso": 6
-  },
-  "ICMEZ_2025": {
-   "no_piso": 8
-  },
-  "YANG_2021": {
-   "no_piso": 6
-  },
-  "YANG_2019": {
-   "no_piso": 5
-  },
-  "KARLSEN_2022": {
-   "no_piso": 11
-  },
-  "LIU_2022_RETIGHT": {
-   "no_piso": 21
-  },
-  "LI_2022_MARSTRUC": {
-   "no_piso": 6
-  },
-  "LI_2022_TRIBOINT": {
-   "no_piso": 4
-  },
-  "YANG_2023_IJPEM": {
-   "no_piso": 3,
-   "nivel": 2,
-   "forma": 4
-  },
-  "LIU_2016": {
-   "no_piso": 14
-  },
-  "CHU_2026": {
-   "no_piso": 4,
-   "forma": 4,
-   "nivel": 1
-  },
-  "ECCLES_2010": {
-   "no_piso": 8,
-   "forma": 1,
-   "nivel": 1
-  },
-  "YANG_2023_AME": {
-   "nivel": 1
-  },
-  "SUN_2025_CRIMP": {
-   "no_piso": 8
-  },
-  "SUN_2025_REASSY": {
-   "no_piso": 5
-  },
-  "GRZEJDA_2026": {
-   "no_piso": 2
-  },
-  "JCSR_2023": {
-   "no_piso": 5
-  },
-  "CACCESE_2009": {
-   "no_piso": 7
-  },
-  "QIN_2024": {
-   "no_piso": 3
-  },
-  "ZHANG_2006": {
-   "nivel": 1,
-   "no_piso": 1
-  },
-  "ZHANG_2018": {
-   "no_piso": 9
-  },
-  "ZHANG_2019": {
-   "no_piso": 4
-  },
-  "LIU_2020_WEAR": {
-   "no_piso": 9
-  }
- },
- "totals": {
-  "n": 202,
-  "no_piso": 182,
-  "nivel": 7,
-  "forma": 13
- }
 }

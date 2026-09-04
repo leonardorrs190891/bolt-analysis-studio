@@ -3,7 +3,7 @@
 **Complete Technical Reference for Bolt Analysis Studio**
 
 **Authors:** L. Ribeiro, D. Carvalho, S.C. Naves, T. Santos, V. Marques, G. Arruda
-**Institution:** LTAD/UFU - Tribology and Wear Technology Laboratory, Federal University of Uberlândia
+**Institution:** internal reference - Tribology and Wear Technology Laboratory, Federal University of Uberlândia
 **Project:** Petrobras R&D - Bolted Flange Joint Integrity
 
 ---

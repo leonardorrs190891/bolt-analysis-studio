@@ -368,10 +368,10 @@ for contact in manager.contacts:
 For issues or questions:
 - See main CLAUDE.md for project structure
 - Check documentation in src/bolt_analysis_studio/
-- Contact: LTAD/UFU - Petrobras R&D
+- Contact: internal reference - Petrobras R&D
 
 ---
 
 **Bolt Analysis Studio v4.0**
-LTAD/UFU + Petrobras R&D
+internal reference + Petrobras R&D
 January 2026

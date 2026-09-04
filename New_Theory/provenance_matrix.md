@@ -48,7 +48,7 @@ reconciliada"* e aqui foi **reproduzida por rota independente**.
 
 | constante | valor | classe | fitada | por quê |
 |---|--:|---|:--:|---|
-| `C_creep` | 1.86673e-11 | **ANCORA_POR_PAR** | sim | âncora POR PAR (sec4.7 + denotter): 4 pares; o canônico É o par UFU |
+| `C_creep` | 1.86673e-11 | **ANCORA_POR_PAR** | sim | âncora POR PAR (sec4.7 + denotter): 4 pares; o canônico É o par da âncora interna |
 | `N_emb` | 50 | **BANDA_FORA** | — | banda medida [3, 15] (faixa per-rig LIDA do dado); valor FORA, 3.33x ACIMA do teto |
 | `W_conf_ref` | 7671.21 | **FIT_SEM_ANCORA** | sim | está em free_constants e não tem banda nem âncora |
 | `c_D` | 2 | **SEM_PROCEDENCIA** | — | nenhuma banda, âncora ou decisão registrada no KB |
@@ -119,7 +119,7 @@ acima do topo**.
 
 **O que isso é, e o que não é.** Não é erro aritmético nem valor
 inventado: `N_emb` é a constante de tempo do assentamento, e o valor 50
-saiu do fit compartilhado na escala UFU. A faixa [3, 15] saiu de ler o
+saiu do fit compartilhado na escala da âncora interna. A faixa [3, 15] saiu de ler o
 **tempo de joelho** curva a curva. As duas coisas medem o mesmo relógio e
 discordam por 3×. Duas leituras possíveis, e a varredura não decide entre
 elas:
@@ -128,7 +128,7 @@ elas:
    individual exibe (mesma classe do `W_conf_ref` per-par);
 2. o `N_emb` canônico está absorvendo atraso que pertence a outro
    mecanismo — e há candidato nomeado na fila: **incubação do
-   assentamento** (item 8, UFU: *"dado plano até N≈38 e o modelo assenta
+   assentamento** (item 8, âncora interna: *"dado plano até N≈38 e o modelo assenta
    desde o ciclo 1"*), que é exatamente um atraso que hoje não existe no
    engine.
 

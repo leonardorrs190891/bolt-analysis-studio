@@ -275,7 +275,7 @@ digitization pass given BAS V2's surface-damage coupling.
   paired 1:1 with each of these same F/F0 curves.
 - **Geometry**: MJ10 aerospace thread (bolt GH159, nut+plate GH4169), silver-coated
   threads, dry nut-plate bearing — a different material/lubrication regime than the
-  UFU M16 rig; treat any fitted constants here as per-rig/per-pair (per
+  âncora interna M16 rig; treat any fitted constants here as per-rig/per-pair (per
   `MODEL_LEGITIMACY.md` §4.7/§4.8 discipline), not universal.
 
 ## Digitization caveats

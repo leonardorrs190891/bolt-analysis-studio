@@ -17,7 +17,7 @@
    `shared`" framing is imprecise — the Run uses `JointMaterial` defaults + hardcoded
    `conf_defaults` + `_v2_tuner_overrides`.
 3. **`_v2_tuner_overrides` is NOT serialized.** `model.py` persists only `two_stage_overrides`
-   (V1). The `main_window.py:4914` comment ("survive save/load") is WRONG. On-disk UFU `.msd`
+   (V1). The `main_window.py:4914` comment ("survive save/load") is WRONG. On-disk âncora interna `.msd`
    carry no V2 `k_*_scale`. So the shim's real inputs are (a) in-session overrides from a live
    StagedCalibrator run and (b) the `profiles` block — NOT persisted `.msd`. Surfaces a
    **persistence decision** (Phase 0).

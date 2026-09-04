@@ -123,7 +123,7 @@ desgaste **dentro** de procedência medida. Constante nova ⇒ prereg. Ver
 **(5) `N_emb` = 50 vs faixa lida [3, 15]** — já estava registrado como "não
 reconciliada". O que acrescentei são **duas leituras**, e a 2ª é acionável: o
 `N_emb` pode estar absorvendo atraso que pertence à **incubação do assentamento**
-(fila item 8, UFU: *"dado plano até N≈38 e o modelo assenta desde o ciclo 1"*).
+(fila item 8, âncora interna: *"dado plano até N≈38 e o modelo assenta desde o ciclo 1"*).
 Diagnóstico só-leitura, sem prereg.
 
 **(6) `checkable_inputs` cobre 2 das 10 constantes compartilhadas** — as outras 8

@@ -26,7 +26,7 @@ VARIABLE_SPECS.extend([
             "espalha a mesma queda por muitos ciclos (rampa suave). A assíntota &amp;minus; e a "
             "F/F0 final &amp;minus; ficam praticamente iguais.&lt;/p&gt;"
             "&lt;p&gt;É uma constante &lt;b&gt;compartilhada do Estágio A&lt;/b&gt; (fitada uma única vez no "
-            "dataset inteiro, não por condição); o default de 50 ciclos vale para o rig UFU. "
+            "dataset inteiro, não por condição); o default de 50 ciclos vale para o rig âncora interna. "
             "Trabalha em par com &lt;code&gt;emb_depth&lt;/code&gt;: um fixa a escala de tempo, o outro a "
             "profundidade.&lt;/p&gt;"),
         physics_en=(
@@ -42,7 +42,7 @@ VARIABLE_SPECS.extend([
             "over many cycles (gentle ramp). The asymptote &amp;minus; and the final F/F0 &amp;minus; "
             "stay essentially the same.&lt;/p&gt;"
             "&lt;p&gt;It is a &lt;b&gt;Stage-A shared constant&lt;/b&gt; (fitted once over the whole dataset, "
-            "not per condition); the default of 50 cycles fits the UFU rig. It works as a "
+            "not per condition); the default of 50 cycles fits the âncora interna rig. It works as a "
             "pair with &lt;code&gt;emb_depth&lt;/code&gt;: one sets the timescale, the other the "
             "depth.&lt;/p&gt;"),
         refs=[("&amp;sect;4.1 EmbeddingLoss &amp;minus; constante de tempo da exponencial de Norton",
@@ -223,7 +223,7 @@ VARIABLE_SPECS.extend([
             "&lt;b&gt;reusada&lt;/b&gt; pelo canal lento (&lt;code&gt;creep_conform_exp&lt;/code&gt;).&lt;/p&gt;"
             "&lt;p&gt;Só é LIDA se algum expoente de conformação for &amp;gt; 0 (senão inerte). É uma "
             "&lt;b&gt;âncora per-rig&lt;/b&gt;, como &lt;code&gt;emb_depth&lt;/code&gt;; o default de 1.5e8 Pa "
-            "(~150 MPa) vale para o rig UFU.&lt;/p&gt;"),
+            "(~150 MPa) vale para o rig âncora interna.&lt;/p&gt;"),
         physics_en=(
             "&lt;p&gt;This is the &lt;b&gt;reference pressure&lt;/b&gt; of the embedding conformance: the clamp "
             "pressure at which the factor S_conf equals 1. Below it the joint still has full "
@@ -237,7 +237,7 @@ VARIABLE_SPECS.extend([
             "is &lt;b&gt;reused&lt;/b&gt; by the slow channel (&lt;code&gt;creep_conform_exp&lt;/code&gt;).&lt;/p&gt;"
             "&lt;p&gt;It is only READ if some conformance exponent is &amp;gt; 0 (inert otherwise). It is "
             "a &lt;b&gt;per-rig anchor&lt;/b&gt;, like &lt;code&gt;emb_depth&lt;/code&gt;; the default of 1.5e8 Pa "
-            "(~150 MPa) fits the UFU rig.&lt;/p&gt;"),
+            "(~150 MPa) fits the âncora interna rig.&lt;/p&gt;"),
         refs=[("&amp;sect;4.1 / &amp;sect;6 EmbeddingLoss &amp;minus; âncora de pressão (reusada pelo canal lento)",
                "&amp;sect;4.1 / &amp;sect;6 EmbeddingLoss &amp;minus; pressure anchor (reused by the slow channel)",
                "MODEL_MATH_REFERENCE.md"),
@@ -1850,7 +1850,7 @@ VARIABLE_SPECS.extend([
             "confere ao termo cinemático essa não-linearidade de amplitude.&lt;/p&gt;"
             "&lt;p&gt;No modelo ele reescala o termo do ratchet por (slip/LOOSE_AMP_REF)^(exp&amp;minus;1), "
             "com a escala de referência LOOSE_AMP_REF = 5&amp;times;10^&amp;minus;4 m (o curso "
-            "&amp;plusmn;0.5 mm de referência do rig UFU). Em exp = 1 o fator é exatamente 1 e o engine "
+            "&amp;plusmn;0.5 mm de referência do rig âncora interna). Em exp = 1 o fator é exatamente 1 e o engine "
             "fica bit-idêntico ao ratchet linear; em exp &amp;gt; 1 a resposta fica ÍNGREME &amp;minus; "
             "amplitudes acima da referência afrouxam desproporcionalmente mais e as abaixo, muito "
             "menos &amp;minus; reproduzindo a inclinação forte da curva D-N (na parcela excedente do "
@@ -1871,7 +1871,7 @@ VARIABLE_SPECS.extend([
             "term that amplitude non-linearity.&lt;/p&gt;"
             "&lt;p&gt;In the model it rescales the ratchet term by (slip/LOOSE_AMP_REF)^(exp&amp;minus;1), "
             "with the reference scale LOOSE_AMP_REF = 5&amp;times;10^&amp;minus;4 m (the &amp;plusmn;0.5 mm "
-            "reference stroke of the UFU rig). At exp = 1 the factor is exactly 1 and the engine is "
+            "reference stroke of the âncora interna rig). At exp = 1 the factor is exactly 1 and the engine is "
             "bit-identical to the linear ratchet; at exp &amp;gt; 1 the response becomes STEEP &amp;minus; "
             "amplitudes above the reference loosen disproportionately more and those below far less "
             "&amp;minus; reproducing the strong slope of the D-N curve (on the excess slip the effective "
@@ -2222,7 +2222,7 @@ VARIABLE_SPECS.extend([
             "&lt;p&gt;&lt;b&gt;N&amp;Atilde;O adotado&lt;/b&gt;: a 6&amp;ordf; falsifica&amp;ccedil;&amp;atilde;o do dossi&amp;ecirc; &amp;eacute; ESTRUTURAL — o corte "
             "de stick limita o mecanismo ao limiar de slip; abaixo dele os canais macro "
             "n&amp;atilde;o produzem a cauda da 0,4 mm com constantes compartilhadas. Slider "
-            "inerte no baseline UFU (0,65 mm = regime de slip), por isso honesto "
+            "inerte no baseline âncora interna (0,65 mm = regime de slip), por isso honesto "
             "negligible.&lt;/p&gt;"),
         physics_en=(
             "&lt;p&gt;&lt;b&gt;Stick-regime ratchet with incubation&lt;/b&gt; (2026-08-10): flank micro-slip "
@@ -2850,9 +2850,9 @@ VARIABLE_SPECS.extend([
             "perda se auto-arresta. Companheiro &lt;code&gt;conform_driver&lt;/code&gt;.&lt;/p&gt;"
             "&lt;p&gt;Constante física ADOTADA no bloco &lt;code&gt;shared&lt;/code&gt; canônico "
             "(2026-07-04; sobretorque 0.138&amp;rarr;0.030 &amp;minus; primeira promoção de um "
-            "experimento ao canônico). Valor UFU por-par ~7671 J. A âncora da Fase 3 "
+            "experimento ao canônico). Valor âncora interna por-par ~7671 J. A âncora da Fase 3 "
             "FALHOU (nenhum dado da biblioteca a isola), então permanece por-par, um "
-            "degrau abaixo do C_creep; calibrada na escala UFU (caveat de escala).&lt;/p&gt;"),
+            "degrau abaixo do C_creep; calibrada na escala da âncora interna (caveat de escala).&lt;/p&gt;"),
         physics_en=(
             "&lt;p&gt;Reference energy of the pressure-dependent conformation ARREST. The "
             "high-pressure contact conforms (beds/plateaus) and progressively arrests the "
@@ -2866,9 +2866,9 @@ VARIABLE_SPECS.extend([
             "the loss self-arrests. Companion &lt;code&gt;conform_driver&lt;/code&gt;.&lt;/p&gt;"
             "&lt;p&gt;Physical constant ADOPTED into the canonical &lt;code&gt;shared&lt;/code&gt; block "
             "(2026-07-04; overtorque 0.138&amp;rarr;0.030 &amp;minus; the first promotion of an "
-            "experiment to canonical). UFU per-pair value ~7671 J. The Phase-3 anchor "
+            "experiment to canonical). âncora interna per-pair value ~7671 J. The Phase-3 anchor "
             "FAILED (no library data isolates it), so it stays per-pair, one step below "
-            "C_creep; calibrated at the UFU scale (scale caveat).&lt;/p&gt;"),
+            "C_creep; calibrated at the âncora interna scale (scale caveat).&lt;/p&gt;"),
         refs=[("&amp;sect;6 / &amp;sect;4.9 conformação dependente de pressão (ADOTADA no shared)",
                "&amp;sect;6 / &amp;sect;4.9 pressure-dependent conformation (ADOPTED in shared)",
                "MODEL_MATH_REFERENCE.md"),

@@ -23,7 +23,7 @@ eram **10**.
 ## Por que a colheita não está fundida ao config
 
 `engine_fingerprint()` hasheia `adopted_config(s)` **inteiro** — incluindo `prov`.
-Fundir muda o fingerprint e obriga a re-carimbar os 210 registros do store: é operação
+Fundir muda o fingerprint e obriga a re-carimbar os 207 registros do store: é operação
 de adoção, single-writer. O teste vigia o **par** (config + colheita), que é o estado
 real do conhecimento, e não força a fusão.
 """
@@ -148,7 +148,7 @@ def test_a_colheita_NAO_escreve_no_config():
     ruins = [a for a in alvos if "adopted" in a.lower()]
     assert not ruins, (
         f"a colheita ESCREVE no config: {ruins}. Fundir é operação de adoção "
-        f"(muda o `engine_fingerprint`, exige re-carimbar os 210 e janela "
+        f"(muda o `engine_fingerprint`, exige re-carimbar os 207 e janela "
         f"single-writer), não passo de script.")
 
 

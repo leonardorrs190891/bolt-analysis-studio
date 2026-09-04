@@ -1,7 +1,7 @@
 # Plano — o caminho das 29 não-resolvidas para o tripé (ou estatuto)
 
 **2026-08-01** · pedido do professor: *"vamos ver nosso plano para o resto
-ficar no tripé"*, após a exclusão temporária da UFU_LAB (3 ensaios
+ficar no tripé"*, após a exclusão temporária da ANCORA_INTERNA (3 ensaios
 preservados para nova rodada experimental). Baseline: **tripé 134/201
 (67 %) · resolvida/declarada 172/201** · 67 fora = 29 exceções + 9
 declaradas + **29 não-resolvidas** (a fila deste plano), fingerprint
@@ -158,7 +158,7 @@ biblioteca.
 | digitalizar réplicas publicadas (YANG_2021; auditar YANG_2019) | até 6 | campanha | dias |
 | declarar CFRP fora de escopo | 1 | professor (assinatura) | imediato |
 | PDF do YANG_2023_IJPEM | 3 | professor (acesso) | ? |
-| bancada: Ra/réplicas CHU · 3ª réplica LU · (UFU quando voltar) | 8–11 | professor | semanas |
+| bancada: Ra/réplicas CHU · 3ª réplica LU · (âncora interna quando voltar) | 8–11 | professor | semanas |
 | formas com âncora (N₉₅ LIU_2025 · dano não-monótono CHU) | 10+carona | campanha + PR-3 | semanas |
 
 **Teto realista sem bancada e sem formas novas: ~172→176/201 resolvidas.**

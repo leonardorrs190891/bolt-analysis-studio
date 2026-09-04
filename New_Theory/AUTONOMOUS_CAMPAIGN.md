@@ -99,7 +99,7 @@ não é autonomia genérica, é autorização nos pontos onde ela faltou.
 **DO PROFESSOR — pare e pergunte (não são medíveis):**
 
 - **régua** (os limites do tripé) — define o que significa "bom";
-- **escopo do projeto** — material/fonte dentro ou fora (CFRP, UFU);
+- **escopo do projeto** — material/fonte dentro ou fora (CFRP, âncora interna);
 - **estatuto NOVO** — criar categoria que ainda não existe;
 - **rodada experimental** — bancada, dinheiro, tempo de terceiros;
 - **publicação / comunicação externa**;

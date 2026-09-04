@@ -61,7 +61,7 @@ diagnóstico pronto. Decida quando quiser; cada item diz o que destrava.
 >
 > | item | decisão | por quê |
 > |---|---|---|
-> | **AC(b)** figura da UFU | **SAI** | a UFU saiu do projeto em 01/08; preservar curva no store **não é** publicar figura dela. Retirada dos **3** lugares; a função fica marcada, porque apagá-la perderia o registro |
+> | **AC(b)** figura da âncora interna | **SAI** | a âncora interna saiu do projeto em 01/08; preservar curva no store **não é** publicar figura dela. Retirada dos **3** lugares; a função fica marcada, porque apagá-la perderia o registro |
 > | **AC(a)** exportador | **versionado + as 8 que faltavam** | era o gargalo real, e é trabalho meu, não decisão de domínio |
 > | **AB(a)** matriz no report | **ENTRA** | mede o que o engenheiro usa, os números já existiam, custa **zero** ao censo |
 > | **AB(b)** falso seguro | **GATE de adoção, NÃO 4ª perna** | 4ª perna mudaria o **censo publicado**, e a sessão de 07-29 mostrou como perna nova cascateia por todo documento vivo. Gate custa zero e pega a direção perigosa |
@@ -104,14 +104,14 @@ diagnóstico pronto. Decida quando quiser; cada item diz o que destrava.
 > |---|---|
 > | **não versionado** | `git log` não tem nenhum commit dele |
 > | 6 semanas desatualizado | de 14/jul |
-> | ⚠️ **figura VENCIDA** | `fig_condicoes_referencia_ufu` — a UFU **saiu em 01/08**; as 3 curvas seguem no store (**0 comparáveis**), então a figura **ainda gera** com dado fora do projeto. Num artigo é **erro material**. |
+> | ⚠️ **figura VENCIDA** | `ancora_interna` — a âncora interna **saiu em 01/08**; as 3 curvas seguem no store (**0 comparáveis**), então a figura **ainda gera** com dado fora do projeto. Num artigo é **erro material**. |
 > | cobre | **2 das 10** figuras recomendadas |
 >
 > As outras 8 existem como **SVG de tela** — tema escuro, fonte 10 px, sem numeração. Revista
 > pede traço/cinza, fonte legível em coluna e PDF vetorial.
 >
 > **Duas decisões suas:** (a) versiono e atualizo o exportador, com as 8 figuras que faltam em
-> qualidade de publicação? (b) a figura da UFU sai ou ganha marca de "fora do escopo"?
+> qualidade de publicação? (b) a figura da âncora interna sai ou ganha marca de "fora do escopo"?
 >
 > **E uma dívida que bloqueia uma TABELA, não figura:** a tabela de constantes com procedência
 > — a que separa o artigo de um exercício de ajuste — **não pode ser escrita por inteiro
@@ -341,7 +341,7 @@ diagnóstico pronto. Decida quando quiser; cada item diz o que destrava.
 > sua, não medição.
 >
 > **Custo ZERO, medido:** 6 grupos com `cfg` efetivo **idêntico** a um irmão, colapsáveis sem
-> tocar em número nenhum (`BAUER fig6_rep2/3/4`, `KARLSEN run2p2/7p1/14p2`, `UFU 13A
+> tocar em número nenhum (`BAUER fig6_rep2/3/4`, `KARLSEN run2p2/7p1/14p2`, `âncora interna 13A
 > first/def`, `MARSTRUC ra0p8/ra0p306` — este último é a §4 de outro ângulo: dois níveis de
 > rugosidade com o mesmo config).
 >
@@ -1393,7 +1393,7 @@ o primário** e bate ao dígito com a nota de aparato.
 
 | # | item | o que decide | custo medido |
 |---|---|---|---|
-| ~~**A**~~ | ✅ **CONVERGIDO em 2026-08-14** — **12 fases: 238 → 206 (errata) → … → 13 (2026-08-14) → **3** de 467 (2026-08-28)**; cobertura **49 % → 97 % → 99 %** | nada a decidir: as **13** de 08-14 foram verificadas **por leitura** e **não tinham registro** — 3 são `UFU_LAB` (fora do projeto) | deriva **zero** provada nos 210 × 3 pernas nas **doze** fases; zero linha de física. ⚠️ **Recusei zerar o passivo** em 08-14: gravar *"fitado, origem não localizada"* contaria como documentado e tiraria a lacuna do radar. ✅ **2026-08-28, a pedido do professor (*"resolva todas"*): 13 → 3.** Os 10 não-UFU ganharam texto com **rastro**, não rótulo: KARLSEN run7p1/run2p2 `C_creep`/`c_D` = mesmo valor do grupo-pai KARLSEN_2022, cuja `prov` já declarava a classe (cisão per-run PR-12c `4ea4ad6` / D-Y); ZHANG_2006_fig16 `emb_um` 1,58 lido do fig16 (`zhang2006_fig3_estudo_do_caso.md`), `d_hole` ISO 273 e `d_washer` ISO 7089 como o irmão ZHANG_2006 (F1 `e519c25`); ZHANG_2019 `mu_thread` 0,241 = **input-de-paper** (Tabela 2 via nota de aparato `zhang.md` l.89, adotado na Opção A `6960a26`). Os **2 do YANG_2019** (`emb_um` 5,0 e `slip_onset_W` 40 kJ, no config desde o registro `385ed72` com verdict §4.21) declaram **no próprio texto** *"sem leitura L24 registrada ⇒ classe conservadora fitado-this-rig"* — a lacuna segue visível, agora dentro do documento. Os 3 UFU ficam. Store re-carimbado `db7de97e682a` → `79af1f607cb7` |
+| ~~**A**~~ | ✅ **CONVERGIDO em 2026-08-14** — **12 fases: 238 → 206 (errata) → … → 13 (2026-08-14) → 3 de 467 (2026-08-28) → **0** de 458 (2026-09-04)**; cobertura **49 % → 97 % → 99 %** | nada a decidir: as **13** de 08-14 foram verificadas **por leitura** e **não tinham registro** — 3 são `ANCORA_INTERNA` (fora do projeto) | deriva **zero** provada nos 210 × 3 pernas nas **doze** fases; zero linha de física. ⚠️ **Recusei zerar o passivo** em 08-14: gravar *"fitado, origem não localizada"* contaria como documentado e tiraria a lacuna do radar. ✅ **2026-08-28, a pedido do professor (*"resolva todas"*): 13 → 3.** Os 10 não-âncora interna ganharam texto com **rastro**, não rótulo: KARLSEN run7p1/run2p2 `C_creep`/`c_D` = mesmo valor do grupo-pai KARLSEN_2022, cuja `prov` já declarava a classe (cisão per-run PR-12c `4ea4ad6` / D-Y); ZHANG_2006_fig16 `emb_um` 1,58 lido do fig16 (`zhang2006_fig3_estudo_do_caso.md`), `d_hole` ISO 273 e `d_washer` ISO 7089 como o irmão ZHANG_2006 (F1 `e519c25`); ZHANG_2019 `mu_thread` 0,241 = **input-de-paper** (Tabela 2 via nota de aparato `zhang.md` l.89, adotado na Opção A `6960a26`). Os **2 do YANG_2019** (`emb_um` 5,0 e `slip_onset_W` 40 kJ, no config desde o registro `385ed72` com verdict §4.21) declaram **no próprio texto** *"sem leitura L24 registrada ⇒ classe conservadora fitado-this-rig"* — a lacuna segue visível, agora dentro do documento. Os 3 que restavam eram das curvas de bancada, e o passivo foi a **0 em 2026-09-04 por REMOÇÃO, não por resolução**: aqueles casos saíram do projeto (dado sigiloso, decisão do professor) e levaram junto as 14 entradas do baseline de procedência (206 → 192) e 3 curvas do corpus (210 → 207). Registrar isso como dívida paga seria contar como trabalho o que foi supressão. Store re-carimbado `db7de97e682a` → `79af1f607cb7` → re-carimbado de novo em 2026-09-04 (a procedência mudou de texto, a física não) |
 | ~~**B**~~ ✅ **EXECUTADO pela sessão B em `42580a4` (2026-08-14 22:xx)** — verificado hoje: `SOURCE_INPUTS[CHU_2026]` tem **`rz="Rz<4"`** e as 9 curvas rodam com **`emb_um = 3,5 µm`**; a `test9` (Ra 1,6) vem por `per_case` em **9,5 µm**. **Censo inalterado** — `test1`/`test5`/`test6` têm o `emb` **pinado nos próprios grupos**, então o `rz` não as alcança. ⚠️ **ERRATA DA MINHA CÉLULA DE CUSTO:** eu publiquei *"item B custa −2 curvas"* medindo uma variante que **sobrepunha os grupos pinados** (injetei `emb_depth`=1,6e-6 em tudo). A variante de fato executada **não os toca**, e por isso custou **zero**. Contrafactual errado, não medição errada. | (registro do enunciado original) | ⚠️ **as opções (a) e (b) foram MEDIDAS e são insuficientes EM PRINCÍPIO** (2026-08-14, tarde) — resta (c) dívida declarada, ou atacar a causa real (item **I**) | ✅ **RE-MEDIDO**: CHU está em **3/9** (`test1`·`test5`·`test6_repeat`). E o achado que decide: dentro da **MESMA classe Ra 0,4** o `emb_depth` exigido vai de **1,6 µm** (δ=0,3) a **≥25 µm** (δ=1,0) — **≥15×**. Nenhum valor por classe de acabamento serve, porque **a exigência não é governada pela rugosidade** nesta fonte, e sim pela **amplitude**. Corrigir o Ra move o número certo na direção certa e **não fecha nada**. Prova: `lei_relogio_implementada_e_nao_adotada.md` §4 |
 | ~~**C**~~ | ✅ **FECHADO em 2026-08-13 — a premissa era FALSA.** O `prov` do `ROUSSEAU_HDPE` documenta o piso na chave composta `'c_bend/emb_depth/floor'` = *"PR-14 fitado-this-rig (rig + assentamento + **piso de arresto**)"*, desde 2026-07-12 | nada a decidir: a opção (a) **já estava executada** quando eu a propus | zero — nenhuma config muda; errata em 2 docs + pino de regressão |
 | **D** ⚠️ **premissa VENCIDA, re-medida 2026-08-15** | **eram 8 de 9 em defaults; hoje são 4 de 9 COM override** (`test1` 15 campos · `test5`/`test6` o par `D1p0` · `test9` o `emb_um` da classe rugosa). O enunciado *"a única com config fitada é a única quase-perfeita"* deixou de valer. ⚠️ **E o contexto mudou mais que a contagem:** o item **I** fechou a classe de leis de amplitude e o item **K** fechou a rota do µ medido (inerte por lei, §4.54a) ⇒ calibrar `per_case` é **a única coisa que resta** no CHU — e é justamente o que este item chama de *oposto da parcimônia*. A decisão ficou mais nítida, não mais fácil | calibrar 8 `per_case` (8 conjuntos de constantes) | DOF vs ganho — o oposto da parcimónia |
@@ -2543,8 +2543,8 @@ P-13 e P-14 seguem aguardando** — as três últimas são forma nova de engine.
 >    `amplificador_interruptor_resultado.md`, `regra_de_parada_proposta.md`
 >    §2ª parada.
 > 2. **Bancada** (destrava até 11): Ra por espécime OU réplica D0.4/D0.5
->    no CHU (×6) · 3ª réplica do LU (×2). ~~nova rodada UFU~~ ❌ **UFU
->    SAIU DO PROJETO** (professor, 2026-08-01: *"a UFU não faz parte mais
+>    no CHU (×6) · 3ª réplica do LU (×2). ~~nova rodada âncora interna~~ ❌ **âncora interna
+>    SAIU DO PROJETO** (professor, 2026-08-01: *"a âncora interna não faz parte mais
 >    desse projeto"*) — as 3 curvas ficam preservadas no store/repositório
 >    e fora da meta em definitivo; **este item some da fila**.
 > 3. **Tabela 3 do YANG_2019 como âncora de VIDA** (leitura de método):
@@ -2587,7 +2587,7 @@ P-13 e P-14 seguem aguardando** — as três últimas são forma nova de engine.
 > | G1 monotonia (bloqueante) | **0 curvas saem** do tripé — o `max` garante |
 > | censo | 104/202 → **124/202** |
 > | G2 mérito (bloqueante, declarado) | das 20 que entram, **19 já eram exceção assinada**; a única nova é `caccese2009_retighten_19p1mm_no_retighten` |
-> | G3 cobertura (bloqueante) | **6 das 28** fontes sem piso medido (30 curvas) ficam no limite global: LU_2024, UFU_LAB, YANG_2019, YANG_2023_AME, YANG_2023_IJPEM, ZHANG_2006 |
+> | G3 cobertura (bloqueante) | **6 das 28** fontes sem piso medido (30 curvas) ficam no limite global: LU_2024, ANCORA_INTERNA, YANG_2019, YANG_2023_AME, YANG_2023_IJPEM, ZHANG_2006 |
 > | G4 (info) | a regra cobre por **mérito 19 das 44** exceções assinadas |
 >
 > **O que destrava:** trocar 19 assinaturas por uma regra derivável. **O que
@@ -3350,7 +3350,7 @@ registrado ali: *se o kernel precisar de constante própria por fonte, ele não
    + carga R=0 pulsante). Rotulado sem tentativa (charter previu); destrava
    junto com a decisão prevailing-torque (itens 4/6).
 
-8. **UFU — incubação do assentamento** (PR-36): dado plano até N≈38 e o
+8. **âncora interna — incubação do assentamento** (PR-36): dado plano até N≈38 e o
    modelo assenta desde o ciclo 1; embedding-com-atraso não existe no engine
    (o slip_onset_W não gateia embedding). Forma pequena (2 curvas, maxerr
    0.16-0.18); candidata a acoplar na decisão de kernel.
@@ -3501,7 +3501,7 @@ Sun grease-std) fica na FILA por doutrina — não vira exceção sem prova alé
 genérico. **Ordem recomendada do que resta de forma na fila:** (1º) "resposta
 graduada de limiar" consolidada Yang2023-IJPEM+Yang2019-amp0p4 (1+7 curvas, 2
 rigs, forma `graded_scrit` JÁ EXISTE default-inerte no engine — falta prereg com
-âncora onde o mecanismo é ativo); (2º) UFU incubação (2 curvas, forma pequena:
+âncora onde o mecanismo é ativo); (2º) âncora interna incubação (2 curvas, forma pequena:
 `slip_onset_W` não gateia embedding); (3º) carry-over varamp (bloqueado pelo trim
 da small_to_large, F6-§B); (4º) Yang2023 AME jet-nut (1 caso, tripla combinação —
 por último). Yang2021: **resolvida pelo S4** (6 trims ratificados §B + 2 exceções
@@ -3630,9 +3630,9 @@ uma" segue satisfeito; cada item abaixo diz qual porta o destrava:
   `apparatus_notes/zhang2006.md`); companion OA do YANG_2023_IJPEM NÃO tem curvas
   preload-vs-ciclos (verificado no PMC: só D-N e vida prevista-vs-medida; "each
   experiment was repeated twice", sem curvas plotadas). **Duas medições para VOCÊ:**
-  · **UFU 13A first/def como réplica?** F0 3 % distinto (120039 vs 116498), mesmo
+  · **âncora interna 13A first/def como réplica?** F0 3 % distinto (120039 vs 116498), mesmo
     parafuso/amplitude/freq. Piso do par (informacional, janela comum): **MAE 0,0345 ·
-    mx 0,0635 · σ 0,0259**. Se aceitar: as 3 UFU saem de indecidível para JULGADAS — e
+    mx 0,0635 · σ 0,0259**. Se aceitar: as 3 âncora interna saem de indecidível para JULGADAS — e
     o modelo erra ACIMA do scatter do par em MAE nas três (0,052/0,096/0,052).
   · **YANG_2023_AME = junta CFRP** (M20 em compósito; `yang2023ame.md`): MAE 0,39 é o
     modelo sem canal de relaxação viscoelástica de matriz — fronteira de ESCOPO
@@ -3669,7 +3669,7 @@ uma" segue satisfeito; cada item abaixo diz qual porta o destrava:
 
 - **Sinal do acoplamento dano→atrito é por-par** (Sun2025 reassy, PR-28): Ag₂O
   de remontagens SOBE µ e MELHORA retenção (anti-loosening ↑, vida à fadiga ↓)
-  — contra-exemplo ao `k_dmg_mu` (µ cai com D) calibrado no rig UFU aço-aço.
+  — contra-exemplo ao `k_dmg_mu` (µ cai com D) calibrado no rig âncora interna aço-aço.
   Generalizar `k_dmg_mu` exigirá sinal por par tribológico.
 
 ## Observações
@@ -4262,10 +4262,10 @@ Melhora **monótona** no σ, e a dose que fecha é exatamente **2,0× o valor do
    `fig8a` passa a barra FORTE por 4·10⁻⁶, margem que não sobrevive a arredondamento"*, e
    o veredito foi rebaixado por isso. Aqui a folga é maior que aquela, mas segue frágil.
 2. **`C_creep` não tem `prov` e não está no `cfg` do `YANG_2021`** — ela roda no valor do
-   bloco `shared`, que é o **fit UFU**. O shell a marca `livre` porque **não há rótulo**, e
+   bloco `shared`, que é o **fit da âncora interna**. O shell a marca `livre` porque **não há rótulo**, e
    *"sem prov"* **não é** *"livre para fitar"*: a §4.7 do `MODEL_LEGITIMACY` registra
    `C_creep` como constante **por par tribológico**, com ICs disjuntos entre pares
-   (304SS 9,9e-13 × UFU 1,2e-11). Dobrá-la para fechar métrica seria fit-sem-observável —
+   (304SS 9,9e-13 × âncora interna 1,2e-11). Dobrá-la para fechar métrica seria fit-sem-observável —
    a classe que o `metodo_leitura_de_constantes.md` lista entre as **RECUSAS**.
 3. **NÃO estabeleci que a dose era invisível antes do conserto.** Os quatro fechamentos do
    `yang2021_r1_sem_rota_resultado.md` tratam de *instrumento* (grade esparsa), *rampa de
@@ -4346,7 +4346,7 @@ danificou?
 |---|---|
 | curvas em que `base-vazia ≠ base-real` | **39 de 210** |
 | chaves que diferem | **exatamente `K_archard` e `k_wear_spec`** — nenhuma outra |
-| fontes | `ICMEZ_2025` · `LIU_2022_RETIGHT` · `LIU_2025` · `UFU_LAB` |
+| fontes | `ICMEZ_2025` · `LIU_2022_RETIGHT` · `LIU_2025` · `ANCORA_INTERNA` |
 
 ⇒ o defeito é **do canal de wear e só dele**. Toda outra constante ou vem do `cfg`
 (presente nas duas leituras) ou cai no `_mat`, que era construído corretamente.
@@ -4358,7 +4358,7 @@ danificou?
 | `ICMEZ_2025` | 8 | **8** | 0 | **0** |
 | `LIU_2022_RETIGHT` | 21 | **21** | 0 | **0** |
 | `LIU_2025` | 7 | 5 | 0 | **2** |
-| `UFU_LAB` | 0 | — | — | 0 *(fora do censo)* |
+| `ANCORA_INTERNA` | 0 | — | — | 0 *(fora do censo)* |
 
 ⇒ **apenas o `LIU_2025`**, e as 2 são a `amp0p8` e a `fig2_single` — **exatamente** as que
 re-varri com o shell corrigido (`5622e0f`, `0127fd6`). As outras duas fontes estão
@@ -4366,7 +4366,7 @@ re-varri com o shell corrigido (`5622e0f`, `0127fd6`). As outras duas fontes est
 contaminar.
 
 ⚠️ **Nota que impede uma leitura errada:** nas fontes com `k_wear_scale_tr` **não-zero**
-(ICMEZ 0,056 · LIU_2022 0,06 · UFU 0,15) a base vazia não *pulava* a alavanca — ela
+(ICMEZ 0,056 · LIU_2022 0,06 · âncora interna 0,15) a base vazia não *pulava* a alavanca — ela
 roteava o valor para a **constante errada** (`K_archard` em vez de `k_wear_spec`), o que é
 pior em espécie. Não teve consequência **só porque** nenhuma dessas curvas dependia de
 veredito. Se qualquer uma delas cair do tripé no futuro, o shell tem de ser rodado

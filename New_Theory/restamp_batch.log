@@ -145,9 +145,9 @@
   [144/202] li2022marstruc_creep_10kN_Ra0p306_min      mae=0.003
   [145/202] li2022marstruc_creep_10kN_Ra0p122_min      mae=0.0011
   [146/202] li2022marstruc_creep_5kN_Ra0p8_min         mae=0.0079
-  [147/202] UFU_5A_preload_decay                       mae=0.0523
+  [147/202] ancora_interna                       mae=0.0523
   [148/202] li2022marstruc_creep_15kN_Ra0p8_min        mae=0.0037
-  [149/202] UFU_13A_def_preload_decay                  mae=0.0516
+  [149/202] ancora_interna                  mae=0.0516
   [150/202] chu2026ti_D1p0mm_F0_49kN_test6_repeat      mae=0.0266
   [151/202] rousseau2025_hdpe_t10                      mae=0.0579
   [152/202] karlsen2022_M42_HV_run21p0                 mae=0.0374
@@ -161,7 +161,7 @@
   [160/202] karlsen2022_M30_HVtorqued_run14p2          mae=0.0898
   [161/202] bauer2024_M8_fig6_rep5                     mae=0.0494
   [162/202] bauer2024_M8_fig6_rep6                     mae=0.0757
-  [163/202] UFU_13A_first_preload_decay                mae=0.0962
+  [163/202] ancora_interna                mae=0.0962
   [164/202] bauer2024_M8_fig6_rep4                     mae=0.0783
   [165/202] karlsen2022_M30_HV_run2p2                  mae=0.0488
   [166/202] bauer2024_M8_fig6_rep3                     mae=0.0336
@@ -221,7 +221,7 @@
 [ROUSSEAU_2025] n=6 mediana=0.0520
 [SUN_2025_CRIMP] n=8 mediana=0.0237
 [SUN_2025_REASSY] n=5 mediana=0.0181
-[UFU_LAB] n=3 mediana=0.0523
+[ANCORA_INTERNA] n=3 mediana=0.0523
 [YANG_2019] n=5 mediana=0.0636
 [YANG_2021] n=6 mediana=0.0565
 [YANG_2023_AME] n=1 mediana=0.3875

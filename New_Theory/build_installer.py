@@ -278,7 +278,7 @@ PAYLOAD = [
     ("src/**/*.svg", "icones do tema"),
     ("src/**/*.png", "prints da referencia de interface (secao 22 da aba Documentation); sem isto as imagens do help ficam quebradas"),
     ("src/**/*.qss", "folhas de estilo"),
-    ("Models/CALIBRATION_AND_VALIDATION/validation_store.json", "as 210 analises"),
+    ("Models/CALIBRATION_AND_VALIDATION/validation_store.json", "as 207 analises"),
     ("Models/CALIBRATION_AND_VALIDATION/curve_library/**/*.csv", "curvas digitalizadas"),
     ("Models/CALIBRATION_AND_VALIDATION/curve_library/**/*.md", "notas de aparato"),
     ("Models/CALIBRATION_AND_VALIDATION/curve_library/**/*.png", "recortes de figura"),
@@ -289,8 +289,8 @@ PAYLOAD = [
     ("New_Theory/variable_explorer/**/*", "27 paginas por artigo + 207 reports"),
     ("BAS_V2_papers/*/apparatus_notes/*.md", "notas R4/R5 (caminho exigido pelo registry)"),
     ("BAS_V2_papers/*/digitized_csv/*.csv", "curvas R4/R5"),
-    ("Models/EXPERIMENTAL_UFU/reference_curves/*.csv",
-     "3 casos UFU_LAB: sem isto eles ficam somente-leitura no app instalado"),
+    ("Models/EXPERIMENTAL_ANCORA/reference_curves/*.csv",
+     "3 casos ANCORA_INTERNA: sem isto eles ficam somente-leitura no app instalado"),
     ("Models/USER_CASES/*.csv", "1 caso USER de exemplo, pelo mesmo motivo"),
     ("Models/USER_CASES/*.bascase.json",
      "o que REGISTRA o caso USER: sem o .bascase.json o registro desaparece e "
@@ -306,7 +306,7 @@ PAYLOAD = [
     ("Models/CALIBRATION_AND_VALIDATION/error_budget.json",
      "orcamento de erro por fonte (error_budget.BUDGET_PATH)"),
     ("Models/SAVED_CASES/*/*.msd",
-     "os 210 casos salvos na configuracao adotada, uma pasta por artigo, "
+     "os 207 casos salvos na configuracao adotada, uma pasta por artigo, "
      "importaveis por Arquivo > Importar caso da validacao (Ctrl+I); cada um "
      "cita a fonte dentro do arquivo"),
     # Fica na RAIZ de SAVED_CASES, entao o glob dos .msd nao o pega. Sem ele o
@@ -321,7 +321,7 @@ PAYLOAD = [
 # Nunca, sob nenhum padrao. O .pdf esta' aqui por DIREITOS: e' material de
 # editora e o instalador e' distribuido.
 NUNCA = (".pdf", ".pyc", ".pyo")
-# `_needs_review` e' rascunho de digitalizacao: medido 2026-09-02, ZERO dos 210
+# `_needs_review` e' rascunho de digitalizacao: medido 2026-09-02, ZERO dos 207
 # casos aponta para la', e sao os nomes mais longos do repo (183 chars de
 # caminho relativo contra 173 sem eles) — o que importa por causa do MAX_PATH.
 NUNCA_EM = ("__pycache__", ".bkp_", ".git", "_needs_review")

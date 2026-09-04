@@ -1,6 +1,6 @@
 # Bolt Analysis Studio — Biblioteca de Reports de Validação
 
-**Escopo:** os **114 casos de validação comparáveis** (curva completa, simuláveis) da biblioteca de literatura + laboratório UFU, cada um com report individual completo + documento mestre.
+**Escopo:** os **114 casos de validação comparáveis** (curva completa, simuláveis) da biblioteca de literatura + laboratório âncora interna, cada um com report individual completo + documento mestre.
 **Rev.:** 2026-07-10 (report v2 — resíduo assinado, modelo MSD reproduzível,
 decomposição por mecanismo).
 
@@ -8,7 +8,7 @@ decomposição por mecanismo).
 
 ## 1. O que é
 
-Cada caso de validação (curva F/F₀ vs N digitalizada de artigo, ou ensaio UFU)
+Cada caso de validação (curva F/F₀ vs N digitalizada de artigo, ou ensaio âncora interna)
 tem um **report HTML individual** com:
 
 | Seção | Conteúdo |

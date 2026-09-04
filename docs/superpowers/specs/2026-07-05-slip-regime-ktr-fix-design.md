@@ -68,7 +68,7 @@ without losing preload.) Implemented as a partial-regime micro-slip term feeding
 ## 4. Opt-in & backward-compat (this is FOUNDATIONAL)
 
 Every slip-driven mechanism (wear, rotational loosening, conformation `W_conf`, the
-damage dose `W_slip_acc`, `slip_onset`) sees this slip. The **UFU canonical calibration
+damage dose `W_slip_acc`, `slip_onset`) sees this slip. The **âncora interna canonical calibration
 was fitted with `δ_t≈0` (always gross slip)** — so a correct δ_t **shifts the canonical
 fit** (plateau cases stop over-loosening; sobretorque may plateau via partial slip). To
 avoid silently invalidating the canonical block:

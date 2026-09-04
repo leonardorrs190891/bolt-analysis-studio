@@ -48,7 +48,7 @@ Exemplos do que "transcrição" significa na prática — nenhum deles precisa d
 | `emb_um` | 7 | | `KARLSEN` | 8 |
 | `emb_depth` | 7 | | `CACCESE` | 8 |
 | `k_dmg_mu` | 5 | | `BAUER` | 7 |
-| `mu` | 5 | | `UFU` | 6 |
+| `mu` | 5 | | `âncora interna` | 6 |
 | `c_bend` | 5 | | `YANG` | 5 |
 | `c_D_per_lube` · `k_wear_running` · `creep_alpha_sat` · `creep_t_c` | 4 cada | | `ROUSSEAU` · `CHU` | 3 cada |
 
@@ -224,8 +224,8 @@ registro da adoção que fixou o número**. Declarada antes de escrever.
 
 **Total: 15** ⇒ passivo **127 → 112** esperado.
 
-⛔ **`k_wear_scale_tr` = 0,15 do `UFU_LAB` (3) NÃO entra: busca no corpus deu ZERO
-citações.** E é o resultado certo — a UFU **saiu do projeto** (decisão do professor,
+⛔ **`k_wear_scale_tr` = 0,15 do `ANCORA_INTERNA` (3) NÃO entra: busca no corpus deu ZERO
+citações.** E é o resultado certo — a âncora interna **saiu do projeto** (decisão do professor,
 2026-08-01), então pesquisar procedência ali seria trabalho jogado fora. Fica no passivo,
 declaradamente.
 
@@ -274,7 +274,7 @@ quatro vezes seguidas.** Nenhuma linha de física foi alterada em nenhuma das qu
 | campo · valor | n | citação |
 |---|---:|---|
 | `creep_alpha_sat` = **0,2** e `creep_t_c` = **7,2e8** (`CACCESE_2009*`) | **8** | **adoção D-H** (2026-08-04, prereg `caccese-kernel-creep`): o registro adota literalmente *"`creep_mode="saturating"`, **α = 0,2**, **`t_c` = 100·t_end**"* como **dois números de FORMA compartilhados pelas 7 curvas**. `t_c` = 7,2e8 s confere com 100·t_end |
-| `c_D` = **0** (`UFU_LAB` ×3) · `C_creep` = **0** (`CHU_2026_test1`) · `emb_um` = **0** (`LU_2024`) | **5** | **canal desligado** — zera dano / creep / assentamento; mesmo idioma de `slip_regime_mode='off'` (fase 2) e `k_wear_scale_tr=0` (fase 4) |
+| `c_D` = **0** (`ANCORA_INTERNA` ×3) · `C_creep` = **0** (`CHU_2026_test1`) · `emb_um` = **0** (`LU_2024`) | **5** | **canal desligado** — zera dano / creep / assentamento; mesmo idioma de `slip_regime_mode='off'` (fase 2) e `k_wear_scale_tr=0` (fase 4) |
 
 **Total: 13** ⇒ passivo **112 → 99** esperado.
 
@@ -518,10 +518,10 @@ independentes**, e otimizar um não entrega o outro.
 | `LIU_2017_axial`: `C_creep`, `N_emb`, `creep_conform_exp`, `emb_depth` | 4 | ρ-unificação já documentada; **estes 4 seguem sem registro próprio** |
 | `YANG_2019*`: `emb_um` ×2, `slip_onset_W` ×2, `c_D` | 5 | prereg `2026-08-10-yang2019-tripe` é candidato não aberto |
 | `KARLSEN_2022_run{2p2,7p1}`: `C_creep`, `c_D` | 4 | o verdict da D-Y cobre `k_ratchet` e a base, **não** estes |
-| `UFU_LAB` ×3: `k_wear_scale_tr` = 0,15 | 3 | ⛔ **zero citações no corpus**, e a UFU **saiu do projeto** — pesquisar aqui é trabalho descartado |
+| `ANCORA_INTERNA` ×3: `k_wear_scale_tr` = 0,15 | 3 | ⛔ **zero citações no corpus**, e a âncora interna **saiu do projeto** — pesquisar aqui é trabalho descartado |
 | `ZHANG_2006_fig16::emb_um` · `ZHANG_2019::mu_thread` | 2 | isoladas |
 
-⇒ **3 das 18 não devem ser trabalhadas** (UFU fora do projeto). O alvo real é **15**.
+⇒ **3 das 18 não devem ser trabalhadas** (âncora interna fora do projeto). O alvo real é **15**.
 
 > # ⚠️ ERRATA DE 2026-08-14 ~10:45 — a classificação abaixo ERROU POR 4, e a causa é a sexta
 > # forma de a procedência se esconder
@@ -533,7 +533,7 @@ independentes**, e otimizar um não entrega o outro.
 >
 > > `axial_ground_fit.py` — fit analítico de **formas fechadas** em **~60 amostras das 5
 > > curvas COMPLETAS** (não nos 5 pontos finais): `emb_cap` = **4,3 µm** (handbook 3,5) ·
-> > `N_emb` = **15** · `C_creep` = **1,45e-11** (UFU 1,87e-11) · `exp_fast` = 2,4 ·
+> > `N_emb` = **15** · `C_creep` = **1,45e-11** (âncora interna 1,87e-11) · `exp_fast` = 2,4 ·
 > > `exp_slow` = **3,6** (= o campo `creep_conform_exp`).
 > > Validação: *slope 2,54e-5 = **96 % do dado**, mediana MAE de curva **0,0033**, tendência
 > > erro-vs-carga **ELIMINADA** (topo 0,111 → 0,002)*. Ressalva do próprio registro:
@@ -588,7 +588,7 @@ zero.
 registro do fit não localizado"* e zerar o passivo. Isso **pioraria** a auditoria: a entrada
 contaria como documentada e a lacuna sumiria do radar. **"Ajustado, origem desconhecida" não
 é procedência — é a ausência dela, com melhor redação.** O passivo honesto é 18 (15 + 3 do
-UFU), e é assim que deve ser publicado.
+âncora interna), e é assim que deve ser publicado.
 
 **Sinal de qualidade que fica junto:** das 13, **nenhuma** é constante nova. Todas
 antecedem a disciplina de `prov` obrigatória, e a **catraca impede que o conjunto cresça** —

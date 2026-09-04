@@ -46,12 +46,12 @@
 | `yang2019_M10_varamp_small_to_large` | YANG_2019 | 0.0803 | FIM | +0.1692 | cruza | 0.58 |
 | `yang2019_M10_amp0p4_5Hz` | YANG_2019 | 0.0773 | INICIO | +0.1145 | abaixo | 0.24 |
 | `lu2024_M8_fig18_amp0p5` | LU_2024 | 0.0726 | INICIO | -0.0591 | cruza | 0.07 |
-| `UFU_13A_first_preload_decay` | UFU_LAB | 0.0718 | FIM | +0.2353 | acima | 0.90 |
+| `ancora_interna` | ANCORA_INTERNA | 0.0718 | FIM | +0.2353 | acima | 0.90 |
 | `lu2024_M8_fig20_T28Nm` | LU_2024 | 0.0696 | INICIO | -0.1387 | cruza | 0.39 |
 | `yang2019_M10_varamp_large_to_small` | YANG_2019 | 0.0580 | FIM | +0.1706 | cruza | 0.82 |
-| `UFU_5A_preload_decay` | UFU_LAB | 0.0552 | INICIO | +0.0133 | cruza | 0.00 |
+| `ancora_interna` | ANCORA_INTERNA | 0.0552 | INICIO | +0.0133 | cruza | 0.00 |
 | `chu2026ti_D0p5mm_F0_49kN_Ra1p6um_test9` | CHU_2026 | 0.0547 | INICIO | +0.1604 | cruza | 0.78 |
-| `UFU_13A_def_preload_decay` | UFU_LAB | 0.0534 | INICIO | -0.0483 | cruza | 0.07 |
+| `ancora_interna` | ANCORA_INTERNA | 0.0534 | INICIO | -0.0483 | cruza | 0.07 |
 | `yang2021_amp1p0mm_ax2kN` | YANG_2021 | 0.0476 | INICIO | +0.0756 | abaixo | 0.34 |
 | `lu2024_M8_fig20_T16Nm` | LU_2024 | 0.0465 | INICIO | -0.0179 | cruza | 0.01 |
 | `yang2021_amp0p5mm_ax8kN` | YANG_2021 | 0.0458 | INICIO | +0.0599 | abaixo | 0.24 |

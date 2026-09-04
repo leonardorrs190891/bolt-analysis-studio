@@ -20,9 +20,9 @@ progresso normalizado):
 
 | classe | curvas | leitura | fontes principais |
 |---|--:|---|---|
-| **DERIVA** (R² ≥ 0,7) | **10** | o resíduo é rampa suave ⇒ falta um **termo monótono**, não uma forma nova | CHU_2026 ×4 · LIU_2022_RETIGHT ×2 · LI_2022_TRIBOINT · UFU_LAB |
+| **DERIVA** (R² ≥ 0,7) | **10** | o resíduo é rampa suave ⇒ falta um **termo monótono**, não uma forma nova | CHU_2026 ×4 · LIU_2022_RETIGHT ×2 · LI_2022_TRIBOINT · ANCORA_INTERNA |
 | mista (0,3–0,7) | 23 | rampa + ondulação | LU_2024 ×5 · YANG_2023_IJPEM ×4 · LIU_2016 ×4 · ZHANG_2018 ×3 |
-| **ONDULADO** (R² < 0,3) | **18** | nenhuma constante remove ⇒ forma faltante de verdade | LU_2024 ×5 · LIU_2025 ×2 · YANG_2019 ×2 · UFU_LAB ×2 |
+| **ONDULADO** (R² < 0,3) | **18** | nenhuma constante remove ⇒ forma faltante de verdade | LU_2024 ×5 · LIU_2025 ×2 · YANG_2019 ×2 · ANCORA_INTERNA ×2 |
 
 **O cluster mais tratável é o do CHU_2026:** 4 curvas com **R² 0,82–0,83** e
 **β ≈ +0,58** — quase idênticas. Resíduo positivo crescendo linearmente significa

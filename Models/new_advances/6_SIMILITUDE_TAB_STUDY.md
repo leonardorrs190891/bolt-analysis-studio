@@ -1,6 +1,6 @@
 # Similitude Tab (Tab 5) — Comprehensive Study
 
-**Bolt Analysis Studio v4.0** — LTAD/UFU / Petrobras R&D
+**Bolt Analysis Studio v4.0** — internal reference / Petrobras R&D
 **Date:** 2026-02-18
 **Scope:** Complete audit of the Similitude tab architecture, workflow, layout, responsiveness, visual design, integration with the rest of the application, and all bugs found during code review.
 
@@ -1060,5 +1060,5 @@ Tab signals
 
 ---
 
-*Document prepared by Claude Code for LTAD/UFU — Bolt Analysis Studio v4.0*
+*Document prepared by Claude Code for internal reference — Bolt Analysis Studio v4.0*
 *Date: 2026-02-18*

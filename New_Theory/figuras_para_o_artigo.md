@@ -200,8 +200,8 @@ offscreen. **Mas:**
 |---|---|
 | **não está versionado** | `git log` não tem nenhum commit dele |
 | **6 semanas desatualizado** | de 14/jul; nada do que foi medido desde então |
-| ⚠️ **tem figura VENCIDA** | `fig_condicoes_referencia_ufu` — a `UFU_LAB` **saiu do projeto** em 01/08; as 3 curvas seguem no store (**0 comparáveis pelo censo**), então a figura **ainda gera**, com dado fora do projeto |
-| cobre 5 tipos | grid por fonte · decomposição · UFU · ledger MEM · medianas por fonte |
+| ⚠️ **tem figura VENCIDA** | `ancora_interna` — a `ANCORA_INTERNA` **saiu do projeto** em 01/08; as 3 curvas seguem no store (**0 comparáveis pelo censo**), então a figura **ainda gera**, com dado fora do projeto |
+| cobre 5 tipos | grid por fonte · decomposição · âncora interna · ledger MEM · medianas por fonte |
 | **não cobre** | paridade · envelope · decisão ISO/DIN · uma-física-N-comportamentos · custo de calibração · cadeia de extração |
 
 ⇒ **das 10 figuras acima, o exportador cobre 2** (Fig. 9 e parte da Fig. 4). As outras 8
@@ -212,6 +212,6 @@ revista precisam de traço/escala de cinza, fonte legível em largura de coluna,
 que as produza em qualidade de publicação a partir das mesmas medições (o *como*). O segundo
 é o trabalho real — hoje o material existe e o caminho para o PDF não.
 
-⚠️ E antes de qualquer coisa: **remover ou marcar a figura da UFU**. Um artigo com uma figura
+⚠️ E antes de qualquer coisa: **remover ou marcar a figura da âncora interna**. Um artigo com uma figura
 de dado que o próprio projeto retirou é erro material, e é o tipo de coisa que um revisor
 atento encontra.

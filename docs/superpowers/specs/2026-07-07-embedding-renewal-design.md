@@ -164,7 +164,7 @@ Stage-A frozen constants (no per-curve refit):
    to first-tightening F₀.
 4. Compare each `tN` to `fig6a` (dry-release), `fig6b` (oil-release), `fig7a` (oil-direct);
    `fig8` for the multi-retighten trend (trim t4 fracture).
-5. **Secondary (fidelity goal, option B):** re-simulate the UFU **reaperto** condition as
+5. **Secondary (fidelity goal, option B):** re-simulate the âncora interna **reaperto** condition as
    `nova → cycle → retighten` instead of fresh-full-embedding, and confirm the 0.038-class
    fit is preserved with **renewal** carrying the re-settling and **D** carrying the
    collapse — i.e. it fits for the *right reason*, not phantom fresh embedding.

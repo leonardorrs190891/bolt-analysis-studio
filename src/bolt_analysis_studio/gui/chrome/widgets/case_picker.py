@@ -7,10 +7,10 @@ que artigo cada um pertence e o erro do modelo naquela curva, e carrega o
 escolhido.
 
 Le `Models/SAVED_CASES/indice.json`, gerado junto com os .msd, e NAO o registry:
-carregar 210 casos e o store a cada abertura custaria segundos por nada, e o
+carregar 207 casos e o store a cada abertura custaria segundos por nada, e o
 indice ja' traz censo, criterio e MAE prontos.
 
-Por padrao mostra so' o CENSO DO ARTIGO (205 de 210). Os 5 de fora existem e
+Por padrao mostra so' o CENSO DO ARTIGO (205 de 207). Os 5 de fora existem e
 sao abriveis, mas ficam atras de uma caixa de selecao: nao contam em nenhum
 numero do manuscrito, e apresenta-los misturados convidaria a usar um deles
 pensando que conta.

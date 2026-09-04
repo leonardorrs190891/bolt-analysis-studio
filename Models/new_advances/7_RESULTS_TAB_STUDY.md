@@ -1,6 +1,6 @@
 # Results Tab (Tab 4) - Functional & UX Study
 
-## Bolt Analysis Studio v4.0 - LTAD/UFU - Petrobras R&D
+## Bolt Analysis Studio v4.0 - internal reference - Petrobras R&D
 
 **Date**: 2026-02-18
 **Scope**: Complete audit of the Results Tab (Tab 4) layout, data flow, plot architecture, dashboard, export, and improvement recommendations.
@@ -492,7 +492,7 @@ Add right-click on the plot area:
 - Replace matplotlib NavigationToolbar with custom Qt toolbar matching the application theme
 - Add "Zoom to fit" button alongside existing toolbar
 - Add plot title banner above the plot area (outside matplotlib) for consistent typography
-- Show a subtle watermark "BAS v4.0 - LTAD/UFU" in exported plots
+- Show a subtle watermark "BAS v4.0 - internal reference" in exported plots
 
 ### 9.4 Dashboard View
 

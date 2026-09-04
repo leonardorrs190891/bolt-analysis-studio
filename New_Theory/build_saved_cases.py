@@ -17,7 +17,7 @@ CITACAO. Cada arquivo carrega uma curva DIGITALIZADA de uma publicacao de
 terceiro e vai para um repositorio publico, entao a referencia da fonte viaja
 dentro do .msd. Os campos saem do `ValidationCase` (`reference`, `doi`,
 `reference_csv_path`) — nada e' redigitado aqui. Medido: 210 de 210 tem
-`reference`; 206 tem DOI, e os 4 sem DOI nao sao publicacao (3 UFU_LAB, medicao
+`reference`; 206 tem DOI, e os 4 sem DOI nao sao publicacao (3 ANCORA_INTERNA, medicao
 do proprio laboratorio, e 1 USER, exemplo sintetico), por isso DIZEM o que sao
 em vez de deixar um campo vazio que se leria como omissao.
 """
@@ -134,7 +134,9 @@ def escreve_indice(destino: Path, recs, store, censo, atende) -> tuple:
     js = destino / "indice.json"
     md.write_text("\n".join(linhas_md) + "\n", encoding="utf-8", newline="")
     js.write_text(_json.dumps({
-        "gerado_em": "2026-09-03",
+        # Data real da geracao. Estava literal, e uma data escrita a mao
+        # envelhece calada — dizia 03-09 num indice gerado em 04-09.
+        "gerado_em": __import__("datetime").date.today().isoformat(),
         "total": len(itens),
         "no_censo": sum(censo.values()),
         "atendem_criterio": sum(atende.values()),

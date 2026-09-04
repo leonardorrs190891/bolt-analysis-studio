@@ -120,7 +120,7 @@ que li, por um instante, como regressão total. Não era: são **objetos diferen
 (`config_used` é o registro dos inputs, com `mode`/`emb_um`/`grip_mm` e o `overrides`
 aninhado; `_effective_overrides` devolve os kwargs achatados). *"Tudo divergiu"* quase nunca é
 regressão — é assinatura de comparação errada, porque **mudança estreita toca conjunto
-estreito**. Seis campos lidos de nomes de arquivo não poderiam tocar curvas da UFU. É a porta
+estreito**. Seis campos lidos de nomes de arquivo não poderiam tocar curvas da âncora interna. É a porta
 **(A)** do gotcha das quatro portas, e eu caí nela **duas vezes** nesta mesma tarefa (a
 primeira foi medir colisões com o `_CAMPOS` antigo, que ainda não conhecia os campos novos).
 

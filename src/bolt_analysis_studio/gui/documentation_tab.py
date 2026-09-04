@@ -1762,7 +1762,7 @@ c_critical = 2 × √(k × m)
 <h3>12.6 Contact</h3>
 <p>For technical questions or contributions:</p>
 <ul>
-    <li>Prof. Leonardo Rosa Ribeiro da Silva, PhD — <a href="mailto:leorrs@ufu.br">leorrs@ufu.br</a></li>
+    <li>Prof. Leonardo Rosa Ribeiro da Silva, PhD — <a href="mailto:leorrs@ancora_interna.br">leorrs@ancora_interna.br</a></li>
     <li>Neilon de Souza da Silva, PhD — <a href="mailto:neilon@petrobras.com.br">neilon@petrobras.com.br</a></li>
 </ul>
 """
@@ -2456,16 +2456,16 @@ Proposed:
     <li>Documentation improvements</li>
 </ul>
 
-<p>Contact: Prof. Leonardo Rosa Ribeiro da Silva, PhD — <a href="mailto:leorrs@ufu.br">leorrs@ufu.br</a><br>Neilon de Souza da Silva, PhD — <a href="mailto:neilon@petrobras.com.br">neilon@petrobras.com.br</a></p>
+<p>Contact: Prof. Leonardo Rosa Ribeiro da Silva, PhD — <a href="mailto:leorrs@ancora_interna.br">leorrs@ancora_interna.br</a><br>Neilon de Souza da Silva, PhD — <a href="mailto:neilon@petrobras.com.br">neilon@petrobras.com.br</a></p>
 """
     },
 
     "validation_reports": {
-        "title": "17. Validation Case Reports (210 casos)",
+        "title": "17. Validation Case Reports (207 casos)",
         "content": """
 <h2>17. Validation Case Reports (114 casos comparáveis)</h2>
 
-<p>Todos os <b>114 casos de validação comparáveis</b> da biblioteca (literatura + UFU) têm
+<p>Todos os <b>114 casos de validação comparáveis</b> da biblioteca (literatura + âncora interna) têm
 report individual completo + documento mestre, gerados pelo pacote
 <code>bolt_analysis_studio.validation</code> a partir de constantes com
 proveniência (bloco <i>shared</i> + configs adotadas per-rig).</p>

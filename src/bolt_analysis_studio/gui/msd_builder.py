@@ -5605,10 +5605,10 @@ class PropertyInspector(QWidget):
         self.gasket_contact_group.setVisible(True)
         self._contact_tab_layout.addWidget(self.gasket_contact_group)
 
-        # === EXPERIMENTAL PRESETS (UFU Junker lab) ===
+        # === EXPERIMENTAL PRESETS (âncora interna Junker lab) ===
         self.exp_preset_group = QGroupBox("Experimental Preset")
         self.exp_preset_group.setToolTip(
-            "<b>Quick-load UFU Junker lab conditions</b><br>"
+            "<b>Quick-load âncora interna Junker lab conditions</b><br>"
             "3/4\" UNC L7, ±0.5 mm @ 1 Hz. Selecting a preset overwrites the "
             "loading fields below with the trial's measured values."
         )
@@ -5617,9 +5617,9 @@ class PropertyInspector(QWidget):
         self.exp_preset_combo = QComboBox()
         self.exp_preset_combo.addItems([
             "— Custom —",
-            "UFU 5A (05-03, F0=118.2 kN, μ≈0.08)",
-            "UFU 13A 1ª (19-03, F0=120.0 kN, μ≈0.14, interrupted)",
-            "UFU 13A def (14-04, F0=116.5 kN, μ≈0.14)",
+            "âncora interna 5A (05-03, F0=118.2 kN, μ≈0.08)",
+            "âncora interna 13A 1ª (19-03, F0=120.0 kN, μ≈0.14, interrupted)",
+            "âncora interna 13A def (14-04, F0=116.5 kN, μ≈0.14)",
         ])
         self.exp_preset_combo.currentIndexChanged.connect(self._on_experimental_preset_changed)
         _ep_layout.addRow("Preset:", self.exp_preset_combo)
@@ -6216,14 +6216,14 @@ class PropertyInspector(QWidget):
         if not self._updating:
             self.loading_changed.emit(self.get_loading_data())
 
-    # === UFU experimental presets (Junker 1 Hz shear, 3/4" UNC A320 L7) ===
+    # === âncora interna experimental presets (Junker 1 Hz shear, 3/4" UNC A320 L7) ===
     # Values from filename "Ensaio{5A,13A}-075_05mm_1Hz_{date}":
     #   075 => ~73-74% yield preload, 05mm => ±0.5 mm stroke, 1 Hz excitation
     # F_transverse is the measured peak actuator force (summary.json
     # actuator_amp_peak_kN); mu_initial is the 2026-04-23 calibration result.
-    _UFU_PRESETS = {
+    _ANCORA_PRESETS = {
         1: {  # 5A
-            "label": "UFU 5A",
+            "label": "âncora interna 5A",
             "F_preload": 118243.1,   # N
             "F_transverse": 56630.0, # N (measured lab peak)
             "mu_initial": 0.164,
@@ -6233,10 +6233,10 @@ class PropertyInspector(QWidget):
             "load_type": "Transverse",
             "bolt_diameter": 19.05,  # 3/4"
             "pitch": 2.54,           # UNC 3/4-10
-            "reference_csv": "Models/EXPERIMENTAL_UFU/reference_curves/UFU_5A_preload_decay.csv",
+            "reference_csv": "Models/EXPERIMENTAL_ANCORA/reference_curves/ancora_interna.csv",
         },
         2: {  # 13A 1a tentativa (interrupted)
-            "label": "UFU 13A 1a",
+            "label": "âncora interna 13A 1a",
             "F_preload": 120038.7,
             "F_transverse": 49900.0,
             "mu_initial": 0.183,
@@ -6246,10 +6246,10 @@ class PropertyInspector(QWidget):
             "load_type": "Transverse",
             "bolt_diameter": 19.05,
             "pitch": 2.54,
-            "reference_csv": "Models/EXPERIMENTAL_UFU/reference_curves/UFU_13A_first_preload_decay.csv",
+            "reference_csv": "Models/EXPERIMENTAL_ANCORA/reference_curves/ancora_interna.csv",
         },
         3: {  # 13A def
-            "label": "UFU 13A def",
+            "label": "âncora interna 13A def",
             "F_preload": 116497.9,
             "F_transverse": 69270.0,
             "mu_initial": 0.159,
@@ -6259,15 +6259,15 @@ class PropertyInspector(QWidget):
             "load_type": "Transverse",
             "bolt_diameter": 19.05,
             "pitch": 2.54,
-            "reference_csv": "Models/EXPERIMENTAL_UFU/reference_curves/UFU_13A_def_preload_decay.csv",
+            "reference_csv": "Models/EXPERIMENTAL_ANCORA/reference_curves/ancora_interna.csv",
         },
     }
 
     def _on_experimental_preset_changed(self, index: int):
-        """Apply UFU Junker lab preset to loading + friction widgets."""
+        """Apply âncora interna Junker lab preset to loading + friction widgets."""
         if index <= 0 or self._updating:
             return
-        preset = self._UFU_PRESETS.get(index)
+        preset = self._ANCORA_PRESETS.get(index)
         if not preset:
             return
         self._updating = True
@@ -6575,7 +6575,7 @@ class PropertyInspector(QWidget):
         """Populate loading UI from a dict (used when loading a project)."""
         self._updating = True
         if "type" in data:
-            # Case-insensitive match — UFU .msd files store "TRANSVERSE"
+            # Case-insensitive match — âncora interna .msd files store "TRANSVERSE"
             # (uppercase); the combo has entries like "Transverse (Junker)".
             raw = str(data["type"]).strip().lower()
             key = {
@@ -6723,7 +6723,7 @@ class PropertyInspector(QWidget):
         # Keep `_updating = True` during this call so the early guard in
         # `_on_bolt_geom_changed` fires and we DON'T recompute F_preload
         # as pct·A_s·Sy (which would overwrite the authoritative value
-        # set from `data["F_preload"]` above — e.g. UFU 5A's 118,243 N
+        # set from `data["F_preload"]` above — e.g. âncora interna 5A's 118,243 N
         # getting clobbered to 0.7·157·724 ≈ 79,568 N with the M16
         # defaults + A320-L7 Sy).
         F_preserve = self.preload_spin.value()
@@ -8977,7 +8977,7 @@ class MSDBuilderWindow(QMainWindow):
         self.case_studies_btn = QToolButton(self)
         self.case_studies_btn.setText("📁 Case Studies")
         self.case_studies_btn.setToolTip(
-            "Load a pre-built case study (UFU lab trials + literature validation cases).\n"
+            "Load a pre-built case study (âncora interna lab trials + literature validation cases).\n"
             "Loads the .msd model and applies the loading preset in one step."
         )
         self.case_studies_btn.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
@@ -9329,7 +9329,7 @@ class MSDBuilderWindow(QMainWindow):
         """Populate the Case Studies popup menu with registered validation cases.
 
         Groups cases by ValidationSource; clicking a case loads its .msd model
-        (if available) and sets the UFU preset combo for UFU cases.
+        (if available) and sets the âncora interna preset combo for âncora interna cases.
         """
         try:
             from bolt_analysis_studio.core.validation_cases import (
@@ -9345,12 +9345,10 @@ class MSDBuilderWindow(QMainWindow):
         for c in cases:
             by_src[c.source.value].append(c)
 
-        # UFU lab first, then alphabetical by source
-        ufu_key = ValidationSource.UFU_LAB.value if hasattr(ValidationSource, 'UFU_LAB') else None
-        ordered_keys = []
-        if ufu_key and ufu_key in by_src:
-            ordered_keys.append(ufu_key)
-        ordered_keys += sorted(k for k in by_src.keys() if k != ufu_key)
+        # Alfabetica por fonte. Havia um caso especial que punha uma bancada no
+        # topo do menu; essa fonte saiu do projeto em 2026-09-04 e o privilegio
+        # saiu com ela — todo o corpus e' publicacao, nenhuma fonte vem antes.
+        ordered_keys = sorted(by_src.keys())
 
         for src_name in ordered_keys:
             submenu = menu.addMenu(src_name)
@@ -9396,7 +9394,7 @@ class MSDBuilderWindow(QMainWindow):
         """Load a ValidationCase: parse its .msd file (or synthesise a model
         from its parameters when none is bundled) and apply it to the schematic.
 
-        Also sets the UFU experimental preset combo when applicable so the
+        Also sets the âncora interna experimental preset combo when applicable so the
         loading widgets reflect the measured lab values.
         """
         import os

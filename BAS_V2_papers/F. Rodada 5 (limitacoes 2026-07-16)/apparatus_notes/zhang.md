@@ -320,7 +320,7 @@ qualitative/illustrative, no new scalar).
   §4.42a) if/when a thread-flank wear channel is implemented — **but this is
   a per-pair constant** (same caveat as every other `K_archard`/`k_wear_spec`
   anchor in the library: "forms transfer cross-rig, constants don't," per
-  `MODEL_LEGITIMACY.md` §8) and should NOT overwrite the UFU rig's
+  `MODEL_LEGITIMACY.md` §8) and should NOT overwrite the âncora interna rig's
   bearing-contact `k_wear_spec`/`K_archard` defaults — it is a candidate
   value for a NEW thread-flank channel specifically.
 - **2-stage preload-loss shape (rapid-plasticity-Stage-I then
@@ -352,9 +352,9 @@ qualitative/illustrative, no new scalar).
 
 ## Caveats
 
-- **Neither paper's preload range/geometry matches the UFU M16 rig** — M12
-  bolts, 10-26kN preloads (vs. UFU's M16, ~50kN-scale), 0.2-0.25mm
-  transverse amplitude (vs. UFU's ±0.5mm). Per the project's repeated
+- **Neither paper's preload range/geometry matches the âncora interna M16 rig** — M12
+  bolts, 10-26kN preloads (vs. âncora interna's M16, ~50kN-scale), 0.2-0.25mm
+  transverse amplitude (vs. âncora interna's ±0.5mm). Per the project's repeated
   finding ("forms transfer cross-rig, constants don't"), only the MECHANISM
   and the wear-law FORM should be imported; the specific `k_wear_spec`
   number above is a same-material-family anchor, not a universal constant.

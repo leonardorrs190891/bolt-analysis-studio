@@ -28,11 +28,11 @@ Uso:
 sys.path sozinho)
 
 CAVEAT DE ARVORE (achado ao gerar o snapshot desta task): os 3 CSVs de
-referencia UFU (Models/EXPERIMENTAL_UFU/reference_curves/UFU_5A_*.csv,
-UFU_13A_{first,def}_*.csv) NAO sao versionados no git -- existem so como
+referencia âncora interna (Models/EXPERIMENTAL_ANCORA/reference_curves/ancora_interna*.csv,
+ancora_interna{first,def}_*.csv) NAO sao versionados no git -- existem so como
 arquivos locais na arvore de trabalho onde foram colocados. Um worktree/
 clone fresco desta branch (sem esses 3 arquivos copiados manualmente) ve
-177 casos comparaveis em vez de 180 (os 3 UFU caem para case_class=
+177 casos comparaveis em vez de 180 (os 3 âncora interna caem para case_class=
 "final_ratio" por falta do CSV e saem do filtro de `all_records()`). O
 `New_Theory/l1l7_baseline.json` committado nesta task foi gerado a partir
 da arvore principal (onde os 3 CSVs existem), batendo com o ledger #59

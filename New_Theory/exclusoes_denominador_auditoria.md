@@ -13,7 +13,7 @@ São **5 de 210** registros:
 
 | curva | fonte | motivo | audita? |
 |---|---|---|---|
-| `UFU_13A_def` · `UFU_13A_first` · `UFU_5A` | `UFU_LAB` | decisão do professor (2026-08-01: *"a UFU não faz parte mais desse projeto"*) | não — é instrução explícita |
+| `ancora_interna` · `ancora_interna` · `ancora_interna` | `ANCORA_INTERNA` | decisão do professor (2026-08-01: *"a âncora interna não faz parte mais desse projeto"*) | não — é instrução explícita |
 | `exemplo_m12_sintetico` | `USER` | caso **sintético**, não é dado | não — não há o que medir |
 | **`lu2024_M8_fig18_amp1p0`** | `LU_2024` | *"duplicata de `fig20_T22Nm`; mesmo teste em 2 figuras"* | **sim** |
 

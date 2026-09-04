@@ -59,7 +59,7 @@ PyMuPDF (helper `pdf_tools.py`). **19 notas**, **169 CSVs**, **~3602 pontos**.
   plug-in. α·µ ⇒ ~1e-17–1e-15 1/Pa, abaixo do bound atual do `k_wear_spec`.
 - **G3 creep por par tribológico**: `jcsr2023` (comum/galv/inox/**GFRP**), `caccese2009` (C/Al,
   C/aço, C/C, Al/Al-controle), `qin2024acm` (CFRP-Ti), `lakes2007jemt` (aço/Al-Si + constantes
-  de creep da Tabela 1). Amplia muito além do 304SS UFU.
+  de creep da Tabela 1). Amplia muito além do 304SS âncora interna.
 - **G4 espessura de membro**: nenhum novo (segue só Rousseau t10/12/14). Lacuna aberta.
 - **G5 reaperto / renovação de embedding**: `alsardia2024` (20 reapertos × 4 lubrif.),
   `sun2025efa110030` (remontagem MJ8), `caccese2009` (reaperto composto), `lakes2007jemt`

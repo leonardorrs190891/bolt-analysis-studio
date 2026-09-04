@@ -34,7 +34,7 @@ declarados antes de olhar qualquer fonte.
 | `ROUSSEAU_2025` | 6 | 5 | rotational_loosening | 0/6 | 6/6 | 2/6 | **CONSTRANGIVEL** | precisa de *joelho*: resolvida em 6/6 |
 | `SUN_2025_CRIMP` | 8 | 2 | rotational_loosening | 5/8 | 7/7 (+1 n/a) | 4/8 | **CONSTRANGIVEL** | precisa de *joelho*: resolvida em 7/7 |
 | `SUN_2025_REASSY` | 5 | 0 | — | 5/5 | 5/5 | 5/5 | **n/a** | fonte fechada |
-| `UFU_LAB` | 3 | 3 | rotational_loosening | 3/3 | 3/3 | 2/3 | **CONSTRANGIVEL** | precisa de *joelho*: resolvida em 3/3 |
+| `ANCORA_INTERNA` | 3 | 3 | rotational_loosening | 3/3 | 3/3 | 2/3 | **CONSTRANGIVEL** | precisa de *joelho*: resolvida em 3/3 |
 | `YANG_2019` | 5 | 5 | embedding | 0/5 | 5/5 | 0/5 | **PRECISA DE DADO** | precisa de *queda*: resolvida em 0/5 — minoria |
 | `YANG_2021` | 6 | 4 | embedding | 1/6 | 6/6 | 0/6 | **PRECISA DE DADO** | precisa de *queda*: resolvida em 1/6 — minoria |
 | `YANG_2023_AME` | 1 | 1 | embedding | 0/1 | 1/1 | 1/1 | **PRECISA DE DADO** | precisa de *queda*: resolvida em 0/1 — minoria |

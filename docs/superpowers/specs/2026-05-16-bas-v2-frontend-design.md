@@ -53,7 +53,7 @@ Este documento não repete esses detalhes; só sobrescreve onde necessário.
 | Preload-loss | Jiang 5-stage transverse · 3-stage axial · Junker clássico · Pai-Hess · Yamamoto · Nassar · Hattori · gasket creep Bouzid (8 modelos) |
 | Similitude | Multi-bolt reduction · Geometric scaling (Buckingham Π) |
 | Calibration | `ParameterIdentifier` + `CalibrationDialog` (μ, Stage I/II params) |
-| Validation | 97 papers indexados, reference curves UFU, `validation_cases.py` |
+| Validation | 97 papers indexados, reference curves âncora interna, `validation_cases.py` |
 | VDI 2230 | R-factor, dynamic factor, n_load_plane, waveform |
 | Locking devices | 8 tipos (free, prevailing torque, Nord-Lock, Belleville, double-nut, chemical, etc.) |
 | Matriz | Newmark-β + HHT-α (ver §3.A) |
@@ -115,7 +115,7 @@ Toggle no header do Inspector (`[Basic / Advanced]`, segmented switch). Default:
 
 O toggle persiste por sessão (`QSettings`). Tooltip do botão: "Basic: campos essenciais. Advanced: todos os parâmetros."
 
-Critério para classificar campo como Basic vs Advanced: o campo Basic é aquele que **muda o resultado em mais de 5% nos casos do training set** (UFU-13A, Lu 2024, Jiang 2003). Tudo que afeta menos de 5% e tem default razoável vai pra Advanced. Lista canônica de campos Basic está em §6.
+Critério para classificar campo como Basic vs Advanced: o campo Basic é aquele que **muda o resultado em mais de 5% nos casos do training set** (âncora interna-13A, Lu 2024, Jiang 2003). Tudo que afeta menos de 5% e tem default razoável vai pra Advanced. Lista canônica de campos Basic está em §6.
 
 ### 3.D. Wizard-first com ícone 🧙
 
@@ -300,7 +300,7 @@ Pre-existing `test_gui.py` continua skipado (fixture issues conhecidos).
 
 | Risco | Mitigação |
 |-------|-----------|
-| Reescrita do main_window quebra fluxos validados (UFU calibration, similitude export) | Cada módulo é portado individualmente com smoke test antes de avançar. v4.0 permanece no repo BAS/ original como referência viva. |
+| Reescrita do main_window quebra fluxos validados (âncora interna calibration, similitude export) | Cada módulo é portado individualmente com smoke test antes de avançar. v4.0 permanece no repo BAS/ original como referência viva. |
 | Auto-defaults inferem errado em casos edge | Toda inferência tem fallback explícito + tooltip "inferred from <context>"; usuário pode sempre override e fixar. |
 | Basic/Advanced toggle esconde campo crítico em estudo específico | Toggle é por-sessão; usuário avançado mantém Advanced ativo. Campos críticos (preload, μ, ciclos) ficam em Basic. |
 | Multi-viewport com Matplotlib pode ficar lento (>2 plots simultâneos com 10k pontos cada) | Plot downsampling no display layer (1k pontos visíveis máx, dados completos em export). Métrica de aceitação: ≤200 ms para repintar 2×2 com Job-1 padrão. |

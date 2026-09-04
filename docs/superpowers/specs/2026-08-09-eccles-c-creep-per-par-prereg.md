@@ -33,14 +33,14 @@ a errada — é o argumento inteiro a favor de o controle ser gate, e não confe
 ## A física, e o que a sustenta
 
 Hoje as **8** configs do ECCLES **não declaram `C_creep`**: a fonte herda o valor canônico do
-bloco `shared`, **1,8667e-11**, que é o **fit UFU**. A mudança proposta cria um valor
+bloco `shared`, **1,8667e-11**, que é o **fit da âncora interna**. A mudança proposta cria um valor
 **per-fonte** de **2,8e-11** (×1,5).
 
 Isso é o que a §4.7 do `MODEL_LEGITIMACY.md` documenta como correto: **`C_creep` é POR PAR
-tribológico**, não universal (âncora 304SS 9,9e-13 vs fit UFU 1,2e-11, **ICs disjuntos**). E os
+tribológico**, não universal (âncora 304SS 9,9e-13 vs fit da âncora interna 1,2e-11, **ICs disjuntos**). E os
 pares são de fato distintos — a nota de aparato do ECCLES registra **parafuso M8
 eletro-zincado**, com a porca apoiando **direto na placa móvel** (sem arruela), contra o par do
-rig UFU. Revestimento de zinco relaxa mais que aço nu, e ×1,5 é movimento de mesma ordem.
+rig âncora interna. Revestimento de zinco relaxa mais que aço nu, e ×1,5 é movimento de mesma ordem.
 
 ⚠️ **O que NÃO sustenta:** `kb.check_input("C_creep", 2.8e-11)` devolve `None`, e isso
 **não** é aprovação — `C_creep` **não está** em `checkable_inputs()`, então o `None` significa

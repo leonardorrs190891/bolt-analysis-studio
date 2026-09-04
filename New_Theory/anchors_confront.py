@@ -73,17 +73,17 @@ def main():
     print(f"3 mu: K teorico {K:.3f} vs medido {dry.mean():.3f} ({err:.0%}) -> "
           f"{'PASSA' if err < 0.10 else 'BANDA'}")
 
-    # 4) C_creep por par — denotter M16-5083 taxa por decada vs par UFU
+    # 4) C_creep por par — denotter M16-5083 taxa por decada vs par da âncora interna
     d = load("denotter2020_creep_M16_5083",
              ["time_h", "ratio_F0_0p70fu", "ratio_F0_0p27fu"]).astype(float)
     dec_hi = (d[2, 1] - d[3, 1])          # 10h->100h @0.70fu
     dec_lo = (d[2, 2] - d[3, 2])
-    ufu_dec = 2.6e8 * 1.45e-11 * np.log(10) / 1.0  # k_b*C*ln10 fracional/F0~... aprox
+    ancora_interna = 2.6e8 * 1.45e-11 * np.log(10) / 1.0  # k_b*C*ln10 fracional/F0~... aprox
     V["C_creep"] = dict(
         anchor="denotter2020_creep_M16_5083", verdict="BANDA",
         note=f"taxa fracional/decada medida (Al 5083, par NOVO): {dec_hi:.3f}@0.70fu / "
              f"{dec_lo:.3f}@0.27fu — mesma ordem do par Liu2017 (~0.009/dec) e 2-4x o "
-             f"UFU; fracional cresce com F0 (consistente com liu2021) => confirma "
+             f"âncora interna; fracional cresce com F0 (consistente com liu2021) => confirma "
              f"POR-PAR (sec4.7) com o 3o rig independente; per-decade nao-constante "
              f"(acelera) nomeia desvio do ln puro em Al.")
     print(f"4 C_creep: decada {dec_hi:.3f}/{dec_lo:.3f} (0.70/0.27fu) -> BANDA (por-par confirmado)")
@@ -94,9 +94,9 @@ def main():
     V["k_dmg_mu"] = dict(
         anchor="eccles2010_mu_evolution_vibration", verdict="DIRECAO",
         note=f"mu_bearing medido SOBE {d[0,1]:.2f}->{d[-1,1]:.2f} sob vibracao (aco seco) "
-             f"— sinal OPOSTO ao k_dmg_mu (mu cai com D, calibrado no reaperto UFU); o "
+             f"— sinal OPOSTO ao k_dmg_mu (mu cai com D, calibrado no reaperto âncora interna); o "
              f"sinal da evolucao de mu e' POR-PAR: Eccles ancora o ramo CRESCENTE "
-             f"(familia k_gall/fretting-roughening), UFU o decrescente. Nomeado: "
+             f"(familia k_gall/fretting-roughening), âncora interna o decrescente. Nomeado: "
              f"k_dmg_mu com sinal por-par (ou reuso do k_gall no canal de vibracao).")
     print(f"5 mu-evolucao: medido +{dmu:.2f} (SOBE) vs k_dmg_mu (cai) -> DIRECAO (sinal por-par)")
 

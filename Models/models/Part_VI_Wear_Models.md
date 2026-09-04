@@ -3,7 +3,7 @@
 **Complete Technical Reference for Bolt Analysis Studio**
 
 **Authors:** L. Ribeiro, D. Carvalho, S.C. Naves, T. Santos, V. Marques, G. Arruda
-**Institution:** LTAD/UFU -- Tribology and Wear Technology Laboratory, Federal University of Uberlandia
+**Institution:** internal reference laboratory
 **Project:** Petrobras R&D -- Bolted Flange Joint Integrity
 
 ---
@@ -210,7 +210,7 @@ This depth form is the most practical for bolted joint analysis because it is th
 | Stainless/Stainless | Lubricated | 5--50 | Anti-galling compound essential |
 | Inconel/Inconel | Dry | 30--200 | Subsea, high-temperature |
 
-These values are compiled from Archard (1953), Rabinowicz (1965), Bhushan (2013), and experimental data from LTAD/UFU test programs on ASTM A193 B7 and A320 L7 fastener materials.
+These values are compiled from Archard (1953), Rabinowicz (1965), Bhushan (2013), and experimental data from internal reference test programs on ASTM A193 B7 and A320 L7 fastener materials.
 
 ### 26.4 Per-Cycle Wear for Harmonic Loading
 

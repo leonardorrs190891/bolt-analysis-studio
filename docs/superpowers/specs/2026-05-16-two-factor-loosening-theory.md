@@ -346,7 +346,7 @@ Em vez do output atual com fase Jiang opaca.
 
 1. **Refinar derivação de R_critical** contra Yang 2021 e Liu-Mi 2021 (papers 79, 87, 88 do índice).
 2. **Implementar `TwoFactorLooseningAnalyzer`** em código (pode ser feito em V2 ou retrofit no v4.0 atual).
-3. **Validar Tier-1 qualitativo** contra UFU 5A / 13A (cargas predominantemente transversais) — predição: L_tr dominante, Φ_ax ≈ 0.
+3. **Validar Tier-1 qualitativo** contra âncora interna 5A / 13A (cargas predominantemente transversais) — predição: L_tr dominante, Φ_ax ≈ 0.
 4. **Validar Tier-2 quantitativo** contra Lu 2024 (M8) e Jiang 2003 (M12) — predição: F_sep, loosening rate.
 5. **Estender pra combinado** validando contra Yang 2021 e Du 2022.
 
@@ -594,7 +594,7 @@ class DynamicStiffnessAnalyzer:
 
 Isso conecta limpamente:
 - Com o V2 frontend (slot no módulo Analysis para "Active loss mechanisms" como multi-checkbox)
-- Com a validação (UFU foca em loose rotacional; Liu 2017 ativa wear+loose; ISO foca em creep)
+- Com a validação (âncora interna foca em loose rotacional; Liu 2017 ativa wear+loose; ISO foca em creep)
 - Com simulação Monte-Carlo (varia parâmetros dos LossMechanisms independentes)
 
 ---

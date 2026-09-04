@@ -65,7 +65,7 @@ a pior aberta do SUN; a crimp (1,21×) assume ✓.
 A leitura original desta seção ("curvatura tardia") foi refinada pela medição
 seguinte: o que sobrava era um **arco** — modelo 23 % lento no 1º terço, 53 %
 rápido no último — e a alavanca com procedência era o **creep**: a curva
-herdava o `C_creep` do shared UFU (1,87e-11) enquanto **os dois axiais standard
+herdava o `C_creep` do shared da âncora interna (1,87e-11) enquanto **os dois axiais standard
 da própria fonte já usam 9e-11** (per-token, proxy L1).
 
 **Passo 2** (prereg `2026-08-19-sun-standard-ccreep-token`): estender o valor do

@@ -33,10 +33,16 @@ def test_frozen_constants_reads_shared_block():
     assert "c_D" in consts_d
 
 
-def test_load_full_curve_handles_3col_ufu():
+def test_load_full_curve_le_a_coluna_de_razao():
+    """O leitor tem de devolver F/F0, nao a coluna de forca.
+
+    Apontava para um CSV de bancada que saiu do projeto em 2026-09-04; passou a
+    apontar para uma curva digitalizada do corpus, que e' versionada e cobre o
+    mesmo invariante — o do leitor, nao o daquele ensaio."""
     from bolt_analysis_studio.validation.inputs import load_full_curve
     cyc, ratio = load_full_curve(
-        "Models/EXPERIMENTAL_UFU/reference_curves/UFU_5A_preload_decay.csv")
+        "Models/CALIBRATION_AND_VALIDATION/curve_library/digitized_csv/"
+        "lu2024_M8_fig18_amp0p5.csv")
     assert len(cyc) == len(ratio) > 3
     assert 0.0 <= ratio[-1] <= 1.5              # coluna F/F0, nao F_kN
 
@@ -55,14 +61,14 @@ def test_inputs_for_transverse_and_axial():
     assert ax["grip_mm"]["value"] == 30.0
 
 
-def test_geometry_fallback_for_nonmetric_ufu():
-    # UFU 3/4" UNC: fora da tabela ISO, mas o caso carrega d/p em mm
+def ancora_interna():
+    # âncora interna 3/4" UNC: fora da tabela ISO, mas o caso carrega d/p em mm
     from bolt_analysis_studio.core.validation_cases import ValidationCaseManager
     from bolt_analysis_studio.validation.inputs import geometry_for_case, inputs_for
-    ufu = next(c for c in ValidationCaseManager.get_all_cases()
-               if "UFU" in c.source.name)
-    geom = geometry_for_case(ufu, grip_mm=47.6)
+    ancora_interna = next(c for c in ValidationCaseManager.get_all_cases()
+               if "âncora interna" in c.source.name)
+    geom = geometry_for_case(ancora_interna, grip_mm=47.6)
     # A_s generica pi/4*(d-0.9382p)^2 ~ 218 mm2 (A_t tabelado 3/4-10 UNC = 215)
     assert abs(geom.A_s * 1e6 - 218.0) < 5.0
-    inp = inputs_for(ufu)                                 # _d_mm nao levanta
+    inp = inputs_for(ancora_interna)                                 # _d_mm nao levanta
     assert abs(inp["grip_mm"]["value"] - 2.5 * 19.05) < 1e-9

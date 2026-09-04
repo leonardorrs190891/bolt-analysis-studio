@@ -5,7 +5,7 @@
 **Version 4.0 - Extended English Edition**
 
 **Authors:** L. Ribeiro, D. Carvalho, S.C. Naves, T. Santos, V. Marques, G. Arruda
-**Institution:** LTAD/UFU - Tribology and Wear Technology Laboratory, Federal University of Uberlândia
+**Institution:** internal reference - Tribology and Wear Technology Laboratory, Federal University of Uberlândia
 **Project:** Petrobras R&D - Bolted Flange Joint Integrity
 
 ---
@@ -756,4 +756,4 @@ This prediction indicates that the prototype M30 joint is expected to lose appro
 
 *Part IX of the Bolt Analysis Studio MSD Framework Documentation. Implements `core/similitude/similitude.py` and `core/similitude/similitude_plots.py`.*
 
-*LTAD/UFU -- Petrobras R&D Project, 2026.*
+*internal reference -- Petrobras R&D Project, 2026.*

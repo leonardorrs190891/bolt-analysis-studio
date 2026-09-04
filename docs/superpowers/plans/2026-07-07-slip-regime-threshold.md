@@ -263,7 +263,7 @@ def test_famp_cap_limits_drive():
 **Files:** Create: `New_Theory/slip_regime_axial.py`; Modify: `New_Theory/MODEL_LEGITIMACY.md` (§4.12)
 
 - [ ] **Step 1:** Zero-refit P0 sweep (frozen Stage-A + Rz<4 emb + `k_thread_fret` on + `slip_regime_mode="cattaneo_mindlin"`, κ from thread geometry). Report `d(final)/dP0` model vs data (target: steepen from 5.6e-6 toward 2.6e-5).
-- [ ] **Step 2:** Re-run UFU shear, `calibrate_axial --quick`, `validate_galling` → confirm no regression (with mode off they are untouched; with the new default fields off, bit-identical).
+- [ ] **Step 2:** Re-run âncora interna shear, `calibrate_axial --quick`, `validate_galling` → confirm no regression (with mode off they are untouched; with the new default fields off, bit-identical).
 - [ ] **Step 3:** Write `MODEL_LEGITIMACY.md` §4.12 verdict AS-IS (validated capability vs adopted; what transferred, what stayed per-rig).
 - [ ] **Step 4: Commit** `feat(slip-regime): Liu2017 slope validation + §4.12 verdict`
 

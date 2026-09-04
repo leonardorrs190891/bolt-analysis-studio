@@ -12,7 +12,7 @@ mestre, CLI, e o menu V1 "Validation Gallery" gerando via pacote.
 
 | Módulo | Responsabilidade | Testes |
 |---|---|---|
-| `validation/inputs.py` | Port com paridade de `library_common` (ISO/VDI/geometria/constantes congeladas) + `inputs_for` estendido às fontes axiais + fallback não-métrico (UFU 3/4" UNC) | 6 |
+| `validation/inputs.py` | Port com paridade de `library_common` (ISO/VDI/geometria/constantes congeladas) + `inputs_for` estendido às fontes axiais + fallback não-métrico (âncora interna 3/4" UNC) | 6 |
 | `validation/case_registry.py` | `CaseRecord` ×128: classe (`full_curve` 120 / `final_ratio` 8), família (103 tr / 13 ax / 6 creep / 6 other), caveats, galeria (78/82), notas de aparato | 4 |
 | `validation/runner.py` | `simulate_case`: packs LEGACY/PACK + configs adotadas (shim de tuners legados) + métrica na convenção da campanha; decomposição cumulativa exata (soma == 1−F/F₀) | 5 |
 | `validation/store.py` | Cache JSON atômico + staleness por fingerprint + seed da galeria | 2 |
@@ -49,7 +49,7 @@ configs experimentais por-curva que nunca foram promovidas ao
    são intencionalmente não-traduzidos pela API. Runner 0.16-0.57 vs 0.03-0.14.
 3. **Rousseau steel t12/t14**: constantes da campanha (ex. c_bend por-rig)
    fora do bloco adotado.
-4. **Creep (Li2022)**: `C_creep` é POR PAR (§4.7) — o valor UFU do shared
+4. **Creep (Li2022)**: `C_creep` é POR PAR (§4.7) — o valor da âncora interna do shared
    não vale no par Li2022; a campanha usou o re-centrado.
 
 A coluna **"campanha"** no mestre e a linha no report por caso mostram os dois
@@ -64,7 +64,7 @@ software).
 - Tuners legados dos configs adotados dropados em silêncio → shim
   `translate_legacy_tuners` na fronteira (mesmo padrão do solver_worker).
 - Métrica sem trim 0.10 / alinhamento no 1º ponto → convenção pré-registrada.
-- UFU 3/4" UNC fora da tabela ISO → fallback genérico d/p com A_s padrão.
+- âncora interna 3/4" UNC fora da tabela ISO → fallback genérico d/p com A_s padrão.
 
 ## Limitações honestas
 

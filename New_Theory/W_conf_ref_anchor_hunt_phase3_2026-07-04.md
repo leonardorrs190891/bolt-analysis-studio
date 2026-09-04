@@ -28,7 +28,7 @@ collapses to ≈ 0.04) — a genuine preload→arrest *trend*, but it **cannot i
 **Concern:** `W_conf_ref` remains one rung *below* `C_creep` on the provenance ladder
 (`C_creep` has one disjoint-IC independent measurement; `W_conf_ref` has none), and the
 frozen transfer harness cannot even *excite* the conformation gate on any library case
-except the UFU sobretorque itself — see §5 (the `A_contact=100 mm²` artifact).
+except the âncora interna sobretorque itself — see §5 (the `A_contact=100 mm²` artifact).
 
 ---
 
@@ -46,10 +46,10 @@ p / p_ref = (F0 / 1e-4) / 5e8  =  F0[N] / 50000  =  F0 / 50 kN
 increment ∝ (p/p_ref)^n = (F0/50kN)^2      (n = 2)
 ```
 
-So conformation is driven **purely by absolute preload F0 relative to 50 kN** (the UFU
+So conformation is driven **purely by absolute preload F0 relative to 50 kN** (the âncora interna
 nominal). Verified against the canonical `shared` block of `joint_calibrations.json`:
 
-| UFU condition | F0 | p/p_ref = F0/50 kN | (p/p_ref)² | conformation |
+| âncora interna condition | F0 | p/p_ref = F0/50 kN | (p/p_ref)² | conformation |
 |---|---:|---:|---:|---|
 | nova / reusada / reaperto | 50 kN | 1.0 | 1.0 | inert (baseline) |
 | **sobretorque** | **120 kN** | **2.4** | **5.76** | **strongly excited** |
@@ -108,25 +108,25 @@ Higher preload ⇒ more arrest — the qualitative *direction* of pressure-confo
 1. **Confounded with ordinary preload-slip dependence.** In disp-mode `slip = max(0, δ −
    F_slip/k_tr)`, so higher F0 already gives less slip → slower loss *without any
    conformation*. Lu's T28-vs-T4 gap is exactly what the plain model predicts; nothing
-   forces a conformation term. (Contrast the UFU sobretorque, where the plain model
+   forces a conformation term. (Contrast the âncora interna sobretorque, where the plain model
    *under*-predicts the plateau — that under-prediction is the only clean conformation
    fingerprint, and no Lu curve shows it.)
 2. **Wrong pressure regime for the frozen gate.** F0=15 kN → p/p_ref = 0.3 → the
    `n=2` gate is essentially inert; you would have to re-scale `p_ref` to the M8 rig to
    make it fire, at which point the fitted `W_conf_ref` is rig-specific by construction.
 3. **Different tribo-pair.** Soft **nickel-steel** members with a "massive first-cycle
-   drop" — not the UFU bolt/washer/member steel pair.
+   drop" — not the âncora interna bolt/washer/member steel pair.
 4. **Too short.** ~100 cycles, no long slow-decline tail to separate creep from a
    conformation plateau.
 
 A `W_conf_ref` "isolation fit" on Lu Fig 20 is *possible* but its identifiability is
 poor (indistinguishable from preload-slip + slip-onset) and its value would be
 M8-nickel-steel-rig-specific — a per-pair number with a large error bar, not an anchor
-of the UFU 7671 J.
+of the âncora interna 7671 J.
 
 ### 2.4 Path-A conclusion
 
-**No library curve combines (high absolute contact pressure ≈ UFU sobretorque) + (a
+**No library curve combines (high absolute contact pressure ≈ âncora interna sobretorque) + (a
 sustained settle→plateau→slow-decline) + (no-conformation under-prediction).** The
 cases split cleanly:
 - **High % proof → collapse** (Bauer M8 94 %, Bauer M12×1.5 98 %, Demir M8 83 %): the
@@ -136,8 +136,8 @@ cases split cleanly:
 - **Highest harness excitation (Karlsen) → artifact + collapse/locking-flat.**
 
 This is itself an informative cross-rig finding (parallel to §4.8): a high preload
-*fraction* on another rig does **not** reproduce the UFU sobretorque plateau — the
-plateau appears tied to the UFU rig's specific small bearing contact (100 mm² → ~1.2
+*fraction* on another rig does **not** reproduce the âncora interna sobretorque plateau — the
+plateau appears tied to the âncora interna rig's specific small bearing contact (100 mm² → ~1.2
 GPa at 120 kN) and pair. Consistent with "forms transfer, constants are per pair/rig."
 
 ---
@@ -171,7 +171,7 @@ GPa at 120 kN) and pair. Consistent with "forms transfer, constants are per pair
 ### 3.3 Conversion sketch (if a steel χ ever surfaces) — explicit assumptions
 
 To compare a hypothetical steel χ [J/mm²] to `W_conf_ref` [J], one would:
-1. Take the UFU bearing contact area A ≈ 100 mm² (`A_contact` = 1e-4 m², the harness
+1. Take the âncora interna bearing contact area A ≈ 100 mm² (`A_contact` = 1e-4 m², the harness
    value) — **assumption 1**: the model's nominal A_contact is the real conforming area.
 2. Multiply: total energy ≈ χ · A → J — **assumption 2**: uniform dissipation over A.
 3. Unwind the pressure weighting: `W_conf_ref` accumulates `(p/p_ref)^n · dW_slip_raw`;
@@ -179,7 +179,7 @@ To compare a hypothetical steel χ [J/mm²] to `W_conf_ref` [J], one would:
    the raw-work-to-half-conformation by ~5.76 to reach the density-comparable raw energy.
 4. Compare to the **internal** (non-anchor) order-of-magnitude from the prior hunt: raw
    areal density ≈ **~20 J/mm²** at half-conformation. This is computed from the *same*
-   UFU data+geometry that produced the fit — it is an internal consistency check, **not**
+   âncora interna data+geometry that produced the fit — it is an internal consistency check, **not**
    a literature match, and must never be presented as an anchor.
 
 **Path-B conclusion:** framework citable, a concrete steel energy-wear *rate* citable
@@ -194,12 +194,12 @@ Neither A nor B yields an anchor. The dedicated Phase-3 experiment, built in the
 `anchor_creep.py` (isolate the mechanism, fit the one constant, re-center the prior,
 pre-register that a disagreement is the expected informative outcome):
 
-- **Rig:** a dedicated fretting/oscillating-sliding rig (or the UFU Junker rig fitted
+- **Rig:** a dedicated fretting/oscillating-sliding rig (or the âncora interna Junker rig fitted
   with a **small high-pressure bearing coupon**) able to hold a **known high contact
   pressure ≈ 1.2 GPa** (matching the sobretorque) and measure friction force and slip
   per cycle continuously (a friction-loop / dissipated-energy instrument).
-- **Tribo-pair (the anchor's whole point — same pair as UFU, cross-material allowed like
-  the C_creep 304SS anchor):** the UFU bolt-head-bearing / washer / member steel, same
+- **Tribo-pair (the anchor's whole point — same pair as âncora interna, cross-material allowed like
+  the C_creep 304SS anchor):** the âncora interna bolt-head-bearing / washer / member steel, same
   materials and same surface roughness class (Rz). If unavailable, a documented cross-
   pair (structural/bolt steel) — a disagreeing cross-pair result is still valid.
 - **What to measure:** the **accumulated frictional dissipated energy**

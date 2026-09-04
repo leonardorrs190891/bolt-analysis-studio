@@ -84,7 +84,7 @@ def main(argv=None) -> int:
                                "F2.2 standing: adotar onde o tripé melhora)"),
                 "C_creep": ("fitado-this-rig — PROXY AMBIENTAL per-par×"
                             "ambiente (corrosão vestida de creep; 18-64× o "
-                            "UFU; NUNCA poolar com pares metálicos limpos; "
+                            "âncora interna; NUNCA poolar com pares metálicos limpos; "
                             "aviso do check_input esperado)"),
                 "creep_t_c": ("seed = onset c da Eq.(2) do paper (input-de-"
                               "paper) × ajuste fino 1,5-2× (fitado-this-rig)"),

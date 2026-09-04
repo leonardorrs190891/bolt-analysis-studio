@@ -6,7 +6,7 @@ padrao. Aqui se afere que as duas origens funcionam E que o ajuste parte da
 fisica certa — que era onde estavam os defeitos:
 
 1. `simulate_v2_curve` coagia TODO tuner com `float()`, e nove chaves do
-   JointMaterial sao modo (string/bool). Estourava em todas as 210
+   JointMaterial sao modo (string/bool). Estourava em todas as 207
    configuracoes adotadas.
 2. `_simulate_v2` comecava com um dict VAZIO de tuners: ajustar um caso da
    validacao descartava as outras constantes adotadas daquele artigo e
@@ -250,7 +250,7 @@ def test_o_ajuste_parte_das_constantes_adotadas_do_caso(modelo_do_caso, qapp):
 @precisa_caso
 def test_chave_de_modo_nao_estoura_o_ajuste(modelo_do_caso, qapp):
     """`conform_driver='effective'` e outras oito chaves sao modo, nao numero.
-    float() nelas derrubava o ajuste em TODAS as 210 configuracoes."""
+    float() nelas derrubava o ajuste em TODAS as 207 configuracoes."""
     from bolt_analysis_studio.numerical.parameter_identifier import (
         simulate_v2_curve)
 

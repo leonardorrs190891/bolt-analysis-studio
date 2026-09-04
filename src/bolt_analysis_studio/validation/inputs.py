@@ -114,7 +114,7 @@ def frozen_constants(json_path: Path = SHARED_JSON,
 
 def load_full_curve(csv_rel_path: str) -> Tuple[np.ndarray, np.ndarray]:
     """Curva de referencia (repo-relativa). 2 colunas (cycle, ratio) ou
-    3 colunas UFU (cycle, F_kN, F_over_F0) — sempre col 0 e a ULTIMA."""
+    3 colunas âncora interna (cycle, F_kN, F_over_F0) — sempre col 0 e a ULTIMA."""
     d = np.genfromtxt(repo_root() / csv_rel_path, delimiter=",",
                       skip_header=1, encoding="utf-8")
     return d[:, 0], d[:, -1]
@@ -147,7 +147,7 @@ def geometry_for(bolt_size: str, grip_mm: float, r_bearing_mm: float = None,
 def geometry_for_case(case, grip_mm: float, E: float = None) -> JointGeometry:
     """geometry_for pela tabela ISO quando bolt_size e' metrico conhecido;
     fallback GENERICO dos campos d/p do proprio caso (parafusos nao-metricos,
-    ex. UFU 3/4\" UNC) com A_s = pi/4*(d - 0.9382p)^2 (formula padrao de area
+    ex. âncora interna 3/4\" UNC) com A_s = pi/4*(d - 0.9382p)^2 (formula padrao de area
     de tensao; ~1.5% do A_t tabelado UNC — proveniencia 'assumed')."""
     if case.bolt_size in ISO_THREADS:
         return geometry_for(case.bolt_size, grip_mm, E=E)
@@ -242,7 +242,7 @@ def _d_mm(case) -> float:
     try:
         return float(case.bolt_size.split("x")[0][1:])
     except (ValueError, IndexError):
-        # nao-metrico (ex. UFU 3/4" UNC): o caso carrega o diametro em mm
+        # nao-metrico (ex. âncora interna 3/4" UNC): o caso carrega o diametro em mm
         return float(getattr(case, "bolt_diameter_mm", 0.0) or 0.0)
 
 

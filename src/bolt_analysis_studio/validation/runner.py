@@ -113,7 +113,7 @@ def mae_sem_alinhamento(result) -> Optional[float]:
     O `mae` do store e' medido depois de dividir o modelo pelo proprio valor no
     primeiro ciclo do dado (`align`). Essa e' a convencao pre-registrada e
     continua sendo a metrica primaria; este numero e' o MESMO erro sem esse
-    passo, e existe para ser publicado ao lado dela: em 47 das 210 curvas o
+    passo, e existe para ser publicado ao lado dela: em 47 das 207 curvas o
     alinhamento absorve uma diferenca no primeiro ciclo do dado, e o leitor tem
     direito de ver quanto (decisao do professor, 2026-09-04).
 

@@ -54,7 +54,7 @@ import matplotlib.pyplot as plt
 DEFAULT_OUT = Path(r"C:\Users\leo_r\OneDrive\Mestrado\Doutorado_Buiatti\figuras")
 
 # fontes-chave para as figuras da tese (grades por grupo)
-# ⚠️ `UFU_LAB` SAIU desta lista em 2026-08-25: a fonte saiu do projeto em
+# ⚠️ `ANCORA_INTERNA` SAIU desta lista em 2026-08-25: a fonte saiu do projeto em
 # 2026-08-01 (decisao do professor). As 3 curvas seguem no store por
 # preservacao e sao **0 comparaveis pelo censo** — publicar figura delas num
 # artigo seria erro material. Preservar no store nao e' publicar.
@@ -207,14 +207,14 @@ def fig_decomposition(records, store, case_id: str, out: Path,
 
 def fig_reference_set(records, store, out: Path, dpi: int, pdf: bool,  # noqa: E501
                       # ⚠️ APOSENTADA em 2026-08-25 — nao e mais chamada pelo
-                      # main. Ela plota as condicoes de referencia da UFU_LAB, e
-                      # a UFU saiu do projeto em 2026-08-01: as 3 curvas seguem
+                      # main. Ela plota as condicoes de referencia da ANCORA_INTERNA, e
+                      # a âncora interna saiu do projeto em 2026-08-01: as 3 curvas seguem
                       # no store por preservacao e sao 0 comparaveis pelo censo.
                       # Fica aqui como registro; se voltar a ser usada, confira
                       # antes se a fonte voltou ao escopo.
                       manifest: list):
-    """Casos UFU (conjunto de calibração de referência) em um painel único."""
-    recs = [r for r in records if r.source == "UFU_LAB"
+    """Casos âncora interna (conjunto de calibração de referência) em um painel único."""
+    recs = [r for r in records if r.source == "ANCORA_INTERNA"
             and store.get(r.case_id, {}).get("ok")]
     if not recs:
         return
@@ -230,9 +230,9 @@ def fig_reference_set(records, store, out: Path, dpi: int, pdf: bool,  # noqa: E
                 label=f"{rec.case_id} (MAE {res['mae']:.3f})")
     ax.set_xlabel("Ciclos")
     ax.set_ylabel("F/F₀")
-    ax.set_title("Conjunto de referência (bancada UFU): modelo × experimento")
+    ax.set_title("Conjunto de referência (bancada âncora interna): modelo × experimento")
     ax.legend(fontsize=8)
-    savefig(fig, out, "fig_condicoes_referencia_ufu", dpi, pdf, manifest)
+    savefig(fig, out, "ancora_interna", dpi, pdf, manifest)
 
 
 def fig_ledger(out: Path, dpi: int, pdf: bool, manifest: list):
@@ -894,8 +894,8 @@ def main():
         store = load_store()
         gdir = out / "graficos"
 
-        # ⚠️ `fig_reference_set` (condicoes de referencia da UFU) NAO e mais
-        # chamada: a UFU saiu do projeto em 2026-08-01. A funcao fica no
+        # ⚠️ `fig_reference_set` (condicoes de referencia da âncora interna) NAO e mais
+        # chamada: a âncora interna saiu do projeto em 2026-08-01. A funcao fica no
         # arquivo com a marca, porque apaga-la perderia o registro.
         # fig_reference_set(records, store, gdir, args.dpi, args.pdf, manifest)
         fig_cadeia_extracao(records, store, gdir, args.dpi, args.pdf, manifest)
@@ -908,8 +908,8 @@ def main():
         for src in [s.strip() for s in args.sources.split(",") if s.strip()]:
             fig_model_vs_data_grid(records, store, src, gdir,
                                    args.dpi, args.pdf, manifest)
-        # decomposição: casos UFU + extras pedidos
-        # ⚠️ era `if r.source == "UFU_LAB"`; a UFU saiu do projeto. Agora usa
+        # decomposição: casos âncora interna + extras pedidos
+        # ⚠️ era `if r.source == "ANCORA_INTERNA"`; a âncora interna saiu do projeto. Agora usa
         # uma curva de mecanismo dominante distinto por fonte, o que e o que a
         # figura de decomposicao quer mostrar de fato.
         decomp_ids = ["liu2016wear_fig11a_af7p5kn",

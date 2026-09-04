@@ -15,7 +15,7 @@ sequencia de convencoes pre-registradas — `csv_x_offset` e `csv_x_scale` (o
 ECCLES vem em segundos, o LU ancora em x=1), normalizacao no primeiro ponto,
 corte em `FLOOR_TRIM=0,10` e nova normalizacao — e reimplementar isso aqui
 criaria um segundo dado experimental que divergiria do artigo. O store guarda
-o resultado dessas convencoes nos 210 casos; e' de la' que se le.
+o resultado dessas convencoes nos 207 casos; e' de la' que se le.
 """
 from __future__ import annotations
 

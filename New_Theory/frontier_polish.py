@@ -91,7 +91,7 @@ def main():
 
     # ---- LIU_2025 (pior familia; incubacao = timing; agora os NIVEIS juntos) ----
     print("== LIU_2025 joint fit (emb, W_onset, k_ratchet) ==", flush=True)
-    base = dict(LEGACY, c_bend=50.0, delta_free=0.30e-3, k_wear_scale_tr=0.0,
+    base = dict(LEGACY, c_bend=50.0, delta_free=0.30e-3, K_archard=0.0,
                 _consts=dict(W_conf_ref=0.0))
     mae, cfg = coord_descent(
         by["LIU_2025"], base,

@@ -22,7 +22,7 @@ def test_metadados_saem_do_setup_py():
         '    name="bolt-analysis-studio",\n'
         '    version="2.0.0",\n'
         '    author="Prof. Leonardo Rosa Ribeiro da Silva, PhD; Neilon de Souza da Silva",\n'
-        '    author_email="leorrs@ufu.br",\n'
+        '    author_email="leorrs@ancora_interna.br",\n'
         ')\n'
     )
     meta = bi._project_metadata(texto)
@@ -178,9 +178,9 @@ def test_payload_traz_as_paginas_por_artigo():
 
 
 def test_payload_traz_o_csv_de_TODOS_os_210_casos():
-    """206 dos 210 CSV estao sob BAS_V2_papers ou curve_library, mas 4 nao —
-    3 UFU_LAB em Models/EXPERIMENTAL_UFU e 1 USER em Models/USER_CASES. O
-    store traz as 210 analises, entao esses 4 APARECEM na arvore; sem o CSV,
+    """206 dos 207 CSV estao sob BAS_V2_papers ou curve_library, mas 4 nao —
+    3 ANCORA_INTERNA em Models/EXPERIMENTAL_ANCORA e 1 USER em Models/USER_CASES. O
+    store traz as 207 analises, entao esses 4 APARECEM na arvore; sem o CSV,
     'Re-simular caso' falha e eles ficam somente-leitura em silencio."""
     import sys as _s
     _s.path.insert(0, str(RAIZ / "src"))
@@ -276,13 +276,13 @@ def test_leiame_ensina_onde_estao_os_dados_de_calibracao(tmp_path):
     """O pedido de 2026-09-02 e' explicito: o leiame indica como usar E como
     ver os dados de calibracao."""
     meta = {"version": "2.0.0", "author": "Leonardo; Neilon"}
-    alvo = bi._write_leiame(tmp_path / "LEIAME.html", meta, 29, 210, 205)
+    alvo = bi._write_leiame(tmp_path / "LEIAME.html", meta, 28, 207, 205)
     html = alvo.read_text(encoding="utf-8")
     assert "Ctrl</kbd>+<kbd>5" in html and "Validation" in html
     assert "New_Theory/variable_explorer/index.html" in html
     assert "adopted_configs.json" in html
     assert "Report HTML" in html and "Report geral" in html
-    assert "29 fontes" in html and "210 curvas" in html
+    assert "28 fontes" in html and "207 curvas" in html
 
 
 def test_leiame_ensina_a_importar_uma_curva_como_modelo(tmp_path):
@@ -290,7 +290,7 @@ def test_leiame_ensina_a_importar_uma_curva_como_modelo(tmp_path):
     editavel e' outra, e e' o que o usuario pediu em 2026-09-03. O censo tem de
     aparecer com o numero certo e com o ponteiro para o Apendice B."""
     html = bi._write_leiame(tmp_path / "L.html",
-                            {"version": "1.0.0", "author": "x"}, 29, 210, 205
+                            {"version": "1.0.0", "author": "x"}, 28, 207, 205
                             ).read_text(encoding="utf-8")
     assert "Ctrl</kbd>+<kbd>I" in html
     assert "205" in html and "Ap&ecirc;ndice B" in html
@@ -302,7 +302,7 @@ def test_leiame_ensina_a_calibrar_e_diz_o_que_o_ajuste_nao_e(tmp_path):
     calibra contra a propria curva pode achar que produziu uma configuracao
     adotada. O leiame ensina o Ctrl+K, a regra da trava, e diz que nao e'."""
     html = bi._write_leiame(tmp_path / "L.html",
-                            {"version": "1.0.0", "author": "x"}, 29, 210, 205
+                            {"version": "1.0.0", "author": "x"}, 28, 207, 205
                             ).read_text(encoding="utf-8")
     assert "Ctrl</kbd>+<kbd>K" in html
     assert "n&atilde;o marca" in html          # a regra da trava
@@ -312,7 +312,7 @@ def test_leiame_ensina_a_calibrar_e_diz_o_que_o_ajuste_nao_e(tmp_path):
 
 def test_o_indice_dos_casos_entra_no_instalador():
     """O glob dos .msd nao pega a raiz de SAVED_CASES. Sem indice.json o
-    seletor do Ctrl+I abre VAZIO na maquina instalada, com os 210 arquivos
+    seletor do Ctrl+I abre VAZIO na maquina instalada, com os 207 arquivos
     presentes — a falha silenciosa que a aceitacao ja' pegou duas vezes com
     outros arquivos de dados."""
     alvos = [p for p, _motivo in bi.PAYLOAD]
@@ -322,7 +322,7 @@ def test_o_indice_dos_casos_entra_no_instalador():
 def test_leiame_traz_autores_versao_licenca_e_doi(tmp_path):
     meta = {"version": "2.0.0",
             "author": "Prof. Leonardo Rosa Ribeiro da Silva, PhD; Neilon de Souza da Silva"}
-    html = bi._write_leiame(tmp_path / "L.html", meta, 29, 210, 205).read_text(encoding="utf-8")
+    html = bi._write_leiame(tmp_path / "L.html", meta, 28, 207, 205).read_text(encoding="utf-8")
     assert "Leonardo Rosa Ribeiro da Silva" in html
     assert "Neilon de Souza da Silva" in html
     assert "2.0.0" in html and "MIT" in html
@@ -333,14 +333,14 @@ def test_leiame_diz_o_que_nao_vem_e_por_que(tmp_path):
     """Quem procurar os PDF dos artigos tem de achar a explicacao e o caminho
     para a fonte, nao um diretorio vazio."""
     html = bi._write_leiame(tmp_path / "L.html",
-                            {"version": "2.0.0", "author": "x"}, 29, 210, 205
+                            {"version": "2.0.0", "author": "x"}, 28, 207, 205
                             ).read_text(encoding="utf-8")
     assert "PDF" in html and "DOI" in html
 
 
 def test_leiame_declara_utf8_e_nao_deixa_placeholder(tmp_path):
     html = bi._write_leiame(tmp_path / "L.html",
-                            {"version": "2.0.0", "author": "x"}, 29, 210, 205
+                            {"version": "2.0.0", "author": "x"}, 28, 207, 205
                             ).read_text(encoding="utf-8")
     assert 'charset="utf-8"' in html.lower()
     assert "{versao}" not in html and "{autores}" not in html

@@ -65,7 +65,7 @@ Benignos documentados: subidas ≤0,002 em estáticos = jitter de digitalizaçã
 (GRZEJDA/QIN/compblock); `jcsr_plain_outdoor` sobe **0,0585** mas é ensaio
 OUTDOOR — ciclo térmico diário pode ser física real, exige o paper antes de
 chamar de defeito; pares fracos (ECCLES 3/20, JCSR 2/12) compatíveis com
-arredondamento grosso; pares UFU fora do projeto.
+arredondamento grosso; pares âncora interna fora do projeto.
 
 **Placar da regra de parada: 1 fonte seca (LU_2024). Pistas em voo: 3.**
 

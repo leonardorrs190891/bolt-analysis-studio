@@ -177,7 +177,7 @@ _SOURCE_LABELS = {
                                             "static contact creep, Ra x load (min)"),
     "LI_2022_TRIBOINT": ("Li 2022 (axial x freq)", "Ti axial, 10/15/20 Hz",
                                                     "Ti axial, 10/15/20 Hz"),
-    "UFU_LAB":          ("UFU (lab)", "M16 cisalhamento - rig de calibracao",
+    "ANCORA_INTERNA":          ("âncora interna (lab)", "M16 cisalhamento - rig de calibracao",
                                       "M16 shear - calibration rig"),
 }
 
@@ -286,7 +286,7 @@ def _validation_cases():
     # filtro silencioso, exatamente pelo motivo do comentario acima: uma fonte
     # que some sem contagem e' indistinguivel de um bug de leitura. Aqui a
     # retirada e' decisao declarada (`_SRC_RETIRADO` em report_html), entao o
-    # build imprime "fonte_retirada: UFU_..." e o operador ve que sumiu de
+    # build imprime "fonte_retirada: ancora_interna..." e o operador ve que sumiu de
     # proposito.
     try:
         from bolt_analysis_studio.validation.report_html import caso_no_documento
@@ -1142,13 +1142,13 @@ def render_index(specs):
 <div class="panel">
   <h2 class="sec"><span data-l="pt">A curva-padrão</span><span data-l="en">The standard curve</span></h2>
   <p><span data-l="pt">Salvo indicação, todas as curvas partem do mesmo ensaio de referência
-  (rig UFU): parafuso <b>M16</b> em cisalhamento (Junker), arruela <b>nova</b>,
+  (rig âncora interna): parafuso <b>M16</b> em cisalhamento (Junker), arruela <b>nova</b>,
   pré-carga <b>F0 = 50 kN</b>, amplitude imposta <b>&delta; = 0.5 mm</b> a <b>0.5 Hz</b>,
   carga transversal (&theta; = 90&deg;), <b>2500 ciclos</b>, modo de deslocamento. As curvas
   são <b>pré-computadas pelo engine real</b> (<code>handle_simulate</code>) — não há física
   reimplementada em JavaScript. Alguns campos (fretting axial, fadiga, creep) usam um
   baseline <b>axial</b> ou de <b>creep</b>, indicado na própria página.</span>
-  <span data-l="en">Unless noted, every curve starts from the same reference test (UFU rig):
+  <span data-l="en">Unless noted, every curve starts from the same reference test (âncora interna rig):
   <b>M16</b> bolt in shear (Junker), <b>new</b> washer, preload <b>F0 = 50 kN</b>, imposed
   amplitude <b>&delta; = 0.5 mm</b> at <b>0.5 Hz</b>, transverse load (&theta; = 90&deg;),
   <b>2500 cycles</b>, displacement mode. Curves are <b>pre-computed by the real engine</b>
@@ -1376,7 +1376,7 @@ VARIABLE_SPECS.extend([
             "do M16 shear excedia a assíntota de 12 &micro;m. Hoje o valor NÃO é um "
             "botão livre — é um <b>INPUT por junta</b>, lido da classe de rugosidade Rz "
             "na tabela f_Z da VDI 2230 (lição L24, \"ler em vez de fitar\"). O default de "
-            "30 &micro;m só vale para o rig UFU; outra junta pede outra classe Rz.</p>"),
+            "30 &micro;m só vale para o rig âncora interna; outra junta pede outra classe Rz.</p>"),
         physics_en=(
             "<p>When two metal surfaces are clamped they never meet on the ideal plane: "
             "real contact happens at the peaks of the roughness asperities. Under "
@@ -1397,7 +1397,7 @@ VARIABLE_SPECS.extend([
             "drop exceeded the 12 &micro;m asymptote. Today the value is NOT a free knob "
             "— it is a <b>PER-joint INPUT</b>, read from the Rz roughness class in the "
             "VDI 2230 f_Z table (lesson L24, \"read instead of fit\"). The 30 &micro;m "
-            "default only fits the UFU rig; another joint calls for another Rz class.</p>"),
+            "default only fits the âncora interna rig; another joint calls for another Rz class.</p>"),
         anchor_key="emb_depth",
         lessons=["L24"],
         refs=[("VDI 2230 — tabela f_Z de assentamento por classe de rugosidade",
@@ -1419,16 +1419,16 @@ VARIABLE_SPECS.extend([
             "com F_0, produzindo a CAUDA lenta da curva (perda continuada muito "
             "depois do assentamento inicial). Aumentar <code>C_creep</code> "
             "inclina essa cauda. É POR PAR tribológico, não universal: a âncora "
-            "304SS (~1e-12) e o fit UFU (~1.2e-11) têm intervalos de confiança "
-            "disjuntos; o bloco 'shared' canônico mantém o valor UFU."),
+            "304SS (~1e-12) e o fit da âncora interna (~1.2e-11) têm intervalos de confiança "
+            "disjuntos; o bloco 'shared' canônico mantém o valor da âncora interna."),
         physics_en=(
             "Logarithmic creep coefficient (Norton-Bailey) of the interface under "
             "preload. The slow settling grows with log-time and scales with F_0, "
             "producing the slow TAIL of the curve (continued loss well after the "
             "initial bedding). Raising <code>C_creep</code> tilts that tail. It is "
             "PER tribological pair, not universal: the 304SS anchor (~1e-12) and "
-            "the UFU fit (~1.2e-11) have disjoint confidence intervals; the "
-            "canonical 'shared' block keeps the UFU value."),
+            "the âncora interna fit (~1.2e-11) have disjoint confidence intervals; the "
+            "canonical 'shared' block keeps the âncora interna value."),
         anchor_key="C_creep_por_par",
         refs=[("§4.2 CreepLoss (Norton-Bailey logarítmico)",
                "§4.2 CreepLoss (logarithmic Norton-Bailey)", "MODEL_MATH_REFERENCE.md"),

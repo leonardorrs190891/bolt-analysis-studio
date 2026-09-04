@@ -75,7 +75,7 @@ rodar módulos). Staging sempre por arquivo explícito. Commits com trailer
     este prompt, o plano-mestre, `.claude/skills/prompt-mestre/SKILL.md`), apague as cópias e
     refaça — as versões do branch aterrissam idênticas nos mesmos caminhos.
 0.3 No main: suíte 27-arquivos + `python -m bolt_analysis_studio.validation.report --all`
-    (202 casos; UFU presentes). Commit do store.
+    (202 casos; âncora interna presentes). Commit do store.
 0.4 RE-PIN: gerar baseline novo (`scripts/l1l7_baseline.py` adaptado ao main) + CENSO do tripé
     (rodar `validation.error_budget`; listar TODAS as curvas com MAE>0,1 e/ou maxerr>0,1 —
     esta lista é a lista-mestre da meta). Ledger + commit.

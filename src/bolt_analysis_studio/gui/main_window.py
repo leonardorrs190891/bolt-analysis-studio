@@ -951,7 +951,7 @@ class ModelBuilderTab(QWidget):
 
         case_studies_btn = QPushButton("📁 Case Studies")
         case_studies_btn.setToolTip(
-            "Load a pre-built case study (UFU lab trials + literature validation cases)."
+            "Load a pre-built case study (âncora interna lab trials + literature validation cases)."
         )
         case_studies_btn.clicked.connect(self.case_studies_requested.emit)
         header.addWidget(case_studies_btn)
@@ -6049,7 +6049,7 @@ Vingsbo &amp; Söderberg (1988).</p>"""),
 
 <h3>Developers:</h3>
 <p><b>Prof. Leonardo Rosa Ribeiro da Silva, PhD</b><br>
-<a href="mailto:leorrs@ufu.br">leorrs@ufu.br</a><br>
+<a href="mailto:leorrs@ancora_interna.br">leorrs@ancora_interna.br</a><br>
 <b>Neilon de Souza da Silva, PhD</b><br>
 <a href="mailto:neilon@petrobras.com.br">neilon@petrobras.com.br</a></p>
 
@@ -8015,7 +8015,7 @@ Vingsbo &amp; Söderberg (1988).</p>"""),
         import os as _os
         import numpy as np
         if not path:
-            start_dir = _os.path.join(_os.getcwd(), 'Models', 'EXPERIMENTAL_UFU', 'reference_curves')
+            start_dir = _os.path.join(_os.getcwd(), 'Models', 'EXPERIMENTAL_ANCORA', 'reference_curves')
             if not _os.path.isdir(start_dir):
                 start_dir = _os.getcwd()
             path, _ = QFileDialog.getOpenFileName(

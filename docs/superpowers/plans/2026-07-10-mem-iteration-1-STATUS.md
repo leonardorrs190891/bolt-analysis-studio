@@ -58,7 +58,7 @@ corrigir — e foi parcialmente recuperado com a âncora DO PAR.
    creep estático (Fase 1C); usar anchor_creep como referência do caminho.
 3. **YANG_2023_IJPEM (0.294)** — sem entrada adotada; nunca calibrado.
 4. **LIU_2022 fig5 (0.249)** — §4.29 completo (running-in + c_D per-lube).
-5. **UFU_LAB (0.249)** — c_bend per-rig nunca fitado (lever 3 direto).
+5. **ANCORA_INTERNA (0.249)** — c_bend per-rig nunca fitado (lever 3 direto).
 6. **LIU_2025 (0.193)** — reconstruir a config da galeria com procedência.
 7. **BAUER (0.165)** — forma graded do §4.33 (k_loose_graded?) não promovida.
 8. **KARLSEN HV** — propagar C_creep=1e-12 do par com refit de c_bend.

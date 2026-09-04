@@ -351,7 +351,7 @@ peça a decisão de forma correspondente (`New_Theory/DECISOES_PENDENTES.md`).
 | **kernel de colapso desacelerante** — **e NÃO é uma forma só** (ver nota) | **25** | LU_2024 10 · CHU_2026 7 · YANG_2019 4 · ECCLES fig8c 1 · KARLSEN 1 · SUN grease_standard 1 · ZHANG_2006 1 |
 | **bifurcação de limiar de amplitude** | **7** | YANG_2023_IJPEM (tri-falsificado: nenhuma constante move) |
 | **escala de rigidez com espessura de membro** | **3** | ROUSSEAU_2025 (prereg escrito 2026-07-27) |
-| **incubação de assentamento** | **2** | UFU_LAB |
+| **incubação de assentamento** | **2** | ANCORA_INTERNA |
 | **tripla combinação** (porca self-locking + CFRP + R=0) | **1** | YANG_2023_AME |
 | **marginal** (res.máx 0,1035 — 3,5% acima do limiar) | **1** | LIU_2016 fig7 |
 

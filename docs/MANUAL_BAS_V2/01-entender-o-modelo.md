@@ -117,13 +117,13 @@ confrontação**, não postulada. A Fase 1 a atacou por três frentes independen
 | frente | o que fez | o que achou |
 |---|---|---|
 | **B — trilho axial** | predição zero-refit num modo de carregamento diferente | as formas seguram; o nível pedia proveniência, não constante nova |
-| **C — âncora de `C_creep`** | comparou o fit UFU com creep estático de literatura (304SS) | UFU **1,867e-11** vs âncora **9,9e-13** — intervalos de confiança **disjuntos** |
+| **C — âncora de `C_creep`** | comparou o fit da âncora interna com creep estático de literatura (304SS) | âncora interna **1,867e-11** vs âncora **9,9e-13** — intervalos de confiança **disjuntos** |
 | **A — transferência transversal** | varreu a biblioteca aplicando a física de um rig aos outros | as formas transferem; as constantes **não** |
 
 A frente C é a mais decisiva porque é a mais limpa: mesma lei, mesmo modo,
 constantes separadas por mais de uma ordem de grandeza — e **isso não é falha do
 modelo**, é a física do par tribológico. `C_creep` é **por par**, e o
-`knowledge_base` hoje registra quatro: UFU 1,867e-11 · Liu2017 1,45e-11 · 304SS
+`knowledge_base` hoje registra quatro: âncora interna 1,867e-11 · Liu2017 1,45e-11 · 304SS
 9,9e-13 · Al5083 0,012–0,025/década.
 
 **Como a tese governa a calibração.** Ela produz uma regra operacional:
@@ -155,10 +155,10 @@ titular do resultado é este:
 
 | constante | valor | onde vive | classe | proveniência |
 |---|---:|---|---|---|
-| `emb_depth` | 3,0e-5 m | `shared` | **input** | VDI 2230, tabela f_Z por classe de rugosidade Rz (`library_common.emb_depth_vdi`). **Não é constante universal** — o 30 µm só vale para o rig UFU; o trilho axial usou 9,5 µm (Rz<10) |
+| `emb_depth` | 3,0e-5 m | `shared` | **input** | VDI 2230, tabela f_Z por classe de rugosidade Rz (`library_common.emb_depth_vdi`). **Não é constante universal** — o 30 µm só vale para o rig âncora interna; o trilho axial usou 9,5 µm (Rz<10) |
 | `N_emb` | 50 | `shared` | **per-rig** | timing lido do dado (~metade do assentamento em 10–20 ciclos); banda medida em outros rigs **3–15** — a diferença é real e está registrada, não reconciliada |
 | `k_wear_spec` | 5,0e-14 1/Pa | `shared` | **derivado** | razão canônica K/H (§4.42a) — `K_archard` e `hardness` são **não-identificáveis em separado**, só aparecem como razão |
-| `C_creep` | 1,8667e-11 | `shared` | **FITADO** (por par) | fit UFU; âncora 304SS 9,9e-13 com IC disjunto (§4.7). A âncora re-centrada vive em `New_Theory/creep_anchor.json`, **fora** do canônico |
+| `C_creep` | 1,8667e-11 | `shared` | **FITADO** (por par) | fit da âncora interna; âncora 304SS 9,9e-13 com IC disjunto (§4.7). A âncora re-centrada vive em `New_Theory/creep_anchor.json`, **fora** do canônico |
 | `tr_loose_gain` | 2,0 | `shared` | **forma** | two-factor loosening (acoplamento anisotrópico Φ × hélice) |
 | `c_D` | 2,0 | `shared` | **forma** | crescimento de dano dirigido pela dissipação de slip |
 | `k_dmg_wear` | 4,0 | `shared` | **forma** | amplificação de desgaste pelo dano |
@@ -230,7 +230,7 @@ Resultado **misto e declarado sem maquiagem** — e é isso que o torna útil:
 | **L1** | desgaste de flanco ∝ amplitude axial | canal de flanco per-rig | Gate B1, 2 preregs | **FALSIFICADO** (`FAIL2`) — a forma existe e é ~8× rasa demais para o slope do Liu2017. Não adotada |
 | **L2** | rigidez de membro `k_j`(geometria, material) | lei de Pedersen 2008 (`kj_mode="pedersen"`) | Gate D5 Rousseau/Zhang | **PASS-inert** — 8/8, ΔMAE = 0,0 exato. Válida como **proveniência de geometria**, sem efeito comportamental no PACK adotado |
 | **L3** | acoplamento `F_amp ↔ δ_amp` em disp-mode | `mu_eff_lo`, `mu_eff_F0_ref`, `gross_ceiling_decay` (default 0,0 = OFF exato) | bit-identidade + efeito físico | **capacidade default-inerte com proveniência**; falta calibrar per-rig |
-| **L4** | conformação a ~1 GPa | — (nenhuma mudança de engine) | busca dirigida na literatura | **null reconfirmado 3×** (Rodadas 4 e 5). `W_conf_ref` segue dependente do experimento-âncora UFU |
+| **L4** | conformação a ~1 GPa | — (nenhuma mudança de engine) | busca dirigida na literatura | **null reconfirmado 3×** (Rodadas 4 e 5). `W_conf_ref` segue dependente do experimento-âncora âncora interna |
 | **L5** | creep | docstring corrigido (**log-t**, não Norton-Bailey) + forma saturante **opt-in** | suíte de creep sem regressão | **PASS** — default segue log-t |
 | **L6** | `k_wear_spec` por par | tabela de âncoras no KB por interface+par | testes de KB | **PASS** — documenta e centraliza a não-universalidade; não a resolve |
 | **L7** | energia específica de remoção | `EnergyBudget.removal_energy_check()` | banda Shipway 2021 (1,8–10,5 kJ/mm³) | **bound informacional** — nunca bloqueia, nunca é fitável |

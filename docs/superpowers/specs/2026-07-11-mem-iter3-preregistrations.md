@@ -12,7 +12,7 @@ canônica 0.1392; n=114 comparáveis).
 
 **Motivação (iter.2):** com o C_creep físico do par (1e-12, medido no branch
 travado Vibralock), nenhum c_bend reproduz o colapso HV (melhor 0.127 vs
-0.094 do statu quo). O statu quo usa C_creep UFU 1.87e-11 (par ERRADO, 19×) —
+0.094 do statu quo). O statu quo usa C_creep da âncora interna 1.87e-11 (par ERRADO, 19×) —
 um proxy que absorve outro mecanismo. O paper aponta o mecanismo: "immediate
 reduction of asperities … **not creep**".
 
@@ -145,7 +145,7 @@ maior ou menor em média?"
 **Resposta medida:** sim, POR BANCADA (c_bend × flexão do parafuso = único DOF
 transversal), mas de forma cega. A rigidez de caminho implícita nos c_bend
 adotados: BAUER 2.1e7 · ICMEZ 1.0e7 · KARLSEN 4.1e7 · LIU_2022 5.1e6 ·
-LIU_2025 3.6e8 · LU 1.6e7 · ROUSSEAU 2.6e6 · UFU 8.3e6 · YANG_2019 4.2e6 ·
+LIU_2025 3.6e8 · LU 1.6e7 · ROUSSEAU 2.6e6 · âncora interna 8.3e6 · YANG_2019 4.2e6 ·
 YANG_2021 3.3e5 · YANG_2023 9.8e5 [N/m] — faixa de ~1000×, mediana 8.3e6.
 
 **Três achados:**

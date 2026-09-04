@@ -63,7 +63,7 @@ SHARED_PROV = {
     "C_creep": "Estágio A compartilhada — por par tribológico (§4.7)",
     "tr_loose_gain": "Estágio A compartilhada (âncora pendente §4.42)",
     "N_emb": "Estágio A compartilhada (constante de tempo do assentamento)",
-    "W_conf_ref": "Estágio A — conformação, por par UFU (§4.9)",
+    "W_conf_ref": "Estágio A — conformação, por par da âncora interna (§4.9)",
     "conform_pressure_exp": "fixo n=2 (VDI)",
     "p_ref_conform": "computado do %yield (pct/70, roadmap 11f)",
 }
@@ -1313,14 +1313,14 @@ META = META_MAX
 _PARTIDA_TRIPE = 103
 # Fonte dos casos que NÃO entram no censo de comparáveis (casos do usuário e
 # exemplos sintéticos aparecem no documento, mas não na meta).
-# UFU_LAB: FORA DO PROJETO (decisão do professor em 2026-08-01 — primeiro
-# "por enquanto", depois DEFINITIVA na mesma data: *"a UFU não faz parte mais
+# ANCORA_INTERNA: FORA DO PROJETO (decisão do professor em 2026-08-01 — primeiro
+# "por enquanto", depois DEFINITIVA na mesma data: *"a âncora interna não faz parte mais
 # desse projeto"*). Os 3 ensaios da bancada própria não entram na meta e não
 # há rodada experimental pendente — o item saiu da fila de decisões. Nada foi
 # apagado: resultados, CSVs, configs e reports ficam PRESERVADOS no
 # store/repositório (reverter = tirar a string desta tupla e re-sincronizar
 # censo/docs no mesmo commit).
-_SRC_NAO_COMPARAVEL = ("USER", "UFU_LAB")
+_SRC_NAO_COMPARAVEL = ("USER",)
 # CASOS individuais fora do censo (P2 do plano LU_2024, decisão do professor
 # 2026-07-31): a linha 22 N·m da Tabela 9 do paper é IDÊNTICA ao dígito à
 # linha 1,0 mm da Tabela 8 — fig18_amp1p0 e fig20_T22Nm são o MESMO teste
@@ -1438,13 +1438,12 @@ def caso_comparavel(source: str, case_id: str) -> bool:
 #   · `_SRC_RETIRADO` = **não aparece**. É uma afirmação sobre o CORPUS: aquela
 #     fonte deixou de ser prova. Mostrá-la faria o leitor contar como evidência
 #     algo que o autor já retirou.
-# UFU_LAB já havia saído do censo em `f8eb930` ("por enquanto"); a retirada do
-# documento é a decisão seguinte e definitiva, e por isso vive numa lista
-# própria — devolver a fonte ao censo não deve, sozinho, devolvê-la à página.
-_SRC_RETIRADO = {
-    "UFU_LAB": "bancada do próprio laboratório; não é mais usada para validar "
-               "o software (professor, 2026-07-31)",
-}
+# VAZIO desde 2026-09-04: a única fonte que estava aqui saiu do projeto por
+# inteiro (dado sigiloso, decisão do professor), e uma fonte removida não é uma
+# fonte retirada — não há o que esconder de uma página se o caso não existe. O
+# mecanismo fica de pé porque a distinção acima continua valendo, e retirar uma
+# fonte é decisão que já foi tomada uma vez e pode voltar a ser.
+_SRC_RETIRADO: dict = {}
 
 
 def caso_no_documento(source: str, case_id: str) -> bool:
@@ -2366,7 +2365,7 @@ def _budget_section(tripe: Optional[Dict[str, bool]] = None) -> str:
         fora_lab[lab] = fora_lab.get(lab, 0) + 1
     hdr = "".join(f"<th>{l}</th>" for l in _BUDGET_LABELS)
     # Este painel NÃO vem de `records` — vem do `error_budget.json`, artefato
-    # gerado à parte. Foi por isso que o UFU_LAB sobreviveu aqui depois de ser
+    # gerado à parte. Foi por isso que o ANCORA_INTERNA sobreviveu aqui depois de ser
     # retirado do documento (o rótulo saía cru, sem o mapa `NICE`, que é o
     # sintoma de "esta tabela tem outra origem"). Filtrar só as LINHAS deixaria
     # o rodapé somando o que a tabela não mostra mais, então os totais são
@@ -6249,7 +6248,7 @@ def _tripe_ok(res, lim_sd: Optional[float] = None) -> Optional[bool]:
 #                     do σ_res era em boa parte régua, não modelo)
 #   fontes 100% ..... 7 de 28 (era 6)
 #   G3 cobertura .... 6 fontes sem piso medido ficam no limite GLOBAL:
-#                     LU_2024, UFU_LAB, YANG_2019, YANG_2023_AME,
+#                     LU_2024, ANCORA_INTERNA, YANG_2019, YANG_2023_AME,
 #                     YANG_2023_IJPEM, ZHANG_2006 — nunca piso estimado.
 #
 # A regra: limite efetivo da 3ª perna = max(META_SRES, piso_σ medido da fonte)
@@ -7077,7 +7076,7 @@ def all_plots_html(records: List[CaseRecord],
     2026-07-14), do store canonico — grade por fonte, cada card linka o
     report individual completo."""
     # Mesmo filtro do mestre: uma fonte retirada não pode sobreviver aqui. Esta
-    # página é linkada do mestre como "todos os gráficos" — deixar o UFU só
+    # página é linkada do mestre como "todos os gráficos" — deixar a âncora interna só
     # nela seria pior que não retirar, porque a contradição ficaria a um clique.
     records = [r for r in records if caso_no_documento(r.source, r.case_id)]
     by_src: Dict[str, List[CaseRecord]] = {}

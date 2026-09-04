@@ -85,7 +85,7 @@ amostra de 13**.
 |---|---:|---:|---:|
 | **`CHU_2026`** | 0 | 7 | **100 %** |
 | `LIU_2025` | 7 | 52 | 88 % |
-| `UFU_LAB` | 3 | 21 | 88 % |
+| `ANCORA_INTERNA` | 3 | 21 | 88 % |
 | `BAUER_2024` | 12 | 30 | 71 % |
 | `LIU_2022` | 24 | 44 | 65 % |
 | `YANG_2019` | 10 | 14 | 58 % |
@@ -166,10 +166,10 @@ genérica — cada prov cita o commit adotante:
 | PR-22 (097dd7e) | BAUER fig6 ×7 | c_bend/floor fitados per-espécime coerente |
 | PR-38 re-key | CHU test1 | âncora D_cr + trio fitado no µ(N) do test2 (já narrado em `leituras`; agora keyado por campo) |
 | PR-40/D-Z | KARLSEN ×2 | c_bend per-rig |
-| PR-18 (01eeb76) | UFU ×3 | c_bend per-specimen; floor = default do pack explicitado |
+| PR-18 (01eeb76) | âncora interna ×3 | c_bend per-specimen; floor = default do pack explicitado |
 | F3 LOTE2 (f77d3af) | ZHANG_2006 | fitado-this-rig |
 | Herança E2 (d721b14) | LIU_2025 amp0p4/0p5 | cfg copiado do pai na cisão; argumento vive no prov do pai |
-| Starter físico | KARLSEN/UFU/LIU_2022 ×10 | W_ref=1e4 = escala de referência 2026-06-20, não fitada |
+| Starter físico | KARLSEN/âncora interna/LIU_2022 ×10 | W_ref=1e4 = escala de referência 2026-06-20, não fitada |
 | ADOTA 6e19494 | YANG_2019 | trio de dano v2 varamp, dossiê T1–T13 |
 
 **Atual: 162 sem procedência** (baseline congelado do teste segue 206 por

@@ -67,21 +67,18 @@ def test_user_records_and_registry_integration(tmp_path, monkeypatch):
     # Mesmo pin robusto de test_validation_registry.py::
     # test_registry_covers_all_cases_with_unique_ids (ver comentario la):
     # full-checkout = 202 (180 herdados + 22 Rodada 5); desconta o que
-    # estiver de fato ausente entre os 3 CSVs UFU nao-versionados e a pasta
+    # estiver de fato ausente entre os 3 CSVs âncora interna nao-versionados e a pasta
     # "BAS_V2_papers/F. Rodada 5 (limitacoes 2026-07-16)/" (T11 ledger),
     # mas exige exatidao no resto.
-    UFU_IDS = {"UFU_5A_preload_decay", "UFU_13A_first_preload_decay",
-               "UFU_13A_def_preload_decay"}
+    ancora_interna = {"ancora_interna", "ancora_interna",
+               "ancora_interna"}
+    # 207 no registry, 206 fora do USER. A conta antiga partia de 209 e
+    # descontava lacunas conhecidas de CSV; uma delas eram os 3 casos de
+    # bancada, que sairam do projeto em 2026-09-04 — descontar do total quem
+    # ja' nao esta' no total contaria duas vezes.
     R5_SOURCES = {"ZHANG_2018", "ZHANG_2019", "LIU_2020_WEAR"}
-    n_ufu = sum(1 for r in core if r.case_id in UFU_IDS)
-    n_r5 = sum(1 for r in core if r.source in R5_SOURCES)
-    # 207 = 205 (+3 fig14 do LU, P4 2026-07-31) + 2 replicas YANG_2021
-    # (Fig. 6b2/6b3, prereg 2026-07-31-yang2021-replicas-0p6). O desconto de
-    # lacunas voltou a ser CODIGO (a versao anterior o deixou no comentario,
-    # o que quebraria num clone sem os CSVs UFU/pasta F).
-    # 209 desde 2026-08-01 (+2 da Fig. 6 do ROUSSEAU, recuperacao)
-    expected = 209 - (len(UFU_IDS) - n_ufu) - (22 - n_r5)
-    assert len(core) == expected
+    assert sum(1 for r in core if r.source in R5_SOURCES) == 22
+    assert len(core) == 206
     refresh_records()                              # limpa p/ os demais testes
     monkeypatch.undo()
     refresh_records()

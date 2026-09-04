@@ -9,7 +9,7 @@ Assinada pelo professor em 2026-08-14; derivacao e validacao em
 ## O que estes testes protegem
 
 1. **INERCIA** — com o default (`emb_clock_delta_ref = 0.0`) o ramo novo nem
-   roda, e o incremento e' BIT-A-BIT o de antes. E' o gate que protege as 210
+   roda, e o incremento e' BIT-A-BIT o de antes. E' o gate que protege as 207
    curvas ja adotadas; sem ele, uma forma "default-inerte" pode silenciosamente
    mover tudo (ja aconteceu nesta campanha com `k_gall` e com o Cattaneo-Mindlin,
    nos dois sentidos).

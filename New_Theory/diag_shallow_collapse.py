@@ -1,7 +1,7 @@
 """Diagnostico dos shallow-collapse finais (16 restantes, 2026-07-08).
 
 Hipotese (§4.9 caveat): o conformation_gate com W_conf_ref=7671 J (constante
-POR-PAR UFU, ancora FALHOU na Fase 3) enche em rigs de slip alto e ARRESTA o
+POR-PAR âncora interna, ancora FALHOU na Fase 3) enche em rigs de slip alto e ARRESTA o
 colapso num plato ACIMA do dado. Teste A/B: pack per-rig vs mesmo config com
 W_conf_ref=0 (conformacao off). Loga o gate ao longo dos ciclos.
 

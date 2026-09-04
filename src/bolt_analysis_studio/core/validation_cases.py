@@ -36,7 +36,6 @@ class ValidationSource(Enum):
     NASSAR_2007 = "Nassar & Housari (2007)"
     YANG_2019 = "Yang et al. (2019)"
     DIN_65151 = "DIN 65151 Standard"
-    UFU_LAB = "UFU Junker Lab (2025)"
     # Digitized curve-library sources (2026-07-02, curve_library/digitized_csv)
     LIU_2025 = "Liu et al. (2025) Sci. Rep."
     BAUER_2024 = "Bauer et al. (2024) EFA"
@@ -586,164 +585,6 @@ SEVERE_TRANSVERSE = ValidationCase(
     ],
 
     notes="Characteristic S-curve rapid failure pattern"
-)
-
-
-# =============================================================================
-# UFU Junker-test lab cases (2025)
-# =============================================================================
-#
-# Source: Laboratório de Bolt-Tribology, UFU. Raw acquisitions (TDMS strain @
-# 500 Hz + actuator TXT @ 100 Hz) stored in ..\Ensaios\{5A,13A [1ª tentativa],
-# 13A}\. Post-processed per-cycle decay curves under
-# Models/EXPERIMENTAL_UFU/reference_curves/UFU_*_preload_decay.csv.
-#
-# Common setup for all three trials:
-#   • Bolt: 3/4" UNC (d = 19.05 mm, p = 2.54 mm), ASTM A320 Grade L7
-#   • Target torque 268.9 N·m  →  F₀ ≈ 116–120 kN
-#   • Loading: axial transverse shear, ±0.5 mm @ 1 Hz (stroke_pp ≈ 1.0 mm)
-#   • Strain → clamp: F = π·r²·E·ε, r = 8.314 mm, E = 207 GPa
-# Numbers below are taken verbatim from Ensaios/Analise/summary.json.
-
-
-UFU_5A = ValidationCase(
-    name="UFU 5A (3/4\" UNC, Junker)",
-    description=(
-        "UFU lab Junker test, trial 5A (05-03). Full run to near-zero preload "
-        "in 561 cycles; characteristic rapid Stage-II decay after ~50 cycles."),
-    source=ValidationSource.UFU_LAB,
-    reference="UFU Laboratório de Tribologia de Parafusos, trial 5A (2025-03-05)",
-    doi="",
-    url="",
-
-    bolt_size='3/4" UNC',
-    bolt_diameter_mm=19.05,
-    pitch_mm=2.54,
-
-    initial_preload_N=118_243.0,          # F0 from summary.json
-    preload_percent_yield=77.0,           # ≈ 77 % of A320-L7 Sy ≈ 724 MPa
-
-    transverse_displacement_mm=0.5,       # ±0.5 mm (stroke_pp ≈ 1.0 mm)
-    frequency_Hz=1.0,
-    n_cycles=561,
-
-    mu_initial=0.08,                      # matches msd_builder UFU preset
-    lubricated=False,
-
-    expected_final_preload_ratio=0.029,   # F_end / F0 = 3.47 / 118.24
-    expected_loosening_deg=0.0,           # not measured in lab
-    tolerance_percent=20.0,
-
-    experimental_data=[
-        ExperimentalDataPoint(cycles=0,   preload_ratio=1.00),
-        ExperimentalDataPoint(cycles=38,  preload_ratio=0.95),   # N95
-        ExperimentalDataPoint(cycles=54,  preload_ratio=0.80),   # N80
-        ExperimentalDataPoint(cycles=106, preload_ratio=0.50),   # N50
-        ExperimentalDataPoint(cycles=188, preload_ratio=0.20),   # N20
-        ExperimentalDataPoint(cycles=279, preload_ratio=0.10),   # N10
-        ExperimentalDataPoint(cycles=561, preload_ratio=0.029),
-    ],
-
-    notes=(
-        "Bridge zero offset 0.507 mV/V. Peak actuator amplitude 56.6 kN at "
-        "cycle 76. Low initial μ (0.08) — dry, as-shipped bolt."),
-
-    msd_model_path="Models/EXPERIMENTAL_UFU/UFU_5A.msd",
-    reference_csv_path="Models/EXPERIMENTAL_UFU/reference_curves/UFU_5A_preload_decay.csv",
-)
-
-
-UFU_13A_FIRST = ValidationCase(
-    name='UFU 13A 1st attempt (3/4" UNC, interrupted)',
-    description=(
-        "UFU lab Junker test, trial 13A first attempt (19-03). Test was "
-        "interrupted at 253 cycles (F/F₀ = 0.44); useful for mid-curve slope "
-        "validation, not for final-preload checking."),
-    source=ValidationSource.UFU_LAB,
-    reference="UFU Laboratório de Tribologia de Parafusos, trial 13A-1ª (2025-03-19)",
-    doi="",
-    url="",
-
-    bolt_size='3/4" UNC',
-    bolt_diameter_mm=19.05,
-    pitch_mm=2.54,
-
-    initial_preload_N=120_039.0,
-    preload_percent_yield=78.0,
-
-    transverse_displacement_mm=0.5,
-    frequency_Hz=1.0,
-    n_cycles=253,
-
-    mu_initial=0.14,
-    lubricated=False,
-
-    expected_final_preload_ratio=0.443,   # 53.17 / 120.04
-    expected_loosening_deg=0.0,
-    tolerance_percent=20.0,
-
-    experimental_data=[
-        ExperimentalDataPoint(cycles=0,   preload_ratio=1.000),
-        ExperimentalDataPoint(cycles=25,  preload_ratio=0.950),  # N95
-        ExperimentalDataPoint(cycles=81,  preload_ratio=0.800),  # N80
-        ExperimentalDataPoint(cycles=231, preload_ratio=0.500),  # N50
-        ExperimentalDataPoint(cycles=253, preload_ratio=0.443),
-    ],
-
-    notes=(
-        "Bridge zero offset 1.375 mV/V. Run stopped early (equipment). "
-        "Calibration value for this trial — do NOT use as a final-state check."),
-
-    msd_model_path="Models/EXPERIMENTAL_UFU/UFU_13A_first.msd",
-    reference_csv_path="Models/EXPERIMENTAL_UFU/reference_curves/UFU_13A_first_preload_decay.csv",
-)
-
-
-UFU_13A_DEFINITIVE = ValidationCase(
-    name='UFU 13A definitive (3/4" UNC, Junker)',
-    description=(
-        "UFU lab Junker test, trial 13A definitive (14-04). Full run to "
-        "near-zero preload in 530 cycles; Stage-II knee around N≈50."),
-    source=ValidationSource.UFU_LAB,
-    reference="UFU Laboratório de Tribologia de Parafusos, trial 13A-def (2025-04-14)",
-    doi="",
-    url="",
-
-    bolt_size='3/4" UNC',
-    bolt_diameter_mm=19.05,
-    pitch_mm=2.54,
-
-    initial_preload_N=116_498.0,
-    preload_percent_yield=76.0,
-
-    transverse_displacement_mm=0.5,
-    frequency_Hz=1.0,
-    n_cycles=530,
-
-    mu_initial=0.14,
-    lubricated=False,
-
-    expected_final_preload_ratio=0.004,   # 0.467 / 116.5
-    expected_loosening_deg=0.0,
-    tolerance_percent=20.0,
-
-    experimental_data=[
-        ExperimentalDataPoint(cycles=0,   preload_ratio=1.000),
-        ExperimentalDataPoint(cycles=27,  preload_ratio=0.950),  # N95
-        ExperimentalDataPoint(cycles=66,  preload_ratio=0.800),  # N80
-        ExperimentalDataPoint(cycles=244, preload_ratio=0.500),  # N50
-        ExperimentalDataPoint(cycles=375, preload_ratio=0.200),  # N20
-        ExperimentalDataPoint(cycles=443, preload_ratio=0.100),  # N10
-        ExperimentalDataPoint(cycles=530, preload_ratio=0.004),
-    ],
-
-    notes=(
-        "Bridge zero offset 0.088 mV/V. Peak actuator amplitude 69.3 kN at "
-        "cycle 77. TDMS file was corrupted (~10¹⁵ V samples) — curve derived "
-        "from the Controle .xlsx 'Tratamento Dados' sheet."),
-
-    msd_model_path="Models/EXPERIMENTAL_UFU/UFU_13A_def.msd",
-    reference_csv_path="Models/EXPERIMENTAL_UFU/reference_curves/UFU_13A_def_preload_decay.csv",
 )
 
 
@@ -1599,9 +1440,6 @@ class ValidationCaseManager:
         YANG_HIGH_AMPLITUDE,
         YANG_LOW_AMPLITUDE,
         SEVERE_TRANSVERSE,
-        UFU_5A,
-        UFU_13A_FIRST,
-        UFU_13A_DEFINITIVE,
     ] + DIGITIZED_CASES
 
     @classmethod

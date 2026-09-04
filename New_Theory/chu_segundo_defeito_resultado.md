@@ -54,7 +54,7 @@ quadrática sobre n=7 consome 3 dos 7 pontos e o σ sai viesado ~22 % baixo:
 | `10_Yang_2023…0_2…` | 7 | 0,1452 | 0,0483 | 0,0184 | 0,7 | −0,43 |
 | `rousseau2025_steel_t10` | 14 | 0,0981 | 0,0576 | 0,0248 | 1,0 | +0,57 |
 | `karlsen2022_M30_HVtorqued_run14p2` | 7 | 0,0854 | 0,0313 | 0,0053 | 0,2 | +0,28 |
-| `UFU_13A_first_preload_decay` | 254 | 0,0718 | 0,0224 | 0,0158 | 0,6 | −0,21 |
+| `ancora_interna` | 254 | 0,0718 | 0,0224 | 0,0158 | 0,6 | −0,21 |
 | `yang2019_M10_varamp_large_to_small` | 15 | 0,0580 | 0,0267 | 0,0267 | 1,1 | +0,08 |
 | `chu…D0p5mm_F0_49kN_Ra1p6um_test9` | 25 | 0,0547 | 0,0269 | 0,0275 | 1,1 | −0,02 |
 | `chu…D1p0mm_F0_49kN_test5` | 21 | 0,0436 | 0,0148 | 0,0135 | 0,5 | +0,08 |

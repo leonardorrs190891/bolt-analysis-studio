@@ -286,7 +286,7 @@ e [Vol. 1 §6.3](01-entender-o-modelo.md#63-o-que-ainda-não-fecha-medido):
   contraparte em `W_ext`; não afeta MAE, mas o balanço não fecha);
 - **cliff/rebound de corrosão** — o engine não recupera pré-carga (JCSR);
 - **canal estrutural ξ-dependente** (Yang 2021), **bifurcação de limiar**
-  (Yang 2023 IJPEM, tri-falsificado), **incubação de assentamento** (UFU);
+  (Yang 2023 IJPEM, tri-falsificado), **incubação de assentamento** (âncora interna);
 - **`W_conf_ref` sem âncora independente** — a Fase 3 tentou e deu null decisivo.
 
 ### "As formas não são só mais parâmetros com nome bonito?"

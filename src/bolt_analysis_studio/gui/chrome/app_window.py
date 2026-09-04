@@ -300,7 +300,7 @@ class ChromeWindow(QMainWindow):
         help_menu.addAction("Idioma: Português / English",
                             self._toggle_idioma)
         help_menu.addSeparator()
-        help_menu.addAction("Reports de Validação (210 casos)",
+        help_menu.addAction("Reports de Validação (207 casos)",
                             self._open_validation_docs)
         help_menu.addAction("Prompt de intake (IA) — copiar",
                             self._copy_intake_prompt)
@@ -669,7 +669,7 @@ class ChromeWindow(QMainWindow):
     # --- abrir / salvar projeto (2026-09-03) ---------------------------------
     # O chrome V2, que e' o padrao, tinha um menu Arquivo com "Nova Analise" e
     # "Sair": NAO dava para abrir um modelo salvo nem para gravar o que voce
-    # editou. Os 210 casos da validacao ja' vinham como .msd desde 02-09 e nao
+    # editou. Os 207 casos da validacao ja' vinham como .msd desde 02-09 e nao
     # havia porta para eles na interface.
     #
     # Abrir sem salvar seria armadilha — o usuario abre um caso, edita e perde.
@@ -692,7 +692,7 @@ class ChromeWindow(QMainWindow):
     def _dir_inicial_projeto(self) -> str:
         """Pasta que o dialogo abre.
 
-        Na PRIMEIRA vez, os casos da validacao: e' onde estao os 210 modelos
+        Na PRIMEIRA vez, os casos da validacao: e' onde estao os 207 modelos
         dos artigos, e e' o que alguem quer abrir antes de ter projeto proprio.
         Depois disso, a ultima pasta usada — senao quem trabalha nos proprios
         modelos voltaria sempre para os artigos.

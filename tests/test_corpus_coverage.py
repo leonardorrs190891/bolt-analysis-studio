@@ -2,7 +2,7 @@
 
 O pedido foi "todas as analises de cada artigo e cada curva pre-carregadas e
 analisaveis no software". Na data em que este arquivo foi escrito isso ja era
-verdade, medido: 210 casos em 29 fontes, todos com analise no store canonico e
+verdade, medido: 207 casos em 28 fontes, todos com analise no store canonico e
 todos abrindo no modelo. O teste existe para que continue sendo verdade. Uma
 curva nova que entre no corpus e nao chegue ao store, ou um caso que pare de
 abrir no Model/Run, quebra aqui em vez de sumir da arvore da GUI em silencio.

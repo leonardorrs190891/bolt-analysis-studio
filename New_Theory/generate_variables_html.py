@@ -76,7 +76,7 @@ M = {
     "f_ref_dmg": ("Dano superficial", "frequencia de referencia do dwell (ancora per-rig)", "input (ancora)"),
     "k_gall": ("Dano superficial", "galling no RE-aperto: mu_thread_tighten=(1+k*D) (declinio da recuperacao dry)", "per-par · opt-in"),
     # conformacao (sobretorque)
-    "W_conf_ref": ("Conformacao (sobretorque)", "escala de conformacao pressure-gated (per-par UFU; ancora FALHOU)", "per-par"),
+    "W_conf_ref": ("Conformacao (sobretorque)", "escala de conformacao pressure-gated (per-par da âncora interna; ancora FALHOU)", "per-par"),
     "conform_pressure_exp": ("Conformacao (sobretorque)", "expoente de pressao n", "calibrado"),
     "p_ref_conform": ("Conformacao (sobretorque)", "pressao de referencia", "input"),
     "conform_driver": ("Conformacao (sobretorque)", "driver raw | effective (auto-limitante)", "modo"),
@@ -245,7 +245,7 @@ NL_ROWS = [
     ("Hélice: dF₀ = −k_b·(p/2π)·dθ", "BILINEAR (θ̇ depende de F₀; F₀ de θ)", "produto de estados", "fecha o laço",
      "o acoplamento axial↔torsional central — torna o sistema dinâmico, não somatório de perdas"),
     ("Conformação sobretorque (W_conf, driver effective)", "sigmoide auto-limitante", "n=2 no gate", "− (gate fecha com o próprio W)",
-     "inércia no nominal, mordida no sobretorque; per-par (escala UFU)"),
+     "inércia no nominal, mordida no sobretorque; per-par (escala da âncora interna)"),
 ]
 # resumo por CLASSE (a visao agrupada; a tabela NL_ROWS da o detalhe por forma)
 NL_CLASSES = [

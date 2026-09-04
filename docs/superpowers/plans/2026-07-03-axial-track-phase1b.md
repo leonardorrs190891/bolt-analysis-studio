@@ -599,7 +599,7 @@ CLAUDE.md commands block (after the shared-fit commands):
 python New_Theory/calibrate_axial.py
 ```
 
-CLAUDE.md gotcha (V2 staged calibration section): `emb_depth` is a PER-JOINT input (VDI 2230 f_Z by roughness class; `library_common.emb_depth_vdi`), not a universal constant — the UFU-rig 30 µm default only fits the UFU rig; provenance discipline in spec 2026-07-03 §1.3a.
+CLAUDE.md gotcha (V2 staged calibration section): `emb_depth` is a PER-JOINT input (VDI 2230 f_Z by roughness class; `library_common.emb_depth_vdi`), not a universal constant — the âncora interna-rig 30 µm default only fits the âncora interna rig; provenance discipline in spec 2026-07-03 §1.3a.
 
 - [ ] **Step 3: Regression + commit**
 

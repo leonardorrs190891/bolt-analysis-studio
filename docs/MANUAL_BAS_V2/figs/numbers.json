@@ -120,10 +120,6 @@
         "n": 5,
         "tripe": 5
       },
-      "UFU_LAB": {
-        "n": 3,
-        "tripe": 1
-      },
       "USER": {
         "n": 1,
         "tripe": 1
@@ -276,7 +272,6 @@
         "ROUSSEAU_2025",
         "SUN_2025_CRIMP",
         "SUN_2025_REASSY",
-        "UFU_LAB",
         "YANG_2019",
         "YANG_2021",
         "YANG_2023_IJPEM",

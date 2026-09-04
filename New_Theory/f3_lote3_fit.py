@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""F3-LOTE3: (a) UFU_5A tentativa-2 (N_emb×emb, gate 13A_def);
+"""F3-LOTE3: (a) ancora_interna tentativa-2 (N_emb×emb, gate 13A_def);
 (e) li2022ti_full trim pela regra >3× mediana do estágio II (changepoint
 computado do CSV, auditável); (d) LIU_2016 fig7 sonda per-figura (2 células,
 casos de 1e6/5e6 ciclos — caras). NÃO adota. Saída: f3_lote3_result.json.
@@ -88,17 +88,17 @@ def main(argv=None) -> int:
           f"II={med:.3e}, fim={fim})", flush=True)
 
     tarefas, sbs = [], []
-    # (a) UFU_5A t2
+    # (a) ancora_interna t2
     for ne in (150.0, 300.0, 600.0):
         for e5 in (0.5, 1.0):
             d = _base()
-            g = d["sources"]["UFU_LAB_5A"]["cfg"]
+            g = d["sources"]["ancora_interna"]["cfg"]
             g["emb_um"] = e5
             g["N_emb"] = ne
             sb = _mk(d)
             sbs.append(sb)
             tag = f"a|ne={ne:.0f}|e5={e5}"
-            for cid in ("UFU_5A_preload_decay", "UFU_13A_def_preload_decay"):
+            for cid in ("ancora_interna", "ancora_interna"):
                 tarefas.append((cid, sb, tag))
     # (e) li2022ti full trim
     if trim_li:
@@ -147,11 +147,11 @@ def main(argv=None) -> int:
         return m < 0.10 and x < 0.10
 
     out = {"changepoint_li2022": dict(trim=trim_li, mediana=med)}
-    u5, udef = "UFU_5A_preload_decay", "UFU_13A_def_preload_decay"
+    u5, udef = "ancora_interna", "ancora_interna"
     ca = {t: g for t, g in grade.items() if t.startswith("a|")
           and passa(g[u5]) and tri(g[udef])[0] <= store[udef]["mae"] + 0.005
           and tri(g[udef])[1] < 0.10}
-    out["a_UFU5A"] = (dict(verdict="PASS",
+    out["ancora_interna"] = (dict(verdict="PASS",
                            tag=min(ca, key=lambda t: tri(ca[t][u5])[1]),
                            detalhe={t: tri(g[u5]) for t, g in ca.items()})
                       if ca else

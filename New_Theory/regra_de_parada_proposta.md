@@ -64,7 +64,7 @@
 > indecidíveis 15→12→11 (`zhang2006_fig3` declarada por proveniência), e o
 > gargalo rebalanceou (σ 28 · MAE 16 · mx 26). Censo NAQUELE momento
 > (antes dos 3 casos da Fig.14, da adoção final LU_2024 e da saída
-> temporária da UFU_LAB no mesmo dia): estrita **132** ·
+> temporária da ANCORA_INTERNA no mesmo dia): estrita **132** ·
 > resolvida/declarada **170** de 202 — o vivo está no CLAUDE.md.
 
 > ## 🛑 2ª PARADA POR CLASSE — "aceleração tardia" (2026-08-01)

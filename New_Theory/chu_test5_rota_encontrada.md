@@ -90,7 +90,7 @@ Só a **combinação** funciona. Isso é exatamente o que **acoplamento nível×
 mesmo gráfico**, e separá-las exige âncora física.
 
 **E a âncora não existe:** o `emb_depth` = 30 µm é o **default do engine** (calibrado para o
-rig **UFU M16**), enquanto o efetivo do CHU hoje vem da tabela VDI por `Rz10-40`. Adotar 30 µm
+rig **âncora interna M16**), enquanto o efetivo do CHU hoje vem da tabela VDI por `Rz10-40`. Adotar 30 µm
 significa dizer que este parafuso **MJ10 aeroespacial de superliga**, de superfície fina,
 assenta **~4× mais** que a tabela dá para uma superfície rugosa — e assenta **8× mais devagar**
 (`N_emb` 50 → 400). Não tenho nada no artigo que sustente isso.

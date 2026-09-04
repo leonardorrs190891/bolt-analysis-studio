@@ -41,7 +41,7 @@ def test_default_e_inerte_e_exato():
     """0.0 é o default e devolve 1.0 EXATO — não 'aproximadamente 1'.
 
     O early-return existe para isso: sem ele, `(p/p_ref)**0` daria 1.0 por
-    aritmética de ponto flutuante e o G0 do prereg (bit-a-bit em 210 curvas)
+    aritmética de ponto flutuante e o G0 do prereg (bit-a-bit em 207 curvas)
     passaria a depender de detalhe de implementação de `pow`.
     """
     assert dsa.JointMaterial().emb_pressure_exp == 0.0
@@ -165,7 +165,7 @@ def test_g0_default_off_e_bit_identico_na_trajetoria():
     devolve `1.0` exato quando desligado e `x * 1.0 == x` bit-a-bit em IEEE754
     (inclusive preservando o agrupamento à esquerda), a inércia é demonstrável
     — mas o G0 exige medida, não argumento, e é barato tê-la aqui em vez de
-    depender de uma re-simulação de 210 curvas que leva meia hora.
+    depender de uma re-simulação de 207 curvas que leva meia hora.
     """
     a = _historia(dsa.JointMaterial())
     b = _historia(dsa.JointMaterial(emb_pressure_exp=0.0))

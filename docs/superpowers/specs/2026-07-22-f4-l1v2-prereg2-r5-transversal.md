@@ -17,7 +17,7 @@ exigir o flanco também sob excitação transversal").
 
 ## Diagnóstico pré-fit (ponto-a-ponto, lição F3 — feito ANTES deste prereg)
 
-Baseline dos 3 casos sondados: colapso a F0=0 por mecanismos default M16-UFU
+Baseline dos 3 casos sondados: colapso a F0=0 por mecanismos default M16-âncora interna
 (wear 0,40–0,46 + embedding 0,31–0,62 + loosening rotacional 0,17–0,21 + creep
 0,03–0,05) vs dado 0,83–0,99. O gap NÃO é canal de perda faltante — é (i) supressão
 por leitura dos canais que os papers excluem + (ii) a forma de flanco transversal
@@ -76,7 +76,7 @@ transferem, constantes por-par" do resto do projeto).
 - **G4-c (zero regressão):** os cfg novos só existem nas 3 fontes R5; fora delas o
   engine é default-inerte (TDD bit-identidade). Verificação por amostra: 6 controles
   (2 transversais adotados, 2 axiais Liu2017, li2022ti axialmin com per-rig F2,
-  1 UFU) re-simulados bit-idênticos.
+  1 âncora interna) re-simulados bit-idênticos.
 - **FAIL:** qualquer caso >0,1 fora de trim declarado ⇒ FAIL2 do candidato (c)
   (2º prereg) → candidato (b) debris (prereg novo) e, se também FAIL2, rodada 6 +
   **PARE** (professor) — caminho do plano §4.3.

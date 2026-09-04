@@ -47,7 +47,7 @@ E a distribuição por fonte é quase pura — cada fonte fica inteira de um lad
 | yang2019 | 5 | 0 | 0 |
 | sun2025efa110030 | 5 | 0 | 0 |
 | li2022ti | 4 | 0 | 0 |
-| UFU | 3 | 0 | 0 |
+| âncora interna | 3 | 0 | 0 |
 | karlsen2022 | 0 | **4** | 3 |
 | sun2025efa109235 | 1 | 0 | 3 |
 
@@ -61,7 +61,7 @@ Esta é a medição que muda o tamanho do problema:
 |---|---:|
 | **η² da FONTE sobre `log10(implied)`** | **0,910** |
 | dispersão mediana **dentro** da fonte | **0,08 década** (≈20 %) |
-| fontes com dispersão interna exatamente **0,00** | UFU, li2022ti, lu2024, e outras |
+| fontes com dispersão interna exatamente **0,00** | âncora interna, li2022ti, lu2024, e outras |
 | maior dispersão interna | 0,58 década (sun2025efa109235) |
 
 **91 % da variância é "qual bancada".** Dentro de uma bancada o valor quase não
@@ -106,7 +106,7 @@ agora com número.
 
 *Nota de honestidade sobre este parágrafo:* a primeira leitura desta análise
 afirmou "correlação decisiva" a partir das **medianas por fonte**, que de fato
-formam uma escada convincente (liu2022 3e-15 → 7,8e4; UFU 7,5e-15 → 2,0e4;
+formam uma escada convincente (liu2022 3e-15 → 7,8e4; âncora interna 7,5e-15 → 2,0e4;
 Karlsen no canônico 5e-14 → 1 662). A escada existe, mas **não** sobrevive ao
 rank-ordenamento caso-a-caso. Medianas por grupo com poucos valores distintos
 enganam; o Spearman foi o que desfez o engano.
@@ -121,7 +121,7 @@ pontas:
 | valor | origem | classe |
 |---|---|---|
 | ~**3e-15** | fits per-rig das campanhas (liu2022, demir2024, eccles2010, sun2025) | fitado |
-| **5e-14** | bloco `shared` canônico (par UFU) | fitado |
+| **5e-14** | bloco `shared` canônico (par da âncora interna) | fitado |
 | **4e-15 – 2e-14** | banda **MEDIDA** R5 `thread\|35CrMo-SCM435` (Zhang 2019) | medido |
 | **6,49e-12 – 7e-12** | banda **MEDIDA** R5 `faying\|Q355B-Q235B` (Li 2025) | medido |
 

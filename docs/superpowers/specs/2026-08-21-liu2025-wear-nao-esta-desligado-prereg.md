@@ -96,12 +96,12 @@ elas **não** são todas iguais:
 |---|---|---|---|
 | `CHU_2026_test1` | `C_creep` | nenhum | ✅ claim **certa** |
 | **`LU_2024`** | `emb_um` | **`emb_depth` = 8e-06** + `per_case.fig20_t16nm.emb_depth` = 4e-06 | ⛔ **FALSA** |
-| `UFU_LAB` ×3 | `c_D` | `k_dmg_mu`=1 · `k_dmg_wear`=4 · `W_ref`=1e4 | ✅ claim **certa** |
+| `ANCORA_INTERNA` ×3 | `c_D` | `k_dmg_mu`=1 · `k_dmg_wear`=4 · `W_ref`=1e4 | ✅ claim **certa** |
 
 **Por que as do `c_D` são certas apesar dos irmãos:** `c_D` é o **driver** do crescimento
 de `D` (o dano só cresce da dissipação por slip via `c_D`); com `c_D = 0`, `D` fica em 0 e
 os multiplicadores `k_dmg_*` multiplicam zero. ⇒ zerar o driver zera o canal. *(Raciocínio
-do desenho do engine, **não** medido aqui — as 3 são `UFU_LAB`, fora do censo por decisão
+do desenho do engine, **não** medido aqui — as 3 são `ANCORA_INTERNA`, fora do censo por decisão
 do professor, sem páginas de report; não afetam número publicado.)*
 
 **Por que a do `LU_2024` é falsa:** o campo `emb_um` é 0 — verdade —, mas o **irmão

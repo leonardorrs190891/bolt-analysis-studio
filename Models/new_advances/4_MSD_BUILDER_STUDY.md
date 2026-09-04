@@ -1,6 +1,6 @@
 # MSD Builder & Tab 2 - Comprehensive Study and Improvement Plan
 
-## LTAD/UFU - Bolt Analysis Studio v4.0
+## internal reference - Bolt Analysis Studio v4.0
 **Date:** 2026-02-18
 **Scope:** Complete audit of MSD Builder (Tab 2), presets, wizard, validation, and contact system
 

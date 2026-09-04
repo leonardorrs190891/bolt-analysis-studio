@@ -77,7 +77,7 @@ classes.
 **GATE E1: FALHOU** no critério de separação (pré-comprometido; sem ajuste
 pós-hoc). Números:
 - Tabela (7 bancadas com c_bend FITADO; exclusões documentadas: LIU_2022/
-  UFU/YANG_2019 nunca fitados = default 1.0, YANG_2023 sem nota de aparato,
+  âncora interna/YANG_2019 nunca fitados = default 1.0, YANG_2023 sem nota de aparato,
   ROUSSEAU_HDPE = mesmo rig com cfg poluída pelo harness):
   PESADA {LIU_2025 3.6e8 "high-stiffness L-type fixture/servo"; KARLSEN
   4.1e7 "large-scale rig, very large bolts"; LU 1.6e7 "50 kN electro-
@@ -97,7 +97,7 @@ PESADA/MÉDIA; LEVE separa 10×. Um desenho de 2 classes (LEVE vs RESTO), ou
 covariável contínua, teria passado — mas redefinir classes após ver o dado é
 exatamente o pós-hoc que este pré-registro proíbe. Caminho honesto para um
 PR-4b: novo pré-registro com validação OUT-OF-SAMPLE — predizer a classe das
-3 bancadas nunca fitadas (LIU_2022, UFU, YANG_2019) e então fitá-las
+3 bancadas nunca fitadas (LIU_2022, âncora interna, YANG_2019) e então fitá-las
 independentemente, testando se caem na banda predita.
 
 
@@ -211,7 +211,7 @@ A releitura dos artefatos da campanha mudou o desenho do "alvo t0/fig5": **não
      adotado) + **dano brando `k_dmg_wear=1.0, W_ref=1e4, k_dmg_mu=0`** +
      `c_D` per-lube L7 (dry 0.5 / oil 0.03) + `k_gall=3` (§4.11) +
      `k_emb_renew=1` + conformação canônica.
-3. **Causa-raiz do PR-5 dry**: usei os starters UFU (`k_dmg_mu=1,
+3. **Causa-raiz do PR-5 dry**: usei os starters âncora interna (`k_dmg_mu=1,
    k_dmg_wear=4`) em vez da receita da campanha (`k_dmg_mu=0, k_dmg_wear=1`)
    — o canal µ_eff(D) que derrubou os estágios dry NÃO existe na receita
    validada. Não é forma faltante; é config errada no meu experimento.
@@ -320,7 +320,7 @@ curvas) esperada ≤0.12; mediana da fonte reportada no ledger #39.
 
 **Confirmação da falsificação PR-5:** com a config CERTA da campanha, o
 estado herdado do engine fecha dry E oil — o PR-5 falhou por config
-(starters UFU k_dmg_mu=1/k_dmg_wear=4), não por forma faltante. A cadeia +
+(starters âncora interna k_dmg_mu=1/k_dmg_wear=4), não por forma faltante. A cadeia +
 `retighten()` + estados nomeados estão validados em 19/21 curvas da fonte
 (fig5 virgem + t0–t3 dry/oil + t4).
 
@@ -341,7 +341,7 @@ devem fazer sentido no contexto do artigo, e itens como rigidez da bancada
 que não são explicitados podem ser estimados para diminuir o erro da curva."
 
 **Alvo:** YANG_2023_IJPEM — maior fonte-artigo do ledger #39 (mediana 0.2275,
-9 casos; UFU_LAB 0.2487 é dado do laboratório, não artigo).
+9 casos; ANCORA_INTERNA 0.2487 é dado do laboratório, não artigo).
 
 **Leitura do artigo** (nota `10_Yang_2023_phenomenological_model.md`; sem PDF
 na biblioteca): Junker DIN 65151 (LVDT + célula piezo + encoder óptico);
@@ -1109,7 +1109,7 @@ k_loose_graded + leituras já validadas: espectro/c_bend 0.906/emb).
 - (b) fig8 ✗ 0/3 — MAS grande avanço: test1 0.524→**0.1249** com FORMA
   certa (final 0.310 ≈ dado 0.33; k_graded=0.01). O joelho vem 2.4–3.3×
   cedo (N75 229 vs 543–764). **Decomp nomeia os comedores pré-joelho:**
-  creep 14% front-loaded (C_creep UFU sem procedência neste par §4.7; e
+  creep 14% front-loaded (C_creep da âncora interna sem procedência neste par §4.7; e
   os ensaios duram MINUTOS — creep é fenômeno de tempo) + wear 9% (o
   paper declara anti-seize p/ ELIMINAR fretting no interface). fig8
   antigo (dano-imitação) mantido até o PR-12d.
@@ -1123,7 +1123,7 @@ k_loose_graded + leituras já validadas: espectro/c_bend 0.906/emb).
 1. **K_archard=0**: "the interface between both sheets was lubricated with
    anti-seize paste" — wear/fretting eliminado POR PROJETO no rig.
 2. **C_creep=0**: ensaios de MINUTOS (<1.000 ciclos; run-out 20.000);
-   creep viscoso é fenômeno de tempo — o valor UFU (1.867e-11) é por-par
+   creep viscoso é fenômeno de tempo — o valor da âncora interna (1.867e-11) é por-par
    (§4.7) e não tem procedência aqui; o próprio modelo do paper reproduz
    as 12 séries com perda 100% rotacional + ΔF_init.
 
@@ -1411,13 +1411,13 @@ amplitude mais íngreme (forma futura), não de ajuste de condição. Config PR-
 
 ---
 
-## PR-18 — UFU_LAB M16 shear (dados do professor): mapeamento Stage-A no runner
+## PR-18 — ANCORA_INTERNA M16 shear (dados do professor): mapeamento Stage-A no runner
 
 **Diagnóstico:** as 3 curvas (5A 0.334, 13A_def 0.249, 13A_first 0.142) SUB-
 afrouxam (modelo fica 0.78, dado colapsa a 0.10–0.27). **Causa dupla:** (1) a
 **conformação OVER-arresta a F0=116–120kN** (76–78% yield → gate pct/70>1 →
 suprime loosening; é o caveat de escala documentado no CLAUDE.md — o W_conf_ref
-por-par UFU aplicado a alto F0 morde demais); (2) a F0 alto o δ_t=μF₀/k_tr fica
+por-par da âncora interna aplicado a alto F0 morde demais); (2) a F0 alto o δ_t=μF₀/k_tr fica
 grande → precisa de c_bend maior p/ trazer δ_t<δ (slip gross). **Fix (Stage-A
 no runner):** conformação OFF (W_conf_ref=0) + c_bend per-specimen (5A=6, 13A=2
 — mountings distintos; grip 47.6mm; estados 13A first/def compartilham c_bend=2).
@@ -1825,7 +1825,7 @@ maxerr ≤0.049 em 5/5, σ_res ~0.02. Leituras: µ por caso Fig10 (0.158→0.279
 floor do platô (0.531→0.642), emb 10.6→9.16 µm monotônico ↓ com remontagens
 (o estado de reuso emergiu das leituras — sem knob de estado). Caveat de
 sinal anotado na fila: Ag₂O SOBE µ com dano (contra-exemplo ao k_dmg_mu
-UFU). Ledger #50.
+âncora interna). Ledger #50.
 
 ---
 
@@ -2203,21 +2203,21 @@ curto (13.8mm) — resíduo de escala-de-grip (§4.8/#10, forma conhecida), a
 de KERNEL consolidada na fila (maior alavancagem, ~25-30 curvas) · 3 Bauer
 fig8 (joelho de espectro, forma conhecida) · 2 Içmez marginais (acima) ·
 restam ~12 tratáveis de baixo rendimento (Bauer fig6 mid ×5, Rousseau ×3,
-UFU ×2, Karlsen ×2 — banda 0.11-0.24, ~0.02-0.08 de ganho cada, próximos
+âncora interna ×2, Karlsen ×2 — banda 0.11-0.24, ~0.02-0.08 de ganho cada, próximos
 batimentos). **Estacionariedade (Etapa 4b):** Δmédia dos últimos ledgers:
 0.0033 → 0.0008 — ainda não estacionária formalmente, mas o espaço de knobs
 está quase exaurido; os destravamentos grandes estão na fila do professor.
 
 ---
 
-## PR-36 — UFU incubação lida (pré-reg. 2026-07-15)
+## PR-36 — âncora interna incubação lida (pré-reg. 2026-07-15)
 
-**Alvo:** UFU_5A (maxerr 0.158@N=37 — dado PLANO até N≈38, modelo cai desde
-o ciclo 1) e UFU_13A_first (0.176@N=247); 13A_def não pode piorar.
+**Alvo:** ancora_interna (maxerr 0.158@N=37 — dado PLANO até N≈38, modelo cai desde
+o ciclo 1) e ancora_interna (0.176@N=247); 13A_def não pode piorar.
 **Alavanca única:** `slip_onset_W` POR CASO lido do onset visível
 (bisseção via engine no "N onde o modelo cruza 0.95"; precedente adotado:
 Liu2025 PR-9 slip_onset_W=250k, classe lido-do-dado — ciclo do platô).
-**Gates:** G1 mediana UFU ≤0.10 E nenhum dos 3 pior que o store+0.01;
+**Gates:** G1 mediana âncora interna ≤0.10 E nenhum dos 3 pior que o store+0.01;
 G2 maxerr de 5A e 13A_first melhoram ≥0.03 E 13A_def não piora; G3 cheias.
 **Morte:** se o onset lido não mover o maxerr (a divergência for adiante do
 onset), rotular sem knob.
@@ -2229,7 +2229,7 @@ runaway grip-dependente #10) e Karlsen run14p2 (idem) = CLASSE TERMINAL
 
 **RESULTADO PR-36: FALHA — morte pré-registrada.** O gate slip_onset_W NÃO
 move o onset do modelo (fica em N=8-9 p/ W=200 ou 2e4): a queda inicial do
-UFU é EMBEDDING+conformação (não gateados por slip) — e
+âncora interna é EMBEDDING+conformação (não gateados por slip) — e
 embedding-com-atraso não existe no engine. O dado (plano até N≈38, depois
 assenta) sugere incubação do PRÓPRIO assentamento — forma nova, fila.
 Config revertido.
@@ -2239,7 +2239,7 @@ Config revertido.
 Com PR-36, TODAS as 52 violações de maxerr da base-114 estão classificadas
 e o espaço de knobs/leituras está exaurido: 17 form-limited antigas (fila
 1-3) · ~16 classe-kernel/terminal (decisão consolidada) · 3 joelho de
-espectro Bauer fig8 · 2 embedding-incubação UFU (novo, fila) · 2 marginais
+espectro Bauer fig8 · 2 embedding-incubação âncora interna (novo, fila) · 2 marginais
 Içmez (parcimônia) · Lu 10 = kernel (3× confirmado) · 2 Karlsen (1 já
 per-specimen). Δ(média) dos ledgers: 0.0033 → 0.0008 (2 consecutivas
 <0.002 na prática). **A campanha PAUSA os fits** e aguarda as decisões da

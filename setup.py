@@ -13,7 +13,7 @@ setup(
     name="bolt-analysis-studio",
     version="1.0.0",
     author="Prof. Leonardo Rosa Ribeiro da Silva, PhD; Neilon de Souza da Silva, PhD",
-    author_email="leorrs@ufu.br",
+    author_email="leorrs@ancora_interna.br",
     description="Comprehensive bolted joint analysis software for oil and gas applications",
     long_description=long_description,
     long_description_content_type="text/markdown",

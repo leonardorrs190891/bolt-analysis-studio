@@ -46,7 +46,7 @@ construção do ensaio. O paper varreu o espaço de condições, não a dispers�
 
 ⇒ **A camada está correta e o bloqueio é de DADO, não de método.** Destravá-la exigiria uma
 segunda corrida na mesma condição, em qualquer das três fontes — e as três são de
-literatura. A bancada que poderia produzi-la (UFU) **saiu do projeto** por decisão do
+literatura. A bancada que poderia produzi-la (âncora interna) **saiu do projeto** por decisão do
 professor em 2026-08-01.
 
 **Consequência prática:** as 10 não são fila de trabalho. Continuam contadas como *fora* na

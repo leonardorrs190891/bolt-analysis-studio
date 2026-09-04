@@ -1,6 +1,6 @@
 """
 Complete Analysis Example for Bolt Analysis Studio v4.0
-LTAD/UFU - Petrobras R&D
+internal reference - Petrobras R&D
 
 Demonstrates end-to-end workflow for bolt loosening analysis:
 1. Configure joint and loading protocol
@@ -333,7 +333,7 @@ if __name__ == "__main__":
     print("\n" + "=" * 70)
     print("BOLT ANALYSIS STUDIO v4.0")
     print("Complete Analysis Workflow Examples")
-    print("LTAD/UFU - Petrobras R&D")
+    print("internal reference - Petrobras R&D")
     print("=" * 70)
 
     try:

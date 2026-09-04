@@ -56,7 +56,7 @@ At high preload → fast conformation → early plateau (sobretorque). At nomina
 ## 4. Concrete form
 
 - **Contact pressure:** `p = F_0 / A_contact` (`state.F_0` start-of-cycle; `A_contact` from `JointGeometry`). No new input.
-- **Reference pressure:** `p_ref` — a **shared** reference contact pressure (default = nominal preload / `A_contact`, i.e. ~5e8 Pa for the UFU rig at 50 kN / 1e-4 m²). Provenance `reference`, **not fitted**; must be shared/fixed across conditions so that sobretorque's higher absolute F0 is the discriminator (do NOT set it per-joint from `F0_init`, or the ratio collapses to 1 for every condition).
+- **Reference pressure:** `p_ref` — a **shared** reference contact pressure (default = nominal preload / `A_contact`, i.e. ~5e8 Pa for the âncora interna rig at 50 kN / 1e-4 m²). Provenance `reference`, **not fitted**; must be shared/fixed across conditions so that sobretorque's higher absolute F0 is the discriminator (do NOT set it per-joint from `F0_init`, or the ratio collapses to 1 for every condition).
 - **New state `W_conf` (J)** — accumulates per cycle from the *raw* slip work weighted by pressure:
   ```
   W_conf += (p / p_ref)**n · dW_slip_raw
@@ -151,4 +151,4 @@ Report as `MODEL_LEGITIMACY.md` §4.9 (Fable — falsification-logic + writing):
 1. **Driver variant** (§7): **RESOLVED (professor, 2026-07-04): raw-slip driver.** Self-limiting equilibrium kept as the documented fallback in §7 if raw needs an implausibly sharp `W_conf_ref`/`n` to keep nova inert.
 2. **Hill exponent `m`** on `c` (sharper knee) — default 1; add only if the plateau onset is too gradual.
 3. **`κ` in the over-torque predicate** (§8) — the pressure multiple above which the constants are offered; pick in the plan (~1.5).
-4. **`p_ref` sourcing** — nominal-preload/`A_contact` is the reference; confirm the nominal (50 kN UFU) is the right anchor vs a material/handbook contact-pressure scale (Phase-3 provenance).
+4. **`p_ref` sourcing** — nominal-preload/`A_contact` is the reference; confirm the nominal (50 kN âncora interna) is the right anchor vs a material/handbook contact-pressure scale (Phase-3 provenance).

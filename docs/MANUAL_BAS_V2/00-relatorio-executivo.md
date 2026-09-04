@@ -49,7 +49,7 @@ violar o pico, logo ninguém caía só pelo MAE. Com `MAE ≤ 0,05` **contra**
 ela.
 
 **A leitura estratégica VIGENTE (re-medida em 2026-08-01, fingerprint
-`63722b266dc0`, 205 curvas comparáveis — UFU_LAB **fora do projeto** (professor,
+`63722b266dc0`, 205 curvas comparáveis — ANCORA_INTERNA **fora do projeto** (professor,
 2026-08-01; dados preservados, sem rodada pendente);
 +2 réplicas YANG_2021 no tripé por mérito; **regra n<6 assinada em
 2026-08-01**: σ_res com menos de 6 pontos é não-julgável ⇒ 3 curvas saíram do
@@ -341,7 +341,7 @@ necessariamente viola* — e ela vale nos três grupos incompatíveis.
 | decisão G2 (MAE-only) | ECCLES_2010 5 — receita pr31 pronta, aguarda decisão |
 | canal estrutural ξ-dependente | 2 — YANG_2021 |
 | cliff/rebound de corrosão | 2 — JCSR (o engine não recupera pré-carga) |
-| incubação de assentamento | 2 — UFU |
+| incubação de assentamento | 2 — âncora interna |
 | escala de rigidez com espessura | 3 — ROUSSEAU |
 | tripla combinação | 1 — YANG_2023_AME |
 

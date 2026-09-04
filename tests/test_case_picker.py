@@ -1,12 +1,12 @@
 """Importar caso da validacao pelo nome (2026-09-03).
 
-Os 210 .msd existiam e a unica porta era Ctrl+O: para abrir uma curva era
+Os 207 .msd existiam e a unica porta era Ctrl+O: para abrir uma curva era
 preciso saber em qual das 29 pastas de fonte ela mora e o nome exato do
 arquivo. Este dialogo lista tudo com busca.
 
 Dois invariantes valem mais que o resto:
 
-1. O que o dialogo mostra por padrao e' o CENSO DO ARTIGO — 205 de 210, pelo
+1. O que o dialogo mostra por padrao e' o CENSO DO ARTIGO — 205 de 207, pelo
    mesmo `caso_comparavel` do Apendice B. Se o dialogo tivesse a sua propria
    nocao de censo, ela divergiria do manuscrito no primeiro ajuste.
 2. Importar NAO adota o arquivo de origem como destino de Ctrl+S. Os casos
@@ -76,7 +76,7 @@ def test_o_indice_conta_o_mesmo_censo_que_o_apendice_b():
         assert c["censo"] == bool(caso_comparavel(c["source"], c["case_id"])), \
             c["case_id"]
     assert d["no_censo"] == sum(c["censo"] for c in d["casos"])
-    assert d["total"] == len(d["casos"]) == 210
+    assert d["total"] == len(d["casos"]) == 207
     assert d["no_censo"] == 205
     assert d["atendem_criterio"] == 171
 
@@ -95,7 +95,7 @@ def test_por_padrao_mostra_o_censo_e_a_caixa_revela_os_210(picker):
     assert len(_folhas(picker)) == 205
 
     picker.so_censo.setChecked(False)
-    assert len(_folhas(picker)) == 210
+    assert len(_folhas(picker)) == 207
 
 
 @precisa_indice

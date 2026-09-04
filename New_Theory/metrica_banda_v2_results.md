@@ -56,8 +56,8 @@ distingue nada no núcleo.
 ## 2. C7 mata independentemente
 
 **36 curvas** têm **mais de 50 %** dos pontos com resíduo alterado — até **94 %**
-(`UFU_13A_first_preload_decay`, `UFU_13A_def_preload_decay`), 85 %
-(`UFU_5A_preload_decay`), 73 % (`liu2016wear_*`). O ganho é **difuso**, não
+(`ancora_interna`, `ancora_interna`), 85 %
+(`ancora_interna`), 73 % (`liu2016wear_*`). O ganho é **difuso**, não
 concentrado no colapso: é desconto disfarçado, exatamente o que o gate foi
 escrito para pegar. Ramo pré-declarado: **morre**.
 

@@ -510,7 +510,7 @@ Após calibração, salvar perfil em `core/databases/joint_calibrations.json`:
       "k_loose_scale_ax": 1.4,
       "Phi_ax_correction": 1.05
     },
-    "source": "UFU_2026_calibration_M20",
+    "source": "ancora_interna",
     "validation_MAE": 0.07
   }
 }
@@ -532,7 +532,7 @@ Cada perfil é carregado por `JointMaterial.from_calibration_profile(name)`. Per
 
 ## 12. Próximos passos
 
-1. **Esta semana:** revisar bancada UFU pra disponibilidade dos itens listados (atuador transversal? capacidade ≥ 100 kN? data-acquisition ≥ 100 Hz?).
+1. **Esta semana:** revisar bancada âncora interna pra disponibilidade dos itens listados (atuador transversal? capacidade ≥ 100 kN? data-acquisition ≥ 100 Hz?).
 2. **Próxima semana:** scripts Python pra análise pós-experimento (`tests/calibration/fit_exp1_static.py`, etc.) — pode reusar o pixel-extractor do New_Theory adaptando.
 3. **2 semanas:** sample preparado (M20 grade 10.9 + flange ASTM A516) e fixture instalada.
 4. **3 semanas:** rodar a sequência completa, obter primeiro set de parâmetros calibrados.

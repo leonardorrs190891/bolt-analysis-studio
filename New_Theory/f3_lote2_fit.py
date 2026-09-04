@@ -2,7 +2,7 @@
 """F3-LOTE2 (prereg 2026-07-21-master-f3-preregs.md §L2a-d): 4 sub-preregs de
 nível/leitura em grade, cada um com sandbox e gate próprios. NÃO adota.
 
-L2a ZHANG fig16: C_creep relido do platô. L2b UFU: emb lido + ratchet.
+L2a ZHANG fig16: C_creep relido do platô. L2b âncora interna: emb lido + ratchet.
 L2c SUN grease_crimp: k_wear_spec lido. L2d SUN axial standard: C_creep token.
 Saída: New_Theory/f3_lote2_result.json
 Uso: python New_Theory/f3_lote2_fit.py [--workers N]
@@ -72,22 +72,22 @@ def main(argv=None) -> int:
                     "zhang2006_fig3_illus_M12x125_20kN_amp0p35"):
             tarefas.append((cid, sb, f"L2a|C={C:.2e}"))
 
-    # --- L2b UFU (5A: emb; 13A_first: emb×ratchet; 13A_def gate) ---
+    # --- L2b âncora interna (5A: emb; 13A_first: emb×ratchet; 13A_def gate) ---
     for e5 in (0.0, 0.5, 1.0):
         for e13 in (0.0, 1.0, 2.0):
             for kr in (0.0, 3e-5, 1e-4):
                 d = _base()
-                d["sources"]["UFU_LAB_5A"]["cfg"]["emb_um"] = e5
-                g13 = d["sources"]["UFU_LAB_13A_first"]["cfg"]
+                d["sources"]["ancora_interna"]["cfg"]["emb_um"] = e5
+                g13 = d["sources"]["ancora_interna"]["cfg"]
                 g13["emb_um"] = e13
                 if kr:
                     g13["k_ratchet"] = kr
                 sb = _mk(d)
                 sbs.append(sb)
                 tag = f"L2b|e5={e5}|e13={e13}|kr={kr:.0e}"
-                for cid in ("UFU_5A_preload_decay",
-                            "UFU_13A_first_preload_decay",
-                            "UFU_13A_def_preload_decay"):
+                for cid in ("ancora_interna",
+                            "ancora_interna",
+                            "ancora_interna"):
                     tarefas.append((cid, sb, tag))
 
     # --- L2c SUN grease_crimp: k_wear_spec per_case ---
@@ -158,8 +158,8 @@ def main(argv=None) -> int:
             t: dict(fig16=tri(g[fig16]), fig3=tri(g[fig3]))
             for t, g in grade.items() if t.startswith("L2a")})
     # L2b
-    u5, u13, udef = ("UFU_5A_preload_decay", "UFU_13A_first_preload_decay",
-                     "UFU_13A_def_preload_decay")
+    u5, u13, udef = ("ancora_interna", "ancora_interna",
+                     "ancora_interna")
     cands = {t: g for t, g in grade.items() if t.startswith("L2b")
              and passa(g[u5]) and passa(g[u13])
              and tri(g[udef])[0] <= store[udef]["mae"] + 0.005

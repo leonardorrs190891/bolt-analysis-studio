@@ -53,7 +53,7 @@ def main(argv=None) -> int:
     g["cfg"]["trim_n_max"] = TRIMS
     prov = g.setdefault("prov", {})
     prov["C_creep"] = ("fitado-this-rig per-par (§4.7; era herdado do shared "
-                       "UFU — única constante do grupo sem procedência; "
+                       "âncora interna — única constante do grupo sem procedência; "
                        "grade F3 ×0,70)")
     prov["trim_n_max"] = ("EXCEÇÃO bloco C (assinatura na F5): estágio "
                           "fatigue-fracture out-of-model (paper declara "

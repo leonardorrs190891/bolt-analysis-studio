@@ -317,7 +317,7 @@ não "sobra tuner":
   física. Isso *favorece* o B. **Porém** `W_conf_ref` é **per-par, sem âncora
   independente** (§4.9 strand 3, "null decisivo — nenhum dado da lib isola a
   constante") — remover a camada de tuners agora **congela** um `W_conf_ref` da escala
-  UFU como se fosse universal (o caveat de escala já documentado em `solver_worker.py:1047–1051`).
+  âncora interna como se fosse universal (o caveat de escala já documentado em `solver_worker.py:1047–1051`).
 
 - **Transferência cross-rig (§4.8, 46 curvas):** as constantes de wear/loosening **não
   transferem** entre rigs (mediana MAE 0.22; perde para 1-param local em 37/46; três

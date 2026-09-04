@@ -114,8 +114,8 @@ def frozen_constants(json_path: Path = SHARED_JSON,
     # A_contact JA eh per-rig (geometry_for computa a area real do anel de apoio,
     # 11g) => p=F0/A_contact e FISICA cross-rig (Karlsen fora do espurio ~7-14).
     # Caveat RESIDUAL (§4.9 Fase 3): p_ref_conform=5e8 e W_conf_ref=7671 sao
-    # constantes POR PAR (UFU, sem ancora) aplicadas cross-pair -> a MAGNITUDE da
-    # conformacao e aproximada fora do par UFU (honesto per-par, nao artefato).
+    # constantes POR PAR (âncora interna, sem ancora) aplicadas cross-pair -> a MAGNITUDE da
+    # conformacao e aproximada fora do par da âncora interna (honesto per-par, nao artefato).
     consts.pop("emb_depth", None)
     if not include_damage:
         # c_D/k_dmg_wear crescem de trabalho de slip mesmo sem dano inicial;

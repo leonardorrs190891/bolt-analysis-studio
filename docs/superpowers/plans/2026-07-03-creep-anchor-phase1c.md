@@ -4,7 +4,7 @@
 
 **Goal:** Estimate `C_creep` from the li2022marstruc STATIC-creep dataset (no vibration — the mechanism isolated), report its CI, and re-run the Stage-A shared fit with the prior re-centered on the anchor — measuring the impact honestly (spec §1.7).
 
-**Architecture:** New script `New_Theory/anchor_creep.py` (uses `library_common`): static mode = pseudo-cycles of 1 minute (freq=1/60 Hz, F_amp=0) so only embedding+creep act (registry-truth verified in tests); joint fit of {C_creep shared + emb_depth per Ra level} over the 6 curves in log-space; linearized CI; then Stage-A re-run via `calibrate_shared.build_shared_config` with priors/bounds overridden. Cross-material honesty: 304SS ≠ UFU pair — the anchor re-centers the prior, never replaces by decree.
+**Architecture:** New script `New_Theory/anchor_creep.py` (uses `library_common`): static mode = pseudo-cycles of 1 minute (freq=1/60 Hz, F_amp=0) so only embedding+creep act (registry-truth verified in tests); joint fit of {C_creep shared + emb_depth per Ra level} over the 6 curves in log-space; linearized CI; then Stage-A re-run via `calibrate_shared.build_shared_config` with priors/bounds overridden. Cross-material honesty: 304SS ≠ âncora interna pair — the anchor re-centers the prior, never replaces by decree.
 
 **Tech Stack:** Python 3, numpy, scipy.optimize.least_squares, matplotlib (Agg), pytest. No engine changes.
 
@@ -110,7 +110,7 @@ Create `New_Theory/anchor_creep.py`:
 Creep ESTATICO li2022marstruc (M16 304SS, sem vibracao, eixo x em MINUTOS):
 isola o mecanismo de creep. Fit declarado de {C_creep + emb_depth por Ra}
 (5 parametros, 6 curvas); depois re-roda o Estagio A com o prior de C_creep
-re-centrado na ancora (cross-material: 304SS != par UFU — re-centra, nao
+re-centrado na ancora (cross-material: 304SS != par da âncora interna — re-centra, nao
 substitui por decreto).
 
 Run:  python New_Theory/anchor_creep.py [--skip-stage-a]
@@ -317,7 +317,7 @@ def main():
                provenance=dict(
                    geometry="paper (li2022_marstruc: M16x80 304SS E=193GPa, L=20mm)",
                    x_axis="minutos (1 pseudo-ciclo = 1 min, freq=1/60 Hz)",
-                   cross_material="304SS != par UFU: ancora re-centra o prior"),
+                   cross_material="304SS != par da âncora interna: ancora re-centra o prior"),
                conservation_residual_static=resid_static,
                anchor=anchor, stage_a_rerun=stage_a)
     (ROOT / "New_Theory" / "creep_anchor.json").write_text(
@@ -399,7 +399,7 @@ wear/loosening estruturalmente inertes, verificado por registry-truth).
 
 <2-4 frases honestas: a âncora concorda/discorda do valor do Estágio A e o
 que isso diz sobre transferibilidade entre pares tribológicos (304SS vs aço
-UFU); emb_depth cresce com Ra? (esperado fisicamente); a invariância-F₀ da
+âncora interna); emb_depth cresce com Ra? (esperado fisicamente); a invariância-F₀ da
 fração de creep do modelo vs a não-monotonicidade do dado (±2% de nuvem) —
 achado de forma se os resíduos a mostrarem.>
 ```

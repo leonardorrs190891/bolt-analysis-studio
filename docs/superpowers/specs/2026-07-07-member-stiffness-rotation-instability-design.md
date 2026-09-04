@@ -295,7 +295,7 @@ settling input; see §8.3.)
   mis-classifies may **regress**. Net expected neutral-to-slightly-better on
   collapse cases, bounded by `c_bend` regime accuracy — the same ceiling the
   `loosening-slip-gate` spec named.
-- **Shear calibration (UFU 4 profiles):** inert by construction — M16 grip-40mm at
+- **Shear calibration (âncora interna 4 profiles):** inert by construction — M16 grip-40mm at
   δ=0.5 mm gives `δ_t ≈ 1.6 mm ≫ δ_amp` → `g_gs ≈ 0` → mechanism contributes ~0
   (probe confirmed: final 0.327 OFF vs 0.364 with the trio ON — the trio *reduces*
   the already-tiny rotation, it does not inject loss). The profiles keep

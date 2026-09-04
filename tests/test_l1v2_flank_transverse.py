@@ -22,7 +22,7 @@ def _run_transversal(flank_tr_on, n_cycles=400, k=1e-13, s_crit=0.0,
     extra = {}
     if quiet:
         # silencia os DEMAIS mecanismos (contrato unitario: so a rota de
-        # flanco atua) — os defaults M16-UFU colapsam F_0->0 em <400 ciclos
+        # flanco atua) — os defaults M16-âncora interna colapsam F_0->0 em <400 ciclos
         # neste setup transversal (mesma patologia diagnosticada nos R5),
         # o que mataria a comparacao 0<0.
         extra = dict(emb_depth=0.0, C_creep=0.0, K_archard=0.0,

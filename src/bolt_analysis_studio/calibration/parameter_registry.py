@@ -450,8 +450,8 @@ _ALAVANCAS_DE_CANAL = {
     #  (a) COMPANHEIRO: exige `flank_wear_on=1` no cfg — sem ele
     #      `flank_wear_from_slip` nunca e' chamada e o fator nem e' avaliado.
     #      Isto e' decidivel do CONFIG (classe do `c_bend`-sem-pack).
-    #      Medido: das 29 fontes, so LIU_2016 e LI_2022_TRIBOINT o tem ativo —
-    #      17 de 210 casos do store.
+    #      Medido: das 28 fontes, so LIU_2016 e LI_2022_TRIBOINT o tem ativo —
+    #      17 de 207 casos do store.
     #  (b) CANAL: mesmo com o companheiro ligado, se `thread_fretting` carrega
     #      ~0 da perda naquele caso o fator nao move nada. Medido em 4 curvas
     #      (JCSR com F_amp=0; YANG_2021 em stick permanente): canal fica em

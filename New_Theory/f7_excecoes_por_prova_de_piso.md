@@ -233,12 +233,12 @@ conjunto digitalizado — o piso é *inmensurável*, não apenas não medido.
 | LU_2024 | 10 | 10 / 10 | tem `FLOORS` legado de **MAE** 0,093 (fig20), mas ver §9 |
 | YANG_2023_IJPEM | 7 | 9 / 9 | nenhuma réplica publicada; a nota registra que o PDF é paywall |
 | LIU_2025 | 4 | 6 / 7 | 1 par existe (`amp0p8`+`fig2`), já usado — as 4 caem em §C |
-| UFU_LAB | 3 | 3 / 3 | **é a sua bancada**: 2 corridas na mesma condição fecham isto |
+| ANCORA_INTERNA | 3 | 3 / 3 | **é a sua bancada**: 2 corridas na mesma condição fecham isto |
 | ZHANG_2006 | 1 | 2 / 2 | — |
 | YANG_2023_AME | 1 | 1 / 1 | — |
 | demais | 1 cada | — | — |
 
-**Ação de menor custo, e é sua:** as 3 do `UFU_LAB` são as únicas cujo piso está
+**Ação de menor custo, e é sua:** as 3 do `ANCORA_INTERNA` são as únicas cujo piso está
 ao seu alcance direto — **duas corridas na mesma condição** dão o piso e movem
 essas 3 curvas de "não provável" para uma das classes.
 

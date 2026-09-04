@@ -68,7 +68,7 @@ EXCLUIR = [
     ("jt.msd", "scratch model"),
     ("model_wizard.msd", "scratch model"),
     ("teste.msd", "scratch model"),
-    ("ufu1.msd", "scratch model of a rig outside the project"),
+    ("ancora_interna.msd", "scratch model of a rig outside the project"),
 ]
 
 
@@ -216,11 +216,11 @@ def main(argv=None) -> int:
     if n_staged != n_files:
         raise SystemExit(f"staged {n_staged} files but extracted {n_files}; refusing to "
                          f"commit an incomplete snapshot")
-    _git("-c", "user.name=Leonardo Rosa Ribeiro da Silva", "-c", "user.email=leorrs@ufu.br",
+    _git("-c", "user.name=Leonardo Rosa Ribeiro da Silva", "-c", "user.email=leorrs@ancora_interna.br",
          "commit", "-q", "-m",
          f"Bolt Analysis Studio V2: public release snapshot (source commit {head[:12]})",
          cwd=dest)
-    _git("-c", "user.name=Leonardo Rosa Ribeiro da Silva", "-c", "user.email=leorrs@ufu.br",
+    _git("-c", "user.name=Leonardo Rosa Ribeiro da Silva", "-c", "user.email=leorrs@ancora_interna.br",
          "tag", "-a", args.tag, "-m", f"BAS V2 {args.tag}: release accompanying the paper",
          cwd=dest)
     print(f"[snapshot] {n_files} files from {head[:12]} -> {dest}")

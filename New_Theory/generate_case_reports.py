@@ -71,7 +71,7 @@ SHARED_PROV = {
     "C_creep": "Estágio A compartilhada — por par tribológico (§4.7)",
     "tr_loose_gain": "Estágio A compartilhada (âncora pendente §4.42)",
     "N_emb": "Estágio A compartilhada (constante de tempo do assentamento)",
-    "W_conf_ref": "Estágio A — conformação, por par UFU (§4.9)",
+    "W_conf_ref": "Estágio A — conformação, por par da âncora interna (§4.9)",
     "conform_pressure_exp": "fixo n=2 (VDI)",
     "p_ref_conform": "computado do %yield (pct/70, roadmap 11f)",
 }

@@ -2,10 +2,10 @@
 
 MODEL_LEGITIMACY.md §4.10: the zero-refit Liu2022 M12 re-tightening validation
 COLLAPSES (perda por fase ~0.98 vs dado dry 0.07-0.14) because three per-rig
-constants transfer badly from the M16/UFU Stage-A block:
-  1. c_D=2.0 / k_dmg_wear=4.0  — the UFU reaperto COLLAPSE signature (runaway).
+constants transfer badly from the M16/âncora interna Stage-A block:
+  1. c_D=2.0 / k_dmg_wear=4.0  — the âncora interna reaperto COLLAPSE signature (runaway).
   2. emb_depth (VDI Rz<10)      — over-predicts fine-ground settling (§4.6).
-  3. k_wear_scale_tr=1.0        — vs the 0.44 fitted to M16/UFU nova (~2.3x fast).
+  3. k_wear_scale_tr=1.0        — vs the 0.44 fitted to M16/âncora interna nova (~2.3x fast).
 
 This probe SWEEPS a per-rig LEVEL {emb (new Rz<4 fine-ground handbook class /
 scaled), k_wear_scale_tr in [0.05,1.0], damage {off, mild, frozen-ref}} on the DRY

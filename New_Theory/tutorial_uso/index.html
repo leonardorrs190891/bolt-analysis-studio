@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-lang="pt">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -166,32 +166,47 @@
     .tprog{display:none}
     figure.frame:hover img,.step:hover .step-n{transform:none}
   }
+
+  /* ---- alternador de idioma PT/EN (mesmo mecanismo do Explorador de Variáveis) ---- */
+  [data-lang="pt"] [data-l="en"]{display:none}
+  [data-lang="en"] [data-l="pt"]{display:none}
+  nav.toc .lang{display:flex;gap:6px;margin:16px 6px 2px}
+  nav.toc .lang button{flex:1;background:var(--panel);border:1px solid var(--border);
+    color:var(--sub);border-radius:7px;padding:5px 0;font-size:12px;letter-spacing:.6px;
+    cursor:pointer;font-family:var(--mono);transition:background .15s,color .15s,border-color .15s}
+  nav.toc .lang button:hover{border-color:var(--blue);color:var(--text)}
+  nav.toc .lang button.on{background:var(--blue);color:#08121c;border-color:var(--blue);font-weight:700}
 </style>
+<script>try{document.documentElement.dataset.lang=localStorage.getItem('bas_tut_lang')||'pt';}catch(e){}</script>
 </head>
 <body>
 <div class="wrap">
 
 <nav class="toc">
-  <div class="brand">Bolt Analysis Studio<span>V2 · TUTORIAL DE USO</span></div>
-  <div class="sep">Começo</div>
+  <div class="brand">Bolt Analysis Studio<span data-l="pt">V2 · TUTORIAL DE USO</span><span data-l="en">V2 · USER TUTORIAL</span></div>
+  <div class="lang">
+    <button type="button" data-lang-btn="pt" onclick="setLang('pt')">PT</button>
+    <button type="button" data-lang-btn="en" onclick="setLang('en')">EN</button>
+  </div>
+  <div class="sep"><span data-l="pt">Começo</span><span data-l="en">Getting started</span></div>
   <ol>
-    <li><a href="#c1">Abrir o programa</a></li>
-    <li><a href="#c2">Anatomia da interface</a></li>
-    <li><a href="#c3">Nova análise (wizard)</a></li>
+    <li><a href="#c1"><span data-l="pt">Abrir o programa</span><span data-l="en">Open the program</span></a></li>
+    <li><a href="#c2"><span data-l="pt">Anatomia da interface</span><span data-l="en">Interface anatomy</span></a></li>
+    <li><a href="#c3"><span data-l="pt">Nova análise (wizard)</span><span data-l="en">New analysis (wizard)</span></a></li>
   </ol>
-  <div class="sep">Fluxo de trabalho</div>
+  <div class="sep"><span data-l="pt">Fluxo de trabalho</span><span data-l="en">Workflow</span></div>
   <ol start="4" style="counter-reset:s 3">
-    <li><a href="#c4">Model — o MSD</a></li>
+    <li><a href="#c4"><span data-l="pt">Model — o MSD</span><span data-l="en">Model — the MSD</span></a></li>
     <li><a href="#c5">Contacts</a></li>
     <li><a href="#c6">Loads</a></li>
-    <li><a href="#c7">Analysis — rodar</a></li>
+    <li><a href="#c7"><span data-l="pt">Analysis — rodar</span><span data-l="en">Analysis — run</span></a></li>
     <li><a href="#c8">Results — plots</a></li>
     <li><a href="#c9">Validation</a></li>
   </ol>
   <div class="sep">Extras</div>
   <ol start="10" style="counter-reset:s 9">
-    <li><a href="#c10">Temas</a></li>
-    <li><a href="#c11">Atalhos & dicas</a></li>
+    <li><a href="#c10"><span data-l="pt">Temas</span><span data-l="en">Themes</span></a></li>
+    <li><a href="#c11"><span data-l="pt">Atalhos &amp; dicas</span><span data-l="en">Shortcuts &amp; tips</span></a></li>
   </ol>
 </nav>
 
@@ -201,11 +216,13 @@
       <img src="img/01_splash.png" alt="Tela de abertura do Bolt Analysis Studio V2">
       <div class="veil"></div>
       <div class="cap">
-        <div class="kicker">Guia passo a passo</div>
-        <h1>Tutorial de Uso</h1>
-        <p class="lead">Da abertura ao relatório: montar o modelo massa-mola-amortecedor de uma
+        <div class="kicker"><span data-l="pt">Guia passo a passo</span><span data-l="en">Step-by-step guide</span></div>
+        <h1><span data-l="pt">Tutorial de Uso</span><span data-l="en">User Tutorial</span></h1>
+        <p class="lead"><span data-l="pt">Da abertura ao relatório: montar o modelo massa-mola-amortecedor de uma
         junta parafusada, configurar contatos e carga, rodar a análise de afrouxamento
-        e ler os resultados — com prints reais de cada tela.</p>
+        e ler os resultados — com prints reais de cada tela.</span><span data-l="en">From splash to report: build the mass-spring-damper model of a bolted
+        joint, configure contacts and load, run the self-loosening analysis and read the
+        results — with real screenshots of every screen.</span></p>
       </div>
     </div>
   </header>
@@ -214,23 +231,27 @@
   <section class="step" id="c1">
     <div class="step-h">
       <div class="step-n">1</div>
-      <div><h2>Abrir o programa</h2>
+      <div><h2><span data-l="pt">Abrir o programa</span><span data-l="en">Open the program</span></h2>
         <div class="sub">Terminal · <code>python run_app.py</code></div></div>
     </div>
     <div class="step-body">
-      <p>Na pasta do projeto, rode o launcher. Por padrão abre o <b>chrome V2</b>
+      <p><span data-l="pt">Na pasta do projeto, rode o launcher. Por padrão abre o <b>chrome V2</b>
       (a casca no estilo Abaqus/CAE). A tela de abertura anima enquanto os módulos
-      são inicializados e some sozinha.</p>
+      são inicializados e some sozinha.</span><span data-l="en">In the project folder, run the launcher. By default it opens the <b>chrome V2</b>
+      (the Abaqus/CAE-style shell). The splash screen animates while the modules
+      initialize, then dismisses itself.</span></p>
       <ul class="clean">
-        <li><code>python run_app.py</code> — chrome V2 (padrão)</li>
-        <li><code>python run_app.py --v1</code> — janela clássica de 7 abas (fallback)</li>
-        <li><code>python run_app.py --builder</code> — só o MSD Model Builder</li>
-        <li><code>python run_app.py --theme engineering</code> — força uma paleta</li>
+        <li><code>python run_app.py</code> <span data-l="pt">— chrome V2 (padrão)</span><span data-l="en">— chrome V2 (default)</span></li>
+        <li><code>python run_app.py --v1</code> <span data-l="pt">— janela clássica de 7 abas (fallback)</span><span data-l="en">— classic 7-tab window (fallback)</span></li>
+        <li><code>python run_app.py --builder</code> <span data-l="pt">— só o MSD Model Builder</span><span data-l="en">— MSD Model Builder only</span></li>
+        <li><code>python run_app.py --theme engineering</code> <span data-l="pt">— força uma paleta</span><span data-l="en">— forces a palette</span></li>
       </ul>
-      <div class="note tip"><span class="lbl">Dica</span>
-        A curva na abertura é a própria física do programa: o decaimento de pré-carga
+      <div class="note tip"><span class="lbl"><span data-l="pt">Dica</span><span data-l="en">Tip</span></span>
+        <span data-l="pt">A curva na abertura é a própria física do programa: o decaimento de pré-carga
         <code>F/F₀</code> ao longo dos ciclos, com o platô (Estágio I) e o joelho de colapso
-        (Estágio II).</div>
+        (Estágio II).</span><span data-l="en">The splash curve is the program's own physics: the preload decay
+        <code>F/F₀</code> over the cycles, with the plateau (Stage I) and the collapse knee
+        (Stage II).</span></div>
     </div>
   </section>
 
@@ -238,12 +259,13 @@
   <section class="step" id="c2">
     <div class="step-h">
       <div class="step-n">2</div>
-      <div><h2>Anatomia da interface</h2>
-        <div class="sub">Zonas fixas no estilo Abaqus/CAE</div></div>
+      <div><h2><span data-l="pt">Anatomia da interface</span><span data-l="en">Interface anatomy</span></h2>
+        <div class="sub"><span data-l="pt">Zonas fixas no estilo Abaqus/CAE</span><span data-l="en">Fixed zones, Abaqus/CAE style</span></div></div>
     </div>
     <div class="step-body">
-      <p>A janela tem zonas fixas. Você caminha da esquerda (o modelo) para a direita
-      (as propriedades), de cima (o passo do fluxo) para baixo (as mensagens).</p>
+      <p><span data-l="pt">A janela tem zonas fixas. Você caminha da esquerda (o modelo) para a direita
+      (as propriedades), de cima (o passo do fluxo) para baixo (as mensagens).</span><span data-l="en">The window has fixed zones. You move from the left (the model) to the right
+      (the properties), from the top (the workflow step) to the bottom (the messages).</span></p>
       <figure class="frame">
         <div class="annot">
           <img src="img/05_shell_model.png" alt="Interface principal do BAS V2 anotada">
@@ -255,32 +277,34 @@
           <div class="pin" style="left:6%;top:87%">6</div>
           <div class="pin" style="left:55%;top:98%">7</div>
         </div>
-        <figcaption><b>FIG 2</b> Módulo Model com uma junta simples carregada — sete zonas.</figcaption>
+        <figcaption><b>FIG 2</b> <span data-l="pt">Módulo Model com uma junta simples carregada — sete zonas.</span><span data-l="en">Model module with a simple joint loaded — seven zones.</span></figcaption>
       </figure>
       <ul class="legend">
-        <li><span class="num">1</span><span><b>Passos do fluxo</b> — Model → Contacts → Loads → Analysis → Results → Report, com <code>Run/Stop</code>.</span></li>
-        <li><span class="num">2</span><span><b>Model Tree</b> — a árvore de elementos, contatos, cargas e jobs.</span></li>
-        <li><span class="num">3</span><span><b>Viewport</b> — o esquemático do MSD (pilha do parafuso) com zoom/pan/fit.</span></li>
-        <li><span class="num">4</span><span><b>Properties</b> — inspetor do que está selecionado (rigidez, material, tribologia).</span></li>
-        <li><span class="num">5</span><span><b>Elements</b> — paleta para adicionar peças e presets de junta.</span></li>
-        <li><span class="num">6</span><span><b>Mensagens</b> — avisos de contexto + Job Log (colapsável).</span></li>
-        <li><span class="num">7</span><span><b>Barra de status</b> — projeto, módulo, step e estado do job.</span></li>
+        <li><span class="num">1</span><span data-l="pt"><b>Passos do fluxo</b> — Model → Contacts → Loads → Analysis → Results → Report, com <code>Run/Stop</code>.</span><span data-l="en"><b>Workflow steps</b> — Model → Contacts → Loads → Analysis → Results → Report, with <code>Run/Stop</code>.</span></li>
+        <li><span class="num">2</span><span data-l="pt"><b>Model Tree</b> — a árvore de elementos, contatos, cargas e jobs.</span><span data-l="en"><b>Model Tree</b> — the tree of elements, contacts, loads and jobs.</span></li>
+        <li><span class="num">3</span><span data-l="pt"><b>Viewport</b> — o esquemático do MSD (pilha do parafuso) com zoom/pan/fit.</span><span data-l="en"><b>Viewport</b> — the MSD schematic (bolt stack) with zoom/pan/fit.</span></li>
+        <li><span class="num">4</span><span data-l="pt"><b>Properties</b> — inspetor do que está selecionado (rigidez, material, tribologia).</span><span data-l="en"><b>Properties</b> — inspector of the current selection (stiffness, material, tribology).</span></li>
+        <li><span class="num">5</span><span data-l="pt"><b>Elements</b> — paleta para adicionar peças e presets de junta.</span><span data-l="en"><b>Elements</b> — palette to add parts and joint presets.</span></li>
+        <li><span class="num">6</span><span data-l="pt"><b>Mensagens</b> — avisos de contexto + Job Log (colapsável).</span><span data-l="en"><b>Messages</b> — context warnings + Job Log (collapsible).</span></li>
+        <li><span class="num">7</span><span data-l="pt"><b>Barra de status</b> — projeto, módulo, step e estado do job.</span><span data-l="en"><b>Status bar</b> — project, module, step and job state.</span></li>
       </ul>
 
-      <h3>Painéis: colapsar, fechar, reabrir</h3>
-      <p>Cada painel lateral tem <b>colapsar</b> (▾, vira uma faixa fina) e <b>fechar</b> (✕).
+      <h3><span data-l="pt">Painéis: colapsar, fechar, reabrir</span><span data-l="en">Panels: collapse, close, reopen</span></h3>
+      <p><span data-l="pt">Cada painel lateral tem <b>colapsar</b> (▾, vira uma faixa fina) e <b>fechar</b> (✕).
       Reabra em <code>Exibir → Painéis</code>. Arraste as bordas para redimensionar — a alça
-      dos divisores é larga e realça em azul ao passar o mouse.</p>
+      dos divisores é larga e realça em azul ao passar o mouse.</span><span data-l="en">Each side panel has <b>collapse</b> (▾, turns into a thin strip) and <b>close</b> (✕).
+      Reopen it under <code>Exibir → Painéis</code>. Drag the edges to resize — the splitter
+      handle is wide and highlights in blue on hover.</span></p>
       <div class="three">
         <figure class="frame"><img src="img/07_tree.png" alt="Model Tree">
           <figcaption><b>Model Tree</b></figcaption></figure>
         <figure class="frame"><img src="img/08_properties.png" alt="Properties">
           <figcaption><b>Properties</b></figcaption></figure>
         <figure class="frame"><img src="img/09_messages.png" alt="Área de mensagens">
-          <figcaption><b>Mensagens</b></figcaption></figure>
+          <figcaption><b><span data-l="pt">Mensagens</span><span data-l="en">Messages</span></b></figcaption></figure>
       </div>
       <figure class="frame"><img src="img/06_stepper.png" alt="Barra de passos do fluxo">
-        <figcaption><b>Passos</b> — o botão do passo atual fica preenchido; “Próximo →” avança.</figcaption></figure>
+        <figcaption><b><span data-l="pt">Passos</span><span data-l="en">Steps</span></b> <span data-l="pt">— o botão do passo atual fica preenchido; “Próximo →” avança.</span><span data-l="en">— the current step button is filled; “Next →” advances.</span></figcaption></figure>
     </div>
   </section>
 
@@ -288,26 +312,30 @@
   <section class="step" id="c3">
     <div class="step-h">
       <div class="step-n">3</div>
-      <div><h2>Nova análise pelo wizard</h2>
-        <div class="sub"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> · 5 páginas guiadas</div></div>
+      <div><h2><span data-l="pt">Nova análise pelo wizard</span><span data-l="en">New analysis via the wizard</span></h2>
+        <div class="sub"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> · <span data-l="pt">5 páginas guiadas</span><span data-l="en">5 guided pages</span></div></div>
     </div>
     <div class="step-body">
-      <p>O jeito mais rápido de começar é o <b>New Analysis Wizard</b>. Você escolhe a
+      <p><span data-l="pt">O jeito mais rápido de começar é o <b>New Analysis Wizard</b>. Você escolhe a
       topologia da junta e o wizard <b>gera os elementos correspondentes</b> — dá para
-      adicionar/remover tudo depois no Model Builder.</p>
+      adicionar/remover tudo depois no Model Builder.</span><span data-l="en">The fastest way to start is the <b>New Analysis Wizard</b>. You pick the joint
+      topology and the wizard <b>generates the matching elements</b> — you can add/remove
+      everything later in the Model Builder.</span></p>
       <figure class="frame"><img src="img/02_wizard_joint.png" alt="Wizard — página de junta">
-        <figcaption><b>1/5 · Junta</b> Escolha a topologia (simples axial, cisalhante/Junker, flange com gaxeta…).</figcaption></figure>
+        <figcaption><b>1/5 · <span data-l="pt">Junta</span><span data-l="en">Joint</span></b> <span data-l="pt">Escolha a topologia (simples axial, cisalhante/Junker, flange com gaxeta…).</span><span data-l="en">Choose the topology (simple axial, shear/Junker, flanged with gasket…).</span></figcaption></figure>
       <div class="two">
         <figure class="frame"><img src="img/03_wizard_bolt.png" alt="Wizard — parafuso">
-          <figcaption><b>2/5 · Parafuso</b> Tamanho, classe, pré-carga.</figcaption></figure>
+          <figcaption><b>2/5 · <span data-l="pt">Parafuso</span><span data-l="en">Bolt</span></b> <span data-l="pt">Tamanho, classe, pré-carga.</span><span data-l="en">Size, class, preload.</span></figcaption></figure>
         <figure class="frame"><img src="img/04_wizard_loading.png" alt="Wizard — carregamento">
-          <figcaption><b>3/5 · Carga</b> Amplitude, frequência, número de ciclos.</figcaption></figure>
+          <figcaption><b>3/5 · <span data-l="pt">Carga</span><span data-l="en">Load</span></b> <span data-l="pt">Amplitude, frequência, número de ciclos.</span><span data-l="en">Amplitude, frequency, number of cycles.</span></figcaption></figure>
       </div>
-      <p>As páginas 4 e 5 (curva de referência opcional e revisão) fecham o wizard; ao
-      finalizar, o modelo é adotado e você cai no módulo <b>Model</b>.</p>
+      <p><span data-l="pt">As páginas 4 e 5 (curva de referência opcional e revisão) fecham o wizard; ao
+      finalizar, o modelo é adotado e você cai no módulo <b>Model</b>.</span><span data-l="en">Pages 4 and 5 (optional reference curve and review) close the wizard; on
+      finish, the model is adopted and you land in the <b>Model</b> module.</span></p>
       <div class="note"><span class="lbl">Presets</span>
-        Sem wizard? No painel <b>Elements</b> há atalhos <i>Single Bolt Joint</i>,
-        <i>Basic Flanged Joint</i> e <i>Junker Test Setup</i> — um clique monta a junta inteira.</div>
+        <span data-l="pt">Sem wizard? No painel <b>Elements</b> há atalhos <i>Single Bolt Joint</i>,
+        <i>Basic Flanged Joint</i> e <i>Junker Test Setup</i> — um clique monta a junta inteira.</span><span data-l="en">No wizard? The <b>Elements</b> panel has shortcuts <i>Single Bolt Joint</i>,
+        <i>Basic Flanged Joint</i> and <i>Junker Test Setup</i> — one click builds the whole joint.</span></div>
     </div>
   </section>
 
@@ -315,24 +343,28 @@
   <section class="step" id="c4">
     <div class="step-h">
       <div class="step-n">4</div>
-      <div><h2>Model — montar e inspecionar o MSD</h2>
-        <div class="sub">Massa-mola-amortecedor, não um ajuste de curva</div></div>
+      <div><h2><span data-l="pt">Model — montar e inspecionar o MSD</span><span data-l="en">Model — build and inspect the MSD</span></h2>
+        <div class="sub"><span data-l="pt">Massa-mola-amortecedor, não um ajuste de curva</span><span data-l="en">Mass-spring-damper, not a curve fit</span></div></div>
     </div>
     <div class="step-body">
-      <p>O esquemático é a pilha física do parafuso: <code>GROUND → HEAD → SHANK → THREAD
+      <p><span data-l="pt">O esquemático é a pilha física do parafuso: <code>GROUND → HEAD → SHANK → THREAD
       → NUT</code> mais as chapas (FLANGE) e os contatos (BEARING, THREAD, FLANGE-FLANGE).
-      Clique num elemento para editar suas propriedades à direita.</p>
+      Clique num elemento para editar suas propriedades à direita.</span><span data-l="en">The schematic is the bolt's physical stack: <code>GROUND → HEAD → SHANK → THREAD
+      → NUT</code> plus the plates (FLANGE) and the contacts (BEARING, THREAD, FLANGE-FLANGE).
+      Click an element to edit its properties on the right.</span></p>
       <figure class="frame"><img src="img/08_properties.png" alt="Inspetor de propriedades">
-        <figcaption><b>Properties</b> Parâmetros MSD (k, c, m), material (E, Sy, Su, ρ) e tribologia (μ).</figcaption></figure>
+        <figcaption><b>Properties</b> <span data-l="pt">Parâmetros MSD (k, c, m), material (E, Sy, Su, ρ) e tribologia (μ).</span><span data-l="en">MSD parameters (k, c, m), material (E, Sy, Su, ρ) and tribology (μ).</span></figcaption></figure>
       <ul class="clean">
-        <li><b>Element</b> — rigidez <code>k</code>, amortecimento <code>c</code>, massa <code>m</code>, material.</li>
-        <li><b>Loading</b> — carga por-elemento (pré-carga, ΔT).</li>
-        <li><b>Contact</b> — atrito, desgaste e lubrificação da interface.</li>
+        <li><b>Element</b> <span data-l="pt">— rigidez <code>k</code>, amortecimento <code>c</code>, massa <code>m</code>, material.</span><span data-l="en">— stiffness <code>k</code>, damping <code>c</code>, mass <code>m</code>, material.</span></li>
+        <li><b>Loading</b> <span data-l="pt">— carga por-elemento (pré-carga, ΔT).</span><span data-l="en">— per-element load (preload, ΔT).</span></li>
+        <li><b>Contact</b> <span data-l="pt">— atrito, desgaste e lubrificação da interface.</span><span data-l="en">— friction, wear and lubrication of the interface.</span></li>
       </ul>
-      <div class="note tip"><span class="lbl">Por que importa</span>
-        Cada mola/amortecedor é uma peça real com física própria (Hooke, Coulomb, Norton).
+      <div class="note tip"><span class="lbl"><span data-l="pt">Por que importa</span><span data-l="en">Why it matters</span></span>
+        <span data-l="pt">Cada mola/amortecedor é uma peça real com física própria (Hooke, Coulomb, Norton).
         O afrouxamento emerge do <b>acoplamento hélice</b> (o único acoplamento axial-torcional),
-        não de uma reta ajustada aos dados.</div>
+        não de uma reta ajustada aos dados.</span><span data-l="en">Each spring/damper is a real part with its own physics (Hooke, Coulomb, Norton).
+        Loosening emerges from the <b>helix coupling</b> (the only axial-torsional coupling),
+        not from a line fitted to the data.</span></div>
     </div>
   </section>
 
@@ -340,18 +372,21 @@
   <section class="step" id="c5">
     <div class="step-h">
       <div class="step-n">5</div>
-      <div><h2>Contacts — atrito, desgaste, lubrificação</h2>
-        <div class="sub">A tribologia mora nos contatos, não nas peças</div></div>
+      <div><h2><span data-l="pt">Contacts — atrito, desgaste, lubrificação</span><span data-l="en">Contacts — friction, wear, lubrication</span></h2>
+        <div class="sub"><span data-l="pt">A tribologia mora nos contatos, não nas peças</span><span data-l="en">Tribology lives on the contacts, not the parts</span></div></div>
     </div>
     <div class="step-body">
-      <p>No módulo <b>Contacts</b> o esquemático destaca as interfaces. Defina o coeficiente
+      <p><span data-l="pt">No módulo <b>Contacts</b> o esquemático destaca as interfaces. Defina o coeficiente
       de atrito, o modelo de desgaste (Archard, energia, fretting, fadiga) e o regime de
-      lubrificação de cada contato.</p>
+      lubrificação de cada contato.</span><span data-l="en">In the <b>Contacts</b> module the schematic highlights the interfaces. Set the
+      friction coefficient, the wear model (Archard, energy, fretting, fatigue) and the
+      lubrication regime of each contact.</span></p>
       <figure class="frame"><img src="img/10_contacts.png" alt="Módulo Contacts">
-        <figcaption><b>FIG 5</b> Módulo Contacts — o inspetor mostra a aba de contato.</figcaption></figure>
-      <div class="note warn"><span class="lbl">Regra</span>
-        Todo nut precisa de um ThreadContact. Peças não carregam tribologia — ela se
-        prende apenas aos contatos e entra só no vetor de forças <code>{F}</code>.</div>
+        <figcaption><b>FIG 5</b> <span data-l="pt">Módulo Contacts — o inspetor mostra a aba de contato.</span><span data-l="en">Contacts module — the inspector shows the contact tab.</span></figcaption></figure>
+      <div class="note warn"><span class="lbl"><span data-l="pt">Regra</span><span data-l="en">Rule</span></span>
+        <span data-l="pt">Todo nut precisa de um ThreadContact. Peças não carregam tribologia — ela se
+        prende apenas aos contatos e entra só no vetor de forças <code>{F}</code>.</span><span data-l="en">Every nut needs a ThreadContact. Parts carry no tribology — it attaches only to
+        the contacts and enters only the force vector <code>{F}</code>.</span></div>
     </div>
   </section>
 
@@ -359,19 +394,23 @@
   <section class="step" id="c6">
     <div class="step-h">
       <div class="step-n">6</div>
-      <div><h2>Loads — o carregamento</h2>
-        <div class="sub">Força ou deslocamento imposto (Junker)</div></div>
+      <div><h2><span data-l="pt">Loads — o carregamento</span><span data-l="en">Loads — the loading</span></h2>
+        <div class="sub"><span data-l="pt">Força ou deslocamento imposto (Junker)</span><span data-l="en">Force or imposed displacement (Junker)</span></div></div>
     </div>
     <div class="step-body">
-      <p>No módulo <b>Loads</b> você configura o carregamento global e por-elemento:
+      <p><span data-l="pt">No módulo <b>Loads</b> você configura o carregamento global e por-elemento:
       pré-carga <code>F₀</code>, amplitude transversal (força <b>ou</b> deslocamento),
-      frequência, número de ciclos e ΔT.</p>
+      frequência, número de ciclos e ΔT.</span><span data-l="en">In the <b>Loads</b> module you set the global and per-element loading:
+      preload <code>F₀</code>, transverse amplitude (force <b>or</b> displacement),
+      frequency, number of cycles and ΔT.</span></p>
       <figure class="frame"><img src="img/11_loads.png" alt="Módulo Loads">
-        <figcaption><b>FIG 6</b> Módulo Loads — carregamento global no inspetor.</figcaption></figure>
-      <div class="note tip"><span class="lbl">Modo Junker</span>
-        Para ensaios de manivela ±0,5&nbsp;mm, use <b>deslocamento imposto</b>
+        <figcaption><b>FIG 6</b> <span data-l="pt">Módulo Loads — carregamento global no inspetor.</span><span data-l="en">Loads module — global loading in the inspector.</span></figcaption></figure>
+      <div class="note tip"><span class="lbl"><span data-l="pt">Modo Junker</span><span data-l="en">Junker mode</span></span>
+        <span data-l="pt">Para ensaios de manivela ±0,5&nbsp;mm, use <b>deslocamento imposto</b>
         (<code>delta_amplitude</code>): o escorregamento vem do deslocamento — muito mais
-        preciso que derivar da força.</div>
+        preciso que derivar da força.</span><span data-l="en">For ±0.5&nbsp;mm crank tests, use <b>imposed displacement</b>
+        (<code>delta_amplitude</code>): the slip comes from the displacement — far more
+        accurate than deriving it from the force.</span></div>
     </div>
   </section>
 
@@ -379,18 +418,21 @@
   <section class="step" id="c7">
     <div class="step-h">
       <div class="step-n">7</div>
-      <div><h2>Analysis — definir o step e rodar</h2>
-        <div class="sub">Integrador, modo de controle e atrito automáticos</div></div>
+      <div><h2><span data-l="pt">Analysis — definir o step e rodar</span><span data-l="en">Analysis — set the step and run</span></h2>
+        <div class="sub"><span data-l="pt">Integrador, modo de controle e atrito automáticos</span><span data-l="en">Integrator, control mode and friction, all automatic</span></div></div>
     </div>
     <div class="step-body">
-      <p>No módulo <b>Analysis</b> você revê o step (ex.: <i>Static-Preload</i>), confere as
+      <p><span data-l="pt">No módulo <b>Analysis</b> você revê o step (ex.: <i>Static-Preload</i>), confere as
       escolhas automáticas (integrador HHT-α, controle por deslocamento, atrito Coulomb) e
-      dispara com <code>▶ Run</code> na barra de passos. O progresso aparece no <b>Job Log</b>.</p>
+      dispara com <code>▶ Run</code> na barra de passos. O progresso aparece no <b>Job Log</b>.</span><span data-l="en">In the <b>Analysis</b> module you review the step (e.g. <i>Static-Preload</i>), check
+      the automatic choices (HHT-α integrator, displacement control, Coulomb friction) and
+      launch with <code>▶ Run</code> on the step bar. Progress appears in the <b>Job Log</b>.</span></p>
       <figure class="frame"><img src="img/12_analysis.png" alt="Módulo Analysis">
-        <figcaption><b>FIG 7</b> Módulo Analysis — parâmetros do solver antes de rodar.</figcaption></figure>
-      <div class="note"><span class="lbl">Coerência</span>
-        Todo o Run vem de <b>um único modelo</b> (o motor V2): pré-carga, desgaste, ângulo de
-        afrouxamento e a decomposição por mecanismo saem juntos e consistentes.</div>
+        <figcaption><b>FIG 7</b> <span data-l="pt">Módulo Analysis — parâmetros do solver antes de rodar.</span><span data-l="en">Analysis module — solver parameters before running.</span></figcaption></figure>
+      <div class="note"><span class="lbl"><span data-l="pt">Coerência</span><span data-l="en">Coherence</span></span>
+        <span data-l="pt">Todo o Run vem de <b>um único modelo</b> (o motor V2): pré-carga, desgaste, ângulo de
+        afrouxamento e a decomposição por mecanismo saem juntos e consistentes.</span><span data-l="en">The whole Run comes from <b>a single model</b> (the V2 engine): preload, wear, loosening
+        angle and the per-mechanism decomposition come out together and consistent.</span></div>
     </div>
   </section>
 
@@ -398,19 +440,21 @@
   <section class="step" id="c8">
     <div class="step-h">
       <div class="step-n">8</div>
-      <div><h2>Results — ler os plots</h2>
-        <div class="sub">Escolha o gráfico na árvore à esquerda</div></div>
+      <div><h2><span data-l="pt">Results — ler os plots</span><span data-l="en">Results — read the plots</span></h2>
+        <div class="sub"><span data-l="pt">Escolha o gráfico na árvore à esquerda</span><span data-l="en">Pick the chart in the tree on the left</span></div></div>
     </div>
     <div class="step-body">
-      <p>O módulo <b>Results</b> tem a árvore <b>Select Plot</b> à esquerda (histórico
+      <p><span data-l="pt">O módulo <b>Results</b> tem a árvore <b>Select Plot</b> à esquerda (histórico
       temporal, decaimento de pré-carga, atrito &amp; desgaste, afrouxamento, forças da junta,
-      modal) e o gráfico à direita, com abas Summary / Plot View / Miner’s Rule / Diagnostics.</p>
+      modal) e o gráfico à direita, com abas Summary / Plot View / Miner’s Rule / Diagnostics.</span><span data-l="en">The <b>Results</b> module has the <b>Select Plot</b> tree on the left (time history,
+      preload decay, friction &amp; wear, loosening, joint forces, modal) and the chart on the
+      right, with Summary / Plot View / Miner’s Rule / Diagnostics tabs.</span></p>
       <figure class="frame"><img src="img/13_results.png" alt="Módulo Results">
-        <figcaption><b>FIG 8</b> Results — árvore de plots, estatísticas e ações (Pin, Export, Dashboard).</figcaption></figure>
+        <figcaption><b>FIG 8</b> <span data-l="pt">Results — árvore de plots, estatísticas e ações (Pin, Export, Dashboard).</span><span data-l="en">Results — plot tree, statistics and actions (Pin, Export, Dashboard).</span></figcaption></figure>
       <ul class="clean">
-        <li>Arraste o divisor para <b>alargar a árvore de plots</b> (a alça larga realça em azul).</li>
-        <li><b>Pin Results</b> guarda um snapshot para sobrepor comparações.</li>
-        <li><b>Export Data</b> exporta as séries; <b>Dashboard</b> mostra tudo de uma vez.</li>
+        <li><span data-l="pt">Arraste o divisor para <b>alargar a árvore de plots</b> (a alça larga realça em azul).</span><span data-l="en">Drag the divider to <b>widen the plot tree</b> (the wide handle highlights in blue).</span></li>
+        <li><b>Pin Results</b> <span data-l="pt">guarda um snapshot para sobrepor comparações.</span><span data-l="en">keeps a snapshot to overlay comparisons.</span></li>
+        <li><b>Export Data</b> <span data-l="pt">exporta as séries; <b>Dashboard</b> mostra tudo de uma vez.</span><span data-l="en">exports the series; <b>Dashboard</b> shows everything at once.</span></li>
       </ul>
     </div>
   </section>
@@ -419,19 +463,23 @@
   <section class="step" id="c9">
     <div class="step-h">
       <div class="step-n">9</div>
-      <div><h2>Validation — modelo vs. dado</h2>
-        <div class="sub">Curvas reais da biblioteca + o SEU ensaio</div></div>
+      <div><h2><span data-l="pt">Validation — modelo vs. dado</span><span data-l="en">Validation — model vs. data</span></h2>
+        <div class="sub"><span data-l="pt">Curvas reais da biblioteca + o SEU ensaio</span><span data-l="en">Real library curves + YOUR test</span></div></div>
     </div>
     <div class="step-body">
-      <p>A aba <b>Validation</b> abre o navegador de casos: escolha uma fonte da literatura
+      <p><span data-l="pt">A aba <b>Validation</b> abre o navegador de casos: escolha uma fonte da literatura
       e veja a curva <b>dado (artigo) × modelo</b>, a decomposição por mecanismo empilhada e as
-      métricas (MAE, RMSE, F/F₀ final).</p>
+      métricas (MAE, RMSE, F/F₀ final).</span><span data-l="en">The <b>Validation</b> tab opens the case browser: pick a source from the literature
+      and see the <b>data (paper) × model</b> curve, the stacked per-mechanism decomposition and
+      the metrics (MAE, RMSE, final F/F₀).</span></p>
       <figure class="frame"><img src="img/14_validation.png" alt="Navegador de validação com uma curva real">
-        <figcaption><b>FIG 9</b> Caso <code>UFU_5A_preload_decay</code> — dado vs. modelo (MAE 0,0523) + decomposição.</figcaption></figure>
-      <div class="note tip"><span class="lbl">Importe o SEU ensaio</span>
-        No painel do topo: <b>1)</b> copie o prompt, <b>2)</b> cole em qualquer IA junto com sua
+        <figcaption><b>FIG 9</b> <span data-l="pt">Caso <code>ancora_interna</code> — dado vs. modelo (MAE 0,0523) + decomposição.</span><span data-l="en">Case <code>ancora_interna</code> — data vs. model (MAE 0.0523) + decomposition.</span></figcaption></figure>
+      <div class="note tip"><span class="lbl"><span data-l="pt">Importe o SEU ensaio</span><span data-l="en">Import YOUR test</span></span>
+        <span data-l="pt">No painel do topo: <b>1)</b> copie o prompt, <b>2)</b> cole em qualquer IA junto com sua
         curva experimental e responda às perguntas, <b>3)</b> importe o <code>.bascase.json</code>
-        devolvido — o software valida, faz o ajuste prévio e gera o report completo.</div>
+        devolvido — o software valida, faz o ajuste prévio e gera o report completo.</span><span data-l="en">In the top panel: <b>1)</b> copy the prompt, <b>2)</b> paste it into any AI along with your
+        experimental curve and answer the questions, <b>3)</b> import the returned <code>.bascase.json</code>
+        — the software validates it, does the pre-fit and generates the full report.</span></div>
     </div>
   </section>
 
@@ -439,14 +487,15 @@
   <section class="step" id="c10">
     <div class="step-h">
       <div class="step-n">10</div>
-      <div><h2>Temas</h2>
-        <div class="sub"><code>Exibir → Tema</code> · troca ao vivo</div></div>
+      <div><h2><span data-l="pt">Temas</span><span data-l="en">Themes</span></h2>
+        <div class="sub"><code>Exibir → Tema</code> · <span data-l="pt">troca ao vivo</span><span data-l="en">live switch</span></div></div>
     </div>
     <div class="step-body">
-      <p>Cinco paletas (Engineering Dark padrão, além de escura, clara, verde e alto contraste).
-      A troca é ao vivo — painéis, gráficos e o esquemático acompanham.</p>
+      <p><span data-l="pt">Cinco paletas (Engineering Dark padrão, além de escura, clara, verde e alto contraste).
+      A troca é ao vivo — painéis, gráficos e o esquemático acompanham.</span><span data-l="en">Five palettes (Engineering Dark by default, plus dark, light, green and high-contrast).
+      The switch is live — panels, charts and the schematic follow along.</span></p>
       <figure class="frame"><img src="img/15_shell_light.png" alt="Interface no tema claro">
-        <figcaption><b>FIG 10</b> A mesma tela no tema <b>claro</b>.</figcaption></figure>
+        <figcaption><b>FIG 10</b> <span data-l="pt">A mesma tela no tema <b>claro</b>.</span><span data-l="en">The same screen in the <b>light</b> theme.</span></figcaption></figure>
     </div>
   </section>
 
@@ -454,37 +503,40 @@
   <section class="step" id="c11">
     <div class="step-h">
       <div class="step-n">11</div>
-      <div><h2>Atalhos &amp; dicas</h2>
-        <div class="sub">O caminho feliz</div></div>
+      <div><h2><span data-l="pt">Atalhos &amp; dicas</span><span data-l="en">Shortcuts &amp; tips</span></h2>
+        <div class="sub"><span data-l="pt">O caminho feliz</span><span data-l="en">The happy path</span></div></div>
     </div>
     <div class="step-body">
       <p>
-        <span class="pill">Ctrl+Shift+N — nova análise</span>
-        <span class="pill">Próximo → avança o passo</span>
+        <span class="pill"><span data-l="pt">Ctrl+Shift+N — nova análise</span><span data-l="en">Ctrl+Shift+N — new analysis</span></span>
+        <span class="pill"><span data-l="pt">Próximo → avança o passo</span><span data-l="en">Next → advances the step</span></span>
         <span class="pill">Exibir → Painéis</span>
         <span class="pill">Exibir → Tema</span>
         <span class="pill">▶ Run / ■ Stop</span>
       </p>
       <ul class="clean">
-        <li><b>Fluxo típico:</b> wizard → Model (revisar) → Contacts → Loads → Analysis (Run) → Results → Validation.</li>
-        <li>Perdeu um painel? Está em <b>Exibir → Painéis</b> — nada fecha para sempre.</li>
-        <li>As mensagens “Modelo criado…” aparecem na <b>Área de mensagens</b> embaixo.</li>
-        <li>Para ensaios de laboratório, comece pelo preset <i>Junker Test Setup</i>.</li>
+        <li><span data-l="pt"><b>Fluxo típico:</b> wizard → Model (revisar) → Contacts → Loads → Analysis (Run) → Results → Validation.</span><span data-l="en"><b>Typical flow:</b> wizard → Model (review) → Contacts → Loads → Analysis (Run) → Results → Validation.</span></li>
+        <li><span data-l="pt">Perdeu um painel? Está em <b>Exibir → Painéis</b> — nada fecha para sempre.</span><span data-l="en">Lost a panel? It's under <b>Exibir → Painéis</b> — nothing closes for good.</span></li>
+        <li><span data-l="pt">As mensagens “Modelo criado…” aparecem na <b>Área de mensagens</b> embaixo.</span><span data-l="en">The “Modelo criado…” messages appear in the <b>Messages area</b> below.</span></li>
+        <li><span data-l="pt">Para ensaios de laboratório, comece pelo preset <i>Junker Test Setup</i>.</span><span data-l="en">For lab tests, start from the <i>Junker Test Setup</i> preset.</span></li>
       </ul>
-      <div class="note"><span class="lbl">Aprofundar</span>
-        O <b>Explorador de Variáveis</b> (<code>New_Theory/variable_explorer/index.html</code>)
+      <div class="note"><span class="lbl"><span data-l="pt">Aprofundar</span><span data-l="en">Go deeper</span></span>
+        <span data-l="pt">O <b>Explorador de Variáveis</b> (<code>New_Theory/variable_explorer/index.html</code>)
         documenta cada campo do modelo, os fundamentos (é um MSD, não um fit) e a galeria de
-        validação com todos os casos.</div>
+        validação com todos os casos.</span><span data-l="en">The <b>Variable Explorer</b> (<code>New_Theory/variable_explorer/index.html</code>)
+        documents every model field, the foundations (it's an MSD, not a fit) and the validation
+        gallery with all cases.</span></div>
     </div>
   </section>
 
   <footer>
     <p><b>Bolt Analysis Studio V2</b> — Prof. Leonardo Rosa Ribeiro da Silva, PhD ·
-    <a href="mailto:leorrs@ufu.br">leorrs@ufu.br</a></p>
-    <p>Reprodutibilidade — os prints são capturados do app real (plataforma Qt nativa,
-    fonte Bahnschrift):<br>
-    <code>python New_Theory/tutorial_uso/capture_screens.py</code> → <code>img/*.png</code>,
-    e este tutorial é <code>New_Theory/tutorial_uso/index.html</code>.</p>
+    <a href="mailto:leorrs@ancora_interna.br">leorrs@ancora_interna.br</a></p>
+    <p><span data-l="pt">Reprodutibilidade — os prints são capturados do app real (plataforma Qt nativa,
+    fonte Bahnschrift):</span><span data-l="en">Reproducibility — the screenshots are captured from the real app (native Qt
+    platform, Bahnschrift font):</span><br>
+    <code>python New_Theory/tutorial_uso/capture_screens.py</code> → <code>img/*.png</code><span data-l="pt">,
+    e este tutorial é </span><span data-l="en">, and this tutorial is </span><code>New_Theory/tutorial_uso/index.html</code>.</p>
   </footer>
 </main>
 </div>
@@ -518,12 +570,28 @@
 
   // lightbox: clique para ampliar qualquer print
   const lb=document.createElement('div');lb.className='lb';
-  lb.innerHTML='<img alt=""><div class="hint">clique ou ESC para fechar</div>';
+  lb.innerHTML='<img alt=""><div class="hint"><span data-l="pt">clique ou ESC para fechar</span><span data-l="en">click or ESC to close</span></div>';
   document.body.appendChild(lb);const lbi=lb.querySelector('img');
   document.querySelectorAll('figure.frame img').forEach(img=>{
     img.addEventListener('click',()=>{lbi.src=img.getAttribute('src');lb.classList.add('on');});});
   lb.addEventListener('click',()=>lb.classList.remove('on'));
   addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on');});
+</script>
+<script>
+  // ---- alternador de idioma PT/EN (mesmo mecanismo do Explorador de Variáveis) ----
+  function setLang(l){
+    if(l!=='pt'&&l!=='en')l='pt';
+    document.documentElement.dataset.lang=l;
+    try{localStorage.setItem('bas_tut_lang',l);}catch(e){}
+    document.querySelectorAll('nav.toc .lang button').forEach(function(b){
+      b.classList.toggle('on', b.getAttribute('data-lang-btn')===l);
+    });
+  }
+  (function(){
+    var saved='pt';
+    try{saved=localStorage.getItem('bas_tut_lang')||'pt';}catch(e){}
+    setLang(saved);
+  })();
 </script>
 </body>
 </html>

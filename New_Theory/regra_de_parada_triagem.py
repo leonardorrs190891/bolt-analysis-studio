@@ -226,7 +226,7 @@ def main() -> int:
     for cid, r in store.items():
         if not r.get("ok") or cid not in recs:
             continue
-        # censo canonico do report: exclui USER/UFU_LAB ("por enquanto",
+        # censo canonico do report: exclui USER/ANCORA_INTERNA ("por enquanto",
         # 2026-08-01) e a duplicata amp1p0<->T22 — sem isto o script contava
         # 208 "comparaveis" e estrita 137 onde o censo e' 203/136 (medido
         # em 2026-08-01; era o proprio envelhecimento que ele denuncia).

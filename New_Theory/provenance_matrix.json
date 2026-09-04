@@ -13,13 +13,12 @@
    "ancora": "sec4.7 + denotter",
    "nota_kb": "",
    "pares": {
-    "UFU": 1.867e-11,
     "Liu2017": 1.45e-11,
     "304SS": 9.9e-13,
     "Al5083_denotter": "0.012-0.025/dec"
    },
    "classe": "ANCORA_POR_PAR",
-   "porque": "âncora POR PAR (sec4.7 + denotter): 4 pares; o canônico É o par UFU"
+   "porque": "âncora POR PAR (sec4.7 + denotter): 4 pares; o canônico É o par da âncora interna"
   },
   {
    "constante": "N_emb",

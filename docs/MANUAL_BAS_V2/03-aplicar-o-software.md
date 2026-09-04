@@ -124,9 +124,9 @@ Duas coisas que confundem à primeira vista, ambas corretas:
   comporta depender de `pct/70`. Overrides explícitos em `_v2_tuner_overrides`
   **vencem**; `W_conf_ref=0` desliga.
   > **Caveat de escala, medido:** o `W_conf_ref` é um valor **por par**, calibrado
-  > na escala UFU (F₀ ~50 kN ⇒ Δratio ~0,014). Em F₀ alto o trabalho de slip
+  > na escala da âncora interna (F₀ ~50 kN ⇒ Δratio ~0,014). Em F₀ alto o trabalho de slip
   > (∝ F₀) enche o `W_conf_ref` fixo e a comporta morde também no nominal
-  > (F₀ = 120 kN ⇒ Δ ~0,09). Aproximado fora do par UFU.
+  > (F₀ = 120 kN ⇒ Δ ~0,09). Aproximado fora do par da âncora interna.
 
 ### 3.5 Results (módulo V2) — o browser dos casos
 
@@ -162,7 +162,7 @@ Run-vs-report está medida: **Δmáx 1,6e-4**.
 | `emb_depth` | **VDI 2230**, tabela f_Z por classe de rugosidade | `library_common.emb_depth_vdi(Rz)` — é **input**, nunca botão de ajuste |
 | `mu` | banda medida 0,14–0,19 | default 0,15; fora da banda, o KB avisa |
 | preset da bancada | se sua junta se parece com uma fonte já adotada | `kb.suggest_overrides("<FONTE>")` |
-| `C_creep` | **por par tribológico** | KB: UFU 1,867e-11 · Liu2017 1,45e-11 · 304SS 9,9e-13 |
+| `C_creep` | **por par tribológico** | KB: âncora interna 1,867e-11 · Liu2017 1,45e-11 · 304SS 9,9e-13 |
 
 ```python
 from bolt_analysis_studio.calibration import knowledge_base as kb
@@ -226,7 +226,7 @@ fonte**. O aviso **nunca bloqueia** — ele obriga a declarar por que você saiu
    **L6** (não-universalidade de `K/H` por par) em números exatos, e é argumento
    para **separar a constante por interface**. Se você calibrar desgaste com
    pares **casados**, use a banda da interface que domina; se usar o canônico,
-   saiba que ele é o valor do par UFU e que o aviso cita a banda mais
+   saiba que ele é o valor do par da âncora interna e que o aviso cita a banda mais
    **distante** das duas.
 
 ### 4.3 Como julgar o resultado
@@ -395,7 +395,7 @@ remendado, e seus números vêm de gerações mistas de config.
   `tests/test_validation_store.py`: o store versionado só pode conter ids que o
   registry conhece — e ele existe porque o vazamento era **invisível** (o registro
   de um caso real sai byte-idêntico, nem o md5 acusa).
-- **Os 3 CSVs UFU não são versionados.** Clone novo vê **199** casos comparáveis,
+- **Os 3 CSVs âncora interna não são versionados.** Clone novo vê **199** casos comparáveis,
   não 202.
 - **Registros antigos do store não têm `metric_x`/`metric_pred`/`metric_data`** —
   o report cai no fallback cru. **Re-simule** (`parallel_batch.py --store`).

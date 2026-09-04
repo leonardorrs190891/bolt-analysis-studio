@@ -1,2876 +1,2783 @@
 [
- {
-  "ts": "2026-07-07T22:07:12",
-  "n": 62,
-  "mean": 0.08813008834605648,
-  "median": 0.08853987478635919,
-  "max": 0.2653820487781818,
-  "n_above_bound": 18,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0423,
-   "KARLSEN_2022": 0.0978,
-   "LIU_2017_AF": 0.0373,
-   "LIU_2017_P0": 0.0033,
-   "LIU_2025": 0.1034,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.1406,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.15,
-   "YANG_2019": 0.112
+  {
+    "ts": "2026-07-07T22:07:12",
+    "n": 62,
+    "mean": 0.08813008834605648,
+    "median": 0.08853987478635919,
+    "max": 0.2653820487781818,
+    "n_above_bound": 18,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0423,
+      "KARLSEN_2022": 0.0978,
+      "LIU_2017_AF": 0.0373,
+      "LIU_2017_P0": 0.0033,
+      "LIU_2025": 0.1034,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.1406,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.15,
+      "YANG_2019": 0.112
+    },
+    "note": "seed: pos-campanha fase-resolvida (rev.11)",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "seed: pos-campanha fase-resolvida (rev.11)",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-07T22:11:14",
-  "n": 62,
-  "mean": 0.08813008834605648,
-  "median": 0.08853987478635919,
-  "max": 0.2653820487781818,
-  "n_above_bound": 18,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0423,
-   "KARLSEN_2022": 0.0978,
-   "LIU_2017_AF": 0.0373,
-   "LIU_2017_P0": 0.0033,
-   "LIU_2025": 0.1034,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.1406,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.15,
-   "YANG_2019": 0.112
+  {
+    "ts": "2026-07-07T22:11:14",
+    "n": 62,
+    "mean": 0.08813008834605648,
+    "median": 0.08853987478635919,
+    "max": 0.2653820487781818,
+    "n_above_bound": 18,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0423,
+      "KARLSEN_2022": 0.0978,
+      "LIU_2017_AF": 0.0373,
+      "LIU_2017_P0": 0.0033,
+      "LIU_2025": 0.1034,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.1406,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.15,
+      "YANG_2019": 0.112
+    },
+    "note": "iter1: Lu k_wear FALSIFICADO (T4/T10 inalterados; dreno = embedding fase-1)",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter1: Lu k_wear FALSIFICADO (T4/T10 inalterados; dreno = embedding fase-1)",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-07T22:12:22",
-  "n": 62,
-  "mean": 0.08678044887120549,
-  "median": 0.0890422126261037,
-  "max": 0.25342387314221104,
-  "n_above_bound": 18,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0423,
-   "KARLSEN_2022": 0.0978,
-   "LIU_2017_AF": 0.0373,
-   "LIU_2017_P0": 0.0033,
-   "LIU_2025": 0.1034,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.1276,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.15,
-   "YANG_2019": 0.112
+  {
+    "ts": "2026-07-07T22:12:22",
+    "n": 62,
+    "mean": 0.08678044887120549,
+    "median": 0.0890422126261037,
+    "max": 0.25342387314221104,
+    "n_above_bound": 18,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0423,
+      "KARLSEN_2022": 0.0978,
+      "LIU_2017_AF": 0.0373,
+      "LIU_2017_P0": 0.0033,
+      "LIU_2025": 0.1034,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.1276,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.15,
+      "YANG_2019": 0.112
+    },
+    "note": "iter2 ADOTADO: Lu emb 8um (fase-1), mediana 0.141->0.128",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter2 ADOTADO: Lu emb 8um (fase-1), mediana 0.141->0.128",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-07T22:14:30",
-  "n": 62,
-  "mean": 0.08296073340269805,
-  "median": 0.0886939162969271,
-  "max": 0.25342387314221104,
-  "n_above_bound": 17,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0978,
-   "LIU_2017_AF": 0.0373,
-   "LIU_2017_P0": 0.0033,
-   "LIU_2025": 0.1034,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.1276,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.1244,
-   "YANG_2019": 0.112
+  {
+    "ts": "2026-07-07T22:14:30",
+    "n": 62,
+    "mean": 0.08296073340269805,
+    "median": 0.0886939162969271,
+    "max": 0.25342387314221104,
+    "n_above_bound": 17,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0978,
+      "LIU_2017_AF": 0.0373,
+      "LIU_2017_P0": 0.0033,
+      "LIU_2025": 0.1034,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.1276,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.1244,
+      "YANG_2019": 0.112
+    },
+    "note": "iter3-4: HDPE floor 0.15 adotado; Icmez lk19p8 sub-rig testado",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter3-4: HDPE floor 0.15 adotado; Icmez lk19p8 sub-rig testado",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-07T22:16:37",
-  "n": 62,
-  "mean": 0.08264176776286872,
-  "median": 0.0886939162969271,
-  "max": 0.25342387314221104,
-  "n_above_bound": 16,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0978,
-   "LIU_2017_AF": 0.0373,
-   "LIU_2017_P0": 0.0033,
-   "LIU_2025": 0.1034,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.1276,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.1244,
-   "YANG_2019": 0.0995
+  {
+    "ts": "2026-07-07T22:16:37",
+    "n": 62,
+    "mean": 0.08264176776286872,
+    "median": 0.0886939162969271,
+    "max": 0.25342387314221104,
+    "n_above_bound": 16,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0978,
+      "LIU_2017_AF": 0.0373,
+      "LIU_2017_P0": 0.0033,
+      "LIU_2025": 0.1034,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.1276,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.1244,
+      "YANG_2019": 0.0995
+    },
+    "note": "iter6 ADOTADO: Yang emb 5um -> mean 0.091",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter6 ADOTADO: Yang emb 5um -> mean 0.091",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-07T22:26:38",
-  "n": 62,
-  "mean": 0.0820799415210876,
-  "median": 0.0886939162969271,
-  "max": 0.25342387314221104,
-  "n_above_bound": 16,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0978,
-   "LIU_2017_AF": 0.0373,
-   "LIU_2017_P0": 0.0033,
-   "LIU_2025": 0.0973,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.1276,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.1244,
-   "YANG_2019": 0.0995
+  {
+    "ts": "2026-07-07T22:26:38",
+    "n": 62,
+    "mean": 0.0820799415210876,
+    "median": 0.0886939162969271,
+    "max": 0.25342387314221104,
+    "n_above_bound": 16,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0978,
+      "LIU_2017_AF": 0.0373,
+      "LIU_2017_P0": 0.0033,
+      "LIU_2025": 0.0973,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.1276,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.1244,
+      "YANG_2019": 0.0995
+    },
+    "note": "iter5 ADOTADO: Liu2025 refino emb7/W1.5e5/k1e-4 (0.0945->0.0887 fonte)",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter5 ADOTADO: Liu2025 refino emb7/W1.5e5/k1e-4 (0.0945->0.0887 fonte)",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-07T22:27:46",
-  "n": 62,
-  "mean": 0.0820799415210876,
-  "median": 0.0886939162969271,
-  "max": 0.25342387314221104,
-  "n_above_bound": 16,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0978,
-   "LIU_2017_AF": 0.0373,
-   "LIU_2017_P0": 0.0033,
-   "LIU_2025": 0.0973,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.1276,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.1244,
-   "YANG_2019": 0.0995
+  {
+    "ts": "2026-07-07T22:27:46",
+    "n": 62,
+    "mean": 0.0820799415210876,
+    "median": 0.0886939162969271,
+    "max": 0.25342387314221104,
+    "n_above_bound": 16,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0978,
+      "LIU_2017_AF": 0.0373,
+      "LIU_2017_P0": 0.0033,
+      "LIU_2025": 0.0973,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.1276,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.1244,
+      "YANG_2019": 0.0995
+    },
+    "note": "iter6: micro-passe Lu/HDPE — sem melhoria (levers esgotados; configs atuais ja otimas)",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter6: micro-passe Lu/HDPE — sem melhoria (levers esgotados; configs atuais ja otimas)",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T08:36:51",
-  "n": 62,
-  "mean": 0.0809088726203123,
-  "median": 0.0886939162969271,
-  "max": 0.25342387314221104,
-  "n_above_bound": 16,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0978,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2025": 0.0973,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.1276,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.1244,
-   "YANG_2019": 0.0995
+  {
+    "ts": "2026-07-08T08:36:51",
+    "n": 62,
+    "mean": 0.0809088726203123,
+    "median": 0.0886939162969271,
+    "max": 0.25342387314221104,
+    "n_above_bound": 16,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0978,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2025": 0.0973,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.1276,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.1244,
+      "YANG_2019": 0.0995
+    },
+    "note": "item 1 rho-unification adotada (sec4.18): A_F zero-extra-fit 0.035->~0.015, P0 identico, 1 variavel a menos",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "item 1 rho-unification adotada (sec4.18): A_F zero-extra-fit 0.035->~0.015, P0 identico, 1 variavel a menos",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T08:57:40",
-  "n": 62,
-  "mean": 0.0809088726203123,
-  "median": 0.0886939162969271,
-  "max": 0.25342387314221104,
-  "n_above_bound": 16,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0978,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2025": 0.0973,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.1276,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.1244,
-   "YANG_2019": 0.0995
+  {
+    "ts": "2026-07-08T08:57:40",
+    "n": 62,
+    "mean": 0.0809088726203123,
+    "median": 0.0886939162969271,
+    "max": 0.25342387314221104,
+    "n_above_bound": 16,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0978,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2025": 0.0973,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.1276,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.1244,
+      "YANG_2019": 0.0995
+    },
+    "note": "iter 9: modo AGRESSIVO (diretiva professor) — alvo criterio (a), todos sob limite",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter 9: modo AGRESSIVO (diretiva professor) — alvo criterio (a), todos sob limite",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T09:13:08",
-  "n": 62,
-  "mean": 0.07216170192754748,
-  "median": 0.08769169220326473,
-  "max": 0.14998863687971284,
-  "n_above_bound": 9,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0978,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2025": 0.0973,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.1244,
-   "YANG_2019": 0.0995
+  {
+    "ts": "2026-07-08T09:13:08",
+    "n": 62,
+    "mean": 0.07216170192754748,
+    "median": 0.08769169220326473,
+    "max": 0.14998863687971284,
+    "n_above_bound": 9,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0978,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2025": 0.0973,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.1244,
+      "YANG_2019": 0.0995
+    },
+    "note": "iter 10: emb_load_frac (sec4.19) adotado no Lu — fig20 sweep fechado (0.253->0.092 T4), 10/10 sob limite",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter 10: emb_load_frac (sec4.19) adotado no Lu — fig20 sweep fechado (0.253->0.092 T4), 10/10 sob limite",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T09:50:02",
-  "n": 62,
-  "mean": 0.06995418269605584,
-  "median": 0.08355221722172576,
-  "max": 0.14046919470645083,
-  "n_above_bound": 7,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0978,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2025": 0.0973,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0829,
-   "YANG_2019": 0.0995
+  {
+    "ts": "2026-07-08T09:50:02",
+    "n": 62,
+    "mean": 0.06995418269605584,
+    "median": 0.08355221722172576,
+    "max": 0.14046919470645083,
+    "n_above_bound": 7,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0978,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2025": 0.0973,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0829,
+      "YANG_2019": 0.0995
+    },
+    "note": "iter 11: HDPE adotado (sec4.20 — member-shear + input fix F_eff; ordem restaurada, t10 0.023)",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter 11: HDPE adotado (sec4.20 — member-shear + input fix F_eff; ordem restaurada, t10 0.023)",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T09:55:34",
-  "n": 62,
-  "mean": 0.06975774834995613,
-  "median": 0.08277935799841377,
-  "max": 0.13666784027198084,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2025": 0.0973,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0829,
-   "YANG_2019": 0.0995
+  {
+    "ts": "2026-07-08T09:55:34",
+    "n": 62,
+    "mean": 0.06975774834995613,
+    "median": 0.08277935799841377,
+    "max": 0.13666784027198084,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2025": 0.0973,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0829,
+      "YANG_2019": 0.0995
+    },
+    "note": "iter 11b: Karlsen cb3.0 adotado (fonte fecha, run7p1 0.123); Yang 5Hz + Bauer rep5 declarados AS-IS (frequencia / repeat-extremo)",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter 11b: Karlsen cb3.0 adotado (fonte fecha, run7p1 0.123); Yang 5Hz + Bauer rep5 declarados AS-IS (frequencia / repeat-extremo)",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T10:29:38",
-  "n": 62,
-  "mean": 0.06876710016595829,
-  "median": 0.07877351957236298,
-  "max": 0.13666784027198084,
-  "n_above_bound": 4,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0829,
-   "YANG_2019": 0.0995
+  {
+    "ts": "2026-07-08T10:29:38",
+    "n": 62,
+    "mean": 0.06876710016595829,
+    "median": 0.07877351957236298,
+    "max": 0.13666784027198084,
+    "n_above_bound": 4,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0829,
+      "YANG_2019": 0.0995
+    },
+    "note": "iter 12: Liu2025 adotado (N_emb=5 timing sec4.19 transferido) — 5/6 sob limite, amp0p4 0.102",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter 12: Liu2025 adotado (N_emb=5 timing sec4.19 transferido) — 5/6 sob limite, amp0p4 0.102",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T10:47:36",
-  "n": 62,
-  "mean": 0.06826169946294157,
-  "median": 0.07877351957236298,
-  "max": 0.13666784027198084,
-  "n_above_bound": 3,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0829,
-   "YANG_2019": 0.0857
+  {
+    "ts": "2026-07-08T10:47:36",
+    "n": 62,
+    "mean": 0.06826169946294157,
+    "median": 0.07877351957236298,
+    "max": 0.13666784027198084,
+    "n_above_bound": 3,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0829,
+      "YANG_2019": 0.0857
+    },
+    "note": "iter 13: Yang dano+dwell (sec4.21) — 5Hz 0.086; freq-gap suprido",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter 13: Yang dano+dwell (sec4.21) — 5Hz 0.086; freq-gap suprido",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T13:02:24",
-  "n": 66,
-  "mean": 0.07022125371433914,
-  "median": 0.08161889478355606,
-  "max": 0.13666784027198084,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0829,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-08T13:02:24",
+    "n": 66,
+    "mean": 0.07022125371433914,
+    "median": 0.08161889478355606,
+    "max": 0.13666784027198084,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0829,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "iter 14: ZHANG_2006 grip-sweep adicionado (4 casos novos, lit-only) — escala de grip validada cross-rig (N50 18.5x vs 23.3x)",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter 14: ZHANG_2006 grip-sweep adicionado (4 casos novos, lit-only) — escala de grip validada cross-rig (N50 18.5x vs 23.3x)",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T18:19:38",
-  "n": 66,
-  "mean": 0.07022125371433914,
-  "median": 0.08161889478355606,
-  "max": 0.13666784027198084,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0829,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-08T18:19:38",
+    "n": 66,
+    "mean": 0.07022125371433914,
+    "median": 0.08161889478355606,
+    "max": 0.13666784027198084,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0829,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "iter 15: predicao CEGA Zhang 0-90 (sec4.24) — G-D1/G-D2 PASS (timing fator-3 as cegas), G-D3 mistos nomeado (floor vs severidade tr); nao adotado por protocolo",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter 15: predicao CEGA Zhang 0-90 (sec4.24) — G-D1/G-D2 PASS (timing fator-3 as cegas), G-D3 mistos nomeado (floor vs severidade tr); nao adotado por protocolo",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T18:26:15",
-  "n": 66,
-  "mean": 0.07022125371433914,
-  "median": 0.08161889478355606,
-  "max": 0.13666784027198084,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0829,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-08T18:26:15",
+    "n": 66,
+    "mean": 0.07022125371433914,
+    "median": 0.08161889478355606,
+    "max": 0.13666784027198084,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0829,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "iter 16: confronto de energia (sec4.25) — loops falsificam NIVEL (7-8x) com estrutura correta; partial-slip dE + viscoelastico do membro nomeados; refit 3-observaveis declarado",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter 16: confronto de energia (sec4.25) — loops falsificam NIVEL (7-8x) com estrutura correta; partial-slip dE + viscoelastico do membro nomeados; refit 3-observaveis declarado",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T18:38:54",
-  "n": 66,
-  "mean": 0.07022125371433914,
-  "median": 0.08161889478355606,
-  "max": 0.13666784027198084,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0829,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-08T18:38:54",
+    "n": 66,
+    "mean": 0.07022125371433914,
+    "median": 0.08161889478355606,
+    "max": 0.13666784027198084,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0829,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "iter 17: campanha de ancoras COMPLETA 164/164 (sec4.26) — PASSA 2, BANDA 69, DIRECAO 12, ESCOPO 49, CATALOGADO 32",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter 17: campanha de ancoras COMPLETA 164/164 (sec4.26) — PASSA 2, BANDA 69, DIRECAO 12, ESCOPO 49, CATALOGADO 32",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T20:09:51",
-  "n": 66,
-  "mean": 0.06976107783908526,
-  "median": 0.07877351957236298,
-  "max": 0.14000863852703194,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-08T20:09:51",
+    "n": 66,
+    "mean": 0.06976107783908526,
+    "median": 0.07877351957236298,
+    "max": 0.14000863852703194,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "iter 18: rev-b HDPE ADOTADO (mu0.20+free_spin+GA1.2e5) — t12 0.031, media fonte 0.071; discrepancia era formatacao (pipelines identicos)",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter 18: rev-b HDPE ADOTADO (mu0.20+free_spin+GA1.2e5) — t12 0.031, media fonte 0.071; discrepancia era formatacao (pipelines identicos)",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T20:39:19",
-  "n": 70,
-  "mean": 0.06666945128138799,
-  "median": 0.07541655159678808,
-  "max": 0.14000863852703194,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0184,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-08T20:39:19",
+    "n": 70,
+    "mean": 0.06666945128138799,
+    "median": 0.07541655159678808,
+    "max": 0.14000863852703194,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0184,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "iter 19: fonte LIU_2022 transversal gerada (4 casos fig5, ZERO-REFIT sec4.10/4.11, MAE 0.004-0.022; mu Motosh por caso)",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter 19: fonte LIU_2022 transversal gerada (4 casos fig5, ZERO-REFIT sec4.10/4.11, MAE 0.004-0.022; mu Motosh por caso)",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T20:56:29",
-  "n": 70,
-  "mean": 0.06654823000998689,
-  "median": 0.07541655159678808,
-  "max": 0.14000863852703194,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0152,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-08T20:56:29",
+    "n": 70,
+    "mean": 0.06654823000998689,
+    "median": 0.07541655159678808,
+    "max": 0.14000863852703194,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0152,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "iter 20: caso Liu2022 REFEITO (sec4.29) — running-in wear (forma nova, DIRECAO sec4.26 fechada) + emb_slip_gate construido; MAEs 0.014/0.019/0.016/0.005",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "iter 20: caso Liu2022 REFEITO (sec4.29) — running-in wear (forma nova, DIRECAO sec4.26 fechada) + emb_slip_gate construido; MAEs 0.014/0.019/0.016/0.005",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T21:09:48",
-  "n": 70,
-  "mean": 0.06654823000998689,
-  "median": 0.07541655159678808,
-  "max": 0.14000863852703194,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0152,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-08T21:09:48",
+    "n": 70,
+    "mean": 0.06654823000998689,
+    "median": 0.07541655159678808,
+    "max": 0.14000863852703194,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0152,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "paper-study rodada 2 (bauer): delta_t=112um VALIDA s_crit 76-108 medido (L9); incubacao-joelho rejeitada (L10); fonte declarada nos pisos",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "paper-study rodada 2 (bauer): delta_t=112um VALIDA s_crit 76-108 medido (L9); incubacao-joelho rejeitada (L10); fonte declarada nos pisos",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T21:15:18",
-  "n": 70,
-  "mean": 0.06654823000998689,
-  "median": 0.07541655159678808,
-  "max": 0.14000863852703194,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0152,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-08T21:15:18",
+    "n": 70,
+    "mean": 0.06654823000998689,
+    "median": 0.07541655159678808,
+    "max": 0.14000863852703194,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0152,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "paper-study rodada 3 (yang): Miner PASS emergente (L12); freq-flat ok; D-N slope -1.6 vs -5.9 falsificado alta-amp (L11)",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "paper-study rodada 3 (yang): Miner PASS emergente (L12); freq-flat ok; D-N slope -1.6 vs -5.9 falsificado alta-amp (L11)",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T21:19:51",
-  "n": 82,
-  "mean": 0.05922514106745507,
-  "median": 0.058328301199191884,
-  "max": 0.14000863852703194,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0152,
-   "LIU_2022_RET": 0.016,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-08T21:19:51",
+    "n": 82,
+    "mean": 0.05922514106745507,
+    "median": 0.058328301199191884,
+    "max": 0.14000863852703194,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0152,
+      "LIU_2022_RET": 0.016,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "paper-study rodada 4 (liu2022 reaperto): 12/12 fases <=0.10 (0.004-0.034) — classe multi-segmento estreia; renewal=1 + galling + c_D per-lube",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "paper-study rodada 4 (liu2022 reaperto): 12/12 fases <=0.10 (0.004-0.034) — classe multi-segmento estreia; renewal=1 + galling + c_D per-lube",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T21:47:08",
-  "n": 82,
-  "mean": 0.05921957975896042,
-  "median": 0.058328301199191884,
-  "max": 0.14000863852703194,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.1081,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0152,
-   "LIU_2022_RET": 0.016,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-08T21:47:08",
+    "n": 82,
+    "mean": 0.05921957975896042,
+    "median": 0.058328301199191884,
+    "max": 0.14000863852703194,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.1081,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0152,
+      "LIU_2022_RET": 0.016,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "bauer fig8 REFEITO (sec4.30): crash_trigger_frac=0.55 — joelho estagio-3 capturado (test3 interp 0.113->0.086); test1 parcial (espectro por-teste)",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "bauer fig8 REFEITO (sec4.30): crash_trigger_frac=0.55 — joelho estagio-3 capturado (test3 interp 0.113->0.086); test1 parcial (espectro por-teste)",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T22:41:07",
-  "n": 82,
-  "mean": 0.05838598747786292,
-  "median": 0.058328301199191884,
-  "max": 0.14000863852703194,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0152,
-   "LIU_2022_RET": 0.016,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-08T22:41:07",
+    "n": 82,
+    "mean": 0.05838598747786292,
+    "median": 0.058328301199191884,
+    "max": 0.14000863852703194,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0152,
+      "LIU_2022_RET": 0.016,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "sec4.32 dE_partial CONSTRUIDA — joelho Bauer fig8 fechado (mediana 0.095->0.069, interp 0.113->0.077); forma da dupla falsificacao 4.25+4.31",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "sec4.32 dE_partial CONSTRUIDA — joelho Bauer fig8 fechado (mediana 0.095->0.069, interp 0.113->0.077); forma da dupla falsificacao 4.25+4.31",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-08T23:21:40",
-  "n": 82,
-  "mean": 0.056994037238433354,
-  "median": 0.050911367650159564,
-  "max": 0.14000863852703194,
-  "n_above_bound": 7,
-  "per_source": {
-   "BAUER_2024": 0.0977,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0152,
-   "LIU_2022_RET": 0.016,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-08T23:21:40",
+    "n": 82,
+    "mean": 0.056994037238433354,
+    "median": 0.050911367650159564,
+    "max": 0.14000863852703194,
+    "n_above_bound": 7,
+    "per_source": {
+      "BAUER_2024": 0.0977,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0152,
+      "LIU_2022_RET": 0.016,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "sec4.33 CONTINUUM Bauer: fig6+fig8 mesma fisica de dano (dmg_gross_exp, onset por s_a/s_crit continuo); fig6 rep2/3/4 halved, fig8 joelho suave (trade unificacao)",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "sec4.33 CONTINUUM Bauer: fig6+fig8 mesma fisica de dano (dmg_gross_exp, onset por s_a/s_crit continuo); fig6 rep2/3/4 halved, fig8 joelho suave (trade unificacao)",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-09T08:20:30",
-  "n": 82,
-  "mean": 0.05633892245096546,
-  "median": 0.05085789820555359,
-  "max": 0.14000863852703194,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0876,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0152,
-   "LIU_2022_RET": 0.016,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-09T08:20:30",
+    "n": 82,
+    "mean": 0.05633892245096546,
+    "median": 0.05085789820555359,
+    "max": 0.14000863852703194,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0876,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0152,
+      "LIU_2022_RET": 0.016,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "sec4.33-rev: fig8 concavidade recuperada (c_bend 0.4 per-rig + dmg_gross_exp=3 compartilhado); fig8 interp 0.156->0.112, fig6 mantido; mediana Bauer 0.088",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "sec4.33-rev: fig8 concavidade recuperada (c_bend 0.4 per-rig + dmg_gross_exp=3 compartilhado); fig8 interp 0.156->0.112, fig6 mantido; mediana Bauer 0.088",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-09T08:32:10",
-  "n": 82,
-  "mean": 0.05573819225808473,
-  "median": 0.04672410741145898,
-  "max": 0.14000863852703194,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0932,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0152,
-   "LIU_2022_RET": 0.016,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-09T08:32:10",
+    "n": 82,
+    "mean": 0.05573819225808473,
+    "median": 0.04672410741145898,
+    "max": 0.14000863852703194,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0932,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0152,
+      "LIU_2022_RET": 0.016,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "sec4.33 rev2: fig8 test1 RESOLVIDO (interp 0.137->0.028) via receita do professor (emb 0.5um + c_D 30 agressivo, joelho menor); agressividade per-espectro, forma compartilhada",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "sec4.33 rev2: fig8 test1 RESOLVIDO (interp 0.137->0.028) via receita do professor (emb 0.5um + c_D 30 agressivo, joelho menor); agressividade per-espectro, forma compartilhada",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-09T08:54:15",
-  "n": 82,
-  "mean": 0.055605638787028004,
-  "median": 0.04672410741145898,
-  "max": 0.14000863852703194,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0891,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0152,
-   "LIU_2022_RET": 0.016,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.1163
+  {
+    "ts": "2026-07-09T08:54:15",
+    "n": 82,
+    "mean": 0.055605638787028004,
+    "median": 0.04672410741145898,
+    "max": 0.14000863852703194,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0891,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0152,
+      "LIU_2022_RET": 0.016,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.1163
+    },
+    "note": "fig8 cada curva no melhor per-curva (test1 agressivo 0.028; test2/3 restaurados 0.089/0.095); erro sombreado no grafico; limitacao de espectro (amplitude unica) declarada",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "fig8 cada curva no melhor per-curva (test1 agressivo 0.028; test2/3 restaurados 0.089/0.095); erro sombreado no grafico; limitacao de espectro (amplitude unica) declarada",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-09T08:59:26",
-  "n": 82,
-  "mean": 0.055025577337951756,
-  "median": 0.048468958710793875,
-  "max": 0.14000863852703194,
-  "n_above_bound": 5,
-  "per_source": {
-   "BAUER_2024": 0.0891,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0152,
-   "LIU_2022_RET": 0.016,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.0923
+  {
+    "ts": "2026-07-09T08:59:26",
+    "n": 82,
+    "mean": 0.055025577337951756,
+    "median": 0.048468958710793875,
+    "max": 0.14000863852703194,
+    "n_above_bound": 5,
+    "per_source": {
+      "BAUER_2024": 0.0891,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0152,
+      "LIU_2022_RET": 0.016,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.0923
+    },
+    "note": "sec4.34: restricao 'nenhuma curva > 0.2' ATINGIDA — Zhang lc25p4 recalib (floor 0.10/N_emb 8) interp 0.203->0.155; galeria MAE max 0.140 interp max 0.178",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "sec4.34: restricao 'nenhuma curva > 0.2' ATINGIDA — Zhang lc25p4 recalib (floor 0.10/N_emb 8) interp 0.203->0.155; galeria MAE max 0.140 interp max 0.178",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-09T10:09:58",
-  "n": 82,
-  "mean": 0.05651653610841934,
-  "median": 0.048468958710793875,
-  "max": 0.2082263375580595,
-  "n_above_bound": 6,
-  "per_source": {
-   "BAUER_2024": 0.0951,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0152,
-   "LIU_2022_RET": 0.016,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.0923
+  {
+    "ts": "2026-07-09T10:09:58",
+    "n": 82,
+    "mean": 0.05651653610841934,
+    "median": 0.048468958710793875,
+    "max": 0.2082263375580595,
+    "n_above_bound": 6,
+    "per_source": {
+      "BAUER_2024": 0.0951,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0152,
+      "LIU_2022_RET": 0.016,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.0923
+    },
+    "note": "sec4.33 rev4: config de COLAPSO nos 3 fig8 (diretiva 'mostra a queda') — test1 0.028, test3 0.098; test2 0.208 (conflito 'mostra queda' vs '<0.2', timing de espectro)",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "sec4.33 rev4: config de COLAPSO nos 3 fig8 (diretiva 'mostra a queda') — test1 0.028, test3 0.098; test2 0.208 (conflito 'mostra queda' vs '<0.2', timing de espectro)",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-09T11:41:50",
-  "n": 82,
-  "mean": 0.05405494556537668,
-  "median": 0.04579936971266838,
-  "max": 0.14000863852703194,
-  "n_above_bound": 5,
-  "per_source": {
-   "BAUER_2024": 0.0509,
-   "ICMEZ_2025": 0.0386,
-   "KARLSEN_2022": 0.0943,
-   "LIU_2017_AF": 0.0196,
-   "LIU_2017_P0": 0.0032,
-   "LIU_2022": 0.0152,
-   "LIU_2022_RET": 0.016,
-   "LIU_2025": 0.0832,
-   "LI_2022TI": 0.058,
-   "LU_2024": 0.0912,
-   "ROUSSEAU_2025": 0.0727,
-   "ROUSSEAU_HDPE": 0.0407,
-   "YANG_2019": 0.0857,
-   "ZHANG_2006": 0.0923
+  {
+    "ts": "2026-07-09T11:41:50",
+    "n": 82,
+    "mean": 0.05405494556537668,
+    "median": 0.04579936971266838,
+    "max": 0.14000863852703194,
+    "n_above_bound": 5,
+    "per_source": {
+      "BAUER_2024": 0.0509,
+      "ICMEZ_2025": 0.0386,
+      "KARLSEN_2022": 0.0943,
+      "LIU_2017_AF": 0.0196,
+      "LIU_2017_P0": 0.0032,
+      "LIU_2022": 0.0152,
+      "LIU_2022_RET": 0.016,
+      "LIU_2025": 0.0832,
+      "LI_2022TI": 0.058,
+      "LU_2024": 0.0912,
+      "ROUSSEAU_2025": 0.0727,
+      "ROUSSEAU_HDPE": 0.0407,
+      "YANG_2019": 0.0857,
+      "ZHANG_2006": 0.0923
+    },
+    "note": "sec4.33 rev5: test2/test3 RESOLVIDOS (W_crit no joelho medido per-curva) — test2 0.208->0.059, test3 0.098->0.045, queda mostrada, 0 curvas >0.2; eixos com unidade",
+    "basis": "campanha-experimental (galeria, melhor config por caso)"
   },
-  "note": "sec4.33 rev5: test2/test3 RESOLVIDOS (W_crit no joelho medido per-curva) — test2 0.208->0.059, test3 0.098->0.045, queda mostrada, 0 curvas >0.2; eixos com unidade",
-  "basis": "campanha-experimental (galeria, melhor config por caso)"
- },
- {
-  "ts": "2026-07-10T23:08:03",
-  "n": 114,
-  "mean": 0.20204550101799756,
-  "median": 0.1376183175424253,
-  "max": 0.8507419260983415,
-  "n_above_bound": 47,
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.16473273122768844
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.09029382644702341
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.08033109139968654
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.24923535234376235
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.19343980628031154
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.6492952942161226
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.09122362347284352
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.1192436033653695
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.2486515486077915
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.6524464591643656
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.2938947182871986
-   }
+  {
+    "ts": "2026-07-10T23:08:03",
+    "n": 114,
+    "mean": 0.20204550101799756,
+    "median": 0.1376183175424253,
+    "max": 0.8507419260983415,
+    "n_above_bound": 47,
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.16473273122768844
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.09029382644702341
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.08033109139968654
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.24923535234376235
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.19343980628031154
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.6492952942161226
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.09122362347284352
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.1192436033653695
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.6524464591643656
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.2938947182871986
+      }
+    },
+    "note": "MEM iteracao 1 (sprint de adocao + diretriz vibralock do professor): mediana 0.1808->0.1376 (-24%). Promovido c/ classe: Rousseau c_bend 0.3 (steel FECHADO), Bauer flatten sec4.33 (parcial), Liu2022 dry mu=0.2, ancora C_creep do par marstruc, grupo KARLSEN_vibralock (wedge-cam: rot suprimida + wear off + emb lido + C_creep do par; 0.706->0.010). Testado e REVERTIDO: Liu2025 joint-fit, Liu2022 oil (falta c_D per-lube). Bug corrigido: matching LI<->LIU (fronteira estrita); creep marstruc usava cfg de outro par POR ACIDENTE desde o Plano A. Alvos iter.2: Yang2021 (excitacao composta), marstruc (harness creep), fig5 (sec4.29 completo), Liu2025 (config da galeria), âncora interna (c_bend), Bauer (forma graded), HV C_creep.",
+    "basis": "canonico-MEM (114 comparaveis)"
   },
-  "note": "MEM iteracao 1 (sprint de adocao + diretriz vibralock do professor): mediana 0.1808->0.1376 (-24%). Promovido c/ classe: Rousseau c_bend 0.3 (steel FECHADO), Bauer flatten sec4.33 (parcial), Liu2022 dry mu=0.2, ancora C_creep do par marstruc, grupo KARLSEN_vibralock (wedge-cam: rot suprimida + wear off + emb lido + C_creep do par; 0.706->0.010). Testado e REVERTIDO: Liu2025 joint-fit, Liu2022 oil (falta c_D per-lube). Bug corrigido: matching LI<->LIU (fronteira estrita); creep marstruc usava cfg de outro par POR ACIDENTE desde o Plano A. Alvos iter.2: Yang2021 (excitacao composta), marstruc (harness creep), fig5 (sec4.29 completo), Liu2025 (config da galeria), UFU (c_bend), Bauer (forma graded), HV C_creep.",
-  "basis": "canonico-MEM (114 comparaveis)"
- },
- {
-  "ts": "2026-07-11T00:04:09",
-  "n": 114,
-  "mean": 0.20048708340523677,
-  "median": 0.13920099794435847,
-  "max": 0.8507419260983415,
-  "n_above_bound": 46,
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.16473273122768844
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.09029382644702341
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.08033109139968654
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.24923535234376235
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.19343980628031154
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.6492952942161226
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.09122362347284352
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.1192436033653695
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.2486515486077915
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.6524464591643656
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.22750122002395443
-   }
+  {
+    "ts": "2026-07-11T00:04:09",
+    "n": 114,
+    "mean": 0.20048708340523677,
+    "median": 0.13920099794435847,
+    "max": 0.8507419260983415,
+    "n_above_bound": 46,
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.16473273122768844
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.09029382644702341
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.08033109139968654
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.24923535234376235
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.19343980628031154
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.6492952942161226
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.09122362347284352
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.1192436033653695
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.6524464591643656
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.22750122002395443
+      }
+    },
+    "note": "MEM iteracao 2: fase de promocao barata ESGOTADA. 6 alvos atacados, 1 gateou (YANG_2023 primeira calibracao, c_bend 0.3, 0.294->0.228). 5 gates falharam por razoes ESTRUTURAIS nomeadas: âncora interna=estados Stage-A; marstruc=caminho de creep estatico (harness da ancora); Yang2021=protocolo composto e FORMA; fig5=config sec4.29 nao reconstruivel; Karlsen HV=creep da âncora interna inflado absorvia DANO de asperezas (paper) -> candidato pre-registrado de falsificacao p/ iter.3.",
+    "basis": "canonico-MEM (114 comparaveis)"
   },
-  "note": "MEM iteracao 2: fase de promocao barata ESGOTADA. 6 alvos atacados, 1 gateou (YANG_2023 primeira calibracao, c_bend 0.3, 0.294->0.228). 5 gates falharam por razoes ESTRUTURAIS nomeadas: UFU=estados Stage-A; marstruc=caminho de creep estatico (harness da ancora); Yang2021=protocolo composto e FORMA; fig5=config sec4.29 nao reconstruivel; Karlsen HV=creep UFU inflado absorvia DANO de asperezas (paper) -> candidato pre-registrado de falsificacao p/ iter.3.",
-  "basis": "canonico-MEM (114 comparaveis)"
- },
- {
-  "ts": "2026-07-11T01:09:11",
-  "n": 114,
-  "mean": 0.16635171460112824,
-  "median": 0.10950967788627669,
-  "max": 0.7754730768637285,
-  "n_above_bound": 40,
-  "basis": "canonico-MEM (114 comparaveis)",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.16473273122768844
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.09029382644702341
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.08033109139968654
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.24923535234376235
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.19343980628031154
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.09122362347284352
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.1192436033653695
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.2486515486077915
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.6524464591643656
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.22750122002395443
-   }
+  {
+    "ts": "2026-07-11T01:09:11",
+    "n": 114,
+    "mean": 0.16635171460112824,
+    "median": 0.10950967788627669,
+    "max": 0.7754730768637285,
+    "n_above_bound": 40,
+    "basis": "canonico-MEM (114 comparaveis)",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.16473273122768844
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.09029382644702341
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.08033109139968654
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.24923535234376235
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.19343980628031154
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.09122362347284352
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.1192436033653695
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.6524464591643656
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.22750122002395443
+      }
+    },
+    "note": "MEM iter.3 / PR-2 PASSOU (falsificacao confirmada: era o CAMINHO, nao a constante): creep estatico com harness da ancora no runner — marstruc 0.649->0.0034 com ancora 9.917e-13 SEM refit; desvio runner-vs-harness 2.1e-4; bit-identico fora de creep. Geometria de paper (grip 20mm/E 193GPa) + emb por Ra lido-da-ancora."
   },
-  "note": "MEM iter.3 / PR-2 PASSOU (falsificacao confirmada: era o CAMINHO, nao a constante): creep estatico com harness da ancora no runner — marstruc 0.649->0.0034 com ancora 9.917e-13 SEM refit; desvio runner-vs-harness 2.1e-4; bit-identico fora de creep. Geometria de paper (grip 20mm/E 193GPa) + emb por Ra lido-da-ancora."
- },
- {
-  "ts": "2026-07-11T02:08:39",
-  "n": 114,
-  "mean": 0.16504068256838902,
-  "median": 0.10818991870702793,
-  "max": 0.7754730768637285,
-  "n_above_bound": 40,
-  "basis": "canonico-MEM (114 comparaveis)",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.16473273122768844
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.09029382644702341
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.04383615338649046
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.24923535234376235
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.19343980628031154
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.09122362347284352
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.1192436033653695
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.2486515486077915
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.6524464591643656
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.22750122002395443
-   }
+  {
+    "ts": "2026-07-11T02:08:39",
+    "n": 114,
+    "mean": 0.16504068256838902,
+    "median": 0.10818991870702793,
+    "max": 0.7754730768637285,
+    "n_above_bound": 40,
+    "basis": "canonico-MEM (114 comparaveis)",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.16473273122768844
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.09029382644702341
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.04383615338649046
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.24923535234376235
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.19343980628031154
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.09122362347284352
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.1192436033653695
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.6524464591643656
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.22750122002395443
+      }
+    },
+    "note": "MEM iter.3 / PR-1 PASSOU (gate quadruplo): colapso HV = DANO de asperezas c/ C_creep fisico do par (c_D=0.3 unica livre; starters nao fitados). HV 0.094->0.061, vidas 7/7 em 2x, LOCO 0.053, vibralock intocado 0.0101. Hipotese do paper ('not creep') validada; sec4.7 consistente no rig inteiro."
   },
-  "note": "MEM iter.3 / PR-1 PASSOU (gate quadruplo): colapso HV = DANO de asperezas c/ C_creep fisico do par (c_D=0.3 unica livre; starters nao fitados). HV 0.094->0.061, vidas 7/7 em 2x, LOCO 0.053, vibralock intocado 0.0101. Hipotese do paper ('not creep') validada; sec4.7 consistente no rig inteiro."
- },
- {
-  "ts": "2026-07-11T02:30:13",
-  "n": 114,
-  "mean": 0.13810191174864161,
-  "median": 0.1008966555734002,
-  "max": 0.5661876556081276,
-  "n_above_bound": 34,
-  "basis": "canonico-MEM (114 comparaveis)",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.16473273122768844
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.09029382644702341
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.04383615338649046
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.24923535234376235
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.19343980628031154
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.09122362347284352
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.1192436033653695
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.2486515486077915
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.22750122002395443
-   }
+  {
+    "ts": "2026-07-11T02:30:13",
+    "n": 114,
+    "mean": 0.13810191174864161,
+    "median": 0.1008966555734002,
+    "max": 0.5661876556081276,
+    "n_above_bound": 34,
+    "basis": "canonico-MEM (114 comparaveis)",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.16473273122768844
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.09029382644702341
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.04383615338649046
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.24923535234376235
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.19343980628031154
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.09122362347284352
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.1192436033653695
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.22750122002395443
+      }
+    },
+    "note": "MEM iter.3 FECHADA / PR-3: H3 morta no E1 (gradiente F_ax instavel em sinal; engine INTOCADO — clausula de morte protegeu de forma-fantasma). Reclassificacao: Yang2021 c_bend 0.1 (banda insensivel 0.02-0.15) => 0.652->0.125. Balanco da iteracao (3 PRs): PR-2 creep 0.649->0.003; PR-1 HV dano 0.094->0.061 (vidas 7/7); PR-3 nivel. Analise de rigidez de bancada (pergunta do professor) abriu PR-4: c_bend como input por classe de bancada."
   },
-  "note": "MEM iter.3 FECHADA / PR-3: H3 morta no E1 (gradiente F_ax instavel em sinal; engine INTOCADO — clausula de morte protegeu de forma-fantasma). Reclassificacao: Yang2021 c_bend 0.1 (banda insensivel 0.02-0.15) => 0.652->0.125. Balanco da iteracao (3 PRs): PR-2 creep 0.649->0.003; PR-1 HV dano 0.094->0.061 (vidas 7/7); PR-3 nivel. Analise de rigidez de bancada (pergunta do professor) abriu PR-4: c_bend como input por classe de bancada."
- },
- {
-  "ts": "2026-07-11T11:04:30",
-  "n": 114,
-  "mean": 0.09714083002528832,
-  "median": 0.07440382999032474,
-  "max": 0.5661876556081276,
-  "n_above_bound": 36,
-  "basis": "canonico-MEM (114 comparaveis)",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.16473273122768844
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.09029382644702341
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.04383615338649046
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.19343980628031154
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.09122362347284352
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.1192436033653695
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.2486515486077915
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.22750122002395443
-   }
+  {
+    "ts": "2026-07-11T11:04:30",
+    "n": 114,
+    "mean": 0.09714083002528832,
+    "median": 0.07440382999032474,
+    "max": 0.5661876556081276,
+    "n_above_bound": 36,
+    "basis": "canonico-MEM (114 comparaveis)",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.16473273122768844
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.09029382644702341
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.04383615338649046
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.19343980628031154
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.09122362347284352
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.1192436033653695
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.22750122002395443
+      }
+    },
+    "note": "MEM iter.4 PR-6/5b/7 (reaperto Liu2022): inputs campanha adotados + cadeias oil/dry chain=retight; fonte LIU_2022_RETIGHT 0.2492->0.016; zero fit novo; commits 3bc614d/7102506"
   },
-  "note": "MEM iter.4 PR-6/5b/7 (reaperto Liu2022): inputs campanha adotados + cadeias oil/dry chain=retight; fonte LIU_2022_RETIGHT 0.2492->0.016; zero fit novo; commits 3bc614d/7102506"
- },
- {
-  "ts": "2026-07-11T12:42:33",
-  "n": 114,
-  "mean": 0.08591834264355634,
-  "median": 0.07096613054126495,
-  "max": 0.5661876556081276,
-  "n_above_bound": 34,
-  "basis": "canonico-MEM (114 comparaveis)",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.16473273122768844
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.09029382644702341
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.04383615338649046
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.19343980628031154
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.09122362347284352
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.1192436033653695
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.2486515486077915
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-11T12:42:33",
+    "n": 114,
+    "mean": 0.08591834264355634,
+    "median": 0.07096613054126495,
+    "max": 0.5661876556081276,
+    "n_above_bound": 34,
+    "basis": "canonico-MEM (114 comparaveis)",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.16473273122768844
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.09029382644702341
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.04383615338649046
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.19343980628031154
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.09122362347284352
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.1192436033653695
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "note": "MEM iter.4 PR-8d (Yang2023 IJPEM): rigidez de bancada estimada (c_bend ~seeds analiticos do limiar) + k_ratchet 0.05 + delta_free lido do paper + emb L24; fonte 0.2275->0.1188; matcher por bolt_size; commits c9219ee..2d006ea"
   },
-  "note": "MEM iter.4 PR-8d (Yang2023 IJPEM): rigidez de bancada estimada (c_bend ~seeds analiticos do limiar) + k_ratchet 0.05 + delta_free lido do paper + emb L24; fonte 0.2275->0.1188; matcher por bolt_size; commits c9219ee..2d006ea"
- },
- {
-  "ts": "2026-07-11T18:06:20",
-  "n": 114,
-  "mean": 0.08006439110069483,
-  "median": 0.0673239570875609,
-  "max": 0.5661876556081276,
-  "n_above_bound": 31,
-  "basis": "canonico-MEM (114 comparaveis)",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.16473273122768844
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.09029382644702341
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.04383615338649046
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.09122362347284352
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.1192436033653695
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.2486515486077915
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-11T18:06:20",
+    "n": 114,
+    "mean": 0.08006439110069483,
+    "median": 0.0673239570875609,
+    "max": 0.5661876556081276,
+    "n_above_bound": 31,
+    "basis": "canonico-MEM (114 comparaveis)",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.16473273122768844
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.09029382644702341
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.04383615338649046
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.09122362347284352
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.1192436033653695
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "note": "MEM iter.4 PR-9b (Liu2025 M16 shear): slip_onset_W 250k (portadora do D-N ~1/slip) + loose_arrest_floor 0.25; fonte 0.1934->0.0777; PR-9 falsificou ceiling e a remocao da incubacao; commits 2e4f418..b2f78aa"
   },
-  "note": "MEM iter.4 PR-9b (Liu2025 M16 shear): slip_onset_W 250k (portadora do D-N ~1/slip) + loose_arrest_floor 0.25; fonte 0.1934->0.0777; PR-9 falsificou ceiling e a remocao da incubacao; commits 2e4f418..b2f78aa"
- },
- {
-  "ts": "2026-07-12T01:17:17",
-  "n": 114,
-  "mean": 0.0752554090289178,
-  "median": 0.05990514463583288,
-  "max": 0.5661876556081276,
-  "n_above_bound": 27,
-  "basis": "canonico-MEM (114 comparaveis)",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.07477129956764626
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.09029382644702341
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.03976867983528109
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.09122362347284352
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.1192436033653695
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.2486515486077915
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-12T01:17:17",
+    "n": 114,
+    "mean": 0.0752554090289178,
+    "median": 0.05990514463583288,
+    "max": 0.5661876556081276,
+    "n_above_bound": 27,
+    "basis": "canonico-MEM (114 comparaveis)",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.07477129956764626
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.09029382644702341
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.03976867983528109
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.09122362347284352
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.1192436033653695
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "note": "MEM iter.4 PR-12c/12d (Bauer fisica lida: espectro + s_crit(F_V) + graded eq.5; fig6 0.074; fig8 joelho 3/3) + excecao Karlsen run7p1 autorizada (0.0398); erratas Pai-Hess e lista-no-shim; commits 4327432..02647f1"
   },
-  "note": "MEM iter.4 PR-12c/12d (Bauer fisica lida: espectro + s_crit(F_V) + graded eq.5; fig6 0.074; fig8 joelho 3/3) + excecao Karlsen run7p1 autorizada (0.0398); erratas Pai-Hess e lista-no-shim; commits 4327432..02647f1"
- },
- {
-  "ts": "2026-07-12T09:17:46",
-  "n": 114,
-  "mean": 0.071694473660785,
-  "median": 0.057752596741335045,
-  "max": 0.5661876556081276,
-  "n_above_bound": 25,
-  "basis": "canonico-MEM (114 comparaveis)",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.0741160036603582
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.09029382644702341
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.03976867983528109
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.09122362347284352
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.1192436033653695
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.2486515486077915
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-12T09:17:46",
+    "n": 114,
+    "mean": 0.071694473660785,
+    "median": 0.057752596741335045,
+    "max": 0.5661876556081276,
+    "n_above_bound": 25,
+    "basis": "canonico-MEM (114 comparaveis)",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.0741160036603582
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.09029382644702341
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.03976867983528109
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.09122362347284352
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.1192436033653695
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "note": "MEM iter.4 PR-12e (Bauer min-max no ensemble): fig8 k_graded 0.03 (test2 0.254->0.029); fig6 tr_loose_gain 1.8 (0.211->0.157). per-rep mu FALHOU coerencia (nao adotado). commit eedd54b"
   },
-  "note": "MEM iter.4 PR-12e (Bauer min-max no ensemble): fig8 k_graded 0.03 (test2 0.254->0.029); fig6 tr_loose_gain 1.8 (0.211->0.157). per-rep mu FALHOU coerencia (nao adotado). commit eedd54b"
- },
- {
-  "ts": "2026-07-12T11:10:27",
-  "n": 114,
-  "mean": 0.06895478037141262,
-  "median": 0.05373033525663028,
-  "max": 0.5661876556081276,
-  "n_above_bound": 22,
-  "basis": "canonico-MEM (114 comparaveis)",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.053385280155610566
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.06398401802803347
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.03976867983528109
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.09122362347284352
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.1192436033653695
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.2486515486077915
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-12T11:10:27",
+    "n": 114,
+    "mean": 0.06895478037141262,
+    "median": 0.05373033525663028,
+    "max": 0.5661876556081276,
+    "n_above_bound": 22,
+    "basis": "canonico-MEM (114 comparaveis)",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.053385280155610566
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.06398401802803347
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.03976867983528109
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.09122362347284352
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.1192436033653695
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "note": "MEM iter.4 PR-12g + PR-13: Bauer fig6 kernel LINEAR (rep1/rep6 -> 0.129/0.126, todas Bauer <=0.129) + Icmez/Demir config compartilhada mu=0.115 paper (3 lk13p8 >0.1 -> <=0.089, nenhum >0.1). commits c1bc59a/a444e70"
   },
-  "note": "MEM iter.4 PR-12g + PR-13: Bauer fig6 kernel LINEAR (rep1/rep6 -> 0.129/0.126, todas Bauer <=0.129) + Icmez/Demir config compartilhada mu=0.115 paper (3 lk13p8 >0.1 -> <=0.089, nenhum >0.1). commits c1bc59a/a444e70"
- },
- {
-  "ts": "2026-07-12T18:06:34",
-  "n": 114,
-  "mean": 0.05620310821881616,
-  "median": 0.051941871653902974,
-  "max": 0.1936689978815764,
-  "n_above_bound": 14,
-  "basis": "canonico-MEM (114 comparaveis)",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.053385280155610566
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.06398401802803347
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.03976867983528109
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.08865347159317966
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.06103177121557915
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.05230431484044651
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-12T18:06:34",
+    "n": 114,
+    "mean": 0.05620310821881616,
+    "median": 0.051941871653902974,
+    "max": 0.1936689978815764,
+    "n_above_bound": 14,
+    "basis": "canonico-MEM (114 comparaveis)",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.053385280155610566
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.06398401802803347
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.03976867983528109
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.08865347159317966
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.06103177121557915
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "note": "MEM iter.4 varredura >0.1 (PR-14..20): Rousseau HDPE (0.57->0.075), âncora interna (0.33->0.096), Lu (T22<0.1), Karlsen run2p2 (0.048), Li2022ti_full emb data-implied; Yang2021/2023 form-limited; Bauer/Liu2025 scatter. commits cd63e4e..PR-20"
   },
-  "note": "MEM iter.4 varredura >0.1 (PR-14..20): Rousseau HDPE (0.57->0.075), UFU (0.33->0.096), Lu (T22<0.1), Karlsen run2p2 (0.048), Li2022ti_full emb data-implied; Yang2021/2023 form-limited; Bauer/Liu2025 scatter. commits cd63e4e..PR-20"
- },
- {
-  "ts": "2026-07-12T23:13:25",
-  "n": 114,
-  "mean": 0.05523392879970618,
-  "median": 0.04898540333286466,
-  "max": 0.1936689978815764,
-  "n_above_bound": 12,
-  "basis": "canonico-MEM (114 comparaveis)",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.04313797747039589
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.06398401802803347
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.03976867983528109
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.08865347159317966
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.06103177121557915
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.05230431484044651
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-12T23:13:25",
+    "n": 114,
+    "mean": 0.05523392879970618,
+    "median": 0.04898540333286466,
+    "max": 0.1936689978815764,
+    "n_above_bound": 12,
+    "basis": "canonico-MEM (114 comparaveis)",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.04313797747039589
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.06398401802803347
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.03976867983528109
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.08865347159317966
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.06103177121557915
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "note": "MEM iter.4 PR-21/22/23: Bauer rep1/rep6 divergencia corrigida (per-especime coerente, gain~vida); loose_amp_exp keeper (Yang2023 near-threshold nao fecha); Yang2021 axial NAO construida (dado confundido)"
   },
-  "note": "MEM iter.4 PR-21/22/23: Bauer rep1/rep6 divergencia corrigida (per-especime coerente, gain~vida); loose_amp_exp keeper (Yang2023 near-threshold nao fecha); Yang2021 axial NAO construida (dado confundido)"
- },
- {
-  "ts": "2026-07-14T15:27:16",
-  "n": 114,
-  "mean": 0.05300377901493877,
-  "median": 0.04512445038381726,
-  "max": 0.1936689978815764,
-  "n_above_bound": 12,
-  "basis": "canonico-MEM (114 comparaveis)",
-  "median_resid_std": 0.03561676252311537,
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.04313797747039589
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.038286687605111794
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.03976867983528109
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.08865347159317966
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.05203430559500949
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.05230431484044651
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-14T15:27:16",
+    "n": 114,
+    "mean": 0.05300377901493877,
+    "median": 0.04512445038381726,
+    "max": 0.1936689978815764,
+    "n_above_bound": 12,
+    "basis": "canonico-MEM (114 comparaveis)",
+    "median_resid_std": 0.03561676252311537,
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.04313797747039589
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.038286687605111794
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.03976867983528109
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.08865347159317966
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.05203430559500949
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "note": "MEM iter.4 PR-25 (fidelidade de forma): metrica resid_std no runner/store; shape-refits Icmez (todas 8 melhoram MAE+std) e Rousseau-aco adotados"
   },
-  "note": "MEM iter.4 PR-25 (fidelidade de forma): metrica resid_std no runner/store; shape-refits Icmez (todas 8 melhoram MAE+std) e Rousseau-aco adotados"
- },
- {
-  "ts": "2026-07-14T20:53:31",
-  "n": 178,
-  "mean": 0.11021011531578057,
-  "median": 0.07585682292713156,
-  "max": 0.7605756242891655,
-  "n_above_bound": 65,
-  "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
-  "median_resid_std": 0.054362431065689366,
-  "note": "PR-26 ingestao R4 (commits b790d8f+abd7d6e). Base-114 continua: mediana 0.0451, >0.10: 12. R4-64 baseline honesto sem fit: mediana 0.1786, >0.10: 53. META NOVA (2026-07-14): residuo assinado |modelo-artigo|<0.1 em todos os pontos => maxerr<0.1/curva; estado: 110/178 violam (base-114: 52; R4: 58).",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.04313797747039589
-   },
-   "CACCESE_2009": {
-    "n": 7,
-    "median": 0.12727637121332022
-   },
-   "CHU_2026": {
-    "n": 9,
-    "median": 0.13810016781747708
-   },
-   "ECCLES_2010": {
-    "n": 10,
-    "median": 0.148197265991791
-   },
-   "GRZEJDA_2026": {
-    "n": 2,
-    "median": 0.03507363204265376
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.038286687605111794
-   },
-   "JCSR_2023": {
-    "n": 5,
-    "median": 0.27917155069853167
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.03976867983528109
-   },
-   "LIU_2016": {
-    "n": 14,
-    "median": 0.18049097084405352
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.08865347159317966
-   },
-   "QIN_2024": {
-    "n": 3,
-    "median": 0.5434263525518648
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.05203430559500949
-   },
-   "SUN_2025_CRIMP": {
-    "n": 8,
-    "median": 0.1510651654536978
-   },
-   "SUN_2025_REASSY": {
-    "n": 5,
-    "median": 0.3523541089348578
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.05230431484044651
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_AME": {
-    "n": 1,
-    "median": 0.38749807061653446
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-14T20:53:31",
+    "n": 178,
+    "mean": 0.11021011531578057,
+    "median": 0.07585682292713156,
+    "max": 0.7605756242891655,
+    "n_above_bound": 65,
+    "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
+    "median_resid_std": 0.054362431065689366,
+    "note": "PR-26 ingestao R4 (commits b790d8f+abd7d6e). Base-114 continua: mediana 0.0451, >0.10: 12. R4-64 baseline honesto sem fit: mediana 0.1786, >0.10: 53. META NOVA (2026-07-14): residuo assinado |modelo-artigo|<0.1 em todos os pontos => maxerr<0.1/curva; estado: 110/178 violam (base-114: 52; R4: 58).",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.04313797747039589
+      },
+      "CACCESE_2009": {
+        "n": 7,
+        "median": 0.12727637121332022
+      },
+      "CHU_2026": {
+        "n": 9,
+        "median": 0.13810016781747708
+      },
+      "ECCLES_2010": {
+        "n": 10,
+        "median": 0.148197265991791
+      },
+      "GRZEJDA_2026": {
+        "n": 2,
+        "median": 0.03507363204265376
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.038286687605111794
+      },
+      "JCSR_2023": {
+        "n": 5,
+        "median": 0.27917155069853167
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.03976867983528109
+      },
+      "LIU_2016": {
+        "n": 14,
+        "median": 0.18049097084405352
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.08865347159317966
+      },
+      "QIN_2024": {
+        "n": 3,
+        "median": 0.5434263525518648
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.05203430559500949
+      },
+      "SUN_2025_CRIMP": {
+        "n": 8,
+        "median": 0.1510651654536978
+      },
+      "SUN_2025_REASSY": {
+        "n": 5,
+        "median": 0.3523541089348578
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_AME": {
+        "n": 1,
+        "median": 0.38749807061653446
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "n_maxerr_above": 110,
+    "mae_std": 0.12224836476972123,
+    "maxerr_mean": 0.19706664856209402,
+    "maxerr_std": 0.17700534471558924
   },
-  "n_maxerr_above": 110,
-  "mae_std": 0.12224836476972123,
-  "maxerr_mean": 0.19706664856209402,
-  "maxerr_std": 0.17700534471558924
- },
- {
-  "ts": "2026-07-14T23:54:05",
-  "n": 178,
-  "mean": 0.09879572309362589,
-  "median": 0.05627976351697775,
-  "max": 0.7605756242891655,
-  "n_above_bound": 52,
-  "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
-  "median_resid_std": 0.04256786957612417,
-  "n_maxerr_above": 97,
-  "note": "PR-27b ADOTADO (campanha continua): LIU_2016 nivel axial por proveniencia — emb POR CURVA lido em N=200 (sonda engine), N_emb=20 lido, C_creep=1.9e-11 do slope log, creep_conform n=2.64 (regressao M0-sweep + correcao engine; precedente 4.14a-rev), mu mos2=0.029 paper. Fonte 0.1805->0.0408 (14/14 melhoram; maxerr>0.1 so run2 5e6 cauda nao-monotonica caveat). Base-114: mediana 0.0451; R4-64: 0.1409.",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.04313797747039589
-   },
-   "CACCESE_2009": {
-    "n": 7,
-    "median": 0.12727637121332022
-   },
-   "CHU_2026": {
-    "n": 9,
-    "median": 0.13810016781747708
-   },
-   "ECCLES_2010": {
-    "n": 10,
-    "median": 0.148197265991791
-   },
-   "GRZEJDA_2026": {
-    "n": 2,
-    "median": 0.03507363204265376
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.038286687605111794
-   },
-   "JCSR_2023": {
-    "n": 5,
-    "median": 0.27917155069853167
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.03976867983528109
-   },
-   "LIU_2016": {
-    "n": 14,
-    "median": 0.04081458091517021
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.08865347159317966
-   },
-   "QIN_2024": {
-    "n": 3,
-    "median": 0.5434263525518648
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.05203430559500949
-   },
-   "SUN_2025_CRIMP": {
-    "n": 8,
-    "median": 0.1510651654536978
-   },
-   "SUN_2025_REASSY": {
-    "n": 5,
-    "median": 0.3523541089348578
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.05230431484044651
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_AME": {
-    "n": 1,
-    "median": 0.38749807061653446
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-14T23:54:05",
+    "n": 178,
+    "mean": 0.09879572309362589,
+    "median": 0.05627976351697775,
+    "max": 0.7605756242891655,
+    "n_above_bound": 52,
+    "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
+    "median_resid_std": 0.04256786957612417,
+    "n_maxerr_above": 97,
+    "note": "PR-27b ADOTADO (campanha continua): LIU_2016 nivel axial por proveniencia — emb POR CURVA lido em N=200 (sonda engine), N_emb=20 lido, C_creep=1.9e-11 do slope log, creep_conform n=2.64 (regressao M0-sweep + correcao engine; precedente 4.14a-rev), mu mos2=0.029 paper. Fonte 0.1805->0.0408 (14/14 melhoram; maxerr>0.1 so run2 5e6 cauda nao-monotonica caveat). Base-114: mediana 0.0451; R4-64: 0.1409.",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.04313797747039589
+      },
+      "CACCESE_2009": {
+        "n": 7,
+        "median": 0.12727637121332022
+      },
+      "CHU_2026": {
+        "n": 9,
+        "median": 0.13810016781747708
+      },
+      "ECCLES_2010": {
+        "n": 10,
+        "median": 0.148197265991791
+      },
+      "GRZEJDA_2026": {
+        "n": 2,
+        "median": 0.03507363204265376
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.038286687605111794
+      },
+      "JCSR_2023": {
+        "n": 5,
+        "median": 0.27917155069853167
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.03976867983528109
+      },
+      "LIU_2016": {
+        "n": 14,
+        "median": 0.04081458091517021
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.08865347159317966
+      },
+      "QIN_2024": {
+        "n": 3,
+        "median": 0.5434263525518648
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.05203430559500949
+      },
+      "SUN_2025_CRIMP": {
+        "n": 8,
+        "median": 0.1510651654536978
+      },
+      "SUN_2025_REASSY": {
+        "n": 5,
+        "median": 0.3523541089348578
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_AME": {
+        "n": 1,
+        "median": 0.38749807061653446
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "mae_std": 0.12120677836762359,
+    "maxerr_mean": 0.18405054522846176,
+    "maxerr_std": 0.17944095211294186
   },
-  "mae_std": 0.12120677836762359,
-  "maxerr_mean": 0.18405054522846176,
-  "maxerr_std": 0.17944095211294186
- },
- {
-  "ts": "2026-07-15T00:12:13",
-  "n": 178,
-  "mean": 0.0893697251682953,
-  "median": 0.051803442847382516,
-  "max": 0.7605756242891655,
-  "n_above_bound": 47,
-  "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
-  "median_resid_std": 0.03885577762049459,
-  "n_maxerr_above": 92,
-  "note": "PR-28 ADOTADO: SUN_2025_REASSY 0.352->0.0181 (5/5 no tripe, maxerr<=0.049). mu POR CASO da Fig10 (paper), floor lido do plato, emb lido N=500 (9.2-10.6um, DECRESCE com remontagens = estado de reuso emergiu das leituras), k_wear_spec=3.35e-15/Pa per-par prata-GH738 (fallback 1-DOF pre-autorizado; wear compartilhado comia 0.867). Base-114 0.0451; R4-64 0.1168.",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.04313797747039589
-   },
-   "CACCESE_2009": {
-    "n": 7,
-    "median": 0.12727637121332022
-   },
-   "CHU_2026": {
-    "n": 9,
-    "median": 0.13810016781747708
-   },
-   "ECCLES_2010": {
-    "n": 10,
-    "median": 0.148197265991791
-   },
-   "GRZEJDA_2026": {
-    "n": 2,
-    "median": 0.03507363204265376
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.038286687605111794
-   },
-   "JCSR_2023": {
-    "n": 5,
-    "median": 0.27917155069853167
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.03976867983528109
-   },
-   "LIU_2016": {
-    "n": 14,
-    "median": 0.04081458091517021
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.08865347159317966
-   },
-   "QIN_2024": {
-    "n": 3,
-    "median": 0.5434263525518648
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.05203430559500949
-   },
-   "SUN_2025_CRIMP": {
-    "n": 8,
-    "median": 0.1510651654536978
-   },
-   "SUN_2025_REASSY": {
-    "n": 5,
-    "median": 0.018076061703689198
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.05230431484044651
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_AME": {
-    "n": 1,
-    "median": 0.38749807061653446
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-15T00:12:13",
+    "n": 178,
+    "mean": 0.0893697251682953,
+    "median": 0.051803442847382516,
+    "max": 0.7605756242891655,
+    "n_above_bound": 47,
+    "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
+    "median_resid_std": 0.03885577762049459,
+    "n_maxerr_above": 92,
+    "note": "PR-28 ADOTADO: SUN_2025_REASSY 0.352->0.0181 (5/5 no tripe, maxerr<=0.049). mu POR CASO da Fig10 (paper), floor lido do plato, emb lido N=500 (9.2-10.6um, DECRESCE com remontagens = estado de reuso emergiu das leituras), k_wear_spec=3.35e-15/Pa per-par prata-GH738 (fallback 1-DOF pre-autorizado; wear compartilhado comia 0.867). Base-114 0.0451; R4-64 0.1168.",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.04313797747039589
+      },
+      "CACCESE_2009": {
+        "n": 7,
+        "median": 0.12727637121332022
+      },
+      "CHU_2026": {
+        "n": 9,
+        "median": 0.13810016781747708
+      },
+      "ECCLES_2010": {
+        "n": 10,
+        "median": 0.148197265991791
+      },
+      "GRZEJDA_2026": {
+        "n": 2,
+        "median": 0.03507363204265376
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.038286687605111794
+      },
+      "JCSR_2023": {
+        "n": 5,
+        "median": 0.27917155069853167
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.03976867983528109
+      },
+      "LIU_2016": {
+        "n": 14,
+        "median": 0.04081458091517021
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.08865347159317966
+      },
+      "QIN_2024": {
+        "n": 3,
+        "median": 0.5434263525518648
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.05203430559500949
+      },
+      "SUN_2025_CRIMP": {
+        "n": 8,
+        "median": 0.1510651654536978
+      },
+      "SUN_2025_REASSY": {
+        "n": 5,
+        "median": 0.018076061703689198
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_AME": {
+        "n": 1,
+        "median": 0.38749807061653446
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "mae_std": 0.11390087395453334,
+    "maxerr_mean": 0.16862528972205992,
+    "maxerr_std": 0.16645921729773264
   },
-  "mae_std": 0.11390087395453334,
-  "maxerr_mean": 0.16862528972205992,
-  "maxerr_std": 0.16645921729773264
- },
- {
-  "ts": "2026-07-15T00:55:43",
-  "n": 178,
-  "mean": 0.07941557393663685,
-  "median": 0.049814528798452426,
-  "max": 0.6721335970129401,
-  "n_above_bound": 44,
-  "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
-  "median_resid_std": 0.03670104053599588,
-  "n_maxerr_above": 89,
-  "note": "PR-29b ADOTADO: QIN_2024 CFRP-Ti creep 0.543->0.0047 (3/3 tripe, maxerr<=0.016) por LEITURA pura: emb~0 (hold estatico, dado 0.9999@100s), t_0=3.98e4s lido do joelho (~tau2 Burgers do paper), C_creep=1.20e-10 per-par CFRP-Ti das ancoras 1e5/7e5s. Residuo de interferencia +0.008 documentado (estado sem analogo). Bug de bisseccao do t_0 corrigido antes da adocao (proveniencia integra). Base-114 0.0451; R4-64 0.1001.",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.04313797747039589
-   },
-   "CACCESE_2009": {
-    "n": 7,
-    "median": 0.12727637121332022
-   },
-   "CHU_2026": {
-    "n": 9,
-    "median": 0.13810016781747708
-   },
-   "ECCLES_2010": {
-    "n": 10,
-    "median": 0.148197265991791
-   },
-   "GRZEJDA_2026": {
-    "n": 2,
-    "median": 0.03507363204265376
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.038286687605111794
-   },
-   "JCSR_2023": {
-    "n": 5,
-    "median": 0.27917155069853167
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.03976867983528109
-   },
-   "LIU_2016": {
-    "n": 14,
-    "median": 0.04081458091517021
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.08865347159317966
-   },
-   "QIN_2024": {
-    "n": 3,
-    "median": 0.0047467054798957095
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.05203430559500949
-   },
-   "SUN_2025_CRIMP": {
-    "n": 8,
-    "median": 0.1510651654536978
-   },
-   "SUN_2025_REASSY": {
-    "n": 5,
-    "median": 0.018076061703689198
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.05230431484044651
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_AME": {
-    "n": 1,
-    "median": 0.38749807061653446
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-15T00:55:43",
+    "n": 178,
+    "mean": 0.07941557393663685,
+    "median": 0.049814528798452426,
+    "max": 0.6721335970129401,
+    "n_above_bound": 44,
+    "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
+    "median_resid_std": 0.03670104053599588,
+    "n_maxerr_above": 89,
+    "note": "PR-29b ADOTADO: QIN_2024 CFRP-Ti creep 0.543->0.0047 (3/3 tripe, maxerr<=0.016) por LEITURA pura: emb~0 (hold estatico, dado 0.9999@100s), t_0=3.98e4s lido do joelho (~tau2 Burgers do paper), C_creep=1.20e-10 per-par CFRP-Ti das ancoras 1e5/7e5s. Residuo de interferencia +0.008 documentado (estado sem analogo). Bug de bisseccao do t_0 corrigido antes da adocao (proveniencia integra). Base-114 0.0451; R4-64 0.1001.",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.04313797747039589
+      },
+      "CACCESE_2009": {
+        "n": 7,
+        "median": 0.12727637121332022
+      },
+      "CHU_2026": {
+        "n": 9,
+        "median": 0.13810016781747708
+      },
+      "ECCLES_2010": {
+        "n": 10,
+        "median": 0.148197265991791
+      },
+      "GRZEJDA_2026": {
+        "n": 2,
+        "median": 0.03507363204265376
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.038286687605111794
+      },
+      "JCSR_2023": {
+        "n": 5,
+        "median": 0.27917155069853167
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.03976867983528109
+      },
+      "LIU_2016": {
+        "n": 14,
+        "median": 0.04081458091517021
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.08865347159317966
+      },
+      "QIN_2024": {
+        "n": 3,
+        "median": 0.0047467054798957095
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.05203430559500949
+      },
+      "SUN_2025_CRIMP": {
+        "n": 8,
+        "median": 0.1510651654536978
+      },
+      "SUN_2025_REASSY": {
+        "n": 5,
+        "median": 0.018076061703689198
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_AME": {
+        "n": 1,
+        "median": 0.38749807061653446
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "mae_std": 0.09207564954266743,
+    "maxerr_mean": 0.15805283457425867,
+    "maxerr_std": 0.1549124399593682
   },
-  "mae_std": 0.09207564954266743,
-  "maxerr_mean": 0.15805283457425867,
-  "maxerr_std": 0.1549124399593682
- },
- {
-  "ts": "2026-07-15T02:19:59",
-  "n": 178,
-  "mean": 0.07293751547773714,
-  "median": 0.046498775655794335,
-  "max": 0.6721335970129401,
-  "n_above_bound": 37,
-  "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
-  "median_resid_std": 0.03430790178572238,
-  "n_maxerr_above": 81,
-  "note": "PR-33 ADOTADO: CACCESE 0.127->0.0179 (7/7 tripe; grip=diametro do painel input-de-paper; C_creep/t_0 lidos por PAR-E-TAMANHO: C/Al-12.7 5.74e-11, C/Al-19.1 3.06e-11 herdado pelo no_ret, C/St-compblock 1.73e-11 — 4a reconfirmacao do per-par 4.7; razao 12.7/19.1 absorve a escala-com-tamanho #10, caveat) + JCSR indoor 0.285->0.0009 (aco M20 C=4.75e-12 t0=1e6s); corroidos bit-baseline (corrosao out-of-model declarada). R4: fontes tratadas 5/10 adotadas; Chu/Eccles/Sun-crimp na fila. Base-114 0.0451; R4-64 0.0471.",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.04313797747039589
-   },
-   "CACCESE_2009": {
-    "n": 7,
-    "median": 0.017942245275958186
-   },
-   "CHU_2026": {
-    "n": 9,
-    "median": 0.13810016781747708
-   },
-   "ECCLES_2010": {
-    "n": 10,
-    "median": 0.148197265991791
-   },
-   "GRZEJDA_2026": {
-    "n": 2,
-    "median": 0.03507363204265376
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.038286687605111794
-   },
-   "JCSR_2023": {
-    "n": 5,
-    "median": 0.21824345468946965
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.03976867983528109
-   },
-   "LIU_2016": {
-    "n": 14,
-    "median": 0.04081458091517021
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.08865347159317966
-   },
-   "QIN_2024": {
-    "n": 3,
-    "median": 0.0047467054798957095
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.05203430559500949
-   },
-   "SUN_2025_CRIMP": {
-    "n": 8,
-    "median": 0.1510651654536978
-   },
-   "SUN_2025_REASSY": {
-    "n": 5,
-    "median": 0.018076061703689198
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.05230431484044651
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_AME": {
-    "n": 1,
-    "median": 0.38749807061653446
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-15T02:19:59",
+    "n": 178,
+    "mean": 0.07293751547773714,
+    "median": 0.046498775655794335,
+    "max": 0.6721335970129401,
+    "n_above_bound": 37,
+    "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
+    "median_resid_std": 0.03430790178572238,
+    "n_maxerr_above": 81,
+    "note": "PR-33 ADOTADO: CACCESE 0.127->0.0179 (7/7 tripe; grip=diametro do painel input-de-paper; C_creep/t_0 lidos por PAR-E-TAMANHO: C/Al-12.7 5.74e-11, C/Al-19.1 3.06e-11 herdado pelo no_ret, C/St-compblock 1.73e-11 — 4a reconfirmacao do per-par 4.7; razao 12.7/19.1 absorve a escala-com-tamanho #10, caveat) + JCSR indoor 0.285->0.0009 (aco M20 C=4.75e-12 t0=1e6s); corroidos bit-baseline (corrosao out-of-model declarada). R4: fontes tratadas 5/10 adotadas; Chu/Eccles/Sun-crimp na fila. Base-114 0.0451; R4-64 0.0471.",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.04313797747039589
+      },
+      "CACCESE_2009": {
+        "n": 7,
+        "median": 0.017942245275958186
+      },
+      "CHU_2026": {
+        "n": 9,
+        "median": 0.13810016781747708
+      },
+      "ECCLES_2010": {
+        "n": 10,
+        "median": 0.148197265991791
+      },
+      "GRZEJDA_2026": {
+        "n": 2,
+        "median": 0.03507363204265376
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.038286687605111794
+      },
+      "JCSR_2023": {
+        "n": 5,
+        "median": 0.21824345468946965
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.03976867983528109
+      },
+      "LIU_2016": {
+        "n": 14,
+        "median": 0.04081458091517021
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.08865347159317966
+      },
+      "QIN_2024": {
+        "n": 3,
+        "median": 0.0047467054798957095
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.05203430559500949
+      },
+      "SUN_2025_CRIMP": {
+        "n": 8,
+        "median": 0.1510651654536978
+      },
+      "SUN_2025_REASSY": {
+        "n": 5,
+        "median": 0.018076061703689198
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_AME": {
+        "n": 1,
+        "median": 0.38749807061653446
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "mae_std": 0.0895948601808998,
+    "maxerr_mean": 0.15088068260886703,
+    "maxerr_std": 0.15517605276291807
   },
-  "mae_std": 0.0895948601808998,
-  "maxerr_mean": 0.15088068260886703,
-  "maxerr_std": 0.15517605276291807
- },
- {
-  "ts": "2026-07-15T03:14:27",
-  "n": 178,
-  "mean": 0.07338923969325405,
-  "median": 0.04574530992092397,
-  "max": 0.6721335970129401,
-  "n_above_bound": 42,
-  "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
-  "median_resid_std": 0.03430790178572238,
-  "n_maxerr_above": 81,
-  "note": "PR-34b ADOTADO (convencao de eixo): csv_x_offset=1 em Lu+Karlsen (ancora pre-ciclagem plotada em x=1, evidencia 10/10+11/11). Karlsen neutro; Lu DEGRADA honesto 0.088->0.105 (config adotado compensava o eixo deslocado) — re-leitura coerente do sistema Lu no eixo corrigido = proximo bloco da campanha (PR-34c falhou o corte cirurgico; kernel-curvatura PR-25 segue). Base-114 0.0442; R4-64 0.0471.",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.04313797747039589
-   },
-   "CACCESE_2009": {
-    "n": 7,
-    "median": 0.017942245275958186
-   },
-   "CHU_2026": {
-    "n": 9,
-    "median": 0.13810016781747708
-   },
-   "ECCLES_2010": {
-    "n": 10,
-    "median": 0.148197265991791
-   },
-   "GRZEJDA_2026": {
-    "n": 2,
-    "median": 0.03507363204265376
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.038286687605111794
-   },
-   "JCSR_2023": {
-    "n": 5,
-    "median": 0.21824345468946965
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.04098453546688907
-   },
-   "LIU_2016": {
-    "n": 14,
-    "median": 0.04081458091517021
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.10445392990465147
-   },
-   "QIN_2024": {
-    "n": 3,
-    "median": 0.0047467054798957095
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.05203430559500949
-   },
-   "SUN_2025_CRIMP": {
-    "n": 8,
-    "median": 0.1510651654536978
-   },
-   "SUN_2025_REASSY": {
-    "n": 5,
-    "median": 0.018076061703689198
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.05230431484044651
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_AME": {
-    "n": 1,
-    "median": 0.38749807061653446
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-15T03:14:27",
+    "n": 178,
+    "mean": 0.07338923969325405,
+    "median": 0.04574530992092397,
+    "max": 0.6721335970129401,
+    "n_above_bound": 42,
+    "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
+    "median_resid_std": 0.03430790178572238,
+    "n_maxerr_above": 81,
+    "note": "PR-34b ADOTADO (convencao de eixo): csv_x_offset=1 em Lu+Karlsen (ancora pre-ciclagem plotada em x=1, evidencia 10/10+11/11). Karlsen neutro; Lu DEGRADA honesto 0.088->0.105 (config adotado compensava o eixo deslocado) — re-leitura coerente do sistema Lu no eixo corrigido = proximo bloco da campanha (PR-34c falhou o corte cirurgico; kernel-curvatura PR-25 segue). Base-114 0.0442; R4-64 0.0471.",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.04313797747039589
+      },
+      "CACCESE_2009": {
+        "n": 7,
+        "median": 0.017942245275958186
+      },
+      "CHU_2026": {
+        "n": 9,
+        "median": 0.13810016781747708
+      },
+      "ECCLES_2010": {
+        "n": 10,
+        "median": 0.148197265991791
+      },
+      "GRZEJDA_2026": {
+        "n": 2,
+        "median": 0.03507363204265376
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.038286687605111794
+      },
+      "JCSR_2023": {
+        "n": 5,
+        "median": 0.21824345468946965
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.04098453546688907
+      },
+      "LIU_2016": {
+        "n": 14,
+        "median": 0.04081458091517021
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.10445392990465147
+      },
+      "QIN_2024": {
+        "n": 3,
+        "median": 0.0047467054798957095
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.05203430559500949
+      },
+      "SUN_2025_CRIMP": {
+        "n": 8,
+        "median": 0.1510651654536978
+      },
+      "SUN_2025_REASSY": {
+        "n": 5,
+        "median": 0.018076061703689198
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_AME": {
+        "n": 1,
+        "median": 0.38749807061653446
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    },
+    "mae_std": 0.08994184859699902,
+    "maxerr_mean": 0.15119009568448827,
+    "maxerr_std": 0.1552646746098516
   },
-  "mae_std": 0.08994184859699902,
-  "maxerr_mean": 0.15119009568448827,
-  "maxerr_std": 0.1552646746098516
- },
- {
-  "ts": "2026-07-15T17:55:57",
-  "n": 178,
-  "mean": 0.06675911235149139,
-  "median": 0.04286751083013293,
-  "max": 0.7138446398743737,
-  "n_above_bound": 32,
-  "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
-  "median_resid_std": 0.030748014037261226,
-  "n_maxerr_above": 76,
-  "mae_std": 0.09102233487205436,
-  "maxerr_mean": 0.13665968636186168,
-  "maxerr_std": 0.14657896003660667,
-  "note": "PR-37' ADOTADO (multiplas instancias em sandbox; gate de passo corrigido — meta por curva permanece objetivo): ECCLES escopo-8 0.148->0.0351 (todos melhoram 3-10x; 8-familia scatter per-nut rotulada) + SUN grease 0.207/0.206->0.0353/0.0999 (gain por porca 2.44/2.94; floor assintota crua). Lu = MORTE definitiva do exponencial (cinematico; ratchet desacelerante na fila). Base-114 0.0442; R4-64 0.0396.",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.04313797747039589
-   },
-   "CACCESE_2009": {
-    "n": 7,
-    "median": 0.017942245275958186
-   },
-   "CHU_2026": {
-    "n": 9,
-    "median": 0.13810016781747708
-   },
-   "ECCLES_2010": {
-    "n": 10,
-    "median": 0.043347842873192176
-   },
-   "GRZEJDA_2026": {
-    "n": 2,
-    "median": 0.03507363204265376
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.038286687605111794
-   },
-   "JCSR_2023": {
-    "n": 5,
-    "median": 0.21824345468946965
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.04098453546688907
-   },
-   "LIU_2016": {
-    "n": 14,
-    "median": 0.04081458091517021
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.10445392990465147
-   },
-   "QIN_2024": {
-    "n": 3,
-    "median": 0.0047467054798957095
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.05203430559500949
-   },
-   "SUN_2025_CRIMP": {
-    "n": 8,
-    "median": 0.09339948703553114
-   },
-   "SUN_2025_REASSY": {
-    "n": 5,
-    "median": 0.018076061703689198
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.05230431484044651
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_AME": {
-    "n": 1,
-    "median": 0.38749807061653446
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
+  {
+    "ts": "2026-07-15T17:55:57",
+    "n": 178,
+    "mean": 0.06675911235149139,
+    "median": 0.04286751083013293,
+    "max": 0.7138446398743737,
+    "n_above_bound": 32,
+    "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
+    "median_resid_std": 0.030748014037261226,
+    "n_maxerr_above": 76,
+    "mae_std": 0.09102233487205436,
+    "maxerr_mean": 0.13665968636186168,
+    "maxerr_std": 0.14657896003660667,
+    "note": "PR-37' ADOTADO (multiplas instancias em sandbox; gate de passo corrigido — meta por curva permanece objetivo): ECCLES escopo-8 0.148->0.0351 (todos melhoram 3-10x; 8-familia scatter per-nut rotulada) + SUN grease 0.207/0.206->0.0353/0.0999 (gain por porca 2.44/2.94; floor assintota crua). Lu = MORTE definitiva do exponencial (cinematico; ratchet desacelerante na fila). Base-114 0.0442; R4-64 0.0396.",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.04313797747039589
+      },
+      "CACCESE_2009": {
+        "n": 7,
+        "median": 0.017942245275958186
+      },
+      "CHU_2026": {
+        "n": 9,
+        "median": 0.13810016781747708
+      },
+      "ECCLES_2010": {
+        "n": 10,
+        "median": 0.043347842873192176
+      },
+      "GRZEJDA_2026": {
+        "n": 2,
+        "median": 0.03507363204265376
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.038286687605111794
+      },
+      "JCSR_2023": {
+        "n": 5,
+        "median": 0.21824345468946965
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.04098453546688907
+      },
+      "LIU_2016": {
+        "n": 14,
+        "median": 0.04081458091517021
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.10445392990465147
+      },
+      "QIN_2024": {
+        "n": 3,
+        "median": 0.0047467054798957095
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.05203430559500949
+      },
+      "SUN_2025_CRIMP": {
+        "n": 8,
+        "median": 0.09339948703553114
+      },
+      "SUN_2025_REASSY": {
+        "n": 5,
+        "median": 0.018076061703689198
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_AME": {
+        "n": 1,
+        "median": 0.38749807061653446
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    }
+  },
+  {
+    "ts": "2026-07-15T19:12:20",
+    "n": 178,
+    "mean": 0.06659732802724481,
+    "median": 0.04228466548400885,
+    "max": 0.7138446398743737,
+    "n_above_bound": 32,
+    "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
+    "median_resid_std": 0.030408900728355667,
+    "n_maxerr_above": 75,
+    "mae_std": 0.09108760355362651,
+    "maxerr_mean": 0.1362794569714877,
+    "maxerr_std": 0.1467003879628049,
+    "note": "PR-40 ADOTADO (micro-PR do diagnostico da frota): karlsen M42 run20p0 k_ratchet=0.00097 per-especime (classe autorizada) — 0.044/0.123 -> 0.0155/0.0558 (tripe), 10 irmaos bit-identicos. Base-114 0.0436; R4-64 0.0396.",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.04313797747039589
+      },
+      "CACCESE_2009": {
+        "n": 7,
+        "median": 0.017942245275958186
+      },
+      "CHU_2026": {
+        "n": 9,
+        "median": 0.13810016781747708
+      },
+      "ECCLES_2010": {
+        "n": 10,
+        "median": 0.043347842873192176
+      },
+      "GRZEJDA_2026": {
+        "n": 2,
+        "median": 0.03507363204265376
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.038286687605111794
+      },
+      "JCSR_2023": {
+        "n": 5,
+        "median": 0.21824345468946965
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.0373561034925943
+      },
+      "LIU_2016": {
+        "n": 14,
+        "median": 0.04081458091517021
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.10445392990465147
+      },
+      "QIN_2024": {
+        "n": 3,
+        "median": 0.0047467054798957095
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.05203430559500949
+      },
+      "SUN_2025_CRIMP": {
+        "n": 8,
+        "median": 0.09339948703553114
+      },
+      "SUN_2025_REASSY": {
+        "n": 5,
+        "median": 0.018076061703689198
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.06860051064140686
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_AME": {
+        "n": 1,
+        "median": 0.38749807061653446
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      }
+    }
+  },
+  {
+    "ts": "2026-07-15T19:18:53",
+    "n": 180,
+    "mean": 0.07081651408522861,
+    "median": 0.04286751083013293,
+    "max": 0.7138446398743737,
+    "n_above_bound": 34,
+    "basis": "canonico-MEM (180 comparaveis = 178 + 2 Zhang2006 reais)",
+    "median_resid_std": 0.030748014037261226,
+    "n_maxerr_above": 77,
+    "mae_std": 0.09968755261348758,
+    "maxerr_mean": 0.14386633035736798,
+    "maxerr_std": 0.16523607175456212,
+    "note": "Lote frota: PR-42 ADOTADO (yang2019 varamp delta_spectrum input-de-paper; maxerr 0.212->0.131 / 0.164->0.136; licao: gates escritos mandam, filtro ad-hoc de script nao) + 2 Zhang2006 REAIS wirados (fig3 0.393, fig16 runout-nulo 0.523 baseline honesto = caso-limiar deltat, PR-43 candidato) + achado: 9 curvas zhang da galeria antiga SINTETICAS (fila item 9).",
+    "per_source": {
+      "BAUER_2024": {
+        "n": 9,
+        "median": 0.04313797747039589
+      },
+      "CACCESE_2009": {
+        "n": 7,
+        "median": 0.017942245275958186
+      },
+      "CHU_2026": {
+        "n": 9,
+        "median": 0.13810016781747708
+      },
+      "ECCLES_2010": {
+        "n": 10,
+        "median": 0.043347842873192176
+      },
+      "GRZEJDA_2026": {
+        "n": 2,
+        "median": 0.03507363204265376
+      },
+      "ICMEZ_2025": {
+        "n": 8,
+        "median": 0.038286687605111794
+      },
+      "JCSR_2023": {
+        "n": 5,
+        "median": 0.21824345468946965
+      },
+      "KARLSEN_2022": {
+        "n": 11,
+        "median": 0.0373561034925943
+      },
+      "LIU_2016": {
+        "n": 14,
+        "median": 0.04081458091517021
+      },
+      "LIU_2017_AXIAL": {
+        "n": 9,
+        "median": 0.018027606885197
+      },
+      "LIU_2022_RETIGHT": {
+        "n": 21,
+        "median": 0.014920551144123162
+      },
+      "LIU_2025": {
+        "n": 7,
+        "median": 0.07770447343360848
+      },
+      "LI_2022_MARSTRUC": {
+        "n": 6,
+        "median": 0.0033715066006402344
+      },
+      "LI_2022_TRIBOINT": {
+        "n": 4,
+        "median": 0.0737151377120051
+      },
+      "LU_2024": {
+        "n": 10,
+        "median": 0.10445392990465147
+      },
+      "QIN_2024": {
+        "n": 3,
+        "median": 0.0047467054798957095
+      },
+      "ROUSSEAU_2025": {
+        "n": 6,
+        "median": 0.05203430559500949
+      },
+      "SUN_2025_CRIMP": {
+        "n": 8,
+        "median": 0.09339948703553114
+      },
+      "SUN_2025_REASSY": {
+        "n": 5,
+        "median": 0.018076061703689198
+      },
+      "YANG_2019": {
+        "n": 5,
+        "median": 0.055211621937391576
+      },
+      "YANG_2021": {
+        "n": 6,
+        "median": 0.12518377521625862
+      },
+      "YANG_2023_AME": {
+        "n": 1,
+        "median": 0.38749807061653446
+      },
+      "YANG_2023_IJPEM": {
+        "n": 9,
+        "median": 0.11878591851398909
+      },
+      "ZHANG_2006": {
+        "n": 2,
+        "median": 0.4579052302493265
+      }
+    }
+  },
+  {
+    "ts": "2026-07-15T22:42:07",
+    "n": 180,
+    "mean": 0.06933047247111716,
+    "median": 0.04286751083013293,
+    "max": 0.7138446398743737,
+    "n_above_bound": 33,
+    "basis": "canonico-MEM (180 comparaveis = 178 + 2 Zhang2006 reais)",
+    "median_resid_std": 0.030748014037261226,
+    "n_maxerr_above": 77,
+    "mae_std": 0.09773135256905427,
+    "maxerr_mean": 0.14174301450039736,
+    "maxerr_std": 0.1631279868288976,
+    "note": "PR-38 test1 EFETIVADO (0.334->0.0663/0.115; a2b5045 alegou antes da hora, crash prov-str). PAUSA POR LIMITE DE GASTOS DA ORG: agente PR-39 morreu no limite mensal; campanha suspensa ate o professor elevar o limite (/usage-credits). Pendentes: PR-39 fratura (dados prontos), PR-41 li2022ti freq, PR-43 zhang runout."
+  },
+  {
+    "ts": "2026-07-16T07:54:16",
+    "n": 180,
+    "mean": 0.06933047247111716,
+    "median": 0.04286751083013293,
+    "max": 0.7138446398743737,
+    "n_above_bound": 33,
+    "basis": "canonico-MEM (180 comparaveis = 178 + 2 Zhang2006 reais)",
+    "median_resid_std": 0.030748014037261226,
+    "n_maxerr_above": 77,
+    "mae_std": 0.09773135256905427,
+    "maxerr_mean": 0.14174301450039736,
+    "maxerr_std": 0.1631279868288976,
+    "note": "PR-39v2 ADOTADO ESCOPADO: FatigueLoss no LI_2022_TRIBOINT (C1=2.977e29 per-material Ti, ancora N_frat=410k medido; cliff 0.0%; irmaos intactos; MAE trimado inalterado — a captura aparece no notrim 0.296->0.158). MISTERIO PR-24 resolvido: Goodman VIVO estica N_D 30-70% vs calibracao a tensao constante. LIU_2025 = morte com causa nobre: scatter de especime irresoluvel (fig2 vs amp0p8: mesma amplitude, fratura 10k vs vivo 14.4k) + slope local 4.1 != m1 2.7 — C1 unico viola 3 janelas de irmaos. Fila item 3 fechada com diagnostico."
+  },
+  {
+    "ts": "2026-07-16T08:49:51",
+    "n": 180,
+    "mean": 0.06589025494794086,
+    "median": 0.04286751083013293,
+    "max": 0.7138446398743737,
+    "n_above_bound": 32,
+    "basis": "canonico-MEM (180 comparaveis = 178 + 2 Zhang2006 reais)",
+    "median_resid_std": 0.030748014037261226,
+    "n_maxerr_above": 77,
+    "mae_std": 0.08903726005880269,
+    "maxerr_mean": 0.13654191666946464,
+    "maxerr_std": 0.14850988598353557,
+    "note": "PR-43b ADOTADO: ZHANG_2006 0.458->0.148 (-68%) por leituras (emb 1.58um early-drop, C_creep 3.1e-11 per-par, c_bend saturado no piso 0.05 = ancora do limiar; W_conf_ref=0 sondado e INERTE). fig16-runout 0.523->0.086 MAE; maxerr 0.150/0.661 rotulados (transiente residual; colapso 2-estagios = classe kernel). PR-41 = morte (fret_freq_exp inerte no bloco per-rig; canal de tempo residual rotulado por parcimonia)."
+  },
+  {
+    "ts": "2026-07-29T16:57:51",
+    "n": 202,
+    "mean": 0.0445951985814825,
+    "median": 0.03137766299248685,
+    "max": 0.38749807061653446,
+    "n_above_bound": 58,
+    "per_source": {
+      "BAUER_2024": 0.0431,
+      "CACCESE_2009": 0.0179,
+      "CHU_2026": 0.1043,
+      "ECCLES_2010": 0.0433,
+      "GRZEJDA_2026": 0.0351,
+      "ICMEZ_2025": 0.0333,
+      "JCSR_2023": 0.039,
+      "KARLSEN_2022": 0.0374,
+      "LIU_2016": 0.0408,
+      "LIU_2017_AXIAL": 0.018,
+      "LIU_2020_WEAR": 0.009,
+      "LIU_2022_RETIGHT": 0.0149,
+      "LIU_2025": 0.0381,
+      "LI_2022_MARSTRUC": 0.0034,
+      "LI_2022_TRIBOINT": 0.0307,
+      "LU_2024": 0.1045,
+      "QIN_2024": 0.0047,
+      "ROUSSEAU_2025": 0.052,
+      "SUN_2025_CRIMP": 0.0237,
+      "SUN_2025_REASSY": 0.0181,
+      "YANG_2019": 0.0636,
+      "YANG_2021": 0.0565,
+      "YANG_2023_AME": 0.3875,
+      "YANG_2023_IJPEM": 0.1192,
+      "ZHANG_2006": 0.1117,
+      "ZHANG_2018": 0.0192,
+      "ZHANG_2019": 0.0192
+    },
+    "mae_std": 0.0474969489126292,
+    "maxerr_mean": 0.09900765043728679,
+    "maxerr_std": 0.10949920915670623,
+    "median_resid_std": 0.02350096423785253,
+    "rmse_mean": 0.054318415479586886,
+    "n_maxerr_above": 54,
+    "basis": "canonico-MEM (202 comparaveis) — REGUA NOVA de 3 pernas",
+    "criterio": {
+      "res_max": 0.1,
+      "mae": 0.05,
+      "sigma_res": 0.025
+    },
+    "n_tripe": 104,
+    "n_resolvidos": 148,
+    "note": "ZERO DO PIPELINE. 1a entrada na regua de 3 pernas (res.max<=0,10 E MAE<=0,05 E sigma_res<=0,025), instalada em 2026-07-29. NAO comparar com as entradas #1-#59, que estao na regua de 2 pernas: a queda de 147->104 e' troca de criterio, nao regressao. Censo: 104 no tripe + 44 excecoes assinadas (F5 16 + F7 28, uniao sem dupla contagem) = 148/202 resolvidos. Perna que manda: sigma_res (30 reprovam SO por ela; res.max sozinho reprova ZERO). Fila de forma = 51, das quais 46 tem o gap vindo do modelo (estudo de granularidade) e 10 sao DERIVA (assinatura de rampa). Nenhuma alavanca existente fecha a perna (sensitivity_sres) e o graded_scrit remove a rampa mas nao fecha (graded_scrit_alcance)."
   }
- },
- {
-  "ts": "2026-07-15T19:12:20",
-  "n": 178,
-  "mean": 0.06659732802724481,
-  "median": 0.04228466548400885,
-  "max": 0.7138446398743737,
-  "n_above_bound": 32,
-  "basis": "canonico-MEM (178 comparaveis = 114 + 64 R4 baseline-sem-fit)",
-  "median_resid_std": 0.030408900728355667,
-  "n_maxerr_above": 75,
-  "mae_std": 0.09108760355362651,
-  "maxerr_mean": 0.1362794569714877,
-  "maxerr_std": 0.1467003879628049,
-  "note": "PR-40 ADOTADO (micro-PR do diagnostico da frota): karlsen M42 run20p0 k_ratchet=0.00097 per-especime (classe autorizada) — 0.044/0.123 -> 0.0155/0.0558 (tripe), 10 irmaos bit-identicos. Base-114 0.0436; R4-64 0.0396.",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.04313797747039589
-   },
-   "CACCESE_2009": {
-    "n": 7,
-    "median": 0.017942245275958186
-   },
-   "CHU_2026": {
-    "n": 9,
-    "median": 0.13810016781747708
-   },
-   "ECCLES_2010": {
-    "n": 10,
-    "median": 0.043347842873192176
-   },
-   "GRZEJDA_2026": {
-    "n": 2,
-    "median": 0.03507363204265376
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.038286687605111794
-   },
-   "JCSR_2023": {
-    "n": 5,
-    "median": 0.21824345468946965
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.0373561034925943
-   },
-   "LIU_2016": {
-    "n": 14,
-    "median": 0.04081458091517021
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.10445392990465147
-   },
-   "QIN_2024": {
-    "n": 3,
-    "median": 0.0047467054798957095
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.05203430559500949
-   },
-   "SUN_2025_CRIMP": {
-    "n": 8,
-    "median": 0.09339948703553114
-   },
-   "SUN_2025_REASSY": {
-    "n": 5,
-    "median": 0.018076061703689198
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.05230431484044651
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.06860051064140686
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_AME": {
-    "n": 1,
-    "median": 0.38749807061653446
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   }
-  }
- },
- {
-  "ts": "2026-07-15T19:18:53",
-  "n": 180,
-  "mean": 0.07081651408522861,
-  "median": 0.04286751083013293,
-  "max": 0.7138446398743737,
-  "n_above_bound": 34,
-  "basis": "canonico-MEM (180 comparaveis = 178 + 2 Zhang2006 reais)",
-  "median_resid_std": 0.030748014037261226,
-  "n_maxerr_above": 77,
-  "mae_std": 0.09968755261348758,
-  "maxerr_mean": 0.14386633035736798,
-  "maxerr_std": 0.16523607175456212,
-  "note": "Lote frota: PR-42 ADOTADO (yang2019 varamp delta_spectrum input-de-paper; maxerr 0.212->0.131 / 0.164->0.136; licao: gates escritos mandam, filtro ad-hoc de script nao) + 2 Zhang2006 REAIS wirados (fig3 0.393, fig16 runout-nulo 0.523 baseline honesto = caso-limiar deltat, PR-43 candidato) + achado: 9 curvas zhang da galeria antiga SINTETICAS (fila item 9).",
-  "per_source": {
-   "BAUER_2024": {
-    "n": 9,
-    "median": 0.04313797747039589
-   },
-   "CACCESE_2009": {
-    "n": 7,
-    "median": 0.017942245275958186
-   },
-   "CHU_2026": {
-    "n": 9,
-    "median": 0.13810016781747708
-   },
-   "ECCLES_2010": {
-    "n": 10,
-    "median": 0.043347842873192176
-   },
-   "GRZEJDA_2026": {
-    "n": 2,
-    "median": 0.03507363204265376
-   },
-   "ICMEZ_2025": {
-    "n": 8,
-    "median": 0.038286687605111794
-   },
-   "JCSR_2023": {
-    "n": 5,
-    "median": 0.21824345468946965
-   },
-   "KARLSEN_2022": {
-    "n": 11,
-    "median": 0.0373561034925943
-   },
-   "LIU_2016": {
-    "n": 14,
-    "median": 0.04081458091517021
-   },
-   "LIU_2017_AXIAL": {
-    "n": 9,
-    "median": 0.018027606885197
-   },
-   "LIU_2022_RETIGHT": {
-    "n": 21,
-    "median": 0.014920551144123162
-   },
-   "LIU_2025": {
-    "n": 7,
-    "median": 0.07770447343360848
-   },
-   "LI_2022_MARSTRUC": {
-    "n": 6,
-    "median": 0.0033715066006402344
-   },
-   "LI_2022_TRIBOINT": {
-    "n": 4,
-    "median": 0.0737151377120051
-   },
-   "LU_2024": {
-    "n": 10,
-    "median": 0.10445392990465147
-   },
-   "QIN_2024": {
-    "n": 3,
-    "median": 0.0047467054798957095
-   },
-   "ROUSSEAU_2025": {
-    "n": 6,
-    "median": 0.05203430559500949
-   },
-   "SUN_2025_CRIMP": {
-    "n": 8,
-    "median": 0.09339948703553114
-   },
-   "SUN_2025_REASSY": {
-    "n": 5,
-    "median": 0.018076061703689198
-   },
-   "UFU_LAB": {
-    "n": 3,
-    "median": 0.05230431484044651
-   },
-   "YANG_2019": {
-    "n": 5,
-    "median": 0.055211621937391576
-   },
-   "YANG_2021": {
-    "n": 6,
-    "median": 0.12518377521625862
-   },
-   "YANG_2023_AME": {
-    "n": 1,
-    "median": 0.38749807061653446
-   },
-   "YANG_2023_IJPEM": {
-    "n": 9,
-    "median": 0.11878591851398909
-   },
-   "ZHANG_2006": {
-    "n": 2,
-    "median": 0.4579052302493265
-   }
-  }
- },
- {
-  "ts": "2026-07-15T22:42:07",
-  "n": 180,
-  "mean": 0.06933047247111716,
-  "median": 0.04286751083013293,
-  "max": 0.7138446398743737,
-  "n_above_bound": 33,
-  "basis": "canonico-MEM (180 comparaveis = 178 + 2 Zhang2006 reais)",
-  "median_resid_std": 0.030748014037261226,
-  "n_maxerr_above": 77,
-  "mae_std": 0.09773135256905427,
-  "maxerr_mean": 0.14174301450039736,
-  "maxerr_std": 0.1631279868288976,
-  "note": "PR-38 test1 EFETIVADO (0.334->0.0663/0.115; a2b5045 alegou antes da hora, crash prov-str). PAUSA POR LIMITE DE GASTOS DA ORG: agente PR-39 morreu no limite mensal; campanha suspensa ate o professor elevar o limite (/usage-credits). Pendentes: PR-39 fratura (dados prontos), PR-41 li2022ti freq, PR-43 zhang runout."
- },
- {
-  "ts": "2026-07-16T07:54:16",
-  "n": 180,
-  "mean": 0.06933047247111716,
-  "median": 0.04286751083013293,
-  "max": 0.7138446398743737,
-  "n_above_bound": 33,
-  "basis": "canonico-MEM (180 comparaveis = 178 + 2 Zhang2006 reais)",
-  "median_resid_std": 0.030748014037261226,
-  "n_maxerr_above": 77,
-  "mae_std": 0.09773135256905427,
-  "maxerr_mean": 0.14174301450039736,
-  "maxerr_std": 0.1631279868288976,
-  "note": "PR-39v2 ADOTADO ESCOPADO: FatigueLoss no LI_2022_TRIBOINT (C1=2.977e29 per-material Ti, ancora N_frat=410k medido; cliff 0.0%; irmaos intactos; MAE trimado inalterado — a captura aparece no notrim 0.296->0.158). MISTERIO PR-24 resolvido: Goodman VIVO estica N_D 30-70% vs calibracao a tensao constante. LIU_2025 = morte com causa nobre: scatter de especime irresoluvel (fig2 vs amp0p8: mesma amplitude, fratura 10k vs vivo 14.4k) + slope local 4.1 != m1 2.7 — C1 unico viola 3 janelas de irmaos. Fila item 3 fechada com diagnostico."
- },
- {
-  "ts": "2026-07-16T08:49:51",
-  "n": 180,
-  "mean": 0.06589025494794086,
-  "median": 0.04286751083013293,
-  "max": 0.7138446398743737,
-  "n_above_bound": 32,
-  "basis": "canonico-MEM (180 comparaveis = 178 + 2 Zhang2006 reais)",
-  "median_resid_std": 0.030748014037261226,
-  "n_maxerr_above": 77,
-  "mae_std": 0.08903726005880269,
-  "maxerr_mean": 0.13654191666946464,
-  "maxerr_std": 0.14850988598353557,
-  "note": "PR-43b ADOTADO: ZHANG_2006 0.458->0.148 (-68%) por leituras (emb 1.58um early-drop, C_creep 3.1e-11 per-par, c_bend saturado no piso 0.05 = ancora do limiar; W_conf_ref=0 sondado e INERTE). fig16-runout 0.523->0.086 MAE; maxerr 0.150/0.661 rotulados (transiente residual; colapso 2-estagios = classe kernel). PR-41 = morte (fret_freq_exp inerte no bloco per-rig; canal de tempo residual rotulado por parcimonia)."
- },
- {
-  "ts": "2026-07-29T16:57:51",
-  "n": 202,
-  "mean": 0.0445951985814825,
-  "median": 0.03137766299248685,
-  "max": 0.38749807061653446,
-  "n_above_bound": 58,
-  "per_source": {
-   "BAUER_2024": 0.0431,
-   "CACCESE_2009": 0.0179,
-   "CHU_2026": 0.1043,
-   "ECCLES_2010": 0.0433,
-   "GRZEJDA_2026": 0.0351,
-   "ICMEZ_2025": 0.0333,
-   "JCSR_2023": 0.039,
-   "KARLSEN_2022": 0.0374,
-   "LIU_2016": 0.0408,
-   "LIU_2017_AXIAL": 0.018,
-   "LIU_2020_WEAR": 0.009,
-   "LIU_2022_RETIGHT": 0.0149,
-   "LIU_2025": 0.0381,
-   "LI_2022_MARSTRUC": 0.0034,
-   "LI_2022_TRIBOINT": 0.0307,
-   "LU_2024": 0.1045,
-   "QIN_2024": 0.0047,
-   "ROUSSEAU_2025": 0.052,
-   "SUN_2025_CRIMP": 0.0237,
-   "SUN_2025_REASSY": 0.0181,
-   "UFU_LAB": 0.0523,
-   "YANG_2019": 0.0636,
-   "YANG_2021": 0.0565,
-   "YANG_2023_AME": 0.3875,
-   "YANG_2023_IJPEM": 0.1192,
-   "ZHANG_2006": 0.1117,
-   "ZHANG_2018": 0.0192,
-   "ZHANG_2019": 0.0192
-  },
-  "mae_std": 0.0474969489126292,
-  "maxerr_mean": 0.09900765043728679,
-  "maxerr_std": 0.10949920915670623,
-  "median_resid_std": 0.02350096423785253,
-  "rmse_mean": 0.054318415479586886,
-  "n_maxerr_above": 54,
-  "basis": "canonico-MEM (202 comparaveis) — REGUA NOVA de 3 pernas",
-  "criterio": {
-   "res_max": 0.1,
-   "mae": 0.05,
-   "sigma_res": 0.025
-  },
-  "n_tripe": 104,
-  "n_resolvidos": 148,
-  "note": "ZERO DO PIPELINE. 1a entrada na regua de 3 pernas (res.max<=0,10 E MAE<=0,05 E sigma_res<=0,025), instalada em 2026-07-29. NAO comparar com as entradas #1-#59, que estao na regua de 2 pernas: a queda de 147->104 e' troca de criterio, nao regressao. Censo: 104 no tripe + 44 excecoes assinadas (F5 16 + F7 28, uniao sem dupla contagem) = 148/202 resolvidos. Perna que manda: sigma_res (30 reprovam SO por ela; res.max sozinho reprova ZERO). Fila de forma = 51, das quais 46 tem o gap vindo do modelo (estudo de granularidade) e 10 sao DERIVA (assinatura de rampa). Nenhuma alavanca existente fecha a perna (sensitivity_sres) e o graded_scrit remove a rampa mas nao fecha (graded_scrit_alcance)."
- }
 ]

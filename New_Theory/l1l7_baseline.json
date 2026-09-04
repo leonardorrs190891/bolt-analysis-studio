@@ -30,27 +30,6 @@
  "n_resolvidos": 148,
  "missing": [],
  "cases": {
-  "UFU_5A_preload_decay": {
-   "source": "UFU_LAB",
-   "family": "transverse",
-   "mae": 0.05230431484044651,
-   "maxerr": 0.1581580604564703,
-   "resid_std": 0.05524963620945791
-  },
-  "UFU_13A_first_preload_decay": {
-   "source": "UFU_LAB",
-   "family": "transverse",
-   "mae": 0.09620057457269042,
-   "maxerr": 0.17646074148429852,
-   "resid_std": 0.07175111109221292
-  },
-  "UFU_13A_def_preload_decay": {
-   "source": "UFU_LAB",
-   "family": "transverse",
-   "mae": 0.05157942846735943,
-   "maxerr": 0.09311395049059767,
-   "resid_std": 0.05343017555397122
-  },
   "liu2025_M16_amp0p25": {
    "source": "LIU_2025",
    "family": "transverse",

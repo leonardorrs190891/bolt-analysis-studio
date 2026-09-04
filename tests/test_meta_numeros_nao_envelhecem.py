@@ -397,8 +397,13 @@ _VIVAS = [
     # linha que carrega numero de decisao precisa de ancora propria.
     ("New_Theory/DECISOES_PENDENTES.md", "cabeçalho: censo vigente",
      r"censo \*\*(\d+)/205\*\*", "tripe", None),
+    # O denominador ancora a afirmação VIVA, e ele mudou de 467 para 458 em
+    # 2026-09-04, quando os três grupos de bancada saíram do projeto: 9
+    # constantes auditadas a menos. Reapontar a âncora não afrouxa nada — o
+    # número asserido continua vindo do store, e a linha de 467 fica no
+    # documento como histórico, sem negrito, fora da âncora.
     ("New_Theory/DECISOES_PENDENTES.md", "mesa, item A: passivo de procedência",
-     r"→ (?:\*\*)?(\d+)(?:\*\*)? de 467", "prov_sem", "Na mesa do professor"),
+     r"→ (?:\*\*)?(\d+)(?:\*\*)? de 458", "prov_sem", "Na mesa do professor"),
     ("New_Theory/MODEL_LEGITIMACY.md", "§8: perna que manda",
      r"\*\*σ_res (\d+) · MAE \d+ · res\.máx", "manda_sd", None),
     ("New_Theory/MODEL_LEGITIMACY.md", "§8: domínio do σ_res",

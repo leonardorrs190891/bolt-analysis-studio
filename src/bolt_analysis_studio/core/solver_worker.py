@@ -340,14 +340,14 @@ def build_v2_material(overrides, F0: float, A_contact: float,
     # parafuso, entao o SOBRETORQUE (pct acima de 70%) excita mais o plato.
     # Como p e p_ref dividem pelo mesmo A_contact, o gate reduz a (p/p_ref) =
     # pct/70 (independe de A_contact/A_s/proof) => a SEPARACAO por sobretorque
-    # vale em qualquer F0. W_conf_ref=7671 eh o valor UFU por-par (default; sem
+    # vale em qualquer F0. W_conf_ref=7671 eh o valor da âncora interna por-par (default; sem
     # ancora p/ outros pares — MODEL_LEGITIMACY §4.9 strand 3). Overrides
     # explicitos em _v2_tuner_overrides VENCEM; W_conf_ref=0 desliga.
-    # CAVEAT DE ESCALA (medido): a inercia no nominal so vale ~na escala UFU
+    # CAVEAT DE ESCALA (medido): a inercia no nominal so vale ~na escala da âncora interna
     # (F0~50 kN => delta~0.014); em F0 alto o trabalho de slip (proporcional a
     # F0) enche o W_conf_ref FIXO e o gate morde tb no nominal (F0=120 kN =>
-    # delta~0.09). Consequencia de "aplica W_conf_ref UFU por-par a qualquer
-    # junta" (o flag aprovado): calibrado na escala UFU, aproximado fora dela.
+    # delta~0.09). Consequencia de "aplica W_conf_ref âncora interna por-par a qualquer
+    # junta" (o flag aprovado): calibrado na escala da âncora interna, aproximado fora dela.
     pct = float(pct_yield or 70.0)
     if pct <= 0.0:
         pct = 70.0
@@ -1166,14 +1166,14 @@ class SolverWorker(QObject):
         # parafuso, entao o SOBRETORQUE (pct acima de 70%) excita mais o plato.
         # Como p e p_ref dividem pelo mesmo A_contact, o gate reduz a
         # (p/p_ref) = pct/70 (independe de A_contact/A_s/proof) => a SEPARACAO por
-        # sobretorque vale em qualquer F0. W_conf_ref=7671 eh o valor UFU por-par
+        # sobretorque vale em qualquer F0. W_conf_ref=7671 eh o valor da âncora interna por-par
         # (default; sem ancora p/ outros pares — MODEL_LEGITIMACY §4.9 strand 3).
         # Overrides explicitos em _v2_tuner_overrides VENCEM; W_conf_ref=0 desliga.
-        # CAVEAT DE ESCALA (medido): a inercia no nominal so vale ~na escala UFU
+        # CAVEAT DE ESCALA (medido): a inercia no nominal so vale ~na escala da âncora interna
         # (F0~50 kN => delta~0.014); em F0 alto o trabalho de slip (proporcional a
         # F0) enche o W_conf_ref FIXO e o gate morde tb no nominal (F0=120 kN =>
-        # delta~0.09). Consequencia de "aplica W_conf_ref UFU por-par a qualquer
-        # junta" (o flag aprovado): calibrado na escala UFU, aproximado fora dela.
+        # delta~0.09). Consequencia de "aplica W_conf_ref âncora interna por-par a qualquer
+        # junta" (o flag aprovado): calibrado na escala da âncora interna, aproximado fora dela.
         pct = float(getattr(config, 'preload_percent_yield', 70.0) or 70.0)
         mat = build_v2_material(ov, F0, geom.A_contact, pct)
 

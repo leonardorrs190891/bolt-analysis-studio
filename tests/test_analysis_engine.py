@@ -16,7 +16,7 @@ This script generates all plots for loosening phenomena analysis:
 
 Run: python test_analysis_engine.py
 
-LTAD/UFU + Petrobras R&D
+internal reference + Petrobras R&D
 """
 
 import numpy as np

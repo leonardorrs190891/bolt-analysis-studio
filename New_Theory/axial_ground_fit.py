@@ -2,14 +2,14 @@
 
 Diagnostico (curvas cruas): (1) taxa de cauda do modelo e' F0-flat (0.024/dec)
 enquanto o dado cai 0.020->0.010/dec (F0^-2); (2) o NIVEL da cauda esta ~20% alto
-ja' na ancora 15kN => C_creep do par UFU nao vale neste rig (doutrina §4.7:
+ja' na ancora 15kN => C_creep do par da âncora interna nao vale neste rig (doutrina §4.7:
 C_creep e' PER-PAR, ICs disjuntos). A estrutura de duas escalas (assentamento
 rapido exponencial + cauda log-ciclo) E' o que o dado mostra — o erro era tratar
 as 4-5 amplitudes como universais.
 
 Fit ANALITICO (formas fechadas do canal axial) de 5 constantes per-rig nas ~60
 amostras das 5 curvas: emb_cap (prior Rz<4 3.5um), N_emb (prior 50), C_creep_rig
-(prior UFU 1.867e-11), exp_fast (prior 4), exp_slow (prior 2). p_ref ancorado em
+(prior âncora interna 1.867e-11), exp_fast (prior 4), exp_slow (prior 2). p_ref ancorado em
 p(15kN) (input). Cada constante e' pinada por feature independente (fast-drop x5,
 tail-rate x5, shape inicial). Verificacao final: engine a 1e6 (rodar depois com
 --engine-check <params>).
@@ -90,7 +90,7 @@ def main():
     print("GROUND FIT (5 constantes per-rig, curvas completas, p_ref=p(15kN) input):")
     print(f"  emb_cap  = {emb_cap*1e6:.2f} um   (prior Rz<4 3.5; 'fitted, this rig')")
     print(f"  N_emb    = {n_emb:.0f} ciclos     (prior 50)")
-    print(f"  C_creep  = {c_rig:.3e}  (prior UFU 1.867e-11; §4.7 per-par)")
+    print(f"  C_creep  = {c_rig:.3e}  (prior âncora interna 1.867e-11; §4.7 per-par)")
     print(f"  exp_fast = {exp_f:.2f}            (prior 4)")
     print(f"  exp_slow = {exp_s:.2f}            (prior 2)")
     print()

@@ -242,7 +242,7 @@ than the raw scatter (Burgers model, Eq. 16-20; time in hours):
 - **Per-pair `C_creep` candidate for a CFRP-Ti pair**: this is a pure static-hold, zero-slip,
   zero-rotation test — the cleanest possible isolation of a creep-only mechanism in the whole
   library. It directly extends the "C_creep is per-pair, not universal" finding
-  (`MODEL_LEGITIMACY.md` §4.7, UFU steel rig vs 304SS anchor already disjoint) to a THIRD, very
+  (`MODEL_LEGITIMACY.md` §4.7, âncora interna steel rig vs 304SS anchor already disjoint) to a THIRD, very
   different pair (CFRP-laminate/Ti-6Al-4V, M6, ~3.7-6.9 kN preload) — expect a third, likely
   disjoint, `C_creep` value if/when fitted, not a shared constant.
   - **Functional-form caveat**: this paper's relaxation shape is a 4-parameter Burgers model
@@ -269,7 +269,7 @@ than the raw scatter (Burgers model, Eq. 16-20; time in hours):
   (analogous to how `emb_depth`/`D_init` are named states) rather than something to force through an
   existing tuner.
 - **Scale caveat**: M6 bolt, ~3.7-6.9 kN preload, 60×60×4 mm coupon — two full orders of magnitude
-  smaller than the M16/~50 kN UFU rig BAS V2's defaults are tuned against. Any constant pulled from
+  smaller than the M16/~50 kN âncora interna rig BAS V2's defaults are tuned against. Any constant pulled from
   this paper (not just C_creep — E1≈8 GPa through-thickness modulus, if the Table 1/Table 2
   cross-reconciliation above is right, is itself a usable independent CFRP through-thickness-modulus
   data point) should be treated as this-pair-only, consistent with the library's repeated finding

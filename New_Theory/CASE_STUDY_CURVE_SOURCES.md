@@ -5,7 +5,7 @@ artigos e **re-digitalizar as curvas** F/F₀ vs ciclo (workflow `digitize_shear
 
 **Status:** os 8 casos de literatura **ainda não têm curva digitalizada** (`nocsv`),
 hoje rodam só com o modelo sintetizado pela geometria, sem curva experimental de
-referência. Os 3 casos UFU já têm curva (`Models/EXPERIMENTAL_UFU/reference_curves/`).
+referência. Os 3 casos âncora interna já têm curva (`Models/EXPERIMENTAL_ANCORA/reference_curves/`).
 
 > Não foi possível baixar os PDFs automaticamente (a maioria é paywalled). Os DOIs/URLs
 > abaixo permitem o download manual. Apenas **Yang 2019** é open-access.
@@ -23,13 +23,13 @@ referência. Os 3 casos UFU já têm curva (`Models/EXPERIMENTAL_UFU/reference_c
 | Yang Low Amplitude (M16) | *idem* (mesmo paper, amplitude menor) | `10.1155/2019/2036509` | **Open access** | https://onlinelibrary.wiley.com/doi/10.1155/2019/2036509 |
 | Severe Transverse (M16) | Junker, G.H. (1969). *New Criteria for Self-Loosening of Fasteners Under Vibration*. SAE Paper 690055 | `10.4271/690055` | Paywall (SAE) | https://www.sae.org/publications/technical-papers/content/690055/ |
 
-## Casos UFU — curva já digitalizada
+## Casos âncora interna — curva já digitalizada
 
 | Case study | Origem | Curva |
 |---|---|---|
-| UFU 5A (3/4" UNC, Junker) | UFU Lab. de Tribologia de Parafusos, trial 5A (2025-03-05) | `Models/EXPERIMENTAL_UFU/reference_curves/UFU_5A_preload_decay.csv` |
-| UFU 13A 1ª (3/4" UNC, interrompido) | UFU Lab., trial 13A-1ª (2025-03-19) | `Models/EXPERIMENTAL_UFU/reference_curves/UFU_13A_first_*.csv` |
-| UFU 13A definitivo (3/4" UNC, Junker) | UFU Lab., trial 13A-def (2025-04-14) | `Models/EXPERIMENTAL_UFU/reference_curves/UFU_13A_def_*.csv` |
+| âncora interna 5A (3/4" UNC, Junker) | âncora interna Lab. de Tribologia de Parafusos, trial 5A (2025-03-05) | `Models/EXPERIMENTAL_ANCORA/reference_curves/ancora_interna.csv` |
+| âncora interna 13A 1ª (3/4" UNC, interrompido) | âncora interna Lab., trial 13A-1ª (2025-03-19) | `Models/EXPERIMENTAL_ANCORA/reference_curves/ancora_interna*.csv` |
+| âncora interna 13A definitivo (3/4" UNC, Junker) | âncora interna Lab., trial 13A-def (2025-04-14) | `Models/EXPERIMENTAL_ANCORA/reference_curves/ancora_interna*.csv` |
 
 ## Como re-digitalizar (depois de baixar o PDF)
 

@@ -31,7 +31,7 @@ Violadores por fonte (16 fontes; as outras 12 fecham 100%):
 |---|--:|--:|---|--:|--:|
 | LU_2024 | 10 | 10 | YANG_2021 | 6 | 2 |
 | BAUER_2024 | 9 | 7 | JCSR_2023 | 5 | 2 |
-| CHU_2026 | 9 | 7 | UFU_LAB | 3 | 2 |
+| CHU_2026 | 9 | 7 | ANCORA_INTERNA | 3 | 2 |
 | YANG_2023_IJPEM | 9 | 7 | KARLSEN_2022 | 11 | 1 |
 | ECCLES_2010 | 10 | 5 | LIU_2016 | 14 | 1 |
 | YANG_2019 | 5 | 4 | LIU_2020_WEAR | 9 | 1 |
@@ -252,7 +252,7 @@ acima chega a *"100% − exceções"* **apenas se** as exceções forem assinada
 | decisão G2 (MAE-only) | ECCLES_2010 5 (receita pr31 pronta, aguarda a decisão) |
 | canal estrutural ξ-dependente | 2 — YANG_2021 |
 | cliff/rebound de corrosão | 2 — JCSR (o engine não recupera pré-carga) |
-| incubação de assentamento | 2 — UFU |
+| incubação de assentamento | 2 — âncora interna |
 | escala de rigidez com espessura de membro | 3 — ROUSSEAU |
 | tripla combinação | 1 — YANG_2023_AME |
 

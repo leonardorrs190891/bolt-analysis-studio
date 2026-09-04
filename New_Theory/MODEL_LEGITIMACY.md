@@ -582,7 +582,7 @@ wear/loosening estruturalmente inertes, verificado por registry-truth). Rodar:
 um fator **~11.7**, com **ICs que não se sobrepõem** ([7.3e-13, 1.35e-12] contra
 [5.07e-12, 2.68e-11]). Este é o ramo "a discordância quantifica" do spec §1.7:
 **C_creep não transfere entre pares tribológicos** (304SS estático do
-li2022marstruc vs aço UFU do shear dinâmico). Como o `emb_depth` já é input por
+li2022marstruc vs aço âncora interna do shear dinâmico). Como o `emb_depth` já é input por
 junta (§1.3a / §4.6), `C_creep` é uma constante **por par tribológico**; o valor
 do Estágio A (1.165e-11) é estimativa-na-curva, com exatamente o IC largo (×2.30)
 que a identificabilidade já apontava como "fraco".
@@ -655,7 +655,7 @@ pré-danificadas). Nenhum parâmetro ajustado a nenhuma curva. Rodar:
 | YANG_2019 | 0.6384 | 0.7272 | 0/3 | 0/3 |
 
 **A varredura falsifica a transferência de CONSTANTES, não de FORMAS.** Com
-constantes congeladas de outro rig (o shear UFU), o modelo **vence o baseline
+constantes congeladas de outro rig (o shear âncora interna), o modelo **vence o baseline
 no-loss (ratio≡1) em 34/46** — captura a **direção e a existência** do
 afrouxamento em toda a faixa M8→M42 — mas **perde para um ajuste local de 1
 parâmetro (exponencial) em 37/46**: não acerta a **magnitude** com as constantes
@@ -674,7 +674,7 @@ mecanismo/procedência; próximos passos ficam para o roadmap):
    dominadas por colapso (Liu2025, Yang2019) **retêm preload demais** no modelo
    (`final_pred > final_data`): Bauer 9/9, Icmez 8/8, Lu 8/10, Karlsen-M30 5/7,
    Rousseau-t10 1/3.
-   O assentamento previsto com as constantes UFU é sistematicamente **brando**
+   O assentamento previsto com as constantes âncora interna é sistematicamente **brando**
    demais para estes rigs.
 2. **Colapso sobre-predito** — o modelo leva **F₀→0 onde o dado nunca colapsa**:
    Liu2025 6/6, Yang2019 3/3 (2/3 no sentido estrito — a `amp0p6 5Hz` tem
@@ -752,8 +752,8 @@ Resultado **AS IS**:
 
 **Leitura (reforça §8):** a física adotada é **cientificamente mais honesta** (áreas/pressões
 reais) mas o MAE global piora de leve — porque o baseline era **lisonjeado por um artefato de
-wear** (Karlsen). A conformação per-par UFU **não transfere magnitude** fora do par/pressão
-UFU, e o wear físico expõe que **colapsos precisam de dano, não de wear**. Formas transferem;
+wear** (Karlsen). A conformação per-par da âncora interna **não transfere magnitude** fora do par/pressão
+âncora interna, e o wear físico expõe que **colapsos precisam de dano, não de wear**. Formas transferem;
 constantes e colapsos são por par/mecanismo. Artefatos re-gerados (`transfer_results.json`,
 `transfer_report.md`, `transfer_grid.png`).
 
@@ -1069,7 +1069,7 @@ fita `{C_creep, W_conf_ref}` (conformação ON). Thresholds **congelados no spec
 | reaperto | 0.0459 | 0.0418 | −0.0041 |
 
 `W_conf_ref` fitado = **1.253e4**. `C_creep` re-fitado livre nos dois braços
-(1.190e-11 → 1.964e-11 — mesma ordem de grandeza do par UFU, §4.7). Residual de
+(1.190e-11 → 1.964e-11 — mesma ordem de grandeza do par da âncora interna, §4.7). Residual de
 conservação (run do sobretorque): **8.008 → 4.051** — **melhorou**, coerente com o
 design `dF_0`-only.
 
@@ -1096,7 +1096,7 @@ tocar no resto — confirmando que faltava **forma**, não um tuner.
 
 **Escopo honesto (não superestimar).** É um resultado forte, mas cercado:
 
-- **Um rig** (UFU M16), **uma condição de sobretorque** (sobretorque/TP6), **um
+- **Um rig** (âncora interna M16), **uma condição de sobretorque** (sobretorque/TP6), **um
   experimento**. A conformação foi validada onde há **um** ponto de alta pressão —
   não sobre uma varredura de pressão de contato.
 - `W_conf_ref` é **constante fitada por par/rig, sem âncora de literatura ainda** —
@@ -1206,7 +1206,7 @@ variável característica de cada tratamento de superfície" — i.e. **reproduz
 endpoint diferente (falha/profundidade de wear, não arresto de slip), quantidade
 diferente (densidade J/mm² vs total ponderado por pressão J), e nenhum valor numérico
 para aço foi obtido. **Cuidado registrado:** a densidade areal implícita ~20 J/mm² é um
-**check de consistência INTERNO** (mesmo dado/geometria UFU que produziu o fit), **não**
+**check de consistência INTERNO** (mesmo dado/geometria âncora interna que produziu o fit), **não**
 um match de literatura — **não é âncora**. Na escala de procedência, `W_conf_ref` fica
 **um degrau abaixo do `C_creep`**: "framework identificado, por-par pela própria
 definição do framework, mas **numericamente sem âncora — Fase 3 aberta**". Experimento de
@@ -1230,7 +1230,7 @@ aqui NUNCA fora escrito por experimento; fingerprint sha256 do bloco `shared`
 constante com procedência independente, a escolha foi **physics-first**: manter
 `emb_depth` como input fixo (removido do candidate set) e preservar o `C_creep`
 (a constante com procedência de âncora independente §4.7; **fitado aqui ao valor
-UFU 1.867e-11, não ao valor da âncora 9.9e-13** — o canônico é o par UFU)
+âncora interna 1.867e-11, não ao valor da âncora 9.9e-13** — o canônico é o par da âncora interna)
 → parsimônia seleciona **`{W_conf_ref, C_creep}`** (global 0.0509, ~0.005
 acima do fit livre — custo de última casa aceito por **procedência sobre MAE**, a
 filosofia do projeto). **Resultado canônico:** sobretorque **0.1378 → 0.0300**
@@ -1254,10 +1254,10 @@ Busca dedicada e profunda (mais funda que a strand 3; relatório
   identificável); (ii) formato de platô → **baixa pressão / outra causa** (Liu2025 baixa
   amplitude; Rousseau t14 rigidez de membro; Lu 0.25mm abaixo do slip-onset); (iii) maior
   excitação do harness (Karlsen M30/M42) → **artefato + colapso** (caveat abaixo). Nenhuma
-  combina pressão ≈ sobretorque UFU + platô sustentado + a sub-predição-sem-conformação
-  (a única assinatura limpa, que só o sobretorque UFU mostra). **Achado cross-rig (paralelo
-  §4.8): alta fração de preload em outro rig NÃO reproduz o platô do sobretorque UFU** → o
-  platô está atado ao apoio pequeno específico do rig UFU (100 mm² → ~1.2 GPa a 120 kN) e
+  combina pressão ≈ sobretorque âncora interna + platô sustentado + a sub-predição-sem-conformação
+  (a única assinatura limpa, que só o sobretorque âncora interna mostra). **Achado cross-rig (paralelo
+  §4.8): alta fração de preload em outro rig NÃO reproduz o platô do sobretorque âncora interna** → o
+  platô está atado ao apoio pequeno específico do rig âncora interna (100 mm² → ~1.2 GPa a 120 kN) e
   ao par → **"formas transferem, constantes são por par/rig"**. *Honorable mention (corrobora
   a FORMA, não a constante):* o sweep Lu 2024 M8 (`lu2024_M8_fig20_T{4..28}Nm.csv`) mostra o
   trend qualitativo preload→arresto (T28Nm 71% proof achata em ≈0.23; T4Nm 10% colapsa a
@@ -1272,7 +1272,7 @@ Busca dedicada e profunda (mais funda que a strand 3; relatório
 **Veredicto Fase 3:** `W_conf_ref` **confirmado não-ancorável** com dado disponível —
 permanece **constante por par/rig, um degrau abaixo do `C_creep`**; o valor canônico
 (7671 J) **não muda**. **Experimento que ancoraria** (spec, molde `anchor_creep.py`):
-fretting no mesmo par UFU a **pressão conhecida ≈ 1.2 GPa**, medindo energia dissipada
+fretting no mesmo par da âncora interna a **pressão conhecida ≈ 1.2 GPa**, medindo energia dissipada
 acumulada vs. arresto do slip (o trabalho de slip onde a taxa de perda cai à metade **é**
 `W_conf_ref`), varrendo ≥3 pressões p/ **medir `n`** (hoje fixo em 2); pré-registrar
 discordância com 7671 J como esperada (como os ~11.7× do `C_creep`).
@@ -1285,8 +1285,8 @@ agora computa `A_contact = π·(r_bearing² − r_furo²)` (área real do anel, 
 escala com `d²`≈1.33·`A_s`) → `p=F0/A_contact` **física por rig** (Karlsen M30/M42 →
 `p/p_ref≈1.0`), e o `p_ref=5e8` passa a corresponder a ~80% do proof em qualquer tamanho
 (referência de sobretorque consistente). **Caveat residual:** `p_ref`/`W_conf_ref` seguem
-constantes **por par** (UFU, sem âncora — strand 3) aplicadas cross-pair, então a
-*magnitude* da conformação é aproximada fora do par UFU (honesto per-par, não artefato).
+constantes **por par** (âncora interna, sem âncora — strand 3) aplicadas cross-pair, então a
+*magnitude* da conformação é aproximada fora do par da âncora interna (honesto per-par, não artefato).
 §4.8 (commitado) **não foi re-rodado**; a correção torna físicos, cross-rig, **tanto o
 wear de Archard** (profundidade = V/A_contact) **quanto o gate de conformação** — um re-run
 refletiria os dois (o 100mm² fixo era artefato p/ ambos), é follow-up.
@@ -1320,10 +1320,10 @@ ciclos**, mas em rugosidade/DESLOCAMENTO; Frérot 2023 (simulação):
 rugosidade satura (~40 ciclos), porém a **energia plástica dissipada NUNCA
 satura** — um `W_conf_ref` único e limpo em ENERGIA pode ser uma
 idealização; o gate atual (§4.9 acima, RESOLVED) funciona por estar fitado
-ao dado UFU, não por garantia física de assíntota energética.
+ao dado âncora interna, não por garantia física de assíntota energética.
 
 **Conclusão — sem mudança de veredicto.** O *valor* de `W_conf_ref`/`n` a
-~1–1,5 GPa segue dependente do **experimento âncora UFU** (fretting
+~1–1,5 GPa segue dependente do **experimento âncora âncora interna** (fretting
 ~1,2 GPa, medindo `n`, já spec'd acima) — 3ª vez que a literatura entrega
 forma, não número. Fontes:
 `Models/CALIBRATION_AND_VALIDATION/curve_library/ANALISE_MODELOS_R5.md`
@@ -1355,7 +1355,7 @@ dry/oil, transverso disp 0.3 mm 12.5 Hz, T=80 N·m; μ **derivado** do F₀ de 1
 
 **Veredicto: validação zero-refit BLOQUEADA por transferência de constantes cross-rig
 (§8 se repete, severamente — colapso total).** Com as constantes do Estágio A congeladas
-(M16/UFU) + `include_damage=True`, o modelo **colapsa** no Liu2022 (M12):
+(M16/âncora interna) + `include_damage=True`, o modelo **colapsa** no Liu2022 (M12):
 
 | Métrica (dry) | modelo | dado |
 |---|---|---|
@@ -1371,14 +1371,14 @@ re-aperto) e `N_RETIGHT=3` (os dados fig6a/6b/7a têm t0..t3, não t4). Ambos fo
 vs dado ~0.07/fase) reprova todos os gates sob qualquer janela, e estreitar G2/G3 só os
 tornaria mais fáceis.
 
-**Causa-raiz (diagnosticada):** três constantes **por-rig** transferidas do M16/UFU falham
+**Causa-raiz (diagnosticada):** três constantes **por-rig** transferidas do M16/âncora interna falham
 no M12/Liu2022:
-1. **`c_D=2.0`/`k_dmg_wear=4.0` são a assinatura de COLAPSO do reaperto UFU** — aplicadas ao
+1. **`c_D=2.0`/`k_dmg_wear=4.0` são a assinatura de COLAPSO do reaperto âncora interna** — aplicadas ao
    Liu2022 (que **não** colapsa: perde 14–27%), disparam o loop de runaway (D→1, wear→5×) ⇒
    colapso espúrio. Uma junta nova não-colapsante precisa de dano **muito mais brando** (ou off).
 2. **`emb_depth` VDI sobre-prevê** o assentamento de superfície retificada fina — **exatamente
    o achado da §4.6**, agora no M12 (≈0.19 de perda só de embedding).
-3. **`k_wear_scale=1.0`** (default congelado) vs o **0.44** fitado ao M16 UFU nova ⇒ wear
+3. **`k_wear_scale=1.0`** (default congelado) vs o **0.44** fitado ao M16 âncora interna nova ⇒ wear
    ~2.3× rápido.
 
 **G5 (parcimônia):** o sweep de `k_emb_renew` escolheu **k=0** (med idêntico, 0.594) ⇒ a
@@ -1408,7 +1408,7 @@ atacada (decisão do usuário "do all"):
 **(1) Nível confound RESOLVIDO — colapso é transferência de constantes, não estrutural.**
 `liu2022_level_probe.py` reproduz o colapso do §4.10 **e** acha um nível M12
 não-colapsante: **emb Rz<4 (~4 µm) + `k_wear_scale_tr`~0.06–0.08** (per-rig, ABAIXO do
-0.44 UFU — o rig M12 gross-slip desgasta mais rápido) **+ dano brando** (`c_D=0.5`,
+0.44 âncora interna — o rig M12 gross-slip desgasta mais rápido) **+ dano brando** (`c_D=0.5`,
 `k_dmg_wear=1.0`) ⇒ dry t0 loss ~0.14 (dado 0.140), final ~0.84–0.87 (não →0). Confirma as
 3 constantes por-rig do §4.10; desbloqueia a validação da recuperação.
 
@@ -1591,13 +1591,13 @@ cross-validável** — capacidade validada, NÃO adotar no `shared` sem um segun
 acceptable, still slowly diverging").** A cauda do rev.3 (single-exp) divergia porque **duas**
 deficiências coexistiam: (1) taxa de cauda F₀-flat (Norton fracional-flat: 0.024/dec p/ todo
 F₀, vs dado 0.020→0.010/dec ∝F₀⁻²); (2) **nível da cauda ~20% alto já na âncora 15 kN** — o
-`C_creep` do par UFU **não vale neste rig** (§4.7 per-par, ICs disjuntos — **confirmado num
+`C_creep` do par da âncora interna **não vale neste rig** (§4.7 per-par, ICs disjuntos — **confirmado num
 segundo rig**). Revisão da estrutura contra as curvas cruas: as **duas escalas de exaustão**
 (assentamento rápido exponencial + cauda log-ciclo) são o que o dado mostra — a estrutura
 sobrevive; o erro era tratar as 4–5 amplitudes como universais quando a doutrina as declara
 per-rig. **`axial_ground_fit.py`**: fit analítico (formas fechadas) de **5 constantes per-rig
 nas ~60 amostras das 5 curvas completas** (não 5 finais): `emb_cap=4.3 µm` (handbook 3.5),
-`N_emb=15`, `C_creep=1.45e-11` (UFU 1.87e-11), `exp_fast=2.4`, `exp_slow=3.6` (novo campo
+`N_emb=15`, `C_creep=1.45e-11` (âncora interna 1.87e-11), `exp_fast=2.4`, `exp_slow=3.6` (novo campo
 `creep_conform_exp` — pré-conformação do reservatório LENTO, default-inert, reusa `p_ref_emb`;
 `creep_conformance_factor` no engine, wired em `CreepLoss`). **Engine 1e6 confirma:** slope
 **2.54e-5 = 96% do dado**, mediana MAE de curva **0.0033**, erros finais [−0.002, +0.019,
@@ -1606,9 +1606,9 @@ nas ~60 amostras das 5 curvas completas** (não 5 finais): `emb_cap=4.3 µm` (ha
 16.5 kN (o próprio dado salta 0.812→0.885 entre vizinhos); os expoentes trocam com a capacidade
 dentro de uma banda (a FORMA — ambos os canais gated por F₀ — é robusta; o split é per-rig);
 Liu2017 segue o único P0-sweep ⇒ **fit, não cross-validado**. Grade 1e6 da parametrização
-antiga (exp_fast=4 fixo, emb handbook 3.5 µm, C_creep UFU): exp_slow=0 reproduziu o registro
+antiga (exp_fast=4 fixo, emb handbook 3.5 µm, C_creep da âncora interna): exp_slow=0 reproduziu o registro
 59% exato (consistência); **exp_slow=2 dá slope 90%, finais-MAE 0.008, topo 0.923=dado** — a
-alternativa PARCIMONIOSA (só 2 expoentes fitados, constantes handbook/UFU) chega a 90%; o
+alternativa PARCIMONIOSA (só 2 expoentes fitados, constantes handbook/âncora interna) chega a 90%; o
 ground-fit de 5 constantes compra os últimos 6% de slope + a FORMA da cauda (o nível per-rig
 do C_creep). As duas parametrizações são o "band" citado acima, quantificado.
 Supersede o parágrafo (a) acima como resultado axial de referência.
@@ -1709,7 +1709,7 @@ testes, `library_error_modes.{py,json}`, `diag_collapse_missed.py`, `validate_ra
 instrumentada dos 16 restantes (`diag_shallow_collapse.py`/`diag_shallow2.py` +
 3 grades). **Duas hipóteses FALSIFICADAS por instrumentação**: (i) arresto por conformação
 (gate=1.00 o tempo todo); (ii) gate-fechado como bloqueador único (abrir over-colapsa:
-Liu2025 0.126→0.711 no nível de wear UFU). Diagnóstico real: slip=0 nos alvos (δ_t>curso,
+Liu2025 0.126→0.711 no nível de wear âncora interna). Diagnóstico real: slip=0 nos alvos (δ_t>curso,
 3º caso do gate fechado), MAS abrir exige o resto do bloco per-rig. Resultados: **Içmez
 FECHADO — 0.078→0.042** (config única: c_bend=0.6 + `loose_arrest_floor=0.25` **LIDO do
 platô do próprio dado** — o platô raso É um arresto; fronteira per-curva 0.035). **Bauer
@@ -1795,7 +1795,7 @@ over-retém +0.06 (nível de assentamento — classe de constante DIFERENTE). **
 (parcimônia): NÃO adotado** — 2 constantes extras por Δ0.002 de mediana não se justificam;
 a fronteira do Liu2025 permanece 0.126. Registro: incubação = mecanismo de FORMA validado
 (timing); a família Liu2025 fica a UMA constante-de-nível de fechar, com o caminho
-experimental (UFU P0-sweep protocolo com réplicas e critério de parada) sendo o teste
+experimental (âncora interna P0-sweep protocolo com réplicas e critério de parada) sendo o teste
 definitivo. 9ª e última combinação da sessão.
 
 ---
@@ -2028,7 +2028,7 @@ todas default-inert, TDD, com falsificação nomeando a variável antes do build
 
 ### 4.22 Varredura de literatura (diretiva literatura-only) — F_amp ANCORADO + confirmação independente do §4.20 + Zhang grip-sweep (2026-07-08, iter 14)
 
-**Diretiva do professor: experimento UFU completamente descartado — tudo por literatura.**
+**Diretiva do professor: experimento âncora interna completamente descartado — tudo por literatura.**
 Dois scouts varreram a biblioteca (apparatus_notes + manifests + índice dos 96 papers):
 
 **(1) F_amp deixa de ser assumido — item 4 da agenda FECHADO sem ensaio.** Pai & Hess 2002
@@ -2179,13 +2179,13 @@ arquivos; harness `anchors_confront.py`; resultados na seção "Âncoras" do var
   (creep puro seria flat) e **a âncora que o §4.9 declarou inexistente agora EXISTE** (retry
   parcial: n adotado 2.0 na borda da banda).
 - **C_creep BANDA (por-par confirmado, 3º rig)**: den Otter M16-Al5083 dá 0.012–0.025/década
-  (cresce com F₀, consistente com Liu2021); mesma ordem dos pares Liu2017/UFU ⇒ §4.7
+  (cresce com F₀, consistente com Liu2021); mesma ordem dos pares Liu2017/âncora interna ⇒ §4.7
   reconfirmado em rig independente; per-década não-constante em Al nomeia desvio do ln puro.
 - **K_archard DIREÇÃO**: wear medido ~N^0.53 (Zhang2019) vs Archard-K-constante ~N^1 —
   running-in decrescente nomeado (V1 tinha K_running_in/K_steady; V2 usa K único).
 - **k_dmg_mu DIREÇÃO (sinal POR-PAR)**: µ medido SOBE 0.14→0.19 sob vibração seca (Eccles)
-  — oposto ao k_dmg_mu (µ cai, calibrado no reaperto UFU): Eccles ancora o ramo crescente
-  (família k_gall/fretting-roughening), UFU o decrescente.
+  — oposto ao k_dmg_mu (µ cai, calibrado no reaperto âncora interna): Eccles ancora o ramo crescente
+  (família k_gall/fretting-roughening), âncora interna o decrescente.
 
 Infra: `anchors_verdicts.json` consumido pelo inventário (coluna viva, estilo painel);
 lotes seguintes: torque-residual, wear por rig com A/H, µ por lube, creep IN718/CFRP/gaxeta,
@@ -3836,7 +3836,7 @@ e então a curva de Junker vira PREDIÇÃO, não alvo de ajuste.**
 |---|---|---|---|
 | `k_b, λ, β, A_s` | analítica | geometria/catálogo | (invariante) |
 | `k_j_init, α_GW` | físico | default; deveria vir de Exp 1 (rampa estática) | medido: rigidez/separação |
-| `C_creep` | físico | âncora de dado independente para o par 304SS (§4.7); par UFU permanece estimado-na-curva — constante É por par tribológico | medido: Exp 2 (creep-hold) |
+| `C_creep` | físico | âncora de dado independente para o par 304SS (§4.7); par da âncora interna permanece estimado-na-curva — constante É por par tribológico | medido: Exp 2 (creep-hold) |
 | `emb_depth, N_emb` | físico | default ajustado à curva (subido 12→30µm p/ fechar nova) | medido: Exp 3 (baixa amplitude, sem slip) |
 | `K_archard, hardness` | físico | literatura (boundary lub) | medido: ensaio de wear |
 | `µ_thread, µ_bearing` | físico | literatura | medido: Exp 4 (slip onset) |
@@ -3847,7 +3847,7 @@ e então a curva de Junker vira PREDIÇÃO, não alvo de ajuste.**
 | `k_thread_fret` | físico-fenom. | fator geométrico/engajamento do fretting de flanco axial (spec 2026-07-06); default **0.0 = inerte**, **NÃO adotado** — a calibração ao gradiente `∂/∂A_F` do Liu2017 (a "B2") dá `k≈3.0` mas PIORA o MAE (§4.6: nível domina), então fica capacidade validada, não fix | capacidade de fretting de flanco medida por par (SEM/perfilometria do flanco sob carga axial) |
 
 **Verdade desconfortável:** hoje, várias "constantes físicas" (emb_depth,
-C_creep — este último agora ancorado para o par 304SS, §4.7; o valor do par UFU
+C_creep — este último agora ancorado para o par 304SS, §4.7; o valor do par da âncora interna
 segue estimado-na-curva) foram, em algum momento, **ajustadas contra as mesmas
 curvas de shear** — não medidas independentemente. Então a separação física/tunável existe no *design*,
 mas ainda **não está realizada nos dados**. Enquanto Exp 1–5 não forem feitos, a
@@ -3874,7 +3874,7 @@ ensaios — provar legitimidade por **predição cross-condição** (Seção 6.4
    - cross-condição: calibrar em algumas amplitudes/pré-cargas, **predizer** uma retida;
    - observáveis secundários: `θ_loose`, energia dissipada, evolução de Φ, `D(N)`
      devem bater com medidas independentes;
-   - biblioteca de 97 papers (`Models/CALIBRATION_AND_VALIDATION/`) + UFU.
+   - biblioteca de 97 papers (`Models/CALIBRATION_AND_VALIDATION/`) + âncora interna.
 5. **Reportar identificabilidade junto do fit** — sempre rodar a análise da
    Seção 4 e publicar os tuners com seus intervalos de confiança / veredicto.
 6. **Não-identificabilidade estrutural tratada por construção.** O registro de
@@ -4042,7 +4042,7 @@ fingerprint, a fase embarcou com re-stamp completo + auditoria de deriva zero.
   +2 curvas da Fig. 6 do ROUSSEAU
   (recuperação 2026-08-01: HDPE previu a condição nova NO TRIPÉ com zero
   refit; aço re-fitado por procedência com o G2 held-out FALHADO declarado);
-  UFU_LAB fora do censo por decisão de 2026-08-01, preservada;
+  ANCORA_INTERNA fora do censo por decisão de 2026-08-01, preservada;
   +2 réplicas YANG_2021 de 2026-07-31 à noite, ambas no tripé por mérito;
   regra n<6 assinada 2026-08-01 — σ sem suporte = não-julgável, 6 curvas
   na classe, 3 saíram do tripé; os 3 não-julgáveis novos contam no σ-manda
@@ -4122,12 +4122,12 @@ baixar MAE de curva.
 | 2026-07-04 | §4.9 **conformação dependente da pressão** (Fase 2, spec `2026-07-04-pressure-conformation-design.md`; A/B pré-registrado `conformation_fit.py`/`.json`): gate pressão-dependente que arresta a perda de `F_0` slip-driven conforme o contato sobretorqueado se conforma. Baseline `{C_creep}` vs tratamento `{C_creep, W_conf_ref}`; `n=2`/`p_ref=5e8` **fixos por escolha**, `W_conf_ref`=1.253e4 o **único** novo fitado. **Veredicto pré-registrado RESOLVED** (thresholds congelados spec §9): sobretorque 0.1379 → **0.0201** (< RESOLVE 0.06; de 18.9× para 2.75× o piso por-condição, ~7× menos MAE), as outras seguram (deriva máx nova +0.0048 < hold 0.01), residual 8.008 → 4.051 (não degrada; design `dF_0`-only). **Fecha o fio da §4.5** — supre e valida a forma faltante (regime dependente da pressão de contato) que o adendo do bound deixou aberto: "uma física, excitada pelo regime". Caveats: 1 rig/1 sobretorque/1 experimento; `W_conf_ref` constante por par/rig sem âncora (procedência = Fase 3, como C_creep); `n`/`p_ref` fixos, não fitados; forma fenomenológica **sustentada**, não provada; bloco `shared` canônico **intocado** (standalone, adoção = decisão do professor). |
 | 2026-07-04 | §4.9 robustez (strand 1/3 do fortalecimento; `conformation_fit.py --fit-n`, `conformation_fitn.{json,md}`): A/B irmão com `n` **livre** em [0.5, 4.0] fitado junto com `{C_creep, W_conf_ref}`. `n` **crava no teto (3.9999)**; sobretorque resolve **ainda mais** (0.1379 → 0.0143 < os 0.0201 do `n=2`), residual 8.008 → 3.796, MAE global 0.0796 → 0.0484 (um fio abaixo dos 0.0486 do `n=2`) — **mas** nova deriva +0.0129 > hold 0.01 ⇒ **veredicto PARTIAL** (recomputado pelo mesmo classificador). Leitura: resgate do sobretorque **robusto a `n∈[2,4]`**; fitar `n` super-separa (satura o bound) e troca nova por MAE-global ⇒ **fixar `n=2` moderado é a escolha certa**, o RESOLVED do `n=2` **permanece o headline**. Bound **não** alargado (saturação registrada AS IS; alargar = follow-on deliberado). Bloco `shared` intocado. |
 | 2026-07-04 | §4.9 robustez (strand 2/3; driver de conformação **auto-limitante**, `JointMaterial.conform_driver="effective"`, spec §7; `conformation_fit.py --effective`, `conformation_effective.{json,md}`): o incremento de `W_conf` é ponderado pelo gate de início-de-ciclo (auto-atenua). Effective `n=2` vs OFF ⇒ **RESOLVED e mais limpo que o raw** — sobretorque 0.1379 → **0.0299** (<0.06) e **as três outras MELHORAM** (deriva máx −0.0010 vs raw +0.0048), residual 8.008 → 4.848, `W_conf_ref`=7657. Pergunta-chave: o effective **não** tira o `n` do teto (fit-n crava 4.0 igual ao raw ⇒ **o rail é do objetivo MAE-global, não do driver**; `n=2` fixo segue certo p/ os dois). **Mas** o effective é **mais robusto no `n` extremo** (segura nova +0.0093 < hold onde o fit-n raw furou +0.0129). **Correção de honestidade:** a forma mínima é **plateau auto-limitante, não equilíbrio verdadeiro `c*<1`** (assintótico → 1 sob creep; um `c*<1` real exigiria feedback na cinemática do slip — item #4, adiado). **Spec §7 reescrita.** Bloco `shared` intocado (21ed6a7). |
-| 2026-07-04 | §4.9 **Fase 3 — âncora do `W_conf_ref` tentada, NULL decisivo** (busca dedicada profunda, `W_conf_ref_anchor_hunt_phase3_2026-07-04.md`): Path A (curva cross-rig over-torqued que isole a constante) **não existe** — as curvas transversais da lib ou colapsam (alta %proof) ou têm platô por outra causa (baixa pressão) ou são artefato (Karlsen); **achado cross-rig: alta fração de preload noutro rig NÃO reproduz o platô do sobretorque UFU** (platô atado ao apoio pequeno do rig UFU → "formas transferem, constantes por par"). Lu2024 M8 corrobora a FORMA (trend preload→arresto) mas não isola a constante. Path B: **α=4.23e-5 mm³/J (aço 52100, Fouvry)** ancora `K_archard`, não `W_conf_ref` (χ de aço não citável + endpoint errado). Veredicto: `W_conf_ref` **não-ancorável** com dado disponível, permanece por-par (7671 J inalterado), um degrau abaixo do `C_creep`; experimento de âncora spec'd (fretting ~1.2 GPa, mede `n`). **Caveat/follow-up:** `library_common` fixa `A_contact=100mm²` → conformação cross-rig no harness §4.8 é artefato (re-escalar `A_contact`/`p_ref` por rig antes de reusar). |
-| 2026-07-05 | §4.9 caveat do harness **CORRIGIDO (11g)**: `library_common.geometry_for` agora computa `A_contact = π·(r_bearing²−r_furo²)` (área real do anel por parafuso, `r_furo=0.55·d`, escala `d²`≈1.33·`A_s`) em vez de 100mm² fixo → `p=F0/A_contact` física por rig (Karlsen M30/M42 `p/p_ref`~1, não o espúrio ~7–14; M16 real ~209mm²), e `p_ref=5e8` corresponde a ~80% proof em qualquer tamanho. `anchor_creep`/`calibrate_axial` inalterados (conformação inerte: static/axial). Caveat residual: `p_ref`/`W_conf_ref` per-par (magnitude aproximada fora do par UFU). §4.8 re-rodado a seguir (2026-07-05, ver addendum §4.8). 2 testes novos (escala per-rig + fix do artefato Karlsen). |
+| 2026-07-04 | §4.9 **Fase 3 — âncora do `W_conf_ref` tentada, NULL decisivo** (busca dedicada profunda, `W_conf_ref_anchor_hunt_phase3_2026-07-04.md`): Path A (curva cross-rig over-torqued que isole a constante) **não existe** — as curvas transversais da lib ou colapsam (alta %proof) ou têm platô por outra causa (baixa pressão) ou são artefato (Karlsen); **achado cross-rig: alta fração de preload noutro rig NÃO reproduz o platô do sobretorque âncora interna** (platô atado ao apoio pequeno do rig âncora interna → "formas transferem, constantes por par"). Lu2024 M8 corrobora a FORMA (trend preload→arresto) mas não isola a constante. Path B: **α=4.23e-5 mm³/J (aço 52100, Fouvry)** ancora `K_archard`, não `W_conf_ref` (χ de aço não citável + endpoint errado). Veredicto: `W_conf_ref` **não-ancorável** com dado disponível, permanece por-par (7671 J inalterado), um degrau abaixo do `C_creep`; experimento de âncora spec'd (fretting ~1.2 GPa, mede `n`). **Caveat/follow-up:** `library_common` fixa `A_contact=100mm²` → conformação cross-rig no harness §4.8 é artefato (re-escalar `A_contact`/`p_ref` por rig antes de reusar). |
+| 2026-07-05 | §4.9 caveat do harness **CORRIGIDO (11g)**: `library_common.geometry_for` agora computa `A_contact = π·(r_bearing²−r_furo²)` (área real do anel por parafuso, `r_furo=0.55·d`, escala `d²`≈1.33·`A_s`) em vez de 100mm² fixo → `p=F0/A_contact` física por rig (Karlsen M30/M42 `p/p_ref`~1, não o espúrio ~7–14; M16 real ~209mm²), e `p_ref=5e8` corresponde a ~80% proof em qualquer tamanho. `anchor_creep`/`calibrate_axial` inalterados (conformação inerte: static/axial). Caveat residual: `p_ref`/`W_conf_ref` per-par (magnitude aproximada fora do par da âncora interna). §4.8 re-rodado a seguir (2026-07-05, ver addendum §4.8). 2 testes novos (escala per-rig + fix do artefato Karlsen). |
 | 2026-07-05 | §4.8 **re-run com a física adotada** (`transfer_validation` com `conform_driver="effective"` + `A_contact` per-rig físico; artefatos re-gerados): GLOBAL mediana MAE 0.2196 → **0.2281** (levemente pior), vence-exp 9→4/46. **Não melhora o transfer** e revela: (1) **KARLSEN 0.123→0.226 — o bom fit do baseline era ARTEFATO de wear** (100mm² fixo super-estimava depth=V/A nos M30/M42; com área física o modelo retém ~0.75 e não reproduz o colapso ~0.15 → colapso precisa de DANO, não wear, coerente c/ doutrina §4.8); (2) **conformação não resgata as sub-predições de platô** (yang2019/liu2025 seguem →0; `p/p_ref`~0.5-0.6 fraco demais; platô não é conformação-por-pressão). Menores: ICMEZ 0.125→0.105, BAUER/LIU/LU levemente melhores. Leitura: física adotada é mais **honesta** (áreas/pressões reais) mas o baseline era lisonjeado pelo artefato Karlsen; conformação per-par não transfere magnitude cross-rig. Reforça §8. |
 | 2026-07-05 | §4.8 **what-if `--damage-on`** (dano ativo em todos os casos; `c_D=2`/`k_dmg_wear=4`/`k_dmg_mu=1`; artefatos `transfer_*_damage.*` separados, canônico dano-OFF intacto): GLOBAL mediana 0.2281 → **0.1825** (melhora), vence-exp 4→7/46. **O dano REPRODUZ (parcial) o colapso do Karlsen** (final_pred 0.75→0.43-0.66 rumo ao dado 0.15; KARLSEN 0.226→0.139) — **confirma o re-run "colapso é dano, não wear"**. **Mas PIORA os platôs** (YANG 0.656→0.718, LIU 0.640→0.670: dano super-dirige a perda onde o dado não colapsa). Veredicto: dano é o mecanismo do colapso mas **por-condição, não universal** — **refina** a doutrina §4.8/Estágio A: o dano keys no **regime de colapso (severidade)**, não no histórico de dano prévio (Karlsen é junta NOVA e quer dano). Não é "adote dano-ON": melhora só na mediana (p90 piora, vence-no-loss igual) e sem regra preditiva. |
 | 2026-07-05 | §4.8 **predictive damage trigger FALSIFICADO** (spec 2026-07-05; `--damage-trigger` + sweep de `W_crit`; artefatos `transfer_*_trigger.*` + `transfer_trigger_wcrit_sweep.log`): hipótese = dano auto-onseta quando a dose de gross-slip `W_slip_acc` cruza `W_crit` (gate Hill, espelha slip_onset), substituindo `damage_active` manual. Thresholds PRE-REGISTRADOS (median≤0.19, p90≤0.645, collapse-on≥75%, plateau-off≥75%). **Veredicto: FALHA — nenhum `W_crit` separa** (sobe W_crit → plateau-off→100% MAS collapse-on→0%, movem juntos; 1e5 = só 2/31 colapsos). Causa: dose ∝ F0·slip·ciclos é DOMINADA por F0 → platôs de alto-F0 acumulam mais que colapsos de baixo-F0 (anti-correlacionada). **Achado de FORMA (não tuning):** o `slip=max(0,δ−F_slip/k_tr)` não reproduz a separação partial/gross-slip (forma faltante = regime de slip / `k_tr`, não o onset do dano; paralelo §4.6/§4.8). O gate `W_crit` fica como incubação de dano válida/default-inert/backward-compat, mas o objetivo preditivo é falsificado AS IS. Codigo Tasks 1-3 (engine/registry/harness) verde; decisão merge/revert = professor. |
-| 2026-07-04 | §4.9 procedência (strand 3/3; busca de âncora do `W_conf_ref`): **NÃO existe âncora independente** — `W_conf_ref` (~1e4 J) é constante fitada por par/rig como `C_creep`, mas **base MAIS FRACA** (o `C_creep` tem medição independente de IC disjunto §4.7; o `W_conf_ref` não). Framework transfere (Fouvry "wear/friction energy capacity", *Tribology Int.* 2007 = "variável característica por tratamento" → reproduz "formas transferem, constantes por par") **mas não ancora o número** (endpoint/quantidade diferentes; sem valor de aço). ~20 J/mm² implícito = check **INTERNO** (mesmo dado UFU), **não** âncora. Escala de procedência: um degrau **abaixo** do `C_creep`. §5.1 ganhou linha `W_conf_ref` + `n/p_ref`. Fase 3: fretting dedicado por par (paralelo a `anchor_creep.py`), discordância = esperada/informativa. **Fase 2 fortalecimentos 1–3 concluídos.** |
+| 2026-07-04 | §4.9 procedência (strand 3/3; busca de âncora do `W_conf_ref`): **NÃO existe âncora independente** — `W_conf_ref` (~1e4 J) é constante fitada por par/rig como `C_creep`, mas **base MAIS FRACA** (o `C_creep` tem medição independente de IC disjunto §4.7; o `W_conf_ref` não). Framework transfere (Fouvry "wear/friction energy capacity", *Tribology Int.* 2007 = "variável característica por tratamento" → reproduz "formas transferem, constantes por par") **mas não ancora o número** (endpoint/quantidade diferentes; sem valor de aço). ~20 J/mm² implícito = check **INTERNO** (mesmo dado âncora interna), **não** âncora. Escala de procedência: um degrau **abaixo** do `C_creep`. §5.1 ganhou linha `W_conf_ref` + `n/p_ref`. Fase 3: fretting dedicado por par (paralelo a `anchor_creep.py`), discordância = esperada/informativa. **Fase 2 fortalecimentos 1–3 concluídos.** |
 | 2026-07-04 | §4.9 **ADOÇÃO** — driver `effective` adotado no bloco `shared` canônico (decisão do professor; `calibrate_shared.py`): **1ª promoção de experimento ao canônico** (hash `21ed6a7`→`13b26d2`). `fit_parsimonious` livre pegava `{W_conf_ref, emb_depth}` (global 0.0456) mas derrubava o `C_creep` ancorado e fitava `emb_depth` (input VDI). **Escolha physics-first:** `emb_depth` mantido como input fixo (fora do candidate set), `C_creep` preservado → parsimônia seleciona **`{W_conf_ref, C_creep}`** (global 0.0509; +0.005 aceito por procedência sobre MAE). Canônico: **sobretorque 0.1378→0.0300 = falsificação §4.5 RESOLVIDA**, `W_conf_ref`=7671, `C_creep`=1.867e-11, 3 fitados (W_conf_ref+C_creep+F0_test). LOCO nominais ≈ fit; sobretorque LOCO 0.121 fraco (única condição de pressão elevada). `profiles`/GUI inalterado (propagar = follow-up). |
 | 2026-07-05 | §4.8 **fix do regime de slip (`k_tr` de flexão) — NECESSÁRIO mas INSUFICIENTE** (spec `2026-07-05-slip-regime-ktr-fix-design.md`; engine opt-in `k_tr_mode="bending"`, `c_bend·E·I/L³`, default `axial_frac` bit-idêntico; `calibrate_ktr.py` → `c_bend=1.0`; `--ktr-bending`; artefatos `transfer_*_ktr.*`/`transfer_*_trigger_ktr.*`). Corrige o bug de `k_tr=0.3·k_axial` cego ao rig (`δ_t≈0`⇒tudo gross). **Thresholds pré-registrados FALHAM:** regime realizado platô→plateia **14%** (≥70%), melhora `final_pred` nos platôs **+0.006 mediana / 0/7** (≥0.2), MAE GLOBAL 0.228→0.234 (≈igual). **Rescue do trigger NULO** (`W_crit∈{1e3..1e6}` todos median 0.2341 = sem-dano). **CONFIRMADO por trace** (liu2025 amp0.25): `δ_t` inicial 0.578mm>δ ⇒ partial por ~10k ciclos (fix funciona), MAS embedding/creep erodem F0 → `δ_t∝F0` cai < δ → gross slip dispara → **runaway sem arresto** → colapsa. **Formas faltantes compostas** (não constante): (1) erosão de F0 limitada em partial, (2) arresto/equilíbrio no runaway. Amplitude sweeps puros (LIU/YANG) melhoram (−0.06) = mecanismo certo, insuficiente. Task 4 (Mindlin partial-wear) **gated OUT**. Código keeper (opt-in inerte); decisão merge = professor. |
 | 2026-07-06 | §4.8 **gate do loosening ao regime de slip — MECANISMO VALIDADO, agregado limitado pelo teto do `c_bend`** (spec `2026-07-06-loosening-slip-gate-design.md`; engine opt-in `loosening_slip_coupling="gross_fraction"`, gate `g=slip/(slip+δ_t)` no `d_theta`; `--loosen-coupled`; artefatos `transfer_*_loosen.*`). **Corrige a atribuição do addendum de `k_tr`:** decomposição por mecanismo mostra que o eroder pré-gross do platô é o **rotational loosening** (51%, disparando em partial slip via critério de FORÇA `F_tr=0.4F0≫F_slip`), **não** embedding/creep (~23%, saturam). O `k_tr` só alcançava o wear; o loosening bypassa. Thresholds pré-reg AS IS: platô→plateia **43% (3/7)** vs k_tr 14% (❌ <50%, mas 3×), melhora mediana **+0.025** (❌ <0.20, **bimodal**: liu2025 amp0.25/0.3 **0.00→0.74**≈dado, média +0.226), colapso→afrouxa **45%=k_tr** (✅ ≥40%, sem regressão), MAE GLOBAL 0.228→**0.226**, p90 0.640→**0.512**, LIU 0.640→**0.311**. **Veredicto PARCIAL:** o gate funciona **perfeitamente onde o regime acerta** (partial), o teto é a separação `c_bend` (Task 2: 57% platô); os 5 platôs parados são mis-classificados gross. Próxima forma = **melhorar a separação de regime** (`c_bend` per-junta / compliance de membro), não este gate (keeper, opt-in inerte). Código verde; decisão merge = professor. |
@@ -4136,7 +4136,7 @@ baixar MAE de curva.
 
 | 2026-07-11 | §4.10 **PR-5 (MEM iter.4) — cadeia de reaperto com estado herdado: gate global FALHOU; maquinaria validada, NÃO adotada** (prereg `2026-07-11-mem-iter4-preregistrations.md`; runner `_simulate_retight_chain`, default-inerte via `chain: "retight"` no adopted; diretriz do professor "a condição de contato no reaperto não pode ser a mesma"). Sequência t0→`retighten()`→tN com F₀ por estágio LIDO do 1º ponto da curva (zero fit novo). Gates: (a) mediana retight 0.2026 vs ≤0.15 ✗ (baseline 0.2610); (b) contraste dry 2/3 ✓ mas oil ✗ (o t0 destoa — problema de 1º aperto, não de reaperto); (c) fig5 intacto ✓; (d) zero fit ✓. **Assinatura:** OIL+cadeia RESOLVE t1–t3 (0.26–0.28 → **0.026–0.060**, 10×, D herdado 0.04–0.15 = a física do paper "filme protege") — a maior validação do `retighten()`/estado nomeado (§4.10) até agora; DRY+cadeia PIORA t2/t3 (D herdado 0.50–0.75 com k_dmg_mu=1 derruba µ_eff a 25–50% → afrouxamento acelerado demais; corrigir c_D = fit proibido pelo gate d); todos os t0 ~0.20–0.25 = nível da FONTE (c_bend nunca fitado). Grupos revertidos (statu quo bit-idêntico; fingerprint e6246244cc51 preservado). Decisões do professor: PR-5b oil-only (gate local ≤0.08 passaria); alvo dry (saturação/decaimento de D por estágio); alvo t0/fig5 (funil de nível). |
 
-| 2026-07-11 | §4.10 **PR-6/PR-5b/PR-7 (MEM iter.4, "faça todas") — reaperto Liu2022 RESOLVIDO no canônico; PR-5 reatribuído a CONFIG, não forma** (prereg + resultados em `2026-07-11-mem-iter4-preregistrations.md`; zero constante nova nas 3 frentes). **PR-6**: o nível 0.20–0.25 da fonte era **gap de adoção de INPUTS** — `LIU_2022_RETIGHT` estava fora do `SOURCE_INPUTS` (rodava grip 30/µ0.15/emb 11µm assumed); adotados os inputs da campanha rodada-4 com procedência (grip 50; **µ Motosh per-lube 0.236/0.176** lido de T+F₀ medidos; **emb Rz<4 n2=4µm**; dano brando `k_dmg_wear=1, W_ref=1e4, k_dmg_mu=0`; c_D per-lube L7) → t0s 0.0126, **fig5 0.0145 (a "reconstrução impossível" §4.29 estava em `validate_galling.py`/`liu2022_level_probe.py` — RESOLVIDA)**, fonte virgem 0.2492→0.0503. **PR-5b/PR-7**: cadeia `t0→retighten()→tN` (F₀ por estágio lido do 1º ponto) adotada oil E dry — oil t1–t3 mediana **0.0088** (D herdado 0.07–0.21), dry t1–t3 **0.0360** (D satura 0.80–0.99 sem colapsar µ_eff pois k_dmg_mu=0), t4 fratura fecha a 0.037, fig5 bit-idêntico (verificado on/off). **Reatribuição do PR-5**: a falha era o canal espúrio k_dmg_mu=1/k_dmg_wear=4 (starters UFU) no meu experimento — com a receita da campanha o estado herdado fecha 21/21 curvas (mediana da fonte ~0.016, 15×). Roadmap #5 (renewal no reaperto) **fechado no canônico**. |
+| 2026-07-11 | §4.10 **PR-6/PR-5b/PR-7 (MEM iter.4, "faça todas") — reaperto Liu2022 RESOLVIDO no canônico; PR-5 reatribuído a CONFIG, não forma** (prereg + resultados em `2026-07-11-mem-iter4-preregistrations.md`; zero constante nova nas 3 frentes). **PR-6**: o nível 0.20–0.25 da fonte era **gap de adoção de INPUTS** — `LIU_2022_RETIGHT` estava fora do `SOURCE_INPUTS` (rodava grip 30/µ0.15/emb 11µm assumed); adotados os inputs da campanha rodada-4 com procedência (grip 50; **µ Motosh per-lube 0.236/0.176** lido de T+F₀ medidos; **emb Rz<4 n2=4µm**; dano brando `k_dmg_wear=1, W_ref=1e4, k_dmg_mu=0`; c_D per-lube L7) → t0s 0.0126, **fig5 0.0145 (a "reconstrução impossível" §4.29 estava em `validate_galling.py`/`liu2022_level_probe.py` — RESOLVIDA)**, fonte virgem 0.2492→0.0503. **PR-5b/PR-7**: cadeia `t0→retighten()→tN` (F₀ por estágio lido do 1º ponto) adotada oil E dry — oil t1–t3 mediana **0.0088** (D herdado 0.07–0.21), dry t1–t3 **0.0360** (D satura 0.80–0.99 sem colapsar µ_eff pois k_dmg_mu=0), t4 fratura fecha a 0.037, fig5 bit-idêntico (verificado on/off). **Reatribuição do PR-5**: a falha era o canal espúrio k_dmg_mu=1/k_dmg_wear=4 (starters âncora interna) no meu experimento — com a receita da campanha o estado herdado fecha 21/21 curvas (mediana da fonte ~0.016, 15×). Roadmap #5 (renewal no reaperto) **fechado no canônico**. |
 
 | 2026-07-11 | §4.15 **PR-8→8d (MEM iter.4, diretriz "ataque o próximo artigo... rigidez da bancada pode ser estimada") — Yang2023 IJPEM RESOLVIDO por estimativa física de bancada + ratchet per-par + leituras** (prereg/resultados em `2026-07-11-mem-iter4-preregistrations.md`). Fonte 9 curvas (M6+M8, Junker DIN 65151, varredura de amplitude c/ limiar nítido + D-N δ^−3.8): mediana 0.2275→**0.1188**, below-threshold 0.19–0.23→**0.007/0.008**. **Trilha de falsificações nomeou o mecanismo:** wear ✗ (k_wear_spec ×100 inerte — auto-limitante, dF∝F₀·slip), loosening rate-scaled ✗ (tr_loose_gain ×20 inerte), ratchet sem take-up vaza em partial slip CM ✗ → **ratchet cinemático (k_ratchet=0.05, banda per-par O(0.005–0.1) como LU) + delta_free LIDO do limiar impresso no artigo (0.18/0.15 mm) + c_bend fitado pousando NOS seeds analíticos** (M8 8.0 vs 8.1; M6 20 vs 18.9; k_tr=µF₀/δ_th ≈1.0–1.4e7 N/m = classe DIN 65151 do PR-4 — a estimativa de rigidez de bancada tem procedência física independente). Baseline antigo (0.2275) era lisonjeado por assentamento espúrio (emb 11µm assumed; padrão §4.8 Karlsen). Maquinaria nova: matcher de grupos por bolt_size (default-inerte, testado). DOF: 3 fitados + leituras. Residual honesto: forma do decaimento (mestra front-loaded vs ratchet ~back-loaded) 0.08–0.18 nas 7 acima do limiar — candidato de FORMA futuro, não tuner. |
 

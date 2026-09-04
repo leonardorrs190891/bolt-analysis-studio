@@ -26,7 +26,7 @@ Save as: `09_Yang_2019_M10_variable_amplitude_DN_curves.pdf`
 
 ## Requires Institutional Access (ASME / Elsevier)
 
-Request via UFU library Interlibrary Loan (ILL) or email corresponding authors.
+Request via âncora interna library Interlibrary Loan (ILL) or email corresponding authors.
 
 | Priority | Paper | Correct DOI | Purpose | Corresponding Author |
 |----------|-------|------------|---------|---------------------|

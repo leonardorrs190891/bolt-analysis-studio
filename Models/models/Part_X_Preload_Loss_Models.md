@@ -3,7 +3,7 @@
 **Complete Technical Reference for Bolt Analysis Studio**
 
 **Authors:** L. Ribeiro, D. Carvalho, S.C. Naves, T. Santos, V. Marques, G. Arruda
-**Institution:** LTAD/UFU -- Tribology and Wear Technology Laboratory, Federal University of Uberlândia
+**Institution:** internal reference -- Tribology and Wear Technology Laboratory, Federal University of Uberlândia
 **Project:** Petrobras R&D -- Bolted Flange Joint Integrity
 
 **Version 4.0 - Extended English Edition**
@@ -1795,11 +1795,11 @@ When applying any model, the following validation steps are recommended:
 | Sections | 40-56 |
 | Models Covered | 15 |
 | Version | 4.0 |
-| Project | Bolt Analysis Studio --- Petrobras/LTAD-UFU R&D |
+| Project | Bolt Analysis Studio --- Petrobras/LTAD-âncora interna R&D |
 | Implementation File | `numerical/preload_loss_models.py` |
 
 ---
 
-*LTAD/UFU - Tribology and Wear Technology Laboratory*
+*internal reference - Tribology and Wear Technology Laboratory*
 *Federal University of Uberlandia*
 *Petrobras R&D Project*

@@ -525,7 +525,7 @@ def test_removal_energy_check_reports_bound():
 - [ ] **Step 1:** Append: null 3× (R4 Fouvry sub-GPa; R5 busca dirigida; R5 digitalização);
 precedentes de forma (n_p≈0,5–0,6; teto de aspereza 1,5·H → sanity de `p_ref`; Etsion satura ~5
 ciclos em DESLOCAMENTO vs Frérot energia NÃO satura); valor de `W_conf_ref`/n segue dependente
-do experimento âncora UFU (~1,2 GPa, medir n). Referenciar `ANALISE_MODELOS_R5.md`.
+do experimento âncora âncora interna (~1,2 GPa, medir n). Referenciar `ANALISE_MODELOS_R5.md`.
 
 - [ ] **Step 2: Commit** (`docs(l1l7): fatia 6 - L4 null 3x + precedentes de forma no MODEL_LEGITIMACY §4.9`).
 

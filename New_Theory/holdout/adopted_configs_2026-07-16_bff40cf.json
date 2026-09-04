@@ -1,1114 +1,1062 @@
 {
- "_meta": {
-  "rev": "2026-07-08b — 1a calibracao multi-objetivo (HDPE) via todas as camadas | MEM iter.1 2026-07-10 (sprint de adocao: grupos por token, prov por constante)",
-  "doutrina": "uma config por fonte; constantes per-rig com proveniencia; formas default-inert; fonte da verdade p/ GUI (camada 3), pinos (camada 1) e fits futuros (priors da camada 4)"
- },
- "sources": {
-  "LU_2024": {
-   "pack": "PACK",
-   "cfg": {
-    "emb_load_frac": 0.4,
-    "emb_um": 0.0,
-    "N_emb": 3.0,
-    "k_ratchet": 0.02,
-    "loose_arrest_floor": 0.21,
-    "c_bend": 12.0,
-    "delta_free": 0.00028
-   },
-   "prov": {
-    "loose_arrest_floor/c_bend": "PR-15 re-fit COMPARTILHADO min-max das 10 curvas (fig18 amp + fig20 torque); floor 0.2->0.21, c_bend 5->12",
-    "emb_load_frac/k_ratchet/delta_free": "mantidos (§4.19/§4.15 Lu)",
-    "mu": "0.18 paper"
-   },
-   "verdict": "PR-15 (2026-07-12, 'todas <0.1'): re-fit compartilhado — fig20 T10Nm/T22Nm 0.112/0.108 -> 0.104/0.092 (T22 agora <0.1). 9/10 curvas <0.1; T10 residual 0.104 = scatter de piso T10(0.31)/T22(0.06) 5x sem tendencia fisica (T4 afrouxa total, quebra abs-residual). Sem knob per-curva; fig18 intacto"
+  "_meta": {
+    "rev": "2026-07-08b — 1a calibracao multi-objetivo (HDPE) via todas as camadas | MEM iter.1 2026-07-10 (sprint de adocao: grupos por token, prov por constante)",
+    "doutrina": "uma config por fonte; constantes per-rig com proveniencia; formas default-inert; fonte da verdade p/ GUI (camada 3), pinos (camada 1) e fits futuros (priors da camada 4)"
   },
-  "ROUSSEAU_HDPE": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 0.5,
-    "emb_depth": 5e-07,
-    "loose_arrest_floor": 0.2,
-    "GA_member": 20000.0,
-    "mu_thread": 0.2,
-    "mu_bearing": 0.2,
-    "free_spin": 1.0,
-    "delta_amp_mm": {
-     "t10": 0.5,
-     "t12": 0.49,
-     "t14": 0.38
+  "sources": {
+    "LU_2024": {
+      "pack": "PACK",
+      "cfg": {
+        "emb_load_frac": 0.4,
+        "emb_um": 0.0,
+        "N_emb": 3.0,
+        "k_ratchet": 0.02,
+        "loose_arrest_floor": 0.21,
+        "c_bend": 12.0,
+        "delta_free": 0.00028
+      },
+      "prov": {
+        "loose_arrest_floor/c_bend": "PR-15 re-fit COMPARTILHADO min-max das 10 curvas (fig18 amp + fig20 torque); floor 0.2->0.21, c_bend 5->12",
+        "emb_load_frac/k_ratchet/delta_free": "mantidos (§4.19/§4.15 Lu)",
+        "mu": "0.18 paper"
+      },
+      "verdict": "PR-15 (2026-07-12, 'todas <0.1'): re-fit compartilhado — fig20 T10Nm/T22Nm 0.112/0.108 -> 0.104/0.092 (T22 agora <0.1). 9/10 curvas <0.1; T10 residual 0.104 = scatter de piso T10(0.31)/T22(0.06) 5x sem tendencia fisica (T4 afrouxa total, quebra abs-residual). Sem knob per-curva; fig18 intacto"
+    },
+    "ROUSSEAU_HDPE": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 0.5,
+        "emb_depth": 5e-07,
+        "loose_arrest_floor": 0.2,
+        "GA_member": 20000.0,
+        "mu_thread": 0.2,
+        "mu_bearing": 0.2,
+        "free_spin": 1.0,
+        "delta_amp_mm": {
+          "t10": 0.5,
+          "t12": 0.49,
+          "t14": 0.38
+        }
+      },
+      "prov": {
+        "delta_amp_mm": "paper Tabela 2 (amplitudes POR ESPECIME: t10=0.5, t12=0.49, t14=0.38mm; paper admite amplitudes diferentes)",
+        "GA_member": "PR-14 fitado-this-rig (~ordem fisica G*A do HDPE; membro complacente absorve o curso, k_member_shear=GA/t)",
+        "c_bend/emb_depth/floor": "PR-14 fitado-this-rig (rig + assentamento + piso de arresto)",
+        "mu": "0.2 = HDPE do paper (Tabela 1)"
+      },
+      "verdict": "PR-14 (2026-07-12, deep study 'todas <0.1'): amplitude de paper (Tab.2) + compliance do membro (GA 2e4) -> HDPE t10 0.164/t12 0.254/t14 0.566 CAI p/ 0.058/0.060/0.044 (t14 = pior caso da lib RESOLVIDO). Separacao de 2 eixos fisicos (amplitude + compliance), sem knob per-curva; fecha roadmap #10 (stroke-split)"
+    },
+    "ROUSSEAU_2025": {
+      "pack": "PACK",
+      "cfg": {
+        "emb_um": 1.0,
+        "free_spin": 1.0,
+        "c_bend": 0.3
+      },
+      "verdict": "MEM iter.1: c_bend 0.3 promovido (sec4.12) | PR-25 shape-refit (2026-07-14): emb 1.5->1.0um — aco melhora mae E std (t10 0.073/0.082 -> 0.052/0.057); maxscore fonte 0.155->0.120",
+      "prov": {
+        "c_bend": "fitado-this-rig (pack sec4.12)"
+      }
+    },
+    "KARLSEN_2022": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 3.0,
+        "C_creep": 1e-12,
+        "c_D": 0.3,
+        "k_dmg_mu": 1.0,
+        "k_dmg_wear": 4.0,
+        "W_ref": 10000.0
+      },
+      "verdict": "PR-1 iter.3 PASSOU (gate quadruplo pre-registrado): colapso HV e dirigido por DANO de asperezas (hipotese do paper: 'not creep'), com o C_creep fisico do par. (a) mediana HV 0.094->0.061; (b) vibralock 0.0101 intocado; (c) vida do colapso 7/7 dentro de 2x (195->195, 230->230, 340->340...); (d) LOCO fit-5 prediz 2 a 0.053. Consistencia sec4.7 restaurada no rig inteiro (pendencia iter.2 RESOLVIDA).",
+      "prov": {
+        "C_creep": "fitado-this-rig/par (iter.1, branch travado Vibralock; prior ancora 304SS — sec4.7)",
+        "c_D": "fitado-this-rig (PR-1: UNICA constante livre, fit CONJUNTO nas 7 HV; LOCO 0.053)",
+        "k_dmg_mu": "starter fisico documentado (1.0, nao fitado)",
+        "k_dmg_wear": "starter fisico documentado (4.0, nao fitado)",
+        "W_ref": "starter fisico documentado (1e4, nao fitado)",
+        "c_bend": "fitado-this-rig (pre-existente)"
+      }
+    },
+    "LIU_2025": {
+      "pack": "LEGACY",
+      "cfg": {
+        "c_bend": 50.0,
+        "delta_free": 0.0003,
+        "k_wear_scale_tr": 0.0,
+        "W_conf_ref": 0.0,
+        "slip_onset_W": 250000.0,
+        "k_ratchet": 0.0001,
+        "emb_um": 5.0,
+        "N_emb": 5.0,
+        "loose_arrest_floor": 0.25
+      },
+      "verdict": "PR-9b iter.4 (2026-07-11): TODOS os gates ✓ — mediana fonte 0.1934->0.0777; fraturas 0.047-0.102 c/ N70 4/4 e finais ~0.5 (dado segura e frattura). Falsificado no caminho (PR-9): loose_kin_ceiling inerte na escala de grind; remocao do slip_onset_W = runaway imediato (incubacao E a portadora do D-N). Residual de forma: cliff terminal = fratura (FatigueLoss precisa driver ~slip; candidato futuro)",
+      "prov": {
+        "slip_onset_W": "PR-9b re-fit fino (150k->250k): portadora da lei D-N do rig (N_onset ~ W/(4*mu*F0*slip) ~ 1/slip, mesma estrutura do take-up lido delta_free=0.30)",
+        "c_bend": "fixture L de alta rigidez (servo; classe PESADA PR-4, k_tr ~3.6e8)",
+        "delta_free": "lido DESTE dado (N ~ 1/(delta-0.30mm), 4 pares +-3%)",
+        "loose_arrest_floor": "PR-9b fitado-this-rig (0.25; banda per-par: LU 0.2, ZHANG 0.1) — piso de auto-travamento onde o mergulho pos-onset arresta (dado segura ~0.5 e sai em 0.33 = fratura, fora do modelo)"
+      }
+    },
+    "YANG_2019": {
+      "pack": "PACK",
+      "cfg": {
+        "emb_um": 5.0,
+        "slip_onset_W": 40000.0,
+        "c_D": 0.1,
+        "W_ref": 3000.0,
+        "k_dmg_mu": 1.0,
+        "k_dmg_wear": 4.0,
+        "dmg_dwell_exp": 1.0,
+        "f_ref_dmg": 10.0
+      },
+      "verdict": "sec4.21 — 5Hz fecha"
+    },
+    "ZHANG_2006": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 0.05,
+        "emb_um": 1.58,
+        "C_creep": 3.084582612352061e-11
+      },
+      "prov": {
+        "c_bend": "lido-do-dado (ancora do limiar fig16-runout; SATUROU no piso 0.05 — transiente residual rotulado)",
+        "emb_um": "lido-do-dado (queda inicial 5% do fig16, sonda de ganho)",
+        "C_creep": "lido-do-dado (cauda do fig16; per-par aco/ferro-fundido-lubrificado)",
+        "maxerr_rotulos": "fig16 0.150 = transiente residual c/ c_bend no piso; fig3 0.211/0.661 = colapso 2-estagios (classe kernel, fila)"
+      },
+      "verdict": "PR-43b ADOTADO (PR-37'): fonte 0.458->0.148 (-68%); fig16 0.523->0.086, fig3 0.393->0.211"
+    },
+    "LIU_2017_axial": {
+      "pack": "analitico GF",
+      "cfg": {
+        "emb_depth": 4.3e-06,
+        "N_emb": 15.0,
+        "C_creep": 1.45e-11,
+        "emb_amp_exp": 2.375,
+        "rho_ref_emb": 0.6667,
+        "creep_conform_exp": 3.6
+      },
+      "verdict": "sec4.18 — rho-unificacao; P0 0.003, A_F 0.020"
+    },
+    "LIU_2022": {
+      "pack": "defaults",
+      "cfg": {
+        "emb": "Rz<4 (VDI)",
+        "k_wear_scale_tr": 0.06,
+        "c_D_dry": 0.5,
+        "c_D_oil": 0.03,
+        "k_dmg_mu": 1.0,
+        "k_dmg_wear": 4.0,
+        "W_ref": 10000.0,
+        "mu": "Motosh do F0 medido por caso (0.247/0.225 dry; 0.183/0.168 oil)"
+      },
+      "verdict": "fonte transversal NOVA (fig5, 4 casos) — ZERO-REFIT das constantes sec4.10/4.11: MAE 0.004-0.022; mu por-lube derivado do proprio dado (dry>oil, dentro da banda ancorada)"
+    },
+    "LIU_2022_RET": {
+      "pack": "defaults+seq",
+      "cfg": {
+        "k_emb_renew": 1.0,
+        "k_gall": 3.0,
+        "c_D_per_lube": "0.5/0.03",
+        "k_wear_scale_tr": 0.06,
+        "k_wear_running": 5.0,
+        "N_wear_run": 100.0,
+        "mu": "Motosh (0.236 dry / 0.176 oil)",
+        "emb": "Rz<4",
+        "emb_depth": 4e-06,
+        "k_dmg_wear": 1.0,
+        "W_ref": 10000.0,
+        "mu_thread": 0.176,
+        "mu_bearing": 0.176,
+        "c_D": 0.03
+      },
+      "verdict": "rodada 4: 12/12 fases <=0.10 (0.004-0.034); recuperacao dry 1.00->0.90 (galling) vs oil ~0.99 (restaura) — retighten()+k_emb_renew=1 validados em sequencia | PR-6 iter.4: inputs da campanha rodada-4 adotados (mu Motosh per-lube, emb Rz<4 n2, dano brando)",
+      "prov": {
+        "mu_thread": "Motosh oil: T=80N.m + F0=27.0kN medidos (paper/L3)",
+        "mu_bearing": "Motosh oil (idem)",
+        "c_D": "L7 per-lube oil (validate_galling)",
+        "emb_depth": "Rz<4 n_inner=2 = 4.0um (handbook; rig 2 placas+celula)",
+        "k_dmg_wear": "level probe M12 nao-colapsante (dano brando, k_dmg_mu=0)",
+        "chain": "PR-5b: sequencia t0->retighten()->tN c/ estado herdado; F0 por estagio lido do 1o ponto (oil: fig6b/fig7a; fig5 nao termina _tN => virgem)"
+      },
+      "chain": "retight"
+    },
+    "BAUER_2024_fig6": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 1.5,
+        "emb_depth": 1.09e-06,
+        "slip_regime_mode": "off",
+        "loose_arrest_floor": 0.05
+      },
+      "prov": {
+        "kernel": "torque (runaway) rastreia o decline ACELERANTE das replicas rapidas (corrige a divergencia da rep1 apontada pelo professor; o linear/graded decelerava e divergia)"
+      },
+      "verdict": "PR-22 base compartilhada (c_bend 1.5, floor 0.05, torque)"
+    },
+    "BAUER_2024_fig8": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 0.4167,
+        "emb_depth": 1.7e-06,
+        "delta_spectrum": [
+          [
+            18,
+            8e-05
+          ],
+          [
+            2,
+            0.000155
+          ]
+        ],
+        "slip_regime_mode": "off",
+        "loose_rate_mode": "graded_scrit",
+        "s_crit_loose": 0.0,
+        "k_loose_graded": 0.03,
+        "K_archard": 0.0,
+        "C_creep": 0.0
+      },
+      "verdict": "PR-12e (2026-07-12): fig8 min-max — test1/2/3 = 0.075/0.029/0.024 (test2 0.254->0.029); joelho da criticalidade s_crit(F_V), eq.4+5 do paper",
+      "prov": {
+        "c_bend": "LIDO de s_crit=98.6um do paper NA CONVENCAO DO ENGINE (delta_t = 0.46*mu*F0/k_tr = 98.6um em 50kN => c_bend=0.4167; errata: leitura analitica inicial 0.906 ignorava o fator Pai-Hess 0.46)",
+        "delta_spectrum": "input-de-paper: blocos de 20 ciclos = 18x80um + 2x155um REAIS (overshoot declarado; secao 4 do paper)",
+        "emb_depth": "lido de dF_V,init = 5% (PL50) do paper (plastificacao + destorcao de montagem)",
+        "loose_rate_mode/k_loose_graded": "graded_scrit = eq.(5) do paper (dF ~ excesso de slip); k=0.05 fitado-this-rig (seed analitico 0.042 da propria eq.5, kS=0.379/N2=61.8)",
+        "K_archard": "0 LIDO do paper: anti-seize paste entre as chapas ELIMINA fretting/wear por projeto",
+        "C_creep": "0 por contexto: ensaios de MINUTOS (<1000 ciclos); creep e fenomeno de tempo; C_creep da âncora interna e por-par (sec4.7) sem procedencia aqui",
+        "slip_regime_mode": "limiar NITIDO medido por staircase (controle na interface)",
+        "k_loose_graded": "PR-12e re-grid 0.05->0.03 (min-max do ensemble; joelho N75~740 = centro dos dados 543/692/764; seed analitico 0.042 da eq.5 do paper)"
+      }
+    },
+    "LIU_2022_RETIGHT_dry": {
+      "cfg": {
+        "k_emb_renew": 1.0,
+        "k_gall": 3.0,
+        "c_D_per_lube": "0.5/0.03",
+        "k_wear_scale_tr": 0.06,
+        "k_wear_running": 5.0,
+        "N_wear_run": 100.0,
+        "mu": "Motosh (0.236 dry / 0.176 oil)",
+        "emb": "Rz<4",
+        "mu_thread": 0.236,
+        "mu_bearing": 0.236,
+        "emb_depth": 4e-06,
+        "k_dmg_wear": 1.0,
+        "W_ref": 10000.0,
+        "c_D": 0.5
+      },
+      "pack": "defaults+seq",
+      "prov": {
+        "mu_thread": "Motosh dry: T=80N.m + F0=20.6kN medidos (paper/L3; substitui 0.2 do estudo sec4.29 — procedencia mais forte)",
+        "mu_bearing": "Motosh dry (idem)",
+        "c_D": "L7 per-lube dry (validate_galling)",
+        "emb_depth": "Rz<4 n_inner=2 = 4.0um (handbook)",
+        "k_dmg_wear": "level probe (dano brando)",
+        "chain": "PR-7: cadeia dry c/ receita campanha (k_dmg_mu=0, k_dmg_wear=1, c_D 0.5); F0 por estagio lido do 1o ponto"
+      },
+      "verdict": "MEM iter.1: grupo dry (mu por lubrificacao e INPUT, nao fit) | grupo oil TESTADO E REMOVIDO: mu=0.1 sozinho piora (falta c_D per-lube da sec4.11) -> iteracao 2 | chave renomeada p/ fronteira estrita (fonte e' prefixo) | PR-6 iter.4: mu Motosh dry 0.236 + receita campanha",
+      "chain": "retight"
+    },
+    "LI_2022_MARSTRUC": {
+      "cfg": {
+        "C_creep": 9.917042354340428e-13
+      },
+      "pack": "defaults",
+      "prov": {
+        "C_creep": "ancora MEDIDA do par 304SS (Fase 1C, creep_anchor.json, sec4.7 — C_creep e' POR PAR)"
+      },
+      "verdict": "PR-2 iter.3: caminho do harness da ancora reproduzido no runner (geometria de paper grip=20mm/E=193GPa via SOURCE_INPUTS + emb por Ra nos grupos LI_2022_MARSTRUC_ra*). Entrada base = fallback."
+    },
+    "KARLSEN_2022_vibralock": {
+      "cfg": {
+        "c_bend": 3.0,
+        "tr_loose_gain": 0.0,
+        "k_wear_spec": 0.0,
+        "K_archard": 0.0,
+        "emb_um": 3.68,
+        "C_creep": 1e-12
+      },
+      "pack": "PACK",
+      "prov": {
+        "tr_loose_gain": "input de paper (Vibralock = porca wedge-cam: rotacao SUPRIMIDA — travamento cinematico/rigidez, nao amortecimento; nota de aparato karlsen2022)",
+        "k_wear_spec": "input de paper (wedge mantem a forca normal — sem back-off, wear de slip suprimido no branch travado)",
+        "K_archard": "idem k_wear_spec",
+        "emb_um": "lido-do-dado (L24: mediana das leituras de queda-inicial das 4 curvas = 3.68 um)",
+        "C_creep": "fitado-this-rig/par (1 constante nas 4 curvas do branch travado; prior = ancora 304SS 9.9e-13; o valor da âncora interna 1.87e-11 e de OUTRO par, sec4.7)",
+        "c_bend": "herdado do rig (KARLSEN_2022)"
+      },
+      "verdict": "MEM iter.1 (diretriz do professor): dispositivo de travamento modelado no MSD — mediana do grupo 0.706 -> 0.0101. PENDENCIA iter.2: propagar C_creep=1e-12 ao branch HV do mesmo par exige refit do c_bend (colapso foi calibrado com o creep da âncora interna)."
+    },
+    "YANG_2023_IJPEM": {
+      "cfg": {
+        "c_bend": 0.3
+      },
+      "pack": "LEGACY",
+      "prov": {
+        "c_bend": "fitado-this-rig (unico DOF transversal sec4.42; grid 1-D nas 9 curvas, MEM iter.2)"
+      },
+      "verdict": "MEM iter.2: primeira calibracao da fonte — c_bend 0.3 (mediana 0.294->0.228). Residuo ~0.23 = nivel/forma p/ iter.3. | SUPERSEDED pelos grupos _m6/_m8 (PR-8d) — fica como fallback p/ curvas novas da fonte"
+    },
+    "LI_2022_MARSTRUC_ra0p078": {
+      "cfg": {
+        "C_creep": 9.917042354340428e-13,
+        "emb_um": 0.08741
+      },
+      "pack": "defaults",
+      "prov": {
+        "C_creep": "ancora MEDIDA do par 304SS (Fase 1C, sec4.7)",
+        "emb_um": "lido-da-ancora (fit conjunto Fase 1C, feature por Ra=0.078 — creep_anchor.json)"
+      },
+      "verdict": "PR-2 iter.3: grupo por Ra=0.078 com inputs do harness da ancora"
+    },
+    "LI_2022_MARSTRUC_ra0p122": {
+      "cfg": {
+        "C_creep": 9.917042354340428e-13,
+        "emb_um": 0.06929
+      },
+      "pack": "defaults",
+      "prov": {
+        "C_creep": "ancora MEDIDA do par 304SS (Fase 1C, sec4.7)",
+        "emb_um": "lido-da-ancora (fit conjunto Fase 1C, feature por Ra=0.122 — creep_anchor.json)"
+      },
+      "verdict": "PR-2 iter.3: grupo por Ra=0.122 com inputs do harness da ancora"
+    },
+    "LI_2022_MARSTRUC_ra0p306": {
+      "cfg": {
+        "C_creep": 9.917042354340428e-13,
+        "emb_um": 0.01
+      },
+      "pack": "defaults",
+      "prov": {
+        "C_creep": "ancora MEDIDA do par 304SS (Fase 1C, sec4.7)",
+        "emb_um": "lido-da-ancora (fit conjunto Fase 1C, feature por Ra=0.306 — creep_anchor.json)"
+      },
+      "verdict": "PR-2 iter.3: grupo por Ra=0.306 com inputs do harness da ancora"
+    },
+    "LI_2022_MARSTRUC_ra0p8": {
+      "cfg": {
+        "C_creep": 9.917042354340428e-13,
+        "emb_um": 0.01
+      },
+      "pack": "defaults",
+      "prov": {
+        "C_creep": "ancora MEDIDA do par 304SS (Fase 1C, sec4.7)",
+        "emb_um": "lido-da-ancora (fit conjunto Fase 1C, feature por Ra=0.8 — creep_anchor.json)"
+      },
+      "verdict": "PR-2 iter.3: grupo por Ra=0.8 com inputs do harness da ancora"
+    },
+    "YANG_2021": {
+      "cfg": {
+        "c_bend": 0.1
+      },
+      "pack": "LEGACY",
+      "prov": {
+        "c_bend": "fitado-this-rig (1o DOF da fonte, PR-3/reclassificacao; banda INSENSIVEL 0.02-0.15 — valor no centro, nao identificado alem da banda)"
+      },
+      "verdict": "PR-3 iter.3: H3 (forma do protocolo composto) MORREU no Estagio 1 (gradiente de F_ax instavel em sinal no dado, n=5 confundido). Reclassificada como NIVEL: c_bend 0.1 leva 0.652->0.125. Residuo ~0.13-0.19 inclui cauda de fratura (out-of-model)."
+    },
+    "LIU_2022_RETIGHT_fig8": {
+      "pack": "defaults+seq",
+      "cfg": {
+        "k_emb_renew": 1.0,
+        "k_gall": 3.0,
+        "c_D_per_lube": "0.5/0.03",
+        "k_wear_scale_tr": 0.06,
+        "k_wear_running": 5.0,
+        "N_wear_run": 100.0,
+        "mu": "Motosh (0.236 dry / 0.176 oil)",
+        "emb": "Rz<4",
+        "mu_thread": 0.236,
+        "mu_bearing": 0.236,
+        "emb_depth": 4e-06,
+        "k_dmg_wear": 1.0,
+        "W_ref": 10000.0,
+        "c_D": 0.5
+      },
+      "prov": {
+        "mu_thread": "Motosh dry: T=80N.m + F0=20.6kN medidos (paper/L3; substitui 0.2 do estudo sec4.29 — procedencia mais forte)",
+        "mu_bearing": "Motosh dry (idem)",
+        "c_D": "L7 per-lube dry (validate_galling)",
+        "emb_depth": "Rz<4 n_inner=2 = 4.0um (handbook)",
+        "k_dmg_wear": "level probe (dano brando)",
+        "grupo": "fig8 = protocolo multi DRY (paper); stem sem token 'dry' nao alcanca o grupo _dry",
+        "chain": "PR-7: cadeia dry c/ receita campanha (k_dmg_mu=0, k_dmg_wear=1, c_D 0.5); F0 por estagio lido do 1o ponto"
+      },
+      "verdict": "PR-6 iter.4: receita dry da campanha p/ fig8 (multi, dry)",
+      "chain": "retight"
+    },
+    "YANG_2023_IJPEM_m6": {
+      "pack": "LEGACY",
+      "cfg": {
+        "c_bend": 20.0,
+        "emb_depth": 2.265458422174842e-06,
+        "k_ratchet": 0.05,
+        "delta_free": 0.00015
+      },
+      "verdict": "PR-8d iter.4 (2026-07-11): TODOS os gates ✓ — mediana fonte 0.2275->0.1188; below-threshold 0.007/0.008; N50 estrit. decrescente c/ amplitude nos 2 tamanhos. Falsificacoes no caminho: wear x100 inerte (PR-8), tr_loose_gain x20 inerte (PR-8b), ratchet sem take-up vaza em partial slip (PR-8c). Canal do colapso = ratchet cinematico + delta_free lido",
+      "prov": {
+        "c_bend": "PR-8d fitado-this-rig (grid conjunto por tamanho); ~seed analitico do limiar k_tr=mu*F0/delta_th (M8 8.0 vs 8.1; M6 20 vs 18.9) — rig DIN 65151 classe ~1e7 N/m (PR-4)",
+        "emb_depth": "data-implied L24 (emb_from_curve na curva below-threshold do proprio tamanho)",
+        "delta_free": "input-de-paper: limiar DECLARADO na matriz do artigo (0.18mm M8 / 0.15mm M6, rotulos 'below threshold')",
+        "k_ratchet": "PR-8d fitado-this-rig COMPARTILHADO entre tamanhos (0.05; per-par O(0.005-0.1), mesma ordem do LU 0.02)",
+        "grip/mu/E": "paper via SOURCE_INPUTS (grip 25 est., mu 0.18 de 0.15-0.20, E 210 GPa)"
+      }
+    },
+    "YANG_2023_IJPEM_m8": {
+      "pack": "LEGACY",
+      "cfg": {
+        "c_bend": 8.0,
+        "emb_depth": 1.1628285193858975e-06,
+        "k_ratchet": 0.05,
+        "delta_free": 0.00018
+      },
+      "verdict": "PR-8d iter.4 (2026-07-11): TODOS os gates ✓ — mediana fonte 0.2275->0.1188; below-threshold 0.007/0.008; N50 estrit. decrescente c/ amplitude nos 2 tamanhos. Falsificacoes no caminho: wear x100 inerte (PR-8), tr_loose_gain x20 inerte (PR-8b), ratchet sem take-up vaza em partial slip (PR-8c). Canal do colapso = ratchet cinematico + delta_free lido",
+      "prov": {
+        "c_bend": "PR-8d fitado-this-rig (grid conjunto por tamanho); ~seed analitico do limiar k_tr=mu*F0/delta_th (M8 8.0 vs 8.1; M6 20 vs 18.9) — rig DIN 65151 classe ~1e7 N/m (PR-4)",
+        "emb_depth": "data-implied L24 (emb_from_curve na curva below-threshold do proprio tamanho)",
+        "delta_free": "input-de-paper: limiar DECLARADO na matriz do artigo (0.18mm M8 / 0.15mm M6, rotulos 'below threshold')",
+        "k_ratchet": "PR-8d fitado-this-rig COMPARTILHADO entre tamanhos (0.05; per-par O(0.005-0.1), mesma ordem do LU 0.02)",
+        "grip/mu/E": "paper via SOURCE_INPUTS (grip 25 est., mu 0.18 de 0.15-0.20, E 210 GPa)"
+      }
+    },
+    "KARLSEN_2022_run7p1": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 3.0,
+        "C_creep": 1e-12,
+        "c_D": 0.3,
+        "k_dmg_mu": 1.0,
+        "k_dmg_wear": 4.0,
+        "W_ref": 10000.0,
+        "k_ratchet": 0.005
+      },
+      "prov": {
+        "k_ratchet": "EXCECAO PER-ESPECIME autorizada pelo professor (2026-07-12): scatter de coating HV medido 3x (PR-11/11b/11c — vidas 195/230/340 a 312-315 kN nominais); dreno linear nao-auto-limitante deste especime"
+      },
+      "verdict": "PR-12c: run7p1 0.1589 -> 0.0398; demais 10 casos bit-identicos (grupo per-run)"
+    },
+    "ICMEZ_2025": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 1.0,
+        "k_wear_scale_tr": 0.07,
+        "loose_arrest_floor": 0.28
+      },
+      "prov": {
+        "mu": "0.115 = midpoint MEDIDO 0.09-0.14 do paper (KL100+VH301 GZ); substitui 0.15 assumed",
+        "c_bend": "PR-13 fitado-this-rig COMPARTILHADO nos 2 grips (diferenca lk13.8/lk19.8 = GEOMETRIA L_eff->k_tr, nao knob per-grip)",
+        "k_wear_scale_tr": "PR-13 fitado-this-rig (taxa de slip; compartilhado)",
+        "loose_arrest_floor": "PR-13 fitado-this-rig (piso ~0.2; dado termina 0.22-0.55)"
+      },
+      "verdict": "PR-13 (2026-07-12, 'atacar casos >0.1'): config COMPARTILHADA (mu 0.115 paper + c_bend 1.0/k_wear 0.10/floor 0.2, 3 params/8 curvas) — 3 lk13p8 (0.102-0.143, rodavam SEM config no default mu=0.15) -> 0.053-0.089; TODAS as 8 <=0.089. gap de adocao + mu errado; grip via geometria (cross-condicao) | PR-25 shape-refit (2026-07-14): k_wear 0.10->0.07, floor 0.2->0.28 — maxscore(MAE+std) 0.161->0.097; TODAS melhoram mae E std (medMAE 0.064->0.034)"
+    },
+    "KARLSEN_2022_run2p2": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 3.0,
+        "C_creep": 1e-12,
+        "c_D": 0.3,
+        "k_dmg_mu": 1.0,
+        "k_dmg_wear": 4.0,
+        "W_ref": 10000.0,
+        "k_ratchet": 0.003
+      },
+      "prov": {
+        "k_ratchet": "EXCECAO PER-ESPECIME (mesma classe autorizada do run7p1; specimen HV coating scatter; run2p2 colapso 0.003)"
+      },
+      "verdict": "PR-19: run2p2 0.107->0.048 (excecao per-especime HV, como run7p1)"
+    },
+    "LI_2022_TRIBOINT": {
+      "cfg": {
+        "fatigue_enabled": true,
+        "fat_stress_mode": "axial",
+        "fat_m1": 2.7,
+        "fat_C1": 2.977e+29
+      },
+      "prov": {
+        "fat_C1": "fitado-this-rig PER-MATERIAL (ancora = N_frat MEDIDO 410k do 10Hz_full; modo forca->ramo axial; PR-39v2: cliff 0.0%, Goodman vivo)",
+        "fat_m1": "input-de-paper (inclinacao D-N Liu2025, PR-24)"
+      },
+      "verdict": "PR-39v2 ADOTADO: FatigueLoss per-material Ti — cliff 410k exato, irmaos intactos"
+    },
+    "BAUER_2024_fig6_rep1": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 1.5,
+        "emb_depth": 1.09e-06,
+        "slip_regime_mode": "off",
+        "loose_arrest_floor": 0.05,
+        "tr_loose_gain": 2.2
+      },
+      "prov": {
+        "tr_loose_gain": "atrito per-especime (paper: mu 0.09-0.14 zinc-flake scatter, 6 bolts distintos); gain=2.2 COERENTE com a vida N50=86 (rapida=alto gain=baixo atrito; monotonico=scatter, nao overfit)"
+      },
+      "verdict": "PR-22: rep1 atrito per-especime; corrige divergencia (rep1 0.129->0.043)"
+    },
+    "BAUER_2024_fig6_rep2": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 1.5,
+        "emb_depth": 1.09e-06,
+        "slip_regime_mode": "off",
+        "loose_arrest_floor": 0.05,
+        "tr_loose_gain": 1.8
+      },
+      "prov": {
+        "tr_loose_gain": "atrito per-especime (paper: mu 0.09-0.14 zinc-flake scatter, 6 bolts distintos); gain=1.8 COERENTE com a vida N50=125 (rapida=alto gain=baixo atrito; monotonico=scatter, nao overfit)"
+      },
+      "verdict": "PR-22: rep2 atrito per-especime; corrige divergencia (rep1 0.129->0.043)"
+    },
+    "BAUER_2024_fig6_rep3": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 1.5,
+        "emb_depth": 1.09e-06,
+        "slip_regime_mode": "off",
+        "loose_arrest_floor": 0.05,
+        "tr_loose_gain": 1.8
+      },
+      "prov": {
+        "tr_loose_gain": "atrito per-especime (paper: mu 0.09-0.14 zinc-flake scatter, 6 bolts distintos); gain=1.8 COERENTE com a vida N50=139 (rapida=alto gain=baixo atrito; monotonico=scatter, nao overfit)"
+      },
+      "verdict": "PR-22: rep3 atrito per-especime; corrige divergencia (rep1 0.129->0.043)"
+    },
+    "BAUER_2024_fig6_rep4": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 1.5,
+        "emb_depth": 1.09e-06,
+        "slip_regime_mode": "off",
+        "loose_arrest_floor": 0.05,
+        "tr_loose_gain": 1.8
+      },
+      "prov": {
+        "tr_loose_gain": "atrito per-especime (paper: mu 0.09-0.14 zinc-flake scatter, 6 bolts distintos); gain=1.8 COERENTE com a vida N50=108 (rapida=alto gain=baixo atrito; monotonico=scatter, nao overfit)"
+      },
+      "verdict": "PR-22: rep4 atrito per-especime; corrige divergencia (rep1 0.129->0.043)"
+    },
+    "BAUER_2024_fig6_rep5": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 1.5,
+        "emb_depth": 1.09e-06,
+        "slip_regime_mode": "off",
+        "loose_arrest_floor": 0.05,
+        "tr_loose_gain": 1.6
+      },
+      "prov": {
+        "tr_loose_gain": "atrito per-especime (paper: mu 0.09-0.14 zinc-flake scatter, 6 bolts distintos); gain=1.6 COERENTE com a vida N50=165 (rapida=alto gain=baixo atrito; monotonico=scatter, nao overfit)"
+      },
+      "verdict": "PR-22: rep5 atrito per-especime; corrige divergencia (rep1 0.129->0.043)"
+    },
+    "BAUER_2024_fig6_rep6": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 1.5,
+        "emb_depth": 1.09e-06,
+        "slip_regime_mode": "off",
+        "loose_arrest_floor": 0.05,
+        "tr_loose_gain": 1.4
+      },
+      "prov": {
+        "tr_loose_gain": "atrito per-especime (paper: mu 0.09-0.14 zinc-flake scatter, 6 bolts distintos); gain=1.4 COERENTE com a vida N50=205 (rapida=alto gain=baixo atrito; monotonico=scatter, nao overfit)"
+      },
+      "verdict": "PR-22: rep6 atrito per-especime; corrige divergencia (rep1 0.129->0.043)"
+    },
+    "LIU_2016": {
+      "cfg": {
+        "emb_um": {
+          "m30nm": 4.2,
+          "m35nm": 3.46,
+          "m40nm": 2.75,
+          "m45nm": 2.65,
+          "m50nm": 1.78,
+          "af7p5kn": 3.05,
+          "af8p75kn": 3.87,
+          "af10kn": 4.5,
+          "af11p25kn": 5.49,
+          "af12p5kn": 6.94,
+          "13a_dry": 4.3,
+          "run1": 4.05,
+          "run2": 3.92
+        },
+        "N_emb": 20.0,
+        "C_creep": 1.90100906357046e-11,
+        "creep_conform_exp": 2.641114462483738,
+        "p_ref_emb": 119038035.26746069
+      },
+      "prov": {
+        "emb_um": "lido-do-dado (queda em N=200 − front de creep, via sonda)",
+        "N_emb": "lido (1o ponto valido N=20; ramp-up excluido pelo paper)",
+        "C_creep": "lido-do-dado (slope log da cauda m30nm, via sonda do engine)",
+        "creep_conform_exp/p_ref_emb": "lido-do-dado (regressao dos slopes do M0-sweep; precedente §4.14a-rev exp_slow Liu2017)",
+        "mu_thread/mu_bearing (mos2)": "input-de-paper (DIN 946: 0.029)"
+      },
+      "verdict": "PR-27b: atribuicao conjunta emb(N=200)+creep-log; spread do AF-sweep no slope = forma G1 (nao mascarado)"
+    },
+    "LIU_2016_mos2": {
+      "cfg": {
+        "emb_um": {
+          "mos2": 0.59
+        },
+        "mu_thread": 0.029,
+        "mu_bearing": 0.029,
+        "N_emb": 20.0,
+        "C_creep": 1.90100906357046e-11,
+        "creep_conform_exp": 2.641114462483738,
+        "p_ref_emb": 119038035.26746069
+      },
+      "prov": {
+        "emb_um": "lido-do-dado (queda em N=200 − front de creep, via sonda)",
+        "N_emb": "lido (1o ponto valido N=20; ramp-up excluido pelo paper)",
+        "C_creep": "lido-do-dado (slope log da cauda m30nm, via sonda do engine)",
+        "creep_conform_exp/p_ref_emb": "lido-do-dado (regressao dos slopes do M0-sweep; precedente §4.14a-rev exp_slow Liu2017)",
+        "mu_thread/mu_bearing (mos2)": "input-de-paper (DIN 946: 0.029)"
+      },
+      "verdict": "grupo mos2: mu DIN946 (paper)"
+    },
+    "SUN_2025_REASSY": {
+      "cfg": {
+        "per_case": {
+          "reassy02": {
+            "mu_thread": 0.158,
+            "mu_bearing": 0.158,
+            "emb_um": 10.6,
+            "loose_arrest_floor": 0.531
+          },
+          "reassy04": {
+            "mu_thread": 0.186,
+            "mu_bearing": 0.186,
+            "emb_um": 10.61,
+            "loose_arrest_floor": 0.538
+          },
+          "reassy06": {
+            "mu_thread": 0.198,
+            "mu_bearing": 0.198,
+            "emb_um": 9.98,
+            "loose_arrest_floor": 0.558
+          },
+          "reassy08": {
+            "mu_thread": 0.245,
+            "mu_bearing": 0.245,
+            "emb_um": 9.37,
+            "loose_arrest_floor": 0.629
+          },
+          "reassy10": {
+            "mu_thread": 0.279,
+            "mu_bearing": 0.279,
+            "emb_um": 9.16,
+            "loose_arrest_floor": 0.642
+          }
+        },
+        "k_wear_spec": 3.3494678707131606e-15
+      },
+      "prov": {
+        "mu_thread/mu_bearing": "input-de-paper (Fig10 locknut)",
+        "loose_arrest_floor": "lido-do-dado (plato final)",
+        "emb_um": "lido-do-dado (queda N=500 − front, sonda)",
+        "k_wear_spec": "fitado-this-rig PER-PAR (prata GH738/aco; fallback 1-DOF pre-autorizado PR-28)"
+      },
+      "verdict": "PR-28: mu paper + leituras + k_wear_spec per-par"
+    },
+    "QIN_2024": {
+      "cfg": {
+        "C_creep": 1.1998467626653e-10,
+        "t_0": 39797.894665179425,
+        "emb_um": 0.01
+      },
+      "prov": {
+        "C_creep": "lido-do-dado (ancoras 1e5/7e5s da curva I=0%; per-par CFRP-Ti)",
+        "t_0": "lido-do-dado (joelho de onset; ~tau2 do Burgers do paper)",
+        "emb_um": "lido-do-dado (0.9999 em t=100s => ~0; hold estatico sem ciclos)",
+        "grip/E": "input-de-paper (stack 11.6mm; E_bolt Ti 115GPa)"
+      },
+      "verdict": "PR-29b: creep estatico CFRP-Ti por leitura (onset+slope); interferencia = residuo honesto"
+    },
+    "CACCESE_2009_12p7mm": {
+      "cfg": {
+        "C_creep": 5.7437163776767406e-11,
+        "t_0": 7200.0,
+        "emb_um": 0.01
+      },
+      "prov": {
+        "C_creep/t_0": "lido-do-dado (2 ancoras da curva ref do PAR; receita PR-29b)",
+        "emb_um": "lido-do-dado (janela inicial do hold estatico)"
+      },
+      "verdict": "PR-33: creep por fonte-e-par (receita Qin)"
+    },
+    "CACCESE_2009_45kN": {
+      "cfg": {
+        "C_creep": 3.0629794905325056e-11,
+        "t_0": 7200.0,
+        "emb_um": 0.01
+      },
+      "prov": {
+        "C_creep/t_0": "lido-do-dado (2 ancoras da curva ref do PAR; receita PR-29b)",
+        "emb_um": "lido-do-dado (janela inicial do hold estatico)"
+      },
+      "verdict": "PR-33: creep por fonte-e-par (receita Qin)"
+    },
+    "CACCESE_2009_19p1mm": {
+      "cfg": {
+        "C_creep": 3.0629794905325056e-11,
+        "t_0": 7200.0,
+        "emb_um": 0.01
+      },
+      "prov": {
+        "C_creep/t_0": "lido-do-dado (2 ancoras da curva ref do PAR; receita PR-29b)",
+        "emb_um": "lido-do-dado (janela inicial do hold estatico)"
+      },
+      "verdict": "PR-33: creep por fonte-e-par (receita Qin)"
+    },
+    "CACCESE_2009_compblock": {
+      "cfg": {
+        "C_creep": 1.725549557289799e-11,
+        "t_0": 23340.761922786503,
+        "emb_um": 0.01
+      },
+      "prov": {
+        "C_creep/t_0": "lido-do-dado (2 ancoras da curva ref do PAR; receita PR-29b)",
+        "emb_um": "lido-do-dado (janela inicial do hold estatico)"
+      },
+      "verdict": "PR-33: creep por fonte-e-par (receita Qin)"
+    },
+    "JCSR_2023_indoor": {
+      "cfg": {
+        "C_creep": 4.7508824582954295e-12,
+        "t_0": 1004228.2820404916,
+        "emb_um": 0.01
+      },
+      "prov": {
+        "C_creep/t_0": "lido-do-dado (2 ancoras da curva ref do PAR; receita PR-29b)",
+        "emb_um": "lido-do-dado (janela inicial do hold estatico)"
+      },
+      "verdict": "PR-33: creep por fonte-e-par (receita Qin)"
+    },
+    "ECCLES_2010_fig3": {
+      "pack": "PACK",
+      "cfg": {
+        "mu_thread": 0.132,
+        "mu_bearing": 0.132,
+        "tr_loose_gain": 2.08,
+        "k_wear_spec": 2.923e-15,
+        "loose_arrest_floor": 0.194
+      },
+      "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
+      "prov": {
+        "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
+        "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
+        "k_wear_spec": "lido-do-dado (planura do plato)",
+        "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
+        "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
+      }
+    },
+    "ECCLES_2010_fig7a": {
+      "pack": "PACK",
+      "cfg": {
+        "mu_thread": 0.132,
+        "mu_bearing": 0.132,
+        "tr_loose_gain": 1.8,
+        "k_wear_spec": 2.923e-15,
+        "loose_arrest_floor": 0.216
+      },
+      "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
+      "prov": {
+        "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
+        "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
+        "k_wear_spec": "lido-do-dado (planura do plato)",
+        "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
+        "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
+      }
+    },
+    "ECCLES_2010_fig8a": {
+      "pack": "PACK",
+      "cfg": {
+        "mu_thread": 0.132,
+        "mu_bearing": 0.132,
+        "tr_loose_gain": 1.64,
+        "k_wear_spec": 2.923e-15,
+        "loose_arrest_floor": 0.059
+      },
+      "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
+      "prov": {
+        "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
+        "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
+        "k_wear_spec": "lido-do-dado (planura do plato)",
+        "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
+        "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
+      }
+    },
+    "ECCLES_2010_fig8c": {
+      "pack": "PACK",
+      "cfg": {
+        "mu_thread": 0.132,
+        "mu_bearing": 0.132,
+        "tr_loose_gain": 1.83,
+        "k_wear_spec": 2.923e-15,
+        "loose_arrest_floor": 0.152
+      },
+      "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
+      "prov": {
+        "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
+        "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
+        "k_wear_spec": "lido-do-dado (planura do plato)",
+        "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
+        "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
+      }
+    },
+    "ECCLES_2010_fig7b": {
+      "pack": "PACK",
+      "cfg": {
+        "mu_thread": 0.132,
+        "mu_bearing": 0.132,
+        "tr_loose_gain": 1.8,
+        "k_wear_spec": 2.923e-15,
+        "loose_arrest_floor": 0.232
+      },
+      "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
+      "prov": {
+        "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
+        "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
+        "k_wear_spec": "lido-do-dado (planura do plato)",
+        "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
+        "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
+      }
+    },
+    "ECCLES_2010_fig7c": {
+      "pack": "PACK",
+      "cfg": {
+        "mu_thread": 0.132,
+        "mu_bearing": 0.132,
+        "tr_loose_gain": 1.8,
+        "k_wear_spec": 2.923e-15,
+        "loose_arrest_floor": 0.182
+      },
+      "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
+      "prov": {
+        "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
+        "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
+        "k_wear_spec": "lido-do-dado (planura do plato)",
+        "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
+        "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
+      }
+    },
+    "ECCLES_2010_fig7d": {
+      "pack": "PACK",
+      "cfg": {
+        "mu_thread": 0.132,
+        "mu_bearing": 0.132,
+        "tr_loose_gain": 1.8,
+        "k_wear_spec": 2.923e-15,
+        "loose_arrest_floor": 0.137
+      },
+      "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
+      "prov": {
+        "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
+        "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
+        "k_wear_spec": "lido-do-dado (planura do plato)",
+        "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
+        "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
+      }
+    },
+    "ECCLES_2010_fig8b": {
+      "pack": "PACK",
+      "cfg": {
+        "mu_thread": 0.132,
+        "mu_bearing": 0.132,
+        "tr_loose_gain": 1.64,
+        "k_wear_spec": 2.923e-15,
+        "loose_arrest_floor": 0.0
+      },
+      "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
+      "prov": {
+        "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
+        "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
+        "k_wear_spec": "lido-do-dado (planura do plato)",
+        "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
+        "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
+      }
+    },
+    "SUN_2025_CRIMP": {
+      "pack": "PACK",
+      "cfg": {
+        "per_case": {
+          "_grease_standard": {
+            "tr_loose_gain": 2.94,
+            "loose_arrest_floor": 0.06
+          },
+          "_grease_crimp": {
+            "tr_loose_gain": 2.44,
+            "loose_arrest_floor": 0.142
+          }
+        }
+      },
+      "verdict": "PR-37' ADOTADO (gate corrigido)",
+      "prov": {
+        "tr_loose_gain": "fitado-this-rig POR PORCA (r100; crimp 2.44 / standard 2.94)",
+        "loose_arrest_floor": "lido-do-dado (assintota final crua)",
+        "escopo": "SO grease transversal; axiais/secos default (fratura na fila); maxerr standard 0.319 rotulado descida-unica"
+      }
+    },
+    "KARLSEN_2022_run20p0": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 3.0,
+        "C_creep": 1e-12,
+        "c_D": 0.3,
+        "k_dmg_mu": 1.0,
+        "k_dmg_wear": 4.0,
+        "W_ref": 10000.0,
+        "k_ratchet": 0.00097
+      },
+      "verdict": "PR-40 ADOTADO: k_ratchet=0.00097 per-especime (M42 run20p0)",
+      "prov": {
+        "C_creep": "fitado-this-rig/par (iter.1, branch travado Vibralock; prior ancora 304SS — sec4.7)",
+        "c_D": "fitado-this-rig (PR-1: UNICA constante livre, fit CONJUNTO nas 7 HV; LOCO 0.053)",
+        "k_dmg_mu": "starter fisico documentado (1.0, nao fitado)",
+        "k_dmg_wear": "starter fisico documentado (4.0, nao fitado)",
+        "W_ref": "starter fisico documentado (1e4, nao fitado)",
+        "c_bend": "fitado-this-rig (pre-existente)",
+        "k_ratchet": "fitado-this-rig PER-ESPECIME (classe autorizada run7p1/run2p2; deficit ~15% constante lido no diagnostico da frota)"
+      }
+    },
+    "YANG_2019_small_to_large": {
+      "pack": "PACK",
+      "cfg": {
+        "emb_um": 5.0,
+        "slip_onset_W": 40000.0,
+        "c_D": 0.1,
+        "W_ref": 3000.0,
+        "k_dmg_mu": 1.0,
+        "k_dmg_wear": 4.0,
+        "dmg_dwell_exp": 1.0,
+        "f_ref_dmg": 10.0,
+        "delta_spectrum": [
+          [
+            3730,
+            0.0006
+          ],
+          [
+            85,
+            0.0008
+          ]
+        ]
+      },
+      "verdict": "PR-42 ADOTADO (gates escritos: constantes intactos + tripe melhora nos 2 varamp; maxerr 0.212->0.131 / 0.164->0.136)",
+      "prov": {
+        "delta_spectrum": "input-de-paper (Tabelas 6/7 + Figs.10/11; realizacao medida, trocas por evento 80%F0)"
+      }
+    },
+    "YANG_2019_large_to_small": {
+      "pack": "PACK",
+      "cfg": {
+        "emb_um": 5.0,
+        "slip_onset_W": 40000.0,
+        "c_D": 0.1,
+        "W_ref": 3000.0,
+        "k_dmg_mu": 1.0,
+        "k_dmg_wear": 4.0,
+        "dmg_dwell_exp": 1.0,
+        "f_ref_dmg": 10.0,
+        "delta_spectrum": [
+          [
+            1546,
+            0.0008
+          ],
+          [
+            1464,
+            0.0006
+          ]
+        ]
+      },
+      "verdict": "PR-42 ADOTADO (gates escritos: constantes intactos + tripe melhora nos 2 varamp; maxerr 0.212->0.131 / 0.164->0.136)",
+      "prov": {
+        "delta_spectrum": "input-de-paper (Tabelas 6/7 + Figs.10/11; realizacao medida, trocas por evento 80%F0)"
+      }
+    },
+    "CHU_2026_test1": {
+      "pack": "PACK",
+      "cfg": {
+        "c_bend": 1.881,
+        "mu_thread": 0.05,
+        "C_creep": 0.0,
+        "emb_um": 1.6,
+        "per_case": {
+          "test1": {
+            "mu_bearing": 0.1043
+          }
+        },
+        "c_D": 5.5,
+        "W_ref": 10000.0,
+        "k_dmg_mu": -2.43
+      },
+      "prov": {
+        "leituras": "PR-38 sandbox: mu0 por teste lido da Fig.5 (paper); c_bend=1.881 re-lido da ancora D_cr=0.30mm@49kN com mu0(test1) medido; mu_thread=0.05 paper; emb_um=1.60 data_implied_early_drop na curva below-threshold test1 (leitor L24; handbook 11.0um divergia); C_creep=0 lido da PLANURA da cauda below-threshold test1 (dado +0.4%/2400cyc vs modelo-shared -2.8%; per-par sec4.7, precedentes QIN_2024 sonda + PR-31b planura; dano per-rig fitado-this-rig no mu(N) do test2: c_D=5.5, W_ref=1e4, k_dmg_mu=-2.43 (<0: mu SOBE, Fig.5)",
+        "escopo": "SO test1 (limiar D_cr); familia = morte PR-38 (fila item 5); maxerr 0.115 rotulado"
+      },
+      "verdict": "PR-38 ADOTADO ESCOPADO (test1): limiar 0.334->0.066"
     }
-   },
-   "prov": {
-    "delta_amp_mm": "paper Tabela 2 (amplitudes POR ESPECIME: t10=0.5, t12=0.49, t14=0.38mm; paper admite amplitudes diferentes)",
-    "GA_member": "PR-14 fitado-this-rig (~ordem fisica G*A do HDPE; membro complacente absorve o curso, k_member_shear=GA/t)",
-    "c_bend/emb_depth/floor": "PR-14 fitado-this-rig (rig + assentamento + piso de arresto)",
-    "mu": "0.2 = HDPE do paper (Tabela 1)"
-   },
-   "verdict": "PR-14 (2026-07-12, deep study 'todas <0.1'): amplitude de paper (Tab.2) + compliance do membro (GA 2e4) -> HDPE t10 0.164/t12 0.254/t14 0.566 CAI p/ 0.058/0.060/0.044 (t14 = pior caso da lib RESOLVIDO). Separacao de 2 eixos fisicos (amplitude + compliance), sem knob per-curva; fecha roadmap #10 (stroke-split)"
   },
-  "ROUSSEAU_2025": {
-   "pack": "PACK",
-   "cfg": {
-    "emb_um": 1.0,
-    "free_spin": 1.0,
-    "c_bend": 0.3
-   },
-   "verdict": "MEM iter.1: c_bend 0.3 promovido (sec4.12) | PR-25 shape-refit (2026-07-14): emb 1.5->1.0um — aco melhora mae E std (t10 0.073/0.082 -> 0.052/0.057); maxscore fonte 0.155->0.120",
-   "prov": {
-    "c_bend": "fitado-this-rig (pack sec4.12)"
-   }
-  },
-  "KARLSEN_2022": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 3.0,
-    "C_creep": 1e-12,
-    "c_D": 0.3,
-    "k_dmg_mu": 1.0,
-    "k_dmg_wear": 4.0,
-    "W_ref": 10000.0
-   },
-   "verdict": "PR-1 iter.3 PASSOU (gate quadruplo pre-registrado): colapso HV e dirigido por DANO de asperezas (hipotese do paper: 'not creep'), com o C_creep fisico do par. (a) mediana HV 0.094->0.061; (b) vibralock 0.0101 intocado; (c) vida do colapso 7/7 dentro de 2x (195->195, 230->230, 340->340...); (d) LOCO fit-5 prediz 2 a 0.053. Consistencia sec4.7 restaurada no rig inteiro (pendencia iter.2 RESOLVIDA).",
-   "prov": {
-    "C_creep": "fitado-this-rig/par (iter.1, branch travado Vibralock; prior ancora 304SS — sec4.7)",
-    "c_D": "fitado-this-rig (PR-1: UNICA constante livre, fit CONJUNTO nas 7 HV; LOCO 0.053)",
-    "k_dmg_mu": "starter fisico documentado (1.0, nao fitado)",
-    "k_dmg_wear": "starter fisico documentado (4.0, nao fitado)",
-    "W_ref": "starter fisico documentado (1e4, nao fitado)",
-    "c_bend": "fitado-this-rig (pre-existente)"
-   }
-  },
-  "LIU_2025": {
-   "pack": "LEGACY",
-   "cfg": {
-    "c_bend": 50.0,
-    "delta_free": 0.0003,
-    "k_wear_scale_tr": 0.0,
-    "W_conf_ref": 0.0,
-    "slip_onset_W": 250000.0,
-    "k_ratchet": 0.0001,
-    "emb_um": 5.0,
-    "N_emb": 5.0,
-    "loose_arrest_floor": 0.25
-   },
-   "verdict": "PR-9b iter.4 (2026-07-11): TODOS os gates ✓ — mediana fonte 0.1934->0.0777; fraturas 0.047-0.102 c/ N70 4/4 e finais ~0.5 (dado segura e frattura). Falsificado no caminho (PR-9): loose_kin_ceiling inerte na escala de grind; remocao do slip_onset_W = runaway imediato (incubacao E a portadora do D-N). Residual de forma: cliff terminal = fratura (FatigueLoss precisa driver ~slip; candidato futuro)",
-   "prov": {
-    "slip_onset_W": "PR-9b re-fit fino (150k->250k): portadora da lei D-N do rig (N_onset ~ W/(4*mu*F0*slip) ~ 1/slip, mesma estrutura do take-up lido delta_free=0.30)",
-    "c_bend": "fixture L de alta rigidez (servo; classe PESADA PR-4, k_tr ~3.6e8)",
-    "delta_free": "lido DESTE dado (N ~ 1/(delta-0.30mm), 4 pares +-3%)",
-    "loose_arrest_floor": "PR-9b fitado-this-rig (0.25; banda per-par: LU 0.2, ZHANG 0.1) — piso de auto-travamento onde o mergulho pos-onset arresta (dado segura ~0.5 e sai em 0.33 = fratura, fora do modelo)"
-   }
-  },
-  "YANG_2019": {
-   "pack": "PACK",
-   "cfg": {
-    "emb_um": 5.0,
-    "slip_onset_W": 40000.0,
-    "c_D": 0.1,
-    "W_ref": 3000.0,
-    "k_dmg_mu": 1.0,
-    "k_dmg_wear": 4.0,
-    "dmg_dwell_exp": 1.0,
-    "f_ref_dmg": 10.0
-   },
-   "verdict": "sec4.21 — 5Hz fecha"
-  },
-  "ZHANG_2006": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 0.05,
-    "emb_um": 1.58,
-    "C_creep": 3.084582612352061e-11
-   },
-   "prov": {
-    "c_bend": "lido-do-dado (ancora do limiar fig16-runout; SATUROU no piso 0.05 — transiente residual rotulado)",
-    "emb_um": "lido-do-dado (queda inicial 5% do fig16, sonda de ganho)",
-    "C_creep": "lido-do-dado (cauda do fig16; per-par aco/ferro-fundido-lubrificado)",
-    "maxerr_rotulos": "fig16 0.150 = transiente residual c/ c_bend no piso; fig3 0.211/0.661 = colapso 2-estagios (classe kernel, fila)"
-   },
-   "verdict": "PR-43b ADOTADO (PR-37'): fonte 0.458->0.148 (-68%); fig16 0.523->0.086, fig3 0.393->0.211"
-  },
-  "LIU_2017_axial": {
-   "pack": "analitico GF",
-   "cfg": {
-    "emb_depth": 4.3e-06,
-    "N_emb": 15.0,
-    "C_creep": 1.45e-11,
-    "emb_amp_exp": 2.375,
-    "rho_ref_emb": 0.6667,
-    "creep_conform_exp": 3.6
-   },
-   "verdict": "sec4.18 — rho-unificacao; P0 0.003, A_F 0.020"
-  },
-  "LIU_2022": {
-   "pack": "defaults",
-   "cfg": {
-    "emb": "Rz<4 (VDI)",
-    "k_wear_scale_tr": 0.06,
-    "c_D_dry": 0.5,
-    "c_D_oil": 0.03,
-    "k_dmg_mu": 1.0,
-    "k_dmg_wear": 4.0,
-    "W_ref": 10000.0,
-    "mu": "Motosh do F0 medido por caso (0.247/0.225 dry; 0.183/0.168 oil)"
-   },
-   "verdict": "fonte transversal NOVA (fig5, 4 casos) — ZERO-REFIT das constantes sec4.10/4.11: MAE 0.004-0.022; mu por-lube derivado do proprio dado (dry>oil, dentro da banda ancorada)"
-  },
-  "LIU_2022_RET": {
-   "pack": "defaults+seq",
-   "cfg": {
-    "k_emb_renew": 1.0,
-    "k_gall": 3.0,
-    "c_D_per_lube": "0.5/0.03",
-    "k_wear_scale_tr": 0.06,
-    "k_wear_running": 5.0,
-    "N_wear_run": 100.0,
-    "mu": "Motosh (0.236 dry / 0.176 oil)",
-    "emb": "Rz<4",
-    "emb_depth": 4e-06,
-    "k_dmg_wear": 1.0,
-    "W_ref": 10000.0,
-    "mu_thread": 0.176,
-    "mu_bearing": 0.176,
-    "c_D": 0.03
-   },
-   "verdict": "rodada 4: 12/12 fases <=0.10 (0.004-0.034); recuperacao dry 1.00->0.90 (galling) vs oil ~0.99 (restaura) — retighten()+k_emb_renew=1 validados em sequencia | PR-6 iter.4: inputs da campanha rodada-4 adotados (mu Motosh per-lube, emb Rz<4 n2, dano brando)",
-   "prov": {
-    "mu_thread": "Motosh oil: T=80N.m + F0=27.0kN medidos (paper/L3)",
-    "mu_bearing": "Motosh oil (idem)",
-    "c_D": "L7 per-lube oil (validate_galling)",
-    "emb_depth": "Rz<4 n_inner=2 = 4.0um (handbook; rig 2 placas+celula)",
-    "k_dmg_wear": "level probe M12 nao-colapsante (dano brando, k_dmg_mu=0)",
-    "chain": "PR-5b: sequencia t0->retighten()->tN c/ estado herdado; F0 por estagio lido do 1o ponto (oil: fig6b/fig7a; fig5 nao termina _tN => virgem)"
-   },
-   "chain": "retight"
-  },
-  "BAUER_2024_fig6": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 1.5,
-    "emb_depth": 1.09e-06,
-    "slip_regime_mode": "off",
-    "loose_arrest_floor": 0.05
-   },
-   "prov": {
-    "kernel": "torque (runaway) rastreia o decline ACELERANTE das replicas rapidas (corrige a divergencia da rep1 apontada pelo professor; o linear/graded decelerava e divergia)"
-   },
-   "verdict": "PR-22 base compartilhada (c_bend 1.5, floor 0.05, torque)"
-  },
-  "BAUER_2024_fig8": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 0.4167,
-    "emb_depth": 1.7e-06,
-    "delta_spectrum": [
-     [
-      18,
-      8e-05
-     ],
-     [
-      2,
-      0.000155
-     ]
-    ],
-    "slip_regime_mode": "off",
-    "loose_rate_mode": "graded_scrit",
-    "s_crit_loose": 0.0,
-    "k_loose_graded": 0.03,
-    "K_archard": 0.0,
-    "C_creep": 0.0
-   },
-   "verdict": "PR-12e (2026-07-12): fig8 min-max — test1/2/3 = 0.075/0.029/0.024 (test2 0.254->0.029); joelho da criticalidade s_crit(F_V), eq.4+5 do paper",
-   "prov": {
-    "c_bend": "LIDO de s_crit=98.6um do paper NA CONVENCAO DO ENGINE (delta_t = 0.46*mu*F0/k_tr = 98.6um em 50kN => c_bend=0.4167; errata: leitura analitica inicial 0.906 ignorava o fator Pai-Hess 0.46)",
-    "delta_spectrum": "input-de-paper: blocos de 20 ciclos = 18x80um + 2x155um REAIS (overshoot declarado; secao 4 do paper)",
-    "emb_depth": "lido de dF_V,init = 5% (PL50) do paper (plastificacao + destorcao de montagem)",
-    "loose_rate_mode/k_loose_graded": "graded_scrit = eq.(5) do paper (dF ~ excesso de slip); k=0.05 fitado-this-rig (seed analitico 0.042 da propria eq.5, kS=0.379/N2=61.8)",
-    "K_archard": "0 LIDO do paper: anti-seize paste entre as chapas ELIMINA fretting/wear por projeto",
-    "C_creep": "0 por contexto: ensaios de MINUTOS (<1000 ciclos); creep e fenomeno de tempo; C_creep UFU e por-par (sec4.7) sem procedencia aqui",
-    "slip_regime_mode": "limiar NITIDO medido por staircase (controle na interface)",
-    "k_loose_graded": "PR-12e re-grid 0.05->0.03 (min-max do ensemble; joelho N75~740 = centro dos dados 543/692/764; seed analitico 0.042 da eq.5 do paper)"
-   }
-  },
-  "LIU_2022_RETIGHT_dry": {
-   "cfg": {
-    "k_emb_renew": 1.0,
-    "k_gall": 3.0,
-    "c_D_per_lube": "0.5/0.03",
-    "k_wear_scale_tr": 0.06,
-    "k_wear_running": 5.0,
-    "N_wear_run": 100.0,
-    "mu": "Motosh (0.236 dry / 0.176 oil)",
-    "emb": "Rz<4",
-    "mu_thread": 0.236,
-    "mu_bearing": 0.236,
-    "emb_depth": 4e-06,
-    "k_dmg_wear": 1.0,
-    "W_ref": 10000.0,
-    "c_D": 0.5
-   },
-   "pack": "defaults+seq",
-   "prov": {
-    "mu_thread": "Motosh dry: T=80N.m + F0=20.6kN medidos (paper/L3; substitui 0.2 do estudo sec4.29 — procedencia mais forte)",
-    "mu_bearing": "Motosh dry (idem)",
-    "c_D": "L7 per-lube dry (validate_galling)",
-    "emb_depth": "Rz<4 n_inner=2 = 4.0um (handbook)",
-    "k_dmg_wear": "level probe (dano brando)",
-    "chain": "PR-7: cadeia dry c/ receita campanha (k_dmg_mu=0, k_dmg_wear=1, c_D 0.5); F0 por estagio lido do 1o ponto"
-   },
-   "verdict": "MEM iter.1: grupo dry (mu por lubrificacao e INPUT, nao fit) | grupo oil TESTADO E REMOVIDO: mu=0.1 sozinho piora (falta c_D per-lube da sec4.11) -> iteracao 2 | chave renomeada p/ fronteira estrita (fonte e' prefixo) | PR-6 iter.4: mu Motosh dry 0.236 + receita campanha",
-   "chain": "retight"
-  },
-  "LI_2022_MARSTRUC": {
-   "cfg": {
-    "C_creep": 9.917042354340428e-13
-   },
-   "pack": "defaults",
-   "prov": {
-    "C_creep": "ancora MEDIDA do par 304SS (Fase 1C, creep_anchor.json, sec4.7 — C_creep e' POR PAR)"
-   },
-   "verdict": "PR-2 iter.3: caminho do harness da ancora reproduzido no runner (geometria de paper grip=20mm/E=193GPa via SOURCE_INPUTS + emb por Ra nos grupos LI_2022_MARSTRUC_ra*). Entrada base = fallback."
-  },
-  "KARLSEN_2022_vibralock": {
-   "cfg": {
-    "c_bend": 3.0,
-    "tr_loose_gain": 0.0,
-    "k_wear_spec": 0.0,
-    "K_archard": 0.0,
-    "emb_um": 3.68,
-    "C_creep": 1e-12
-   },
-   "pack": "PACK",
-   "prov": {
-    "tr_loose_gain": "input de paper (Vibralock = porca wedge-cam: rotacao SUPRIMIDA — travamento cinematico/rigidez, nao amortecimento; nota de aparato karlsen2022)",
-    "k_wear_spec": "input de paper (wedge mantem a forca normal — sem back-off, wear de slip suprimido no branch travado)",
-    "K_archard": "idem k_wear_spec",
-    "emb_um": "lido-do-dado (L24: mediana das leituras de queda-inicial das 4 curvas = 3.68 um)",
-    "C_creep": "fitado-this-rig/par (1 constante nas 4 curvas do branch travado; prior = ancora 304SS 9.9e-13; o valor UFU 1.87e-11 e de OUTRO par, sec4.7)",
-    "c_bend": "herdado do rig (KARLSEN_2022)"
-   },
-   "verdict": "MEM iter.1 (diretriz do professor): dispositivo de travamento modelado no MSD — mediana do grupo 0.706 -> 0.0101. PENDENCIA iter.2: propagar C_creep=1e-12 ao branch HV do mesmo par exige refit do c_bend (colapso foi calibrado com o creep UFU)."
-  },
-  "YANG_2023_IJPEM": {
-   "cfg": {
-    "c_bend": 0.3
-   },
-   "pack": "LEGACY",
-   "prov": {
-    "c_bend": "fitado-this-rig (unico DOF transversal sec4.42; grid 1-D nas 9 curvas, MEM iter.2)"
-   },
-   "verdict": "MEM iter.2: primeira calibracao da fonte — c_bend 0.3 (mediana 0.294->0.228). Residuo ~0.23 = nivel/forma p/ iter.3. | SUPERSEDED pelos grupos _m6/_m8 (PR-8d) — fica como fallback p/ curvas novas da fonte"
-  },
-  "LI_2022_MARSTRUC_ra0p078": {
-   "cfg": {
-    "C_creep": 9.917042354340428e-13,
-    "emb_um": 0.08741
-   },
-   "pack": "defaults",
-   "prov": {
-    "C_creep": "ancora MEDIDA do par 304SS (Fase 1C, sec4.7)",
-    "emb_um": "lido-da-ancora (fit conjunto Fase 1C, feature por Ra=0.078 — creep_anchor.json)"
-   },
-   "verdict": "PR-2 iter.3: grupo por Ra=0.078 com inputs do harness da ancora"
-  },
-  "LI_2022_MARSTRUC_ra0p122": {
-   "cfg": {
-    "C_creep": 9.917042354340428e-13,
-    "emb_um": 0.06929
-   },
-   "pack": "defaults",
-   "prov": {
-    "C_creep": "ancora MEDIDA do par 304SS (Fase 1C, sec4.7)",
-    "emb_um": "lido-da-ancora (fit conjunto Fase 1C, feature por Ra=0.122 — creep_anchor.json)"
-   },
-   "verdict": "PR-2 iter.3: grupo por Ra=0.122 com inputs do harness da ancora"
-  },
-  "LI_2022_MARSTRUC_ra0p306": {
-   "cfg": {
-    "C_creep": 9.917042354340428e-13,
-    "emb_um": 0.01
-   },
-   "pack": "defaults",
-   "prov": {
-    "C_creep": "ancora MEDIDA do par 304SS (Fase 1C, sec4.7)",
-    "emb_um": "lido-da-ancora (fit conjunto Fase 1C, feature por Ra=0.306 — creep_anchor.json)"
-   },
-   "verdict": "PR-2 iter.3: grupo por Ra=0.306 com inputs do harness da ancora"
-  },
-  "LI_2022_MARSTRUC_ra0p8": {
-   "cfg": {
-    "C_creep": 9.917042354340428e-13,
-    "emb_um": 0.01
-   },
-   "pack": "defaults",
-   "prov": {
-    "C_creep": "ancora MEDIDA do par 304SS (Fase 1C, sec4.7)",
-    "emb_um": "lido-da-ancora (fit conjunto Fase 1C, feature por Ra=0.8 — creep_anchor.json)"
-   },
-   "verdict": "PR-2 iter.3: grupo por Ra=0.8 com inputs do harness da ancora"
-  },
-  "YANG_2021": {
-   "cfg": {
-    "c_bend": 0.1
-   },
-   "pack": "LEGACY",
-   "prov": {
-    "c_bend": "fitado-this-rig (1o DOF da fonte, PR-3/reclassificacao; banda INSENSIVEL 0.02-0.15 — valor no centro, nao identificado alem da banda)"
-   },
-   "verdict": "PR-3 iter.3: H3 (forma do protocolo composto) MORREU no Estagio 1 (gradiente de F_ax instavel em sinal no dado, n=5 confundido). Reclassificada como NIVEL: c_bend 0.1 leva 0.652->0.125. Residuo ~0.13-0.19 inclui cauda de fratura (out-of-model)."
-  },
-  "LIU_2022_RETIGHT_fig8": {
-   "pack": "defaults+seq",
-   "cfg": {
-    "k_emb_renew": 1.0,
-    "k_gall": 3.0,
-    "c_D_per_lube": "0.5/0.03",
-    "k_wear_scale_tr": 0.06,
-    "k_wear_running": 5.0,
-    "N_wear_run": 100.0,
-    "mu": "Motosh (0.236 dry / 0.176 oil)",
-    "emb": "Rz<4",
-    "mu_thread": 0.236,
-    "mu_bearing": 0.236,
-    "emb_depth": 4e-06,
-    "k_dmg_wear": 1.0,
-    "W_ref": 10000.0,
-    "c_D": 0.5
-   },
-   "prov": {
-    "mu_thread": "Motosh dry: T=80N.m + F0=20.6kN medidos (paper/L3; substitui 0.2 do estudo sec4.29 — procedencia mais forte)",
-    "mu_bearing": "Motosh dry (idem)",
-    "c_D": "L7 per-lube dry (validate_galling)",
-    "emb_depth": "Rz<4 n_inner=2 = 4.0um (handbook)",
-    "k_dmg_wear": "level probe (dano brando)",
-    "grupo": "fig8 = protocolo multi DRY (paper); stem sem token 'dry' nao alcanca o grupo _dry",
-    "chain": "PR-7: cadeia dry c/ receita campanha (k_dmg_mu=0, k_dmg_wear=1, c_D 0.5); F0 por estagio lido do 1o ponto"
-   },
-   "verdict": "PR-6 iter.4: receita dry da campanha p/ fig8 (multi, dry)",
-   "chain": "retight"
-  },
-  "YANG_2023_IJPEM_m6": {
-   "pack": "LEGACY",
-   "cfg": {
-    "c_bend": 20.0,
-    "emb_depth": 2.265458422174842e-06,
-    "k_ratchet": 0.05,
-    "delta_free": 0.00015
-   },
-   "verdict": "PR-8d iter.4 (2026-07-11): TODOS os gates ✓ — mediana fonte 0.2275->0.1188; below-threshold 0.007/0.008; N50 estrit. decrescente c/ amplitude nos 2 tamanhos. Falsificacoes no caminho: wear x100 inerte (PR-8), tr_loose_gain x20 inerte (PR-8b), ratchet sem take-up vaza em partial slip (PR-8c). Canal do colapso = ratchet cinematico + delta_free lido",
-   "prov": {
-    "c_bend": "PR-8d fitado-this-rig (grid conjunto por tamanho); ~seed analitico do limiar k_tr=mu*F0/delta_th (M8 8.0 vs 8.1; M6 20 vs 18.9) — rig DIN 65151 classe ~1e7 N/m (PR-4)",
-    "emb_depth": "data-implied L24 (emb_from_curve na curva below-threshold do proprio tamanho)",
-    "delta_free": "input-de-paper: limiar DECLARADO na matriz do artigo (0.18mm M8 / 0.15mm M6, rotulos 'below threshold')",
-    "k_ratchet": "PR-8d fitado-this-rig COMPARTILHADO entre tamanhos (0.05; per-par O(0.005-0.1), mesma ordem do LU 0.02)",
-    "grip/mu/E": "paper via SOURCE_INPUTS (grip 25 est., mu 0.18 de 0.15-0.20, E 210 GPa)"
-   }
-  },
-  "YANG_2023_IJPEM_m8": {
-   "pack": "LEGACY",
-   "cfg": {
-    "c_bend": 8.0,
-    "emb_depth": 1.1628285193858975e-06,
-    "k_ratchet": 0.05,
-    "delta_free": 0.00018
-   },
-   "verdict": "PR-8d iter.4 (2026-07-11): TODOS os gates ✓ — mediana fonte 0.2275->0.1188; below-threshold 0.007/0.008; N50 estrit. decrescente c/ amplitude nos 2 tamanhos. Falsificacoes no caminho: wear x100 inerte (PR-8), tr_loose_gain x20 inerte (PR-8b), ratchet sem take-up vaza em partial slip (PR-8c). Canal do colapso = ratchet cinematico + delta_free lido",
-   "prov": {
-    "c_bend": "PR-8d fitado-this-rig (grid conjunto por tamanho); ~seed analitico do limiar k_tr=mu*F0/delta_th (M8 8.0 vs 8.1; M6 20 vs 18.9) — rig DIN 65151 classe ~1e7 N/m (PR-4)",
-    "emb_depth": "data-implied L24 (emb_from_curve na curva below-threshold do proprio tamanho)",
-    "delta_free": "input-de-paper: limiar DECLARADO na matriz do artigo (0.18mm M8 / 0.15mm M6, rotulos 'below threshold')",
-    "k_ratchet": "PR-8d fitado-this-rig COMPARTILHADO entre tamanhos (0.05; per-par O(0.005-0.1), mesma ordem do LU 0.02)",
-    "grip/mu/E": "paper via SOURCE_INPUTS (grip 25 est., mu 0.18 de 0.15-0.20, E 210 GPa)"
-   }
-  },
-  "KARLSEN_2022_run7p1": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 3.0,
-    "C_creep": 1e-12,
-    "c_D": 0.3,
-    "k_dmg_mu": 1.0,
-    "k_dmg_wear": 4.0,
-    "W_ref": 10000.0,
-    "k_ratchet": 0.005
-   },
-   "prov": {
-    "k_ratchet": "EXCECAO PER-ESPECIME autorizada pelo professor (2026-07-12): scatter de coating HV medido 3x (PR-11/11b/11c — vidas 195/230/340 a 312-315 kN nominais); dreno linear nao-auto-limitante deste especime"
-   },
-   "verdict": "PR-12c: run7p1 0.1589 -> 0.0398; demais 10 casos bit-identicos (grupo per-run)"
-  },
-  "ICMEZ_2025": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 1.0,
-    "k_wear_scale_tr": 0.07,
-    "loose_arrest_floor": 0.28
-   },
-   "prov": {
-    "mu": "0.115 = midpoint MEDIDO 0.09-0.14 do paper (KL100+VH301 GZ); substitui 0.15 assumed",
-    "c_bend": "PR-13 fitado-this-rig COMPARTILHADO nos 2 grips (diferenca lk13.8/lk19.8 = GEOMETRIA L_eff->k_tr, nao knob per-grip)",
-    "k_wear_scale_tr": "PR-13 fitado-this-rig (taxa de slip; compartilhado)",
-    "loose_arrest_floor": "PR-13 fitado-this-rig (piso ~0.2; dado termina 0.22-0.55)"
-   },
-   "verdict": "PR-13 (2026-07-12, 'atacar casos >0.1'): config COMPARTILHADA (mu 0.115 paper + c_bend 1.0/k_wear 0.10/floor 0.2, 3 params/8 curvas) — 3 lk13p8 (0.102-0.143, rodavam SEM config no default mu=0.15) -> 0.053-0.089; TODAS as 8 <=0.089. gap de adocao + mu errado; grip via geometria (cross-condicao) | PR-25 shape-refit (2026-07-14): k_wear 0.10->0.07, floor 0.2->0.28 — maxscore(MAE+std) 0.161->0.097; TODAS melhoram mae E std (medMAE 0.064->0.034)"
-  },
-  "UFU_LAB_5A": {
-   "pack": "PACK",
-   "cfg": {
-    "W_conf_ref": 0.0,
-    "k_dmg_wear": 4.0,
-    "k_dmg_mu": 1.0,
-    "W_ref": 10000.0,
-    "k_wear_scale_tr": 0.15,
-    "loose_arrest_floor": 0.08,
-    "c_bend": 6.0,
-    "c_D": 0.0
-   },
-   "prov": {
-    "W_conf_ref": "0 = conformacao OFF (over-arresta a F0 120kN, caveat CLAUDE.md); c_bend per-specimen (5A vs 13A mounting; grip 47.6mm); estados per-condicao (Stage-A)"
-   },
-   "verdict": "PR-18 (2026-07-12): mapeamento Stage-A no runner — conformacao off + c_bend/estado per-condicao"
-  },
-  "UFU_LAB_13A_def": {
-   "pack": "PACK",
-   "cfg": {
-    "W_conf_ref": 0.0,
-    "k_dmg_wear": 4.0,
-    "k_dmg_mu": 1.0,
-    "W_ref": 10000.0,
-    "k_wear_scale_tr": 0.15,
-    "loose_arrest_floor": 0.08,
-    "c_bend": 2.0,
-    "c_D": 0.0
-   },
-   "prov": {
-    "W_conf_ref": "0 = conformacao OFF (over-arresta a F0 120kN, caveat CLAUDE.md); c_bend per-specimen (5A vs 13A mounting; grip 47.6mm); estados per-condicao (Stage-A)"
-   },
-   "verdict": "PR-18 (2026-07-12): mapeamento Stage-A no runner — conformacao off + c_bend/estado per-condicao"
-  },
-  "UFU_LAB_13A_first": {
-   "pack": "PACK",
-   "cfg": {
-    "W_conf_ref": 0.0,
-    "k_dmg_wear": 4.0,
-    "k_dmg_mu": 1.0,
-    "W_ref": 10000.0,
-    "k_wear_scale_tr": 0.15,
-    "loose_arrest_floor": 0.08,
-    "c_bend": 2.0,
-    "c_D": 0.0
-   },
-   "prov": {
-    "W_conf_ref": "0 = conformacao OFF (over-arresta a F0 120kN, caveat CLAUDE.md); c_bend per-specimen (5A vs 13A mounting; grip 47.6mm); estados per-condicao (Stage-A)"
-   },
-   "verdict": "PR-18 (2026-07-12): mapeamento Stage-A no runner — conformacao off + c_bend/estado per-condicao"
-  },
-  "KARLSEN_2022_run2p2": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 3.0,
-    "C_creep": 1e-12,
-    "c_D": 0.3,
-    "k_dmg_mu": 1.0,
-    "k_dmg_wear": 4.0,
-    "W_ref": 10000.0,
-    "k_ratchet": 0.003
-   },
-   "prov": {
-    "k_ratchet": "EXCECAO PER-ESPECIME (mesma classe autorizada do run7p1; specimen HV coating scatter; run2p2 colapso 0.003)"
-   },
-   "verdict": "PR-19: run2p2 0.107->0.048 (excecao per-especime HV, como run7p1)"
-  },
-  "LI_2022_TRIBOINT": {
-   "cfg": {
-    "fatigue_enabled": true,
-    "fat_stress_mode": "axial",
-    "fat_m1": 2.7,
-    "fat_C1": 2.977e+29
-   },
-   "prov": {
-    "fat_C1": "fitado-this-rig PER-MATERIAL (ancora = N_frat MEDIDO 410k do 10Hz_full; modo forca->ramo axial; PR-39v2: cliff 0.0%, Goodman vivo)",
-    "fat_m1": "input-de-paper (inclinacao D-N Liu2025, PR-24)"
-   },
-   "verdict": "PR-39v2 ADOTADO: FatigueLoss per-material Ti — cliff 410k exato, irmaos intactos"
-  },
-  "BAUER_2024_fig6_rep1": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 1.5,
-    "emb_depth": 1.09e-06,
-    "slip_regime_mode": "off",
-    "loose_arrest_floor": 0.05,
-    "tr_loose_gain": 2.2
-   },
-   "prov": {
-    "tr_loose_gain": "atrito per-especime (paper: mu 0.09-0.14 zinc-flake scatter, 6 bolts distintos); gain=2.2 COERENTE com a vida N50=86 (rapida=alto gain=baixo atrito; monotonico=scatter, nao overfit)"
-   },
-   "verdict": "PR-22: rep1 atrito per-especime; corrige divergencia (rep1 0.129->0.043)"
-  },
-  "BAUER_2024_fig6_rep2": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 1.5,
-    "emb_depth": 1.09e-06,
-    "slip_regime_mode": "off",
-    "loose_arrest_floor": 0.05,
-    "tr_loose_gain": 1.8
-   },
-   "prov": {
-    "tr_loose_gain": "atrito per-especime (paper: mu 0.09-0.14 zinc-flake scatter, 6 bolts distintos); gain=1.8 COERENTE com a vida N50=125 (rapida=alto gain=baixo atrito; monotonico=scatter, nao overfit)"
-   },
-   "verdict": "PR-22: rep2 atrito per-especime; corrige divergencia (rep1 0.129->0.043)"
-  },
-  "BAUER_2024_fig6_rep3": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 1.5,
-    "emb_depth": 1.09e-06,
-    "slip_regime_mode": "off",
-    "loose_arrest_floor": 0.05,
-    "tr_loose_gain": 1.8
-   },
-   "prov": {
-    "tr_loose_gain": "atrito per-especime (paper: mu 0.09-0.14 zinc-flake scatter, 6 bolts distintos); gain=1.8 COERENTE com a vida N50=139 (rapida=alto gain=baixo atrito; monotonico=scatter, nao overfit)"
-   },
-   "verdict": "PR-22: rep3 atrito per-especime; corrige divergencia (rep1 0.129->0.043)"
-  },
-  "BAUER_2024_fig6_rep4": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 1.5,
-    "emb_depth": 1.09e-06,
-    "slip_regime_mode": "off",
-    "loose_arrest_floor": 0.05,
-    "tr_loose_gain": 1.8
-   },
-   "prov": {
-    "tr_loose_gain": "atrito per-especime (paper: mu 0.09-0.14 zinc-flake scatter, 6 bolts distintos); gain=1.8 COERENTE com a vida N50=108 (rapida=alto gain=baixo atrito; monotonico=scatter, nao overfit)"
-   },
-   "verdict": "PR-22: rep4 atrito per-especime; corrige divergencia (rep1 0.129->0.043)"
-  },
-  "BAUER_2024_fig6_rep5": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 1.5,
-    "emb_depth": 1.09e-06,
-    "slip_regime_mode": "off",
-    "loose_arrest_floor": 0.05,
-    "tr_loose_gain": 1.6
-   },
-   "prov": {
-    "tr_loose_gain": "atrito per-especime (paper: mu 0.09-0.14 zinc-flake scatter, 6 bolts distintos); gain=1.6 COERENTE com a vida N50=165 (rapida=alto gain=baixo atrito; monotonico=scatter, nao overfit)"
-   },
-   "verdict": "PR-22: rep5 atrito per-especime; corrige divergencia (rep1 0.129->0.043)"
-  },
-  "BAUER_2024_fig6_rep6": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 1.5,
-    "emb_depth": 1.09e-06,
-    "slip_regime_mode": "off",
-    "loose_arrest_floor": 0.05,
-    "tr_loose_gain": 1.4
-   },
-   "prov": {
-    "tr_loose_gain": "atrito per-especime (paper: mu 0.09-0.14 zinc-flake scatter, 6 bolts distintos); gain=1.4 COERENTE com a vida N50=205 (rapida=alto gain=baixo atrito; monotonico=scatter, nao overfit)"
-   },
-   "verdict": "PR-22: rep6 atrito per-especime; corrige divergencia (rep1 0.129->0.043)"
-  },
-  "LIU_2016": {
-   "cfg": {
-    "emb_um": {
-     "m30nm": 4.2,
-     "m35nm": 3.46,
-     "m40nm": 2.75,
-     "m45nm": 2.65,
-     "m50nm": 1.78,
-     "af7p5kn": 3.05,
-     "af8p75kn": 3.87,
-     "af10kn": 4.5,
-     "af11p25kn": 5.49,
-     "af12p5kn": 6.94,
-     "13a_dry": 4.3,
-     "run1": 4.05,
-     "run2": 3.92
+  "priors_ancoras": {
+    "mu_dry": {
+      "valor": 0.15,
+      "banda_medida": [
+        0.14,
+        0.19
+      ],
+      "fonte": "qiao2025 (25pts) + lu2024 K-factor",
+      "verdict": "PASSA"
     },
-    "N_emb": 20.0,
-    "C_creep": 1.90100906357046e-11,
-    "creep_conform_exp": 2.641114462483738,
-    "p_ref_emb": 119038035.26746069
-   },
-   "prov": {
-    "emb_um": "lido-do-dado (queda em N=200 − front de creep, via sonda)",
-    "N_emb": "lido (1o ponto valido N=20; ramp-up excluido pelo paper)",
-    "C_creep": "lido-do-dado (slope log da cauda m30nm, via sonda do engine)",
-    "creep_conform_exp/p_ref_emb": "lido-do-dado (regressao dos slopes do M0-sweep; precedente §4.14a-rev exp_slow Liu2017)",
-    "mu_thread/mu_bearing (mos2)": "input-de-paper (DIN 946: 0.029)"
-   },
-   "verdict": "PR-27b: atribuicao conjunta emb(N=200)+creep-log; spread do AF-sweep no slope = forma G1 (nao mascarado)"
-  },
-  "LIU_2016_mos2": {
-   "cfg": {
-    "emb_um": {
-     "mos2": 0.59
+    "conform_pressure_exp": {
+      "valor": 2.0,
+      "banda_medida": [
+        1.48,
+        2.0
+      ],
+      "fonte": "liu2021_noload_vs_preload",
+      "verdict": "BANDA"
     },
-    "mu_thread": 0.029,
-    "mu_bearing": 0.029,
-    "N_emb": 20.0,
-    "C_creep": 1.90100906357046e-11,
-    "creep_conform_exp": 2.641114462483738,
-    "p_ref_emb": 119038035.26746069
-   },
-   "prov": {
-    "emb_um": "lido-do-dado (queda em N=200 − front de creep, via sonda)",
-    "N_emb": "lido (1o ponto valido N=20; ramp-up excluido pelo paper)",
-    "C_creep": "lido-do-dado (slope log da cauda m30nm, via sonda do engine)",
-    "creep_conform_exp/p_ref_emb": "lido-do-dado (regressao dos slopes do M0-sweep; precedente §4.14a-rev exp_slow Liu2017)",
-    "mu_thread/mu_bearing (mos2)": "input-de-paper (DIN 946: 0.029)"
-   },
-   "verdict": "grupo mos2: mu DIN946 (paper)"
-  },
-  "SUN_2025_REASSY": {
-   "cfg": {
-    "per_case": {
-     "reassy02": {
-      "mu_thread": 0.158,
-      "mu_bearing": 0.158,
-      "emb_um": 10.6,
-      "loose_arrest_floor": 0.531
-     },
-     "reassy04": {
-      "mu_thread": 0.186,
-      "mu_bearing": 0.186,
-      "emb_um": 10.61,
-      "loose_arrest_floor": 0.538
-     },
-     "reassy06": {
-      "mu_thread": 0.198,
-      "mu_bearing": 0.198,
-      "emb_um": 9.98,
-      "loose_arrest_floor": 0.558
-     },
-     "reassy08": {
-      "mu_thread": 0.245,
-      "mu_bearing": 0.245,
-      "emb_um": 9.37,
-      "loose_arrest_floor": 0.629
-     },
-     "reassy10": {
-      "mu_thread": 0.279,
-      "mu_bearing": 0.279,
-      "emb_um": 9.16,
-      "loose_arrest_floor": 0.642
-     }
+    "C_creep_por_par": {
+      "pares": {
+        "Liu2017": 1.45e-11,
+        "304SS": 9.9e-13,
+        "Al5083_denotter": "0.012-0.025/dec"
+      },
+      "fonte": "sec4.7 + denotter",
+      "verdict": "POR-PAR"
     },
-    "k_wear_spec": 3.3494678707131606e-15
-   },
-   "prov": {
-    "mu_thread/mu_bearing": "input-de-paper (Fig10 locknut)",
-    "loose_arrest_floor": "lido-do-dado (plato final)",
-    "emb_um": "lido-do-dado (queda N=500 − front, sonda)",
-    "k_wear_spec": "fitado-this-rig PER-PAR (prata GH738/aco; fallback 1-DOF pre-autorizado PR-28)"
-   },
-   "verdict": "PR-28: mu paper + leituras + k_wear_spec per-par"
-  },
-  "QIN_2024": {
-   "cfg": {
-    "C_creep": 1.1998467626653e-10,
-    "t_0": 39797.894665179425,
-    "emb_um": 0.01
-   },
-   "prov": {
-    "C_creep": "lido-do-dado (ancoras 1e5/7e5s da curva I=0%; per-par CFRP-Ti)",
-    "t_0": "lido-do-dado (joelho de onset; ~tau2 do Burgers do paper)",
-    "emb_um": "lido-do-dado (0.9999 em t=100s => ~0; hold estatico sem ciclos)",
-    "grip/E": "input-de-paper (stack 11.6mm; E_bolt Ti 115GPa)"
-   },
-   "verdict": "PR-29b: creep estatico CFRP-Ti por leitura (onset+slope); interferencia = residuo honesto"
-  },
-  "CACCESE_2009_12p7mm": {
-   "cfg": {
-    "C_creep": 5.7437163776767406e-11,
-    "t_0": 7200.0,
-    "emb_um": 0.01
-   },
-   "prov": {
-    "C_creep/t_0": "lido-do-dado (2 ancoras da curva ref do PAR; receita PR-29b)",
-    "emb_um": "lido-do-dado (janela inicial do hold estatico)"
-   },
-   "verdict": "PR-33: creep por fonte-e-par (receita Qin)"
-  },
-  "CACCESE_2009_45kN": {
-   "cfg": {
-    "C_creep": 3.0629794905325056e-11,
-    "t_0": 7200.0,
-    "emb_um": 0.01
-   },
-   "prov": {
-    "C_creep/t_0": "lido-do-dado (2 ancoras da curva ref do PAR; receita PR-29b)",
-    "emb_um": "lido-do-dado (janela inicial do hold estatico)"
-   },
-   "verdict": "PR-33: creep por fonte-e-par (receita Qin)"
-  },
-  "CACCESE_2009_19p1mm": {
-   "cfg": {
-    "C_creep": 3.0629794905325056e-11,
-    "t_0": 7200.0,
-    "emb_um": 0.01
-   },
-   "prov": {
-    "C_creep/t_0": "lido-do-dado (2 ancoras da curva ref do PAR; receita PR-29b)",
-    "emb_um": "lido-do-dado (janela inicial do hold estatico)"
-   },
-   "verdict": "PR-33: creep por fonte-e-par (receita Qin)"
-  },
-  "CACCESE_2009_compblock": {
-   "cfg": {
-    "C_creep": 1.725549557289799e-11,
-    "t_0": 23340.761922786503,
-    "emb_um": 0.01
-   },
-   "prov": {
-    "C_creep/t_0": "lido-do-dado (2 ancoras da curva ref do PAR; receita PR-29b)",
-    "emb_um": "lido-do-dado (janela inicial do hold estatico)"
-   },
-   "verdict": "PR-33: creep por fonte-e-par (receita Qin)"
-  },
-  "JCSR_2023_indoor": {
-   "cfg": {
-    "C_creep": 4.7508824582954295e-12,
-    "t_0": 1004228.2820404916,
-    "emb_um": 0.01
-   },
-   "prov": {
-    "C_creep/t_0": "lido-do-dado (2 ancoras da curva ref do PAR; receita PR-29b)",
-    "emb_um": "lido-do-dado (janela inicial do hold estatico)"
-   },
-   "verdict": "PR-33: creep por fonte-e-par (receita Qin)"
-  },
-  "ECCLES_2010_fig3": {
-   "pack": "PACK",
-   "cfg": {
-    "mu_thread": 0.132,
-    "mu_bearing": 0.132,
-    "tr_loose_gain": 2.08,
-    "k_wear_spec": 2.923e-15,
-    "loose_arrest_floor": 0.194
-   },
-   "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
-   "prov": {
-    "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
-    "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
-    "k_wear_spec": "lido-do-dado (planura do plato)",
-    "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
-    "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
-   }
-  },
-  "ECCLES_2010_fig7a": {
-   "pack": "PACK",
-   "cfg": {
-    "mu_thread": 0.132,
-    "mu_bearing": 0.132,
-    "tr_loose_gain": 1.8,
-    "k_wear_spec": 2.923e-15,
-    "loose_arrest_floor": 0.216
-   },
-   "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
-   "prov": {
-    "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
-    "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
-    "k_wear_spec": "lido-do-dado (planura do plato)",
-    "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
-    "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
-   }
-  },
-  "ECCLES_2010_fig8a": {
-   "pack": "PACK",
-   "cfg": {
-    "mu_thread": 0.132,
-    "mu_bearing": 0.132,
-    "tr_loose_gain": 1.64,
-    "k_wear_spec": 2.923e-15,
-    "loose_arrest_floor": 0.059
-   },
-   "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
-   "prov": {
-    "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
-    "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
-    "k_wear_spec": "lido-do-dado (planura do plato)",
-    "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
-    "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
-   }
-  },
-  "ECCLES_2010_fig8c": {
-   "pack": "PACK",
-   "cfg": {
-    "mu_thread": 0.132,
-    "mu_bearing": 0.132,
-    "tr_loose_gain": 1.83,
-    "k_wear_spec": 2.923e-15,
-    "loose_arrest_floor": 0.152
-   },
-   "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
-   "prov": {
-    "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
-    "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
-    "k_wear_spec": "lido-do-dado (planura do plato)",
-    "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
-    "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
-   }
-  },
-  "ECCLES_2010_fig7b": {
-   "pack": "PACK",
-   "cfg": {
-    "mu_thread": 0.132,
-    "mu_bearing": 0.132,
-    "tr_loose_gain": 1.8,
-    "k_wear_spec": 2.923e-15,
-    "loose_arrest_floor": 0.232
-   },
-   "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
-   "prov": {
-    "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
-    "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
-    "k_wear_spec": "lido-do-dado (planura do plato)",
-    "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
-    "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
-   }
-  },
-  "ECCLES_2010_fig7c": {
-   "pack": "PACK",
-   "cfg": {
-    "mu_thread": 0.132,
-    "mu_bearing": 0.132,
-    "tr_loose_gain": 1.8,
-    "k_wear_spec": 2.923e-15,
-    "loose_arrest_floor": 0.182
-   },
-   "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
-   "prov": {
-    "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
-    "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
-    "k_wear_spec": "lido-do-dado (planura do plato)",
-    "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
-    "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
-   }
-  },
-  "ECCLES_2010_fig7d": {
-   "pack": "PACK",
-   "cfg": {
-    "mu_thread": 0.132,
-    "mu_bearing": 0.132,
-    "tr_loose_gain": 1.8,
-    "k_wear_spec": 2.923e-15,
-    "loose_arrest_floor": 0.137
-   },
-   "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
-   "prov": {
-    "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
-    "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
-    "k_wear_spec": "lido-do-dado (planura do plato)",
-    "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
-    "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
-   }
-  },
-  "ECCLES_2010_fig8b": {
-   "pack": "PACK",
-   "cfg": {
-    "mu_thread": 0.132,
-    "mu_bearing": 0.132,
-    "tr_loose_gain": 1.64,
-    "k_wear_spec": 2.923e-15,
-    "loose_arrest_floor": 0.0
-   },
-   "verdict": "PR-37' ADOTADO (gate corrigido): exponencial+floor cru por grupo-de-porca",
-   "prov": {
-    "loose_arrest_floor": "lido-do-dado (assintota final crua >=0.03; fisica=torque de prevalencia)",
-    "mu_thread/mu_bearing": "input-de-paper cross (EZP DIN946 Liu2016)",
-    "k_wear_spec": "lido-do-dado (planura do plato)",
-    "tr_loose_gain": "fitado-this-rig POR GRUPO-DE-PORCA (r100 do baseline; Table 1)",
-    "escopo": "fig6/fig8d combinado-axial SEM entry (default); 8-familia maxerr 0.12-0.15 = scatter per-nut rotulado"
-   }
-  },
-  "SUN_2025_CRIMP": {
-   "pack": "PACK",
-   "cfg": {
-    "per_case": {
-     "_grease_standard": {
-      "tr_loose_gain": 2.94,
-      "loose_arrest_floor": 0.06
-     },
-     "_grease_crimp": {
-      "tr_loose_gain": 2.44,
-      "loose_arrest_floor": 0.142
-     }
+    "fat_sigma_endurance": {
+      "valor": 50000000.0,
+      "banda_medida": [
+        46000000.0,
+        63000000.0
+      ],
+      "fonte": "schaumann2015",
+      "verdict": "BANDA"
+    },
+    "emb_depth": {
+      "regra": "emb_depth_vdi(Rz)",
+      "nota": "por classe Rz (Bolt Science Rz<4 fino)",
+      "verdict": "input"
+    },
+    "F_amp_ratio": {
+      "valor": 0.4,
+      "banda_medida": [
+        0.378,
+        0.489
+      ],
+      "fonte": "pai2002 medido",
+      "verdict": "literatura"
+    },
+    "N_emb": {
+      "faixa_per_rig": [
+        3,
+        15
+      ],
+      "nota": "timing lido: ~metade do assentamento em 10-20 ciclos",
+      "verdict": "per-rig"
     }
-   },
-   "verdict": "PR-37' ADOTADO (gate corrigido)",
-   "prov": {
-    "tr_loose_gain": "fitado-this-rig POR PORCA (r100; crimp 2.44 / standard 2.94)",
-    "loose_arrest_floor": "lido-do-dado (assintota final crua)",
-    "escopo": "SO grease transversal; axiais/secos default (fratura na fila); maxerr standard 0.319 rotulado descida-unica"
-   }
-  },
-  "KARLSEN_2022_run20p0": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 3.0,
-    "C_creep": 1e-12,
-    "c_D": 0.3,
-    "k_dmg_mu": 1.0,
-    "k_dmg_wear": 4.0,
-    "W_ref": 10000.0,
-    "k_ratchet": 0.00097
-   },
-   "verdict": "PR-40 ADOTADO: k_ratchet=0.00097 per-especime (M42 run20p0)",
-   "prov": {
-    "C_creep": "fitado-this-rig/par (iter.1, branch travado Vibralock; prior ancora 304SS — sec4.7)",
-    "c_D": "fitado-this-rig (PR-1: UNICA constante livre, fit CONJUNTO nas 7 HV; LOCO 0.053)",
-    "k_dmg_mu": "starter fisico documentado (1.0, nao fitado)",
-    "k_dmg_wear": "starter fisico documentado (4.0, nao fitado)",
-    "W_ref": "starter fisico documentado (1e4, nao fitado)",
-    "c_bend": "fitado-this-rig (pre-existente)",
-    "k_ratchet": "fitado-this-rig PER-ESPECIME (classe autorizada run7p1/run2p2; deficit ~15% constante lido no diagnostico da frota)"
-   }
-  },
-  "YANG_2019_small_to_large": {
-   "pack": "PACK",
-   "cfg": {
-    "emb_um": 5.0,
-    "slip_onset_W": 40000.0,
-    "c_D": 0.1,
-    "W_ref": 3000.0,
-    "k_dmg_mu": 1.0,
-    "k_dmg_wear": 4.0,
-    "dmg_dwell_exp": 1.0,
-    "f_ref_dmg": 10.0,
-    "delta_spectrum": [
-     [
-      3730,
-      0.0006
-     ],
-     [
-      85,
-      0.0008
-     ]
-    ]
-   },
-   "verdict": "PR-42 ADOTADO (gates escritos: constantes intactos + tripe melhora nos 2 varamp; maxerr 0.212->0.131 / 0.164->0.136)",
-   "prov": {
-    "delta_spectrum": "input-de-paper (Tabelas 6/7 + Figs.10/11; realizacao medida, trocas por evento 80%F0)"
-   }
-  },
-  "YANG_2019_large_to_small": {
-   "pack": "PACK",
-   "cfg": {
-    "emb_um": 5.0,
-    "slip_onset_W": 40000.0,
-    "c_D": 0.1,
-    "W_ref": 3000.0,
-    "k_dmg_mu": 1.0,
-    "k_dmg_wear": 4.0,
-    "dmg_dwell_exp": 1.0,
-    "f_ref_dmg": 10.0,
-    "delta_spectrum": [
-     [
-      1546,
-      0.0008
-     ],
-     [
-      1464,
-      0.0006
-     ]
-    ]
-   },
-   "verdict": "PR-42 ADOTADO (gates escritos: constantes intactos + tripe melhora nos 2 varamp; maxerr 0.212->0.131 / 0.164->0.136)",
-   "prov": {
-    "delta_spectrum": "input-de-paper (Tabelas 6/7 + Figs.10/11; realizacao medida, trocas por evento 80%F0)"
-   }
-  },
-  "CHU_2026_test1": {
-   "pack": "PACK",
-   "cfg": {
-    "c_bend": 1.881,
-    "mu_thread": 0.05,
-    "C_creep": 0.0,
-    "emb_um": 1.6,
-    "per_case": {
-     "test1": {
-      "mu_bearing": 0.1043
-     }
-    },
-    "c_D": 5.5,
-    "W_ref": 10000.0,
-    "k_dmg_mu": -2.43
-   },
-   "prov": {
-    "leituras": "PR-38 sandbox: mu0 por teste lido da Fig.5 (paper); c_bend=1.881 re-lido da ancora D_cr=0.30mm@49kN com mu0(test1) medido; mu_thread=0.05 paper; emb_um=1.60 data_implied_early_drop na curva below-threshold test1 (leitor L24; handbook 11.0um divergia); C_creep=0 lido da PLANURA da cauda below-threshold test1 (dado +0.4%/2400cyc vs modelo-shared -2.8%; per-par sec4.7, precedentes QIN_2024 sonda + PR-31b planura; dano per-rig fitado-this-rig no mu(N) do test2: c_D=5.5, W_ref=1e4, k_dmg_mu=-2.43 (<0: mu SOBE, Fig.5)",
-    "escopo": "SO test1 (limiar D_cr); familia = morte PR-38 (fila item 5); maxerr 0.115 rotulado"
-   },
-   "verdict": "PR-38 ADOTADO ESCOPADO (test1): limiar 0.334->0.066"
   }
- },
- "priors_ancoras": {
-  "mu_dry": {
-   "valor": 0.15,
-   "banda_medida": [
-    0.14,
-    0.19
-   ],
-   "fonte": "qiao2025 (25pts) + lu2024 K-factor",
-   "verdict": "PASSA"
-  },
-  "conform_pressure_exp": {
-   "valor": 2.0,
-   "banda_medida": [
-    1.48,
-    2.0
-   ],
-   "fonte": "liu2021_noload_vs_preload",
-   "verdict": "BANDA"
-  },
-  "C_creep_por_par": {
-   "pares": {
-    "UFU": 1.867e-11,
-    "Liu2017": 1.45e-11,
-    "304SS": 9.9e-13,
-    "Al5083_denotter": "0.012-0.025/dec"
-   },
-   "fonte": "sec4.7 + denotter",
-   "verdict": "POR-PAR"
-  },
-  "fat_sigma_endurance": {
-   "valor": 50000000.0,
-   "banda_medida": [
-    46000000.0,
-    63000000.0
-   ],
-   "fonte": "schaumann2015",
-   "verdict": "BANDA"
-  },
-  "emb_depth": {
-   "regra": "emb_depth_vdi(Rz)",
-   "nota": "por classe Rz (Bolt Science Rz<4 fino)",
-   "verdict": "input"
-  },
-  "F_amp_ratio": {
-   "valor": 0.4,
-   "banda_medida": [
-    0.378,
-    0.489
-   ],
-   "fonte": "pai2002 medido",
-   "verdict": "literatura"
-  },
-  "N_emb": {
-   "faixa_per_rig": [
-    3,
-    15
-   ],
-   "nota": "timing lido: ~metade do assentamento em 10-20 ciclos",
-   "verdict": "per-rig"
-  }
- }
 }

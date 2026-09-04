@@ -119,7 +119,7 @@ de engine desta rodada — corrigir docstring ou forma.)
 **Veredito: PARCIAL-fecha.** Ação: (a) corrigir o docstring do `CreepLoss` (é log-t, não NB) e
 documentar a coincidência com Nah; (b) forma saturante opt-in (`creep_mode`) com gate contra os
 casos de creep (JCSR/Caccese/Qin/Li2022marstruc); (c) KB: classes de par com valores
-(304SS UFU 1,867e-11 · faiamento-coating Nah α,β · ambiente JCSR · compósito Caccese ·
+(304SS âncora interna 1,867e-11 · faiamento-coating Nah α,β · ambiente JCSR · compósito Caccese ·
 CFRP-Ti Qin · aço/Al-Si Lakes). Continua POR PAR (doutrina).
 
 ---
@@ -163,7 +163,7 @@ por que um k_wear único não fecha múltiplos rigs.
 **Veredito: segue NÃO-ancorável por literatura** (null agora confirmado 3×). Ação: só
 documentação — precedente de forma (expoente 0,5–0,6; saturação em poucos ciclos NO
 DESLOCAMENTO mas não na energia; teto 1,5·H como sanity bound para p_ref) no
-`MODEL_LEGITIMACY.md` §4.9; o valor continua dependente do **experimento âncora UFU**
+`MODEL_LEGITIMACY.md` §4.9; o valor continua dependente do **experimento âncora âncora interna**
 (fretting ~1,2 GPa medindo n). Nenhuma mudança de engine.
 
 ---
@@ -205,7 +205,7 @@ viscoso do residual axial. Entra como fatia de código no plano.
 
 ## O que definitivamente NÃO se resolve com esta biblioteca
 
-- **Valor de W_conf_ref/n** na pressão de parafuso → experimento âncora UFU (spec §4.9).
+- **Valor de W_conf_ref/n** na pressão de parafuso → experimento âncora âncora interna (spec §4.9).
 - **∂(desgaste de flanco)/∂A_F axial medido diretamente** → gap real da literatura; nível via
   calibração indireta no trilho axial (acima).
 - **J/mm³ constante** → não existe (é taxa-dependente); usar bound.

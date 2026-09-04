@@ -1,6 +1,6 @@
 # Calibration & Validation Plan — Bolt Analysis Studio v4.0
 
-## LTAD/UFU - Petrobras R&D
+## internal reference - Petrobras R&D
 
 **Date**: 2026-02-28
 **Scope**: Systematic calibration of BAS numerical models against published experimental data from 97 reference papers in `Models/CALIBRATION_AND_VALIDATION/`.

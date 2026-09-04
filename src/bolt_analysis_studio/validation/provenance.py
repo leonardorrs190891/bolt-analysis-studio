@@ -2,15 +2,14 @@
 """Procedencia citavel de um caso da validacao (2026-09-02).
 
 Mora no PACOTE e nao no script de build porque a citacao e' propriedade do
-CASO, nao da geracao: quem salva um caso pela GUI e quem gera os 210 em lote
+CASO, nao da geracao: quem salva um caso pela GUI e quem gera os 207 em lote
 precisam da mesma string, e duas copias divergiriam no primeiro ajuste.
 
 Os campos saem do `ValidationCase` (`reference`, `doi`, `reference_csv_path`) e
 da nota de aparato do `CaseRecord`. Nada e' redigitado aqui. Medido em
-2026-09-02: 210 de 210 casos tem `reference`; 206 tem DOI, e os 4 sem DOI nao
-sao publicacao (3 UFU_LAB, medicao do proprio laboratorio, e 1 USER, exemplo
-sintetico), por isso DIZEM o que sao em vez de deixar um campo vazio que se
-leria como omissao.
+2026-09-04: 207 de 207 casos tem `reference`; 206 tem DOI, e o unico sem DOI
+nao e' publicacao (o USER, exemplo sintetico), por isso DIZ o que e' em vez de
+deixar um campo vazio que se leria como omissao.
 """
 from __future__ import annotations
 
@@ -19,8 +18,6 @@ from pathlib import Path
 from .inputs import repo_root
 
 _SEM_DOI = {
-    "UFU_LAB": ("Measurement made at the LTAD/FEMEC laboratory of the "
-                "Universidade Federal de Uberlandia. Not a publication: no DOI."),
     "USER": ("Synthetic example shipped with the software to exercise the "
              "import path. Not experimental data: no DOI."),
 }
@@ -70,7 +67,7 @@ def citation_block(rec) -> str:
     else:
         linhas.append(_SEM_DOI.get(rec.source, "Not a publication: no DOI."))
 
-    # Censo do artigo: 205 dos 210. O predicado e' `caso_comparavel`, o MESMO
+    # Censo do artigo: 205 dos 207. O predicado e' `caso_comparavel`, o MESMO
     # que o Apendice B usa para listar os de fora — nao uma regra paralela que
     # poderia divergir do manuscrito.
     try:

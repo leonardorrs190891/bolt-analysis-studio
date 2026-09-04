@@ -2,7 +2,7 @@
 
 A metrica da campanha divide o modelo pelo proprio valor no primeiro ciclo do
 dado antes de pontuar. E' convencao pre-registrada e continua sendo a metrica
-primaria, mas em 47 das 210 curvas ela absorve uma diferenca real, e em algumas
+primaria, mas em 47 das 207 curvas ela absorve uma diferenca real, e em algumas
 essa diferenca e' grande (li2022ti_axialmin_20Hz: MAE 0,0110 alinhado contra
 0,3408 cru). A decisao de 2026-09-04 foi publicar os DOIS numeros, no artigo e
 em cada report, para o leitor nao ter de acreditar que a divisao e' inocua.

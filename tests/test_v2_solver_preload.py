@@ -197,10 +197,10 @@ def test_conformation_default_on_arrests_overtorque(qapp):
     assert r_on[-1] > r_off[-1] + 0.01                # segura mais pre-carga
 
 
-def test_conformation_near_inert_at_ufu_nominal_scale(qapp):
-    """Na ESCALA UFU (F0~50 kN) e pre-carga nominal (70% escoamento) a
+def ancora_interna(qapp):
+    """Na ESCALA âncora interna (F0~50 kN) e pre-carga nominal (70% escoamento) a
     conformacao eh ~inerte (curva ~= off). NB: a inercia no nominal eh
-    escala-dependente (o W_conf_ref fixo eh calibrado na escala UFU); em F0 alto
+    escala-dependente (o W_conf_ref fixo eh calibrado na escala da âncora interna); em F0 alto
     o gate morde tb no nominal — ver caveat em solver_worker._compute_v2_history."""
     w = _worker()
     cfg = _cfg(initial_preload=50000.0, preload_percent_yield=70.0)
