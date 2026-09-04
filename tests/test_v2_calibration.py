@@ -48,7 +48,15 @@ def test_v2_calibration_runs_and_fits():
                                     max_evals=60, engine="v2")
         res = ident.run(n_starts=2)
     assert res.success
-    assert res.best_mae < 0.08
+    # Limiar re-medido em 2026-09-03 (era 0,08). NAO e' afrouxamento para fazer
+    # um teste passar: ate' esta data o otimizador montava o JointMaterial so'
+    # com os candidatos — sem o bloco `shared` canonico e sem o `p_ref_conform`
+    # — ou seja, ajustava contra um motor que o aplicativo NUNCA roda. Agora usa
+    # a mesma receita do Run (`solver_worker.build_v2_material`) e o ajuste
+    # desta curva sintetica fecha em 0,113. O numero piorou porque o alvo passou
+    # a ser o motor de verdade; o teto segue sendo um portao real — nos mesmos
+    # defaults, SEM ajuste nenhum, esta curva da' 0,161 (medido).
+    assert res.best_mae < 0.12
     # Fit returns exactly the params it was given (the core set). V2_PARAM_NAMES
     # is the broader dialog list (now also exposes slip_onset_W), so compare
     # against default_v2_params() rather than the full available list.

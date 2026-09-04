@@ -119,7 +119,14 @@ def default_v2_params() -> List[FittableParam]:
 
 
 def _geom_from_model(model):
-    """Build a JointGeometry for the V2 engine from the model's bolt size."""
+    """Build a JointGeometry for the V2 engine from the model's bolt size.
+
+    A geometria ADOTADA do modelo (`_v2_geometry_overrides`) manda sobre o
+    fallback nominal. O gui_bridge ja' avisava por que: "sem ele o Run usa
+    L_eff=3d e A_contact=1e-4 fixos e nao reproduz o report" — era exatamente
+    o que este construtor fazia, entao o otimizador media o erro contra uma
+    junta de comprimento e area de contato nominais em vez da junta do caso.
+    """
     from .dynamic_stiffness_analyzer import JointGeometry
     gl = model.global_loading
     d_mm = float(getattr(gl, 'bolt_diameter', 0) or getattr(model, 'bolt_diameter', 0) or 16.0)
@@ -128,9 +135,18 @@ def _geom_from_model(model):
     d2 = d - 0.6495 * p
     d1 = d - 1.0825 * p
     A_s = math.pi / 4.0 * ((d2 + d1) / 2.0) ** 2          # m²
-    return JointGeometry(
-        A_s=A_s, L_eff=max(3.125 * d, 0.02), d_2=d2, pitch=p,
+    # L_eff = 3d e' o fallback do Run (solver_worker). Aqui era 3,125d: para um
+    # modelo SEM geometria adotada — o caso de quem calibra a propria junta — o
+    # otimizador media contra uma junta 4% mais flexivel que a que o Run roda.
+    geom = JointGeometry(
+        A_s=A_s, L_eff=max(3.0 * d, 0.02), d_2=d2, pitch=p,
         r_bearing=0.75 * d, A_contact=1e-4)
+    gov = getattr(model, '_v2_geometry_overrides', None)
+    if isinstance(gov, dict):
+        for campo, valor in gov.items():
+            if hasattr(geom, campo) and isinstance(valor, (int, float)):
+                setattr(geom, campo, float(valor))
+    return geom
 
 
 def simulate_v2_curve(model, tuners: dict, n_cycles: int, control_mode: str,
@@ -140,11 +156,19 @@ def simulate_v2_curve(model, tuners: dict, n_cycles: int, control_mode: str,
     control_mode 'displacement' imposes delta_amplitude (disp-controlled);
     'force' runs force-controlled (delta_amp=None).
     """
-    from .dynamic_stiffness_analyzer import (
-        DynamicStiffnessAnalyzer, JointMaterial,
-    )
+    from .dynamic_stiffness_analyzer import DynamicStiffnessAnalyzer
+
     geom = _geom_from_model(model)
-    mat = JointMaterial(**{k: float(v) for k, v in tuners.items()})
+    # O material sai da MESMA receita do Run (`solver_worker.build_v2_material`):
+    # bloco `shared` canonico + shim de tuners legados + coercao type-aware +
+    # `p_ref_conform` calculado da pre-carga. Antes era `JointMaterial(**tuners)`
+    # — so' os overrides, sem o bloco compartilhado e sem o p_ref — e a curva do
+    # otimizador divergia da curva do Run para o MESMO modelo (5,2e-4 em F/F0 no
+    # LU2024, crescente). Ajustar num motor e rodar noutro nao quer dizer nada.
+    from ..core.solver_worker import build_v2_material
+    gl = model.global_loading
+    pct = float(getattr(gl, 'preload_percent_yield', 70.0) or 70.0)
+    mat = build_v2_material(tuners, float(F0), geom.A_contact, pct)
     ana = DynamicStiffnessAnalyzer(geom, mat, float(F0))
     delta = None
     if control_mode == "displacement":
@@ -653,8 +677,20 @@ class ParameterIdentifier:
 
     def _simulate_v2(self, real: dict) -> Tuple[np.ndarray, np.ndarray]:
         """Non-linear simulation via DynamicStiffnessAnalyzer. Candidate params
-        target 'jm.<tuner>' (JointMaterial multipliers)."""
-        tuners = {}
+        target 'jm.<tuner>' (JointMaterial multipliers).
+
+        A BASE sao as constantes do proprio modelo, e so' depois entram as
+        candidatas. Ate' 2026-09-03 o dict comecava VAZIO: ajustar um caso da
+        validacao com 4 parametros marcados jogava fora as outras 19 constantes
+        adotadas daquele artigo E todas as chaves de modo (conform_driver,
+        creep_mode, loose_rate_mode, slip_regime_mode...), que voltavam ao
+        default. O erro era medido contra uma fisica que nao e' a do caso, e o
+        ajuste PARECIA bom — a mesma classe de erro silencioso do to_dict.
+        Travar um parametro so' significa alguma coisa se o valor travado for
+        de fato usado.
+        """
+        tuners = {k: v for k, v in
+                  (getattr(self.model, "_v2_tuner_overrides", None) or {}).items()}
         for p in self.params:
             if p.target.startswith("jm."):
                 tuners[p.target.split(".", 1)[1]] = real[p.name]

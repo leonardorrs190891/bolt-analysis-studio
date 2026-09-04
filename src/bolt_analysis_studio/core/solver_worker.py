@@ -305,6 +305,75 @@ def coerce_v2_overrides(ov, valid):
     return out
 
 
+def build_v2_material(overrides, F0: float, A_contact: float,
+                      pct_yield: float = 70.0):
+    """JointMaterial do Run V2: bloco `shared` canonico + overrides do modelo.
+
+    Extraida de `_compute_v2_history` em 2026-09-03 para ser FONTE UNICA. O
+    otimizador de parametros montava o material com `JointMaterial(**tuners)`,
+    isto e', so' com os overrides e sem o bloco compartilhado nem o
+    `p_ref_conform` — que e' calculado por Run e nao existe em nenhum arquivo.
+    Resultado medido: para o mesmo modelo, a curva do otimizador divergia da
+    curva do Run (5,2e-4 em F/F0 no LU2024, crescente com o ciclo). Ajuste
+    medido num motor que nao e' o que roda depois nao quer dizer nada, e a
+    diferenca era pequena o bastante para nunca ser notada.
+
+    A extracao e' de comportamento identico bit a bit — conferido nos 6 casos
+    de `tests/test_v2_material_unica.py` antes e depois.
+
+    Parametros
+    ----------
+    overrides : dict | None    `model._v2_tuner_overrides`
+    F0 : float                 pre-carga do Run [N]
+    A_contact : float          area de contato da geometria EFETIVA [m^2]
+    pct_yield : float          % do escoamento do Run (gate de sobretorque)
+    """
+    from bolt_analysis_studio.calibration.profiles import load_shared_material
+    from bolt_analysis_studio.calibration.tuner_shim import (
+        translate_legacy_tuners)
+    from bolt_analysis_studio.numerical.dynamic_stiffness_analyzer import (
+        JointMaterial)
+
+    # Conformacao dependente de pressao ADOTADA (2026-07-04, bloco canonico) —
+    # LIGADA POR DEFAULT no Run, driver auto-limitante 'effective'. Eh
+    # PRESSURE-GATED: p_ref = pre-carga nominal (70% do escoamento) deste
+    # parafuso, entao o SOBRETORQUE (pct acima de 70%) excita mais o plato.
+    # Como p e p_ref dividem pelo mesmo A_contact, o gate reduz a (p/p_ref) =
+    # pct/70 (independe de A_contact/A_s/proof) => a SEPARACAO por sobretorque
+    # vale em qualquer F0. W_conf_ref=7671 eh o valor UFU por-par (default; sem
+    # ancora p/ outros pares — MODEL_LEGITIMACY §4.9 strand 3). Overrides
+    # explicitos em _v2_tuner_overrides VENCEM; W_conf_ref=0 desliga.
+    # CAVEAT DE ESCALA (medido): a inercia no nominal so vale ~na escala UFU
+    # (F0~50 kN => delta~0.014); em F0 alto o trabalho de slip (proporcional a
+    # F0) enche o W_conf_ref FIXO e o gate morde tb no nominal (F0=120 kN =>
+    # delta~0.09). Consequencia de "aplica W_conf_ref UFU por-par a qualquer
+    # junta" (o flag aprovado): calibrado na escala UFU, aproximado fora dela.
+    pct = float(pct_yield or 70.0)
+    if pct <= 0.0:
+        pct = 70.0
+    rated = 0.7 * (float(F0) / (pct / 100.0))   # 0.7 * pre-carga de escoamento
+    # ESTAGIO B Fase 2 (spec 2026-07-02 §3.3, plano 2026-07-08 §3): o Run le as
+    # constantes fisicas do bloco `shared` canonico via o LOADER UNICO em vez
+    # da copia hardcoded — "o bloco shared vira o que a GUI le". Fallbacks
+    # preservam os valores antigos se o arquivo/bloco faltar. p_ref_conform
+    # segue COMPUTADO (fisica por-run, roadmap 11f: gate = pct/70); emb_depth e
+    # input por junta (excluido no loader). Overrides explicitos VENCEM.
+    conf_defaults = load_shared_material()
+    conf_defaults.setdefault("W_conf_ref", 7671.0)
+    conf_defaults.setdefault("conform_pressure_exp", 2.0)
+    conf_defaults["conform_driver"] = "effective"
+    conf_defaults["p_ref_conform"] = max(rated, 1.0) / float(A_contact)
+    # ESTAGIO B Fase 3 (spec §3.3): SHIM na fronteira de consumo — tuners
+    # legados (k_emb_scale, k_wear_scale_tr, ...) sao traduzidos p/ constantes
+    # fisicas AQUI (uma vez), multiplicando sobre a base do shared. Fold exato
+    # p/ emb/creep/Phi_tr/damage; ratio-exato p/ wear dano-off. Depois coerce a
+    # campos validos de JointMaterial.
+    ov_folded = (translate_legacy_tuners(dict(overrides), base=conf_defaults)
+                 if overrides else {})
+    tuners = coerce_v2_overrides(ov_folded, JointMaterial.__dataclass_fields__)
+    return JointMaterial(**{**conf_defaults, **tuners})
+
+
 def _v2_cycle_cap(overrides) -> int:
     """Teto de ciclos do bloco V2 do Run (resolucao 2026-07-28, delegada).
 
@@ -1106,32 +1175,7 @@ class SolverWorker(QObject):
         # delta~0.09). Consequencia de "aplica W_conf_ref UFU por-par a qualquer
         # junta" (o flag aprovado): calibrado na escala UFU, aproximado fora dela.
         pct = float(getattr(config, 'preload_percent_yield', 70.0) or 70.0)
-        if pct <= 0.0:
-            pct = 70.0
-        rated = 0.7 * (F0 / (pct / 100.0))          # 0.7 * pre-carga de escoamento [N]
-        p_ref_conf = max(rated, 1.0) / geom.A_contact
-        # ESTAGIO B Fase 2 (spec 2026-07-02 §3.3, plano 2026-07-08 §3): o Run
-        # le as constantes fisicas do bloco `shared` canonico via o LOADER
-        # UNICO (profiles.load_shared_material) em vez da copia hardcoded —
-        # "o bloco shared vira o que a GUI le". Fallbacks preservam os valores
-        # antigos se o arquivo/bloco faltar. p_ref_conform segue COMPUTADO do
-        # config (fisica por-run, roadmap 11f: gate = pct/70); emb_depth e
-        # input por junta (excluido no loader). Overrides explicitos VENCEM.
-        from bolt_analysis_studio.calibration.profiles import load_shared_material
-        conf_defaults = load_shared_material()
-        conf_defaults.setdefault("W_conf_ref", 7671.0)
-        conf_defaults.setdefault("conform_pressure_exp", 2.0)
-        conf_defaults["conform_driver"] = "effective"
-        conf_defaults["p_ref_conform"] = p_ref_conf
-        # ESTAGIO B Fase 3 (spec §3.3): SHIM na fronteira de consumo — tuners
-        # legados (k_emb_scale, k_wear_scale_tr, ...) em _v2_tuner_overrides sao
-        # traduzidos p/ constantes fisicas AQUI (uma vez), multiplicando sobre a
-        # base do shared. Fold exato p/ emb/creep/Phi_tr/damage; ratio-exato p/
-        # wear dano-off. Depois coerce a campos validos de JointMaterial.
-        from bolt_analysis_studio.calibration.tuner_shim import translate_legacy_tuners
-        ov_folded = translate_legacy_tuners(dict(ov), base=conf_defaults) if ov else {}
-        tuners = coerce_v2_overrides(ov_folded, JointMaterial.__dataclass_fields__)
-        mat = JointMaterial(**{**conf_defaults, **tuners})
+        mat = build_v2_material(ov, F0, geom.A_contact, pct)
 
         # Loading: control mode + amplitude + frequency from the model.
         gl = getattr(m, 'global_loading', None) if m is not None else None

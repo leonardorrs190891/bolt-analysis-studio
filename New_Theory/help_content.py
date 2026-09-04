@@ -402,6 +402,42 @@ PASSOS = [
         "file preserves both override channels, so reopening returns the "
         "whole configuration; before it, the adopted constants were lost "
         "silently.")),
+
+    dict(chave="calibrar", print_="inspector_contact", pt=(
+        "8. Deixe o programa achar o que voce nao mediu",
+        "<b>Analisar &rarr; Calibrar parametros do modelo</b> "
+        "(<kbd>Ctrl</kbd>+<kbd>K</kbd>) ajusta o modelo contra uma curva "
+        "experimental. Cada parametro aparece com uma <b>caixa de selecao</b> "
+        "e <b>dois limites</b>, e a regra e' simples: <b>o que voce nao marca "
+        "fica exatamente no valor que esta' no modelo</b> — e' assim que se "
+        "trava o que ja' foi medido — e o que voce marca e' procurado entre o "
+        "limite inferior e o superior que voce escrever. Marque poucos por "
+        "vez: quatro constantes contra uma curva de dezesseis pontos ja' e' "
+        "muito grau de liberdade.",
+        "A curva vem de uma de duas origens. Se o modelo foi importado por "
+        "<b>Arquivo &rarr; Importar caso da validacao</b>, a origem oferecida "
+        "e' aquele caso, com os pontos do artigo ja' na convencao da campanha. "
+        "Senao, aponte um <b>CSV</b> de duas ou tres colunas "
+        "(<code>ciclo, F/F0</code>). O botao <b>Aplicar</b> escreve o "
+        "resultado nos mesmos canais que o <code>.msd</code> guarda; "
+        "<b>Descartar</b> nao deixa vestigio."), en=(
+        "8. Let the program find what you did not measure",
+        "<b>Analyse &rarr; Calibrate model parameters</b> "
+        "(<kbd>Ctrl</kbd>+<kbd>K</kbd>) fits the model against an "
+        "experimental curve. Every parameter has a <b>checkbox</b> and "
+        "<b>two bounds</b>, and the rule is simple: <b>what you leave "
+        "unchecked stays exactly at the value in the model</b> — that is how "
+        "you lock what you have already measured — and what you check is "
+        "searched between the lower and upper bound you type. Check few at a "
+        "time: four constants against a sixteen-point curve is already a lot "
+        "of freedom.",
+        "The curve comes from one of two sources. If the model was imported "
+        "through <b>File &rarr; Import validation case</b>, the offered source "
+        "is that case, with the paper's points already in the campaign's "
+        "convention. Otherwise point at a <b>CSV</b> with two or three columns "
+        "(<code>cycle, F/F0</code>). <b>Apply</b> writes the result into the "
+        "same channels the <code>.msd</code> stores; <b>Discard</b> leaves no "
+        "trace.")),
 ]
 
 # ---------------------------------------------------------------------------
@@ -501,6 +537,25 @@ DIALOGOS = {
         "A corrupt file, one written by an incompatible version, or no "
         "read permission. The 210 validation cases live in "
         "Models/SAVED_CASES and always open.")),
+    "Calibrar parâmetros": dict(pt=(
+        "O ajuste automatico nao pode comecar, ou terminou.",
+        "Vem de Analisar > Calibrar parametros do modelo (Ctrl+K). Precisa de "
+        "duas coisas: um modelo com pre-carga maior que zero e uma curva "
+        "experimental. A curva vem do caso da validacao de onde o modelo veio "
+        "ou de um CSV de duas ou tres colunas (ciclo, F/F0). No dialogo, cada "
+        "parametro tem uma caixa e dois limites: DESMARCADO ele fica no valor "
+        "que voce mediu, marcado ele e' procurado entre o limite inferior e o "
+        "superior. O que for aceito em 'Aplicar' entra nos mesmos canais que o "
+        "arquivo .msd guarda, entao sobrevive ao salvar."),
+        en=("The automatic fit could not start, or has finished.",
+        "Comes from Analyse > Calibrate model parameters (Ctrl+K). It needs "
+        "two things: a model with preload above zero and an experimental "
+        "curve. The curve comes either from the validation case the model was "
+        "imported from or from a two- or three-column CSV (cycle, F/F0). In "
+        "the dialogue each parameter has a checkbox and two bounds: UNCHECKED "
+        "it stays at the value you measured, checked it is searched between "
+        "the lower and upper bound. What you accept with Apply is written to "
+        "the same channels the .msd file stores, so it survives saving.")),
     "Importar caso da validação": dict(pt=(
         "Confirma que o caso do artigo entrou na configuracao adotada.",
         "Aparece depois de Arquivo > Importar caso da validacao (Ctrl+I). O "

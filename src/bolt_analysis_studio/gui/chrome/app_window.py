@@ -277,6 +277,17 @@ class ChromeWindow(QMainWindow):
             pact.toggled.connect(dock.setVisible)
             dock.visibilityChanged.connect(pact.setChecked)
             panels_menu.addAction(pact)
+        # Analisar: o ajuste de parametros existia desde antes, com trava e
+        # limites por parametro, e so' era alcancavel pela janela V1 — que nao
+        # e' mais a interface padrao. Mesmo caso do help e do abrir/salvar:
+        # escrito e inalcancavel e' o mesmo que ausente.
+        analise_menu = mb.addMenu("Analisar")
+        act = analise_menu.addAction("Calibrar parâmetros do modelo…")
+        act.setShortcut("Ctrl+K")
+        act.setStatusTip("Ajusta os parâmetros marcados contra uma curva "
+                         "experimental; o que não for marcado fica no valor "
+                         "que você mediu")
+        act.triggered.connect(self._calibrar_parametros)
         # Nomes de módulo em inglês (proper nouns do Abaqus): Model/Contacts/…
         mod_menu = mb.addMenu("Módulo")
         for m in MODULES:
@@ -665,6 +676,19 @@ class ChromeWindow(QMainWindow):
     # Por isso os dois vieram juntos.
     _PREFS = Path.home() / ".bolt_analysis_studio" / "preferences.json"
 
+    # export_model() le o ESQUEMATICO — e' o que garante que uma edicao no
+    # canvas ainda nao propagada entre no arquivo. MAS o desenho nao conhece os
+    # canais de override, a descricao nem o nome: esses vivem no modelo do
+    # AppState. Salvar so' com o exportado perdia as 23 constantes adotadas e a
+    # citacao da fonte — o arquivo abria com os 11 elementos e o F0 certos, e
+    # estava errado (teste de ida e volta, 2026-09-03; mesma perda silenciosa
+    # que MSDModel.to_dict tinha, um andar acima). Estrutura vem do
+    # esquematico, metadado vem do estado. Calibrar usa a mesma composicao:
+    # sem os overrides o ajuste partiria de uma fisica que nao e' a do caso.
+    _CARREGA = ("_v2_tuner_overrides", "_v2_geometry_overrides",
+                "_two_stage_overrides", "_fixture_overrides",
+                "description", "name")
+
     def _dir_inicial_projeto(self) -> str:
         """Pasta que o dialogo abre.
 
@@ -760,6 +784,112 @@ class ChromeWindow(QMainWindow):
             "O arquivo de origem fica no repositório e é regerado pelo "
             "gerador de casos, então Ctrl+S vai pedir um novo destino.")
 
+    # --- calibracao (2026-09-03) ---------------------------------------------
+    # O otimizador e o dialogo com trava e limites por parametro ja' existiam;
+    # faltava a curva experimental chegar ate' eles no chrome. Duas origens: o
+    # caso da validacao de onde o modelo veio, e um CSV do usuario.
+    def _modelo_corrente(self):
+        """Modelo com a ESTRUTURA do esquematico e o METADADO do estado.
+
+        Mesma composicao de `_grava_projeto`, e pelo mesmo motivo: o desenho
+        nao conhece os canais de override, e calibrar a partir do exportado
+        puro jogaria fora as constantes adotadas — que sao justamente o ponto
+        de partida do ajuste.
+        """
+        modelo = None
+        try:
+            modelo = self.model_controller.export_model()
+        except Exception:                                    # noqa: BLE001
+            modelo = None
+        estado = getattr(self.app_state, "model", None)
+        if modelo is None:
+            return estado
+        if estado is not None:
+            for campo in self._CARREGA:
+                valor = getattr(estado, campo, None)
+                if valor:
+                    setattr(modelo, campo, valor)
+        return modelo
+
+    def _calibrar_parametros(self):
+        from PyQt6.QtWidgets import QFileDialog, QMessageBox
+        from .widgets.reference_curve import (ReferenceSourceDialog,
+                                              caso_do_modelo, curva_de_csv,
+                                              curva_do_caso)
+
+        modelo = self._modelo_corrente()
+        if modelo is None or getattr(modelo, "global_loading", None) is None:
+            QMessageBox.information(
+                self, "Calibrar parâmetros",
+                "Monte ou abra um modelo antes de calibrar.")
+            return
+        F0 = float(getattr(modelo.global_loading, "F_preload", 0.0) or 0.0)
+        if F0 <= 0:
+            QMessageBox.warning(
+                self, "Calibrar parâmetros",
+                "A pré-carga precisa ser maior que zero para calibrar.")
+            return
+
+        origem = ReferenceSourceDialog(self, caso_do_modelo(modelo))
+        if not origem.exec() or not origem.escolha:
+            return
+        if origem.escolha == "caso":
+            ref = curva_do_caso(caso_do_modelo(modelo) or "", F0)
+            if ref is None:
+                QMessageBox.warning(
+                    self, "Calibrar parâmetros",
+                    "Não encontrei a curva desse caso no store da validação.")
+                return
+        else:
+            caminho, _ = QFileDialog.getOpenFileName(
+                self, "Curva experimental (CSV)",
+                self._dir_inicial_projeto(),
+                "CSV (*.csv);;Todos os arquivos (*)")
+            if not caminho:
+                return
+            try:
+                ref = curva_de_csv(caminho, F0)
+            except (OSError, ValueError) as exc:
+                QMessageBox.warning(self, "Calibrar parâmetros",
+                                    f"Não consegui ler o CSV:\n{exc}")
+                return
+
+        try:
+            # ..main_window = bolt_analysis_studio.gui.main_window. Com tres
+            # pontos vira bolt_analysis_studio.main_window, que nao existe: o
+            # import falhava e caia no QMessageBox de erro, que num ambiente
+            # sem usuario simplesmente TRAVA. O v1_host usa tres pontos porque
+            # esta' um pacote abaixo (chrome/controllers), nao dois.
+            from ..main_window import CalibrationDialog
+        except Exception as exc:                             # noqa: BLE001
+            QMessageBox.critical(self, "Calibrar parâmetros",
+                                 f"Módulo de calibração indisponível:\n{exc}")
+            return
+        k_tr = None
+        try:
+            k_tr = float(getattr(modelo, "k_transverse", 0.0) or 0.0) or None
+        except (TypeError, ValueError):
+            k_tr = None
+        dlg = CalibrationDialog(self, modelo, ref, transverse_stiffness=k_tr)
+        dlg.exec()
+        # Apply escreve nos canais de override do MESMO objeto; o esquematico e
+        # o inspector precisam reler, senao a tela segue mostrando o de antes.
+        self.app_state.model = modelo
+        try:
+            self.model_controller.sync_from_app_state()
+        except Exception:                                    # noqa: BLE001
+            pass
+        self.prompt.set_prompt(
+            f"Calibração encerrada — referência: {ref.get('origem', '')}")
+
+    def _run_analysis(self):
+        """Nome que o botao 'Apply & Re-run' do dialogo procura no pai.
+
+        Sem isto o dialogo aplica e mostra "re-rode a mao": o chrome tem Run,
+        so' nao com o nome que a V1 usa.
+        """
+        self.module_bar.run_requested.emit()
+
     def _salvar_projeto(self):
         if getattr(self, "_caminho_projeto", None):
             self._grava_projeto(self._caminho_projeto)
@@ -788,22 +918,7 @@ class ChromeWindow(QMainWindow):
         # o F0 certos, e estava errado. Pego pelo teste de ida e volta em
         # 2026-09-03, e e' a mesma perda silenciosa que MSDModel.to_dict tinha,
         # um andar acima. Estrutura vem do esquematico, metadado vem do estado.
-        _CARREGA = ("_v2_tuner_overrides", "_v2_geometry_overrides",
-                    "_two_stage_overrides", "_fixture_overrides",
-                    "description", "name")
-        modelo = None
-        try:
-            modelo = self.model_controller.export_model()
-        except Exception:                                    # noqa: BLE001
-            modelo = None
-        estado = getattr(self.app_state, "model", None)
-        if modelo is not None and estado is not None:
-            for campo in _CARREGA:
-                valor = getattr(estado, campo, None)
-                if valor:
-                    setattr(modelo, campo, valor)
-        if modelo is None:
-            modelo = getattr(self.app_state, "model", None)
+        modelo = self._modelo_corrente()
         if modelo is None:
             QMessageBox.warning(self, "Salvar projeto",
                                 "Nao ha' modelo para salvar.")

@@ -151,6 +151,39 @@ SUPERFICIES = [
       "saving asks for a new destination instead of overwriting the "
       "reference."]),
 
+    ("dialog_calibrate", "Analyse → Calibrate model parameters",
+     "Analyse menu, <i>Calibrate model parameters</i> (Ctrl+K)",
+     "Identifies the constants that were not measured, against an "
+     "experimental preload-decay curve. The rule that makes it usable is the "
+     "one in the leftmost column: <b>a parameter you do not tick is held at "
+     "the value in the model</b>. That is how a quantity you measured stays "
+     "fixed while the rest is searched.",
+     ["One row per parameter: a checkbox and the two bounds of the search. "
+      "The bounds are pre-filled with the physically sensible range of that "
+      "constant, and each row carries a tooltip saying what the constant is.",
+      "Rows for the k, c and m of individual elements of the chain appear "
+      "below the global ones, bounded at half and twice the current value.",
+      "Objective (mean absolute error or RMS), evaluation budget and engine. "
+      "The forward model is the one the Run uses, so a fit obtained here is "
+      "reproduced when the analysis is run.",
+      "The preview draws the measurement, the current model and the candidate "
+      "fit together; <b>Apply</b> writes the result into the model, "
+      "<b>Discard</b> leaves no trace.",
+      "The selection and the bounds can be saved as a profile and reloaded "
+      "for the next joint of the same fixture."]),
+
+    ("dialog_reference_source", "Reference curve",
+     "Curve chosen before calibrating",
+     "Which experimental curve the fit is measured against. Two sources: the "
+     "validation case the model was imported from, or a CSV of your own.",
+     ["From the case: the points come from the source paper, digitised, "
+      "already in the campaign's convention (axis scaling, normalisation and "
+      "floor trim), which is the same curve the report of that case scores.",
+      "From a CSV: two or three columns, <code>cycle, F/F₀</code> or "
+      "<code>cycle, F[kN], F/F₀</code>; the first line may be a header.",
+      "The case option is offered only when the open model came from a "
+      "registered case; otherwise it is disabled and says so."]),
+
     ("chrome_report", "Report", "Report",
      "Assembles a document from the current analysis. The per-case reports of "
      "the validation corpus are generated from the same machinery, which is "
@@ -309,6 +342,29 @@ def capturar() -> dict:
     feitos["dialog_case_picker"] = _captura(app, dlg,
                                             PRINTS / "dialog_case_picker.png")
     dlg.close()
+
+    # Escolha da curva de referencia e o dialogo de calibracao, com o caso
+    # carregado: sem modelo E sem curva o painel sai vazio e a legenda falaria
+    # de linhas que o print nao tem.
+    from bolt_analysis_studio.gui.chrome.widgets.reference_curve import (
+        ReferenceSourceDialog, curva_do_caso)
+    src = ReferenceSourceDialog(None, CASO)
+    src.resize(560, 300)
+    src.show()
+    feitos["dialog_reference_source"] = _captura(
+        app, src, PRINTS / "dialog_reference_source.png")
+    src.close()
+
+    ref = curva_do_caso(CASO, float(st.model.global_loading.F_preload))
+    if ref is None:
+        raise SystemExit(f"sem curva de referencia para {CASO}: rode o runner")
+    from bolt_analysis_studio.gui.main_window import CalibrationDialog
+    cal = CalibrationDialog(None, st.model, ref)
+    cal.resize(1400, 820)
+    cal.show()
+    feitos["dialog_calibrate"] = _captura(app, cal,
+                                          PRINTS / "dialog_calibrate.png")
+    cal.close()
     return feitos
 
 
