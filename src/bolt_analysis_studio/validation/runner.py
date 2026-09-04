@@ -107,6 +107,37 @@ class CaseResult:
                       if k in cls.__dataclass_fields__})
 
 
+def mae_sem_alinhamento(result) -> Optional[float]:
+    """MAE do modelo CRU, isto e', sem o alinhamento da campanha.
+
+    O `mae` do store e' medido depois de dividir o modelo pelo proprio valor no
+    primeiro ciclo do dado (`align`). Essa e' a convencao pre-registrada e
+    continua sendo a metrica primaria; este numero e' o MESMO erro sem esse
+    passo, e existe para ser publicado ao lado dela: em 47 das 210 curvas o
+    alinhamento absorve uma diferenca no primeiro ciclo do dado, e o leitor tem
+    direito de ver quanto (decisao do professor, 2026-09-04).
+
+    NAO re-simula e NAO reinterpola: sai de `metric_pred` — que ja' esta'
+    dividido por `align`, ja' dentro da janela de trim e ja' nas abscissas do
+    dado — desfazendo a divisao. Reinterpolar na grade amostrada divergiria do
+    runner por ate 46% no transiente de embedding, que e' a razao de os vetores
+    `metric_*` existirem.
+
+    Devolve None quando nao ha' janela de metrica (casos que nao sao
+    `full_curve`); quando `align` e' 1, devolve o proprio `result.mae`.
+    """
+    import numpy as _np
+
+    pred = list(getattr(result, "metric_pred", None) or [])
+    data = list(getattr(result, "metric_data", None) or [])
+    if not pred or len(pred) != len(data):
+        return None
+    align = float(getattr(result, "align", None) or 1.0)
+    erro = _np.abs(_np.asarray(pred, dtype=float) * align
+                   - _np.asarray(data, dtype=float))
+    return float(_np.mean(erro))
+
+
 # --- ablation hook (2026-08-28) -------------------------------------------
 # Default-INERT: only the ablation driver (New_Theory/ablation_run.py) sets
 # BAS_ABLATION, a JSON {"overrides": {field: value}, "drop": [mechanism name]}.

@@ -1025,6 +1025,20 @@ def case_report_html(rec: CaseRecord, result: CaseResult,
                     f'MAE {result.mae:.4f}</div>'
                     if result.mae is not None else
                     '<div class="metric warn">MAE —</div>')
+        # MAE CRU ao lado do alinhado (decisao do professor, 2026-09-04). O
+        # alinhado segue sendo a metrica pre-registrada; o cru diz quanto o
+        # alinhamento absorveu NAQUELA curva, para o leitor nao ter de calcular.
+        # So aparece quando ha' o que dizer: com align = 1 os dois sao o mesmo
+        # numero e repeti-lo seria ruido.
+        from .runner import mae_sem_alinhamento
+        _cru = mae_sem_alinhamento(result)
+        if (_cru is not None and result.mae is not None
+                and abs(_cru - result.mae) > 5e-5):
+            mae_html += (
+                f'<div class="metric" title="Erro do modelo SEM o alinhamento '
+                f'no primeiro ciclo do dado. O MAE do artigo é o alinhado; '
+                f'este é o mesmo erro antes dessa divisão.">'
+                f'MAE cru {_cru:.4f}</div>')
         camp = ""
         if rec.gallery_entry is not None and result.engine_fingerprint != "gallery-seed":
             g = float(rec.gallery_entry["mae"])
@@ -3311,6 +3325,79 @@ _EXCECOES_RETRATADAS_ROUSSEAU_PISO_INVALIDO = {
     "rousseau2025_steel_t10": (
         "prova de piso (FORTE): res.máx 0.188/0.546 · MAE 0.087/0.206 · σ 0.098/0.186"),
 }
+
+
+def efeito_do_alinhamento(recs, res: dict) -> dict:
+    """O que o alinhamento no 1º ciclo do dado absorve, em números.
+
+    Publicado ao lado da métrica alinhada desde 2026-09-04: o alinhado
+    continua sendo o pré-registrado, mas o leitor não deveria ter de acreditar
+    que a divisão é inócua — aqui está o mesmo censo lido sem ela.
+
+    `recs` = registros; `res` = {case_id: CaseResult}. Devolve
+    `{n_alinhadas, n_total, mae_medio, mae_medio_cru, mae_mediano,
+      mae_mediano_cru, atendem, atendem_cru, perdem, ganham}`, tudo restrito
+    ao CENSO (`caso_comparavel`), que é o que o manuscrito conta.
+
+    A leitura crua reusa `_tripe_ok` e `_pisos_medidos` sobre uma cópia do
+    resultado com as quatro estatísticas recomputadas — reimplementar o
+    critério aqui criaria uma segunda régua, que divergiria da primeira.
+    """
+    import copy as _copy
+
+    import numpy as _np
+
+    from .runner import mae_sem_alinhamento
+
+    censo = [r for r in recs if caso_comparavel(r.source, r.case_id)
+             and res.get(r.case_id) is not None]
+    crus = {}
+    n_alinhadas = 0
+    for r in censo:
+        base = res[r.case_id]
+        a = float(getattr(base, "align", None) or 1.0)
+        if a != 1.0:
+            n_alinhadas += 1
+        pred = _np.asarray(getattr(base, "metric_pred", None) or [], float)
+        dado = _np.asarray(getattr(base, "metric_data", None) or [], float)
+        if pred.size < 1 or pred.size != dado.size:
+            crus[r.case_id] = base
+            continue
+        sig = pred * a - dado
+        err = _np.abs(sig)
+        cru = _copy.copy(base)
+        cru.mae = float(_np.mean(err))
+        cru.rmse = float(_np.sqrt(_np.mean(err ** 2)))
+        cru.resid_std = float(_np.std(sig)) if sig.size > 1 else 0.0
+        cru.maxerr = float(_np.max(err))
+        cru.metric_pred = [float(v) for v in pred * a]
+        crus[r.case_id] = cru
+
+    def _ok(mapa) -> set:
+        pisos = _pisos_medidos([(r.source, mapa[r.case_id]) for r in censo])
+        dentro = set()
+        for r in censo:
+            try:
+                if _tripe_ok(mapa[r.case_id], limite_sres(r.source, pisos)):
+                    dentro.add(r.case_id)
+            except Exception:                                # noqa: BLE001
+                pass
+        return dentro
+
+    por_id = {r.case_id: res[r.case_id] for r in censo}
+    ok_al, ok_cru = _ok(por_id), _ok(crus)
+    maes = _np.array([v.mae for v in por_id.values() if v.mae is not None])
+    m_cru = _np.array([v for v in (mae_sem_alinhamento(por_id[c])
+                                   for c in por_id) if v is not None])
+    return {
+        "n_alinhadas": n_alinhadas, "n_total": len(censo),
+        "mae_medio": float(maes.mean()) if maes.size else None,
+        "mae_medio_cru": float(m_cru.mean()) if m_cru.size else None,
+        "mae_mediano": float(_np.median(maes)) if maes.size else None,
+        "mae_mediano_cru": float(_np.median(m_cru)) if m_cru.size else None,
+        "atendem": len(ok_al), "atendem_cru": len(ok_cru),
+        "perdem": len(ok_al - ok_cru), "ganham": len(ok_cru - ok_al),
+    }
 
 
 def _pisos_medidos(pares) -> dict:
@@ -6517,6 +6604,18 @@ def master_report_html(records: List[CaseRecord],
         sd = getattr(res, "resid_std", None) if res else None
         sd_td = (f'<td>{float(sd):.3f}</td>'
                  if isinstance(sd, (int, float)) else '<td>—</td>')
+        # MAE CRU (2026-09-04): a coluna existe para que o efeito do
+        # alinhamento seja comparavel CASO A CASO na lista mestre, e nao so' na
+        # pagina de cada curva. Traco quando nao ha' alinhamento — repetir o
+        # mesmo numero em 163 linhas esconderia as 47 que importam.
+        from .runner import mae_sem_alinhamento
+        _cru = mae_sem_alinhamento(res) if res and res.ok else None
+        if (_cru is not None and res.mae is not None
+                and abs(_cru - res.mae) > 5e-5):
+            cru_td = (f'<td title="sem o alinhamento no 1º ciclo do dado">'
+                      f'{_cru:.3f}</td>')
+        else:
+            cru_td = '<td>—</td>'
         g = "—"
         if r.gallery_entry is not None:
             try:
@@ -6531,12 +6630,15 @@ def master_report_html(records: List[CaseRecord],
                 f'{_badges(r, res)}</td>{src_td}'
                 f'<td>{_FAM_PT.get(r.family, r.family)}</td>'
                 f'<td>{_CLASS_PT.get(r.case_class, r.case_class)}</td>'
-                f'{mae_td}{mx_td}{sd_td}<td>{diag}</td><td>{g}</td></tr>')
+                f'{mae_td}{cru_td}{mx_td}{sd_td}<td>{diag}</td>'
+                f'<td>{g}</td></tr>')
 
     def _hdr(com_fonte: bool = False) -> str:
         f_th = "<th>fonte</th>" if com_fonte else ""
         return (f'<thead><tr><th>caso</th>{f_th}<th>família</th><th>classe</th>'
-                f'<th>MAE</th><th>res.máx</th><th>σ_res</th>'
+                f'<th>MAE</th><th title="o mesmo erro sem o alinhamento no 1º '
+                f'ciclo do dado; traço = a curva não é alinhada">MAE cru</th>'
+                f'<th>res.máx</th><th>σ_res</th>'
                 f'<th>diagnóstico</th><th>campanha</th></tr></thead>')
 
     def _legenda_selos() -> str:

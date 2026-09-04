@@ -315,6 +315,48 @@ def test_o_caminho_inteiro_do_menu_ate_o_dialogo(janela, qapp, monkeypatch):
 
 
 @precisa_caso
+def test_a_linha_de_base_do_dialogo_e_o_modelo_do_caso(modelo_do_caso, qapp):
+    """A curva chamada "Current model" tem de ser o modelo ATUAL.
+
+    `_preview_current` passava `tuners={}`: desenhava o modelo com os defaults
+    do engine e chamava de atual, entao um caso da validacao aberto no dialogo
+    parecia muito pior do que e' — MAE 0,1671 na tela contra 0,1324 no report
+    do mesmo caso. O ajuste ja' partia das constantes do modelo; a linha de
+    base tinha ficado para tras, e a tela comparava dois modelos diferentes.
+    """
+    import numpy as np
+    from bolt_analysis_studio.gui.chrome.widgets.reference_curve import (
+        curva_do_caso)
+    from bolt_analysis_studio.gui.main_window import CalibrationDialog
+    from bolt_analysis_studio.validation.store import ValidationStore
+
+    m = modelo_do_caso
+    F0 = float(m.global_loading.F_preload)
+    ref = curva_do_caso(CASO, F0)
+    dlg = CalibrationDialog(None, m, ref)
+    for _ in range(30):
+        qapp.processEvents()
+    dlg._preview_current()
+    for _ in range(30):
+        qapp.processEvents()
+    assert dlg._baseline_ratio is not None, "o preview nao produziu curva"
+
+    pred = np.interp(np.asarray(ref["cycle"], float),
+                     np.asarray(dlg._baseline_cycle, float),
+                     np.asarray(dlg._baseline_ratio, float))
+    mae = float(np.mean(np.abs(pred - np.asarray(ref["F_ratio"], float))))
+    dlg.close()
+
+    publicado = ValidationStore().get(CASO).mae
+    # 2e-3 e' folga para a grade amostrada do preview contra a grade completa
+    # do runner — a mesma razao pela qual os vetores metric_* existem. O que o
+    # teste barra e' a divergencia de MODELO, que era de 0,035.
+    assert mae == pytest.approx(publicado, abs=2e-3), (
+        f"a linha de base do dialogo ({mae:.4f}) nao e' o modelo do caso "
+        f"({publicado:.4f})")
+
+
+@precisa_caso
 def test_a_geometria_adotada_entra_no_ajuste(modelo_do_caso, qapp):
     """Sem ela o otimizador media o erro contra uma junta de L_eff=3,125d e
     A_contact=1e-4 nominais em vez da junta do caso."""

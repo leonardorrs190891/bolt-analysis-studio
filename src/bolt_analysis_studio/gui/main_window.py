@@ -4717,8 +4717,19 @@ class CalibrationDialog(QDialog):
                 tname = getattr(gl_type, "name", str(gl_type)).upper()
                 theta = {"AXIAL": 0.0, "TRANSVERSE": 1.5707963,
                          "COMBINED": 0.7853982}.get(tname, 1.5707963)
+                # As constantes do PROPRIO modelo, nao os defaults do engine.
+                # A curva se chama "Current model" na legenda; com tuners={}
+                # ela desenhava o modelo DEFAULT, e um caso da validacao aberto
+                # aqui parecia muito pior do que e' (LU2024: MAE 0,1671 contra
+                # os 0,1324 do report do mesmo caso). O AJUSTE ja' parte das
+                # constantes do modelo desde 2026-09-03; a linha de base tinha
+                # ficado para tras, entao a tela comparava dois modelos
+                # diferentes e chamava um deles de atual. Medido em 2026-09-04.
+                tuners = dict(getattr(self._model, "_v2_tuner_overrides",
+                                      None) or {})
                 c, r = simulate_v2_curve(
-                    self._model, tuners={}, control_mode=str(getattr(gl, "control_mode", "displacement")),
+                    self._model, tuners=tuners,
+                    control_mode=str(getattr(gl, "control_mode", "displacement")),
                     n_cycles=int(getattr(gl, "n_cycles", 500) or 500),
                     F0=F0, F_amp=float(getattr(gl, "F_amplitude", 0.0) or 0.0),
                     theta=theta, freq=float(getattr(gl, "frequency", 0.5) or 0.5))
