@@ -516,6 +516,25 @@ cada uma est&aacute; no Ap&ecirc;ndice B do anexo.</p>
 <p>Os arquivos ficam em <code>Models\\SAVED_CASES\\</code>, um por curva,
 organizados por artigo; <code>INDICE.md</code> na mesma pasta lista todos.</p>
 
+<h2>Como ajustar o modelo &agrave; sua pr&oacute;pria curva</h2>
+<p><b>Analisar &rarr; Calibrar par&acirc;metros do modelo</b>
+(<kbd>Ctrl</kbd>+<kbd>K</kbd>). Cada par&acirc;metro aparece com uma caixa de
+sele&ccedil;&atilde;o e dois limites, e a regra &eacute; simples: <b>o que
+voc&ecirc; n&atilde;o marca fica exatamente no valor que est&aacute; no
+modelo</b> &mdash; &eacute; assim que se trava o que j&aacute; foi medido
+&mdash; e o que voc&ecirc; marca &eacute; procurado entre o limite inferior e o
+superior que voc&ecirc; escrever.</p>
+<p>A curva experimental vem de uma de duas origens: do <b>caso da
+valida&ccedil;&atilde;o</b> que voc&ecirc; importou, ou de um <b>CSV</b> seu, de
+duas ou tr&ecirc;s colunas (<code>ciclo, F/F&#8320;</code>). O motor que faz o
+ajuste &eacute; o mesmo que roda a an&aacute;lise, ent&atilde;o o que fecha aqui
+se reproduz no Run. <b>Aplicar</b> grava o resultado no modelo;
+<b>Descartar</b> n&atilde;o deixa vestígio.</p>
+<div class="nota">Um ajuste feito aqui <b>n&atilde;o</b> &eacute; uma das
+configura&ccedil;&otilde;es adotadas do artigo: aquelas foram fixadas por
+bancada, antes da pontua&ccedil;&atilde;o, e validadas por
+valida&ccedil;&atilde;o cruzada.</div>
+
 <h2>Como ver os dados de calibra&ccedil;&atilde;o</h2>
 <table>
 <tr><th>Caminho</th><th>O que mostra</th></tr>

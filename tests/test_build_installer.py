@@ -297,6 +297,19 @@ def test_leiame_ensina_a_importar_uma_curva_como_modelo(tmp_path):
     assert "SAVED_CASES" in html
 
 
+def test_leiame_ensina_a_calibrar_e_diz_o_que_o_ajuste_nao_e(tmp_path):
+    """O ajuste automatico e' o recurso que mais convida a mal-entendido: quem
+    calibra contra a propria curva pode achar que produziu uma configuracao
+    adotada. O leiame ensina o Ctrl+K, a regra da trava, e diz que nao e'."""
+    html = bi._write_leiame(tmp_path / "L.html",
+                            {"version": "1.0.0", "author": "x"}, 29, 210, 205
+                            ).read_text(encoding="utf-8")
+    assert "Ctrl</kbd>+<kbd>K" in html
+    assert "n&atilde;o marca" in html          # a regra da trava
+    assert "CSV" in html                       # a segunda origem da curva
+    assert "n&atilde;o</b> &eacute; uma das" in html   # o que o ajuste NAO e'
+
+
 def test_o_indice_dos_casos_entra_no_instalador():
     """O glob dos .msd nao pega a raiz de SAVED_CASES. Sem indice.json o
     seletor do Ctrl+I abre VAZIO na maquina instalada, com os 210 arquivos
