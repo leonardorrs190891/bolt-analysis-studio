@@ -1427,9 +1427,14 @@ def _fig_tornado():
     S_ax = kb.sensitivity("axial") or {}
     if not S_tr and not S_ax:
         return None
+    # O nome desempata. Sem ele a chave e' so' a sensibilidade, `sorted` e'
+    # estavel, e a ordem de entrada e' a iteracao de um `set` de strings — que
+    # muda a cada PROCESSO (hash randomizado). As constantes congeladas, todas
+    # com S = 0, trocavam de lugar entre dois builds identicos: a figura
+    # aparecia modificada em todo commit sem que nada tivesse mudado.
     nomes = sorted(set(S_tr) | set(S_ax),
-                   key=lambda k: -max(S_tr.get(k, {}).get("mean", 0.0),
-                                      S_ax.get(k, {}).get("mean", 0.0)))
+                   key=lambda k: (-max(S_tr.get(k, {}).get("mean", 0.0),
+                                       S_ax.get(k, {}).get("mean", 0.0)), k))
     n_tr = max([v.get("n", 0) for v in S_tr.values()] or [0])
     n_ax = max([v.get("n", 0) for v in S_ax.values()] or [0])
     congel = kb.frozen_params() or {}
