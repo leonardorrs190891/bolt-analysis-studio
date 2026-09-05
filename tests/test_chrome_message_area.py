@@ -4,8 +4,15 @@
 def test_message_area_channels(qapp):
     from bolt_analysis_studio.gui.chrome.widgets.message_area import MessageArea
     ma = MessageArea()
-    labels = [ma._tabs.tabText(i) for i in range(ma._tabs.count())]
-    assert labels == ["Messages", "Job Log"]
+    from bolt_analysis_studio.gui.i18n import Lang
+    rotulos = lambda: [ma._tabs.tabText(i) for i in range(ma._tabs.count())]
+    assert rotulos() == ["Mensagens", "Log do job"]      # PT e' o padrao (conftest)
+    try:
+        Lang.set_lang("en")
+        ma._tr.retranslate()
+        assert rotulos() == ["Messages", "Job Log"]
+    finally:
+        Lang.set_lang("pt")
 
 
 def test_append_and_read(qapp):

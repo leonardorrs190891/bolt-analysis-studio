@@ -14,7 +14,8 @@ class PromptArea(QWidget):
         self.setObjectName("promptArea")
         lay = QHBoxLayout(self)
         lay.setContentsMargins(8, 3, 8, 3)
-        self._prompt = QLabel("Pronto.")
+        from ...i18n import Lang
+        self._prompt = QLabel(Lang.tr("Pronto.", "Ready."))
         self._coords = QLabel("")
         lay.addWidget(self._prompt)
         lay.addStretch(1)

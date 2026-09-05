@@ -2651,7 +2651,9 @@ class DocumentationTab(QWidget):
         # Search box
         search_layout = QHBoxLayout()
         self.search_box = QLineEdit()
-        self.search_box.setPlaceholderText("Search documentation...")
+        from .i18n import Lang
+        self.search_box.setPlaceholderText(
+            Lang.tr("Buscar na documentação...", "Search documentation..."))
         self.search_box.textChanged.connect(self._on_search)
         search_layout.addWidget(self.search_box)
         layout.addLayout(search_layout)
@@ -2664,17 +2666,17 @@ class DocumentationTab(QWidget):
         layout.addWidget(self.nav_tree)
 
         # Quick links
-        quick_group = QGroupBox("Quick Links")
+        quick_group = QGroupBox(Lang.tr("Atalhos", "Quick Links"))
         quick_layout = QVBoxLayout(quick_group)
 
         quick_buttons = [
-            ("🚀 Get Started", "workflow"),
-            ("📐 Equations", "equations_summary"),
-            ("📊 Plots", "plots_guide"),
-            ("📋 Parameters", "parameter_tables"),
-            ("🔗 Coupling", "model_coupling"),
-            ("🔧 Troubleshoot", "troubleshooting"),
-            ("🚧 Next Steps", "next_steps"),
+            (Lang.tr("🚀 Começar", "🚀 Get Started"), "workflow"),
+            (Lang.tr("📐 Equações", "📐 Equations"), "equations_summary"),
+            (Lang.tr("📊 Gráficos", "📊 Plots"), "plots_guide"),
+            (Lang.tr("📋 Parâmetros", "📋 Parameters"), "parameter_tables"),
+            (Lang.tr("🔗 Acoplamento", "🔗 Coupling"), "model_coupling"),
+            (Lang.tr("🔧 Problemas", "🔧 Troubleshoot"), "troubleshooting"),
+            (Lang.tr("🚧 Próximos passos", "🚧 Next Steps"), "next_steps"),
         ]
 
         for text, key in quick_buttons:
@@ -2695,14 +2697,16 @@ class DocumentationTab(QWidget):
 
         # Title bar
         title_layout = QHBoxLayout()
-        self.section_title = QLabel("Welcome to Documentation")
+        from .i18n import Lang
+        self.section_title = QLabel(Lang.tr("Bem-vindo à documentação",
+                                            "Welcome to Documentation"))
         self.section_title.setFont(
             QFont(Theme.FONT_SANS_FAMILY, Theme.FONT_SIZE_LARGE, QFont.Weight.Bold))
         title_layout.addWidget(self.section_title)
         title_layout.addStretch()
 
         # Print button
-        print_btn = QPushButton("Print")
+        print_btn = QPushButton(Lang.tr("Imprimir", "Print"))
         print_btn.clicked.connect(self._on_print)
         title_layout.addWidget(print_btn)
 

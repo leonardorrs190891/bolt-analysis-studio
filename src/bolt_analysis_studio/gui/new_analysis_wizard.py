@@ -164,11 +164,17 @@ class AnalysisSpec:
 class _JointPage(QWizardPage):
     def __init__(self):
         super().__init__()
-        self.setTitle("1 · Joint configuration")
-        self.setSubTitle(
+        # O wizard e' reconstruido a cada abertura, entao `Lang.tr` na
+        # construcao basta — nao precisa de retraducao ao vivo.
+        from .i18n import Lang as L
+        self.setTitle(L.tr("1 · Configuração da junta", "1 · Joint configuration"))
+        self.setSubTitle(L.tr(
+            "Escolha a topologia de junta mais próxima. O wizard gera os "
+            "elementos correspondentes; você ainda pode acrescentar ou remover "
+            "qualquer coisa depois, no módulo Model.",
             "Pick the closest joint topology. The wizard generates the "
             "matching elements; you can still add or remove anything later "
-            "in the MSD Builder.")
+            "in the Model module."))
 
         # Project name — names the generated MSDModel. Defaults to the same
         # value as AnalysisSpec.project_name so leaving it untouched (or empty)
@@ -176,9 +182,11 @@ class _JointPage(QWizardPage):
         self.name_edit = QLineEdit()
         self.name_edit.setText(AnalysisSpec.project_name)
         self.name_edit.setPlaceholderText(AnalysisSpec.project_name)
-        self.name_edit.setToolTip(
+        self.name_edit.setToolTip(L.tr(
             "Nome do projeto — usado como nome do modelo MSD gerado. "
-            "Se vazio, cai no default.")
+            "Se vazio, cai no default.",
+            "Project name — used as the name of the generated MSD model. "
+            "Falls back to the default when empty."))
 
         self.list = QListWidget()
         for p in JOINT_PRESETS:
@@ -197,11 +205,11 @@ class _JointPage(QWizardPage):
         self.summary.setStyleSheet(f"color:{Theme.SUBTEXT}; padding:6px;")
 
         name_form = QFormLayout()
-        name_form.addRow("Nome do projeto:", self.name_edit)
+        name_form.addRow(L.tr("Nome do projeto:", "Project name:"), self.name_edit)
 
         lay = QVBoxLayout(self)
         lay.addLayout(name_form)
-        lay.addWidget(QLabel("<b>Joint type</b>"))
+        lay.addWidget(QLabel(L.tr("<b>Tipo de junta</b>", "<b>Joint type</b>")))
         lay.addWidget(self.list, stretch=1)
         lay.addWidget(self.summary)
         self._update_summary()
@@ -216,13 +224,14 @@ class _JointPage(QWizardPage):
         if not it:
             self.summary.setText("")
             return
+        from .i18n import Lang as L
         pid = it.data(Qt.ItemDataRole.UserRole)
         for p in JOINT_PRESETS:
             if p["id"] == pid:
-                elems = ", ".join(p["elements"]) or "(none)"
+                elems = ", ".join(p["elements"]) or L.tr("(nenhum)", "(none)")
                 self.summary.setText(
                     f"<b>{p['label']}</b><br>{p['summary']}"
-                    f"<br><i>Elements:</i> {elems}")
+                    f"<br><i>{L.tr('Elementos', 'Elements')}:</i> {elems}")
                 break
 
     def selected_id(self) -> str:
@@ -233,10 +242,14 @@ class _JointPage(QWizardPage):
 class _BoltPage(QWizardPage):
     def __init__(self):
         super().__init__()
-        self.setTitle("2 · Bolt geometry & material")
-        self.setSubTitle(
+        from .i18n import Lang as L
+        self.setTitle(L.tr("2 · Geometria e material do parafuso",
+                           "2 · Bolt geometry & material"))
+        self.setSubTitle(L.tr(
+            "Bitola padrão e classe do parafuso. A pré-carga é dada como fração "
+            "do escoamento; o valor em kN depende da classe quando o modelo roda.",
             "Standard bolt size + grade. Preload is set as a fraction of "
-            "yield; the actual kN depends on the grade once the model runs.")
+            "yield; the actual kN depends on the grade once the model runs."))
 
         self.size_combo = QComboBox()
         for label, _d, _p in BOLT_SIZES:
@@ -261,17 +274,24 @@ class _BoltPage(QWizardPage):
         self.preload_pct.setRange(20.0, 90.0)
         self.preload_pct.setSuffix(" %")
         self.preload_pct.setValue(70.0)
-        self.preload_pct.setToolTip(
+        self.preload_pct.setToolTip(L.tr(
+            "Fração do escoamento do parafuso usada como pré-carga de "
+            "instalação. VDI 2230 típico: 70 %. ISO 16130: 60–80 %.",
             "Fraction of bolt yield used as installation preload. "
-            "VDI 2230 typical: 70 %. ISO 16130: 60–80 %.")
+            "VDI 2230 typical: 70 %. ISO 16130: 60–80 %."))
 
         form = QFormLayout()
-        form.addRow("Bolt size:", self.size_combo)
-        form.addRow("Major diameter (auto):", self.diam_label)
-        form.addRow("Thread pitch (auto):", self.pitch_label)
-        form.addRow("Material grade:", self.grade_combo)
-        form.addRow("Flange thickness (each):", self.flange_thickness)
-        form.addRow("Preload (% yield):", self.preload_pct)
+        form.addRow(L.tr("Bitola do parafuso:", "Bolt size:"), self.size_combo)
+        form.addRow(L.tr("Diâmetro maior (auto):", "Major diameter (auto):"),
+                    self.diam_label)
+        form.addRow(L.tr("Passo da rosca (auto):", "Thread pitch (auto):"),
+                    self.pitch_label)
+        form.addRow(L.tr("Classe do material:", "Material grade:"),
+                    self.grade_combo)
+        form.addRow(L.tr("Espessura do flange (cada):",
+                         "Flange thickness (each):"), self.flange_thickness)
+        form.addRow(L.tr("Pré-carga (% escoamento):", "Preload (% yield):"),
+                    self.preload_pct)
 
         lay = QVBoxLayout(self)
         lay.addLayout(form)
@@ -300,17 +320,22 @@ class _BoltPage(QWizardPage):
 class _LoadingPage(QWizardPage):
     def __init__(self, joint_page: "_JointPage"):
         super().__init__()
-        self.setTitle("3 · Loading conditions")
-        self.setSubTitle(
+        from .i18n import Lang as L
+        self.setTitle(L.tr("3 · Condições de carregamento",
+                           "3 · Loading conditions"))
+        self.setSubTitle(L.tr(
+            "Tipo de carregamento e amplitudes. Os valores são típicos de "
+            "ensaio Junker de vibração transversal — ajuste à sua bancada.",
             "Loading type + amplitudes. Values are typical for Junker "
-            "transverse vibration testing — adjust to match your rig.")
+            "transverse vibration testing — adjust to match your rig."))
         self._joint_page = joint_page
 
         self.loading_combo = QComboBox()
         self.loading_combo.addItems([
-            "Transverse Junker (vibration ⟂ bolt axis)",
-            "Axial pulsating tension",
-            "Combined axial + transverse",
+            L.tr("Transversal Junker (vibração ⟂ ao eixo do parafuso)",
+                 "Transverse Junker (vibration ⟂ bolt axis)"),
+            L.tr("Tração axial pulsante", "Axial pulsating tension"),
+            L.tr("Combinado axial + transversal", "Combined axial + transverse"),
         ])
         self._loading_keys = ["TRANSVERSE", "AXIAL", "COMBINED"]
 
@@ -318,8 +343,10 @@ class _LoadingPage(QWizardPage):
         # (impose F). Maps to the V2 engine's disp/force step_cycle modes.
         self.control_combo = QComboBox()
         self.control_combo.addItems([
-            "Displacement-controlled (impose δ — Junker/crank rig)",
-            "Force-controlled (impose F — servo-hydraulic)",
+            L.tr("Controle por deslocamento (impõe δ — bancada Junker/manivela)",
+                 "Displacement-controlled (impose δ — Junker/crank rig)"),
+            L.tr("Controle por força (impõe F — servo-hidráulica)",
+                 "Force-controlled (impose F — servo-hydraulic)"),
         ])
         self._control_keys = ["displacement", "force"]
         self.control_combo.currentIndexChanged.connect(self._on_control_changed)
@@ -329,16 +356,20 @@ class _LoadingPage(QWizardPage):
         self.delta_spin.setSuffix(" mm")
         self.delta_spin.setDecimals(3)
         self.delta_spin.setValue(0.5)
-        self.delta_spin.setToolTip(
-            "Peak transverse displacement amplitude. Typical Junker: 0.3-1.0 mm.")
+        self.delta_spin.setToolTip(L.tr(
+            "Amplitude de pico do deslocamento transversal. Junker típico: "
+            "0,3–1,0 mm.",
+            "Peak transverse displacement amplitude. Typical Junker: 0.3-1.0 mm."))
 
         self.force_spin = QDoubleSpinBox()
         self.force_spin.setRange(0.0, 1e6)
         self.force_spin.setSuffix(" N")
         self.force_spin.setDecimals(0)
         self.force_spin.setValue(5000.0)
-        self.force_spin.setToolTip(
-            "Axial dynamic-force amplitude (used for axial / combined modes).")
+        self.force_spin.setToolTip(L.tr(
+            "Amplitude da força axial dinâmica (usada nos modos axial e "
+            "combinado).",
+            "Axial dynamic-force amplitude (used for axial / combined modes)."))
 
         self.freq_spin = QDoubleSpinBox()
         self.freq_spin.setRange(0.1, 1000.0)
@@ -349,15 +380,19 @@ class _LoadingPage(QWizardPage):
         self.cycles_spin = QSpinBox()
         self.cycles_spin.setRange(10, 1_000_000)
         self.cycles_spin.setValue(2000)
-        self.cycles_spin.setSuffix(" cycles")
+        self.cycles_spin.setSuffix(L.tr(" ciclos", " cycles"))
 
         form = QFormLayout()
-        form.addRow("Loading type:", self.loading_combo)
-        form.addRow("Control mode:", self.control_combo)
-        form.addRow("Transverse amplitude δ:", self.delta_spin)
-        form.addRow("Axial force amplitude:", self.force_spin)
-        form.addRow("Frequency:", self.freq_spin)
-        form.addRow("Cycles:", self.cycles_spin)
+        form.addRow(L.tr("Tipo de carregamento:", "Loading type:"),
+                    self.loading_combo)
+        form.addRow(L.tr("Modo de controle:", "Control mode:"),
+                    self.control_combo)
+        form.addRow(L.tr("Amplitude transversal δ:", "Transverse amplitude δ:"),
+                    self.delta_spin)
+        form.addRow(L.tr("Amplitude da força axial:", "Axial force amplitude:"),
+                    self.force_spin)
+        form.addRow(L.tr("Frequência:", "Frequency:"), self.freq_spin)
+        form.addRow(L.tr("Ciclos:", "Cycles:"), self.cycles_spin)
 
         lay = QVBoxLayout(self)
         lay.addLayout(form)
@@ -398,18 +433,24 @@ class _LoadingPage(QWizardPage):
 class _ReferencePage(QWizardPage):
     def __init__(self):
         super().__init__()
-        self.setTitle("4 · Reference data (optional)")
-        self.setSubTitle(
+        from .i18n import Lang as L
+        self.setTitle(L.tr("4 · Dados de referência (opcional)",
+                           "4 · Reference data (optional)"))
+        self.setSubTitle(L.tr(
+            "Aponte um CSV de laboratório (ciclo, F_kN, F/F₀) para a "
+            "calibração ter contra o que ajustar. Pule se ainda não tem dado "
+            "experimental.",
             "Drop in a lab CSV (cycle, F_kN, F/F₀) so the calibration "
             "agent has something to fit against. Skip if you don't have "
-            "experimental data yet.")
+            "experimental data yet."))
 
         self.path_edit = QLineEdit()
-        self.path_edit.setPlaceholderText("(no reference — analysis only)")
+        self.path_edit.setPlaceholderText(L.tr(
+            "(sem referência — só análise)", "(no reference — analysis only)"))
         self.path_edit.setReadOnly(True)
-        self.browse_btn = QPushButton("Browse…")
+        self.browse_btn = QPushButton(L.tr("Procurar…", "Browse…"))
         self.browse_btn.clicked.connect(self._browse)
-        self.clear_btn = QPushButton("Clear")
+        self.clear_btn = QPushButton(L.tr("Limpar", "Clear"))
         self.clear_btn.clicked.connect(lambda: self.path_edit.setText(""))
 
         path_row = QHBoxLayout()
@@ -419,22 +460,25 @@ class _ReferencePage(QWizardPage):
 
         self.preview = QTextEdit()
         self.preview.setReadOnly(True)
-        self.preview.setPlaceholderText(
-            "First few rows of the chosen CSV appear here.")
+        self.preview.setPlaceholderText(L.tr(
+            "As primeiras linhas do CSV escolhido aparecem aqui.",
+            "First few rows of the chosen CSV appear here."))
         self.preview.setMaximumHeight(140)
 
         lay = QVBoxLayout(self)
-        lay.addWidget(QLabel("<b>Reference CSV</b>"))
+        lay.addWidget(QLabel(L.tr("<b>CSV de referência</b>",
+                                  "<b>Reference CSV</b>")))
         lay.addLayout(path_row)
         lay.addSpacing(6)
-        lay.addWidget(QLabel("<b>Preview</b>"))
+        lay.addWidget(QLabel(L.tr("<b>Prévia</b>", "<b>Preview</b>")))
         lay.addWidget(self.preview)
         lay.addStretch()
 
     def _browse(self):
+        from .i18n import Lang as L
         path, _ = QFileDialog.getOpenFileName(
-            self, "Reference CSV", "",
-            "CSV (*.csv);;All Files (*)")
+            self, L.tr("CSV de referência", "Reference CSV"), "",
+            L.tr("CSV (*.csv);;Todos os arquivos (*)", "CSV (*.csv);;All Files (*)"))
         if not path:
             return
         self.path_edit.setText(path)
@@ -455,11 +499,15 @@ class _ReferencePage(QWizardPage):
 class _ReviewPage(QWizardPage):
     def __init__(self, wizard_ref):
         super().__init__()
-        self.setTitle("5 · Review & generate")
-        self.setSubTitle(
+        from .i18n import Lang as L
+        self.setTitle(L.tr("5 · Revisar e gerar", "5 · Review & generate"))
+        self.setSubTitle(L.tr(
+            "Clique em <b>Concluir</b> para materializar o modelo MSD. Ele abre "
+            "no módulo Model, onde você pode refinar qualquer coisa antes de "
+            "rodar.",
             "Click <b>Finish</b> to materialise the MSD model. "
-            "It opens in the Builder where you can refine anything before "
-            "running the solver.")
+            "It opens in the Model module where you can refine anything before "
+            "running the solver."))
         self._wizard = wizard_ref
 
         self.summary = QLabel()
@@ -472,38 +520,46 @@ class _ReviewPage(QWizardPage):
             f"border:1px solid {Theme.SURFACE2}; color:{Theme.TEXT}; "
             f"border-radius:4px;")
 
-        self.open_solver_check = QCheckBox(
+        self.open_solver_check = QCheckBox(L.tr(
+            "Depois de gerar, carregar também a referência na aba Results "
+            "(só se um CSV foi indicado)",
             "After generating, also pre-load the reference into the "
-            "Results tab (only if a CSV was provided)")
+            "Results tab (only if a CSV was provided)"))
         self.open_solver_check.setChecked(True)
 
         lay = QVBoxLayout(self)
-        lay.addWidget(QLabel("<b>Configuration summary</b>"))
+        lay.addWidget(QLabel(L.tr("<b>Resumo da configuração</b>",
+                                  "<b>Configuration summary</b>")))
         lay.addWidget(self.summary)
         lay.addSpacing(8)
         lay.addWidget(self.open_solver_check)
         lay.addStretch()
 
     def initializePage(self):
+        from .i18n import Lang as L
         spec = self._wizard.spec()
         preset = spec.joint_preset
-        elems = ", ".join(preset["elements"]) or "(none — empty model)"
-        ref = spec.reference_csv_path or "(none)"
+        elems = ", ".join(preset["elements"]) or L.tr(
+            "(nenhum — modelo vazio)", "(none — empty model)")
+        ref = spec.reference_csv_path or L.tr("(nenhum)", "(none)")
         self.summary.setText(
-            f"<b>Project:</b> {spec.project_name}<br>"
-            f"<b>Joint:</b> {preset['label']}<br>"
-            f"<b>Elements to generate:</b> {elems}<br><br>"
-            f"<b>Bolt:</b> M{spec.bolt_diameter_mm:g} × {spec.pitch_mm:g} mm  ·  "
-            f"{spec.grade}<br>"
-            f"<b>Flange thickness:</b> {spec.flange_thickness_mm:g} mm  ·  "
-            f"<b>Preload:</b> {spec.preload_pct_yield:g}% yield<br><br>"
-            f"<b>Loading:</b> {spec.loading_type}  ·  "
-            f"<b>control:</b> {spec.control_mode}  ·  "
+            f"<b>{L.tr('Projeto', 'Project')}:</b> {spec.project_name}<br>"
+            f"<b>{L.tr('Junta', 'Joint')}:</b> {preset['label']}<br>"
+            f"<b>{L.tr('Elementos a gerar', 'Elements to generate')}:</b> "
+            f"{elems}<br><br>"
+            f"<b>{L.tr('Parafuso', 'Bolt')}:</b> M{spec.bolt_diameter_mm:g} × "
+            f"{spec.pitch_mm:g} mm  ·  {spec.grade}<br>"
+            f"<b>{L.tr('Espessura do flange', 'Flange thickness')}:</b> "
+            f"{spec.flange_thickness_mm:g} mm  ·  "
+            f"<b>{L.tr('Pré-carga', 'Preload')}:</b> {spec.preload_pct_yield:g}% "
+            f"{L.tr('do escoamento', 'yield')}<br><br>"
+            f"<b>{L.tr('Carregamento', 'Loading')}:</b> {spec.loading_type}  ·  "
+            f"<b>{L.tr('controle', 'control')}:</b> {spec.control_mode}  ·  "
             f"δ = {spec.delta_amplitude_mm:g} mm  ·  "
             f"F = {spec.F_amplitude_N:g} N  ·  "
             f"f = {spec.frequency_hz:g} Hz  ·  "
             f"N = {spec.n_cycles}<br>"
-            f"<b>Reference CSV:</b> {ref}")
+            f"<b>{L.tr('CSV de referência', 'Reference CSV')}:</b> {ref}")
 
     def will_load_reference(self) -> bool:
         return self.open_solver_check.isChecked()
@@ -518,7 +574,9 @@ class NewAnalysisWizard(QWizard):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("New Analysis Wizard")
+        from .i18n import Lang as L
+        self.setWindowTitle(L.tr("Assistente de nova análise",
+                                 "New Analysis Wizard"))
         self.setWizardStyle(QWizard.WizardStyle.ModernStyle)
         self.setOption(QWizard.WizardOption.IndependentPages, False)
         self.setMinimumSize(720, 560)
@@ -536,7 +594,13 @@ class NewAnalysisWizard(QWizard):
         self.addPage(self._review)
 
         self.setButtonText(QWizard.WizardButton.FinishButton,
-                           "Generate model")
+                           L.tr("Gerar modelo", "Generate model"))
+        self.setButtonText(QWizard.WizardButton.NextButton,
+                           L.tr("Avançar >", "Next >"))
+        self.setButtonText(QWizard.WizardButton.BackButton,
+                           L.tr("< Voltar", "< Back"))
+        self.setButtonText(QWizard.WizardButton.CancelButton,
+                           L.tr("Cancelar", "Cancel"))
 
     def spec(self) -> AnalysisSpec:
         d, p, grade, flange_t, preload_pct = self._bolt.values()

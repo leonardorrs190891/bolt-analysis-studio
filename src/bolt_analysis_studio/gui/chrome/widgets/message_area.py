@@ -9,7 +9,8 @@ from __future__ import annotations
 from PyQt6.QtWidgets import (QHBoxLayout, QPlainTextEdit, QTabWidget, QToolButton,
                              QVBoxLayout, QWidget)
 
-_CHANNELS = [("messages", "Messages"), ("job", "Job Log")]
+_CHANNELS = [("messages", "Mensagens", "Messages"),
+             ("job", "Log do job", "Job Log")]
 _MAX = 16777215   # QWIDGETSIZE_MAX
 
 
@@ -21,12 +22,18 @@ class MessageArea(QWidget):
         lay.setContentsMargins(0, 0, 0, 0)
         lay.setSpacing(0)
 
+        from ...i18n import Lang, TrGroup
+        self._tr = TrGroup()
         hdr = QHBoxLayout()
         hdr.setContentsMargins(6, 2, 6, 2)
         self._toggle = QToolButton()
         self._toggle.setObjectName("msgCollapse")
-        self._toggle.setText("▼  Mensagens")
-        self._toggle.setToolTip("Colapsar/expandir a área de mensagens")
+        # O texto do botao depende do estado (▼/▶) E do idioma: um setter que
+        # recompoe os dois, registrado no grupo para retraduzir ao vivo.
+        self._tr.add(lambda _s: self._refresh_toggle(), "", "")
+        self._tr.add(self._toggle.setToolTip,
+                     "Colapsar/expandir a área de mensagens",
+                     "Collapse/expand the message area")
         self._toggle.clicked.connect(self.toggle_collapsed)
         hdr.addWidget(self._toggle)
         hdr.addStretch(1)
@@ -34,7 +41,7 @@ class MessageArea(QWidget):
 
         self._tabs = QTabWidget()
         self._views = {}
-        for key, label in _CHANNELS:
+        for idx, (key, pt, en) in enumerate(_CHANNELS):
             view = QPlainTextEdit()
             view.setReadOnly(True)
             view.setMaximumBlockCount(5000)
@@ -42,13 +49,19 @@ class MessageArea(QWidget):
             f.setPointSize(8)                 # fonte menor → ocupa menos espaço
             view.setFont(f)
             self._views[key] = view
-            self._tabs.addTab(view, label)
+            self._tabs.addTab(view, Lang.tr(pt, en))
+            self._tr.add(lambda s, i=idx: self._tabs.setTabText(i, s), pt, en)
         lay.addWidget(self._tabs)
+
+    def _refresh_toggle(self) -> None:
+        from ...i18n import Lang
+        seta = "▶" if self._collapsed else "▼"
+        self._toggle.setText(f"{seta}  " + Lang.tr("Mensagens", "Messages"))
 
     def toggle_collapsed(self) -> None:
         self._collapsed = not self._collapsed
         self._tabs.setVisible(not self._collapsed)
-        self._toggle.setText("▶  Mensagens" if self._collapsed else "▼  Mensagens")
+        self._refresh_toggle()
         # Encolhe/expande o dock: com maximumHeight na altura do header, colapsa.
         self.setMaximumHeight(self._toggle.sizeHint().height() + 10
                               if self._collapsed else _MAX)

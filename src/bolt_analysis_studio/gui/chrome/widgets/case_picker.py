@@ -40,7 +40,11 @@ class CasePicker(QDialog):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("Importar caso da validação")
+        from ...i18n import Lang, TrGroup
+        self._L = Lang
+        self._tr = TrGroup()
+        self._tr.add(self.setWindowTitle, "Importar caso da validação",
+                     "Import validation case")
         self.resize(820, 560)
         self.escolhido: str | None = None
         self._dados = self._carrega()
@@ -67,26 +71,37 @@ class CasePicker(QDialog):
     def _monta(self):
         lay = QVBoxLayout(self)
         d = self._dados
-        self.resumo = QLabel(
+        self.resumo = QLabel()
+        self._tr.add(
+            self.resumo.setText,
             f"<b>{d.get('no_censo', 0)}</b> casos no censo do artigo, dos quais "
             f"<b>{d.get('atendem_criterio', 0)}</b> atendem ao critério. "
-            f"<span style='color:gray'>{d.get('total', 0)} no total.</span>")
+            f"<span style='color:gray'>{d.get('total', 0)} no total.</span>",
+            f"<b>{d.get('no_censo', 0)}</b> cases in the paper census, of which "
+            f"<b>{d.get('atendem_criterio', 0)}</b> meet the criterion. "
+            f"<span style='color:gray'>{d.get('total', 0)} in total.</span>")
         lay.addWidget(self.resumo)
 
         topo = QHBoxLayout()
         self.busca = QLineEdit()
-        self.busca.setPlaceholderText(
-            "Buscar por artigo, caso ou referência…  (ex.: lu2024, M8, Sensors)")
+        self._tr.add(
+            self.busca.setPlaceholderText,
+            "Buscar por artigo, caso ou referência…  (ex.: lu2024, M8, Sensors)",
+            "Search by paper, case or reference…  (e.g. lu2024, M8, Sensors)")
         self.busca.textChanged.connect(self._preenche)
         topo.addWidget(self.busca, stretch=1)
-        self.so_censo = QCheckBox("Somente o censo do artigo")
+        self.so_censo = QCheckBox()
+        self._tr.add(self.so_censo.setText, "Somente o censo do artigo",
+                     "Paper census only")
         self.so_censo.setChecked(True)
         self.so_censo.toggled.connect(self._preenche)
         topo.addWidget(self.so_censo)
         lay.addLayout(topo)
 
         self.arvore = QTreeWidget()
-        self.arvore.setHeaderLabels(["Caso", "Censo", "Critério", "MAE"])
+        self._tr.add(lambda _s: self.arvore.setHeaderLabels(
+            [self._L.tr("Caso", "Case"), self._L.tr("Censo", "Census"),
+             self._L.tr("Critério", "Criterion"), "MAE"]), "", "")
         self.arvore.setColumnWidth(0, 460)
         self.arvore.itemDoubleClicked.connect(self._duplo)
         self.arvore.currentItemChanged.connect(self._mudou)
@@ -101,10 +116,10 @@ class CasePicker(QDialog):
             | QDialogButtonBox.StandardButton.Cancel)
         # O texto padrao dos botoes vem da traducao do Qt, que segue o locale
         # do sistema e sai "Open/Cancel" no meio de um dialogo em portugues.
-        self.botoes.button(
-            QDialogButtonBox.StandardButton.Open).setText("Abrir")
-        self.botoes.button(
-            QDialogButtonBox.StandardButton.Cancel).setText("Cancelar")
+        self._tr.add(self.botoes.button(
+            QDialogButtonBox.StandardButton.Open).setText, "Abrir", "Open")
+        self._tr.add(self.botoes.button(
+            QDialogButtonBox.StandardButton.Cancel).setText, "Cancelar", "Cancel")
         self.botoes.accepted.connect(self._aceitar)
         self.botoes.rejected.connect(self.reject)
         self.botoes.button(
@@ -128,12 +143,13 @@ class CasePicker(QDialog):
         for fonte in sorted(por_fonte):
             itens = sorted(por_fonte[fonte], key=lambda z: z["case_id"])
             topo = QTreeWidgetItem([f"{fonte}  ({len(itens)})", "", "", ""])
+            sim, nao = self._L.tr("sim", "yes"), self._L.tr("não", "no")
             for c in itens:
                 mae = c.get("mae")
                 filho = QTreeWidgetItem([
                     c["case_id"],
-                    "sim" if c.get("censo") else "não",
-                    "sim" if c.get("criterio") else "—",
+                    sim if c.get("censo") else nao,
+                    sim if c.get("criterio") else "—",
                     "" if mae is None else f"{mae:.4f}"])
                 filho.setData(0, Qt.ItemDataRole.UserRole, c)
                 topo.addChild(filho)
@@ -157,10 +173,14 @@ class CasePicker(QDialog):
             return
         ref = c.get("reference") or c["source"]
         doi = c.get("doi")
-        alvo = f"<a href='https://doi.org/{doi}'>{doi}</a>" if doi else "sem DOI"
+        alvo = (f"<a href='https://doi.org/{doi}'>{doi}</a>" if doi
+                else self._L.tr("sem DOI", "no DOI"))
         fora = ("" if c.get("censo") else
-                "<br><span style='color:#e0a900'>Fora do censo do artigo: "
-                "não é contado em nenhum número do manuscrito.</span>")
+                "<br><span style='color:#e0a900'>" + self._L.tr(
+                    "Fora do censo do artigo: não é contado em nenhum número "
+                    "do manuscrito.",
+                    "Outside the paper census: counted in no figure of the "
+                    "manuscript.") + "</span>")
         self.detalhe.setText(f"<b>{c.get('name') or c['case_id']}</b><br>"
                              f"{ref} &mdash; {alvo}{fora}")
 
@@ -176,9 +196,14 @@ class CasePicker(QDialog):
             return
         alvo = raiz / c["arquivo"]
         if not alvo.is_file():
+            # Texto de tela: sem nome de script, que so' existe para quem tem
+            # o codigo. Quem instalou resolve reinstalando.
             self.detalhe.setText(
-                f"<span style='color:#d20f39'>Arquivo ausente: {alvo.name}. "
-                f"Rode <code>build_saved_cases.py</code>.</span>")
+                "<span style='color:#d20f39'>" + self._L.tr(
+                    f"Arquivo ausente: {alvo.name}. Reinstale o programa para "
+                    f"recuperar os casos do artigo.",
+                    f"Missing file: {alvo.name}. Reinstall the program to "
+                    f"restore the paper cases.") + "</span>")
             return
         self.escolhido = str(alvo)
         self.accept()

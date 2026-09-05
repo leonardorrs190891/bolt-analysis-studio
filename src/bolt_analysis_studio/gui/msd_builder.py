@@ -1433,9 +1433,11 @@ class SchematicView(QGraphicsView):
         if not self._stamp_enabled or not painter.isActive():
             return
         from PyQt6.QtGui import QFont, QPen
+        from .i18n import Lang                 # carimbo segue o idioma da UI
         tb = self._title_block
-        lines = [f"Modelo  {tb['model'] or '—'}",
-                 f"Modulo  {tb['module'] or '—'}   Step  {tb['step'] or '—'}",
+        lines = [f"{Lang.tr('Modelo', 'Model')}  {tb['model'] or '—'}",
+                 f"{Lang.tr('Modulo', 'Module')}  {tb['module'] or '—'}"
+                 f"   Step  {tb['step'] or '—'}",
                  f"{tb['metric'] or ''}"]
         painter.save()
         painter.resetTransform()          # carimbo em coords de tela, não da cena

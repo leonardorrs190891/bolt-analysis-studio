@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The new-analysis wizard — Bolt Analysis Studio</title><style>
+:root{--ink:#1f2937;--sub:#6b7280;--line:#e5e7eb;--bg:#fafafa;--card:#fff;
+--acc:#2b6cb0;--warn:#b7791f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 22px 60px}
+nav.top{display:flex;gap:14px;align-items:center;font-size:14px;color:var(--sub);
+flex-wrap:wrap}nav.top a{color:var(--acc);text-decoration:none}
+h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
+.sub{color:var(--sub);margin:0 0 18px}
+.print{border:1px solid var(--line);border-radius:8px;background:var(--card);
+padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
+border-radius:4px}
+.player{display:flex;gap:14px;align-items:center;background:var(--card);
+border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
+.player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
+.transcricao{background:var(--card);border-left:4px solid var(--acc);
+padding:14px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+table.ctl{width:100%;border-collapse:collapse;background:var(--card);
+border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:14px 0}
+table.ctl th,table.ctl td{padding:10px 12px;border-bottom:1px solid var(--line);
+vertical-align:top;text-align:left}table.ctl th{background:#f3f4f6;font-size:13px;
+text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+table.ctl td:first-child{white-space:nowrap;font-weight:600;width:30%}
+table.ctl td:nth-child(2):not(:last-child){color:var(--sub);white-space:nowrap}
+.erro{border:1px solid #f3d9a4;background:#fff8e6;border-radius:8px;padding:12px 16px;
+margin:14px 0}.erro b{color:var(--warn)}
+.pager{display:flex;justify-content:space-between;margin-top:34px;gap:12px}
+.pager a{color:var(--acc);text-decoration:none;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:16px;margin-top:18px}.card{background:var(--card);border:1px solid var(--line);
+border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;display:block}
+.card img{width:100%;height:170px;object-fit:cover;object-position:top;
+border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
+.card .n{color:var(--sub);font-size:13px;padding:0 14px 12px}
+@media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
+</style></head>
+<body><div class="wrap">
+<nav class="top"><a href="index.html">Contents</a> · Step 3/15
+ · <a href="glossario.html">Glossary</a>
+ · <a href="../pt/02_wizard.html">Versão em português</a></nav>
+<h1>The new-analysis wizard</h1>
+<p class="sub">Bolt Analysis Studio 1.0.0 · Narrated user guide</p>
+<div class="player"><audio controls preload="none" src="audio/02_wizard.mp3"></audio><span class="voz">Listen to the narration · voice: en-US-AndrewNeural</span></div>
+<div class="print"><img src="img/wizard_p1.png" alt="The new-analysis wizard"></div>
+<h2>Transcript</h2>
+<div class="transcricao">The wizard builds a model in five pages. On the first, you name the project and choose the joint topology: single axial bolt, single shear joint, flange, and so on. Each topology already carries the right elements, including the two bearing connections, under the head and under the nut, which are where loosening happens. On the second page, the bolt size and grade, the flange thickness and the preload as a fraction of yield. On the third, the loading: transverse, axial or combined, displacement- or force-controlled, with amplitude, frequency and number of cycles. The fourth is optional: a laboratory CSV to calibrate against later. The fifth summarises everything. Click generate model and it opens in the Model module.</div>
+<h2>Every control on this screen</h2>
+<table class="ctl"><thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody><tr><td>Project name</td><td>Name of the generated model; empty uses the default.</td></tr><tr><td>Joint type</td><td>List of topologies; the description and the generated elements appear below.</td></tr><tr><td>Bolt size</td><td>M6 to M42; diameter and pitch follow automatically.</td></tr><tr><td>Material grade</td><td>Sets yield and ultimate strength, and with them the preload in newtons.</td></tr><tr><td>Flange thickness (each)</td><td>Thickness of each clamped member.</td></tr><tr><td>Preload (% yield)</td><td>Fraction of yield applied at tightening. Seventy percent is the VDI 2230 typical.</td></tr><tr><td>Loading type</td><td>Transverse Junker, axial pulsating or combined.</td></tr><tr><td>Control mode</td><td>Imposed displacement, as on a Junker rig, or imposed force, as on a servo-hydraulic one. The field that is not the driver is greyed out.</td></tr><tr><td>Transverse amplitude δ</td><td>Peak displacement, in millimetres. Typical Junker: 0.3 to 1.0.</td></tr><tr><td>Axial force amplitude</td><td>Peak dynamic force, in newtons.</td></tr><tr><td>Frequency / Cycles</td><td>Test frequency and how many cycles to simulate.</td></tr><tr><td>Reference CSV</td><td>Optional: laboratory curve for calibration.</td></tr><tr><td>Generate model</td><td>Materialises the chain and opens the Model module.</td></tr></tbody></table>
+
+<div class="pager"><span><a href="01_comecar.html">← Previous</a></span>
+<span><a href="03_anatomia.html">Next →</a></span></div>
+</div></body></html>

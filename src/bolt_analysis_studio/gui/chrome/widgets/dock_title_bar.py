@@ -19,10 +19,13 @@ class DockTitleBar(QWidget):
         h.setContentsMargins(6, 2, 4, 2)
         h.setSpacing(2)
 
+        from ...i18n import TrGroup
+        self._tr = TrGroup()
         self._collapse = QToolButton()
         self._collapse.setObjectName("dockCollapse")
         self._collapse.setText("▾")
-        self._collapse.setToolTip("Colapsar/expandir o painel")
+        self._tr.add(self._collapse.setToolTip, "Colapsar/expandir o painel",
+                     "Collapse/expand the panel")
         self._collapse.clicked.connect(self.toggle_collapsed)
 
         self._label = QLabel(title)
@@ -31,7 +34,9 @@ class DockTitleBar(QWidget):
         self._close = QToolButton()
         self._close.setObjectName("dockClose")
         self._close.setText("✕")
-        self._close.setToolTip("Fechar o painel (reabra em Exibir > Painéis)")
+        self._tr.add(self._close.setToolTip,
+                     "Fechar o painel (reabra em Exibir > Painéis)",
+                     "Close the panel (reopen it in View > Panels)")
         self._close.clicked.connect(dock.close)
 
         h.addWidget(self._collapse)

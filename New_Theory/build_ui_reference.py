@@ -399,7 +399,20 @@ def secao(feitos: dict) -> str:
     return "\n".join(p)
 
 
+def _isola_preferencias() -> None:
+    """A captura troca idioma e tema; nada disso pode ir para o preferences.json
+    REAL de quem roda o build (em 2026-09-05 o build do guia deixou o programa
+    do usuario em ingles). Aponta i18n — e, por ele, Theme — para um temporario
+    e parte do portugues, para prints deterministicos."""
+    import tempfile
+    import bolt_analysis_studio.gui.i18n as i18n
+    iso = Path(tempfile.mkdtemp(prefix="bas_prefs_"))
+    i18n._PREFS_DIR, i18n._PREFS_FILE = iso, iso / "preferences.json"
+    i18n.Lang.current = "pt"
+
+
 def main(argv=None) -> int:
+    _isola_preferencias()
     feitos = capturar()
     esperados = {s[0] for s in SUPERFICIES}
     faltando = sorted(esperados - set(feitos))

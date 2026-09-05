@@ -127,45 +127,60 @@ class ReferenceSourceDialog(QDialog):
 
     def __init__(self, parent=None, case_id: str | None = None):
         super().__init__(parent)
-        self.setWindowTitle("Curva de referência")
+        from ...i18n import Lang as L
+        self.setWindowTitle(L.tr("Curva de referência", "Reference curve"))
         self.escolha: str | None = None
         self._case_id = case_id
 
         lay = QVBoxLayout(self)
-        lay.addWidget(QLabel(
-            "Contra qual curva experimental o modelo deve ser ajustado?"))
+        lay.addWidget(QLabel(L.tr(
+            "Contra qual curva experimental o modelo deve ser ajustado?",
+            "Which experimental curve should the model be fitted against?")))
 
         self.rb_caso = QRadioButton()
         if case_id:
-            self.rb_caso.setText(f"Caso da validação — {case_id}")
+            self.rb_caso.setText(L.tr(f"Caso da validação — {case_id}",
+                                      f"Validation case — {case_id}"))
             self.rb_caso.setChecked(True)
             lay.addWidget(self.rb_caso)
-            lay.addWidget(_nota(
+            lay.addWidget(_nota(L.tr(
                 "Os pontos vêm do artigo de origem, digitalizados, já na "
                 "convenção da campanha (escala do eixo, normalização e corte "
-                "do piso). É a mesma curva que o relatório daquele caso usa."))
+                "do piso). É a mesma curva que o relatório daquele caso usa.",
+                "The points come from the source paper, digitised, already in "
+                "the campaign's convention (axis scaling, normalisation and "
+                "floor trim). It is the same curve the report of that case "
+                "uses.")))
         else:
-            self.rb_caso.setText("Caso da validação — indisponível")
+            self.rb_caso.setText(L.tr("Caso da validação — indisponível",
+                                      "Validation case — unavailable"))
             self.rb_caso.setEnabled(False)
             lay.addWidget(self.rb_caso)
-            lay.addWidget(_nota(
+            lay.addWidget(_nota(L.tr(
                 "O modelo aberto não veio de um caso da validação. Importe um "
                 "por <b>Arquivo &rarr; Importar caso da validação</b> "
-                "(Ctrl+I) para usar esta origem."))
+                "(Ctrl+I) para usar esta origem.",
+                "The open model did not come from a validation case. Import "
+                "one through <b>File &rarr; Import validation case</b> "
+                "(Ctrl+I) to use this source.")))
 
-        self.rb_csv = QRadioButton("Arquivo CSV…")
+        self.rb_csv = QRadioButton(L.tr("Arquivo CSV…", "CSV file…"))
         self.rb_csv.setChecked(not case_id)
         lay.addWidget(self.rb_csv)
-        lay.addWidget(_nota(
+        lay.addWidget(_nota(L.tr(
             "Duas ou três colunas: <code>ciclo, F/F₀</code> ou "
             "<code>ciclo, F[kN], F/F₀</code>. A primeira linha pode ser "
-            "cabeçalho."))
+            "cabeçalho.",
+            "Two or three columns: <code>cycle, F/F₀</code> or "
+            "<code>cycle, F[kN], F/F₀</code>. The first line may be a "
+            "header.")))
 
         botoes = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok
                                   | QDialogButtonBox.StandardButton.Cancel)
-        botoes.button(QDialogButtonBox.StandardButton.Ok).setText("Continuar")
-        botoes.button(
-            QDialogButtonBox.StandardButton.Cancel).setText("Cancelar")
+        botoes.button(QDialogButtonBox.StandardButton.Ok).setText(
+            L.tr("Continuar", "Continue"))
+        botoes.button(QDialogButtonBox.StandardButton.Cancel).setText(
+            L.tr("Cancelar", "Cancel"))
         botoes.accepted.connect(self._ok)
         botoes.rejected.connect(self.reject)
         lay.addWidget(botoes)

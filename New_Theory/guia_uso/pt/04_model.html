@@ -1,0 +1,56 @@
+<!doctype html><html lang="pt"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Model — montar a cadeia — Bolt Analysis Studio</title><style>
+:root{--ink:#1f2937;--sub:#6b7280;--line:#e5e7eb;--bg:#fafafa;--card:#fff;
+--acc:#2b6cb0;--warn:#b7791f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 22px 60px}
+nav.top{display:flex;gap:14px;align-items:center;font-size:14px;color:var(--sub);
+flex-wrap:wrap}nav.top a{color:var(--acc);text-decoration:none}
+h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
+.sub{color:var(--sub);margin:0 0 18px}
+.print{border:1px solid var(--line);border-radius:8px;background:var(--card);
+padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
+border-radius:4px}
+.player{display:flex;gap:14px;align-items:center;background:var(--card);
+border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
+.player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
+.transcricao{background:var(--card);border-left:4px solid var(--acc);
+padding:14px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+table.ctl{width:100%;border-collapse:collapse;background:var(--card);
+border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:14px 0}
+table.ctl th,table.ctl td{padding:10px 12px;border-bottom:1px solid var(--line);
+vertical-align:top;text-align:left}table.ctl th{background:#f3f4f6;font-size:13px;
+text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+table.ctl td:first-child{white-space:nowrap;font-weight:600;width:30%}
+table.ctl td:nth-child(2):not(:last-child){color:var(--sub);white-space:nowrap}
+.erro{border:1px solid #f3d9a4;background:#fff8e6;border-radius:8px;padding:12px 16px;
+margin:14px 0}.erro b{color:var(--warn)}
+.pager{display:flex;justify-content:space-between;margin-top:34px;gap:12px}
+.pager a{color:var(--acc);text-decoration:none;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:16px;margin-top:18px}.card{background:var(--card);border:1px solid var(--line);
+border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;display:block}
+.card img{width:100%;height:170px;object-fit:cover;object-position:top;
+border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
+.card .n{color:var(--sub);font-size:13px;padding:0 14px 12px}
+@media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
+</style></head>
+<body><div class="wrap">
+<nav class="top"><a href="index.html">Sumário</a> · Passo 5/15
+ · <a href="glossario.html">Glossário</a>
+ · <a href="../en/04_model.html">English version</a></nav>
+<h1>Model — montar a cadeia</h1>
+<p class="sub">Bolt Analysis Studio 1.0.0 · Guia de uso narrado</p>
+<div class="player"><audio controls preload="none" src="audio/04_model.mp3"></audio><span class="voz">Ouça a narração · voz: pt-BR-AntonioNeural</span></div>
+<div class="print"><img src="img/chrome_model.png" alt="Model — montar a cadeia"></div>
+<h2>Transcrição</h2>
+<div class="transcricao">O módulo Model é onde a junta vira uma cadeia. Da paleta à direita, arraste um tipo de elemento para o viewport. Há corpos, que carregam massa e rigidez: o Ground, que é a fronteira fixa; a cabeça; a haste; a rosca; a porca; a arruela; o flange; a gaxeta. E há ligações, que carregam a tribologia: o contato de rosca, o contato sob a cabeça, o contato sob a porca, o contato entre flanges. A regra que mais importa: sem as duas ligações de apoio, Bearing Head e Bearing Nut, o modelo não afrouxa, porque é nelas que a face escorrega, assenta e desgasta. A ordem na cadeia importa: corpos em série somam flexibilidade, e cada ligação fica entre os dois corpos que ela conecta. Clique duas vezes num elemento para editá-lo.</div>
+<h2>Cada controle desta tela</h2>
+<table class="ctl"><thead><tr><th>Controle</th><th>O que faz</th></tr></thead>
+<tbody><tr><td>Joint Wizard / Configure Joint…</td><td>Abre o assistente a partir da paleta.</td></tr><tr><td>Quick Presets</td><td>Cadeias prontas: parafuso único, junta flangeada, bancada Junker.</td></tr><tr><td>Bolt Head / Shank / Nut / Washer</td><td>Corpos do parafuso. Rigidez calculada da geometria e do material quando o cálculo automático está ligado.</td></tr><tr><td>Flange / Gasket</td><td>Membros apertados. A gaxeta é uma ordem de grandeza mais flexível e domina o assentamento quando existe.</td></tr><tr><td>Bearing (Head) / Bearing (Nut)</td><td>As duas interfaces que decidem o afrouxamento. Obrigatórias.</td></tr><tr><td>Flange-Flange / Washer Contact / Thread Contact</td><td>Demais interfaces de atrito da junta.</td></tr><tr><td>Bloco no viewport</td><td>Mostra nome, k em newtons por metro e a fração da carga que o elemento carrega.</td></tr></tbody></table>
+<div class="erro"><b>Erro comum.</b> Modelo que não perde pré-carga nenhuma: quase sempre faltam as ligações Bearing Head e Bearing Nut, ou a amplitude em Loads está zerada.</div>
+<div class="pager"><span><a href="03_anatomia.html">← Anterior</a></span>
+<span><a href="05_inspector_element.html">Próximo →</a></span></div>
+</div></body></html>

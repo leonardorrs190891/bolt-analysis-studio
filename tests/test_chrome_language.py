@@ -28,7 +28,8 @@ def test_wizard_action_has_ptbr_accent(qapp):
         file_menu = next(m.menu() for m in win.menuBar().actions()
                          if m.text() == "Arquivo")
         labels = [a.text() for a in file_menu.actions() if a.text()]
-        assert any("Análise" in L for L in labels)
+        # "Nova análise…" (caixa de frase desde 2026-09-04): o que importa e' o acento
+        assert any("análise" in L.lower() for L in labels), labels
     finally:
         win.close()
 

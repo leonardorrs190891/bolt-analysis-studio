@@ -1,0 +1,56 @@
+<!doctype html><html lang="pt"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Três maneiras de começar — Bolt Analysis Studio</title><style>
+:root{--ink:#1f2937;--sub:#6b7280;--line:#e5e7eb;--bg:#fafafa;--card:#fff;
+--acc:#2b6cb0;--warn:#b7791f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 22px 60px}
+nav.top{display:flex;gap:14px;align-items:center;font-size:14px;color:var(--sub);
+flex-wrap:wrap}nav.top a{color:var(--acc);text-decoration:none}
+h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
+.sub{color:var(--sub);margin:0 0 18px}
+.print{border:1px solid var(--line);border-radius:8px;background:var(--card);
+padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
+border-radius:4px}
+.player{display:flex;gap:14px;align-items:center;background:var(--card);
+border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
+.player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
+.transcricao{background:var(--card);border-left:4px solid var(--acc);
+padding:14px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+table.ctl{width:100%;border-collapse:collapse;background:var(--card);
+border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:14px 0}
+table.ctl th,table.ctl td{padding:10px 12px;border-bottom:1px solid var(--line);
+vertical-align:top;text-align:left}table.ctl th{background:#f3f4f6;font-size:13px;
+text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+table.ctl td:first-child{white-space:nowrap;font-weight:600;width:30%}
+table.ctl td:nth-child(2):not(:last-child){color:var(--sub);white-space:nowrap}
+.erro{border:1px solid #f3d9a4;background:#fff8e6;border-radius:8px;padding:12px 16px;
+margin:14px 0}.erro b{color:var(--warn)}
+.pager{display:flex;justify-content:space-between;margin-top:34px;gap:12px}
+.pager a{color:var(--acc);text-decoration:none;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:16px;margin-top:18px}.card{background:var(--card);border:1px solid var(--line);
+border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;display:block}
+.card img{width:100%;height:170px;object-fit:cover;object-position:top;
+border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
+.card .n{color:var(--sub);font-size:13px;padding:0 14px 12px}
+@media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
+</style></head>
+<body><div class="wrap">
+<nav class="top"><a href="index.html">Sumário</a> · Passo 2/15
+ · <a href="glossario.html">Glossário</a>
+ · <a href="../en/01_comecar.html">English version</a></nav>
+<h1>Três maneiras de começar</h1>
+<p class="sub">Bolt Analysis Studio 1.0.0 · Guia de uso narrado</p>
+<div class="player"><audio controls preload="none" src="audio/01_comecar.mp3"></audio><span class="voz">Ouça a narração · voz: pt-BR-AntonioNeural</span></div>
+<div class="print"><img src="img/dialog_case_picker.png" alt="Três maneiras de começar"></div>
+<h2>Transcrição</h2>
+<div class="transcricao">Há três maneiras de colocar um modelo na tela. A primeira é o assistente de nova análise, no menu Arquivo ou pelo atalho control shift N: ele faz cinco perguntas e monta a cadeia completa. A segunda é abrir um projeto seu, salvo antes, com control O. A terceira, e a mais rápida para aprender, é importar um caso do artigo com control I: uma lista com as duzentas e cinco curvas do censo, cada uma com o artigo de origem, o erro do modelo e se ela atende ao critério. Escolha uma, e o modelo chega montado, com as constantes exatamente como foram adotadas no artigo. Comece por aqui: é a melhor maneira de ver um modelo bom antes de construir o seu.</div>
+<h2>Cada controle desta tela</h2>
+<table class="ctl"><thead><tr><th>Controle</th><th>O que faz</th></tr></thead>
+<tbody><tr><td>Arquivo → Nova análise… (Ctrl+Shift+N)</td><td>Abre o assistente de cinco páginas.</td></tr><tr><td>Arquivo → Abrir projeto… (Ctrl+O)</td><td>Abre um arquivo .msd salvo por você.</td></tr><tr><td>Arquivo → Importar caso da validação… (Ctrl+I)</td><td>Lista os casos do artigo por nome, com busca.</td></tr><tr><td>Campo de busca</td><td>Filtra por artigo, caso, referência ou DOI. Exemplos: lu2024, M8, Sensors.</td></tr><tr><td>Somente o censo do artigo</td><td>Marcado, mostra as duzentas e cinco curvas que o manuscrito conta; desmarcado, todas as duzentas e sete.</td></tr><tr><td>Coluna Censo</td><td>Se a curva entra nos números do artigo.</td></tr><tr><td>Coluna Critério</td><td>Se o modelo atende às três pernas do critério de aceitação naquela curva.</td></tr><tr><td>Coluna MAE</td><td>Erro médio absoluto do modelo, em fração da pré-carga. Quanto menor, melhor.</td></tr><tr><td>Rodapé</td><td>A referência completa e o DOI clicável do caso selecionado.</td></tr><tr><td>Abrir</td><td>Carrega o caso no módulo Model.</td></tr></tbody></table>
+<div class="erro"><b>Erro comum.</b> Ao salvar depois de importar, o programa pede um destino novo. Não é erro: os casos do artigo são reinstalados a cada atualização, então a sua cópia precisa morar em outro lugar.</div>
+<div class="pager"><span><a href="00_introducao.html">← Anterior</a></span>
+<span><a href="02_wizard.html">Próximo →</a></span></div>
+</div></body></html>

@@ -287,6 +287,7 @@ PAYLOAD = [
     ("New_Theory/holdout/*.json", "hold-out carimbado"),
     ("New_Theory/paper/*.json", "cache de analise do artigo"),
     ("New_Theory/variable_explorer/**/*", "27 paginas por artigo + 207 reports"),
+    ("New_Theory/guia_uso/**/*", "guia de uso narrado, PT e EN, um HTML por aba"),
     ("BAS_V2_papers/*/apparatus_notes/*.md", "notas R4/R5 (caminho exigido pelo registry)"),
     ("BAS_V2_papers/*/digitized_csv/*.csv", "curvas R4/R5"),
     ("Models/EXPERIMENTAL_ANCORA/reference_curves/*.csv",
@@ -545,6 +546,11 @@ valida&ccedil;&atilde;o cruzada.</div>
         constantes com a proced&ecirc;ncia de cada uma</b></td></tr>
 <tr><td>Bot&atilde;o <b>Report geral</b></td>
     <td>Report mestre, com todos os casos e o censo</td></tr>
+<tr><td>Menu <b>Ajuda &rsaquo; Guia de uso narrado</b></td>
+    <td>Um HTML por aba do programa, com print da tela, narra&ccedil;&atilde;o
+        em &aacute;udio e cada bot&atilde;o explicado; em portugu&ecirc;s e em
+        ingl&ecirc;s (<a href="New_Theory/guia_uso/pt/index.html">pt</a> ·
+        <a href="New_Theory/guia_uso/en/index.html">en</a>)</td></tr>
 <tr><td><a href="New_Theory/variable_explorer/index.html">New_Theory/variable_explorer/index.html</a></td>
     <td>Uma p&aacute;gina por artigo: figuras do paper, tabela de
         condi&ccedil;&otilde;es, DOI, nota de aparato e todas as curvas daquela

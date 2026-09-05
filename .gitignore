@@ -42,6 +42,7 @@ venv/
 !examples/*.csv
 # Figuras dos artigos usadas pelos estudos de caso do explorador (assets versionados)
 !New_Theory/variable_explorer/paper_figures/*.png
+!New_Theory/guia_uso/**/*.png
 
 # instalador auto-contido (2026-09-02): cache do Python embeddable e
 # arvore de montagem. Nenhum dos dois e' fonte; o dist/ ja' estava ignorado.

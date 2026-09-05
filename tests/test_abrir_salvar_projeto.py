@@ -36,7 +36,7 @@ def test_o_menu_arquivo_tem_abrir_e_salvar(janela):
            if m.title() == "Arquivo"]
     assert arq, "o chrome V2 nao tem menu Arquivo"
     textos = [a.text() for a in arq[0].actions()]
-    for esperado in ("Nova Análise…", "Abrir projeto…", "Salvar",
+    for esperado in ("Nova análise…", "Abrir projeto…", "Salvar",
                      "Salvar como…"):
         assert esperado in textos, f"{esperado} ausente: {textos}"
 
@@ -127,3 +127,94 @@ def test_a_suite_nao_toca_no_preferences_do_usuario(janela, tmp_path):
 
     gravado = json.loads(em_uso.read_text(encoding="utf-8"))
     assert gravado.get("ultimo_dir_projeto") == str(tmp_path)
+
+
+def test_alternar_idioma_nao_toca_no_preferences_do_usuario(janela, qapp):
+    """Reincidencia do mesmo defeito, por outra porta (2026-09-04).
+
+    O toggle de idioma grava `lang` no preferences.json, e a isolacao do
+    conftest so' remendava o modulo i18n se ele JA' estivesse importado. Um
+    teste que importava o chrome dentro da funcao passava por baixo, e o
+    smoke test deixou a maquina do usuario em ingles. Aqui: alternar duas
+    vezes nao pode encostar no arquivo real, e a suite tem de terminar em
+    portugues.
+    """
+    from bolt_analysis_studio.gui import i18n
+
+    real = Path.home() / ".bolt_analysis_studio" / "preferences.json"
+    assert Path(i18n._PREFS_FILE) != real, "i18n esta' apontando para o REAL"
+    antes = real.read_text(encoding="utf-8") if real.is_file() else None
+
+    janela._toggle_idioma()
+    for _ in range(10):
+        qapp.processEvents()
+    assert i18n.Lang.is_en()
+    janela._toggle_idioma()
+    for _ in range(10):
+        qapp.processEvents()
+    assert not i18n.Lang.is_en()
+
+    depois = real.read_text(encoding="utf-8") if real.is_file() else None
+    assert antes == depois, "o toggle de idioma encostou no arquivo do usuario"
+
+
+def test_salvar_nao_reescreve_um_caso_instalado(janela, tmp_path, monkeypatch):
+    """Abrir projeto direto em Models/SAVED_CASES e apertar Salvar gravava em
+    cima do .msd do artigo (o smoke pegou em 2026-09-05, pelo git status).
+    Agora cai em "Salvar como", avisa por que, e o arquivo instalado fica
+    byte a byte igual; a copia passa a ser o destino dos proximos Salvar."""
+    from PyQt6.QtWidgets import QFileDialog
+    antes = CASO.read_bytes()
+    destino = tmp_path / "minha_copia.msd"
+    monkeypatch.setattr(QFileDialog, "getSaveFileName",
+                        staticmethod(lambda *a, **k: (str(destino), "")))
+    avisos = []
+    monkeypatch.setattr(janela.prompt, "set_prompt",
+                        lambda t, *a, **k: avisos.append(t))
+    janela._carrega_projeto(str(CASO))      # como projeto: o caminho fica no caso
+    janela._salvar_projeto()
+    assert CASO.read_bytes() == antes
+    assert destino.is_file() and destino.stat().st_size > 1000
+    assert any("reinstalad" in a for a in avisos), avisos
+
+    def _indevido(*a, **k):
+        raise AssertionError("Salvar com destino proprio nao abre dialogo")
+    monkeypatch.setattr(QFileDialog, "getSaveFileName", staticmethod(_indevido))
+    janela._salvar_projeto()
+    assert CASO.read_bytes() == antes
+    assert destino.is_file()
+
+
+def test_salvar_como_nao_sugere_o_caso_instalado(janela, monkeypatch):
+    from PyQt6.QtWidgets import QFileDialog
+    sugestoes = []
+
+    def _dialogo(parent, titulo, sugestao, filtro):
+        sugestoes.append(sugestao)
+        return ("", "")
+    monkeypatch.setattr(QFileDialog, "getSaveFileName", staticmethod(_dialogo))
+    janela._carrega_projeto(str(CASO))
+    janela._salvar_projeto_como()
+    assert sugestoes and "SAVED_CASES" not in sugestoes[-1], sugestoes
+    assert Path(sugestoes[-1]).name == CASO.name
+
+
+def test_trocar_tema_nao_toca_no_preferences_do_usuario(janela, qapp):
+    """Terceira porta do mesmo defeito (2026-09-05): o Theme tinha o PROPRIO
+    caminho para o preferences.json, fora da isolacao do conftest, e a
+    varredura de temas do smoke gravou `theme` no arquivo real do usuario.
+    Agora o Theme usa o caminho do i18n; trocar de tema aqui nao pode encostar
+    no arquivo real."""
+    from bolt_analysis_studio.gui.theme import Theme
+
+    real = Path.home() / ".bolt_analysis_studio" / "preferences.json"
+    assert Path(Theme._prefs_file()) != real, "Theme esta' apontando para o REAL"
+    antes = real.read_text(encoding="utf-8") if real.is_file() else None
+    original = Theme.current_theme() if hasattr(Theme, "current_theme") else None
+    for nome in ("engineering", "dark"):
+        janela._apply_theme(nome)
+        for _ in range(5):
+            qapp.processEvents()
+    depois = real.read_text(encoding="utf-8") if real.is_file() else None
+    assert depois == antes, "trocar de tema gravou no preferences.json REAL"
+    assert Path(Theme._prefs_file()).is_file(), "e a preferencia isolada foi gravada"

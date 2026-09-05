@@ -63,7 +63,7 @@ def test_o_menu_arquivo_tem_importar_com_ctrl_i(janela):
     # ao lado de "Nova Analise", que foi o pedido
     textos = [a.text() for a in arq.actions()]
     assert (textos.index("Importar caso da validação…")
-            - textos.index("Nova Análise…")) <= 2
+            - textos.index("Nova análise…")) <= 2
 
 
 @precisa_indice
@@ -174,3 +174,51 @@ def test_sem_indice_o_dialogo_abre_vazio_em_vez_de_estourar(qapp, monkeypatch):
     dlg = case_picker.CasePicker()
     assert _folhas(dlg) == []
     assert "0" in dlg.resumo.text()
+
+
+@precisa_indice
+def test_importar_nao_abre_caixa_de_mensagem(janela, qapp, monkeypatch):
+    """Acao que deu certo nao interrompe.
+
+    Havia um QMessageBox no fim da importacao. Um usuario reportou em
+    2026-09-04 achando que era erro, e com razao: modal, icone de informacao,
+    a cada importacao, e falando de "repositorio" e "gerador de casos" —
+    palavras que so' existem para quem tem o codigo. Quem instalou o programa
+    nao tem repositorio nenhum.
+    """
+    from PyQt6.QtWidgets import QMessageBox
+    from bolt_analysis_studio.gui.chrome.widgets import case_picker as cp
+
+    caixas = []
+    for nome in ("information", "warning", "critical", "question"):
+        monkeypatch.setattr(QMessageBox, nome,
+                            lambda *a, _n=nome, **k: caixas.append(_n))
+
+    alvo = CASOS / "LU_2024" / "lu2024_M8_fig18_amp0p5.msd"
+    monkeypatch.setattr(cp.CasePicker, "exec",
+                        lambda self: (setattr(self, "escolhido", str(alvo)), 1)[1])
+    janela._importar_caso_validacao()
+    for _ in range(30):
+        qapp.processEvents()
+
+    assert caixas == [], f"a importacao abriu {caixas}"
+    assert janela.app_state.model is not None, "o caso nao chegou a carregar"
+
+
+def test_o_texto_do_app_nao_fala_de_repositorio_nem_de_gerador():
+    """Vocabulario de quem escreve o codigo nao vaza para quem usa o programa.
+
+    Vale para o chrome inteiro, nao so' para a importacao: quem instalou nao
+    tem repositorio, nem gerador de casos, nem sabe o que e' um .msd de
+    origem. Comentario pode falar assim; texto de tela, nao.
+    """
+    import re
+    alvo = (RAIZ / "src" / "bolt_analysis_studio" / "gui" / "chrome"
+            / "app_window.py").read_text(encoding="utf-8")
+    # so' o que vai para a tela: strings dentro de set_prompt/QMessageBox/addAction
+    telas = re.findall(r'(?:set_prompt|addAction|information|warning|critical)'
+                       r'\((.*?)\)', alvo, re.S)
+    proibido = ("repositório", "repositorio", "gerador de casos")
+    achados = [p for p in proibido
+               if any(p in t for t in telas)]
+    assert not achados, f"vocabulario de codigo em texto de tela: {achados}"

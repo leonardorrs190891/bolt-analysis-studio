@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Model — building the chain — Bolt Analysis Studio</title><style>
+:root{--ink:#1f2937;--sub:#6b7280;--line:#e5e7eb;--bg:#fafafa;--card:#fff;
+--acc:#2b6cb0;--warn:#b7791f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 22px 60px}
+nav.top{display:flex;gap:14px;align-items:center;font-size:14px;color:var(--sub);
+flex-wrap:wrap}nav.top a{color:var(--acc);text-decoration:none}
+h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
+.sub{color:var(--sub);margin:0 0 18px}
+.print{border:1px solid var(--line);border-radius:8px;background:var(--card);
+padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
+border-radius:4px}
+.player{display:flex;gap:14px;align-items:center;background:var(--card);
+border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
+.player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
+.transcricao{background:var(--card);border-left:4px solid var(--acc);
+padding:14px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+table.ctl{width:100%;border-collapse:collapse;background:var(--card);
+border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:14px 0}
+table.ctl th,table.ctl td{padding:10px 12px;border-bottom:1px solid var(--line);
+vertical-align:top;text-align:left}table.ctl th{background:#f3f4f6;font-size:13px;
+text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+table.ctl td:first-child{white-space:nowrap;font-weight:600;width:30%}
+table.ctl td:nth-child(2):not(:last-child){color:var(--sub);white-space:nowrap}
+.erro{border:1px solid #f3d9a4;background:#fff8e6;border-radius:8px;padding:12px 16px;
+margin:14px 0}.erro b{color:var(--warn)}
+.pager{display:flex;justify-content:space-between;margin-top:34px;gap:12px}
+.pager a{color:var(--acc);text-decoration:none;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:16px;margin-top:18px}.card{background:var(--card);border:1px solid var(--line);
+border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;display:block}
+.card img{width:100%;height:170px;object-fit:cover;object-position:top;
+border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
+.card .n{color:var(--sub);font-size:13px;padding:0 14px 12px}
+@media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
+</style></head>
+<body><div class="wrap">
+<nav class="top"><a href="index.html">Contents</a> · Step 5/15
+ · <a href="glossario.html">Glossary</a>
+ · <a href="../pt/04_model.html">Versão em português</a></nav>
+<h1>Model — building the chain</h1>
+<p class="sub">Bolt Analysis Studio 1.0.0 · Narrated user guide</p>
+<div class="player"><audio controls preload="none" src="audio/04_model.mp3"></audio><span class="voz">Listen to the narration · voice: en-US-AndrewNeural</span></div>
+<div class="print"><img src="img/chrome_model.png" alt="Model — building the chain"></div>
+<h2>Transcript</h2>
+<div class="transcricao">The Model module is where the joint becomes a chain. From the palette on the right, drag an element type onto the viewport. There are bodies, which carry mass and stiffness: the Ground, the fixed boundary; the head; the shank; the thread; the nut; the washer; the flange; the gasket. And there are connections, which carry the tribology: the thread contact, the contact under the head, the contact under the nut, the contact between flanges. The rule that matters most: without the two bearing connections, Bearing Head and Bearing Nut, the model does not loosen, because that is where the face slips, embeds and wears. Order in the chain matters: bodies in series add flexibility, and each connection sits between the two bodies it joins. Double-click an element to edit it.</div>
+<h2>Every control on this screen</h2>
+<table class="ctl"><thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody><tr><td>Joint Wizard / Configure Joint…</td><td>Opens the wizard from the palette.</td></tr><tr><td>Quick Presets</td><td>Ready-made chains: single bolt, flanged joint, Junker rig.</td></tr><tr><td>Bolt Head / Shank / Nut / Washer</td><td>Bolt bodies. Stiffness computed from geometry and material when auto-calculate is on.</td></tr><tr><td>Flange / Gasket</td><td>Clamped members. The gasket is an order of magnitude more flexible and dominates embedding when present.</td></tr><tr><td>Bearing (Head) / Bearing (Nut)</td><td>The two interfaces that decide loosening. Mandatory.</td></tr><tr><td>Flange-Flange / Washer Contact / Thread Contact</td><td>The remaining friction interfaces of the joint.</td></tr><tr><td>Block in the viewport</td><td>Shows the name, k in newtons per metre and the share of load the element carries.</td></tr></tbody></table>
+<div class="erro"><b>Common mistake.</b> A model that loses no preload at all: almost always the Bearing Head and Bearing Nut connections are missing, or the amplitude in Loads is zero.</div>
+<div class="pager"><span><a href="03_anatomia.html">← Previous</a></span>
+<span><a href="05_inspector_element.html">Next →</a></span></div>
+</div></body></html>

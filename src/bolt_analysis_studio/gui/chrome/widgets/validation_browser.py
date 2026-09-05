@@ -13,6 +13,7 @@ from PyQt6.QtWidgets import (QGroupBox, QHBoxLayout, QLabel, QPushButton,
 from ....validation.case_registry import all_records, record
 from ....validation.report_html import NICE, data_points
 from ....validation.store import ValidationStore
+from ...i18n import Lang
 from ...theme import Theme
 
 _DECOMP_COLORS = {"embedding": "#2f6f8f", "creep": "#8f6f2f",
@@ -56,7 +57,11 @@ class ValidationBrowser(QWidget):
         self._fig = Figure(figsize=(5, 4), tight_layout=True)
         self.canvas = FigureCanvasQTAgg(self._fig)
         self.canvas.setProperty("selfThemed", True)   # re-temado por reskin()
-        self.metrics_label = QLabel("Selecione um caso.")
+        from ...i18n import TrGroup
+        self._tr = TrGroup()
+        self.metrics_label = QLabel()
+        self._tr.add(self.metrics_label.setText, "Selecione um caso.",
+                     "Select a case.")
         self.metrics_label.setWordWrap(True)
         # CONDICAO DE CONTORNO EXTERNA (2026-08-23). Rotulo proprio, OCULTO por
         # default: aparece so' em curva com carga axial externa. Motivo medido —
@@ -70,12 +75,21 @@ class ValidationBrowser(QWidget):
         self.bc_label = QLabel("")
         self.bc_label.setVisible(False)
         self.stamp_label = QLabel("")
-        self.btn_open_model = QPushButton("Abrir no Model/Run")
-        self.btn_resim = QPushButton("Re-simular caso")
-        self.btn_resim_all = QPushButton("Re-simular tudo")
-        self.btn_report = QPushButton("Report HTML")
-        self.btn_master = QPushButton("Report geral")
-        self.btn_save_msd = QPushButton("Salvar caso como .msd…")
+        self.btn_open_model = QPushButton()
+        self.btn_resim = QPushButton()
+        self.btn_resim_all = QPushButton()
+        self.btn_report = QPushButton()
+        self.btn_master = QPushButton()
+        self.btn_save_msd = QPushButton()
+        for botao, pt, en in (
+                (self.btn_open_model, "Abrir no Model/Run", "Open in Model/Run"),
+                (self.btn_resim, "Re-simular caso", "Re-simulate case"),
+                (self.btn_resim_all, "Re-simular tudo", "Re-simulate all"),
+                (self.btn_report, "Report HTML", "HTML report"),
+                (self.btn_master, "Report geral", "Master report"),
+                (self.btn_save_msd, "Salvar caso como .msd…",
+                 "Save case as .msd…")):
+            self._tr.add(botao.setText, pt, en)
         self.btn_open_model.clicked.connect(
             lambda: self._emit(self.open_in_model_requested))
         self.btn_resim.clicked.connect(
@@ -93,22 +107,37 @@ class ValidationBrowser(QWidget):
         # intake de casos do usuario — PAINEL DESTACADO (pedido do professor
         # 2026-07-10: secao clara e destacada; o prompt funciona em QUALQUER IA
         # e devolve os dados prontos no formato que o software le)
-        self.btn_import = QPushButton("3. Importar caso…")
-        self.btn_prompt_copy = QPushButton("1. Copiar prompt")
-        self.btn_prompt_save = QPushButton("Salvar prompt…")
+        self.btn_import = QPushButton()
+        self.btn_prompt_copy = QPushButton()
+        self.btn_prompt_save = QPushButton()
+        for botao, pt, en in (
+                (self.btn_import, "3. Importar caso…", "3. Import case…"),
+                (self.btn_prompt_copy, "1. Copiar prompt", "1. Copy prompt"),
+                (self.btn_prompt_save, "Salvar prompt…", "Save prompt…")):
+            self._tr.add(botao.setText, pt, en)
         self.btn_import.clicked.connect(self.import_case_requested.emit)
         self.btn_prompt_copy.clicked.connect(self.copy_prompt_requested.emit)
         self.btn_prompt_save.clicked.connect(self.save_prompt_requested.emit)
-        self.intake_group = QGroupBox(
-            "📥  Importe o SEU ensaio — via qualquer IA")
+        self.intake_group = QGroupBox()
+        self._tr.add(self.intake_group.setTitle,
+                     "📥  Importe o SEU ensaio — via qualquer IA",
+                     "📥  Import YOUR test — through any AI")
         self.intake_group.setObjectName("intakeGroup")
-        self.intake_explainer = QLabel(
+        self.intake_explainer = QLabel()
+        self._tr.add(
+            self.intake_explainer.setText,
             "<b>1.</b> Copie o prompt · <b>2.</b> cole em qualquer ferramenta "
             "de IA (ChatGPT, Claude, Gemini…) junto com a sua curva "
             "experimental (txt/csv/planilha) e responda às perguntas do "
             "ensaio · <b>3.</b> importe o arquivo <code>.bascase.json</code> "
             "que ela devolve — o software valida, faz o ajuste prévio do "
-            "modelo e gera o report completo.")
+            "modelo e gera o report completo.",
+            "<b>1.</b> Copy the prompt · <b>2.</b> paste it into any AI tool "
+            "(ChatGPT, Claude, Gemini…) together with your experimental curve "
+            "(txt/csv/spreadsheet) and answer the questions about the test · "
+            "<b>3.</b> import the <code>.bascase.json</code> file it returns — "
+            "the software validates it, pre-fits the model and writes the "
+            "full report.")
         self.intake_explainer.setWordWrap(True)
         self.intake_status = QLabel("")
         self.intake_status.setObjectName("intakeStatus")
@@ -190,25 +219,32 @@ class ValidationBrowser(QWidget):
         self.btn_report.setEnabled(True)
         # metricas
         if res is None:
-            self.metrics_label.setText(f"{case_id}: nunca simulado — re-simule.")
+            self.metrics_label.setText(Lang.tr(
+                f"{case_id}: nunca simulado — re-simule.",
+                f"{case_id}: never simulated — re-simulate."))
         elif not res.ok:
-            self.metrics_label.setText(f"{case_id}: não simulável — {res.error}")
+            self.metrics_label.setText(Lang.tr(
+                f"{case_id}: não simulável — {res.error}",
+                f"{case_id}: not simulable — {res.error}"))
         else:
             camp = ""
             if rec.gallery_entry is not None:
-                camp = f" · campanha {float(rec.gallery_entry['mae']):.4f}"
+                camp = Lang.tr(" · campanha", " · campaign") + f" {float(rec.gallery_entry['mae']):.4f}"
             self.metrics_label.setText(
                 f"MAE {_f(res.mae)}{camp} · RMSE {_f(res.rmse)}"
-                f" · F/F₀ final: modelo {_f(res.final_pred, '{:.3f}')}"
-                f" vs dado {_f(res.final_data, '{:.3f}')}")
+                + Lang.tr(" · F/F₀ final: modelo ", " · final F/F₀: model ")
+                + f"{_f(res.final_pred, '{:.3f}')}"
+                + Lang.tr(" vs dado ", " vs data ") + f"{_f(res.final_data, '{:.3f}')}")
         # BC externa: le do ValidationCase e mostra valor + MODO. Condicional
         # (isolamento estrutural): curva sem axial nao ganha linha nenhuma.
         _ax = float(getattr(rec.validation_case, "external_axial_N", 0.0) or 0.0)
         if _ax > 0.0:
             _md = getattr(rec.validation_case, "external_axial_mode", "") or "constant"
-            self.bc_label.setText(
+            self.bc_label.setText(Lang.tr(
                 f"condição de contorno externa: carga axial {_ax:.0f} N ({_md})"
-                " — lida do paper")
+                " — lida do paper",
+                f"external boundary condition: axial load {_ax:.0f} N ({_md})"
+                " — read from the paper"))
             self.bc_label.setVisible(True)
         else:
             # LIMPA o texto, nao so' esconde: `setVisible(False)` deixa o
@@ -278,11 +314,11 @@ class ValidationBrowser(QWidget):
         try:
             dx, dy = data_points(rec)
             if len(dx):
-                ax.plot(dx, dy, "o", ms=3, label="dado (artigo)")
+                ax.plot(dx, dy, "o", ms=3, label=Lang.tr("dado (artigo)", "data (paper)"))
         except Exception:
             pass
         if res is not None and res.ok and res.cycles:
-            ax.plot(res.cycles, res.ratio, "-", label="modelo")
+            ax.plot(res.cycles, res.ratio, "-", label=Lang.tr("modelo", "model"))
         ax.set_ylabel("F/F₀")
         ax.set_ylim(0, 1.08)
         ax.legend(fontsize=7)
@@ -294,11 +330,12 @@ class ValidationBrowser(QWidget):
                           colors=[_DECOMP_COLORS.get(m, "#888") for m in mechs])
             ax2.legend(fontsize=6, loc="upper left")
         else:
-            ax2.text(0.5, 0.5, "sem decomposição — re-simule",
+            ax2.text(0.5, 0.5, Lang.tr("sem decomposição — re-simule",
+                                       "no decomposition — re-simulate"),
                      ha="center", va="center", transform=ax2.transAxes,
                      color=Theme.SUBTEXT)
-        ax2.set_xlabel("ciclos N")
-        ax2.set_ylabel("perda F/F₀")
+        ax2.set_xlabel(Lang.tr("ciclos N", "cycles N"))
+        ax2.set_ylabel(Lang.tr("perda F/F₀", "loss F/F₀"))
         for a in (ax, ax2):
             self._style_axes(a)
         self.canvas.draw_idle()

@@ -42,10 +42,17 @@ class ModuleBar(QToolBar):
             self.addWidget(b)
         self._btns[MODULES[0]].setChecked(True)
 
+        # Textos em duas linguas, retraduzidos ao vivo pelo toggle de idioma
+        # (Ajuda > Idioma). Os nomes de modulo, Run/Stop e os steps ficam em
+        # ingles nas duas: sao os substantivos do Abaqus, e o guia os cita assim.
+        from ...i18n import TrGroup
+        self._tr = TrGroup()
         self._next_btn = QToolButton()
         self._next_btn.setObjectName("nextStep")
-        self._next_btn.setText("Próximo →")
-        self._next_btn.setToolTip("Avança para o próximo passo do fluxo")
+        self._tr.add(self._next_btn.setText, "Próximo →", "Next →")
+        self._tr.add(self._next_btn.setToolTip,
+                     "Avança para o próximo passo do fluxo",
+                     "Advances to the next step of the workflow")
         self._next_btn.clicked.connect(self._go_next)
         self.addWidget(self._next_btn)
 

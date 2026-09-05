@@ -1,0 +1,56 @@
+<!doctype html><html lang="pt"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anatomia da janela — Bolt Analysis Studio</title><style>
+:root{--ink:#1f2937;--sub:#6b7280;--line:#e5e7eb;--bg:#fafafa;--card:#fff;
+--acc:#2b6cb0;--warn:#b7791f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 22px 60px}
+nav.top{display:flex;gap:14px;align-items:center;font-size:14px;color:var(--sub);
+flex-wrap:wrap}nav.top a{color:var(--acc);text-decoration:none}
+h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
+.sub{color:var(--sub);margin:0 0 18px}
+.print{border:1px solid var(--line);border-radius:8px;background:var(--card);
+padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
+border-radius:4px}
+.player{display:flex;gap:14px;align-items:center;background:var(--card);
+border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
+.player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
+.transcricao{background:var(--card);border-left:4px solid var(--acc);
+padding:14px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+table.ctl{width:100%;border-collapse:collapse;background:var(--card);
+border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:14px 0}
+table.ctl th,table.ctl td{padding:10px 12px;border-bottom:1px solid var(--line);
+vertical-align:top;text-align:left}table.ctl th{background:#f3f4f6;font-size:13px;
+text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+table.ctl td:first-child{white-space:nowrap;font-weight:600;width:30%}
+table.ctl td:nth-child(2):not(:last-child){color:var(--sub);white-space:nowrap}
+.erro{border:1px solid #f3d9a4;background:#fff8e6;border-radius:8px;padding:12px 16px;
+margin:14px 0}.erro b{color:var(--warn)}
+.pager{display:flex;justify-content:space-between;margin-top:34px;gap:12px}
+.pager a{color:var(--acc);text-decoration:none;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:16px;margin-top:18px}.card{background:var(--card);border:1px solid var(--line);
+border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;display:block}
+.card img{width:100%;height:170px;object-fit:cover;object-position:top;
+border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
+.card .n{color:var(--sub);font-size:13px;padding:0 14px 12px}
+@media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
+</style></head>
+<body><div class="wrap">
+<nav class="top"><a href="index.html">Sumário</a> · Passo 4/15
+ · <a href="glossario.html">Glossário</a>
+ · <a href="../en/03_anatomia.html">English version</a></nav>
+<h1>Anatomia da janela</h1>
+<p class="sub">Bolt Analysis Studio 1.0.0 · Guia de uso narrado</p>
+<div class="player"><audio controls preload="none" src="audio/03_anatomia.mp3"></audio><span class="voz">Ouça a narração · voz: pt-BR-AntonioNeural</span></div>
+<div class="print"><img src="img/chrome_model.png" alt="Anatomia da janela"></div>
+<h2>Transcrição</h2>
+<div class="transcricao">A janela tem seis regiões. No topo, os menus e a barra de módulos. À esquerda, a árvore do modelo: cada nó é um elemento, um contato ou uma etapa, e clicar num elemento o seleciona no desenho. No centro, o viewport, onde a junta aparece como uma cadeia vertical de blocos: cada bloco mostra o nome, a rigidez e a fração de carga que carrega. À direita, o painel de propriedades, com três abas: Element, Loading e Contact. Embaixo, a área de mensagens, com o registro do trabalho e o log de cada análise. E, na base, a linha de prompt: uma frase que diz o que fazer agora. Todos os painéis laterais podem ser fechados no xis do título e reabertos em Exibir, Painéis.</div>
+<h2>Cada controle desta tela</h2>
+<table class="ctl"><thead><tr><th>Controle</th><th>O que faz</th></tr></thead>
+<tbody><tr><td>Model Tree</td><td>Árvore de navegação; fonte de verdade do que existe no modelo.</td></tr><tr><td>Viewport</td><td>O desenho da cadeia. Shift+F enquadra tudo; a roda do mouse aproxima.</td></tr><tr><td>Fit / Zoom In / Zoom Out / Screenshot</td><td>Botões do viewport: enquadrar, aproximar, afastar e salvar uma imagem do desenho.</td></tr><tr><td>Properties</td><td>Painel de propriedades do que está selecionado, em três abas.</td></tr><tr><td>Elements</td><td>A paleta: arraste um tipo para o viewport para acrescentá-lo à cadeia. Só aparece no módulo Model.</td></tr><tr><td>Mensagens / Log do job</td><td>Duas abas: avisos do programa e a saída da análise em andamento.</td></tr><tr><td>Linha de prompt</td><td>Uma instrução contextual, sempre atualizada.</td></tr><tr><td>Exibir → Tema</td><td>Paletas claras e escuras; a escolha fica salva.</td></tr><tr><td>Ajuda → Idioma</td><td>Alterna toda a interface entre português e inglês, ao vivo.</td></tr></tbody></table>
+
+<div class="pager"><span><a href="02_wizard.html">← Anterior</a></span>
+<span><a href="04_model.html">Próximo →</a></span></div>
+</div></body></html>

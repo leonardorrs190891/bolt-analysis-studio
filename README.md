@@ -36,6 +36,7 @@ can be run, checked and extended by others.
 | `New_Theory/robustness_checks.py`, `ablation_run.py`, `frozen_config_holdout.py` | Robustness study: criterion sweep, temporal hold-out, ablation |
 | `New_Theory/ablation/`, `New_Theory/holdout/` | Stamped result files of the robustness study |
 | `New_Theory/variable_explorer/` | Interactive documentation of every model field and every study (HTML) |
+| `New_Theory/guia_uso/` | Narrated user guide, one page per tab (screenshot, audio, every control explained), in Portuguese and English; opened from Help › Narrated user guide |
 | `docs/superpowers/specs/` | Pre-registration documents (gates written before measuring) |
 | `tests/` | pytest suite |
 

@@ -1104,20 +1104,27 @@ class Theme:
     # Persistence
     # -----------------------------------------------------------------
 
-    _PREFS_DIR = Path.home() / ".bolt_analysis_studio"
-    _PREFS_FILE = _PREFS_DIR / "preferences.json"
+    @classmethod
+    def _prefs_file(cls) -> Path:
+        """UM so' caminho para o preferences.json: o de `i18n`, que o conftest
+        isola. Ate' 2026-09-05 o Theme tinha o proprio caminho, e a varredura
+        de temas da suite gravou `theme` no arquivo REAL do usuario — a
+        terceira vez que um teste alterou a configuracao de quem o roda."""
+        from . import i18n
+        return i18n._PREFS_FILE
 
     @classmethod
     def save_theme_preference(cls) -> None:
         """Persist the current theme name to disk."""
         try:
-            cls._PREFS_DIR.mkdir(parents=True, exist_ok=True)
+            alvo = cls._prefs_file()
+            alvo.parent.mkdir(parents=True, exist_ok=True)
             prefs: Dict = {}
-            if cls._PREFS_FILE.exists():
-                with open(cls._PREFS_FILE, "r", encoding="utf-8") as f:
+            if alvo.exists():
+                with open(alvo, "r", encoding="utf-8") as f:
                     prefs = json.load(f)
             prefs["theme"] = cls._current
-            with open(cls._PREFS_FILE, "w", encoding="utf-8") as f:
+            with open(alvo, "w", encoding="utf-8") as f:
                 json.dump(prefs, f, indent=2)
         except Exception:
             pass
@@ -1126,8 +1133,9 @@ class Theme:
     def load_theme_preference(cls) -> str:
         """Load saved theme name (returns 'dark' if none saved)."""
         try:
-            if cls._PREFS_FILE.exists():
-                with open(cls._PREFS_FILE, "r", encoding="utf-8") as f:
+            alvo = cls._prefs_file()
+            if alvo.exists():
+                with open(alvo, "r", encoding="utf-8") as f:
                     prefs = json.load(f)
                 name = prefs.get("theme", "dark")
                 if name in PALETTES:

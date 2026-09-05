@@ -291,7 +291,7 @@ def test_a_contagem_do_menu_ajuda_nao_esta_vencida(qapp):
 
     w = ChromeWindow(get_app_state())
     ajuda = [m for m in w.menuBar().findChildren(QMenu) if m.title() == "Ajuda"][0]
-    alvo = [a.text() for a in ajuda.actions() if "Reports de Valida" in a.text()]
+    alvo = [a.text() for a in ajuda.actions() if "Reports de valida" in a.text()]
     assert alvo, "item de reports sumiu do menu"
     assert str(len(all_records())) in alvo[0], alvo[0]
 

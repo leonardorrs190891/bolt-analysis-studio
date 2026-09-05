@@ -44,4 +44,4 @@ def test_chrome_help_menu_opens_validation_docs(qapp):
     help_menu = next(a.menu() for a in w.menuBar().actions()
                      if a.text() == "Ajuda")
     labels = [a.text() for a in help_menu.actions()]
-    assert any("Valida" in t for t in labels)       # entrada da biblioteca
+    assert any("valida" in t.lower() for t in labels), labels   # entrada da biblioteca
