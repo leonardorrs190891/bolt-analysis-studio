@@ -13,6 +13,9 @@ h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
 .print{border:1px solid var(--line);border-radius:8px;background:var(--card);
 padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
 border-radius:4px}
+.print figcaption{padding:9px 10px 4px;color:var(--sub);font-size:14px;
+line-height:1.5}
+figure.print{margin:14px 0}
 .player{display:flex;gap:14px;align-items:center;background:var(--card);
 border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
 .player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
@@ -38,13 +41,13 @@ border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
 @media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
 </style></head>
 <body><div class="wrap">
-<nav class="top"><a href="index.html">Contents</a> · Step 3/15
+<nav class="top"><a href="index.html">Contents</a> · Step 3/17
  · <a href="glossario.html">Glossary</a>
  · <a href="../pt/02_wizard.html">Versão em português</a></nav>
 <h1>The new-analysis wizard</h1>
 <p class="sub">Bolt Analysis Studio 1.0.0 · Narrated user guide</p>
 <div class="player"><audio controls preload="none" src="audio/02_wizard.mp3"></audio><span class="voz">Listen to the narration · voice: en-US-AndrewNeural</span></div>
-<div class="print"><img src="img/wizard_p1.png" alt="The new-analysis wizard"></div>
+<figure class="print"><img src="img/wizard_p1.png" alt="The new-analysis wizard"><figcaption>Page 1: the project name and the joint topology. The description and the list of generated elements appear below as you choose.</figcaption></figure><figure class="print"><img src="img/wizard_p2.png" alt="The new-analysis wizard"><figcaption>Page 2: the bolt size, the material grade, the thickness of each member and the preload as a fraction of yield. Diameter and pitch follow from the size on their own.</figcaption></figure><figure class="print"><img src="img/wizard_p3.png" alt="The new-analysis wizard"><figcaption>Page 3: the loading. Once the control mode is chosen, the field that is not the driver is greyed out — that is how you see what is imposed and what follows.</figcaption></figure><figure class="print"><img src="img/wizard_p4.png" alt="The new-analysis wizard"><figcaption>Page 4, optional: a laboratory CSV to calibrate against later. It may be left empty.</figcaption></figure><figure class="print"><img src="img/wizard_p5.png" alt="The new-analysis wizard"><figcaption>Page 5: the review. Everything you chose, plus the elements that will be created, before generating.</figcaption></figure>
 <h2>Transcript</h2>
 <div class="transcricao">The wizard builds a model in five pages. On the first, you name the project and choose the joint topology: single axial bolt, single shear joint, flange, and so on. Each topology already carries the right elements, including the two bearing connections, under the head and under the nut, which are where loosening happens. On the second page, the bolt size and grade, the flange thickness and the preload as a fraction of yield. On the third, the loading: transverse, axial or combined, displacement- or force-controlled, with amplitude, frequency and number of cycles. The fourth is optional: a laboratory CSV to calibrate against later. The fifth summarises everything. Click generate model and it opens in the Model module.</div>
 <h2>Every control on this screen</h2>

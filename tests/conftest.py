@@ -91,39 +91,24 @@ def _preferencias_isoladas(tmp_path_factory, monkeypatch):
 
 
 @pytest.fixture(autouse=True)
-def _widgets_do_teste_morrem_com_ele():
-    """Toda janela criada DENTRO de um teste e' destruida no fim dele.
+def _janelas_nao_vazam_entre_testes():
+    """A janela de um teste nao sobrevive a ele — mas quem garante isso e' o
+    proprio programa, nao esta fixture.
 
-    Medido em 2026-09-05, suite inteira num so' processo: a varredura de temas
-    do smoke levou 2812 s (47 min) — sozinha, leva 23 s. `_apply_theme` aplica
-    o stylesheet no nivel da aplicacao, e o Qt re-polia TODOS os widgets vivos:
-    centenas de ChromeWindows que testes anteriores fecharam (`close()` esconde,
-    nao destroi) continuavam no processo, cada uma com milhares de widgets.
-    O custo de cada troca de tema crescia com o numero de testes ja' rodados.
+    Historia, 2026-09-05. `Lang` e `Theme` guardavam METODOS LIGADOS de cada
+    janela com referencia forte: nenhuma janela morria, e cada troca de tema
+    repintava todas as ja' criadas (47 min na varredura de temas da suite,
+    contra 23 s sozinha). A primeira tentativa foi esta fixture destruir os
+    widgets com `deleteLater()`; funcionou para o tempo e trouxe coisa pior —
+    o coletor de lixo passava a derrubar o processo com violacao de acesso ao
+    construir a janela seguinte.
 
-    Regra: o que nasce no teste morre no teste. Fixtures de modulo/sessao
-    nascem ANTES desta (pytest instancia por escopo, do maior para o menor),
-    entao ja' estao na fotografia inicial e sao preservadas. NO-OP para quem
-    nunca importou QtWidgets — nao forca PyQt6 nos testes numericos.
+    A correcao certa foi nos dois registros: metodo ligado entra como
+    referencia FRACA (ver test_registros_nao_vazam.py). Com isso a janela e'
+    liberada pelo proprio Python quando o teste acaba, sem ninguem forcar
+    destruicao. Esta fixture agora so' colhe o lixo entre testes, o que e'
+    barato e nao desmonta widget nenhum.
     """
-    import sys as _sys
-
-    def _vivos():
-        qtw = _sys.modules.get("PyQt6.QtWidgets")
-        app = qtw.QApplication.instance() if qtw else None
-        return app, (set(app.topLevelWidgets()) if app else set())
-
-    _, antes = _vivos()
     yield
-    app, depois = _vivos()
-    if app is None:
-        return
-    for w in depois - antes:
-        try:
-            w.hide()            # NAO close(): o closeEvent da janela V1 abre
-            w.deleteLater()     # um QMessageBox modal e a suite trava (medido)
-        except RuntimeError:                      # ja' destruido pelo teste
-            pass
-    from PyQt6.QtCore import QEvent
-    app.sendPostedEvents(None, QEvent.Type.DeferredDelete)
-    app.processEvents()
+    import gc
+    gc.collect()

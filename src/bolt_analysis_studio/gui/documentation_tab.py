@@ -2611,6 +2611,29 @@ DOCUMENTATION.update(_carrega_secoes_geradas())
 # DOCUMENTATION TAB WIDGET
 # =============================================================================
 
+def abrir_guia_narrado() -> str:
+    """Abre o guia narrado no navegador, no idioma corrente da interface.
+
+    Devolve "" quando abriu, ou a frase a mostrar ao usuario quando nao deu.
+    UM lugar so': o menu Ajuda da janela principal e o botao desta janela
+    chamam esta funcao, e nao duas copias que envelhecem separadas."""
+    import webbrowser
+
+    from .i18n import Lang
+    try:
+        from ..validation.inputs import repo_root
+        alvo = (repo_root() / "New_Theory" / "guia_uso"
+                / ("en" if Lang.is_en() else "pt") / "index.html")
+        if not alvo.is_file():
+            return Lang.tr("O guia de uso não está instalado nesta cópia.",
+                           "The user guide is not installed in this copy.")
+        webbrowser.open(alvo.as_uri())
+        return ""
+    except Exception as exc:                                 # noqa: BLE001
+        return Lang.tr(f"Guia indisponível: {exc}",
+                       f"Guide unavailable: {exc}")
+
+
 class DocumentationTab(QWidget):
     """
     Documentation tab with searchable, organized technical reference.
@@ -2668,6 +2691,18 @@ class DocumentationTab(QWidget):
         # Quick links
         quick_group = QGroupBox(Lang.tr("Atalhos", "Quick Links"))
         quick_layout = QVBoxLayout(quick_group)
+
+        # O guia narrado abre no navegador, entao nao e' uma secao: entra
+        # como botao proprio, no alto, onde quem esta' perdido ja' olha.
+        btn_guia = QPushButton(Lang.tr("🎧 Guia de uso narrado",
+                                       "🎧 Narrated user guide"))
+        btn_guia.setToolTip(Lang.tr(
+            "Um vídeo-aula em página: print de cada tela, narração em áudio e "
+            "cada botão explicado. Abre no navegador.",
+            "A lesson in a page: a screenshot of every screen, audio narration "
+            "and every button explained. Opens in the browser."))
+        btn_guia.clicked.connect(abrir_guia_narrado)
+        quick_layout.addWidget(btn_guia)
 
         quick_buttons = [
             (Lang.tr("🚀 Começar", "🚀 Get Started"), "workflow"),

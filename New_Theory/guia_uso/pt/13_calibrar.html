@@ -1,0 +1,59 @@
+<!doctype html><html lang="pt"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calibrar parâmetros (Ctrl+K) — Bolt Analysis Studio</title><style>
+:root{--ink:#1f2937;--sub:#6b7280;--line:#e5e7eb;--bg:#fafafa;--card:#fff;
+--acc:#2b6cb0;--warn:#b7791f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 22px 60px}
+nav.top{display:flex;gap:14px;align-items:center;font-size:14px;color:var(--sub);
+flex-wrap:wrap}nav.top a{color:var(--acc);text-decoration:none}
+h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
+.sub{color:var(--sub);margin:0 0 18px}
+.print{border:1px solid var(--line);border-radius:8px;background:var(--card);
+padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
+border-radius:4px}
+.print figcaption{padding:9px 10px 4px;color:var(--sub);font-size:14px;
+line-height:1.5}
+figure.print{margin:14px 0}
+.player{display:flex;gap:14px;align-items:center;background:var(--card);
+border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
+.player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
+.transcricao{background:var(--card);border-left:4px solid var(--acc);
+padding:14px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+table.ctl{width:100%;border-collapse:collapse;background:var(--card);
+border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:14px 0}
+table.ctl th,table.ctl td{padding:10px 12px;border-bottom:1px solid var(--line);
+vertical-align:top;text-align:left}table.ctl th{background:#f3f4f6;font-size:13px;
+text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+table.ctl td:first-child{white-space:nowrap;font-weight:600;width:30%}
+table.ctl td:nth-child(2):not(:last-child){color:var(--sub);white-space:nowrap}
+.erro{border:1px solid #f3d9a4;background:#fff8e6;border-radius:8px;padding:12px 16px;
+margin:14px 0}.erro b{color:var(--warn)}
+.pager{display:flex;justify-content:space-between;margin-top:34px;gap:12px}
+.pager a{color:var(--acc);text-decoration:none;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:16px;margin-top:18px}.card{background:var(--card);border:1px solid var(--line);
+border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;display:block}
+.card img{width:100%;height:170px;object-fit:cover;object-position:top;
+border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
+.card .n{color:var(--sub);font-size:13px;padding:0 14px 12px}
+@media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
+</style></head>
+<body><div class="wrap">
+<nav class="top"><a href="index.html">Sumário</a> · Passo 14/17
+ · <a href="glossario.html">Glossário</a>
+ · <a href="../en/13_calibrar.html">English version</a></nav>
+<h1>Calibrar parâmetros (Ctrl+K)</h1>
+<p class="sub">Bolt Analysis Studio 1.0.0 · Guia de uso narrado</p>
+<div class="player"><audio controls preload="none" src="audio/13_calibrar.mp3"></audio><span class="voz">Ouça a narração · voz: pt-BR-AntonioNeural</span></div>
+<figure class="print"><img src="img/dialog_calibrate.png" alt="Calibrar parâmetros (Ctrl+K)"></figure>
+<h2>Transcrição</h2>
+<div class="transcricao">Analisar, Calibrar parâmetros do modelo, ou control K. Primeiro o programa pergunta contra qual curva ajustar: o caso do artigo de onde o modelo veio, ou um CSV seu. Depois abre o diálogo de calibração. À esquerda, a lista de parâmetros, cada um com uma caixa de seleção e dois limites. A regra é simples e é o que faz tudo funcionar: o que você não marca fica exatamente no valor que está no modelo. É assim que se trava o que já foi medido. O que você marca é procurado entre o limite inferior e o superior. Marque poucos por vez. À direita, a prévia mostra a curva experimental, o modelo atual e o ajuste candidato. Aplicar grava o resultado no modelo; Descartar não deixa vestígio. O motor que ajusta é o mesmo que roda a análise: o que fecha aqui se reproduz no Run.</div>
+<h2>Cada controle desta tela</h2>
+<table class="ctl"><thead><tr><th>Controle</th><th>O que faz</th></tr></thead>
+<tbody><tr><td>Curva de referência: Caso da validação / Arquivo CSV…</td><td>A origem da curva experimental. O caso só aparece se o modelo veio de um.</td></tr><tr><td>Optimization Agent / Run Agent</td><td>Modo autônomo: detecta o regime, escolhe um prior da literatura e ajusta em duas etapas.</td></tr><tr><td>Trim cycles</td><td>Recorta a janela de ciclos usada no ajuste: tira uma cauda ruidosa ou um reaperto.</td></tr><tr><td>Engine</td><td>V2 não linear é o recomendado; é o motor do artigo.</td></tr><tr><td>Wizard — load literature priors…</td><td>Carrega limites típicos da literatura para os parâmetros.</td></tr><tr><td>Parameter / Lo / Hi</td><td>A caixa trava ou libera; Lo e Hi são os limites da busca.</td></tr><tr><td>Live Preview</td><td>Experimental, modelo atual e ajuste; MAE e RMSE no topo.</td></tr><tr><td>Preview Current / Run Calibration / Cancel</td><td>Desenha o modelo atual; inicia o ajuste; interrompe.</td></tr><tr><td>Apply to Model / Apply &amp; Re-run / Discard</td><td>Grava no modelo; grava e roda a análise; descarta.</td></tr></tbody></table>
+<div class="erro"><b>Erro comum.</b> Um ajuste que fecha bem contra uma única curva não é uma configuração adotada do artigo: aquelas foram fixadas por bancada e validadas por validação cruzada. Trate o seu ajuste como hipótese.</div>
+<div class="pager"><span><a href="12_consultar_validacao.html">← Anterior</a></span>
+<span><a href="14_report.html">Próximo →</a></span></div>
+</div></body></html>

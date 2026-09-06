@@ -13,6 +13,9 @@ h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
 .print{border:1px solid var(--line);border-radius:8px;background:var(--card);
 padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
 border-radius:4px}
+.print figcaption{padding:9px 10px 4px;color:var(--sub);font-size:14px;
+line-height:1.5}
+figure.print{margin:14px 0}
 .player{display:flex;gap:14px;align-items:center;background:var(--card);
 border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
 .player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
@@ -38,13 +41,13 @@ border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
 @media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
 </style></head>
 <body><div class="wrap">
-<nav class="top"><a href="index.html">Contents</a> · Step 1/15
+<nav class="top"><a href="index.html">Contents</a> · Step 1/17
  · <a href="glossario.html">Glossary</a>
  · <a href="../pt/00_introducao.html">Versão em português</a></nav>
 <h1>What Bolt Analysis Studio does</h1>
 <p class="sub">Bolt Analysis Studio 1.0.0 · Narrated user guide</p>
 <div class="player"><audio controls preload="none" src="audio/00_introducao.mp3"></audio><span class="voz">Listen to the narration · voice: en-US-AndrewNeural</span></div>
-<div class="print"><img src="img/chrome_model.png" alt="What Bolt Analysis Studio does"></div>
+<figure class="print"><img src="img/chrome_model.png" alt="What Bolt Analysis Studio does"></figure>
 <h2>Transcript</h2>
 <div class="transcricao">Welcome to Bolt Analysis Studio. This program predicts preload loss in bolted joints: how much a bolt loosens, cycle by cycle, when the joint vibrates or carries repeated load. It represents the joint as a chain of masses, springs and dampers — the head, the shank, the thread, the nut, the clamped members, and the contact interfaces between them. Four mechanisms remove preload in parallel: embedding of the surfaces, creep, wear on the faces that slip, and rotation of the nut. The program was validated against two hundred and seven curves published in the literature, and every one of them comes ready for you to open, inspect and modify. In this guide, one page per tab, you will see what every button and every field does.</div>
 <h2>Every control on this screen</h2>

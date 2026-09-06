@@ -161,7 +161,40 @@ PASSOS = [
             "on every update, so your copy must live somewhere else."),
     ),
     dict(
-        chave="02_wizard", print_="wizard_p1",
+        chave="02_wizard",
+        prints=[
+            ("wizard_p1",
+             ("Página 1: o nome do projeto e a topologia da junta. A descrição "
+              "e a lista de elementos gerados aparecem embaixo, conforme você "
+              "escolhe.",
+              "Page 1: the project name and the joint topology. The description "
+              "and the list of generated elements appear below as you "
+              "choose.")),
+            ("wizard_p2",
+             ("Página 2: a bitola, a classe do material, a espessura de cada "
+              "membro e a pré-carga em fração do escoamento. O diâmetro e o "
+              "passo saem da bitola sozinhos.",
+              "Page 2: the bolt size, the material grade, the thickness of each "
+              "member and the preload as a fraction of yield. Diameter and "
+              "pitch follow from the size on their own.")),
+            ("wizard_p3",
+             ("Página 3: o carregamento. Escolhido o modo de controle, o campo "
+              "que não comanda fica cinza — é assim que você vê o que é imposto "
+              "e o que é consequência.",
+              "Page 3: the loading. Once the control mode is chosen, the field "
+              "that is not the driver is greyed out — that is how you see what "
+              "is imposed and what follows.")),
+            ("wizard_p4",
+             ("Página 4, opcional: um CSV de laboratório para calibrar contra "
+              "ele depois. Pode ficar vazia.",
+              "Page 4, optional: a laboratory CSV to calibrate against later. "
+              "It may be left empty.")),
+            ("wizard_p5",
+             ("Página 5: a revisão. Tudo o que você escolheu, mais os elementos "
+              "que serão criados, antes de gerar.",
+              "Page 5: the review. Everything you chose, plus the elements that "
+              "will be created, before generating.")),
+        ],
         titulo=("O assistente de nova análise", "The new-analysis wizard"),
         narracao=(
             "O assistente monta um modelo em cinco páginas. Na primeira, você dá "
@@ -240,7 +273,26 @@ PASSOS = [
         ],
     ),
     dict(
-        chave="03_anatomia", print_="chrome_model",
+        chave="03_anatomia",
+        prints=[
+            ("chrome_model",
+             ("As seis regiões: menus e barra de módulos no topo, árvore à "
+              "esquerda, viewport no centro, propriedades e paleta à direita, "
+              "mensagens embaixo e a linha de prompt na base.",
+              "The six regions: menus and module bar at the top, tree on the "
+              "left, viewport in the centre, properties and palette on the "
+              "right, messages below and the prompt line at the base.")),
+            ("model_tree",
+             ("A árvore do modelo, de perto: elementos, contatos e etapas. "
+              "Clicar num nó seleciona a peça no desenho.",
+              "The model tree, up close: elements, contacts and steps. Clicking "
+              "a node selects the part in the drawing.")),
+            ("tema_claro",
+             ("O mesmo programa no tema claro, em Exibir, Tema. São cinco "
+              "paletas e a escolha fica salva entre sessões.",
+              "The same program in the light theme, under View, Theme. There "
+              "are five palettes and the choice is saved between sessions.")),
+        ],
         titulo=("Anatomia da janela", "Anatomy of the window"),
         narracao=(
             "A janela tem seis regiões. No topo, os menus e a barra de módulos. "
@@ -302,7 +354,27 @@ PASSOS = [
         ],
     ),
     dict(
-        chave="04_model", print_="chrome_model",
+        chave="04_model",
+        prints=[
+            ("chrome_model",
+             ("A cadeia completa de um caso do artigo: onze elementos, do "
+              "Ground à porca, com as duas ligações de apoio no meio.",
+              "The complete chain of a case from the paper: eleven elements, "
+              "from the Ground to the nut, with the two bearing connections in "
+              "between.")),
+            ("cadeia_gaxeta",
+             ("A mesma junta com uma gaxeta no lugar de um flange. Compare os "
+              "k: a gaxeta é mil vezes mais macia, e em série é ela que decide "
+              "a rigidez do conjunto.",
+              "The same joint with a gasket in place of a flange. Compare the "
+              "k values: the gasket is a thousand times softer, and in series "
+              "it is the one that decides the assembly stiffness.")),
+            ("paleta_elementos",
+             ("A paleta de onde vêm os elementos, em três blocos: corpos do "
+              "parafuso, membros apertados e interfaces de contato.",
+              "The palette the elements come from, in three blocks: bolt "
+              "bodies, clamped members and contact interfaces.")),
+        ],
         titulo=("Model — montar a cadeia", "Model — building the chain"),
         narracao=(
             "O módulo Model é onde a junta vira uma cadeia. Da paleta à direita, "
@@ -368,7 +440,159 @@ PASSOS = [
             "Loads is zero."),
     ),
     dict(
-        chave="05_inspector_element", print_="inspector_element",
+        chave="05_primeiro_modelo",
+        prints=[
+            ("modelo_vazio",
+             ("O ponto de partida: Arquivo, Nova análise, Modelo vazio. O "
+              "viewport está limpo e a paleta, à direita, tem tudo o que "
+              "existe para montar.",
+              "The starting point: File, New analysis, Empty model. The "
+              "viewport is clean and the palette, on the right, holds "
+              "everything there is to build with.")),
+            ("paleta_elementos",
+             ("A paleta, em três blocos: os corpos do parafuso, os membros "
+              "apertados e as interfaces de contato. Arraste um para o "
+              "viewport, ou clique.",
+              "The palette, in three blocks: the bolt bodies, the clamped "
+              "members and the contact interfaces. Drag one onto the "
+              "viewport, or click it.")),
+            ("cadeia_serie",
+             ("Oito elementos EM SÉRIE: cada um numa linha própria, de zero a "
+              "seis. A carga atravessa todos, um depois do outro. Repare nos "
+              "dois flanges, nas linhas quatro e cinco.",
+              "Eight elements IN SERIES: each on its own row, from zero to "
+              "six. The load passes through all of them, one after another. "
+              "Note the two flanges, on rows four and five.")),
+            ("cadeia_paralelo",
+             ("O mesmo modelo com os dois flanges NA MESMA LINHA, a linha "
+              "quatro, em colunas diferentes. O desenho abre o ramo com as "
+              "setas tracejadas e o fecha na ligação de apoio seguinte.",
+              "The same model with the two flanges ON THE SAME ROW, row four, "
+              "in different columns. The drawing opens the branch with dashed "
+              "arrows and closes it at the next bearing connection.")),
+            ("diagrama_serie_paralelo",
+             ("A diferença, em fórmula. Este é um desenho explicativo, não "
+              "uma tela do programa.",
+              "The difference, as a formula. This is an explanatory drawing, "
+              "not a screen of the program.")),
+            ("grid_position",
+             ("Onde se define: aba Element, grupo Grid Position. Row é a "
+              "posição em série; Column, o ramo paralelo.",
+              "Where you set it: Element tab, Grid Position group. Row is the "
+              "position in series; Column, the parallel branch.")),
+        ],
+        titulo=("Construindo o seu primeiro modelo MSD",
+                "Building your first MSD model"),
+        narracao=(
+            "Vamos montar um modelo do zero. Em Arquivo, Nova análise, escolha "
+            "modelo vazio: o viewport fica limpo. Da paleta à direita, "
+            "acrescente os elementos na ordem em que a carga caminha. Comece "
+            "pelo Ground, que é a fronteira fixa. Depois a cabeça, a haste, a "
+            "ligação de apoio sob a cabeça, os membros apertados, a ligação de "
+            "apoio sob a porca, e a porca. Oito elementos bastam para uma junta "
+            "completa. "
+            "Cada elemento tem duas coordenadas, no grupo Grid Position da aba "
+            "Element. Row é a linha: a posição na série. Column é a coluna: o "
+            "ramo paralelo. Elementos em linhas diferentes estão em série, um "
+            "depois do outro, e a mesma carga atravessa todos; quem soma são as "
+            "flexibilidades, então o inverso da rigidez do conjunto é a soma dos "
+            "inversos. É por isso que, numa junta, o elemento mais macio manda: "
+            "a gaxeta, se houver, domina. "
+            "Elementos na mesma linha, em colunas diferentes, aparecem lado a "
+            "lado: é o ramo paralelo. Aí a carga se divide entre eles e quem "
+            "soma são as rigidezes. Duas chapas iguais lado a lado são duas "
+            "vezes mais rígidas que uma. "
+            "Agora a parte honesta, e é importante. Hoje a coluna muda o "
+            "desenho e registra a sua intenção, mas o motor que o artigo "
+            "validou combina a cadeia inteira em série: ele não lê a grade. "
+            "Então, se você quer que dois membros realmente dividam a carga na "
+            "conta, some as rigidezes deles num elemento só. O ramo paralelo no "
+            "desenho serve para você e para quem lê o modelo enxergarem a "
+            "topologia real da junta. "
+            "Uma última regra, que decide se o modelo afrouxa: as duas ligações "
+            "de apoio, sob a cabeça e sob a porca, precisam existir. É nelas que "
+            "a face escorrega, assenta e desgasta. Sem elas a curva sai reta.",
+
+            "Let us build a model from scratch. Under File, New analysis, pick "
+            "the empty model: the viewport goes clean. From the palette on the "
+            "right, add the elements in the order the load travels. Start with "
+            "the Ground, the fixed boundary. Then the head, the shank, the "
+            "bearing connection under the head, the clamped members, the "
+            "bearing connection under the nut, and the nut. Eight elements are "
+            "enough for a complete joint. "
+            "Every element has two coordinates, in the Grid Position group of "
+            "the Element tab. Row is the position in series. Column is the "
+            "parallel branch. Elements on different rows are in series, one "
+            "after another, and the same load passes through all of them; what "
+            "adds up are the flexibilities, so the inverse of the assembly "
+            "stiffness is the sum of the inverses. That is why, in a joint, the "
+            "softest element rules: the gasket, when there is one, dominates. "
+            "Elements on the same row, in different columns, appear side by "
+            "side: that is the parallel branch. There the load splits between "
+            "them and what adds up are the stiffnesses. Two identical plates "
+            "side by side are twice as stiff as one. "
+            "Now the honest part, and it matters. Today the column changes the "
+            "drawing and records your intent, but the engine the paper "
+            "validated combines the whole chain in series: it does not read the "
+            "grid. So if you want two members to genuinely share the load in "
+            "the arithmetic, add their stiffnesses into a single element. The "
+            "parallel branch in the drawing is there so that you, and whoever "
+            "reads the model, can see the real topology of the joint. "
+            "One last rule, and it decides whether the model loosens at all: "
+            "the two bearing connections, under the head and under the nut, "
+            "must exist. That is where the face slips, embeds and wears. "
+            "Without them the curve comes out flat."),
+        controles=[
+            (("Arquivo → Nova análise… → Modelo vazio",
+              "File → New analysis… → Empty model"),
+             ("Começa do zero, sem elemento nenhum.",
+              "Starts from scratch, with no elements at all.")),
+            ("Elements", ("A paleta. Cada botão acrescenta um elemento daquele "
+                          "tipo ao viewport.",
+                          "The palette. Each button adds one element of that "
+                          "type to the viewport.")),
+            ("Quick Presets", ("Atalho: monta uma cadeia inteira pronta, em vez "
+                               "de elemento por elemento.",
+                               "Shortcut: builds a whole ready-made chain "
+                               "instead of one element at a time.")),
+            ("Row (series)", ("A linha. Linhas diferentes são posições em "
+                              "série; a carga atravessa uma depois da outra.",
+                              "The row. Different rows are positions in series; "
+                              "the load passes through one after another.")),
+            ("Column (parallel)",
+             ("A coluna. Mesma linha e colunas diferentes desenham um ramo "
+              "paralelo lado a lado.",
+              "The column. Same row and different columns draw a parallel "
+              "branch side by side.")),
+            ("k (N/m)", ("A rigidez de cada elemento. Em série somam-se os "
+                         "inversos; em paralelo somam-se os valores.",
+                         "The stiffness of each element. In series the inverses "
+                         "add; in parallel the values add.")),
+            (("Bloco no viewport", "Block in the viewport"),
+             ("Mostra o nome, o k e a fração da carga. É a conferência visual "
+              "de que a cadeia ficou como você quis.",
+              "Shows the name, the k and the load share. It is the visual check "
+              "that the chain came out as you intended.")),
+            ("Bearing (Head) / Bearing (Nut)",
+             ("Obrigatórias. Sem as duas o modelo não afrouxa.",
+              "Mandatory. Without both, the model does not loosen.")),
+            ("Fit / Shift+F", ("Enquadra a cadeia inteira depois de acrescentar "
+                               "elementos.",
+                               "Frames the whole chain after adding elements.")),
+        ],
+        erro_comum=(
+            "Esperar que pôr dois elementos na mesma linha mude o resultado da "
+            "análise. Muda o desenho, não a conta: o motor validado resolve a "
+            "cadeia em série. Para dois membros dividirem a carga no cálculo, "
+            "some as rigidezes num elemento só.",
+            "Expecting that putting two elements on the same row changes the "
+            "analysis result. It changes the drawing, not the arithmetic: the "
+            "validated engine solves the chain in series. For two members to "
+            "share the load in the calculation, add their stiffnesses into a "
+            "single element."),
+    ),
+    dict(
+        chave="06_inspector_element", print_="inspector_element",
         titulo=("Propriedades — aba Element", "Properties — Element tab"),
         narracao=(
             "Com um elemento selecionado, a aba Element mostra tudo o que ele é. "
@@ -473,7 +697,7 @@ PASSOS = [
         ],
     ),
     dict(
-        chave="06_contacts", print_="inspector_contact",
+        chave="07_contacts", print_="inspector_contact",
         titulo=("Contacts — atrito e tribologia", "Contacts — friction and tribology"),
         narracao=(
             "O módulo Contacts mostra a mesma cadeia com as interfaces em foco, e "
@@ -531,7 +755,7 @@ PASSOS = [
         ],
     ),
     dict(
-        chave="07_loads", print_="inspector_loading",
+        chave="08_loads", print_="inspector_loading",
         titulo=("Loads — o carregamento", "Loads — the loading"),
         narracao=(
             "Em Loads você define o que excita a junta. Escolha o tipo de "
@@ -615,7 +839,21 @@ PASSOS = [
         ],
     ),
     dict(
-        chave="08_analysis", print_="chrome_analysis",
+        chave="09_analysis",
+        prints=[
+            ("chrome_analysis",
+             ("O módulo Analysis com as escolhas recomendadas a partir do "
+              "modelo, e o distintivo DONE na barra: esta análise terminou.",
+              "The Analysis module with the recommended choices derived from "
+              "the model, and the DONE badge on the bar: this analysis "
+              "finished.")),
+            ("log_do_job",
+             ("A área de mensagens na aba Log do job, durante e depois da "
+              "análise. É aqui que aparece o motivo, quando algo dá errado.",
+              "The message area on the Job Log tab, during and after the "
+              "analysis. This is where the reason shows up when something goes "
+              "wrong.")),
+        ],
         titulo=("Analysis — rodar", "Analysis — running"),
         narracao=(
             "O módulo Analysis é onde a simulação acontece. O painel à direita "
@@ -662,7 +900,14 @@ PASSOS = [
             "loaded."),
     ),
     dict(
-        chave="09_results", print_="chrome_results",
+        chave="10_results",
+        prints=[
+            ("chrome_results",
+             ("A aba Run depois de uma análise. À esquerda, a árvore de "
+              "gráficos, agrupada por família; à direita, o gráfico escolhido.",
+              "The Run tab after an analysis. On the left, the tree of plots, "
+              "grouped by family; on the right, the chosen plot.")),
+        ],
         titulo=("Results — ler o resultado", "Results — reading the result"),
         narracao=(
             "Em Results, a aba Run mostra o que a análise produziu. O gráfico "
@@ -701,7 +946,7 @@ PASSOS = [
         ],
     ),
     dict(
-        chave="10_validation", print_="chrome_results_validation",
+        chave="11_validation", print_="chrome_results_validation",
         titulo=("Results › Validation — o corpus", "Results › Validation — the corpus"),
         narracao=(
             "A aba Validation é o corpus inteiro: uma árvore de artigo e curva, "
@@ -760,7 +1005,150 @@ PASSOS = [
         ],
     ),
     dict(
-        chave="11_calibrar", print_="dialog_calibrate",
+        chave="12_consultar_validacao",
+        prints=[
+            ("dialog_case_picker",
+             ("A porta rápida: control I. A lista inteira por nome, com busca, "
+              "censo, critério e erro de cada curva.",
+              "The quick door: control I. The whole list by name, with search, "
+              "census, criterion and error for each curve.")),
+            ("validation_arvore",
+             ("A porta completa: a árvore de Results, Validation. Primeiro "
+              "nível o artigo, segundo a curva, com o erro ao lado.",
+              "The full door: the tree under Results, Validation. First level "
+              "the paper, second the curve, with the error beside it.")),
+            ("validation_detalhe",
+             ("O detalhe da curva escolhida: dado digitalizado contra modelo, a "
+              "decomposição por mecanismo, as métricas e os botões.",
+              "The detail of the chosen curve: digitised data against model, "
+              "the decomposition by mechanism, the metrics and the buttons.")),
+            ("chrome_results_validation",
+             ("Tudo no lugar, dentro do programa, com o painel de intake em "
+              "destaque para trazer o seu próprio ensaio.",
+              "Everything in place, inside the program, with the intake panel "
+              "highlighted for bringing in your own test.")),
+        ],
+        titulo=("Consultando os casos da validação",
+                "Consulting the validation cases"),
+        narracao=(
+            "As duzentas e sete curvas não são um anexo: elas vêm dentro do "
+            "programa e você as consulta como consultaria um catálogo. Há duas "
+            "portas. "
+            "A primeira é control I, Importar caso da validação. Abre a lista "
+            "inteira por nome, com busca. Digite o artigo, a bitola ou a "
+            "revista: lu dois mil e vinte e quatro, M oito, Sensors. Cada linha "
+            "diz se a curva entra no censo do artigo, se atende ao critério, e "
+            "qual o erro médio absoluto. No rodapé, a referência completa e o "
+            "DOI clicável. Escolha uma e ela abre como modelo editável, com as "
+            "constantes exatamente como foram adotadas. "
+            "A segunda porta é a aba Validation, dentro de Results. Ali está a "
+            "árvore: no primeiro nível o artigo, no segundo cada curva daquele "
+            "artigo, com o erro ao lado. Selecione uma curva e o painel da "
+            "direita mostra três coisas. O gráfico, com o dado digitalizado em "
+            "pontos, o modelo alinhado em linha cheia e, tracejada, a curva crua "
+            "do motor. A decomposição por mecanismo, embaixo, que diz de onde "
+            "veio a perda. E as métricas: erro médio absoluto, resíduo máximo e "
+            "desvio dos resíduos, cada uma com o limite do critério ao lado. "
+            "Quatro botões fazem o trabalho. Abrir no Model traz o caso como "
+            "modelo, para você mexer. Re-simular roda o motor de novo naquele "
+            "caso. Report HTML abre o relatório completo daquela curva, com "
+            "condições, modelo, resíduo e cada constante com a sua procedência. "
+            "Report geral abre o documento mestre, com o corpus inteiro e o "
+            "censo. "
+            "Uma sugestão de método: antes de construir o seu modelo, abra dois "
+            "ou três casos parecidos com a sua junta e olhe as constantes que "
+            "eles adotaram. É a maneira mais rápida de saber o que é um valor "
+            "razoável.",
+
+            "The two hundred and seven curves are not an appendix: they ship "
+            "inside the program and you consult them as you would a catalogue. "
+            "There are two doors. "
+            "The first is control I, Import validation case. It opens the whole "
+            "list by name, with search. Type the paper, the bolt size or the "
+            "journal: lu twenty twenty-four, M eight, Sensors. Each line says "
+            "whether the curve is in the paper's census, whether it meets the "
+            "criterion, and what its mean absolute error is. In the footer, the "
+            "full reference and the clickable DOI. Pick one and it opens as an "
+            "editable model, with the constants exactly as adopted. "
+            "The second door is the Validation tab, inside Results. There is "
+            "the tree: the paper at the first level, each of that paper's "
+            "curves at the second, with the error beside it. Select a curve and "
+            "the panel on the right shows three things. The plot, with the "
+            "digitised data as points, the aligned model as a solid line and, "
+            "dashed, the engine's raw curve. The decomposition by mechanism, "
+            "below, which tells you where the loss came from. And the metrics: "
+            "mean absolute error, maximum residual and residual spread, each "
+            "with the criterion limit beside it. "
+            "Four buttons do the work. Open in Model brings the case in as a "
+            "model for you to change. Re-simulate runs the engine again on that "
+            "case. HTML report opens the full report of that curve, with "
+            "conditions, model, residual and every constant with its "
+            "provenance. Master report opens the master document, with the "
+            "whole corpus and the census. "
+            "A suggestion of method: before building your own model, open two "
+            "or three cases similar to your joint and look at the constants "
+            "they adopted. It is the fastest way to learn what a reasonable "
+            "value looks like."),
+        controles=[
+            (("Importar caso da validação… (Ctrl+I)",
+              "Import validation case… (Ctrl+I)"),
+             ("A lista inteira por nome, com busca e as três colunas de "
+              "veredito.",
+              "The whole list by name, with search and the three verdict "
+              "columns.")),
+            (("Campo de busca", "Search field"),
+             ("Filtra por artigo, caso, referência ou DOI.",
+              "Filters by paper, case, reference or DOI.")),
+            (("Somente o censo do artigo", "Paper census only"),
+             ("Alterna entre as duzentas e cinco do censo e as duzentas e sete "
+              "do corpus.",
+              "Switches between the two hundred and five of the census and the "
+              "two hundred and seven of the corpus.")),
+            (("Árvore fonte → curva", "Source → curve tree"),
+             ("Artigo no primeiro nível, curva no segundo, erro ao lado.",
+              "Paper at the first level, curve at the second, error beside it.")),
+            (("Gráfico", "Plot"),
+             ("Pontos: o dado do artigo. Linha cheia: o modelo alinhado. "
+              "Tracejada: a curva crua do motor.",
+              "Points: the paper's data. Solid line: the aligned model. "
+              "Dashed: the engine's raw curve.")),
+            (("Decomposição por mecanismo", "Decomposition by mechanism"),
+             ("Quanto da perda veio de assentamento, fluência, desgaste e "
+              "rotação da porca.",
+              "How much of the loss came from embedding, creep, wear and nut "
+              "rotation.")),
+            (("Métricas", "Metrics"),
+             ("Erro médio absoluto, resíduo máximo e desvio dos resíduos, com "
+              "os limites do critério.",
+              "Mean absolute error, maximum residual and residual spread, with "
+              "the criterion limits.")),
+            (("Abrir no Model/Run", "Open in Model/Run"),
+             ("Traz o caso como modelo editável, com as constantes adotadas.",
+              "Brings the case in as an editable model, with the adopted "
+              "constants.")),
+            (("Re-simular caso / Re-simular tudo",
+              "Re-simulate case / Re-simulate all"),
+             ("Roda o motor de novo naquele caso, ou no corpus inteiro.",
+              "Runs the engine again on that case, or on the whole corpus.")),
+            (("Report HTML / Report geral", "HTML report / Master report"),
+             ("Relatório daquela curva, com procedência de cada constante; e o "
+              "documento mestre do corpus.",
+              "Report of that curve, with the provenance of every constant; and "
+              "the master document of the corpus.")),
+            (("Salvar caso como .msd…", "Save case as .msd…"),
+             ("Grava o modelo do caso onde você quiser, para partir dele.",
+              "Writes the case model wherever you like, to start from it.")),
+        ],
+        erro_comum=(
+            "Tratar as constantes de um caso como valores universais. Elas "
+            "foram adotadas para aquela bancada e aquele artigo; use-as como "
+            "ponto de partida, não como resposta.",
+            "Treating a case's constants as universal values. They were adopted "
+            "for that rig and that paper; use them as a starting point, not as "
+            "an answer."),
+    ),
+    dict(
+        chave="13_calibrar", print_="dialog_calibrate",
         titulo=("Calibrar parâmetros (Ctrl+K)", "Calibrate parameters (Ctrl+K)"),
         narracao=(
             "Analisar, Calibrar parâmetros do modelo, ou control K. Primeiro o "
@@ -833,7 +1221,7 @@ PASSOS = [
             "cross-validated. Treat your fit as a hypothesis."),
     ),
     dict(
-        chave="12_report", print_="chrome_report",
+        chave="14_report", print_="chrome_report",
         titulo=("Report — o documento", "Report — the document"),
         narracao=(
             "O módulo Report monta um documento a partir da análise corrente. "
@@ -858,7 +1246,7 @@ PASSOS = [
         ],
     ),
     dict(
-        chave="13_ajuda", print_="documentation_tab",
+        chave="15_ajuda", print_="documentation_tab",
         titulo=("Ajuda — documentação e idioma", "Help — documentation and language"),
         narracao=(
             "O menu Ajuda abre a documentação com F1: vinte e cinco seções, entre "
@@ -909,7 +1297,7 @@ PASSOS = [
         ],
     ),
     dict(
-        chave="14_salvar_atalhos", print_="chrome_loads",
+        chave="16_salvar_atalhos", print_="chrome_loads",
         titulo=("Salvar, reabrir e atalhos", "Saving, reopening and shortcuts"),
         narracao=(
             "Salve com control S. Na primeira vez o programa pergunta onde; depois "

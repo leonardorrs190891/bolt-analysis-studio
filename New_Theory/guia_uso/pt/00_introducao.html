@@ -13,6 +13,9 @@ h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
 .print{border:1px solid var(--line);border-radius:8px;background:var(--card);
 padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
 border-radius:4px}
+.print figcaption{padding:9px 10px 4px;color:var(--sub);font-size:14px;
+line-height:1.5}
+figure.print{margin:14px 0}
 .player{display:flex;gap:14px;align-items:center;background:var(--card);
 border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
 .player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
@@ -38,13 +41,13 @@ border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
 @media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
 </style></head>
 <body><div class="wrap">
-<nav class="top"><a href="index.html">Sumário</a> · Passo 1/15
+<nav class="top"><a href="index.html">Sumário</a> · Passo 1/17
  · <a href="glossario.html">Glossário</a>
  · <a href="../en/00_introducao.html">English version</a></nav>
 <h1>O que o Bolt Analysis Studio faz</h1>
 <p class="sub">Bolt Analysis Studio 1.0.0 · Guia de uso narrado</p>
 <div class="player"><audio controls preload="none" src="audio/00_introducao.mp3"></audio><span class="voz">Ouça a narração · voz: pt-BR-AntonioNeural</span></div>
-<div class="print"><img src="img/chrome_model.png" alt="O que o Bolt Analysis Studio faz"></div>
+<figure class="print"><img src="img/chrome_model.png" alt="O que o Bolt Analysis Studio faz"></figure>
 <h2>Transcrição</h2>
 <div class="transcricao">Bem-vindo ao Bolt Analysis Studio. Este programa prevê a perda de pré-carga em juntas aparafusadas: quanto um parafuso afrouxa, ciclo a ciclo, quando a junta vibra ou recebe carga repetida. Ele representa a junta como uma cadeia de massas, molas e amortecedores — a cabeça, a haste, a rosca, a porca, os membros apertados, e as interfaces de contato entre eles. Quatro mecanismos retiram pré-carga em paralelo: o assentamento das superfícies, a fluência, o desgaste nas faces que escorregam e a rotação da porca. O programa foi validado contra duzentas e sete curvas publicadas na literatura, e cada uma delas vem pronta para você abrir, olhar e modificar. Neste guia, uma página por aba, você vai ver o que cada botão e cada campo fazem.</div>
 <h2>Cada controle desta tela</h2>

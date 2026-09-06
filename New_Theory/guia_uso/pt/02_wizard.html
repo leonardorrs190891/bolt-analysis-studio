@@ -13,6 +13,9 @@ h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
 .print{border:1px solid var(--line);border-radius:8px;background:var(--card);
 padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
 border-radius:4px}
+.print figcaption{padding:9px 10px 4px;color:var(--sub);font-size:14px;
+line-height:1.5}
+figure.print{margin:14px 0}
 .player{display:flex;gap:14px;align-items:center;background:var(--card);
 border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
 .player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
@@ -38,13 +41,13 @@ border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
 @media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
 </style></head>
 <body><div class="wrap">
-<nav class="top"><a href="index.html">Sumário</a> · Passo 3/15
+<nav class="top"><a href="index.html">Sumário</a> · Passo 3/17
  · <a href="glossario.html">Glossário</a>
  · <a href="../en/02_wizard.html">English version</a></nav>
 <h1>O assistente de nova análise</h1>
 <p class="sub">Bolt Analysis Studio 1.0.0 · Guia de uso narrado</p>
 <div class="player"><audio controls preload="none" src="audio/02_wizard.mp3"></audio><span class="voz">Ouça a narração · voz: pt-BR-AntonioNeural</span></div>
-<div class="print"><img src="img/wizard_p1.png" alt="O assistente de nova análise"></div>
+<figure class="print"><img src="img/wizard_p1.png" alt="O assistente de nova análise"><figcaption>Página 1: o nome do projeto e a topologia da junta. A descrição e a lista de elementos gerados aparecem embaixo, conforme você escolhe.</figcaption></figure><figure class="print"><img src="img/wizard_p2.png" alt="O assistente de nova análise"><figcaption>Página 2: a bitola, a classe do material, a espessura de cada membro e a pré-carga em fração do escoamento. O diâmetro e o passo saem da bitola sozinhos.</figcaption></figure><figure class="print"><img src="img/wizard_p3.png" alt="O assistente de nova análise"><figcaption>Página 3: o carregamento. Escolhido o modo de controle, o campo que não comanda fica cinza — é assim que você vê o que é imposto e o que é consequência.</figcaption></figure><figure class="print"><img src="img/wizard_p4.png" alt="O assistente de nova análise"><figcaption>Página 4, opcional: um CSV de laboratório para calibrar contra ele depois. Pode ficar vazia.</figcaption></figure><figure class="print"><img src="img/wizard_p5.png" alt="O assistente de nova análise"><figcaption>Página 5: a revisão. Tudo o que você escolheu, mais os elementos que serão criados, antes de gerar.</figcaption></figure>
 <h2>Transcrição</h2>
 <div class="transcricao">O assistente monta um modelo em cinco páginas. Na primeira, você dá um nome ao projeto e escolhe a topologia da junta: parafuso único axial, junta de cisalhamento simples, flange, e assim por diante. Cada topologia já traz os elementos certos, inclusive as duas ligações de apoio, sob a cabeça e sob a porca, que são onde o afrouxamento acontece. Na segunda página, a bitola e a classe do parafuso, a espessura do flange e a pré-carga como fração do escoamento. Na terceira, o carregamento: transversal, axial ou combinado, controlado por deslocamento ou por força, com amplitude, frequência e número de ciclos. A quarta é opcional: um CSV de laboratório para calibrar depois. A quinta resume tudo. Clique em gerar modelo e ele abre no módulo Model.</div>
 <h2>Cada controle desta tela</h2>

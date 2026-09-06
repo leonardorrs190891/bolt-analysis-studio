@@ -16,6 +16,7 @@ February 2026
 """
 
 import json
+import weakref
 from pathlib import Path
 from typing import Callable, Dict, List, Optional
 
@@ -254,7 +255,11 @@ class Theme:
     BUTTON_TEXT = THEME_DARK["BUTTON_TEXT"]
 
     # --- callbacks ---
-    _callbacks: List[Callable] = []
+    # Referencias FRACAS para metodos ligados (2026-09-05, mesmo defeito que o
+    # `Lang`): com referencia forte, toda janela ja' criada continuava viva
+    # presa aqui, e cada troca de tema repintava TODAS elas. Medido: a
+    # varredura de temas da suite levava 47 minutos; sozinha, 23 segundos.
+    _callbacks: List = []
 
     # -----------------------------------------------------------------
     # Core API
@@ -279,7 +284,7 @@ class Theme:
         _rebuild_element_visuals()
 
         # Notify listeners
-        for cb in cls._callbacks:
+        for cb in cls._vivos():
             try:
                 cb()
             except Exception:
@@ -1086,17 +1091,44 @@ class Theme:
     # Callback system
     # -----------------------------------------------------------------
 
+    @staticmethod
+    def _resolve(item):
+        """A funcao por tras de uma entrada, ou None se o dono ja' morreu."""
+        if isinstance(item, (weakref.WeakMethod, weakref.ref)):
+            return item()
+        return item
+
+    @classmethod
+    def _vivos(cls) -> List[Callable]:
+        """Os callbacks ainda vivos; os mortos saem da lista de passagem."""
+        vivos, saida = [], []
+        for item in list(cls._callbacks):
+            fn = cls._resolve(item)
+            if fn is None:
+                continue
+            vivos.append(item)
+            saida.append(fn)
+        cls._callbacks[:] = vivos
+        return saida
+
     @classmethod
     def register_callback(cls, fn: Callable) -> None:
         """Register a function to call when the theme changes."""
-        if fn not in cls._callbacks:
+        for item in cls._callbacks:
+            if cls._resolve(item) == fn:
+                return
+        try:
+            cls._callbacks.append(weakref.WeakMethod(fn)
+                                  if hasattr(fn, "__self__") else fn)
+        except TypeError:                # pragma: no cover - nao referenciavel
             cls._callbacks.append(fn)
 
     @classmethod
     def unregister_callback(cls, fn: Callable) -> None:
         """Remove a previously registered callback."""
         try:
-            cls._callbacks.remove(fn)
+            cls._callbacks[:] = [i for i in cls._callbacks
+                                 if cls._resolve(i) not in (fn, None)]
         except ValueError:
             pass
 

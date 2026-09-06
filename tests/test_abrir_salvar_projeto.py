@@ -199,22 +199,32 @@ def test_salvar_como_nao_sugere_o_caso_instalado(janela, monkeypatch):
     assert Path(sugestoes[-1]).name == CASO.name
 
 
-def test_trocar_tema_nao_toca_no_preferences_do_usuario(janela, qapp):
+def test_trocar_tema_nao_toca_no_preferences_do_usuario():
     """Terceira porta do mesmo defeito (2026-09-05): o Theme tinha o PROPRIO
     caminho para o preferences.json, fora da isolacao do conftest, e a
-    varredura de temas do smoke gravou `theme` no arquivo real do usuario.
-    Agora o Theme usa o caminho do i18n; trocar de tema aqui nao pode encostar
-    no arquivo real."""
+    varredura de temas do smoke gravou `theme` no arquivo real do professor.
+
+    O teste exercita a PERSISTENCIA, nao a repintura: `_apply_theme` de uma
+    janela custa cerca de seis segundos, porque re-estiliza setecentos e vinte
+    e um widgets, e chamar isso aqui fazia um teste de cinco minutos. O que
+    grava no disco e' `save_theme_preference`, e e' ele que esta sob prova.
+    """
     from bolt_analysis_studio.gui.theme import Theme
 
     real = Path.home() / ".bolt_analysis_studio" / "preferences.json"
     assert Path(Theme._prefs_file()) != real, "Theme esta' apontando para o REAL"
     antes = real.read_text(encoding="utf-8") if real.is_file() else None
-    original = Theme.current_theme() if hasattr(Theme, "current_theme") else None
-    for nome in ("engineering", "dark"):
-        janela._apply_theme(nome)
-        for _ in range(5):
-            qapp.processEvents()
+
+    original = Theme._current
+    try:
+        for nome in ("engineering", "dark"):
+            Theme._current = nome
+            Theme.save_theme_preference()
+    finally:
+        Theme._current = original
+
     depois = real.read_text(encoding="utf-8") if real.is_file() else None
     assert depois == antes, "trocar de tema gravou no preferences.json REAL"
-    assert Path(Theme._prefs_file()).is_file(), "e a preferencia isolada foi gravada"
+    alvo = Path(Theme._prefs_file())
+    assert alvo.is_file(), "e a preferencia isolada foi gravada"
+    assert "dark" in alvo.read_text(encoding="utf-8")

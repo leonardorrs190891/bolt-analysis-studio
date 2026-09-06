@@ -13,6 +13,9 @@ h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
 .print{border:1px solid var(--line);border-radius:8px;background:var(--card);
 padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
 border-radius:4px}
+.print figcaption{padding:9px 10px 4px;color:var(--sub);font-size:14px;
+line-height:1.5}
+figure.print{margin:14px 0}
 .player{display:flex;gap:14px;align-items:center;background:var(--card);
 border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
 .player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
@@ -38,13 +41,13 @@ border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
 @media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
 </style></head>
 <body><div class="wrap">
-<nav class="top"><a href="index.html">Sumário</a> · Passo 5/15
+<nav class="top"><a href="index.html">Sumário</a> · Passo 5/17
  · <a href="glossario.html">Glossário</a>
  · <a href="../en/04_model.html">English version</a></nav>
 <h1>Model — montar a cadeia</h1>
 <p class="sub">Bolt Analysis Studio 1.0.0 · Guia de uso narrado</p>
 <div class="player"><audio controls preload="none" src="audio/04_model.mp3"></audio><span class="voz">Ouça a narração · voz: pt-BR-AntonioNeural</span></div>
-<div class="print"><img src="img/chrome_model.png" alt="Model — montar a cadeia"></div>
+<figure class="print"><img src="img/chrome_model.png" alt="Model — montar a cadeia"><figcaption>A cadeia completa de um caso do artigo: onze elementos, do Ground à porca, com as duas ligações de apoio no meio.</figcaption></figure><figure class="print"><img src="img/cadeia_gaxeta.png" alt="Model — montar a cadeia"><figcaption>A mesma junta com uma gaxeta no lugar de um flange. Compare os k: a gaxeta é mil vezes mais macia, e em série é ela que decide a rigidez do conjunto.</figcaption></figure><figure class="print"><img src="img/paleta_elementos.png" alt="Model — montar a cadeia"><figcaption>A paleta de onde vêm os elementos, em três blocos: corpos do parafuso, membros apertados e interfaces de contato.</figcaption></figure>
 <h2>Transcrição</h2>
 <div class="transcricao">O módulo Model é onde a junta vira uma cadeia. Da paleta à direita, arraste um tipo de elemento para o viewport. Há corpos, que carregam massa e rigidez: o Ground, que é a fronteira fixa; a cabeça; a haste; a rosca; a porca; a arruela; o flange; a gaxeta. E há ligações, que carregam a tribologia: o contato de rosca, o contato sob a cabeça, o contato sob a porca, o contato entre flanges. A regra que mais importa: sem as duas ligações de apoio, Bearing Head e Bearing Nut, o modelo não afrouxa, porque é nelas que a face escorrega, assenta e desgasta. A ordem na cadeia importa: corpos em série somam flexibilidade, e cada ligação fica entre os dois corpos que ela conecta. Clique duas vezes num elemento para editá-lo.</div>
 <h2>Cada controle desta tela</h2>
@@ -52,5 +55,5 @@ border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
 <tbody><tr><td>Joint Wizard / Configure Joint…</td><td>Abre o assistente a partir da paleta.</td></tr><tr><td>Quick Presets</td><td>Cadeias prontas: parafuso único, junta flangeada, bancada Junker.</td></tr><tr><td>Bolt Head / Shank / Nut / Washer</td><td>Corpos do parafuso. Rigidez calculada da geometria e do material quando o cálculo automático está ligado.</td></tr><tr><td>Flange / Gasket</td><td>Membros apertados. A gaxeta é uma ordem de grandeza mais flexível e domina o assentamento quando existe.</td></tr><tr><td>Bearing (Head) / Bearing (Nut)</td><td>As duas interfaces que decidem o afrouxamento. Obrigatórias.</td></tr><tr><td>Flange-Flange / Washer Contact / Thread Contact</td><td>Demais interfaces de atrito da junta.</td></tr><tr><td>Bloco no viewport</td><td>Mostra nome, k em newtons por metro e a fração da carga que o elemento carrega.</td></tr></tbody></table>
 <div class="erro"><b>Erro comum.</b> Modelo que não perde pré-carga nenhuma: quase sempre faltam as ligações Bearing Head e Bearing Nut, ou a amplitude em Loads está zerada.</div>
 <div class="pager"><span><a href="03_anatomia.html">← Anterior</a></span>
-<span><a href="05_inspector_element.html">Próximo →</a></span></div>
+<span><a href="05_primeiro_modelo.html">Próximo →</a></span></div>
 </div></body></html>

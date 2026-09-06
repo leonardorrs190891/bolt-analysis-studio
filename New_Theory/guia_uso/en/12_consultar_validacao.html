@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Consulting the validation cases — Bolt Analysis Studio</title><style>
+:root{--ink:#1f2937;--sub:#6b7280;--line:#e5e7eb;--bg:#fafafa;--card:#fff;
+--acc:#2b6cb0;--warn:#b7791f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 22px 60px}
+nav.top{display:flex;gap:14px;align-items:center;font-size:14px;color:var(--sub);
+flex-wrap:wrap}nav.top a{color:var(--acc);text-decoration:none}
+h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
+.sub{color:var(--sub);margin:0 0 18px}
+.print{border:1px solid var(--line);border-radius:8px;background:var(--card);
+padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
+border-radius:4px}
+.print figcaption{padding:9px 10px 4px;color:var(--sub);font-size:14px;
+line-height:1.5}
+figure.print{margin:14px 0}
+.player{display:flex;gap:14px;align-items:center;background:var(--card);
+border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
+.player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
+.transcricao{background:var(--card);border-left:4px solid var(--acc);
+padding:14px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+table.ctl{width:100%;border-collapse:collapse;background:var(--card);
+border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:14px 0}
+table.ctl th,table.ctl td{padding:10px 12px;border-bottom:1px solid var(--line);
+vertical-align:top;text-align:left}table.ctl th{background:#f3f4f6;font-size:13px;
+text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+table.ctl td:first-child{white-space:nowrap;font-weight:600;width:30%}
+table.ctl td:nth-child(2):not(:last-child){color:var(--sub);white-space:nowrap}
+.erro{border:1px solid #f3d9a4;background:#fff8e6;border-radius:8px;padding:12px 16px;
+margin:14px 0}.erro b{color:var(--warn)}
+.pager{display:flex;justify-content:space-between;margin-top:34px;gap:12px}
+.pager a{color:var(--acc);text-decoration:none;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:16px;margin-top:18px}.card{background:var(--card);border:1px solid var(--line);
+border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;display:block}
+.card img{width:100%;height:170px;object-fit:cover;object-position:top;
+border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
+.card .n{color:var(--sub);font-size:13px;padding:0 14px 12px}
+@media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
+</style></head>
+<body><div class="wrap">
+<nav class="top"><a href="index.html">Contents</a> · Step 13/17
+ · <a href="glossario.html">Glossary</a>
+ · <a href="../pt/12_consultar_validacao.html">Versão em português</a></nav>
+<h1>Consulting the validation cases</h1>
+<p class="sub">Bolt Analysis Studio 1.0.0 · Narrated user guide</p>
+<div class="player"><audio controls preload="none" src="audio/12_consultar_validacao.mp3"></audio><span class="voz">Listen to the narration · voice: en-US-AndrewNeural</span></div>
+<figure class="print"><img src="img/dialog_case_picker.png" alt="Consulting the validation cases"><figcaption>The quick door: control I. The whole list by name, with search, census, criterion and error for each curve.</figcaption></figure><figure class="print"><img src="img/validation_arvore.png" alt="Consulting the validation cases"><figcaption>The full door: the tree under Results, Validation. First level the paper, second the curve, with the error beside it.</figcaption></figure><figure class="print"><img src="img/validation_detalhe.png" alt="Consulting the validation cases"><figcaption>The detail of the chosen curve: digitised data against model, the decomposition by mechanism, the metrics and the buttons.</figcaption></figure><figure class="print"><img src="img/chrome_results_validation.png" alt="Consulting the validation cases"><figcaption>Everything in place, inside the program, with the intake panel highlighted for bringing in your own test.</figcaption></figure>
+<h2>Transcript</h2>
+<div class="transcricao">The two hundred and seven curves are not an appendix: they ship inside the program and you consult them as you would a catalogue. There are two doors. The first is control I, Import validation case. It opens the whole list by name, with search. Type the paper, the bolt size or the journal: lu twenty twenty-four, M eight, Sensors. Each line says whether the curve is in the paper&#x27;s census, whether it meets the criterion, and what its mean absolute error is. In the footer, the full reference and the clickable DOI. Pick one and it opens as an editable model, with the constants exactly as adopted. The second door is the Validation tab, inside Results. There is the tree: the paper at the first level, each of that paper&#x27;s curves at the second, with the error beside it. Select a curve and the panel on the right shows three things. The plot, with the digitised data as points, the aligned model as a solid line and, dashed, the engine&#x27;s raw curve. The decomposition by mechanism, below, which tells you where the loss came from. And the metrics: mean absolute error, maximum residual and residual spread, each with the criterion limit beside it. Four buttons do the work. Open in Model brings the case in as a model for you to change. Re-simulate runs the engine again on that case. HTML report opens the full report of that curve, with conditions, model, residual and every constant with its provenance. Master report opens the master document, with the whole corpus and the census. A suggestion of method: before building your own model, open two or three cases similar to your joint and look at the constants they adopted. It is the fastest way to learn what a reasonable value looks like.</div>
+<h2>Every control on this screen</h2>
+<table class="ctl"><thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody><tr><td>Import validation case… (Ctrl+I)</td><td>The whole list by name, with search and the three verdict columns.</td></tr><tr><td>Search field</td><td>Filters by paper, case, reference or DOI.</td></tr><tr><td>Paper census only</td><td>Switches between the two hundred and five of the census and the two hundred and seven of the corpus.</td></tr><tr><td>Source → curve tree</td><td>Paper at the first level, curve at the second, error beside it.</td></tr><tr><td>Plot</td><td>Points: the paper&#x27;s data. Solid line: the aligned model. Dashed: the engine&#x27;s raw curve.</td></tr><tr><td>Decomposition by mechanism</td><td>How much of the loss came from embedding, creep, wear and nut rotation.</td></tr><tr><td>Metrics</td><td>Mean absolute error, maximum residual and residual spread, with the criterion limits.</td></tr><tr><td>Open in Model/Run</td><td>Brings the case in as an editable model, with the adopted constants.</td></tr><tr><td>Re-simulate case / Re-simulate all</td><td>Runs the engine again on that case, or on the whole corpus.</td></tr><tr><td>HTML report / Master report</td><td>Report of that curve, with the provenance of every constant; and the master document of the corpus.</td></tr><tr><td>Save case as .msd…</td><td>Writes the case model wherever you like, to start from it.</td></tr></tbody></table>
+<div class="erro"><b>Common mistake.</b> Treating a case&#x27;s constants as universal values. They were adopted for that rig and that paper; use them as a starting point, not as an answer.</div>
+<div class="pager"><span><a href="11_validation.html">← Previous</a></span>
+<span><a href="13_calibrar.html">Next →</a></span></div>
+</div></body></html>

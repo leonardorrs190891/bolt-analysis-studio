@@ -1,0 +1,59 @@
+<!doctype html><html lang="pt"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Consultando os casos da validação — Bolt Analysis Studio</title><style>
+:root{--ink:#1f2937;--sub:#6b7280;--line:#e5e7eb;--bg:#fafafa;--card:#fff;
+--acc:#2b6cb0;--warn:#b7791f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 22px 60px}
+nav.top{display:flex;gap:14px;align-items:center;font-size:14px;color:var(--sub);
+flex-wrap:wrap}nav.top a{color:var(--acc);text-decoration:none}
+h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
+.sub{color:var(--sub);margin:0 0 18px}
+.print{border:1px solid var(--line);border-radius:8px;background:var(--card);
+padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
+border-radius:4px}
+.print figcaption{padding:9px 10px 4px;color:var(--sub);font-size:14px;
+line-height:1.5}
+figure.print{margin:14px 0}
+.player{display:flex;gap:14px;align-items:center;background:var(--card);
+border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
+.player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
+.transcricao{background:var(--card);border-left:4px solid var(--acc);
+padding:14px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+table.ctl{width:100%;border-collapse:collapse;background:var(--card);
+border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:14px 0}
+table.ctl th,table.ctl td{padding:10px 12px;border-bottom:1px solid var(--line);
+vertical-align:top;text-align:left}table.ctl th{background:#f3f4f6;font-size:13px;
+text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+table.ctl td:first-child{white-space:nowrap;font-weight:600;width:30%}
+table.ctl td:nth-child(2):not(:last-child){color:var(--sub);white-space:nowrap}
+.erro{border:1px solid #f3d9a4;background:#fff8e6;border-radius:8px;padding:12px 16px;
+margin:14px 0}.erro b{color:var(--warn)}
+.pager{display:flex;justify-content:space-between;margin-top:34px;gap:12px}
+.pager a{color:var(--acc);text-decoration:none;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:16px;margin-top:18px}.card{background:var(--card);border:1px solid var(--line);
+border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;display:block}
+.card img{width:100%;height:170px;object-fit:cover;object-position:top;
+border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
+.card .n{color:var(--sub);font-size:13px;padding:0 14px 12px}
+@media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
+</style></head>
+<body><div class="wrap">
+<nav class="top"><a href="index.html">Sumário</a> · Passo 13/17
+ · <a href="glossario.html">Glossário</a>
+ · <a href="../en/12_consultar_validacao.html">English version</a></nav>
+<h1>Consultando os casos da validação</h1>
+<p class="sub">Bolt Analysis Studio 1.0.0 · Guia de uso narrado</p>
+<div class="player"><audio controls preload="none" src="audio/12_consultar_validacao.mp3"></audio><span class="voz">Ouça a narração · voz: pt-BR-AntonioNeural</span></div>
+<figure class="print"><img src="img/dialog_case_picker.png" alt="Consultando os casos da validação"><figcaption>A porta rápida: control I. A lista inteira por nome, com busca, censo, critério e erro de cada curva.</figcaption></figure><figure class="print"><img src="img/validation_arvore.png" alt="Consultando os casos da validação"><figcaption>A porta completa: a árvore de Results, Validation. Primeiro nível o artigo, segundo a curva, com o erro ao lado.</figcaption></figure><figure class="print"><img src="img/validation_detalhe.png" alt="Consultando os casos da validação"><figcaption>O detalhe da curva escolhida: dado digitalizado contra modelo, a decomposição por mecanismo, as métricas e os botões.</figcaption></figure><figure class="print"><img src="img/chrome_results_validation.png" alt="Consultando os casos da validação"><figcaption>Tudo no lugar, dentro do programa, com o painel de intake em destaque para trazer o seu próprio ensaio.</figcaption></figure>
+<h2>Transcrição</h2>
+<div class="transcricao">As duzentas e sete curvas não são um anexo: elas vêm dentro do programa e você as consulta como consultaria um catálogo. Há duas portas. A primeira é control I, Importar caso da validação. Abre a lista inteira por nome, com busca. Digite o artigo, a bitola ou a revista: lu dois mil e vinte e quatro, M oito, Sensors. Cada linha diz se a curva entra no censo do artigo, se atende ao critério, e qual o erro médio absoluto. No rodapé, a referência completa e o DOI clicável. Escolha uma e ela abre como modelo editável, com as constantes exatamente como foram adotadas. A segunda porta é a aba Validation, dentro de Results. Ali está a árvore: no primeiro nível o artigo, no segundo cada curva daquele artigo, com o erro ao lado. Selecione uma curva e o painel da direita mostra três coisas. O gráfico, com o dado digitalizado em pontos, o modelo alinhado em linha cheia e, tracejada, a curva crua do motor. A decomposição por mecanismo, embaixo, que diz de onde veio a perda. E as métricas: erro médio absoluto, resíduo máximo e desvio dos resíduos, cada uma com o limite do critério ao lado. Quatro botões fazem o trabalho. Abrir no Model traz o caso como modelo, para você mexer. Re-simular roda o motor de novo naquele caso. Report HTML abre o relatório completo daquela curva, com condições, modelo, resíduo e cada constante com a sua procedência. Report geral abre o documento mestre, com o corpus inteiro e o censo. Uma sugestão de método: antes de construir o seu modelo, abra dois ou três casos parecidos com a sua junta e olhe as constantes que eles adotaram. É a maneira mais rápida de saber o que é um valor razoável.</div>
+<h2>Cada controle desta tela</h2>
+<table class="ctl"><thead><tr><th>Controle</th><th>O que faz</th></tr></thead>
+<tbody><tr><td>Importar caso da validação… (Ctrl+I)</td><td>A lista inteira por nome, com busca e as três colunas de veredito.</td></tr><tr><td>Campo de busca</td><td>Filtra por artigo, caso, referência ou DOI.</td></tr><tr><td>Somente o censo do artigo</td><td>Alterna entre as duzentas e cinco do censo e as duzentas e sete do corpus.</td></tr><tr><td>Árvore fonte → curva</td><td>Artigo no primeiro nível, curva no segundo, erro ao lado.</td></tr><tr><td>Gráfico</td><td>Pontos: o dado do artigo. Linha cheia: o modelo alinhado. Tracejada: a curva crua do motor.</td></tr><tr><td>Decomposição por mecanismo</td><td>Quanto da perda veio de assentamento, fluência, desgaste e rotação da porca.</td></tr><tr><td>Métricas</td><td>Erro médio absoluto, resíduo máximo e desvio dos resíduos, com os limites do critério.</td></tr><tr><td>Abrir no Model/Run</td><td>Traz o caso como modelo editável, com as constantes adotadas.</td></tr><tr><td>Re-simular caso / Re-simular tudo</td><td>Roda o motor de novo naquele caso, ou no corpus inteiro.</td></tr><tr><td>Report HTML / Report geral</td><td>Relatório daquela curva, com procedência de cada constante; e o documento mestre do corpus.</td></tr><tr><td>Salvar caso como .msd…</td><td>Grava o modelo do caso onde você quiser, para partir dele.</td></tr></tbody></table>
+<div class="erro"><b>Erro comum.</b> Tratar as constantes de um caso como valores universais. Elas foram adotadas para aquela bancada e aquele artigo; use-as como ponto de partida, não como resposta.</div>
+<div class="pager"><span><a href="11_validation.html">← Anterior</a></span>
+<span><a href="13_calibrar.html">Próximo →</a></span></div>
+</div></body></html>

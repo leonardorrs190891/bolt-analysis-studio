@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Building your first MSD model — Bolt Analysis Studio</title><style>
+:root{--ink:#1f2937;--sub:#6b7280;--line:#e5e7eb;--bg:#fafafa;--card:#fff;
+--acc:#2b6cb0;--warn:#b7791f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 22px 60px}
+nav.top{display:flex;gap:14px;align-items:center;font-size:14px;color:var(--sub);
+flex-wrap:wrap}nav.top a{color:var(--acc);text-decoration:none}
+h1{font-size:30px;margin:14px 0 4px}h2{font-size:21px;margin:30px 0 10px}
+.sub{color:var(--sub);margin:0 0 18px}
+.print{border:1px solid var(--line);border-radius:8px;background:var(--card);
+padding:6px;margin:14px 0}.print img{display:block;max-width:100%;height:auto;
+border-radius:4px}
+.print figcaption{padding:9px 10px 4px;color:var(--sub);font-size:14px;
+line-height:1.5}
+figure.print{margin:14px 0}
+.player{display:flex;gap:14px;align-items:center;background:var(--card);
+border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:14px 0}
+.player audio{flex:1;min-width:240px}.player .voz{font-size:13px;color:var(--sub)}
+.transcricao{background:var(--card);border-left:4px solid var(--acc);
+padding:14px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+table.ctl{width:100%;border-collapse:collapse;background:var(--card);
+border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:14px 0}
+table.ctl th,table.ctl td{padding:10px 12px;border-bottom:1px solid var(--line);
+vertical-align:top;text-align:left}table.ctl th{background:#f3f4f6;font-size:13px;
+text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+table.ctl td:first-child{white-space:nowrap;font-weight:600;width:30%}
+table.ctl td:nth-child(2):not(:last-child){color:var(--sub);white-space:nowrap}
+.erro{border:1px solid #f3d9a4;background:#fff8e6;border-radius:8px;padding:12px 16px;
+margin:14px 0}.erro b{color:var(--warn)}
+.pager{display:flex;justify-content:space-between;margin-top:34px;gap:12px}
+.pager a{color:var(--acc);text-decoration:none;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:16px;margin-top:18px}.card{background:var(--card);border:1px solid var(--line);
+border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;display:block}
+.card img{width:100%;height:170px;object-fit:cover;object-position:top;
+border-bottom:1px solid var(--line)}.card .t{padding:12px 14px;font-weight:600}
+.card .n{color:var(--sub);font-size:13px;padding:0 14px 12px}
+@media(max-width:700px){table.ctl td:first-child{white-space:normal;width:auto}}
+</style></head>
+<body><div class="wrap">
+<nav class="top"><a href="index.html">Contents</a> · Step 6/17
+ · <a href="glossario.html">Glossary</a>
+ · <a href="../pt/05_primeiro_modelo.html">Versão em português</a></nav>
+<h1>Building your first MSD model</h1>
+<p class="sub">Bolt Analysis Studio 1.0.0 · Narrated user guide</p>
+<div class="player"><audio controls preload="none" src="audio/05_primeiro_modelo.mp3"></audio><span class="voz">Listen to the narration · voice: en-US-AndrewNeural</span></div>
+<figure class="print"><img src="img/modelo_vazio.png" alt="Building your first MSD model"><figcaption>The starting point: File, New analysis, Empty model. The viewport is clean and the palette, on the right, holds everything there is to build with.</figcaption></figure><figure class="print"><img src="img/paleta_elementos.png" alt="Building your first MSD model"><figcaption>The palette, in three blocks: the bolt bodies, the clamped members and the contact interfaces. Drag one onto the viewport, or click it.</figcaption></figure><figure class="print"><img src="img/cadeia_serie.png" alt="Building your first MSD model"><figcaption>Eight elements IN SERIES: each on its own row, from zero to six. The load passes through all of them, one after another. Note the two flanges, on rows four and five.</figcaption></figure><figure class="print"><img src="img/cadeia_paralelo.png" alt="Building your first MSD model"><figcaption>The same model with the two flanges ON THE SAME ROW, row four, in different columns. The drawing opens the branch with dashed arrows and closes it at the next bearing connection.</figcaption></figure><figure class="print"><img src="img/diagrama_serie_paralelo.png" alt="Building your first MSD model"><figcaption>The difference, as a formula. This is an explanatory drawing, not a screen of the program.</figcaption></figure><figure class="print"><img src="img/grid_position.png" alt="Building your first MSD model"><figcaption>Where you set it: Element tab, Grid Position group. Row is the position in series; Column, the parallel branch.</figcaption></figure>
+<h2>Transcript</h2>
+<div class="transcricao">Let us build a model from scratch. Under File, New analysis, pick the empty model: the viewport goes clean. From the palette on the right, add the elements in the order the load travels. Start with the Ground, the fixed boundary. Then the head, the shank, the bearing connection under the head, the clamped members, the bearing connection under the nut, and the nut. Eight elements are enough for a complete joint. Every element has two coordinates, in the Grid Position group of the Element tab. Row is the position in series. Column is the parallel branch. Elements on different rows are in series, one after another, and the same load passes through all of them; what adds up are the flexibilities, so the inverse of the assembly stiffness is the sum of the inverses. That is why, in a joint, the softest element rules: the gasket, when there is one, dominates. Elements on the same row, in different columns, appear side by side: that is the parallel branch. There the load splits between them and what adds up are the stiffnesses. Two identical plates side by side are twice as stiff as one. Now the honest part, and it matters. Today the column changes the drawing and records your intent, but the engine the paper validated combines the whole chain in series: it does not read the grid. So if you want two members to genuinely share the load in the arithmetic, add their stiffnesses into a single element. The parallel branch in the drawing is there so that you, and whoever reads the model, can see the real topology of the joint. One last rule, and it decides whether the model loosens at all: the two bearing connections, under the head and under the nut, must exist. That is where the face slips, embeds and wears. Without them the curve comes out flat.</div>
+<h2>Every control on this screen</h2>
+<table class="ctl"><thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody><tr><td>File → New analysis… → Empty model</td><td>Starts from scratch, with no elements at all.</td></tr><tr><td>Elements</td><td>The palette. Each button adds one element of that type to the viewport.</td></tr><tr><td>Quick Presets</td><td>Shortcut: builds a whole ready-made chain instead of one element at a time.</td></tr><tr><td>Row (series)</td><td>The row. Different rows are positions in series; the load passes through one after another.</td></tr><tr><td>Column (parallel)</td><td>The column. Same row and different columns draw a parallel branch side by side.</td></tr><tr><td>k (N/m)</td><td>The stiffness of each element. In series the inverses add; in parallel the values add.</td></tr><tr><td>Block in the viewport</td><td>Shows the name, the k and the load share. It is the visual check that the chain came out as you intended.</td></tr><tr><td>Bearing (Head) / Bearing (Nut)</td><td>Mandatory. Without both, the model does not loosen.</td></tr><tr><td>Fit / Shift+F</td><td>Frames the whole chain after adding elements.</td></tr></tbody></table>
+<div class="erro"><b>Common mistake.</b> Expecting that putting two elements on the same row changes the analysis result. It changes the drawing, not the arithmetic: the validated engine solves the chain in series. For two members to share the load in the calculation, add their stiffnesses into a single element.</div>
+<div class="pager"><span><a href="04_model.html">← Previous</a></span>
+<span><a href="06_inspector_element.html">Next →</a></span></div>
+</div></body></html>

@@ -51,7 +51,9 @@ JOINT_PRESETS = [
     {
         "id": "single_axial",
         "label": "Junta simples · carregamento axial",
+        "label_en": "Single joint · axial loading",
         "summary": "Parafuso + 2 chapas em contato metal-metal, tração axial cíclica.",
+        "summary_en": "Bolt + 2 plates in metal-to-metal contact, cyclic axial tension.",
         "elements": ("HEAD", "SHANK", "THREAD", "NUT",
                      "FLANGE_TOP", "FLANGE_BOT"),
         "contacts": ("BEARING_HEAD", "BEARING_NUT", "THREAD_C", "FLANGE_FLANGE"),
@@ -60,7 +62,9 @@ JOINT_PRESETS = [
     {
         "id": "single_shear",
         "label": "Junta simples · carregamento cisalhante (Junker)",
+        "label_en": "Single joint · shear loading (Junker)",
         "summary": "Parafuso + 2 chapas em contato metal-metal, deslizamento transversal.",
+        "summary_en": "Bolt + 2 plates in metal-to-metal contact, transverse slip.",
         "elements": ("HEAD", "SHANK", "THREAD", "NUT",
                      "FLANGE_TOP", "FLANGE_BOT"),
         "contacts": ("BEARING_HEAD", "BEARING_NUT", "THREAD_C", "FLANGE_FLANGE"),
@@ -69,7 +73,9 @@ JOINT_PRESETS = [
     {
         "id": "flange_axial",
         "label": "Flange com gaxeta · carregamento axial",
+        "label_en": "Gasketed flange · axial loading",
         "summary": "Flanges + gaxeta entre elas, tração axial. Perdas dominadas por creep da gaxeta.",
+        "summary_en": "Flanges + gasket between them, axial tension. Losses dominated by gasket creep.",
         "elements": ("HEAD", "SHANK", "THREAD", "NUT",
                      "FLANGE_TOP", "GASKET", "FLANGE_BOT"),
         "contacts": ("BEARING_HEAD", "BEARING_NUT", "THREAD_C", "GASKET_C"),
@@ -78,7 +84,9 @@ JOINT_PRESETS = [
     {
         "id": "flange_shear",
         "label": "Flange com gaxeta · carregamento cisalhante",
+        "label_en": "Gasketed flange · shear loading",
         "summary": "Flanges + gaxeta, deslizamento transversal. Combina creep da gaxeta com afrouxamento Junker.",
+        "summary_en": "Flanges + gasket, transverse slip. Combines gasket creep with Junker loosening.",
         "elements": ("HEAD", "SHANK", "THREAD", "NUT",
                      "FLANGE_TOP", "GASKET", "FLANGE_BOT"),
         "contacts": ("BEARING_HEAD", "BEARING_NUT", "THREAD_C", "GASKET_C"),
@@ -87,7 +95,9 @@ JOINT_PRESETS = [
     {
         "id": "blank",
         "label": "Modelo vazio (construir do zero)",
+        "label_en": "Empty model (build from scratch)",
         "summary": "Apenas define unidades & carregamento; nenhum elemento pré-criado.",
+        "summary_en": "Only sets units & loading; no element created in advance.",
         "elements": (),
         "contacts": (),
         "default_loading": "TRANSVERSE",
@@ -190,9 +200,9 @@ class _JointPage(QWizardPage):
 
         self.list = QListWidget()
         for p in JOINT_PRESETS:
-            it = QListWidgetItem(p["label"])
+            it = QListWidgetItem(self._rotulo(p))
             it.setData(Qt.ItemDataRole.UserRole, p["id"])
-            it.setToolTip(p["summary"])
+            it.setToolTip(self._resumo(p))
             self.list.addItem(it)
         self.list.setCurrentRow(0)
         self.list.itemSelectionChanged.connect(self._update_summary)
@@ -219,6 +229,16 @@ class _JointPage(QWizardPage):
         AnalysisSpec default when the field is left empty."""
         return self.name_edit.text().strip() or AnalysisSpec.project_name
 
+    @staticmethod
+    def _rotulo(p: dict) -> str:
+        from .i18n import Lang as L
+        return L.tr(p["label"], p.get("label_en") or p["label"])
+
+    @staticmethod
+    def _resumo(p: dict) -> str:
+        from .i18n import Lang as L
+        return L.tr(p["summary"], p.get("summary_en") or p["summary"])
+
     def _update_summary(self):
         it = self.list.currentItem()
         if not it:
@@ -230,7 +250,7 @@ class _JointPage(QWizardPage):
             if p["id"] == pid:
                 elems = ", ".join(p["elements"]) or L.tr("(nenhum)", "(none)")
                 self.summary.setText(
-                    f"<b>{p['label']}</b><br>{p['summary']}"
+                    f"<b>{self._rotulo(p)}</b><br>{self._resumo(p)}"
                     f"<br><i>{L.tr('Elementos', 'Elements')}:</i> {elems}")
                 break
 

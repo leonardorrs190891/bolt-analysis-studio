@@ -18,6 +18,7 @@ Usage::
 from __future__ import annotations
 
 import json
+import weakref
 from pathlib import Path
 from typing import Callable, List, Tuple
 
@@ -29,7 +30,13 @@ class Lang:
     """Global language state (``'pt'`` or ``'en'``) + change callbacks."""
 
     current: str = "pt"
-    _callbacks: List[Callable] = []
+    # Referencias FRACAS para metodos ligados (2026-09-05). Antes eram fortes,
+    # e duas coisas saiam disso: toda janela ja' criada continuava viva presa
+    # aqui, e alternar o idioma chamava setters de widgets ja' destruidos — o
+    # que no PyQt6 nem sempre levanta RuntimeError: derruba o processo com
+    # violacao de acesso. Com referencia fraca o callback sai da lista sozinho
+    # quando o dono morre.
+    _callbacks: List = []
 
     @classmethod
     def tr(cls, pt: str, en: str) -> str:
@@ -46,7 +53,7 @@ class Lang:
             return
         cls.current = lang
         cls.save_preference()
-        for cb in list(cls._callbacks):
+        for cb in cls._vivos():
             try:
                 cb()
             except Exception:  # pragma: no cover - defensivo
@@ -56,15 +63,42 @@ class Lang:
     def toggle(cls) -> None:
         cls.set_lang("en" if cls.current == "pt" else "pt")
 
+    @staticmethod
+    def _resolve(item):
+        """A funcao por tras de uma entrada, ou None se o dono ja' morreu."""
+        if isinstance(item, (weakref.WeakMethod, weakref.ref)):
+            return item()
+        return item
+
+    @classmethod
+    def _vivos(cls) -> List[Callable]:
+        """Os callbacks ainda vivos; os mortos saem da lista de passagem."""
+        vivos, saida = [], []
+        for item in list(cls._callbacks):
+            fn = cls._resolve(item)
+            if fn is None:
+                continue
+            vivos.append(item)
+            saida.append(fn)
+        cls._callbacks[:] = vivos
+        return saida
+
     @classmethod
     def register_callback(cls, fn: Callable) -> None:
-        if fn not in cls._callbacks:
+        for item in cls._callbacks:
+            if cls._resolve(item) == fn:
+                return
+        # metodo ligado vira WeakMethod: nao segura o widget dono
+        try:
+            cls._callbacks.append(weakref.WeakMethod(fn)
+                                  if hasattr(fn, "__self__") else fn)
+        except TypeError:                    # pragma: no cover - nao referenciavel
             cls._callbacks.append(fn)
 
     @classmethod
     def unregister_callback(cls, fn: Callable) -> None:
-        if fn in cls._callbacks:
-            cls._callbacks.remove(fn)
+        cls._callbacks[:] = [i for i in cls._callbacks
+                             if cls._resolve(i) not in (fn, None)]
 
     # ---- persistence (mesmo preferences.json do Theme) ----
     @classmethod

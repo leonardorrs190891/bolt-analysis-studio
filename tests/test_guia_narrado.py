@@ -59,8 +59,22 @@ def test_conteudo_completo_nas_duas_linguas():
 
 
 def test_so_pede_prints_que_o_build_tira():
-    pedidos = {p["print_"] for p in gc.PASSOS}
+    pedidos = {ch for p in gc.PASSOS for ch, _ in bg.imagens_do(p)}
     assert pedidos <= set(bg.PRINTS), sorted(pedidos - set(bg.PRINTS))
+
+
+def test_licoes_tem_varias_imagens_com_legenda():
+    """O pedido de 2026-09-05 e' explicito: "mais de uma imagem por tema".
+    As licoes de construir modelo e de consultar a validacao sao as duas que
+    precisam disso, e toda imagem multipla tem legenda nas duas linguas."""
+    varios = [p for p in gc.PASSOS if len(bg.imagens_do(p)) > 1]
+    assert len(varios) >= 6, [p["chave"] for p in varios]
+    for chave in ("05_primeiro_modelo", "12_consultar_validacao"):
+        p = next(x for x in gc.PASSOS if x["chave"] == chave)
+        assert len(bg.imagens_do(p)) >= 4, chave
+    for p in varios:
+        for ch, leg in bg.imagens_do(p):
+            assert leg and len(leg) == 2 and all(leg), (p["chave"], ch)
 
 
 def test_vozes_sao_as_pedidas():
@@ -80,9 +94,10 @@ def test_fala_a_lingua_do_usuario(idx):
 def test_pagina_traz_print_player_transcricao_e_cada_controle():
     p = gc.PASSOS[4]
     audio = {p["chave"]: p["chave"] + ".mp3"}
+    primeira = bg.imagens_do(p)[0][0]
     for lang, idx in (("pt", 0), ("en", 1)):
         html = bg._pagina(lang, p, 4, len(gc.PASSOS), gc.PASSOS, audio)
-        assert f'src="img/{p["print_"]}.png"' in html
+        assert f'src="img/{primeira}.png"' in html
         assert f'src="audio/{p["chave"]}.mp3"' in html
         assert gc.VOZES[lang] in html
         assert p["narracao"][idx] in html or bg.html.escape(p["narracao"][idx]) in html
@@ -156,8 +171,9 @@ def test_guia_gerado_tem_pagina_print_e_audio_por_passo(lang):
     assert (pasta / "glossario.html").is_file()
     for p in gc.PASSOS:
         assert (pasta / f"{p['chave']}.html").is_file(), p["chave"]
-        png = pasta / "img" / f"{p['print_']}.png"
-        assert png.is_file() and png.stat().st_size > 5_000, png
+        for ch, _ in bg.imagens_do(p):
+            png = pasta / "img" / f"{ch}.png"
+            assert png.is_file() and png.stat().st_size > 5_000, png
         mp3 = pasta / "audio" / f"{p['chave']}.mp3"
         assert mp3.is_file() and mp3.stat().st_size > 10_000, mp3
 
@@ -184,13 +200,39 @@ def test_menu_ajuda_tem_o_guia_nas_duas_linguas(qapp):
     from bolt_analysis_studio.gui.i18n import Lang
     win = _janela(qapp)
     try:
-        assert "Guia de uso narrado" in _acoes(win, "Ajuda")
+        acoes = _acoes(win, "Ajuda")
+        alvo = [t for t in acoes if "Guia de uso narrado" in t]
+        assert alvo, acoes
+        # primeiro item do menu, e com atalho proprio: um item que ninguem
+        # acha e' um item que nao existe (2026-09-05)
+        assert list(acoes)[0] == alvo[0], list(acoes)
+        assert acoes[alvo[0]].shortcut().toString() == "Shift+F1"
         Lang.set_lang("en")
         win._tr.retranslate()
-        assert "Narrated user guide" in _acoes(win, "Help")
+        acoes = _acoes(win, "Help")
+        assert [t for t in acoes if "Narrated user guide" in t], acoes
     finally:
         Lang.set_lang("pt")
         win.close()
+
+
+def test_a_documentacao_tem_botao_para_o_guia(qapp, monkeypatch):
+    """Segunda porta: quem esta' perdido abre a documentacao, nao o menu."""
+    from PyQt6.QtWidgets import QPushButton
+    import bolt_analysis_studio.gui.documentation_tab as doc_mod
+
+    chamou = []
+    monkeypatch.setattr(doc_mod, "abrir_guia_narrado",
+                        lambda: chamou.append(True) or "")
+    doc = doc_mod.DocumentationTab()
+    try:
+        botoes = [b for b in doc.findChildren(QPushButton)
+                  if "narrado" in b.text().lower() or "narrated" in b.text().lower()]
+        assert botoes, [b.text() for b in doc.findChildren(QPushButton)]
+        botoes[0].click()
+        assert chamou, "o botao da documentacao nao abre o guia"
+    finally:
+        doc.close()
 
 
 def test_abrir_guia_sem_arquivo_avisa_e_com_arquivo_abre_no_idioma(qapp, tmp_path, monkeypatch):
@@ -230,6 +272,7 @@ _DESCRITIVOS = {
     "Árvore fonte → curva", "Source → curve tree", "Gráfico", "Plot",
     "Métricas", "Metrics", "Linha de prompt", "Prompt line",
     "Árvore de seções", "Section tree", "E, Sy, Su, ρ",
+    "Decomposição por mecanismo", "Decomposition by mechanism",
     "Curva de referência: Caso da validação / Arquivo CSV…",
     "Reference curve: Validation case / CSV file…",
 }

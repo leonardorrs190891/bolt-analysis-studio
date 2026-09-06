@@ -348,12 +348,15 @@ class ChromeWindow(QMainWindow):
         T(help_menu.setTitle, "Ajuda", "Help")
         # A documentacao vem PRIMEIRO: ate' 2026-09-02 as 25 secoes so'
         # existiam na janela V1, e o chrome nao tinha porta para elas.
+        # O guia narrado vem PRIMEIRO: e' por onde quem nunca abriu o
+        # programa deve comecar, e um item de menu que ninguem acha e' um item
+        # que nao existe. F1 abre a documentacao; Shift+F1, o guia.
+        act = help_menu.addAction("", self._open_guia)
+        T(act.setText, "Guia de uso narrado (Shift+F1)",
+          "Narrated user guide (Shift+F1)")
+        act.setShortcut("Shift+F1")
         act = help_menu.addAction("", self._open_documentation)
         T(act.setText, "Documentação (F1)", "Documentation (F1)")
-        # Guia narrado: um HTML por aba, com print, voz e cada controle
-        # explicado, no idioma corrente. Gerado por build_guia_narrado.py.
-        act = help_menu.addAction("", self._open_guia)
-        T(act.setText, "Guia de uso narrado", "Narrated user guide")
         act = help_menu.addAction("", self._toggle_idioma)
         T(act.setText, "Idioma: Português / English",
           "Language: Português / English")
@@ -759,21 +762,10 @@ class ChromeWindow(QMainWindow):
 
     def _open_guia(self):
         """Abre o guia narrado no navegador, no idioma corrente."""
-        from ..i18n import Lang
-        try:
-            import webbrowser
-            from ...validation.inputs import repo_root
-            alvo = (repo_root() / "New_Theory" / "guia_uso"
-                    / ("en" if Lang.is_en() else "pt") / "index.html")
-            if not alvo.is_file():
-                self.prompt.set_prompt(Lang.tr(
-                    "O guia de uso não está instalado nesta cópia.",
-                    "The user guide is not installed in this copy."))
-                return
-            webbrowser.open(alvo.as_uri())
-        except Exception as exc:                             # pragma: no cover
-            self.prompt.set_prompt(Lang.tr(f"Guia indisponível: {exc}",
-                                           f"Guide unavailable: {exc}"))
+        from ..documentation_tab import abrir_guia_narrado
+        recado = abrir_guia_narrado()
+        if recado:
+            self.prompt.set_prompt(recado)
 
     def _open_validation_docs(self):
         # Biblioteca de documentacao: documento mestre dos 128 reports de
